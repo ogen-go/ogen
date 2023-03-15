@@ -22,7 +22,7 @@ import (
 // Nullable strings.
 //
 // POST /nullableStrings
-func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -124,7 +124,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 // Objects with conflicting array property.
 //
 // POST /objectsWithConflictingArrayProperty
-func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -226,7 +226,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 // Objects with conflicting properties.
 //
 // POST /objectsWithConflictingProperties
-func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -328,7 +328,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 // Referenced allOf.
 //
 // POST /referencedAllof
-func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -430,7 +430,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 // Referenced allOf, but requestBody is not required.
 //
 // POST /referencedAllofOptional
-func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -532,7 +532,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 // Simple integers with validation.
 //
 // POST /simpleInteger
-func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -634,7 +634,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 // Simple objects.
 //
 // POST /simpleObjects
-func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -734,7 +734,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 // handleStringsNotypeRequest handles stringsNotype operation.
 //
 // POST /stringsNotype
-func (s *Server) handleStringsNotypeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
 		semconv.HTTPMethodKey.String("POST"),

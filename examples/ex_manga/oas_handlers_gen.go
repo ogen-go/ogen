@@ -22,7 +22,7 @@ import (
 // Gets metadata of book.
 //
 // GET /api/gallery/{book_id}
-func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58,7 +58,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 			ID:   "getBook",
 		}
 	)
-	params, err := decodeGetBookParams(args, r)
+	params, err := decodeGetBookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -124,7 +124,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 // Gets page cover.
 //
 // GET /galleries/{media_id}/cover.{format}
-func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -160,7 +160,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 			ID:   "getPageCoverImage",
 		}
 	)
-	params, err := decodeGetPageCoverImageParams(args, r)
+	params, err := decodeGetPageCoverImageParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -230,7 +230,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 // Gets page.
 //
 // GET /galleries/{media_id}/{page}.{format}
-func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -266,7 +266,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 			ID:   "getPageImage",
 		}
 	)
-	params, err := decodeGetPageImageParams(args, r)
+	params, err := decodeGetPageImageParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -340,7 +340,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 // Gets page thumbnail.
 //
 // GET /galleries/{media_id}/{page}t.{format}
-func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -376,7 +376,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 			ID:   "getPageThumbnailImage",
 		}
 	)
-	params, err := decodeGetPageThumbnailImageParams(args, r)
+	params, err := decodeGetPageThumbnailImageParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -450,7 +450,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 // Search for comics.
 //
 // GET /api/galleries/search
-func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -486,7 +486,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 			ID:   "search",
 		}
 	)
-	params, err := decodeSearchParams(args, r)
+	params, err := decodeSearchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -556,7 +556,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 // Search for comics by tag ID.
 //
 // GET /api/galleries/tagged
-func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -592,7 +592,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 			ID:   "searchByTagID",
 		}
 	)
-	params, err := decodeSearchByTagIDParams(args, r)
+	params, err := decodeSearchByTagIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

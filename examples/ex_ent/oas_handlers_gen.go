@@ -22,7 +22,7 @@ import (
 // Creates a new Pet and persists it to storage.
 //
 // POST /pets
-func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -124,7 +124,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 // Creates a new Category and attaches it to the Pet.
 //
 // POST /pets/{id}/categories
-func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -160,7 +160,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			ID:   "createPetCategories",
 		}
 	)
-	params, err := decodeCreatePetCategoriesParams(args, r)
+	params, err := decodeCreatePetCategoriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -241,7 +241,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 // Creates a new Pet and attaches it to the Pet.
 //
 // POST /pets/{id}/friends
-func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -277,7 +277,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			ID:   "createPetFriends",
 		}
 	)
-	params, err := decodeCreatePetFriendsParams(args, r)
+	params, err := decodeCreatePetFriendsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -358,7 +358,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 // Creates a new User and attaches it to the Pet.
 //
 // POST /pets/{id}/owner
-func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -394,7 +394,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			ID:   "createPetOwner",
 		}
 	)
-	params, err := decodeCreatePetOwnerParams(args, r)
+	params, err := decodeCreatePetOwnerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -475,7 +475,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 // Deletes the Pet with the requested ID.
 //
 // DELETE /pets/{id}
-func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -511,7 +511,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "deletePet",
 		}
 	)
-	params, err := decodeDeletePetParams(args, r)
+	params, err := decodeDeletePetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -577,7 +577,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 // Delete the attached Owner of the Pet with the given ID.
 //
 // DELETE /pets/{id}/owner
-func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePetOwner"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -613,7 +613,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			ID:   "deletePetOwner",
 		}
 	)
-	params, err := decodeDeletePetOwnerParams(args, r)
+	params, err := decodeDeletePetOwnerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -679,7 +679,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 // List Pets.
 //
 // GET /pets
-func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -715,7 +715,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "listPet",
 		}
 	)
-	params, err := decodeListPetParams(args, r)
+	params, err := decodeListPetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -785,7 +785,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 // List attached Categories.
 //
 // GET /pets/{id}/categories
-func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetCategories"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -821,7 +821,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			ID:   "listPetCategories",
 		}
 	)
-	params, err := decodeListPetCategoriesParams(args, r)
+	params, err := decodeListPetCategoriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -895,7 +895,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 // List attached Friends.
 //
 // GET /pets/{id}/friends
-func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetFriends"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -931,7 +931,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			ID:   "listPetFriends",
 		}
 	)
-	params, err := decodeListPetFriendsParams(args, r)
+	params, err := decodeListPetFriendsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1005,7 +1005,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 // Finds the Pet with the requested ID and returns it.
 //
 // GET /pets/{id}
-func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1041,7 +1041,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			ID:   "readPet",
 		}
 	)
-	params, err := decodeReadPetParams(args, r)
+	params, err := decodeReadPetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1107,7 +1107,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 // Find the attached User of the Pet with the given ID.
 //
 // GET /pets/{id}/owner
-func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPetOwner"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1143,7 +1143,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			ID:   "readPetOwner",
 		}
 	)
-	params, err := decodeReadPetOwnerParams(args, r)
+	params, err := decodeReadPetOwnerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1209,7 +1209,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 // Updates a Pet and persists changes to storage.
 //
 // PATCH /pets/{id}
-func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1245,7 +1245,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "updatePet",
 		}
 	)
-	params, err := decodeUpdatePetParams(args, r)
+	params, err := decodeUpdatePetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

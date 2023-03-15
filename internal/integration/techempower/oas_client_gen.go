@@ -116,7 +116,9 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/cached-worlds"
+	var pathParts [1]string
+	pathParts[0] = "/cached-worlds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -203,7 +205,9 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/db"
+	var pathParts [1]string
+	pathParts[0] = "/db"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -273,7 +277,9 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/json"
+	var pathParts [1]string
+	pathParts[0] = "/json"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -344,7 +350,9 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/queries"
+	var pathParts [1]string
+	pathParts[0] = "/queries"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -432,7 +440,9 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/updates"
+	var pathParts [1]string
+	pathParts[0] = "/updates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()

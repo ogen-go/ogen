@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -63,7 +65,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleTestQueryParameterRequest([0]string{}, w, r)
+						s.handleTestQueryParameterRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
@@ -103,7 +105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestAnyRequest([0]string{}, w, r)
+								s.handleTestRequestAnyRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -121,7 +123,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestEmptyStructRequest([0]string{}, w, r)
+								s.handleTestRequestEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -139,7 +141,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestFormatTestRequest([0]string{}, w, r)
+								s.handleTestRequestFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -156,7 +158,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestBooleanRequest([0]string{}, w, r)
+								s.handleTestRequestBooleanRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -185,7 +187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestBooleanArrayRequest([0]string{}, w, r)
+										s.handleTestRequestBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -204,7 +206,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestBooleanArrayArrayRequest([0]string{}, w, r)
+											s.handleTestRequestBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -222,7 +224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestBooleanNullableRequest([0]string{}, w, r)
+										s.handleTestRequestBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -240,7 +242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestBooleanNullableArrayRequest([0]string{}, w, r)
+											s.handleTestRequestBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -259,7 +261,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestBooleanNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -280,7 +282,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestIntegerRequest([0]string{}, w, r)
+								s.handleTestRequestIntegerRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -309,7 +311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestIntegerArrayRequest([0]string{}, w, r)
+										s.handleTestRequestIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -328,7 +330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerArrayArrayRequest([0]string{}, w, r)
+											s.handleTestRequestIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -357,7 +359,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerInt32Request([0]string{}, w, r)
+											s.handleTestRequestIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -386,7 +388,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerInt32ArrayRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -405,7 +407,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerInt32ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -423,7 +425,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerInt32NullableRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -441,7 +443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerInt32NullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -460,7 +462,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerInt32NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -481,7 +483,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerInt64Request([0]string{}, w, r)
+											s.handleTestRequestIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -510,7 +512,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerInt64ArrayRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -529,7 +531,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerInt64ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -547,7 +549,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerInt64NullableRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -565,7 +567,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerInt64NullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -584,7 +586,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerInt64NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -606,7 +608,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestIntegerNullableRequest([0]string{}, w, r)
+										s.handleTestRequestIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -624,7 +626,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerNullableArrayRequest([0]string{}, w, r)
+											s.handleTestRequestIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -643,7 +645,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestIntegerNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -673,7 +675,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerUintRequest([0]string{}, w, r)
+											s.handleTestRequestIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -691,7 +693,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestIntegerUint32Request([0]string{}, w, r)
+												s.handleTestRequestIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -720,7 +722,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUint32ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -739,7 +741,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUint32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -757,7 +759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUint32NullableRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -775,7 +777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUint32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -794,7 +796,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -815,7 +817,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestIntegerUint64Request([0]string{}, w, r)
+												s.handleTestRequestIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -844,7 +846,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUint64ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -863,7 +865,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUint64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -881,7 +883,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUint64NullableRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -899,7 +901,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUint64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -918,7 +920,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -950,7 +952,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUintArrayRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -969,7 +971,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUintArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -987,7 +989,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUintNullableRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1005,7 +1007,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUintNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1024,7 +1026,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1045,7 +1047,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestIntegerUnixRequest([0]string{}, w, r)
+											s.handleTestRequestIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1085,7 +1087,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixMicroRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1114,7 +1116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixMicroArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1133,7 +1135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1151,7 +1153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixMicroNullableRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1169,7 +1171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1188,7 +1190,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -1209,7 +1211,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixMilliRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1238,7 +1240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixMilliArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1257,7 +1259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1275,7 +1277,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixMilliNullableRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1293,7 +1295,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1312,7 +1314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -1334,7 +1336,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUnixNanoRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1363,7 +1365,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixNanoArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1382,7 +1384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1400,7 +1402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixNanoNullableRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1418,7 +1420,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1437,7 +1439,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1458,7 +1460,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUnixSecondsRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1487,7 +1489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1506,7 +1508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1524,7 +1526,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1542,7 +1544,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1561,7 +1563,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -1594,7 +1596,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUnixArrayRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1613,7 +1615,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1631,7 +1633,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUnixNullableRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1649,7 +1651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1668,7 +1670,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1703,7 +1705,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestNullRequest([0]string{}, w, r)
+									s.handleTestRequestNullRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1732,7 +1734,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNullArrayRequest([0]string{}, w, r)
+											s.handleTestRequestNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1751,7 +1753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNullArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -1769,7 +1771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNullNullableRequest([0]string{}, w, r)
+											s.handleTestRequestNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1787,7 +1789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNullNullableArrayRequest([0]string{}, w, r)
+												s.handleTestRequestNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -1806,7 +1808,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNullNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1827,7 +1829,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestNumberRequest([0]string{}, w, r)
+									s.handleTestRequestNumberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1856,7 +1858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNumberArrayRequest([0]string{}, w, r)
+											s.handleTestRequestNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1875,7 +1877,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNumberArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -1893,7 +1895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
+											s.handleTestRequestNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1922,7 +1924,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNumberDoubleArrayRequest([0]string{}, w, r)
+													s.handleTestRequestNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1941,7 +1943,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1959,7 +1961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
+													s.handleTestRequestNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1977,7 +1979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1996,7 +1998,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2017,7 +2019,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNumberFloatRequest([0]string{}, w, r)
+											s.handleTestRequestNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2046,7 +2048,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNumberFloatArrayRequest([0]string{}, w, r)
+													s.handleTestRequestNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -2065,7 +2067,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberFloatArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2083,7 +2085,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
+													s.handleTestRequestNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -2101,7 +2103,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberFloatNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2120,7 +2122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2152,7 +2154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNumberInt32Request([0]string{}, w, r)
+												s.handleTestRequestNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2181,7 +2183,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberInt32ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2200,7 +2202,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberInt32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2218,7 +2220,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
+														s.handleTestRequestNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2236,7 +2238,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberInt32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2255,7 +2257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2276,7 +2278,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNumberInt64Request([0]string{}, w, r)
+												s.handleTestRequestNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2305,7 +2307,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberInt64ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2324,7 +2326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberInt64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2342,7 +2344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
+														s.handleTestRequestNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2360,7 +2362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberInt64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2379,7 +2381,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2401,7 +2403,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestNumberNullableRequest([0]string{}, w, r)
+											s.handleTestRequestNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2419,7 +2421,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestNumberNullableArrayRequest([0]string{}, w, r)
+												s.handleTestRequestNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2438,7 +2440,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestNumberNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -2472,7 +2474,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredAnyRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredAnyRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2490,7 +2492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredEmptyStructRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2508,7 +2510,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredFormatTestRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2525,7 +2527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredBooleanRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredBooleanRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2554,7 +2556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredBooleanArrayRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2573,7 +2575,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredBooleanArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2591,7 +2593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredBooleanNullableRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2609,7 +2611,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredBooleanNullableArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2628,7 +2630,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredBooleanNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -2649,7 +2651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredIntegerRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredIntegerRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2678,7 +2680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredIntegerArrayRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2697,7 +2699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2726,7 +2728,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerInt32Request([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2755,7 +2757,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerInt32ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2774,7 +2776,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerInt32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2792,7 +2794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerInt32NullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2810,7 +2812,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerInt32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2829,7 +2831,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2850,7 +2852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerInt64Request([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -2879,7 +2881,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerInt64ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2898,7 +2900,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerInt64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2916,7 +2918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerInt64NullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2934,7 +2936,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerInt64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2953,7 +2955,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2975,7 +2977,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredIntegerNullableRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -2993,7 +2995,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerNullableArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -3012,7 +3014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredIntegerNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -3042,7 +3044,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerUintRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -3060,7 +3062,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredIntegerUint32Request([0]string{}, w, r)
+													s.handleTestRequestRequiredIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -3089,7 +3091,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUint32ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3108,7 +3110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUint32ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3126,7 +3128,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUint32NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3144,7 +3146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUint32NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3163,7 +3165,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3184,7 +3186,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredIntegerUint64Request([0]string{}, w, r)
+													s.handleTestRequestRequiredIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -3213,7 +3215,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUint64ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3232,7 +3234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUint64ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3250,7 +3252,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUint64NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3268,7 +3270,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUint64NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3287,7 +3289,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3319,7 +3321,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUintArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3338,7 +3340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUintArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3356,7 +3358,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUintNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3374,7 +3376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUintNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3393,7 +3395,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3414,7 +3416,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredIntegerUnixRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -3454,7 +3456,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixMicroRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3483,7 +3485,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMicroArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3502,7 +3504,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3520,7 +3522,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMicroNullableRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3538,7 +3540,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																if len(elem) == 0 {
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3557,7 +3559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		// Leaf node.
 																		switch r.Method {
 																		case "POST":
-																			s.handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																			s.handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -3578,7 +3580,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixMilliRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3607,7 +3609,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMilliArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3626,7 +3628,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3644,7 +3646,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMilliNullableRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3662,7 +3664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																if len(elem) == 0 {
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3681,7 +3683,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		// Leaf node.
 																		switch r.Method {
 																		case "POST":
-																			s.handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																			s.handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -3703,7 +3705,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUnixNanoRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3732,7 +3734,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixNanoArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3751,7 +3753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3769,7 +3771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixNanoNullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3787,7 +3789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3806,7 +3808,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3827,7 +3829,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUnixSecondsRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3856,7 +3858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3875,7 +3877,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3893,7 +3895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3911,7 +3913,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3930,7 +3932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -3963,7 +3965,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUnixArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3982,7 +3984,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4000,7 +4002,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUnixNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4018,7 +4020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4037,7 +4039,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4072,7 +4074,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestRequiredNullRequest([0]string{}, w, r)
+										s.handleTestRequestRequiredNullRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -4101,7 +4103,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNullArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4120,7 +4122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNullArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4138,7 +4140,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNullNullableRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4156,7 +4158,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNullNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4175,7 +4177,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNullNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4196,7 +4198,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestRequiredNumberRequest([0]string{}, w, r)
+										s.handleTestRequestRequiredNumberRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -4225,7 +4227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNumberArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4244,7 +4246,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNumberArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4262,7 +4264,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4291,7 +4293,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4310,7 +4312,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4328,7 +4330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4346,7 +4348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4365,7 +4367,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4386,7 +4388,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNumberFloatRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4415,7 +4417,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNumberFloatArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4434,7 +4436,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberFloatArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4452,7 +4454,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4470,7 +4472,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberFloatNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4489,7 +4491,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4521,7 +4523,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNumberInt32Request([0]string{}, w, r)
+													s.handleTestRequestRequiredNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4550,7 +4552,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberInt32ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4569,7 +4571,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberInt32ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4587,7 +4589,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4605,7 +4607,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberInt32NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4624,7 +4626,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -4645,7 +4647,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
+													s.handleTestRequestRequiredNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4674,7 +4676,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberInt64ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4693,7 +4695,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberInt64ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4711,7 +4713,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4729,7 +4731,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberInt64NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -4748,7 +4750,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -4770,7 +4772,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredNumberNullableRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4788,7 +4790,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredNumberNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -4807,7 +4809,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredNumberNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4829,7 +4831,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestRequestRequiredStringRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredStringRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -4858,7 +4860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringArrayRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -4877,7 +4879,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4906,7 +4908,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringBase64Request([0]string{}, w, r)
+												s.handleTestRequestRequiredStringBase64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -4935,7 +4937,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringBase64ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4954,7 +4956,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringBase64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -4972,7 +4974,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringBase64NullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -4990,7 +4992,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringBase64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5009,7 +5011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5030,7 +5032,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringBinaryRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -5059,7 +5061,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringBinaryArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5078,7 +5080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringBinaryArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5096,7 +5098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringBinaryNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5114,7 +5116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringBinaryNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5133,7 +5135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringBinaryNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5154,7 +5156,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringByteRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringByteRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -5183,7 +5185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringByteArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5202,7 +5204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringByteArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5220,7 +5222,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringByteNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5238,7 +5240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringByteNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5257,7 +5259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringByteNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5290,7 +5292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringDateRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringDateRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -5308,7 +5310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringDateTimeRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5337,7 +5339,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDateTimeArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5356,7 +5358,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringDateTimeArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5374,7 +5376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDateTimeNullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5392,7 +5394,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringDateTimeNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5411,7 +5413,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -5443,7 +5445,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringDateArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5462,7 +5464,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDateArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5480,7 +5482,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringDateNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5498,7 +5500,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDateNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5517,7 +5519,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringDateNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5538,7 +5540,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringDurationRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -5567,7 +5569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringDurationArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5586,7 +5588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDurationArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5604,7 +5606,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringDurationNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5622,7 +5624,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringDurationNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5641,7 +5643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringDurationNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5663,7 +5665,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringEmailRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -5692,7 +5694,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringEmailArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5711,7 +5713,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringEmailArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5729,7 +5731,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringEmailNullableRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5747,7 +5749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringEmailNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5766,7 +5768,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringEmailNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5787,7 +5789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringHostnameRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -5816,7 +5818,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringHostnameArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5835,7 +5837,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringHostnameArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5853,7 +5855,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5871,7 +5873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringHostnameNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -5890,7 +5892,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringHostnameNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5933,7 +5935,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringInt32Request([0]string{}, w, r)
+													s.handleTestRequestRequiredStringInt32Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -5962,7 +5964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringInt32ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5981,7 +5983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringInt32ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -5999,7 +6001,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringInt32NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6017,7 +6019,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringInt32NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6036,7 +6038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringInt32NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6057,7 +6059,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringInt64Request([0]string{}, w, r)
+													s.handleTestRequestRequiredStringInt64Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6086,7 +6088,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringInt64ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6105,7 +6107,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringInt64ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6123,7 +6125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringInt64NullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6141,7 +6143,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringInt64NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6160,7 +6162,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringInt64NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6182,7 +6184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringIPRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringIPRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -6211,7 +6213,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringIPArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6230,7 +6232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringIPArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6248,7 +6250,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringIPNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6266,7 +6268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringIPNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6285,7 +6287,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringIPNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6316,7 +6318,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringIpv4Request([0]string{}, w, r)
+														s.handleTestRequestRequiredStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6345,7 +6347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringIpv4ArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6364,7 +6366,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringIpv4ArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6382,7 +6384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringIpv4NullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6400,7 +6402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringIpv4NullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6419,7 +6421,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringIpv4NullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -6440,7 +6442,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringIpv6Request([0]string{}, w, r)
+														s.handleTestRequestRequiredStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6469,7 +6471,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringIpv6ArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6488,7 +6490,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringIpv6ArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6506,7 +6508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringIpv6NullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -6524,7 +6526,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringIpv6NullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6543,7 +6545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringIpv6NullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -6567,7 +6569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringNullableRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -6585,7 +6587,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringNullableArrayRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -6604,7 +6606,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6623,7 +6625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringPasswordRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -6652,7 +6654,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringPasswordArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6671,7 +6673,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringPasswordArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6689,7 +6691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringPasswordNullableRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6707,7 +6709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringPasswordNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6726,7 +6728,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringPasswordNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6747,7 +6749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestRequiredStringTimeRequest([0]string{}, w, r)
+											s.handleTestRequestRequiredStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -6776,7 +6778,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringTimeArrayRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6795,7 +6797,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringTimeArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6813,7 +6815,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredStringTimeNullableRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -6831,7 +6833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringTimeNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6850,7 +6852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringTimeNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6882,7 +6884,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringUnixRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -6922,7 +6924,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUnixMicroRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6951,7 +6953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixMicroArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -6970,7 +6972,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixMicroArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -6988,7 +6990,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixMicroNullableRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7006,7 +7008,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																if len(elem) == 0 {
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixMicroNullableArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -7025,7 +7027,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		// Leaf node.
 																		switch r.Method {
 																		case "POST":
-																			s.handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																			s.handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -7046,7 +7048,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUnixMilliRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7075,7 +7077,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixMilliArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7094,7 +7096,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixMilliArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -7112,7 +7114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixMilliNullableRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7130,7 +7132,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																if len(elem) == 0 {
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixMilliNullableArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -7149,7 +7151,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		// Leaf node.
 																		switch r.Method {
 																		case "POST":
-																			s.handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																			s.handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -7171,7 +7173,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUnixNanoRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7200,7 +7202,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUnixNanoArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7219,7 +7221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixNanoArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7237,7 +7239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUnixNanoNullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7255,7 +7257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixNanoNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7274,7 +7276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -7295,7 +7297,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUnixSecondsRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7324,7 +7326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUnixSecondsArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7343,7 +7345,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7361,7 +7363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUnixSecondsNullableRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7379,7 +7381,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredStringUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7398,7 +7400,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -7431,7 +7433,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUnixArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7450,7 +7452,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUnixArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7468,7 +7470,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUnixNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7486,7 +7488,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUnixNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7505,7 +7507,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUnixNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7526,7 +7528,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringURIRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringURIRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -7555,7 +7557,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringURIArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7574,7 +7576,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringURIArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7592,7 +7594,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringURINullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7610,7 +7612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringURINullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7629,7 +7631,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringURINullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7650,7 +7652,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestRequiredStringUUIDRequest([0]string{}, w, r)
+												s.handleTestRequestRequiredStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -7679,7 +7681,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUUIDArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7698,7 +7700,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUUIDArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7716,7 +7718,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringUUIDNullableRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7734,7 +7736,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringUUIDNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7753,7 +7755,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredStringUUIDNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -7778,7 +7780,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestRequestStringRequest([0]string{}, w, r)
+								s.handleTestRequestStringRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -7807,7 +7809,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringArrayRequest([0]string{}, w, r)
+										s.handleTestRequestStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -7826,7 +7828,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringArrayArrayRequest([0]string{}, w, r)
+											s.handleTestRequestStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -7855,7 +7857,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringBase64Request([0]string{}, w, r)
+											s.handleTestRequestStringBase64Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -7884,7 +7886,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringBase64ArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -7903,7 +7905,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringBase64ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7921,7 +7923,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringBase64NullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -7939,7 +7941,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringBase64NullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -7958,7 +7960,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7979,7 +7981,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringBinaryRequest([0]string{}, w, r)
+											s.handleTestRequestStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -8008,7 +8010,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringBinaryArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8027,7 +8029,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringBinaryArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8045,7 +8047,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringBinaryNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8063,7 +8065,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringBinaryNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8082,7 +8084,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringBinaryNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8103,7 +8105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringByteRequest([0]string{}, w, r)
+											s.handleTestRequestStringByteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -8132,7 +8134,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringByteArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8151,7 +8153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringByteArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8169,7 +8171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringByteNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8187,7 +8189,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringByteNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8206,7 +8208,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringByteNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8239,7 +8241,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringDateRequest([0]string{}, w, r)
+											s.handleTestRequestStringDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -8257,7 +8259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringDateTimeRequest([0]string{}, w, r)
+												s.handleTestRequestStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8286,7 +8288,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDateTimeArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8305,7 +8307,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringDateTimeArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8323,7 +8325,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDateTimeNullableRequest([0]string{}, w, r)
+														s.handleTestRequestStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8341,7 +8343,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringDateTimeNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8360,7 +8362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringDateTimeNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -8392,7 +8394,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringDateArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8411,7 +8413,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDateArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8429,7 +8431,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringDateNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8447,7 +8449,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDateNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8466,7 +8468,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringDateNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8487,7 +8489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringDurationRequest([0]string{}, w, r)
+											s.handleTestRequestStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -8516,7 +8518,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringDurationArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8535,7 +8537,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDurationArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8553,7 +8555,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringDurationNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8571,7 +8573,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringDurationNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8590,7 +8592,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringDurationNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8612,7 +8614,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringEmailRequest([0]string{}, w, r)
+										s.handleTestRequestStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -8641,7 +8643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringEmailArrayRequest([0]string{}, w, r)
+												s.handleTestRequestStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8660,7 +8662,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringEmailArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8678,7 +8680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringEmailNullableRequest([0]string{}, w, r)
+												s.handleTestRequestStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8696,7 +8698,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringEmailNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8715,7 +8717,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringEmailNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8736,7 +8738,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringHostnameRequest([0]string{}, w, r)
+										s.handleTestRequestStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -8765,7 +8767,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringHostnameArrayRequest([0]string{}, w, r)
+												s.handleTestRequestStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8784,7 +8786,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringHostnameArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8802,7 +8804,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringHostnameNullableRequest([0]string{}, w, r)
+												s.handleTestRequestStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8820,7 +8822,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringHostnameNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8839,7 +8841,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringHostnameNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8882,7 +8884,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringInt32Request([0]string{}, w, r)
+												s.handleTestRequestStringInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -8911,7 +8913,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringInt32ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8930,7 +8932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringInt32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8948,7 +8950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringInt32NullableRequest([0]string{}, w, r)
+														s.handleTestRequestStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8966,7 +8968,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringInt32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8985,7 +8987,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringInt32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9006,7 +9008,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringInt64Request([0]string{}, w, r)
+												s.handleTestRequestStringInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9035,7 +9037,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringInt64ArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9054,7 +9056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringInt64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9072,7 +9074,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringInt64NullableRequest([0]string{}, w, r)
+														s.handleTestRequestStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9090,7 +9092,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringInt64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9109,7 +9111,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringInt64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9131,7 +9133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringIPRequest([0]string{}, w, r)
+											s.handleTestRequestStringIPRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -9160,7 +9162,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringIPArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9179,7 +9181,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringIPArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9197,7 +9199,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringIPNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9215,7 +9217,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringIPNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9234,7 +9236,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringIPNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9265,7 +9267,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringIpv4Request([0]string{}, w, r)
+													s.handleTestRequestStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9294,7 +9296,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringIpv4ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9313,7 +9315,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringIpv4ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9331,7 +9333,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringIpv4NullableRequest([0]string{}, w, r)
+															s.handleTestRequestStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9349,7 +9351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringIpv4NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9368,7 +9370,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringIpv4NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -9389,7 +9391,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringIpv6Request([0]string{}, w, r)
+													s.handleTestRequestStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9418,7 +9420,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringIpv6ArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9437,7 +9439,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringIpv6ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9455,7 +9457,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringIpv6NullableRequest([0]string{}, w, r)
+															s.handleTestRequestStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -9473,7 +9475,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringIpv6NullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9492,7 +9494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringIpv6NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -9516,7 +9518,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringNullableRequest([0]string{}, w, r)
+										s.handleTestRequestStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -9534,7 +9536,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringNullableArrayRequest([0]string{}, w, r)
+											s.handleTestRequestStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -9553,7 +9555,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestRequestStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9572,7 +9574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringPasswordRequest([0]string{}, w, r)
+										s.handleTestRequestStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -9601,7 +9603,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringPasswordArrayRequest([0]string{}, w, r)
+												s.handleTestRequestStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9620,7 +9622,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringPasswordArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9638,7 +9640,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringPasswordNullableRequest([0]string{}, w, r)
+												s.handleTestRequestStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9656,7 +9658,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringPasswordNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9675,7 +9677,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringPasswordNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9696,7 +9698,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestRequestStringTimeRequest([0]string{}, w, r)
+										s.handleTestRequestStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -9725,7 +9727,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringTimeArrayRequest([0]string{}, w, r)
+												s.handleTestRequestStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9744,7 +9746,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringTimeArrayArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9762,7 +9764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestStringTimeNullableRequest([0]string{}, w, r)
+												s.handleTestRequestStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -9780,7 +9782,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringTimeNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -9799,7 +9801,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringTimeNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9831,7 +9833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringUnixRequest([0]string{}, w, r)
+											s.handleTestRequestStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -9871,7 +9873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUnixMicroRequest([0]string{}, w, r)
+														s.handleTestRequestStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9900,7 +9902,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixMicroArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9919,7 +9921,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixMicroArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -9937,7 +9939,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixMicroNullableRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -9955,7 +9957,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixMicroNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -9974,7 +9976,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestStringUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -9995,7 +9997,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUnixMilliRequest([0]string{}, w, r)
+														s.handleTestRequestStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10024,7 +10026,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixMilliArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10043,7 +10045,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixMilliArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -10061,7 +10063,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixMilliNullableRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10079,7 +10081,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixMilliNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -10098,7 +10100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestRequestStringUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestRequestStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -10120,7 +10122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUnixNanoRequest([0]string{}, w, r)
+													s.handleTestRequestStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10149,7 +10151,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUnixNanoArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10168,7 +10170,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixNanoArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10186,7 +10188,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUnixNanoNullableRequest([0]string{}, w, r)
+															s.handleTestRequestStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10204,7 +10206,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixNanoNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10223,7 +10225,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -10244,7 +10246,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUnixSecondsRequest([0]string{}, w, r)
+													s.handleTestRequestStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10273,7 +10275,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUnixSecondsArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10292,7 +10294,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10310,7 +10312,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUnixSecondsNullableRequest([0]string{}, w, r)
+															s.handleTestRequestStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10328,7 +10330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestStringUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10347,7 +10349,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestStringUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -10380,7 +10382,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUnixArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10399,7 +10401,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUnixArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10417,7 +10419,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUnixNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10435,7 +10437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUnixNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10454,7 +10456,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUnixNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10475,7 +10477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringURIRequest([0]string{}, w, r)
+											s.handleTestRequestStringURIRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -10504,7 +10506,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringURIArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10523,7 +10525,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringURIArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10541,7 +10543,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringURINullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10559,7 +10561,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringURINullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10578,7 +10580,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringURINullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10599,7 +10601,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestRequestStringUUIDRequest([0]string{}, w, r)
+											s.handleTestRequestStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -10628,7 +10630,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUUIDArrayRequest([0]string{}, w, r)
+													s.handleTestRequestStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10647,7 +10649,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUUIDArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10665,7 +10667,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringUUIDNullableRequest([0]string{}, w, r)
+													s.handleTestRequestStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10683,7 +10685,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringUUIDNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10702,7 +10704,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestStringUUIDNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10739,7 +10741,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseAnyRequest([0]string{}, w, r)
+								s.handleTestResponseAnyRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -10757,7 +10759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseEmptyStructRequest([0]string{}, w, r)
+								s.handleTestResponseEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -10775,7 +10777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseFormatTestRequest([0]string{}, w, r)
+								s.handleTestResponseFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -10792,7 +10794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseBooleanRequest([0]string{}, w, r)
+								s.handleTestResponseBooleanRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -10821,7 +10823,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseBooleanArrayRequest([0]string{}, w, r)
+										s.handleTestResponseBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -10840,7 +10842,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseBooleanArrayArrayRequest([0]string{}, w, r)
+											s.handleTestResponseBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -10858,7 +10860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseBooleanNullableRequest([0]string{}, w, r)
+										s.handleTestResponseBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -10876,7 +10878,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseBooleanNullableArrayRequest([0]string{}, w, r)
+											s.handleTestResponseBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -10895,7 +10897,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseBooleanNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestResponseBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -10916,7 +10918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseIntegerRequest([0]string{}, w, r)
+								s.handleTestResponseIntegerRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -10945,7 +10947,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseIntegerArrayRequest([0]string{}, w, r)
+										s.handleTestResponseIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -10964,7 +10966,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerArrayArrayRequest([0]string{}, w, r)
+											s.handleTestResponseIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -10993,7 +10995,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerInt32Request([0]string{}, w, r)
+											s.handleTestResponseIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -11022,7 +11024,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerInt32ArrayRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11041,7 +11043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerInt32ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11059,7 +11061,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerInt32NullableRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11077,7 +11079,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerInt32NullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11096,7 +11098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerInt32NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11117,7 +11119,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerInt64Request([0]string{}, w, r)
+											s.handleTestResponseIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -11146,7 +11148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerInt64ArrayRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11165,7 +11167,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerInt64ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11183,7 +11185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerInt64NullableRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11201,7 +11203,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerInt64NullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11220,7 +11222,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerInt64NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11242,7 +11244,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseIntegerNullableRequest([0]string{}, w, r)
+										s.handleTestResponseIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -11260,7 +11262,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerNullableArrayRequest([0]string{}, w, r)
+											s.handleTestResponseIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -11279,7 +11281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseIntegerNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestResponseIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -11309,7 +11311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerUintRequest([0]string{}, w, r)
+											s.handleTestResponseIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -11327,7 +11329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseIntegerUint32Request([0]string{}, w, r)
+												s.handleTestResponseIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -11356,7 +11358,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUint32ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11375,7 +11377,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUint32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11393,7 +11395,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUint32NullableRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11411,7 +11413,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUint32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11430,7 +11432,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11451,7 +11453,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseIntegerUint64Request([0]string{}, w, r)
+												s.handleTestResponseIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -11480,7 +11482,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUint64ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11499,7 +11501,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUint64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11517,7 +11519,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUint64NullableRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11535,7 +11537,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUint64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11554,7 +11556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11586,7 +11588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUintArrayRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11605,7 +11607,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUintArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11623,7 +11625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUintNullableRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11641,7 +11643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUintNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11660,7 +11662,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -11681,7 +11683,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseIntegerUnixRequest([0]string{}, w, r)
+											s.handleTestResponseIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -11721,7 +11723,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixMicroRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11750,7 +11752,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixMicroArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11769,7 +11771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -11787,7 +11789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixMicroNullableRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11805,7 +11807,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -11824,7 +11826,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestResponseIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestResponseIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -11845,7 +11847,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixMilliRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11874,7 +11876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixMilliArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11893,7 +11895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -11911,7 +11913,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixMilliNullableRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -11929,7 +11931,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -11948,7 +11950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestResponseIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestResponseIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -11970,7 +11972,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUnixNanoRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -11999,7 +12001,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixNanoArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12018,7 +12020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12036,7 +12038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixNanoNullableRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12054,7 +12056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12073,7 +12075,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -12094,7 +12096,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUnixSecondsRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12123,7 +12125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12142,7 +12144,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12160,7 +12162,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12178,7 +12180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12197,7 +12199,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -12230,7 +12232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUnixArrayRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12249,7 +12251,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12267,7 +12269,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUnixNullableRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12285,7 +12287,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12304,7 +12306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12339,7 +12341,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestResponseNullRequest([0]string{}, w, r)
+									s.handleTestResponseNullRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -12368,7 +12370,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNullArrayRequest([0]string{}, w, r)
+											s.handleTestResponseNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -12387,7 +12389,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNullArrayArrayRequest([0]string{}, w, r)
+												s.handleTestResponseNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -12405,7 +12407,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNullNullableRequest([0]string{}, w, r)
+											s.handleTestResponseNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -12423,7 +12425,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNullNullableArrayRequest([0]string{}, w, r)
+												s.handleTestResponseNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -12442,7 +12444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNullNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12463,7 +12465,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleTestResponseNumberRequest([0]string{}, w, r)
+									s.handleTestResponseNumberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -12492,7 +12494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNumberArrayRequest([0]string{}, w, r)
+											s.handleTestResponseNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -12511,7 +12513,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNumberArrayArrayRequest([0]string{}, w, r)
+												s.handleTestResponseNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -12529,7 +12531,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
+											s.handleTestResponseNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -12558,7 +12560,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNumberDoubleArrayRequest([0]string{}, w, r)
+													s.handleTestResponseNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12577,7 +12579,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12595,7 +12597,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
+													s.handleTestResponseNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12613,7 +12615,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12632,7 +12634,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12653,7 +12655,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNumberFloatRequest([0]string{}, w, r)
+											s.handleTestResponseNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -12682,7 +12684,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNumberFloatArrayRequest([0]string{}, w, r)
+													s.handleTestResponseNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12701,7 +12703,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberFloatArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12719,7 +12721,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
+													s.handleTestResponseNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -12737,7 +12739,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberFloatNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12756,7 +12758,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12788,7 +12790,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNumberInt32Request([0]string{}, w, r)
+												s.handleTestResponseNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -12817,7 +12819,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberInt32ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12836,7 +12838,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberInt32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12854,7 +12856,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
+														s.handleTestResponseNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12872,7 +12874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberInt32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12891,7 +12893,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12912,7 +12914,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNumberInt64Request([0]string{}, w, r)
+												s.handleTestResponseNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -12941,7 +12943,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberInt64ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12960,7 +12962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberInt64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -12978,7 +12980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
+														s.handleTestResponseNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -12996,7 +12998,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberInt64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13015,7 +13017,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -13037,7 +13039,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseNumberNullableRequest([0]string{}, w, r)
+											s.handleTestResponseNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13055,7 +13057,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseNumberNullableArrayRequest([0]string{}, w, r)
+												s.handleTestResponseNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -13074,7 +13076,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseNumberNullableArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13096,7 +13098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleTestResponseStringRequest([0]string{}, w, r)
+								s.handleTestResponseStringRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -13125,7 +13127,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringArrayRequest([0]string{}, w, r)
+										s.handleTestResponseStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -13144,7 +13146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringArrayArrayRequest([0]string{}, w, r)
+											s.handleTestResponseStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13173,7 +13175,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringBase64Request([0]string{}, w, r)
+											s.handleTestResponseStringBase64Request([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13202,7 +13204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringBase64ArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13221,7 +13223,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringBase64ArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13239,7 +13241,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringBase64NullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13257,7 +13259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringBase64NullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13276,7 +13278,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13297,7 +13299,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringBinaryRequest([0]string{}, w, r)
+											s.handleTestResponseStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13326,7 +13328,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringBinaryArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13345,7 +13347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringBinaryArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13363,7 +13365,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringBinaryNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13381,7 +13383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringBinaryNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13400,7 +13402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringBinaryNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13421,7 +13423,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringByteRequest([0]string{}, w, r)
+											s.handleTestResponseStringByteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13450,7 +13452,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringByteArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13469,7 +13471,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringByteArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13487,7 +13489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringByteNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13505,7 +13507,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringByteNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13524,7 +13526,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringByteNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13557,7 +13559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringDateRequest([0]string{}, w, r)
+											s.handleTestResponseStringDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13575,7 +13577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringDateTimeRequest([0]string{}, w, r)
+												s.handleTestResponseStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -13604,7 +13606,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDateTimeArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13623,7 +13625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringDateTimeArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13641,7 +13643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDateTimeNullableRequest([0]string{}, w, r)
+														s.handleTestResponseStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13659,7 +13661,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringDateTimeNullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13678,7 +13680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringDateTimeNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -13710,7 +13712,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringDateArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13729,7 +13731,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDateArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13747,7 +13749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringDateNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13765,7 +13767,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDateNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13784,7 +13786,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringDateNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13805,7 +13807,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringDurationRequest([0]string{}, w, r)
+											s.handleTestResponseStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -13834,7 +13836,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringDurationArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13853,7 +13855,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDurationArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13871,7 +13873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringDurationNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13889,7 +13891,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringDurationNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -13908,7 +13910,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringDurationNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13930,7 +13932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringEmailRequest([0]string{}, w, r)
+										s.handleTestResponseStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -13959,7 +13961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringEmailArrayRequest([0]string{}, w, r)
+												s.handleTestResponseStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -13978,7 +13980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringEmailArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13996,7 +13998,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringEmailNullableRequest([0]string{}, w, r)
+												s.handleTestResponseStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14014,7 +14016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringEmailNullableArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14033,7 +14035,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringEmailNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14054,7 +14056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringHostnameRequest([0]string{}, w, r)
+										s.handleTestResponseStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -14083,7 +14085,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringHostnameArrayRequest([0]string{}, w, r)
+												s.handleTestResponseStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14102,7 +14104,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringHostnameArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14120,7 +14122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringHostnameNullableRequest([0]string{}, w, r)
+												s.handleTestResponseStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14138,7 +14140,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringHostnameNullableArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14157,7 +14159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringHostnameNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14200,7 +14202,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringInt32Request([0]string{}, w, r)
+												s.handleTestResponseStringInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14229,7 +14231,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringInt32ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14248,7 +14250,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringInt32ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14266,7 +14268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringInt32NullableRequest([0]string{}, w, r)
+														s.handleTestResponseStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14284,7 +14286,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringInt32NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14303,7 +14305,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringInt32NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14324,7 +14326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringInt64Request([0]string{}, w, r)
+												s.handleTestResponseStringInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14353,7 +14355,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringInt64ArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14372,7 +14374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringInt64ArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14390,7 +14392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringInt64NullableRequest([0]string{}, w, r)
+														s.handleTestResponseStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14408,7 +14410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringInt64NullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14427,7 +14429,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringInt64NullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14449,7 +14451,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringIPRequest([0]string{}, w, r)
+											s.handleTestResponseStringIPRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -14478,7 +14480,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringIPArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14497,7 +14499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringIPArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14515,7 +14517,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringIPNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14533,7 +14535,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringIPNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -14552,7 +14554,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringIPNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14583,7 +14585,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringIpv4Request([0]string{}, w, r)
+													s.handleTestResponseStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14612,7 +14614,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringIpv4ArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14631,7 +14633,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringIpv4ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14649,7 +14651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringIpv4NullableRequest([0]string{}, w, r)
+															s.handleTestResponseStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14667,7 +14669,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringIpv4NullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14686,7 +14688,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringIpv4NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -14707,7 +14709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringIpv6Request([0]string{}, w, r)
+													s.handleTestResponseStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14736,7 +14738,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringIpv6ArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14755,7 +14757,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringIpv6ArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14773,7 +14775,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringIpv6NullableRequest([0]string{}, w, r)
+															s.handleTestResponseStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14791,7 +14793,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringIpv6NullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14810,7 +14812,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringIpv6NullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -14834,7 +14836,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringNullableRequest([0]string{}, w, r)
+										s.handleTestResponseStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -14852,7 +14854,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringNullableArrayRequest([0]string{}, w, r)
+											s.handleTestResponseStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -14871,7 +14873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringNullableArrayArrayRequest([0]string{}, w, r)
+												s.handleTestResponseStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14890,7 +14892,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringPasswordRequest([0]string{}, w, r)
+										s.handleTestResponseStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -14919,7 +14921,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringPasswordArrayRequest([0]string{}, w, r)
+												s.handleTestResponseStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14938,7 +14940,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringPasswordArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14956,7 +14958,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringPasswordNullableRequest([0]string{}, w, r)
+												s.handleTestResponseStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -14974,7 +14976,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringPasswordNullableArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -14993,7 +14995,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringPasswordNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15014,7 +15016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleTestResponseStringTimeRequest([0]string{}, w, r)
+										s.handleTestResponseStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -15043,7 +15045,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringTimeArrayRequest([0]string{}, w, r)
+												s.handleTestResponseStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -15062,7 +15064,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringTimeArrayArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15080,7 +15082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseStringTimeNullableRequest([0]string{}, w, r)
+												s.handleTestResponseStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -15098,7 +15100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringTimeNullableArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15117,7 +15119,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringTimeNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15149,7 +15151,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringUnixRequest([0]string{}, w, r)
+											s.handleTestResponseStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -15189,7 +15191,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUnixMicroRequest([0]string{}, w, r)
+														s.handleTestResponseStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15218,7 +15220,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixMicroArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15237,7 +15239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixMicroArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15255,7 +15257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixMicroNullableRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15273,7 +15275,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixMicroNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15292,7 +15294,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestResponseStringUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestResponseStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -15313,7 +15315,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUnixMilliRequest([0]string{}, w, r)
+														s.handleTestResponseStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15342,7 +15344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixMilliArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15361,7 +15363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixMilliArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15379,7 +15381,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixMilliNullableRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15397,7 +15399,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															if len(elem) == 0 {
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixMilliNullableArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15416,7 +15418,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "POST":
-																		s.handleTestResponseStringUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																		s.handleTestResponseStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -15438,7 +15440,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUnixNanoRequest([0]string{}, w, r)
+													s.handleTestResponseStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15467,7 +15469,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUnixNanoArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15486,7 +15488,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixNanoArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15504,7 +15506,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUnixNanoNullableRequest([0]string{}, w, r)
+															s.handleTestResponseStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15522,7 +15524,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixNanoNullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15541,7 +15543,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15562,7 +15564,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUnixSecondsRequest([0]string{}, w, r)
+													s.handleTestResponseStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15591,7 +15593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUnixSecondsArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15610,7 +15612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15628,7 +15630,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUnixSecondsNullableRequest([0]string{}, w, r)
+															s.handleTestResponseStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15646,7 +15648,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseStringUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																s.handleTestResponseStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -15665,7 +15667,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestResponseStringUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestResponseStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -15698,7 +15700,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUnixArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15717,7 +15719,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUnixArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15735,7 +15737,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUnixNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15753,7 +15755,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUnixNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15772,7 +15774,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUnixNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15793,7 +15795,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringURIRequest([0]string{}, w, r)
+											s.handleTestResponseStringURIRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -15822,7 +15824,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringURIArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15841,7 +15843,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringURIArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15859,7 +15861,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringURINullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15877,7 +15879,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringURINullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15896,7 +15898,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringURINullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -15917,7 +15919,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "POST":
-											s.handleTestResponseStringUUIDRequest([0]string{}, w, r)
+											s.handleTestResponseStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -15946,7 +15948,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUUIDArrayRequest([0]string{}, w, r)
+													s.handleTestResponseStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -15965,7 +15967,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUUIDArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -15983,7 +15985,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringUUIDNullableRequest([0]string{}, w, r)
+													s.handleTestResponseStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -16001,7 +16003,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringUUIDNullableArrayRequest([0]string{}, w, r)
+														s.handleTestResponseStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -16020,7 +16022,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseStringUUIDNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}

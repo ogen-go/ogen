@@ -114,7 +114,8 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -131,9 +132,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -150,9 +151,10 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -274,7 +276,8 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -291,9 +294,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -310,9 +313,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -329,8 +332,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -452,7 +456,8 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -469,9 +474,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -488,9 +493,10 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -612,7 +618,8 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -629,9 +636,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -648,9 +655,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -667,8 +674,9 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -790,7 +798,8 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -807,9 +816,10 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -931,7 +941,8 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -948,9 +959,9 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -967,8 +978,9 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1090,7 +1102,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1107,9 +1120,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1126,9 +1139,10 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/attach"
+	pathParts[4] = "/attach"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1318,7 +1332,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1335,9 +1350,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1354,9 +1369,10 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/exec"
+	pathParts[4] = "/exec"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1563,7 +1579,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1580,9 +1597,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1599,9 +1616,10 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/portforward"
+	pathParts[4] = "/portforward"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1723,7 +1741,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1740,9 +1759,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1759,9 +1778,10 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1883,7 +1903,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1900,9 +1921,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1919,9 +1940,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1938,8 +1959,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2061,7 +2083,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2078,9 +2101,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2097,9 +2120,10 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2221,7 +2245,8 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2238,9 +2263,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2257,9 +2282,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2276,8 +2301,9 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2399,7 +2425,8 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2416,9 +2443,10 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2540,7 +2568,8 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2557,9 +2586,9 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2576,8 +2605,9 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2699,7 +2729,8 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2716,9 +2747,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2735,9 +2766,10 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2859,7 +2891,8 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2876,9 +2909,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2895,9 +2928,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2914,8 +2947,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3037,7 +3071,8 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3054,9 +3089,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3073,9 +3108,10 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3197,7 +3233,8 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3214,9 +3251,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3233,9 +3270,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3252,8 +3289,9 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3375,7 +3413,8 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3392,9 +3431,10 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3516,7 +3556,8 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3533,9 +3574,9 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3552,8 +3593,9 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3675,7 +3717,8 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3692,9 +3735,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3711,9 +3754,10 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -3835,7 +3879,8 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3852,9 +3897,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3871,9 +3916,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3890,8 +3935,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4013,7 +4059,8 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4030,9 +4077,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4049,9 +4096,10 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4173,7 +4221,8 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4190,9 +4239,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4209,9 +4258,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4228,8 +4277,9 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4351,7 +4401,8 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4368,9 +4419,10 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4492,7 +4544,8 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4509,9 +4562,9 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4528,8 +4581,9 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4651,7 +4705,8 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4668,9 +4723,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4687,9 +4742,10 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4811,7 +4867,8 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4828,9 +4885,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4847,9 +4904,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4866,8 +4923,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -4989,7 +5047,8 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5006,9 +5065,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5025,9 +5084,10 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5149,7 +5209,8 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5166,9 +5227,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5185,9 +5246,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5204,8 +5265,9 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5327,7 +5389,8 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5344,9 +5407,10 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5468,7 +5532,8 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5485,9 +5550,9 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5504,8 +5569,9 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5627,7 +5693,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5644,9 +5711,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5663,9 +5730,10 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/attach"
+	pathParts[4] = "/attach"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5855,7 +5923,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5872,9 +5941,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5891,9 +5960,10 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/exec"
+	pathParts[4] = "/exec"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6100,7 +6170,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6117,9 +6188,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6136,9 +6207,10 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/portforward"
+	pathParts[4] = "/portforward"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6260,7 +6332,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6277,9 +6350,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6296,9 +6369,10 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6420,7 +6494,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6437,9 +6512,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6456,9 +6531,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6475,8 +6550,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6598,7 +6674,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6615,9 +6692,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6634,9 +6711,10 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6758,7 +6836,8 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6775,9 +6854,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6794,9 +6873,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6813,8 +6892,9 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6936,7 +7016,8 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6953,9 +7034,10 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7077,7 +7159,8 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7094,9 +7177,9 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7113,8 +7196,9 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7236,7 +7320,8 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7253,9 +7338,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7272,9 +7357,10 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7396,7 +7482,8 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7413,9 +7500,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7432,9 +7519,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7451,8 +7538,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7574,7 +7662,8 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7591,9 +7680,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7610,9 +7699,10 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[4] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7734,7 +7824,8 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [6]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7751,9 +7842,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7770,9 +7861,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[4] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7789,8 +7880,9 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7912,7 +8004,8 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7929,9 +8022,10 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy"
+	pathParts[2] = "/proxy"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -8053,7 +8147,8 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8070,9 +8165,9 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/proxy/"
+	pathParts[2] = "/proxy/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8089,8 +8184,9 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -8212,7 +8308,9 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8313,7 +8411,9 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8414,7 +8514,9 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8515,7 +8617,9 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8616,7 +8720,9 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8717,7 +8823,9 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8818,7 +8926,9 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -8919,7 +9029,9 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9020,7 +9132,9 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9121,7 +9235,9 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/authentication.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/authentication.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9222,7 +9338,9 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/authentication.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/authentication.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9323,7 +9441,9 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/authorization.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/authorization.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9424,7 +9544,9 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/authorization.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/authorization.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9525,7 +9647,9 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9626,7 +9750,9 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9727,7 +9853,9 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9828,7 +9956,9 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9929,7 +10059,9 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10030,7 +10162,9 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10131,7 +10265,9 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10232,7 +10368,9 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/certificates.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10333,7 +10471,9 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10434,7 +10574,9 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/version/"
+	var pathParts [1]string
+	pathParts[0] = "/version/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10535,7 +10677,9 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/coordination.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10636,7 +10780,9 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10737,7 +10883,9 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/"
+	var pathParts [1]string
+	pathParts[0] = "/api/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10838,7 +10986,9 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10939,7 +11089,9 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11040,7 +11192,9 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11141,7 +11295,9 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11242,7 +11398,9 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11343,7 +11501,9 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11444,7 +11604,9 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11545,7 +11707,9 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11646,7 +11810,9 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11747,7 +11913,9 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11848,7 +12016,9 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -11949,7 +12119,9 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12050,7 +12222,9 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12151,7 +12325,9 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12252,7 +12428,9 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12353,7 +12531,9 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12454,7 +12634,9 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1alpha1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1alpha1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12555,7 +12737,9 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12656,7 +12840,9 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12757,7 +12943,9 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12858,7 +13046,9 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -12959,7 +13149,9 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13060,7 +13252,9 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13161,7 +13355,9 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/scheduling.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13262,7 +13458,9 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/scheduling.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13363,7 +13561,9 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/.well-known/openid-configuration/"
+	var pathParts [1]string
+	pathParts[0] = "/.well-known/openid-configuration/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13464,7 +13664,9 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/openid/v1/jwks/"
+	var pathParts [1]string
+	pathParts[0] = "/openid/v1/jwks/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13565,7 +13767,9 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13666,7 +13870,9 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13767,7 +13973,9 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13868,7 +14076,9 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -13969,7 +14179,9 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -14244,7 +14456,9 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -14519,7 +14733,9 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -14794,7 +15010,9 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/apiservices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15069,7 +15287,9 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/controllerrevisions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/controllerrevisions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15344,7 +15564,9 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/daemonsets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/daemonsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15619,7 +15841,9 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/deployments"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15894,7 +16118,8 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -15911,9 +16136,10 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/controllerrevisions"
+	pathParts[2] = "/controllerrevisions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -16188,7 +16414,8 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16205,9 +16432,10 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/daemonsets"
+	pathParts[2] = "/daemonsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -16482,7 +16710,8 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16499,9 +16728,10 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments"
+	pathParts[2] = "/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -16776,7 +17006,8 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16793,9 +17024,10 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets"
+	pathParts[2] = "/replicasets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -17070,7 +17302,8 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17087,9 +17320,10 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets"
+	pathParts[2] = "/statefulsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -17364,7 +17598,9 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/replicasets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/replicasets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -17639,7 +17875,9 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/statefulsets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/statefulsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -17914,7 +18152,9 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v1/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18189,7 +18429,8 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18206,9 +18447,10 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18483,7 +18725,9 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18758,7 +19002,8 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18775,9 +19020,10 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19052,7 +19298,9 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19327,7 +19575,8 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19344,9 +19593,10 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19621,7 +19871,9 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/cronjobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19896,7 +20148,9 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/jobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1/jobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -20171,7 +20425,8 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20188,9 +20443,10 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs"
+	pathParts[2] = "/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -20465,7 +20721,8 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20482,9 +20739,10 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/jobs"
+	pathParts[2] = "/jobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -20759,7 +21017,9 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/cronjobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1beta1/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -21034,7 +21294,8 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21051,9 +21312,10 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs"
+	pathParts[2] = "/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -21328,7 +21590,9 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
+	var pathParts [1]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/certificatesigningrequests"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -21603,7 +21867,9 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/leases"
+	var pathParts [1]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/leases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -21878,7 +22144,8 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21895,9 +22162,10 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/leases"
+	pathParts[2] = "/leases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22172,7 +22440,9 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/componentstatuses"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/componentstatuses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22447,7 +22717,9 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/configmaps"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/configmaps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22722,7 +22994,9 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/endpoints"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/endpoints"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22997,7 +23271,9 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/events"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23272,7 +23548,9 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/limitranges"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/limitranges"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23547,7 +23825,9 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/namespaces"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23822,7 +24102,8 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23839,9 +24120,10 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/configmaps"
+	pathParts[2] = "/configmaps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -24116,7 +24398,8 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24133,9 +24416,10 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpoints"
+	pathParts[2] = "/endpoints"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -24410,7 +24694,8 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24427,9 +24712,10 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -24704,7 +24990,8 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24721,9 +25008,10 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/limitranges"
+	pathParts[2] = "/limitranges"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -24998,7 +25286,8 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25015,9 +25304,10 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/persistentvolumeclaims"
+	pathParts[2] = "/persistentvolumeclaims"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -25292,7 +25582,8 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25309,9 +25600,10 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods"
+	pathParts[2] = "/pods"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -25586,7 +25878,8 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25603,9 +25896,10 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/podtemplates"
+	pathParts[2] = "/podtemplates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -25880,7 +26174,8 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25897,9 +26192,10 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers"
+	pathParts[2] = "/replicationcontrollers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26174,7 +26470,8 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26191,9 +26488,10 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/resourcequotas"
+	pathParts[2] = "/resourcequotas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26468,7 +26766,8 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26485,9 +26784,10 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/secrets"
+	pathParts[2] = "/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26762,7 +27062,8 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26779,9 +27080,10 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services"
+	pathParts[2] = "/services"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -27056,7 +27358,8 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27073,9 +27376,10 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/serviceaccounts"
+	pathParts[2] = "/serviceaccounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -27350,7 +27654,9 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/nodes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -27625,7 +27931,9 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/persistentvolumes"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/persistentvolumes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -27900,7 +28208,9 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/persistentvolumeclaims"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/persistentvolumeclaims"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -28175,7 +28485,9 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/pods"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/pods"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -28450,7 +28762,9 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/podtemplates"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/podtemplates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -28725,7 +29039,9 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/replicationcontrollers"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/replicationcontrollers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -29000,7 +29316,9 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/resourcequotas"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/resourcequotas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -29275,7 +29593,9 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/secrets"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -29550,7 +29870,9 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/serviceaccounts"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/serviceaccounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -29825,7 +30147,9 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/services"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/services"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -30100,7 +30424,9 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -30375,7 +30701,8 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30392,9 +30719,10 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices"
+	pathParts[2] = "/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -30669,7 +30997,9 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -30944,7 +31274,8 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30961,9 +31292,10 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices"
+	pathParts[2] = "/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -31238,7 +31570,9 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/events"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -31513,7 +31847,8 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/events.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31530,9 +31865,10 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -31807,7 +32143,9 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/events"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32082,7 +32420,8 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32099,9 +32438,10 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32376,7 +32716,9 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32651,7 +32993,9 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32926,7 +33270,9 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33201,7 +33547,9 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33476,7 +33824,9 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33751,7 +34101,9 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/ingressclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -34026,7 +34378,9 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/ingresses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/ingresses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -34301,7 +34655,8 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34318,9 +34673,10 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/ingresses"
+	pathParts[2] = "/ingresses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -34595,7 +34951,8 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34612,9 +34969,10 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/networkpolicies"
+	pathParts[2] = "/networkpolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -34889,7 +35247,9 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/networkpolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35164,7 +35524,9 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35439,7 +35801,9 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1alpha1/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35714,7 +36078,9 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1beta1/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35989,7 +36355,8 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36006,9 +36373,10 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets"
+	pathParts[2] = "/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -36283,7 +36651,9 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/poddisruptionbudgets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -36558,7 +36928,8 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36575,9 +36946,10 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets"
+	pathParts[2] = "/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -36852,7 +37224,9 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1beta1/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37127,7 +37501,9 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1beta1/podsecuritypolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37402,7 +37778,9 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/clusterroles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37677,7 +38055,9 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37952,7 +38332,8 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37969,9 +38350,10 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/roles"
+	pathParts[2] = "/roles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -38246,7 +38628,8 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38263,9 +38646,10 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/rolebindings"
+	pathParts[2] = "/rolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -38540,7 +38924,9 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/rolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -38815,7 +39201,9 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/roles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39090,7 +39478,9 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/scheduling.k8s.io/v1/priorityclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39365,7 +39755,9 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/csidrivers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39640,7 +40032,9 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/csinodes"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/csinodes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39915,7 +40309,9 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/storageclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -40190,7 +40586,9 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/volumeattachments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -40465,7 +40863,9 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -40740,7 +41140,8 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40757,9 +41158,10 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities"
+	pathParts[2] = "/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41034,7 +41436,9 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41309,7 +41713,8 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41326,9 +41731,10 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities"
+	pathParts[2] = "/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41601,7 +42007,8 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/logs/"
+	var pathParts [2]string
+	pathParts[0] = "/logs/"
 	{
 		// Encode "logpath" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41618,8 +42025,9 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41718,7 +42126,9 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/logs/"
+	var pathParts [1]string
+	pathParts[0] = "/logs/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41819,7 +42229,8 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41836,8 +42247,9 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41959,7 +42371,8 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41976,8 +42389,9 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42099,7 +42513,8 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42116,8 +42531,9 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42239,7 +42655,8 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42256,9 +42673,10 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42380,7 +42798,8 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42397,8 +42816,9 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42520,7 +42940,8 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42537,9 +42958,10 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42661,7 +43083,8 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42678,9 +43101,9 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/controllerrevisions/"
+	pathParts[2] = "/controllerrevisions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42697,8 +43120,9 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42820,7 +43244,8 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42837,9 +43262,9 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/daemonsets/"
+	pathParts[2] = "/daemonsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42856,8 +43281,9 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42979,7 +43405,8 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42996,9 +43423,9 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/daemonsets/"
+	pathParts[2] = "/daemonsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43015,9 +43442,10 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43139,7 +43567,8 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43156,9 +43585,9 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[2] = "/deployments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43175,8 +43604,9 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43298,7 +43728,8 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43315,9 +43746,9 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[2] = "/deployments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43334,9 +43765,10 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/scale"
+	pathParts[4] = "/scale"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43458,7 +43890,8 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43475,9 +43908,9 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[2] = "/deployments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43494,9 +43927,10 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43618,7 +44052,8 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43635,9 +44070,9 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets/"
+	pathParts[2] = "/replicasets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43654,8 +44089,9 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43777,7 +44213,8 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43794,9 +44231,9 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets/"
+	pathParts[2] = "/replicasets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43813,9 +44250,10 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/scale"
+	pathParts[4] = "/scale"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43937,7 +44375,8 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43954,9 +44393,9 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets/"
+	pathParts[2] = "/replicasets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43973,9 +44412,10 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44097,7 +44537,8 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44114,9 +44555,9 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets/"
+	pathParts[2] = "/statefulsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44133,8 +44574,9 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44256,7 +44698,8 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44273,9 +44716,9 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets/"
+	pathParts[2] = "/statefulsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44292,9 +44735,10 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/scale"
+	pathParts[4] = "/scale"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44416,7 +44860,8 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44433,9 +44878,9 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets/"
+	pathParts[2] = "/statefulsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44452,9 +44897,10 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44576,7 +45022,8 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44593,9 +45040,9 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44612,8 +45059,9 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44735,7 +45183,8 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44752,9 +45201,9 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44771,9 +45220,10 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -44895,7 +45345,8 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44912,9 +45363,9 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44931,8 +45382,9 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45054,7 +45506,8 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45071,9 +45524,9 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45090,9 +45543,10 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45214,7 +45668,8 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45231,9 +45686,9 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45250,8 +45705,9 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45373,7 +45829,8 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45390,9 +45847,9 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45409,9 +45866,10 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45533,7 +45991,8 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45550,9 +46009,9 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45569,8 +46028,9 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45692,7 +46152,8 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45709,9 +46170,9 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45728,9 +46189,10 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45852,7 +46314,8 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45869,9 +46332,9 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/jobs/"
+	pathParts[2] = "/jobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45888,8 +46351,9 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46011,7 +46475,8 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46028,9 +46493,9 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/jobs/"
+	pathParts[2] = "/jobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46047,9 +46512,10 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46171,7 +46637,8 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46188,9 +46655,9 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46207,8 +46674,9 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46330,7 +46798,8 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46347,9 +46816,9 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46366,9 +46835,10 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46490,7 +46960,8 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46507,8 +46978,9 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46630,7 +47102,8 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46647,9 +47120,10 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/approval"
+	pathParts[2] = "/approval"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46771,7 +47245,8 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46788,9 +47263,10 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46912,7 +47388,8 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46929,9 +47406,9 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/leases/"
+	pathParts[2] = "/leases/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46948,8 +47425,9 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47071,7 +47549,8 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/componentstatuses/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/componentstatuses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47088,8 +47567,9 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47211,7 +47691,8 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47228,8 +47709,9 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47351,7 +47833,8 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47368,9 +47851,10 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47492,7 +47976,8 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47509,9 +47994,9 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/configmaps/"
+	pathParts[2] = "/configmaps/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47528,8 +48013,9 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47651,7 +48137,8 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47668,9 +48155,9 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpoints/"
+	pathParts[2] = "/endpoints/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47687,8 +48174,9 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47810,7 +48298,8 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47827,9 +48316,9 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47846,8 +48335,9 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47969,7 +48459,8 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47986,9 +48477,9 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/limitranges/"
+	pathParts[2] = "/limitranges/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48005,8 +48496,9 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -48128,7 +48620,8 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48145,9 +48638,9 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/persistentvolumeclaims/"
+	pathParts[2] = "/persistentvolumeclaims/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48164,8 +48657,9 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -48287,7 +48781,8 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48304,9 +48799,9 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/persistentvolumeclaims/"
+	pathParts[2] = "/persistentvolumeclaims/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48323,9 +48818,10 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -48447,7 +48943,8 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48464,9 +48961,9 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48483,8 +48980,9 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -48606,7 +49104,8 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48623,9 +49122,9 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48642,9 +49141,10 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/ephemeralcontainers"
+	pathParts[4] = "/ephemeralcontainers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -48766,7 +49266,8 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48783,9 +49284,9 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48802,9 +49303,10 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/log"
+	pathParts[4] = "/log"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49062,7 +49564,8 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49079,9 +49582,9 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49098,9 +49601,10 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49222,7 +49726,8 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49239,9 +49744,9 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/podtemplates/"
+	pathParts[2] = "/podtemplates/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49258,8 +49763,9 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49381,7 +49887,8 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49398,9 +49905,9 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers/"
+	pathParts[2] = "/replicationcontrollers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49417,8 +49924,9 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49540,7 +50048,8 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49557,9 +50066,9 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers/"
+	pathParts[2] = "/replicationcontrollers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49576,9 +50085,10 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/scale"
+	pathParts[4] = "/scale"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49700,7 +50210,8 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49717,9 +50228,9 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers/"
+	pathParts[2] = "/replicationcontrollers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49736,9 +50247,10 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49860,7 +50372,8 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49877,9 +50390,9 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/resourcequotas/"
+	pathParts[2] = "/resourcequotas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49896,8 +50409,9 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50019,7 +50533,8 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50036,9 +50551,9 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/resourcequotas/"
+	pathParts[2] = "/resourcequotas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50055,9 +50570,10 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50179,7 +50695,8 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50196,9 +50713,9 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/secrets/"
+	pathParts[2] = "/secrets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50215,8 +50732,9 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50338,7 +50856,8 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50355,9 +50874,9 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50374,8 +50893,9 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50497,7 +51017,8 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50514,9 +51035,9 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/serviceaccounts/"
+	pathParts[2] = "/serviceaccounts/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50533,8 +51054,9 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50656,7 +51178,8 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50673,9 +51196,9 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50692,9 +51215,10 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50816,7 +51340,8 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50833,8 +51358,9 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50956,7 +51482,8 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/nodes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50973,9 +51500,10 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51097,7 +51625,8 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/persistentvolumes/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/persistentvolumes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51114,8 +51643,9 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51237,7 +51767,8 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/persistentvolumes/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/persistentvolumes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51254,9 +51785,10 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51378,7 +51910,8 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51395,9 +51928,9 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices/"
+	pathParts[2] = "/endpointslices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51414,8 +51947,9 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51537,7 +52071,8 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51554,9 +52089,9 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices/"
+	pathParts[2] = "/endpointslices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51573,8 +52108,9 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51696,7 +52232,8 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/events.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51713,9 +52250,9 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51732,8 +52269,9 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -51855,7 +52393,8 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51872,9 +52411,9 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51891,8 +52430,9 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52014,7 +52554,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52031,8 +52572,9 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52154,7 +52696,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52171,9 +52714,10 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52295,7 +52839,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52312,8 +52857,9 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52435,7 +52981,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52452,9 +52999,10 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52576,7 +53124,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52593,8 +53142,9 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52716,7 +53266,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52733,9 +53284,10 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52857,7 +53409,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52874,8 +53427,9 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52997,7 +53551,8 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53014,9 +53569,10 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53138,7 +53694,8 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53155,8 +53712,9 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53278,7 +53836,8 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53295,9 +53854,10 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53419,7 +53979,8 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/ingressclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/ingressclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53436,8 +53997,9 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53559,7 +54121,8 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53576,9 +54139,9 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/ingresses/"
+	pathParts[2] = "/ingresses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53595,8 +54158,9 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53718,7 +54282,8 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53735,9 +54300,9 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/ingresses/"
+	pathParts[2] = "/ingresses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53754,9 +54319,10 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53878,7 +54444,8 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53895,9 +54462,9 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/networkpolicies/"
+	pathParts[2] = "/networkpolicies/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53914,8 +54481,9 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54037,7 +54605,8 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54054,8 +54623,9 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54177,7 +54747,8 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1alpha1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54194,8 +54765,9 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54317,7 +54889,8 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1beta1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54334,8 +54907,9 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54457,7 +55031,8 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54474,9 +55049,9 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54493,8 +55068,9 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54616,7 +55192,8 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54633,9 +55210,9 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54652,9 +55229,10 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54776,7 +55354,8 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54793,9 +55372,9 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54812,8 +55391,9 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -54935,7 +55515,8 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/namespaces/"
+	var pathParts [5]string
+	pathParts[0] = "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54952,9 +55533,9 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54971,9 +55552,10 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/status"
+	pathParts[4] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55095,7 +55677,8 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/podsecuritypolicies/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/policy/v1beta1/podsecuritypolicies/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55112,8 +55695,9 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55235,7 +55819,8 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/clusterroles/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55252,8 +55837,9 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55375,7 +55961,8 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55392,8 +55979,9 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55515,7 +56103,8 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55532,9 +56121,9 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/roles/"
+	pathParts[2] = "/roles/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55551,8 +56140,9 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55674,7 +56264,8 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55691,9 +56282,9 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/rolebindings/"
+	pathParts[2] = "/rolebindings/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55710,8 +56301,9 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55833,7 +56425,8 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/scheduling.k8s.io/v1/priorityclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55850,8 +56443,9 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -55973,7 +56567,8 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/csidrivers/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/csidrivers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55990,8 +56585,9 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56113,7 +56709,8 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/csinodes/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/csinodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56130,8 +56727,9 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56253,7 +56851,8 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/storageclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/storageclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56270,8 +56869,9 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56393,7 +56993,8 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56410,8 +57011,9 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56533,7 +57135,8 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56550,9 +57153,10 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/status"
+	pathParts[2] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56674,7 +57278,8 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56691,9 +57296,9 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities/"
+	pathParts[2] = "/csistoragecapacities/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56710,8 +57315,9 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56833,7 +57439,8 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56850,9 +57457,9 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities/"
+	pathParts[2] = "/csistoragecapacities/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56869,8 +57476,9 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -56994,7 +57602,8 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57011,8 +57620,9 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57288,7 +57898,9 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57565,7 +58177,8 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57582,8 +58195,9 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57859,7 +58473,9 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58135,7 +58751,8 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58152,8 +58769,9 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58429,7 +59047,9 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58705,7 +59325,8 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/watch/apiservices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58722,8 +59343,9 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58999,7 +59621,9 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apiregistration.k8s.io/v1/watch/apiservices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -59275,7 +59899,9 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/controllerrevisions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/watch/controllerrevisions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -59551,7 +60177,9 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/daemonsets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/watch/daemonsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -59827,7 +60455,9 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/deployments"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/watch/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -60103,7 +60733,8 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60120,9 +60751,9 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/controllerrevisions/"
+	pathParts[2] = "/controllerrevisions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60139,8 +60770,9 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -60416,7 +61048,8 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60433,9 +61066,10 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/controllerrevisions"
+	pathParts[2] = "/controllerrevisions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -60711,7 +61345,8 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60728,9 +61363,9 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/daemonsets/"
+	pathParts[2] = "/daemonsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60747,8 +61382,9 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -61024,7 +61660,8 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61041,9 +61678,10 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/daemonsets"
+	pathParts[2] = "/daemonsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -61319,7 +61957,8 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61336,9 +61975,9 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[2] = "/deployments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61355,8 +61994,9 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -61632,7 +62272,8 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61649,9 +62290,10 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/deployments"
+	pathParts[2] = "/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -61927,7 +62569,8 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61944,9 +62587,9 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets/"
+	pathParts[2] = "/replicasets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61963,8 +62606,9 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -62240,7 +62884,8 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62257,9 +62902,10 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicasets"
+	pathParts[2] = "/replicasets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -62535,7 +63181,8 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62552,9 +63199,9 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets/"
+	pathParts[2] = "/statefulsets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62571,8 +63218,9 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -62848,7 +63496,8 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62865,9 +63514,10 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/statefulsets"
+	pathParts[2] = "/statefulsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -63143,7 +63793,9 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/replicasets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/watch/replicasets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -63419,7 +64071,9 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/apps/v1/watch/statefulsets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/apps/v1/watch/statefulsets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -63695,7 +64349,9 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -63971,7 +64627,8 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63988,9 +64645,9 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64007,8 +64664,9 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -64284,7 +64942,8 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64301,9 +64960,10 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -64579,7 +65239,9 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -64855,7 +65517,8 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64872,9 +65535,9 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64891,8 +65554,9 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -65168,7 +65832,8 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65185,9 +65850,10 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -65463,7 +66129,9 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -65739,7 +66407,8 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65756,9 +66425,9 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers/"
+	pathParts[2] = "/horizontalpodautoscalers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65775,8 +66444,9 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66052,7 +66722,8 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66069,9 +66740,10 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/horizontalpodautoscalers"
+	pathParts[2] = "/horizontalpodautoscalers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66347,7 +67019,9 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/cronjobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1/watch/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66623,7 +67297,9 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/jobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1/watch/jobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66899,7 +67575,8 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66916,9 +67593,9 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66935,8 +67612,9 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -67212,7 +67890,8 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67229,9 +67908,10 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs"
+	pathParts[2] = "/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -67507,7 +68187,8 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67524,9 +68205,9 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/jobs/"
+	pathParts[2] = "/jobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67543,8 +68224,9 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -67820,7 +68502,8 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67837,9 +68520,10 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/jobs"
+	pathParts[2] = "/jobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -68115,7 +68799,9 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
+	var pathParts [1]string
+	pathParts[0] = "/apis/batch/v1beta1/watch/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -68391,7 +69077,8 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/batch/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68408,9 +69095,9 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs/"
+	pathParts[2] = "/cronjobs/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68427,8 +69114,9 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -68704,7 +69392,8 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/batch/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68721,9 +69410,10 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cronjobs"
+	pathParts[2] = "/cronjobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -69000,7 +69690,8 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69017,8 +69708,9 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -69294,7 +69986,9 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
+	var pathParts [1]string
+	pathParts[0] = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -69570,7 +70264,9 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
+	var pathParts [1]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/watch/leases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -69846,7 +70542,8 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69863,9 +70560,9 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/leases/"
+	pathParts[2] = "/leases/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69882,8 +70579,9 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70159,7 +70857,8 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70176,9 +70875,10 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/leases"
+	pathParts[2] = "/leases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70454,7 +71154,9 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/configmaps"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/configmaps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70730,7 +71432,9 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/endpoints"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/endpoints"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71006,7 +71710,9 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/events"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71282,7 +71988,9 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/limitranges"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/limitranges"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71558,7 +72266,8 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71575,8 +72284,9 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71852,7 +72562,9 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/namespaces"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72128,7 +72840,8 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72145,9 +72858,9 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/configmaps/"
+	pathParts[2] = "/configmaps/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72164,8 +72877,9 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72441,7 +73155,8 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72458,9 +73173,10 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/configmaps"
+	pathParts[2] = "/configmaps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72736,7 +73452,8 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72753,9 +73470,9 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpoints/"
+	pathParts[2] = "/endpoints/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72772,8 +73489,9 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73049,7 +73767,8 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73066,9 +73785,10 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpoints"
+	pathParts[2] = "/endpoints"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73344,7 +74064,8 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73361,9 +74082,9 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73380,8 +74101,9 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73657,7 +74379,8 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73674,9 +74397,10 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73952,7 +74676,8 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73969,9 +74694,9 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/limitranges/"
+	pathParts[2] = "/limitranges/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73988,8 +74713,9 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74265,7 +74991,8 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74282,9 +75009,10 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/limitranges"
+	pathParts[2] = "/limitranges"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74560,7 +75288,8 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74577,9 +75306,9 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/persistentvolumeclaims/"
+	pathParts[2] = "/persistentvolumeclaims/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74596,8 +75325,9 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74873,7 +75603,8 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74890,9 +75621,10 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/persistentvolumeclaims"
+	pathParts[2] = "/persistentvolumeclaims"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -75168,7 +75900,8 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75185,9 +75918,9 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods/"
+	pathParts[2] = "/pods/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75204,8 +75937,9 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -75481,7 +76215,8 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75498,9 +76233,10 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/pods"
+	pathParts[2] = "/pods"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -75776,7 +76512,8 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75793,9 +76530,9 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/podtemplates/"
+	pathParts[2] = "/podtemplates/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75812,8 +76549,9 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -76089,7 +76827,8 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76106,9 +76845,10 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/podtemplates"
+	pathParts[2] = "/podtemplates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -76384,7 +77124,8 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76401,9 +77142,9 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers/"
+	pathParts[2] = "/replicationcontrollers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76420,8 +77161,9 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -76697,7 +77439,8 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76714,9 +77457,10 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/replicationcontrollers"
+	pathParts[2] = "/replicationcontrollers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -76992,7 +77736,8 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77009,9 +77754,9 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/resourcequotas/"
+	pathParts[2] = "/resourcequotas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77028,8 +77773,9 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -77305,7 +78051,8 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77322,9 +78069,10 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/resourcequotas"
+	pathParts[2] = "/resourcequotas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -77600,7 +78348,8 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77617,9 +78366,9 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/secrets/"
+	pathParts[2] = "/secrets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77636,8 +78385,9 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -77913,7 +78663,8 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77930,9 +78681,10 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/secrets"
+	pathParts[2] = "/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -78208,7 +78960,8 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78225,9 +78978,9 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services/"
+	pathParts[2] = "/services/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78244,8 +78997,9 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -78521,7 +79275,8 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78538,9 +79293,9 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/serviceaccounts/"
+	pathParts[2] = "/serviceaccounts/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78557,8 +79312,9 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -78834,7 +79590,8 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78851,9 +79608,10 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/serviceaccounts"
+	pathParts[2] = "/serviceaccounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79129,7 +79887,8 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -79146,9 +79905,10 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/services"
+	pathParts[2] = "/services"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79424,7 +80184,8 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/nodes/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/watch/nodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -79441,8 +80202,9 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79718,7 +80480,9 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/nodes"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/nodes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79994,7 +80758,8 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/persistentvolumes/"
+	var pathParts [2]string
+	pathParts[0] = "/api/v1/watch/persistentvolumes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80011,8 +80776,9 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80288,7 +81054,9 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/persistentvolumeclaims"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/persistentvolumeclaims"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80564,7 +81332,9 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/persistentvolumes"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/persistentvolumes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80840,7 +81610,9 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/pods"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/pods"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -81116,7 +81888,9 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/podtemplates"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/podtemplates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -81392,7 +82166,9 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/replicationcontrollers"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/replicationcontrollers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -81668,7 +82444,9 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/resourcequotas"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/resourcequotas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -81944,7 +82722,9 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/secrets"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -82220,7 +83000,9 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/serviceaccounts"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/serviceaccounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -82496,7 +83278,9 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/v1/watch/services"
+	var pathParts [1]string
+	pathParts[0] = "/api/v1/watch/services"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -82772,7 +83556,9 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/watch/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -83048,7 +83834,8 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83065,9 +83852,9 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices/"
+	pathParts[2] = "/endpointslices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83084,8 +83871,9 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -83361,7 +84149,8 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83378,9 +84167,10 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices"
+	pathParts[2] = "/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -83656,7 +84446,9 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
+	var pathParts [1]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -83932,7 +84724,8 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83949,9 +84742,9 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices/"
+	pathParts[2] = "/endpointslices/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83968,8 +84761,9 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -84245,7 +85039,8 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84262,9 +85057,10 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/endpointslices"
+	pathParts[2] = "/endpointslices"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -84540,7 +85336,9 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/watch/events"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1/watch/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -84816,7 +85614,8 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84833,9 +85632,9 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84852,8 +85651,9 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85129,7 +85929,8 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85146,9 +85947,10 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85424,7 +86226,9 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
+	var pathParts [1]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/watch/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85700,7 +86504,8 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85717,9 +86522,9 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/"
+	pathParts[2] = "/events/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85736,8 +86541,9 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86013,7 +86819,8 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86030,9 +86837,10 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86308,7 +87116,8 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86325,8 +87134,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86602,7 +87412,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86879,7 +87691,8 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86896,8 +87709,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87173,7 +87987,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87449,7 +88265,8 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87466,8 +88283,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87743,7 +88561,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -88020,7 +88840,8 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88037,8 +88858,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -88314,7 +89136,9 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
+	var pathParts [1]string
+	pathParts[0] = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -88590,7 +89414,8 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88607,8 +89432,9 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -88884,7 +89710,9 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
+	var pathParts [1]string
+	pathParts[0] = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -89160,7 +89988,8 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/ingressclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89177,8 +90006,9 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -89454,7 +90284,9 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/ingressclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -89730,7 +90562,9 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/ingresses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -90006,7 +90840,8 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90023,9 +90858,9 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/ingresses/"
+	pathParts[2] = "/ingresses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90042,8 +90877,9 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -90319,7 +91155,8 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90336,9 +91173,10 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/ingresses"
+	pathParts[2] = "/ingresses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -90614,7 +91452,8 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90631,9 +91470,9 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/networkpolicies/"
+	pathParts[2] = "/networkpolicies/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90650,8 +91489,9 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -90927,7 +91767,8 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90944,9 +91785,10 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/networkpolicies"
+	pathParts[2] = "/networkpolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91222,7 +92064,9 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
+	var pathParts [1]string
+	pathParts[0] = "/apis/networking.k8s.io/v1/watch/networkpolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91498,7 +92342,8 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -91515,8 +92360,9 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91792,7 +92638,9 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1/watch/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92068,7 +92916,8 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -92085,8 +92934,9 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92362,7 +93212,9 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92638,7 +93490,8 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -92655,8 +93508,9 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92932,7 +93786,9 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -93208,7 +94064,8 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/policy/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -93225,9 +94082,9 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -93244,8 +94101,9 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -93521,7 +94379,8 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/policy/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -93538,9 +94397,10 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets"
+	pathParts[2] = "/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -93816,7 +94676,9 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1/watch/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -94092,7 +94954,8 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/policy/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -94109,9 +94972,9 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets/"
+	pathParts[2] = "/poddisruptionbudgets/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -94128,8 +94991,9 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -94405,7 +95269,8 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/policy/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -94422,9 +95287,10 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/poddisruptionbudgets"
+	pathParts[2] = "/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -94700,7 +95566,9 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1beta1/watch/poddisruptionbudgets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -94976,7 +95844,8 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/policy/v1beta1/watch/podsecuritypolicies/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -94993,8 +95862,9 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -95270,7 +96140,9 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
+	var pathParts [1]string
+	pathParts[0] = "/apis/policy/v1beta1/watch/podsecuritypolicies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -95546,7 +96418,8 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -95563,8 +96436,9 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -95840,7 +96714,8 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -95857,8 +96732,9 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -96134,7 +97010,9 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -96410,7 +97288,9 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -96686,7 +97566,8 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -96703,9 +97584,9 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/roles/"
+	pathParts[2] = "/roles/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -96722,8 +97603,9 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -96999,7 +97881,8 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -97016,9 +97899,9 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/rolebindings/"
+	pathParts[2] = "/rolebindings/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -97035,8 +97918,9 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -97312,7 +98196,8 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -97329,9 +98214,10 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/rolebindings"
+	pathParts[2] = "/rolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -97607,7 +98493,8 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -97624,9 +98511,10 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/roles"
+	pathParts[2] = "/roles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -97902,7 +98790,9 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -98178,7 +99068,9 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
+	var pathParts [1]string
+	pathParts[0] = "/apis/rbac.authorization.k8s.io/v1/watch/roles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -98454,7 +99346,8 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/scheduling.k8s.io/v1/watch/priorityclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -98471,8 +99364,9 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -98748,7 +99642,9 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -99024,7 +99920,8 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/csidrivers/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -99041,8 +99938,9 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -99318,7 +100216,9 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/csidrivers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -99594,7 +100494,8 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/csinodes/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -99611,8 +100512,9 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -99888,7 +100790,9 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/csinodes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -100164,7 +101068,8 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/storageclasses/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -100181,8 +101086,9 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -100458,7 +101364,9 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/storageclasses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -100734,7 +101642,8 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments/"
+	var pathParts [2]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/volumeattachments/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -100751,8 +101660,9 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -101028,7 +101938,9 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1/watch/volumeattachments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -101304,7 +102216,9 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -101580,7 +102494,8 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -101597,9 +102512,9 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities/"
+	pathParts[2] = "/csistoragecapacities/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -101616,8 +102531,9 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -101893,7 +102809,8 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -101910,9 +102827,10 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities"
+	pathParts[2] = "/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -102188,7 +103106,9 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
+	var pathParts [1]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -102464,7 +103384,8 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [4]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -102481,9 +103402,9 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities/"
+	pathParts[2] = "/csistoragecapacities/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -102500,8 +103421,9 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -102777,7 +103699,8 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
+	var pathParts [3]string
+	pathParts[0] = "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -102794,9 +103717,10 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/csistoragecapacities"
+	pathParts[2] = "/csistoragecapacities"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()

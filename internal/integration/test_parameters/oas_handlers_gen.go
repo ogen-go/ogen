@@ -20,7 +20,7 @@ import (
 // handleComplicatedParameterNameGetRequest handles GET /complicatedParameterName operation.
 //
 // GET /complicatedParameterName
-func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -51,7 +51,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 			ID:   "",
 		}
 	)
-	params, err := decodeComplicatedParameterNameGetParams(args, r)
+	params, err := decodeComplicatedParameterNameGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -131,7 +131,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 // handleContentParametersRequest handles contentParameters operation.
 //
 // GET /contentParameters/{path}
-func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -167,7 +167,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseW
 			ID:   "contentParameters",
 		}
 	)
-	params, err := decodeContentParametersParams(args, r)
+	params, err := decodeContentParametersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -245,7 +245,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseW
 // Test for cookie param.
 //
 // GET /cookieParameter
-func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -281,7 +281,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 			ID:   "cookieParameter",
 		}
 	)
-	params, err := decodeCookieParameterParams(args, r)
+	params, err := decodeCookieParameterParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -292,7 +292,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	var response *Hash
+	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -311,7 +311,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = CookieParameterParams
-			Response = *Hash
+			Response = *Value
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -347,7 +347,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 // Test for header param.
 //
 // GET /headerParameter
-func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -383,7 +383,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 			ID:   "headerParameter",
 		}
 	)
-	params, err := decodeHeaderParameterParams(args, r)
+	params, err := decodeHeaderParameterParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -394,7 +394,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	var response *Hash
+	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -403,9 +403,9 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
-					Name: "X-Auth-Token",
+					Name: "X-Value",
 					In:   "header",
-				}: params.XAuthToken,
+				}: params.XValue,
 			},
 			Raw: r,
 		}
@@ -413,7 +413,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = HeaderParameterParams
-			Response = *Hash
+			Response = *Value
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -447,7 +447,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 // handleObjectCookieParameterRequest handles objectCookieParameter operation.
 //
 // GET /objectCookieParameter
-func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -483,7 +483,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.Respo
 			ID:   "objectCookieParameter",
 		}
 	)
-	params, err := decodeObjectCookieParameterParams(args, r)
+	params, err := decodeObjectCookieParameterParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -547,7 +547,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.Respo
 // handleObjectQueryParameterRequest handles objectQueryParameter operation.
 //
 // GET /objectQueryParameter
-func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -583,7 +583,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 			ID:   "objectQueryParameter",
 		}
 	)
-	params, err := decodeObjectQueryParameterParams(args, r)
+	params, err := decodeObjectQueryParameterParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -648,12 +648,114 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 	}
 }
 
+// handlePathParameterRequest handles pathParameter operation.
+//
+// Test for path param.
+//
+// GET /pathParameter/{value}
+func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pathParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PathParameter",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PathParameter",
+			ID:   "pathParameter",
+		}
+	)
+	params, err := decodePathParameterParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response *Value
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PathParameter",
+			OperationID:   "pathParameter",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "value",
+					In:   "path",
+				}: params.Value,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PathParameterParams
+			Response = *Value
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPathParameterParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PathParameter(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.PathParameter(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodePathParameterResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
 // handleSameNameRequest handles sameName operation.
 //
 // Parameter with different location, but the same name.
 //
 // GET /same_name/{path}
-func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -689,7 +791,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 			ID:   "sameName",
 		}
 	)
-	params, err := decodeSameNameParams(args, r)
+	params, err := decodeSameNameParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

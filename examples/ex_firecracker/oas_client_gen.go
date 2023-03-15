@@ -120,7 +120,9 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/snapshot/create"
+	var pathParts [1]string
+	pathParts[0] = "/snapshot/create"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -200,7 +202,9 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/actions"
+	var pathParts [1]string
+	pathParts[0] = "/actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -271,7 +275,9 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/balloon"
+	var pathParts [1]string
+	pathParts[0] = "/balloon"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -339,7 +345,9 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/balloon/statistics"
+	var pathParts [1]string
+	pathParts[0] = "/balloon/statistics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -407,7 +415,9 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res DescribeInstance
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/"
+	var pathParts [1]string
+	pathParts[0] = "/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -475,7 +485,9 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res GetExportVmConf
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/vm/config"
+	var pathParts [1]string
+	pathParts[0] = "/vm/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -545,7 +557,9 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res GetMachin
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/machine-config"
+	var pathParts [1]string
+	pathParts[0] = "/machine-config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -614,7 +628,9 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/snapshot/load"
+	var pathParts [1]string
+	pathParts[0] = "/snapshot/load"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -682,7 +698,9 @@ func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/mmds/config"
+	var pathParts [1]string
+	pathParts[0] = "/mmds/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -750,7 +768,9 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/mmds"
+	var pathParts [1]string
+	pathParts[0] = "/mmds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -815,7 +835,9 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/mmds"
+	var pathParts [1]string
+	pathParts[0] = "/mmds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -883,7 +905,9 @@ func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res Mmds
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/mmds"
+	var pathParts [1]string
+	pathParts[0] = "/mmds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -955,7 +979,9 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/balloon"
+	var pathParts [1]string
+	pathParts[0] = "/balloon"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1027,7 +1053,9 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/balloon/statistics"
+	var pathParts [1]string
+	pathParts[0] = "/balloon/statistics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1108,7 +1136,8 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/drives/"
+	var pathParts [2]string
+	pathParts[0] = "/drives/"
 	{
 		// Encode "drive_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1125,8 +1154,9 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1206,7 +1236,8 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/network-interfaces/"
+	var pathParts [2]string
+	pathParts[0] = "/network-interfaces/"
 	{
 		// Encode "iface_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1223,8 +1254,9 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1312,7 +1344,9 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/machine-config"
+	var pathParts [1]string
+	pathParts[0] = "/machine-config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1392,7 +1426,9 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/vm"
+	var pathParts [1]string
+	pathParts[0] = "/vm"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -1464,7 +1500,9 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/balloon"
+	var pathParts [1]string
+	pathParts[0] = "/balloon"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1536,7 +1574,9 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/boot-source"
+	var pathParts [1]string
+	pathParts[0] = "/boot-source"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1617,7 +1657,8 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/drives/"
+	var pathParts [2]string
+	pathParts[0] = "/drives/"
 	{
 		// Encode "drive_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1634,8 +1675,9 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1715,7 +1757,8 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/network-interfaces/"
+	var pathParts [2]string
+	pathParts[0] = "/network-interfaces/"
 	{
 		// Encode "iface_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1732,8 +1775,9 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1814,7 +1858,9 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/vsock"
+	var pathParts [1]string
+	pathParts[0] = "/vsock"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1894,7 +1940,9 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/logger"
+	var pathParts [1]string
+	pathParts[0] = "/logger"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1984,7 +2032,9 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/machine-config"
+	var pathParts [1]string
+	pathParts[0] = "/machine-config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -2055,7 +2105,9 @@ func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/metrics"
+	var pathParts [1]string
+	pathParts[0] = "/metrics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)

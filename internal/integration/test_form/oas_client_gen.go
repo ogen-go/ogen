@@ -108,7 +108,9 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/testFormURLEncoded"
+	var pathParts [1]string
+	pathParts[0] = "/testFormURLEncoded"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -177,7 +179,9 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestForm) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/testMultipart"
+	var pathParts [1]string
+	pathParts[0] = "/testMultipart"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -255,7 +259,9 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/testMultipartUpload"
+	var pathParts [1]string
+	pathParts[0] = "/testMultipartUpload"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -333,7 +339,9 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/testShareFormSchema"
+	var pathParts [1]string
+	pathParts[0] = "/testShareFormSchema"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -52,7 +54,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Leaf node.
 				switch r.Method {
 				case "POST":
-					s.handlePublishEventRequest([0]string{}, w, r)
+					s.handlePublishEventRequest([0]string{}, elemIsEscaped, w, r)
 				default:
 					s.notAllowed(w, r, "POST")
 				}
@@ -162,7 +164,7 @@ func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *htt
 	case "status":
 		switch r.Method {
 		case "GET":
-			s.handleStatusWebhookRequest([0]string{}, w, r)
+			s.handleStatusWebhookRequest([0]string{}, false, w, r)
 		default:
 			return false
 		}
@@ -170,9 +172,9 @@ func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *htt
 	case "update":
 		switch r.Method {
 		case "DELETE":
-			s.handleUpdateDeleteRequest([0]string{}, w, r)
+			s.handleUpdateDeleteRequest([0]string{}, false, w, r)
 		case "POST":
-			s.handleUpdateWebhookRequest([0]string{}, w, r)
+			s.handleUpdateWebhookRequest([0]string{}, false, w, r)
 		default:
 			return false
 		}

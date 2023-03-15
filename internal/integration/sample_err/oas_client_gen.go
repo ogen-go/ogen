@@ -114,7 +114,9 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/data"
+	var pathParts [1]string
+	pathParts[0] = "/data"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -185,7 +187,9 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/data"
+	var pathParts [1]string
+	pathParts[0] = "/data"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

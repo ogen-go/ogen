@@ -109,7 +109,9 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/anyContentTypeBinaryStringSchema"
+	var pathParts [1]string
+	pathParts[0] = "/anyContentTypeBinaryStringSchema"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -175,7 +177,9 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/anyContentTypeBinaryStringSchemaDefault"
+	var pathParts [1]string
+	pathParts[0] = "/anyContentTypeBinaryStringSchemaDefault"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -241,7 +245,9 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/combined"
+	var pathParts [1]string
+	pathParts[0] = "/combined"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -325,7 +331,9 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/headers200"
+	var pathParts [1]string
+	pathParts[0] = "/headers200"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -391,7 +399,9 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/headersCombined"
+	var pathParts [1]string
+	pathParts[0] = "/headersCombined"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -475,7 +485,9 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/headersDefault"
+	var pathParts [1]string
+	pathParts[0] = "/headersDefault"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -541,7 +553,9 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/headersJSON"
+	var pathParts [1]string
+	pathParts[0] = "/headersJSON"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -607,7 +621,9 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/headersPattern"
+	var pathParts [1]string
+	pathParts[0] = "/headersPattern"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -676,7 +692,9 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/intersectPatternCode"
+	var pathParts [1]string
+	pathParts[0] = "/intersectPatternCode"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -760,7 +778,9 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/multipleGenericResponses"
+	var pathParts [1]string
+	pathParts[0] = "/multipleGenericResponses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -826,7 +846,9 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/octetStreamBinaryStringSchema"
+	var pathParts [1]string
+	pathParts[0] = "/octetStreamBinaryStringSchema"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -892,7 +914,9 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/octetStreamEmptySchema"
+	var pathParts [1]string
+	pathParts[0] = "/octetStreamEmptySchema"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -958,7 +982,9 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/streamJSON"
+	var pathParts [1]string
+	pathParts[0] = "/streamJSON"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1042,7 +1068,9 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/textPlainBinaryStringSchema"
+	var pathParts [1]string
+	pathParts[0] = "/textPlainBinaryStringSchema"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

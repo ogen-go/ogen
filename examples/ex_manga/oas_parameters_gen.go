@@ -32,12 +32,16 @@ func unpackGetBookParams(packed middleware.Parameters) (params GetBookParams) {
 	return params
 }
 
-func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams, _ error) {
+func decodeGetBookParams(args [1]string, argsEscaped bool, r *http.Request) (params GetBookParams, _ error) {
 	// Decode path: book_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -120,12 +124,16 @@ func unpackGetPageCoverImageParams(packed middleware.Parameters) (params GetPage
 	return params
 }
 
-func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetPageCoverImageParams, _ error) {
+func decodeGetPageCoverImageParams(args [2]string, argsEscaped bool, r *http.Request) (params GetPageCoverImageParams, _ error) {
 	// Decode path: media_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -186,9 +194,13 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 	}
 	// Decode path: format.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -263,12 +275,16 @@ func unpackGetPageImageParams(packed middleware.Parameters) (params GetPageImage
 	return params
 }
 
-func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageImageParams, _ error) {
+func decodeGetPageImageParams(args [3]string, argsEscaped bool, r *http.Request) (params GetPageImageParams, _ error) {
 	// Decode path: media_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -324,9 +340,13 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 	}
 	// Decode path: page.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -387,9 +407,13 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 	}
 	// Decode path: format.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -464,12 +488,16 @@ func unpackGetPageThumbnailImageParams(packed middleware.Parameters) (params Get
 	return params
 }
 
-func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params GetPageThumbnailImageParams, _ error) {
+func decodeGetPageThumbnailImageParams(args [3]string, argsEscaped bool, r *http.Request) (params GetPageThumbnailImageParams, _ error) {
 	// Decode path: media_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -525,9 +553,13 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: page.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -588,9 +620,13 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: format.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -666,7 +702,7 @@ func unpackSearchParams(packed middleware.Parameters) (params SearchParams) {
 	return params
 }
 
-func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _ error) {
+func decodeSearchParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: query.
 	if err := func() error {
@@ -776,7 +812,7 @@ func unpackSearchByTagIDParams(packed middleware.Parameters) (params SearchByTag
 	return params
 }
 
-func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchByTagIDParams, _ error) {
+func decodeSearchByTagIDParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchByTagIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: tag_id.
 	if err := func() error {

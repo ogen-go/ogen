@@ -61,32 +61,6 @@ func (s *ContentParameters) Validate() error {
 	}
 	return nil
 }
-func (s *Hash) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    64,
-			MinLengthSet: true,
-			MaxLength:    64,
-			MaxLengthSet: true,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Hex)); err != nil {
-			return errors.Wrap(err, "string")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "hex",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *User) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

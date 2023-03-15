@@ -22,7 +22,7 @@ import (
 // Connect DELETE requests to proxy of Pod.
 //
 // DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -102,7 +102,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -176,7 +176,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 // Connect DELETE requests to proxy of Pod.
 //
 // DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -256,7 +256,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -334,7 +334,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 // Connect DELETE requests to proxy of Service.
 //
 // DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -414,7 +414,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -488,7 +488,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 // Connect DELETE requests to proxy of Service.
 //
 // DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -568,7 +568,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -646,7 +646,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 // Connect DELETE requests to proxy of Node.
 //
 // DELETE /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -726,7 +726,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -796,7 +796,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w htt
 // Connect DELETE requests to proxy of Node.
 //
 // DELETE /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -876,7 +876,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1DeleteNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1DeleteNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -950,7 +950,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 // Connect GET requests to attach of Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/attach
-func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1030,7 +1030,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedPodAttachParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedPodAttachParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1120,7 +1120,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 // Connect GET requests to exec of Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/exec
-func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1200,7 +1200,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedPodExecParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedPodExecParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1294,7 +1294,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 // Connect GET requests to portforward of Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
-func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1374,7 +1374,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedPodPortforwardParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedPodPortforwardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1448,7 +1448,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 // Connect GET requests to proxy of Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1528,7 +1528,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1602,7 +1602,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 // Connect GET requests to proxy of Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1682,7 +1682,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1760,7 +1760,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 // Connect GET requests to proxy of Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1840,7 +1840,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1914,7 +1914,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 // Connect GET requests to proxy of Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1994,7 +1994,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1GetNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2072,7 +2072,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 // Connect GET requests to proxy of Node.
 //
 // GET /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -2152,7 +2152,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1GetNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2222,7 +2222,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.R
 // Connect GET requests to proxy of Node.
 //
 // GET /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -2302,7 +2302,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1GetNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1GetNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2376,7 +2376,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 // Connect HEAD requests to proxy of Pod.
 //
 // HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -2456,7 +2456,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1HeadNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2530,7 +2530,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 // Connect HEAD requests to proxy of Pod.
 //
 // HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -2610,7 +2610,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1HeadNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2688,7 +2688,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 // Connect HEAD requests to proxy of Service.
 //
 // HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -2768,7 +2768,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2842,7 +2842,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 // Connect HEAD requests to proxy of Service.
 //
 // HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -2922,7 +2922,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3000,7 +3000,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 // Connect HEAD requests to proxy of Node.
 //
 // HEAD /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -3080,7 +3080,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1HeadNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3150,7 +3150,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.
 // Connect HEAD requests to proxy of Node.
 //
 // HEAD /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
@@ -3230,7 +3230,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1HeadNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1HeadNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3304,7 +3304,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 // Connect OPTIONS requests to proxy of Pod.
 //
 // OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -3384,7 +3384,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3458,7 +3458,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 // Connect OPTIONS requests to proxy of Pod.
 //
 // OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -3538,7 +3538,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3616,7 +3616,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 // Connect OPTIONS requests to proxy of Service.
 //
 // OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -3696,7 +3696,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3770,7 +3770,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 // Connect OPTIONS requests to proxy of Service.
 //
 // OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -3850,7 +3850,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3928,7 +3928,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 // Connect OPTIONS requests to proxy of Node.
 //
 // OPTIONS /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -4008,7 +4008,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4078,7 +4078,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w ht
 // Connect OPTIONS requests to proxy of Node.
 //
 // OPTIONS /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
@@ -4158,7 +4158,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1OptionsNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1OptionsNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4232,7 +4232,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 // Connect PATCH requests to proxy of Pod.
 //
 // PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -4312,7 +4312,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1PatchNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4386,7 +4386,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 // Connect PATCH requests to proxy of Pod.
 //
 // PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -4466,7 +4466,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PatchNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4544,7 +4544,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 // Connect PATCH requests to proxy of Service.
 //
 // PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -4624,7 +4624,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4698,7 +4698,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 // Connect PATCH requests to proxy of Service.
 //
 // PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -4778,7 +4778,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4856,7 +4856,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 // Connect PATCH requests to proxy of Node.
 //
 // PATCH /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -4936,7 +4936,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1PatchNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5006,7 +5006,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http
 // Connect PATCH requests to proxy of Node.
 //
 // PATCH /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -5086,7 +5086,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PatchNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PatchNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5160,7 +5160,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 // Connect POST requests to attach of Pod.
 //
 // POST /api/v1/namespaces/{namespace}/pods/{name}/attach
-func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5240,7 +5240,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedPodAttachParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedPodAttachParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5330,7 +5330,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 // Connect POST requests to exec of Pod.
 //
 // POST /api/v1/namespaces/{namespace}/pods/{name}/exec
-func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5410,7 +5410,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedPodExecParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedPodExecParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5504,7 +5504,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 // Connect POST requests to portforward of Pod.
 //
 // POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
-func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5584,7 +5584,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedPodPortforwardParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedPodPortforwardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5658,7 +5658,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 // Connect POST requests to proxy of Pod.
 //
 // POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5738,7 +5738,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5812,7 +5812,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 // Connect POST requests to proxy of Pod.
 //
 // POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5892,7 +5892,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5970,7 +5970,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 // Connect POST requests to proxy of Service.
 //
 // POST /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6050,7 +6050,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6124,7 +6124,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 // Connect POST requests to proxy of Service.
 //
 // POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6204,7 +6204,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PostNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6282,7 +6282,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 // Connect POST requests to proxy of Node.
 //
 // POST /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6362,7 +6362,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1PostNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6432,7 +6432,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.
 // Connect POST requests to proxy of Node.
 //
 // POST /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6512,7 +6512,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PostNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PostNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6586,7 +6586,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 // Connect PUT requests to proxy of Pod.
 //
 // PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
-func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -6666,7 +6666,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNamespacedPodProxyParams(args, r)
+	params, err := decodeConnectCoreV1PutNamespacedPodProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6740,7 +6740,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 // Connect PUT requests to proxy of Pod.
 //
 // PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -6820,7 +6820,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNamespacedPodProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PutNamespacedPodProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6898,7 +6898,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 // Connect PUT requests to proxy of Service.
 //
 // PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
-func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -6978,7 +6978,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNamespacedServiceProxyParams(args, r)
+	params, err := decodeConnectCoreV1PutNamespacedServiceProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7052,7 +7052,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 // Connect PUT requests to proxy of Service.
 //
 // PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -7132,7 +7132,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNamespacedServiceProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PutNamespacedServiceProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7210,7 +7210,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 // Connect PUT requests to proxy of Node.
 //
 // PUT /api/v1/nodes/{name}/proxy
-func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -7290,7 +7290,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNodeProxyParams(args, r)
+	params, err := decodeConnectCoreV1PutNodeProxyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7360,7 +7360,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.R
 // Connect PUT requests to proxy of Node.
 //
 // PUT /api/v1/nodes/{name}/proxy/{path}
-func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -7440,7 +7440,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeConnectCoreV1PutNodeProxyWithPathParams(args, r)
+	params, err := decodeConnectCoreV1PutNodeProxyWithPathParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7514,7 +7514,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 // Get available API versions.
 //
 // GET /apis/
-func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAPIVersions"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -7645,7 +7645,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 // Get information of a group.
 //
 // GET /apis/admissionregistration.k8s.io/
-func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -7776,7 +7776,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 // Get available resources.
 //
 // GET /apis/admissionregistration.k8s.io/v1/
-func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -7907,7 +7907,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 // Get information of a group.
 //
 // GET /apis/apiextensions.k8s.io/
-func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8038,7 +8038,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 // Get available resources.
 //
 // GET /apis/apiextensions.k8s.io/v1/
-func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8169,7 +8169,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 // Get information of a group.
 //
 // GET /apis/apiregistration.k8s.io/
-func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8300,7 +8300,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 // Get available resources.
 //
 // GET /apis/apiregistration.k8s.io/v1/
-func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8431,7 +8431,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 // Get information of a group.
 //
 // GET /apis/apps/
-func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8562,7 +8562,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 // Get available resources.
 //
 // GET /apis/apps/v1/
-func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8693,7 +8693,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 // Get information of a group.
 //
 // GET /apis/authentication.k8s.io/
-func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8824,7 +8824,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 // Get available resources.
 //
 // GET /apis/authentication.k8s.io/v1/
-func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -8955,7 +8955,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 // Get information of a group.
 //
 // GET /apis/authorization.k8s.io/
-func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9086,7 +9086,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 // Get available resources.
 //
 // GET /apis/authorization.k8s.io/v1/
-func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9217,7 +9217,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 // Get information of a group.
 //
 // GET /apis/autoscaling/
-func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9348,7 +9348,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 // Get available resources.
 //
 // GET /apis/autoscaling/v1/
-func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9479,7 +9479,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 // Get available resources.
 //
 // GET /apis/autoscaling/v2beta1/
-func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9610,7 +9610,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 // Get available resources.
 //
 // GET /apis/autoscaling/v2beta2/
-func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9741,7 +9741,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 // Get information of a group.
 //
 // GET /apis/batch/
-func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9872,7 +9872,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 // Get available resources.
 //
 // GET /apis/batch/v1/
-func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10003,7 +10003,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 // Get available resources.
 //
 // GET /apis/batch/v1beta1/
-func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10134,7 +10134,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 // Get information of a group.
 //
 // GET /apis/certificates.k8s.io/
-func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10265,7 +10265,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 // Get available resources.
 //
 // GET /apis/certificates.k8s.io/v1/
-func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10396,7 +10396,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 // Get the code version.
 //
 // GET /version/
-func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCodeVersion"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10527,7 +10527,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 // Get information of a group.
 //
 // GET /apis/coordination.k8s.io/
-func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10658,7 +10658,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 // Get available resources.
 //
 // GET /apis/coordination.k8s.io/v1/
-func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10789,7 +10789,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 // Get available API versions.
 //
 // GET /api/
-func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreAPIVersions"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10920,7 +10920,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 // Get available resources.
 //
 // GET /api/v1/
-func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11051,7 +11051,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 // Get information of a group.
 //
 // GET /apis/discovery.k8s.io/
-func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11182,7 +11182,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 // Get available resources.
 //
 // GET /apis/discovery.k8s.io/v1/
-func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11313,7 +11313,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 // Get available resources.
 //
 // GET /apis/discovery.k8s.io/v1beta1/
-func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11444,7 +11444,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 // Get information of a group.
 //
 // GET /apis/events.k8s.io/
-func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11575,7 +11575,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 // Get available resources.
 //
 // GET /apis/events.k8s.io/v1/
-func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11706,7 +11706,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 // Get available resources.
 //
 // GET /apis/events.k8s.io/v1beta1/
-func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11837,7 +11837,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 // Get information of a group.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/
-func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11968,7 +11968,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 // Get available resources.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
-func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12099,7 +12099,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 // Get available resources.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
-func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12230,7 +12230,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 // Get information of a group.
 //
 // GET /apis/internal.apiserver.k8s.io/
-func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12361,7 +12361,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 // Get available resources.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
-func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12492,7 +12492,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 // Get information of a group.
 //
 // GET /apis/networking.k8s.io/
-func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12623,7 +12623,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 // Get available resources.
 //
 // GET /apis/networking.k8s.io/v1/
-func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12754,7 +12754,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 // Get information of a group.
 //
 // GET /apis/node.k8s.io/
-func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -12885,7 +12885,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 // Get available resources.
 //
 // GET /apis/node.k8s.io/v1/
-func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13016,7 +13016,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 // Get available resources.
 //
 // GET /apis/node.k8s.io/v1alpha1/
-func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13147,7 +13147,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 // Get available resources.
 //
 // GET /apis/node.k8s.io/v1beta1/
-func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13278,7 +13278,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 // Get information of a group.
 //
 // GET /apis/policy/
-func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13409,7 +13409,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 // Get available resources.
 //
 // GET /apis/policy/v1/
-func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13540,7 +13540,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 // Get available resources.
 //
 // GET /apis/policy/v1beta1/
-func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13671,7 +13671,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 // Get information of a group.
 //
 // GET /apis/rbac.authorization.k8s.io/
-func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13802,7 +13802,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 // Get available resources.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/
-func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13933,7 +13933,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 // Get information of a group.
 //
 // GET /apis/scheduling.k8s.io/
-func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14064,7 +14064,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 // Get available resources.
 //
 // GET /apis/scheduling.k8s.io/v1/
-func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14195,7 +14195,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 // Get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'.
 //
 // GET /.well-known/openid-configuration/
-func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14326,7 +14326,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 // Get service account issuer OpenID JSON Web Key Set (contains public token verification keys).
 //
 // GET /openid/v1/jwks/
-func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14457,7 +14457,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 // Get information of a group.
 //
 // GET /apis/storage.k8s.io/
-func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14588,7 +14588,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 // Get available resources.
 //
 // GET /apis/storage.k8s.io/v1/
-func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14719,7 +14719,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 // Get available resources.
 //
 // GET /apis/storage.k8s.io/v1alpha1/
-func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14850,7 +14850,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 // Get available resources.
 //
 // GET /apis/storage.k8s.io/v1beta1/
-func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14981,7 +14981,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 // List or watch objects of kind MutatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
-func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15061,7 +15061,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			return
 		}
 	}
-	params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
+	params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15163,7 +15163,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 // List or watch objects of kind ValidatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
-func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15243,7 +15243,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			return
 		}
 	}
-	params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
+	params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15345,7 +15345,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 // List or watch objects of kind CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
-func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15425,7 +15425,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			return
 		}
 	}
-	params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(args, r)
+	params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15527,7 +15527,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 // List or watch objects of kind APIService.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices
-func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15607,7 +15607,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			return
 		}
 	}
-	params, err := decodeListApiregistrationV1APIServiceParams(args, r)
+	params, err := decodeListApiregistrationV1APIServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15709,7 +15709,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 // List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/controllerrevisions
-func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15789,7 +15789,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeListAppsV1ControllerRevisionForAllNamespacesParams(args, r)
+	params, err := decodeListAppsV1ControllerRevisionForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15891,7 +15891,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 // List or watch objects of kind DaemonSet.
 //
 // GET /apis/apps/v1/daemonsets
-func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15971,7 +15971,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			return
 		}
 	}
-	params, err := decodeListAppsV1DaemonSetForAllNamespacesParams(args, r)
+	params, err := decodeListAppsV1DaemonSetForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16073,7 +16073,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 // List or watch objects of kind Deployment.
 //
 // GET /apis/apps/v1/deployments
-func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16153,7 +16153,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			return
 		}
 	}
-	params, err := decodeListAppsV1DeploymentForAllNamespacesParams(args, r)
+	params, err := decodeListAppsV1DeploymentForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16255,7 +16255,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 // List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
-func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16335,7 +16335,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeListAppsV1NamespacedControllerRevisionParams(args, r)
+	params, err := decodeListAppsV1NamespacedControllerRevisionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16441,7 +16441,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 // List or watch objects of kind DaemonSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
-func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16521,7 +16521,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeListAppsV1NamespacedDaemonSetParams(args, r)
+	params, err := decodeListAppsV1NamespacedDaemonSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16627,7 +16627,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 // List or watch objects of kind Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
-func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16707,7 +16707,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeListAppsV1NamespacedDeploymentParams(args, r)
+	params, err := decodeListAppsV1NamespacedDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16813,7 +16813,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 // List or watch objects of kind ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
-func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16893,7 +16893,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeListAppsV1NamespacedReplicaSetParams(args, r)
+	params, err := decodeListAppsV1NamespacedReplicaSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16999,7 +16999,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 // List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
-func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17079,7 +17079,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			return
 		}
 	}
-	params, err := decodeListAppsV1NamespacedStatefulSetParams(args, r)
+	params, err := decodeListAppsV1NamespacedStatefulSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17185,7 +17185,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 // List or watch objects of kind ReplicaSet.
 //
 // GET /apis/apps/v1/replicasets
-func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17265,7 +17265,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			return
 		}
 	}
-	params, err := decodeListAppsV1ReplicaSetForAllNamespacesParams(args, r)
+	params, err := decodeListAppsV1ReplicaSetForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17367,7 +17367,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 // List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/statefulsets
-func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17447,7 +17447,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			return
 		}
 	}
-	params, err := decodeListAppsV1StatefulSetForAllNamespacesParams(args, r)
+	params, err := decodeListAppsV1StatefulSetForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17549,7 +17549,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17629,7 +17629,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
+	params, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17731,7 +17731,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17811,7 +17811,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17917,7 +17917,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17997,7 +17997,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
+	params, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18099,7 +18099,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18179,7 +18179,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18285,7 +18285,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18365,7 +18365,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args, r)
+	params, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18467,7 +18467,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 // List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18547,7 +18547,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			return
 		}
 	}
-	params, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18653,7 +18653,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 // List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1/cronjobs
-func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18733,7 +18733,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeListBatchV1CronJobForAllNamespacesParams(args, r)
+	params, err := decodeListBatchV1CronJobForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18835,7 +18835,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 // List or watch objects of kind Job.
 //
 // GET /apis/batch/v1/jobs
-func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18915,7 +18915,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			return
 		}
 	}
-	params, err := decodeListBatchV1JobForAllNamespacesParams(args, r)
+	params, err := decodeListBatchV1JobForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19017,7 +19017,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 // List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
-func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19097,7 +19097,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeListBatchV1NamespacedCronJobParams(args, r)
+	params, err := decodeListBatchV1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19203,7 +19203,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 // List or watch objects of kind Job.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
-func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19283,7 +19283,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			return
 		}
 	}
-	params, err := decodeListBatchV1NamespacedJobParams(args, r)
+	params, err := decodeListBatchV1NamespacedJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19389,7 +19389,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 // List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1beta1/cronjobs
-func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19469,7 +19469,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeListBatchV1beta1CronJobForAllNamespacesParams(args, r)
+	params, err := decodeListBatchV1beta1CronJobForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19571,7 +19571,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 // List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
-func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19651,7 +19651,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			return
 		}
 	}
-	params, err := decodeListBatchV1beta1NamespacedCronJobParams(args, r)
+	params, err := decodeListBatchV1beta1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19757,7 +19757,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 // List or watch objects of kind CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
-func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19837,7 +19837,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			return
 		}
 	}
-	params, err := decodeListCertificatesV1CertificateSigningRequestParams(args, r)
+	params, err := decodeListCertificatesV1CertificateSigningRequestParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19939,7 +19939,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 // List or watch objects of kind Lease.
 //
 // GET /apis/coordination.k8s.io/v1/leases
-func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20019,7 +20019,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeListCoordinationV1LeaseForAllNamespacesParams(args, r)
+	params, err := decodeListCoordinationV1LeaseForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20121,7 +20121,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 // List or watch objects of kind Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
-func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20201,7 +20201,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			return
 		}
 	}
-	params, err := decodeListCoordinationV1NamespacedLeaseParams(args, r)
+	params, err := decodeListCoordinationV1NamespacedLeaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20307,7 +20307,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 // List objects of kind ComponentStatus.
 //
 // GET /api/v1/componentstatuses
-func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ComponentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20387,7 +20387,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			return
 		}
 	}
-	params, err := decodeListCoreV1ComponentStatusParams(args, r)
+	params, err := decodeListCoreV1ComponentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20489,7 +20489,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 // List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/configmaps
-func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20569,7 +20569,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			return
 		}
 	}
-	params, err := decodeListCoreV1ConfigMapForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1ConfigMapForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20671,7 +20671,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 // List or watch objects of kind Endpoints.
 //
 // GET /api/v1/endpoints
-func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20751,7 +20751,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			return
 		}
 	}
-	params, err := decodeListCoreV1EndpointsForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1EndpointsForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20853,7 +20853,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 // List or watch objects of kind Event.
 //
 // GET /api/v1/events
-func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20933,7 +20933,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			return
 		}
 	}
-	params, err := decodeListCoreV1EventForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1EventForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21035,7 +21035,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 // List or watch objects of kind LimitRange.
 //
 // GET /api/v1/limitranges
-func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21115,7 +21115,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			return
 		}
 	}
-	params, err := decodeListCoreV1LimitRangeForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1LimitRangeForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21217,7 +21217,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 // List or watch objects of kind Namespace.
 //
 // GET /api/v1/namespaces
-func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21297,7 +21297,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespaceParams(args, r)
+	params, err := decodeListCoreV1NamespaceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21399,7 +21399,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 // List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps
-func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21479,7 +21479,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedConfigMapParams(args, r)
+	params, err := decodeListCoreV1NamespacedConfigMapParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21585,7 +21585,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 // List or watch objects of kind Endpoints.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints
-func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21665,7 +21665,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedEndpointsParams(args, r)
+	params, err := decodeListCoreV1NamespacedEndpointsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21771,7 +21771,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 // List or watch objects of kind Event.
 //
 // GET /api/v1/namespaces/{namespace}/events
-func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21851,7 +21851,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedEventParams(args, r)
+	params, err := decodeListCoreV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21957,7 +21957,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 // List or watch objects of kind LimitRange.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges
-func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22037,7 +22037,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedLimitRangeParams(args, r)
+	params, err := decodeListCoreV1NamespacedLimitRangeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22143,7 +22143,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 // List or watch objects of kind PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
-func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22223,7 +22223,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedPersistentVolumeClaimParams(args, r)
+	params, err := decodeListCoreV1NamespacedPersistentVolumeClaimParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22329,7 +22329,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 // List or watch objects of kind Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods
-func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22409,7 +22409,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedPodParams(args, r)
+	params, err := decodeListCoreV1NamespacedPodParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22515,7 +22515,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 // List or watch objects of kind PodTemplate.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates
-func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22595,7 +22595,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedPodTemplateParams(args, r)
+	params, err := decodeListCoreV1NamespacedPodTemplateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22701,7 +22701,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 // List or watch objects of kind ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
-func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22781,7 +22781,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedReplicationControllerParams(args, r)
+	params, err := decodeListCoreV1NamespacedReplicationControllerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22887,7 +22887,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 // List or watch objects of kind ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas
-func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22967,7 +22967,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedResourceQuotaParams(args, r)
+	params, err := decodeListCoreV1NamespacedResourceQuotaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23073,7 +23073,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 // List or watch objects of kind Secret.
 //
 // GET /api/v1/namespaces/{namespace}/secrets
-func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -23153,7 +23153,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedSecretParams(args, r)
+	params, err := decodeListCoreV1NamespacedSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23259,7 +23259,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 // List or watch objects of kind Service.
 //
 // GET /api/v1/namespaces/{namespace}/services
-func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -23339,7 +23339,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedServiceParams(args, r)
+	params, err := decodeListCoreV1NamespacedServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23445,7 +23445,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 // List or watch objects of kind ServiceAccount.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
-func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -23525,7 +23525,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeListCoreV1NamespacedServiceAccountParams(args, r)
+	params, err := decodeListCoreV1NamespacedServiceAccountParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23631,7 +23631,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 // List or watch objects of kind Node.
 //
 // GET /api/v1/nodes
-func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -23711,7 +23711,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			return
 		}
 	}
-	params, err := decodeListCoreV1NodeParams(args, r)
+	params, err := decodeListCoreV1NodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23813,7 +23813,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 // List or watch objects of kind PersistentVolume.
 //
 // GET /api/v1/persistentvolumes
-func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -23893,7 +23893,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			return
 		}
 	}
-	params, err := decodeListCoreV1PersistentVolumeParams(args, r)
+	params, err := decodeListCoreV1PersistentVolumeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23995,7 +23995,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 // List or watch objects of kind PersistentVolumeClaim.
 //
 // GET /api/v1/persistentvolumeclaims
-func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24075,7 +24075,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			return
 		}
 	}
-	params, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24177,7 +24177,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 // List or watch objects of kind Pod.
 //
 // GET /api/v1/pods
-func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24257,7 +24257,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			return
 		}
 	}
-	params, err := decodeListCoreV1PodForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1PodForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24359,7 +24359,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 // List or watch objects of kind PodTemplate.
 //
 // GET /api/v1/podtemplates
-func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24439,7 +24439,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			return
 		}
 	}
-	params, err := decodeListCoreV1PodTemplateForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1PodTemplateForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24541,7 +24541,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 // List or watch objects of kind ReplicationController.
 //
 // GET /api/v1/replicationcontrollers
-func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24621,7 +24621,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			return
 		}
 	}
-	params, err := decodeListCoreV1ReplicationControllerForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1ReplicationControllerForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24723,7 +24723,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 // List or watch objects of kind ResourceQuota.
 //
 // GET /api/v1/resourcequotas
-func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24803,7 +24803,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeListCoreV1ResourceQuotaForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1ResourceQuotaForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24905,7 +24905,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 // List or watch objects of kind Secret.
 //
 // GET /api/v1/secrets
-func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24985,7 +24985,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			return
 		}
 	}
-	params, err := decodeListCoreV1SecretForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1SecretForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25087,7 +25087,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 // List or watch objects of kind ServiceAccount.
 //
 // GET /api/v1/serviceaccounts
-func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25167,7 +25167,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			return
 		}
 	}
-	params, err := decodeListCoreV1ServiceAccountForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1ServiceAccountForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25269,7 +25269,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 // List or watch objects of kind Service.
 //
 // GET /api/v1/services
-func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25349,7 +25349,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			return
 		}
 	}
-	params, err := decodeListCoreV1ServiceForAllNamespacesParams(args, r)
+	params, err := decodeListCoreV1ServiceForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25451,7 +25451,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 // List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/endpointslices
-func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25531,7 +25531,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args, r)
+	params, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25633,7 +25633,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 // List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
-func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25713,7 +25713,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeListDiscoveryV1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeListDiscoveryV1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25819,7 +25819,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 // List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
-func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25899,7 +25899,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			return
 		}
 	}
-	params, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args, r)
+	params, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26001,7 +26001,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 // List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
-func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26081,7 +26081,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			return
 		}
 	}
-	params, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26187,7 +26187,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 // List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1/events
-func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26267,7 +26267,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			return
 		}
 	}
-	params, err := decodeListEventsV1EventForAllNamespacesParams(args, r)
+	params, err := decodeListEventsV1EventForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26369,7 +26369,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 // List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
-func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26449,7 +26449,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			return
 		}
 	}
-	params, err := decodeListEventsV1NamespacedEventParams(args, r)
+	params, err := decodeListEventsV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26555,7 +26555,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 // List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1beta1/events
-func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26635,7 +26635,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			return
 		}
 	}
-	params, err := decodeListEventsV1beta1EventForAllNamespacesParams(args, r)
+	params, err := decodeListEventsV1beta1EventForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26737,7 +26737,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 // List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
-func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26817,7 +26817,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			return
 		}
 	}
-	params, err := decodeListEventsV1beta1NamespacedEventParams(args, r)
+	params, err := decodeListEventsV1beta1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26923,7 +26923,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 // List or watch objects of kind FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
-func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27003,7 +27003,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
+	params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27105,7 +27105,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 // List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
-func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27185,7 +27185,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
+	params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27287,7 +27287,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // List or watch objects of kind FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
-func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27367,7 +27367,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
+	params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27469,7 +27469,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 // List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
-func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27549,7 +27549,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
+	params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27651,7 +27651,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // List or watch objects of kind StorageVersion.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
-func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27731,7 +27731,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			return
 		}
 	}
-	params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(args, r)
+	params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27833,7 +27833,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 // List or watch objects of kind IngressClass.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses
-func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27913,7 +27913,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			return
 		}
 	}
-	params, err := decodeListNetworkingV1IngressClassParams(args, r)
+	params, err := decodeListNetworkingV1IngressClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28015,7 +28015,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 // List or watch objects of kind Ingress.
 //
 // GET /apis/networking.k8s.io/v1/ingresses
-func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28095,7 +28095,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeListNetworkingV1IngressForAllNamespacesParams(args, r)
+	params, err := decodeListNetworkingV1IngressForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28197,7 +28197,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 // List or watch objects of kind Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
-func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28277,7 +28277,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			return
 		}
 	}
-	params, err := decodeListNetworkingV1NamespacedIngressParams(args, r)
+	params, err := decodeListNetworkingV1NamespacedIngressParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28383,7 +28383,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 // List or watch objects of kind NetworkPolicy.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
-func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28463,7 +28463,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			return
 		}
 	}
-	params, err := decodeListNetworkingV1NamespacedNetworkPolicyParams(args, r)
+	params, err := decodeListNetworkingV1NamespacedNetworkPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28569,7 +28569,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 // List or watch objects of kind NetworkPolicy.
 //
 // GET /apis/networking.k8s.io/v1/networkpolicies
-func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28649,7 +28649,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			return
 		}
 	}
-	params, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args, r)
+	params, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28751,7 +28751,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 // List or watch objects of kind RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses
-func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28831,7 +28831,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			return
 		}
 	}
-	params, err := decodeListNodeV1RuntimeClassParams(args, r)
+	params, err := decodeListNodeV1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28933,7 +28933,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 // List or watch objects of kind RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
-func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29013,7 +29013,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			return
 		}
 	}
-	params, err := decodeListNodeV1alpha1RuntimeClassParams(args, r)
+	params, err := decodeListNodeV1alpha1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29115,7 +29115,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 // List or watch objects of kind RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
-func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29195,7 +29195,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			return
 		}
 	}
-	params, err := decodeListNodeV1beta1RuntimeClassParams(args, r)
+	params, err := decodeListNodeV1beta1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29297,7 +29297,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 // List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29377,7 +29377,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29483,7 +29483,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 // List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1/poddisruptionbudgets
-func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29563,7 +29563,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			return
 		}
 	}
-	params, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args, r)
+	params, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29665,7 +29665,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 // List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29745,7 +29745,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			return
 		}
 	}
-	params, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29851,7 +29851,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 // List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/poddisruptionbudgets
-func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29931,7 +29931,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			return
 		}
 	}
-	params, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args, r)
+	params, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30033,7 +30033,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 // List or watch objects of kind PodSecurityPolicy.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies
-func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30113,7 +30113,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(args, r)
+	params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30215,7 +30215,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 // List or watch objects of kind ClusterRole.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
-func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30295,7 +30295,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1ClusterRoleParams(args, r)
+	params, err := decodeListRbacAuthorizationV1ClusterRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30397,7 +30397,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 // List or watch objects of kind ClusterRoleBinding.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
-func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30477,7 +30477,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(args, r)
+	params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30579,7 +30579,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 // List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
-func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30659,7 +30659,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1NamespacedRoleParams(args, r)
+	params, err := decodeListRbacAuthorizationV1NamespacedRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30765,7 +30765,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 // List or watch objects of kind RoleBinding.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
-func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30845,7 +30845,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
+	params, err := decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30951,7 +30951,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 // List or watch objects of kind RoleBinding.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
-func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31031,7 +31031,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args, r)
+	params, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31133,7 +31133,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 // List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/roles
-func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31213,7 +31213,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			return
 		}
 	}
-	params, err := decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args, r)
+	params, err := decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31315,7 +31315,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 // List or watch objects of kind PriorityClass.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
-func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31395,7 +31395,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			return
 		}
 	}
-	params, err := decodeListSchedulingV1PriorityClassParams(args, r)
+	params, err := decodeListSchedulingV1PriorityClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31497,7 +31497,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 // List or watch objects of kind CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers
-func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31577,7 +31577,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			return
 		}
 	}
-	params, err := decodeListStorageV1CSIDriverParams(args, r)
+	params, err := decodeListStorageV1CSIDriverParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31679,7 +31679,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 // List or watch objects of kind CSINode.
 //
 // GET /apis/storage.k8s.io/v1/csinodes
-func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31759,7 +31759,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			return
 		}
 	}
-	params, err := decodeListStorageV1CSINodeParams(args, r)
+	params, err := decodeListStorageV1CSINodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31861,7 +31861,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 // List or watch objects of kind StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses
-func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31941,7 +31941,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			return
 		}
 	}
-	params, err := decodeListStorageV1StorageClassParams(args, r)
+	params, err := decodeListStorageV1StorageClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32043,7 +32043,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 // List or watch objects of kind VolumeAttachment.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments
-func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32123,7 +32123,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			return
 		}
 	}
-	params, err := decodeListStorageV1VolumeAttachmentParams(args, r)
+	params, err := decodeListStorageV1VolumeAttachmentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32225,7 +32225,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 // List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
-func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32305,7 +32305,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			return
 		}
 	}
-	params, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args, r)
+	params, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32407,7 +32407,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 // List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32487,7 +32487,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			return
 		}
 	}
-	params, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32593,7 +32593,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 // List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
-func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32673,7 +32673,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			return
 		}
 	}
-	params, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args, r)
+	params, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32775,7 +32775,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 // List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32855,7 +32855,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			return
 		}
 	}
-	params, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32959,7 +32959,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 // handleLogFileHandlerRequest handles logFileHandler operation.
 //
 // GET /logs/{logpath}
-func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33039,7 +33039,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			return
 		}
 	}
-	params, err := decodeLogFileHandlerParams(args, r)
+	params, err := decodeLogFileHandlerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33103,7 +33103,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 // handleLogFileListHandlerRequest handles logFileListHandler operation.
 //
 // GET /logs/
-func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33234,7 +33234,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 // Read the specified MutatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
-func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33314,7 +33314,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			return
 		}
 	}
-	params, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
+	params, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33384,7 +33384,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 // Read the specified ValidatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
-func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33464,7 +33464,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			return
 		}
 	}
-	params, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
+	params, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33534,7 +33534,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 // Read the specified CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
-func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33614,7 +33614,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			return
 		}
 	}
-	params, err := decodeReadApiextensionsV1CustomResourceDefinitionParams(args, r)
+	params, err := decodeReadApiextensionsV1CustomResourceDefinitionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33684,7 +33684,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 // Read status of the specified CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
-func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33764,7 +33764,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			return
 		}
 	}
-	params, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args, r)
+	params, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33834,7 +33834,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 // Read the specified APIService.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
-func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33914,7 +33914,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			return
 		}
 	}
-	params, err := decodeReadApiregistrationV1APIServiceParams(args, r)
+	params, err := decodeReadApiregistrationV1APIServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33984,7 +33984,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 // Read status of the specified APIService.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
-func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34064,7 +34064,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			return
 		}
 	}
-	params, err := decodeReadApiregistrationV1APIServiceStatusParams(args, r)
+	params, err := decodeReadApiregistrationV1APIServiceStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34134,7 +34134,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 // Read the specified ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
-func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34214,7 +34214,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedControllerRevisionParams(args, r)
+	params, err := decodeReadAppsV1NamespacedControllerRevisionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34288,7 +34288,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 // Read the specified DaemonSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
-func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34368,7 +34368,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedDaemonSetParams(args, r)
+	params, err := decodeReadAppsV1NamespacedDaemonSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34442,7 +34442,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 // Read status of the specified DaemonSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34522,7 +34522,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedDaemonSetStatusParams(args, r)
+	params, err := decodeReadAppsV1NamespacedDaemonSetStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34596,7 +34596,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 // Read the specified Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
-func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34676,7 +34676,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedDeploymentParams(args, r)
+	params, err := decodeReadAppsV1NamespacedDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34750,7 +34750,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 // Read scale of the specified Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34830,7 +34830,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedDeploymentScaleParams(args, r)
+	params, err := decodeReadAppsV1NamespacedDeploymentScaleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34904,7 +34904,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 // Read status of the specified Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
-func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34984,7 +34984,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedDeploymentStatusParams(args, r)
+	params, err := decodeReadAppsV1NamespacedDeploymentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35058,7 +35058,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 // Read the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
-func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35138,7 +35138,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedReplicaSetParams(args, r)
+	params, err := decodeReadAppsV1NamespacedReplicaSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35212,7 +35212,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 // Read scale of the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35292,7 +35292,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedReplicaSetScaleParams(args, r)
+	params, err := decodeReadAppsV1NamespacedReplicaSetScaleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35366,7 +35366,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 // Read status of the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35446,7 +35446,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedReplicaSetStatusParams(args, r)
+	params, err := decodeReadAppsV1NamespacedReplicaSetStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35520,7 +35520,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 // Read the specified StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
-func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35600,7 +35600,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedStatefulSetParams(args, r)
+	params, err := decodeReadAppsV1NamespacedStatefulSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35674,7 +35674,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 // Read scale of the specified StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35754,7 +35754,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedStatefulSetScaleParams(args, r)
+	params, err := decodeReadAppsV1NamespacedStatefulSetScaleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35828,7 +35828,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 // Read status of the specified StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35908,7 +35908,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			return
 		}
 	}
-	params, err := decodeReadAppsV1NamespacedStatefulSetStatusParams(args, r)
+	params, err := decodeReadAppsV1NamespacedStatefulSetStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35982,7 +35982,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 // Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36062,7 +36062,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36136,7 +36136,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 // Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36216,7 +36216,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
+	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36290,7 +36290,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 // Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36370,7 +36370,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36444,7 +36444,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 // Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36524,7 +36524,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
+	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36598,7 +36598,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 // Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36678,7 +36678,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36752,7 +36752,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 // Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36832,7 +36832,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			return
 		}
 	}
-	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args, r)
+	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36906,7 +36906,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 // Read the specified CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36986,7 +36986,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			return
 		}
 	}
-	params, err := decodeReadBatchV1NamespacedCronJobParams(args, r)
+	params, err := decodeReadBatchV1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37060,7 +37060,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 // Read status of the specified CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
-func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37140,7 +37140,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeReadBatchV1NamespacedCronJobStatusParams(args, r)
+	params, err := decodeReadBatchV1NamespacedCronJobStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37214,7 +37214,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 // Read the specified Job.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
-func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37294,7 +37294,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			return
 		}
 	}
-	params, err := decodeReadBatchV1NamespacedJobParams(args, r)
+	params, err := decodeReadBatchV1NamespacedJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37368,7 +37368,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 // Read status of the specified Job.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
-func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37448,7 +37448,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeReadBatchV1NamespacedJobStatusParams(args, r)
+	params, err := decodeReadBatchV1NamespacedJobStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37522,7 +37522,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 // Read the specified CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37602,7 +37602,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeReadBatchV1beta1NamespacedCronJobParams(args, r)
+	params, err := decodeReadBatchV1beta1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37676,7 +37676,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 // Read status of the specified CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
-func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37756,7 +37756,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeReadBatchV1beta1NamespacedCronJobStatusParams(args, r)
+	params, err := decodeReadBatchV1beta1NamespacedCronJobStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37830,7 +37830,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 // Read the specified CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37910,7 +37910,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			return
 		}
 	}
-	params, err := decodeReadCertificatesV1CertificateSigningRequestParams(args, r)
+	params, err := decodeReadCertificatesV1CertificateSigningRequestParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37980,7 +37980,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 // Read approval of the specified CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38060,7 +38060,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			return
 		}
 	}
-	params, err := decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args, r)
+	params, err := decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38130,7 +38130,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 // Read status of the specified CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38210,7 +38210,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			return
 		}
 	}
-	params, err := decodeReadCertificatesV1CertificateSigningRequestStatusParams(args, r)
+	params, err := decodeReadCertificatesV1CertificateSigningRequestStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38280,7 +38280,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 // Read the specified Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
-func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38360,7 +38360,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeReadCoordinationV1NamespacedLeaseParams(args, r)
+	params, err := decodeReadCoordinationV1NamespacedLeaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38434,7 +38434,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 // Read the specified ComponentStatus.
 //
 // GET /api/v1/componentstatuses/{name}
-func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1ComponentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38514,7 +38514,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeReadCoreV1ComponentStatusParams(args, r)
+	params, err := decodeReadCoreV1ComponentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38584,7 +38584,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 // Read the specified Namespace.
 //
 // GET /api/v1/namespaces/{name}
-func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38664,7 +38664,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespaceParams(args, r)
+	params, err := decodeReadCoreV1NamespaceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38734,7 +38734,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 // Read status of the specified Namespace.
 //
 // GET /api/v1/namespaces/{name}/status
-func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespaceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38814,7 +38814,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespaceStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespaceStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38884,7 +38884,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 // Read the specified ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
-func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38964,7 +38964,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedConfigMapParams(args, r)
+	params, err := decodeReadCoreV1NamespacedConfigMapParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39038,7 +39038,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 // Read the specified Endpoints.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
-func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39118,7 +39118,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedEndpointsParams(args, r)
+	params, err := decodeReadCoreV1NamespacedEndpointsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39192,7 +39192,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 // Read the specified Event.
 //
 // GET /api/v1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39272,7 +39272,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedEventParams(args, r)
+	params, err := decodeReadCoreV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39346,7 +39346,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 // Read the specified LimitRange.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
-func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39426,7 +39426,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedLimitRangeParams(args, r)
+	params, err := decodeReadCoreV1NamespacedLimitRangeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39500,7 +39500,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 // Read the specified PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
-func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39580,7 +39580,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39654,7 +39654,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 // Read status of the specified PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
-func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39734,7 +39734,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39808,7 +39808,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 // Read the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}
-func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39888,7 +39888,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPodParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPodParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39962,7 +39962,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 // Read ephemeralcontainers of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
-func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40042,7 +40042,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40116,7 +40116,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 // Read log of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
-func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodLog"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40196,7 +40196,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPodLogParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPodLogParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40302,7 +40302,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 // Read status of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
-func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40382,7 +40382,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPodStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPodStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40456,7 +40456,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 // Read the specified PodTemplate.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
-func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40536,7 +40536,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedPodTemplateParams(args, r)
+	params, err := decodeReadCoreV1NamespacedPodTemplateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40610,7 +40610,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 // Read the specified ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40690,7 +40690,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedReplicationControllerParams(args, r)
+	params, err := decodeReadCoreV1NamespacedReplicationControllerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40764,7 +40764,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 // Read scale of the specified ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40844,7 +40844,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedReplicationControllerScaleParams(args, r)
+	params, err := decodeReadCoreV1NamespacedReplicationControllerScaleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40918,7 +40918,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 // Read status of the specified ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40998,7 +40998,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedReplicationControllerStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespacedReplicationControllerStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41072,7 +41072,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 // Read the specified ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
-func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41152,7 +41152,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedResourceQuotaParams(args, r)
+	params, err := decodeReadCoreV1NamespacedResourceQuotaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41226,7 +41226,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 // Read status of the specified ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
-func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41306,7 +41306,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedResourceQuotaStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespacedResourceQuotaStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41380,7 +41380,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 // Read the specified Secret.
 //
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
-func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41460,7 +41460,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedSecretParams(args, r)
+	params, err := decodeReadCoreV1NamespacedSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41534,7 +41534,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 // Read the specified Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}
-func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41614,7 +41614,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedServiceParams(args, r)
+	params, err := decodeReadCoreV1NamespacedServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41688,7 +41688,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 // Read the specified ServiceAccount.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
-func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41768,7 +41768,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedServiceAccountParams(args, r)
+	params, err := decodeReadCoreV1NamespacedServiceAccountParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41842,7 +41842,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 // Read status of the specified Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
-func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -41922,7 +41922,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NamespacedServiceStatusParams(args, r)
+	params, err := decodeReadCoreV1NamespacedServiceStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41996,7 +41996,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 // Read the specified Node.
 //
 // GET /api/v1/nodes/{name}
-func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42076,7 +42076,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NodeParams(args, r)
+	params, err := decodeReadCoreV1NodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42146,7 +42146,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 // Read status of the specified Node.
 //
 // GET /api/v1/nodes/{name}/status
-func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NodeStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42226,7 +42226,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			return
 		}
 	}
-	params, err := decodeReadCoreV1NodeStatusParams(args, r)
+	params, err := decodeReadCoreV1NodeStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42296,7 +42296,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 // Read the specified PersistentVolume.
 //
 // GET /api/v1/persistentvolumes/{name}
-func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42376,7 +42376,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			return
 		}
 	}
-	params, err := decodeReadCoreV1PersistentVolumeParams(args, r)
+	params, err := decodeReadCoreV1PersistentVolumeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42446,7 +42446,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 // Read status of the specified PersistentVolume.
 //
 // GET /api/v1/persistentvolumes/{name}/status
-func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42526,7 +42526,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			return
 		}
 	}
-	params, err := decodeReadCoreV1PersistentVolumeStatusParams(args, r)
+	params, err := decodeReadCoreV1PersistentVolumeStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42596,7 +42596,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 // Read the specified EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42676,7 +42676,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeReadDiscoveryV1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeReadDiscoveryV1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42750,7 +42750,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 // Read the specified EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42830,7 +42830,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			return
 		}
 	}
-	params, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42904,7 +42904,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 // Read the specified Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -42984,7 +42984,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			return
 		}
 	}
-	params, err := decodeReadEventsV1NamespacedEventParams(args, r)
+	params, err := decodeReadEventsV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43058,7 +43058,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 // Read the specified Event.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43138,7 +43138,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			return
 		}
 	}
-	params, err := decodeReadEventsV1beta1NamespacedEventParams(args, r)
+	params, err := decodeReadEventsV1beta1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43212,7 +43212,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 // Read the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43292,7 +43292,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43362,7 +43362,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 // Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43442,7 +43442,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43512,7 +43512,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 // Read the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43592,7 +43592,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43662,7 +43662,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43742,7 +43742,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43812,7 +43812,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // Read the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43892,7 +43892,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43962,7 +43962,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 // Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44042,7 +44042,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44112,7 +44112,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 // Read the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44192,7 +44192,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44262,7 +44262,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44342,7 +44342,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			return
 		}
 	}
-	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args, r)
+	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44412,7 +44412,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // Read the specified StorageVersion.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
-func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44492,7 +44492,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			return
 		}
 	}
-	params, err := decodeReadInternalApiserverV1alpha1StorageVersionParams(args, r)
+	params, err := decodeReadInternalApiserverV1alpha1StorageVersionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44562,7 +44562,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 // Read status of the specified StorageVersion.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
-func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44642,7 +44642,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			return
 		}
 	}
-	params, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args, r)
+	params, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44712,7 +44712,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 // Read the specified IngressClass.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
-func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44792,7 +44792,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeReadNetworkingV1IngressClassParams(args, r)
+	params, err := decodeReadNetworkingV1IngressClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44862,7 +44862,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 // Read the specified Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
-func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44942,7 +44942,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeReadNetworkingV1NamespacedIngressParams(args, r)
+	params, err := decodeReadNetworkingV1NamespacedIngressParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45016,7 +45016,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 // Read status of the specified Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
-func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45096,7 +45096,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeReadNetworkingV1NamespacedIngressStatusParams(args, r)
+	params, err := decodeReadNetworkingV1NamespacedIngressStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45170,7 +45170,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 // Read the specified NetworkPolicy.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
-func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45250,7 +45250,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeReadNetworkingV1NamespacedNetworkPolicyParams(args, r)
+	params, err := decodeReadNetworkingV1NamespacedNetworkPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45324,7 +45324,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 // Read the specified RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45404,7 +45404,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			return
 		}
 	}
-	params, err := decodeReadNodeV1RuntimeClassParams(args, r)
+	params, err := decodeReadNodeV1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45474,7 +45474,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 // Read the specified RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45554,7 +45554,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeReadNodeV1alpha1RuntimeClassParams(args, r)
+	params, err := decodeReadNodeV1alpha1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45624,7 +45624,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 // Read the specified RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45704,7 +45704,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			return
 		}
 	}
-	params, err := decodeReadNodeV1beta1RuntimeClassParams(args, r)
+	params, err := decodeReadNodeV1beta1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45774,7 +45774,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 // Read the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -45854,7 +45854,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			return
 		}
 	}
-	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45928,7 +45928,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 // Read status of the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46008,7 +46008,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args, r)
+	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46082,7 +46082,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 // Read the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46162,7 +46162,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			return
 		}
 	}
-	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46236,7 +46236,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 // Read status of the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46316,7 +46316,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			return
 		}
 	}
-	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args, r)
+	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46390,7 +46390,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 // Read the specified PodSecurityPolicy.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
-func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46470,7 +46470,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeReadPolicyV1beta1PodSecurityPolicyParams(args, r)
+	params, err := decodeReadPolicyV1beta1PodSecurityPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46540,7 +46540,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 // Read the specified ClusterRole.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
-func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46620,7 +46620,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeReadRbacAuthorizationV1ClusterRoleParams(args, r)
+	params, err := decodeReadRbacAuthorizationV1ClusterRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46690,7 +46690,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 // Read the specified ClusterRoleBinding.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
-func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46770,7 +46770,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			return
 		}
 	}
-	params, err := decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args, r)
+	params, err := decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46840,7 +46840,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 // Read the specified Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
-func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46920,7 +46920,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			return
 		}
 	}
-	params, err := decodeReadRbacAuthorizationV1NamespacedRoleParams(args, r)
+	params, err := decodeReadRbacAuthorizationV1NamespacedRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46994,7 +46994,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 // Read the specified RoleBinding.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
-func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47074,7 +47074,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			return
 		}
 	}
-	params, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
+	params, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47148,7 +47148,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 // Read the specified PriorityClass.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
-func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47228,7 +47228,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadSchedulingV1PriorityClassParams(args, r)
+	params, err := decodeReadSchedulingV1PriorityClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47298,7 +47298,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 // Read the specified CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
-func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47378,7 +47378,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			return
 		}
 	}
-	params, err := decodeReadStorageV1CSIDriverParams(args, r)
+	params, err := decodeReadStorageV1CSIDriverParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47448,7 +47448,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 // Read the specified CSINode.
 //
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
-func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47528,7 +47528,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			return
 		}
 	}
-	params, err := decodeReadStorageV1CSINodeParams(args, r)
+	params, err := decodeReadStorageV1CSINodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47598,7 +47598,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 // Read the specified StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
-func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47678,7 +47678,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			return
 		}
 	}
-	params, err := decodeReadStorageV1StorageClassParams(args, r)
+	params, err := decodeReadStorageV1StorageClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47748,7 +47748,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 // Read the specified VolumeAttachment.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
-func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47828,7 +47828,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeReadStorageV1VolumeAttachmentParams(args, r)
+	params, err := decodeReadStorageV1VolumeAttachmentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47898,7 +47898,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 // Read status of the specified VolumeAttachment.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
-func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47978,7 +47978,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeReadStorageV1VolumeAttachmentStatusParams(args, r)
+	params, err := decodeReadStorageV1VolumeAttachmentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48048,7 +48048,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 // Read the specified CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48128,7 +48128,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			return
 		}
 	}
-	params, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48202,7 +48202,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 // Read the specified CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48282,7 +48282,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			return
 		}
 	}
-	params, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48358,7 +48358,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 // parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
-func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48438,7 +48438,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			return
 		}
 	}
-	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
+	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48545,7 +48545,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 // parameter with a list operation instead.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
-func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48625,7 +48625,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			return
 		}
 	}
-	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args, r)
+	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48729,7 +48729,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 // parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
-func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48809,7 +48809,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
+	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48916,7 +48916,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 // parameter with a list operation instead.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
-func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48996,7 +48996,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args, r)
+	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49099,7 +49099,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
-func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49179,7 +49179,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionParams(args, r)
+	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49286,7 +49286,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 // parameter with a list operation instead.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
-func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49366,7 +49366,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args, r)
+	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49469,7 +49469,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
-func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49549,7 +49549,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			return
 		}
 	}
-	params, err := decodeWatchApiregistrationV1APIServiceParams(args, r)
+	params, err := decodeWatchApiregistrationV1APIServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49656,7 +49656,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 // list operation instead.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
-func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49736,7 +49736,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			return
 		}
 	}
-	params, err := decodeWatchApiregistrationV1APIServiceListParams(args, r)
+	params, err := decodeWatchApiregistrationV1APIServiceListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49839,7 +49839,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 // with a list operation instead.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
-func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49919,7 +49919,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50022,7 +50022,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 // operation instead.
 //
 // GET /apis/apps/v1/watch/daemonsets
-func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50102,7 +50102,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50205,7 +50205,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/deployments
-func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50285,7 +50285,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1DeploymentListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAppsV1DeploymentListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50388,7 +50388,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
-func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50468,7 +50468,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedControllerRevisionParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedControllerRevisionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50579,7 +50579,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 // with a list operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
-func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50659,7 +50659,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedControllerRevisionListParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedControllerRevisionListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50766,7 +50766,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
-func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50846,7 +50846,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedDaemonSetParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedDaemonSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50957,7 +50957,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 // operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
-func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51037,7 +51037,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedDaemonSetListParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedDaemonSetListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51144,7 +51144,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
-func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51224,7 +51224,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedDeploymentParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51335,7 +51335,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
-func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51415,7 +51415,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedDeploymentListParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedDeploymentListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51522,7 +51522,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
-func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51602,7 +51602,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedReplicaSetParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedReplicaSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51713,7 +51713,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
-func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51793,7 +51793,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedReplicaSetListParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedReplicaSetListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51900,7 +51900,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
-func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51980,7 +51980,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedStatefulSetParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedStatefulSetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52091,7 +52091,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
-func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -52171,7 +52171,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1NamespacedStatefulSetListParams(args, r)
+	params, err := decodeWatchAppsV1NamespacedStatefulSetListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52278,7 +52278,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/replicasets
-func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -52358,7 +52358,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52461,7 +52461,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 // list operation instead.
 //
 // GET /apis/apps/v1/watch/statefulsets
-func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -52541,7 +52541,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			return
 		}
 	}
-	params, err := decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52644,7 +52644,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -52724,7 +52724,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52827,7 +52827,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -52907,7 +52907,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53018,7 +53018,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53098,7 +53098,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args, r)
+	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53205,7 +53205,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53285,7 +53285,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53388,7 +53388,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53468,7 +53468,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53579,7 +53579,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53659,7 +53659,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53766,7 +53766,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53846,7 +53846,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53949,7 +53949,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54029,7 +54029,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54140,7 +54140,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 // parameter with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54220,7 +54220,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			return
 		}
 	}
-	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args, r)
+	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54327,7 +54327,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 // operation instead.
 //
 // GET /apis/batch/v1/watch/cronjobs
-func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54407,7 +54407,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1CronJobListForAllNamespacesParams(args, r)
+	params, err := decodeWatchBatchV1CronJobListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54510,7 +54510,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 // operation instead.
 //
 // GET /apis/batch/v1/watch/jobs
-func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54590,7 +54590,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1JobListForAllNamespacesParams(args, r)
+	params, err := decodeWatchBatchV1JobListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54693,7 +54693,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54773,7 +54773,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1NamespacedCronJobParams(args, r)
+	params, err := decodeWatchBatchV1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54884,7 +54884,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 // operation instead.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
-func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54964,7 +54964,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1NamespacedCronJobListParams(args, r)
+	params, err := decodeWatchBatchV1NamespacedCronJobListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55071,7 +55071,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
-func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55151,7 +55151,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1NamespacedJobParams(args, r)
+	params, err := decodeWatchBatchV1NamespacedJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55262,7 +55262,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 // operation instead.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
-func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJobList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55342,7 +55342,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1NamespacedJobListParams(args, r)
+	params, err := decodeWatchBatchV1NamespacedJobListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55449,7 +55449,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 // operation instead.
 //
 // GET /apis/batch/v1beta1/watch/cronjobs
-func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55529,7 +55529,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args, r)
+	params, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55632,7 +55632,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55712,7 +55712,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1beta1NamespacedCronJobParams(args, r)
+	params, err := decodeWatchBatchV1beta1NamespacedCronJobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55823,7 +55823,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 // operation instead.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
-func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55903,7 +55903,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeWatchBatchV1beta1NamespacedCronJobListParams(args, r)
+	params, err := decodeWatchBatchV1beta1NamespacedCronJobListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56011,7 +56011,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 // parameter.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
-func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -56091,7 +56091,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchCertificatesV1CertificateSigningRequestParams(args, r)
+	params, err := decodeWatchCertificatesV1CertificateSigningRequestParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56198,7 +56198,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 // parameter with a list operation instead.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
-func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -56278,7 +56278,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchCertificatesV1CertificateSigningRequestListParams(args, r)
+	params, err := decodeWatchCertificatesV1CertificateSigningRequestListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56381,7 +56381,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 // operation instead.
 //
 // GET /apis/coordination.k8s.io/v1/watch/leases
-func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -56461,7 +56461,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56564,7 +56564,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
-func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -56644,7 +56644,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeWatchCoordinationV1NamespacedLeaseParams(args, r)
+	params, err := decodeWatchCoordinationV1NamespacedLeaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56755,7 +56755,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 // operation instead.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
-func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -56835,7 +56835,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeWatchCoordinationV1NamespacedLeaseListParams(args, r)
+	params, err := decodeWatchCoordinationV1NamespacedLeaseListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56942,7 +56942,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 // operation instead.
 //
 // GET /api/v1/watch/configmaps
-func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57022,7 +57022,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57125,7 +57125,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 // operation instead.
 //
 // GET /api/v1/watch/endpoints
-func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57205,7 +57205,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1EndpointsListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1EndpointsListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57308,7 +57308,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 // operation instead.
 //
 // GET /api/v1/watch/events
-func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57388,7 +57388,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1EventListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1EventListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57491,7 +57491,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 // list operation instead.
 //
 // GET /api/v1/watch/limitranges
-func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57571,7 +57571,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57674,7 +57674,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{name}
-func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57754,7 +57754,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespaceParams(args, r)
+	params, err := decodeWatchCoreV1NamespaceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57861,7 +57861,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 // operation instead.
 //
 // GET /api/v1/watch/namespaces
-func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespaceList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -57941,7 +57941,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespaceListParams(args, r)
+	params, err := decodeWatchCoreV1NamespaceListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58044,7 +58044,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
-func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58124,7 +58124,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedConfigMapParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedConfigMapParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58235,7 +58235,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
-func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58315,7 +58315,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedConfigMapListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedConfigMapListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58422,7 +58422,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
-func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58502,7 +58502,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedEndpointsParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedEndpointsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58613,7 +58613,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
-func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58693,7 +58693,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedEndpointsListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedEndpointsListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58800,7 +58800,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58880,7 +58880,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedEventParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58991,7 +58991,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59071,7 +59071,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedEventListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedEventListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59178,7 +59178,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
-func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59258,7 +59258,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedLimitRangeParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedLimitRangeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59369,7 +59369,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 // list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
-func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59449,7 +59449,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedLimitRangeListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedLimitRangeListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59556,7 +59556,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
-func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59636,7 +59636,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59747,7 +59747,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 // with a list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
-func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59827,7 +59827,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59934,7 +59934,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
-func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60014,7 +60014,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPodParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPodParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60125,7 +60125,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods
-func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60205,7 +60205,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPodListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPodListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60312,7 +60312,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
-func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60392,7 +60392,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPodTemplateParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPodTemplateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60503,7 +60503,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 // list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
-func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60583,7 +60583,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedPodTemplateListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedPodTemplateListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60690,7 +60690,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 // with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
-func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60770,7 +60770,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedReplicationControllerParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedReplicationControllerParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60881,7 +60881,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 // with a list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
-func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60961,7 +60961,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedReplicationControllerListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedReplicationControllerListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61068,7 +61068,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
-func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61148,7 +61148,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedResourceQuotaParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedResourceQuotaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61259,7 +61259,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 // list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
-func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61339,7 +61339,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedResourceQuotaListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedResourceQuotaListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61446,7 +61446,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
-func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61526,7 +61526,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedSecretParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61637,7 +61637,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets
-func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61717,7 +61717,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedSecretListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedSecretListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61824,7 +61824,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
-func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61904,7 +61904,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedServiceParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedServiceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62015,7 +62015,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
-func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62095,7 +62095,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedServiceAccountParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedServiceAccountParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62206,7 +62206,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 // list operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
-func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62286,7 +62286,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedServiceAccountListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedServiceAccountListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62393,7 +62393,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 // operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services
-func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62473,7 +62473,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NamespacedServiceListParams(args, r)
+	params, err := decodeWatchCoreV1NamespacedServiceListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62580,7 +62580,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/nodes/{name}
-func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62660,7 +62660,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NodeParams(args, r)
+	params, err := decodeWatchCoreV1NodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62767,7 +62767,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 // operation instead.
 //
 // GET /api/v1/watch/nodes
-func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NodeList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62847,7 +62847,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1NodeListParams(args, r)
+	params, err := decodeWatchCoreV1NodeListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62950,7 +62950,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/persistentvolumes/{name}
-func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63030,7 +63030,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1PersistentVolumeParams(args, r)
+	params, err := decodeWatchCoreV1PersistentVolumeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63137,7 +63137,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 // with a list operation instead.
 //
 // GET /api/v1/watch/persistentvolumeclaims
-func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63217,7 +63217,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63320,7 +63320,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 // a list operation instead.
 //
 // GET /api/v1/watch/persistentvolumes
-func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63400,7 +63400,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1PersistentVolumeListParams(args, r)
+	params, err := decodeWatchCoreV1PersistentVolumeListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63503,7 +63503,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 // operation instead.
 //
 // GET /api/v1/watch/pods
-func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63583,7 +63583,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1PodListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1PodListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63686,7 +63686,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 // list operation instead.
 //
 // GET /api/v1/watch/podtemplates
-func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63766,7 +63766,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63869,7 +63869,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 // with a list operation instead.
 //
 // GET /api/v1/watch/replicationcontrollers
-func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63949,7 +63949,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64052,7 +64052,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 // list operation instead.
 //
 // GET /api/v1/watch/resourcequotas
-func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64132,7 +64132,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64235,7 +64235,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 // operation instead.
 //
 // GET /api/v1/watch/secrets
-func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64315,7 +64315,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1SecretListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1SecretListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64418,7 +64418,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 // list operation instead.
 //
 // GET /api/v1/watch/serviceaccounts
-func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64498,7 +64498,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64601,7 +64601,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 // operation instead.
 //
 // GET /api/v1/watch/services
-func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64681,7 +64681,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			return
 		}
 	}
-	params, err := decodeWatchCoreV1ServiceListForAllNamespacesParams(args, r)
+	params, err := decodeWatchCoreV1ServiceListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64784,7 +64784,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 // list operation instead.
 //
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
-func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64864,7 +64864,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args, r)
+	params, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64967,7 +64967,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65047,7 +65047,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65158,7 +65158,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 // list operation instead.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
-func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65238,7 +65238,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args, r)
+	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65345,7 +65345,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 // list operation instead.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
-func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65425,7 +65425,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args, r)
+	params, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65528,7 +65528,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65608,7 +65608,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
+	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65719,7 +65719,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 // list operation instead.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
-func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65799,7 +65799,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args, r)
+	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65906,7 +65906,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 // operation instead.
 //
 // GET /apis/events.k8s.io/v1/watch/events
-func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65986,7 +65986,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1EventListForAllNamespacesParams(args, r)
+	params, err := decodeWatchEventsV1EventListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66089,7 +66089,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66169,7 +66169,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1NamespacedEventParams(args, r)
+	params, err := decodeWatchEventsV1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66280,7 +66280,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 // operation instead.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66360,7 +66360,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1NamespacedEventListParams(args, r)
+	params, err := decodeWatchEventsV1NamespacedEventListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66467,7 +66467,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 // operation instead.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/events
-func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66547,7 +66547,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1beta1EventListForAllNamespacesParams(args, r)
+	params, err := decodeWatchEventsV1beta1EventListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66650,7 +66650,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66730,7 +66730,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1beta1NamespacedEventParams(args, r)
+	params, err := decodeWatchEventsV1beta1NamespacedEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66841,7 +66841,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 // operation instead.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66921,7 +66921,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			return
 		}
 	}
-	params, err := decodeWatchEventsV1beta1NamespacedEventListParams(args, r)
+	params, err := decodeWatchEventsV1beta1NamespacedEventListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67028,7 +67028,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67108,7 +67108,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67215,7 +67215,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 // list operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67295,7 +67295,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67399,7 +67399,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 // parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67479,7 +67479,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67586,7 +67586,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 // parameter with a list operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67666,7 +67666,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67769,7 +67769,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67849,7 +67849,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67956,7 +67956,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 // list operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68036,7 +68036,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68140,7 +68140,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 // parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68220,7 +68220,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68327,7 +68327,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 // parameter with a list operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68407,7 +68407,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			return
 		}
 	}
-	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args, r)
+	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68510,7 +68510,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
-func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68590,7 +68590,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionParams(args, r)
+	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68697,7 +68697,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 // list operation instead.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
-func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68777,7 +68777,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args, r)
+	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68880,7 +68880,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
-func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68960,7 +68960,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1IngressClassParams(args, r)
+	params, err := decodeWatchNetworkingV1IngressClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69067,7 +69067,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 // list operation instead.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
-func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -69147,7 +69147,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1IngressClassListParams(args, r)
+	params, err := decodeWatchNetworkingV1IngressClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69250,7 +69250,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 // operation instead.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingresses
-func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -69330,7 +69330,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1IngressListForAllNamespacesParams(args, r)
+	params, err := decodeWatchNetworkingV1IngressListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69433,7 +69433,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
-func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -69513,7 +69513,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1NamespacedIngressParams(args, r)
+	params, err := decodeWatchNetworkingV1NamespacedIngressParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69624,7 +69624,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 // operation instead.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
-func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -69704,7 +69704,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1NamespacedIngressListParams(args, r)
+	params, err := decodeWatchNetworkingV1NamespacedIngressListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69811,7 +69811,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
-func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -69891,7 +69891,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args, r)
+	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70002,7 +70002,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 // list operation instead.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
-func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -70082,7 +70082,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args, r)
+	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70189,7 +70189,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 // list operation instead.
 //
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
-func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -70269,7 +70269,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			return
 		}
 	}
-	params, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args, r)
+	params, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70372,7 +70372,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -70452,7 +70452,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1RuntimeClassParams(args, r)
+	params, err := decodeWatchNodeV1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70559,7 +70559,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 // list operation instead.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -70639,7 +70639,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1RuntimeClassListParams(args, r)
+	params, err := decodeWatchNodeV1RuntimeClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70742,7 +70742,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -70822,7 +70822,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1alpha1RuntimeClassParams(args, r)
+	params, err := decodeWatchNodeV1alpha1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70929,7 +70929,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 // list operation instead.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71009,7 +71009,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1alpha1RuntimeClassListParams(args, r)
+	params, err := decodeWatchNodeV1alpha1RuntimeClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71112,7 +71112,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71192,7 +71192,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1beta1RuntimeClassParams(args, r)
+	params, err := decodeWatchNodeV1beta1RuntimeClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71299,7 +71299,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 // list operation instead.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71379,7 +71379,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			return
 		}
 	}
-	params, err := decodeWatchNodeV1beta1RuntimeClassListParams(args, r)
+	params, err := decodeWatchNodeV1beta1RuntimeClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71482,7 +71482,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71562,7 +71562,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71673,7 +71673,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 // with a list operation instead.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71753,7 +71753,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args, r)
+	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71860,7 +71860,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 // with a list operation instead.
 //
 // GET /apis/policy/v1/watch/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -71940,7 +71940,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args, r)
+	params, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72043,7 +72043,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72123,7 +72123,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
+	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72234,7 +72234,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 // with a list operation instead.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72314,7 +72314,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args, r)
+	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72421,7 +72421,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 // with a list operation instead.
 //
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72501,7 +72501,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args, r)
+	params, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72604,7 +72604,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
-func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72684,7 +72684,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyParams(args, r)
+	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72791,7 +72791,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 // with a list operation instead.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
-func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72871,7 +72871,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args, r)
+	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72974,7 +72974,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73054,7 +73054,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1ClusterRoleParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1ClusterRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73161,7 +73161,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73241,7 +73241,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73348,7 +73348,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 // with a list operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73428,7 +73428,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73531,7 +73531,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 // list operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73611,7 +73611,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1ClusterRoleListParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1ClusterRoleListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73714,7 +73714,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73794,7 +73794,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73905,7 +73905,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73985,7 +73985,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74096,7 +74096,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 // list operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -74176,7 +74176,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74283,7 +74283,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 // operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -74363,7 +74363,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74470,7 +74470,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 // list operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
-func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -74550,7 +74550,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74653,7 +74653,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 // operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
-func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -74733,7 +74733,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args, r)
+	params, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74836,7 +74836,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
-func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -74916,7 +74916,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchSchedulingV1PriorityClassParams(args, r)
+	params, err := decodeWatchSchedulingV1PriorityClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75023,7 +75023,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 // list operation instead.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
-func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75103,7 +75103,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeWatchSchedulingV1PriorityClassListParams(args, r)
+	params, err := decodeWatchSchedulingV1PriorityClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75206,7 +75206,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
-func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75286,7 +75286,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1CSIDriverParams(args, r)
+	params, err := decodeWatchStorageV1CSIDriverParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75393,7 +75393,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 // operation instead.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
-func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriverList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75473,7 +75473,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1CSIDriverListParams(args, r)
+	params, err := decodeWatchStorageV1CSIDriverListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75576,7 +75576,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
-func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75656,7 +75656,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1CSINodeParams(args, r)
+	params, err := decodeWatchStorageV1CSINodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75763,7 +75763,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 // operation instead.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes
-func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINodeList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75843,7 +75843,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1CSINodeListParams(args, r)
+	params, err := decodeWatchStorageV1CSINodeListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75946,7 +75946,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 // operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
-func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76026,7 +76026,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1StorageClassParams(args, r)
+	params, err := decodeWatchStorageV1StorageClassParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76133,7 +76133,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 // list operation instead.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
-func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClassList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76213,7 +76213,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1StorageClassListParams(args, r)
+	params, err := decodeWatchStorageV1StorageClassListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76316,7 +76316,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 // list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
-func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76396,7 +76396,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1VolumeAttachmentParams(args, r)
+	params, err := decodeWatchStorageV1VolumeAttachmentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76503,7 +76503,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 // a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
-func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76583,7 +76583,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1VolumeAttachmentListParams(args, r)
+	params, err := decodeWatchStorageV1VolumeAttachmentListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76686,7 +76686,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 // with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
-func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76766,7 +76766,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args, r)
+	params, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76869,7 +76869,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -76949,7 +76949,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77060,7 +77060,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 // with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77140,7 +77140,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args, r)
+	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77247,7 +77247,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 // with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
-func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77327,7 +77327,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args, r)
+	params, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77430,7 +77430,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 // a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77510,7 +77510,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
+	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77621,7 +77621,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 // with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77701,7 +77701,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			return
 		}
 	}
-	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args, r)
+	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

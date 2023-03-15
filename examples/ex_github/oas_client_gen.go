@@ -119,7 +119,8 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -136,9 +137,9 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -155,9 +156,9 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[4] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -174,8 +175,9 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -247,7 +249,8 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -264,9 +267,9 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -283,9 +286,9 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[4] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -302,8 +305,9 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -376,7 +380,8 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -393,9 +398,9 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -412,9 +417,9 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners/"
+	pathParts[4] = "/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -431,8 +436,9 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -504,7 +510,8 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -521,9 +528,9 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -540,9 +547,9 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -559,9 +566,10 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/approve"
+	pathParts[6] = "/approve"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -631,7 +639,8 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -648,9 +657,9 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -667,9 +676,9 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -686,9 +695,10 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/cancel"
+	pathParts[6] = "/cancel"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -818,7 +828,8 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories/"
+	var pathParts [6]string
+	pathParts[0] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -835,9 +846,9 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[2] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -854,9 +865,9 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secrets/"
+	pathParts[4] = "/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -873,8 +884,9 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1007,7 +1019,8 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1024,9 +1037,9 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1043,8 +1056,9 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1177,7 +1191,8 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1194,9 +1209,9 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1213,9 +1228,9 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[4] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1232,8 +1247,9 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1311,7 +1327,8 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1328,9 +1345,10 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/registration-token"
+	pathParts[2] = "/actions/runners/registration-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1406,7 +1424,8 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1423,9 +1442,9 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1442,9 +1461,10 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners/registration-token"
+	pathParts[4] = "/actions/runners/registration-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1521,7 +1541,8 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1538,9 +1559,10 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/remove-token"
+	pathParts[2] = "/actions/runners/remove-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1616,7 +1638,8 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1633,9 +1656,9 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1652,9 +1675,10 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners/remove-token"
+	pathParts[4] = "/actions/runners/remove-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1735,7 +1759,8 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1752,9 +1777,10 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups"
+	pathParts[2] = "/actions/runner-groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1827,7 +1853,8 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1844,9 +1871,9 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1863,9 +1890,9 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/artifacts/"
+	pathParts[4] = "/actions/artifacts/"
 	{
 		// Encode "artifact_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1882,8 +1909,9 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1953,7 +1981,8 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories/"
+	var pathParts [6]string
+	pathParts[0] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1970,9 +1999,9 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[2] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1989,9 +2018,9 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secrets/"
+	pathParts[4] = "/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2008,8 +2037,9 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2079,7 +2109,8 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2096,9 +2127,9 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2115,8 +2146,9 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2186,7 +2218,8 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2203,9 +2236,9 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2222,9 +2255,9 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[4] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2241,8 +2274,9 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2312,7 +2346,8 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2329,9 +2364,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[2] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2348,8 +2383,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2420,7 +2456,8 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2437,9 +2474,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2456,9 +2493,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[4] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2475,8 +2512,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2548,7 +2586,8 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2565,9 +2604,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2584,8 +2623,9 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2657,7 +2697,8 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2674,9 +2715,9 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2693,9 +2734,9 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2712,8 +2753,9 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2783,7 +2825,8 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2800,9 +2843,9 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2819,9 +2862,9 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2838,9 +2881,10 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/logs"
+	pathParts[6] = "/logs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -2913,7 +2957,8 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2930,9 +2975,9 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/repositories/"
+	pathParts[2] = "/actions/permissions/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -2949,8 +2994,9 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -3024,7 +3070,8 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3041,9 +3088,9 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3060,9 +3107,9 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/artifacts/"
+	pathParts[4] = "/actions/artifacts/"
 	{
 		// Encode "artifact_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3079,9 +3126,9 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/"
+	pathParts[6] = "/"
 	{
 		// Encode "archive_format" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3098,8 +3145,9 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3175,7 +3223,8 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3192,9 +3241,9 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3211,9 +3260,9 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/jobs/"
+	pathParts[4] = "/actions/jobs/"
 	{
 		// Encode "job_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3230,9 +3279,10 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/logs"
+	pathParts[6] = "/logs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3306,7 +3356,8 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3323,9 +3374,9 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3342,9 +3393,9 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3361,9 +3412,10 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/logs"
+	pathParts[6] = "/logs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3436,7 +3488,8 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3453,9 +3506,9 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/repositories/"
+	pathParts[2] = "/actions/permissions/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3472,8 +3525,9 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -3546,7 +3600,8 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3563,9 +3618,10 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[2] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3638,7 +3694,8 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3655,9 +3712,9 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3674,9 +3731,10 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[4] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3746,7 +3804,8 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3763,9 +3822,9 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3782,9 +3841,9 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/artifacts/"
+	pathParts[4] = "/actions/artifacts/"
 	{
 		// Encode "artifact_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3801,8 +3860,9 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3873,7 +3933,8 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories/"
+	var pathParts [5]string
+	pathParts[0] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3890,9 +3951,9 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[2] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3909,9 +3970,10 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secrets/public-key"
+	pathParts[4] = "/secrets/public-key"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -3981,7 +4043,8 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories/"
+	var pathParts [6]string
+	pathParts[0] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -3998,9 +4061,9 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[2] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4017,9 +4080,9 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secrets/"
+	pathParts[4] = "/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4036,8 +4099,9 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4107,7 +4171,8 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4124,9 +4189,10 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[2] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4197,7 +4263,8 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4214,9 +4281,9 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4233,9 +4300,10 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[4] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4305,7 +4373,8 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4322,9 +4391,9 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4341,9 +4410,9 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/jobs/"
+	pathParts[4] = "/actions/jobs/"
 	{
 		// Encode "job_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4360,8 +4429,9 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4432,7 +4502,8 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4449,9 +4520,10 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/public-key"
+	pathParts[2] = "/actions/secrets/public-key"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4521,7 +4593,8 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4538,9 +4611,9 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4557,8 +4630,9 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4629,7 +4703,8 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4646,9 +4721,9 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4665,9 +4740,10 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/secrets/public-key"
+	pathParts[4] = "/actions/secrets/public-key"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4737,7 +4813,8 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4754,9 +4831,9 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4773,9 +4850,9 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[4] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4792,8 +4869,9 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4863,7 +4941,8 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4880,9 +4959,9 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4899,9 +4978,9 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -4918,9 +4997,10 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/approvals"
+	pathParts[6] = "/approvals"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -4989,7 +5069,8 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5006,9 +5087,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[2] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5025,8 +5106,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -5096,7 +5178,8 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5113,9 +5196,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5132,9 +5215,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[4] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5151,8 +5234,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -5224,7 +5308,8 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5241,9 +5326,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5260,8 +5345,9 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -5331,7 +5417,8 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5348,9 +5435,9 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5367,9 +5454,9 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5386,8 +5473,9 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -5464,7 +5552,8 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5481,9 +5570,9 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5500,9 +5589,9 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5519,9 +5608,10 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/timing"
+	pathParts[6] = "/timing"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -5591,7 +5681,8 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5608,9 +5699,9 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5627,9 +5718,10 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/artifacts"
+	pathParts[4] = "/actions/artifacts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5737,7 +5829,8 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories/"
+	var pathParts [5]string
+	pathParts[0] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5754,9 +5847,9 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[2] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5773,9 +5866,10 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secrets"
+	pathParts[4] = "/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -5885,7 +5979,8 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5902,9 +5997,9 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5921,9 +6016,9 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -5940,9 +6035,10 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/jobs"
+	pathParts[6] = "/jobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6067,7 +6163,8 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6084,9 +6181,10 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets"
+	pathParts[2] = "/actions/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6196,7 +6294,8 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6213,9 +6312,9 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6232,9 +6331,10 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[4] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6342,7 +6442,8 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6359,9 +6460,9 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6378,9 +6479,10 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/secrets"
+	pathParts[4] = "/actions/secrets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6488,7 +6590,8 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6505,9 +6608,9 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6524,9 +6627,10 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/workflows"
+	pathParts[4] = "/actions/workflows"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6633,7 +6737,8 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6650,9 +6755,10 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/downloads"
+	pathParts[2] = "/actions/runners/downloads"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -6721,7 +6827,8 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6738,9 +6845,9 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6757,9 +6864,10 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners/downloads"
+	pathParts[4] = "/actions/runners/downloads"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -6830,7 +6938,8 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6847,9 +6956,9 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6866,9 +6975,10 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[4] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -6979,7 +7089,8 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -6996,9 +7107,10 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/repositories"
+	pathParts[2] = "/actions/permissions/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7108,7 +7220,8 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7125,9 +7238,10 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups"
+	pathParts[2] = "/actions/runner-groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7234,7 +7348,8 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7251,9 +7366,10 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners"
+	pathParts[2] = "/actions/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7360,7 +7476,8 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7377,9 +7494,9 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7396,9 +7513,10 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runners"
+	pathParts[4] = "/actions/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7508,7 +7626,8 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7525,9 +7644,9 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7544,9 +7663,10 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners"
+	pathParts[4] = "/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7654,7 +7774,8 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7671,9 +7792,9 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7690,9 +7811,9 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7709,9 +7830,10 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/artifacts"
+	pathParts[6] = "/artifacts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -7822,7 +7944,8 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7839,9 +7962,9 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -7858,9 +7981,10 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs"
+	pathParts[4] = "/actions/runs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -8058,7 +8182,8 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8075,9 +8200,9 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8094,9 +8219,9 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8113,9 +8238,10 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/rerun"
+	pathParts[6] = "/rerun"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -8190,7 +8316,8 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8207,9 +8334,9 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8226,9 +8353,9 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[4] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8245,8 +8372,9 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -8318,7 +8446,8 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8335,9 +8464,9 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8354,9 +8483,9 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[4] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8373,8 +8502,9 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -8447,7 +8577,8 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8464,9 +8595,9 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8483,9 +8614,9 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners/"
+	pathParts[4] = "/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8502,8 +8633,9 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -8573,7 +8705,8 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8590,9 +8723,9 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8609,9 +8742,9 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8628,9 +8761,10 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/retry"
+	pathParts[6] = "/retry"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -8708,7 +8842,8 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8725,9 +8860,9 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8744,9 +8879,9 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/runs/"
+	pathParts[4] = "/actions/runs/"
 	{
 		// Encode "run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8763,9 +8898,10 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/pending_deployments"
+	pathParts[6] = "/pending_deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -8846,7 +8982,8 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8863,9 +9000,10 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[2] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -8945,7 +9083,8 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8962,9 +9101,9 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -8981,9 +9120,10 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[4] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9068,7 +9208,8 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9085,9 +9226,10 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[2] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9173,7 +9315,8 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9190,9 +9333,9 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9209,9 +9352,10 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[4] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9296,7 +9440,8 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9313,9 +9458,9 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9332,9 +9477,10 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[4] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9418,7 +9564,8 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9435,9 +9582,9 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/secrets/"
+	pathParts[2] = "/actions/secrets/"
 	{
 		// Encode "secret_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9454,9 +9601,10 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[4] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9541,7 +9689,8 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9558,9 +9707,10 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/repositories"
+	pathParts[2] = "/actions/permissions/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9644,7 +9794,8 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9661,9 +9812,9 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9680,9 +9831,10 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners"
+	pathParts[4] = "/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -9766,7 +9918,8 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9783,9 +9936,9 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9802,8 +9955,9 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -9874,7 +10028,8 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/starred/"
+	var pathParts [4]string
+	pathParts[0] = "/user/starred/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9891,9 +10046,9 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9910,8 +10065,9 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -9981,7 +10137,8 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -9998,9 +10155,9 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10017,9 +10174,10 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[4] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10091,7 +10249,8 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications/threads/"
+	var pathParts [3]string
+	pathParts[0] = "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10108,9 +10267,10 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[2] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10192,7 +10352,9 @@ func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/feeds"
+	var pathParts [1]string
+	pathParts[0] = "/feeds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10260,7 +10422,8 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10277,9 +10440,9 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10296,9 +10459,10 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[4] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10366,7 +10530,8 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications/threads/"
+	var pathParts [2]string
+	pathParts[0] = "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10383,8 +10548,9 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10455,7 +10621,8 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications/threads/"
+	var pathParts [3]string
+	pathParts[0] = "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10472,9 +10639,10 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[2] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -10543,7 +10711,8 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10560,9 +10729,10 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -10668,7 +10838,9 @@ func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications"
+	var pathParts [1]string
+	pathParts[0] = "/notifications"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -10842,7 +11014,8 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [4]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10859,9 +11032,9 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/orgs/"
+	pathParts[2] = "/events/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -10878,8 +11051,9 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -10986,7 +11160,9 @@ func (c *Client) sendActivityListPublicEvents(ctx context.Context, params Activi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/events"
+	var pathParts [1]string
+	pathParts[0] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11092,7 +11268,8 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/networks/"
+	var pathParts [5]string
+	pathParts[0] = "/networks/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11109,9 +11286,9 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11128,9 +11305,10 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/events"
+	pathParts[4] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11236,7 +11414,8 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11253,9 +11432,10 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events/public"
+	pathParts[2] = "/events/public"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11361,7 +11541,8 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11378,9 +11559,10 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/events"
+	pathParts[2] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11488,7 +11670,8 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11505,9 +11688,10 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/received_events"
+	pathParts[2] = "/received_events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11613,7 +11797,8 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11630,9 +11815,10 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/received_events/public"
+	pathParts[2] = "/received_events/public"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11738,7 +11924,8 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11755,9 +11942,9 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11774,9 +11961,10 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/events"
+	pathParts[4] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -11882,7 +12070,8 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11899,9 +12088,9 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -11918,9 +12107,10 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/notifications"
+	pathParts[4] = "/notifications"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -12096,7 +12286,9 @@ func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/starred"
+	var pathParts [1]string
+	pathParts[0] = "/user/starred"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -12236,7 +12428,8 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12253,9 +12446,10 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/subscriptions"
+	pathParts[2] = "/subscriptions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -12361,7 +12555,9 @@ func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/subscriptions"
+	var pathParts [1]string
+	pathParts[0] = "/user/subscriptions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -12467,7 +12663,8 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12484,9 +12681,9 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12503,9 +12700,10 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/subscribers"
+	pathParts[4] = "/subscribers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -12617,7 +12815,9 @@ func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications"
+	var pathParts [1]string
+	pathParts[0] = "/notifications"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -12694,7 +12894,8 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12711,9 +12912,9 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12730,9 +12931,10 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/notifications"
+	pathParts[4] = "/notifications"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -12803,7 +13005,8 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications/threads/"
+	var pathParts [2]string
+	pathParts[0] = "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12820,8 +13023,9 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -12892,7 +13096,8 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12909,9 +13114,9 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -12928,9 +13133,10 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[4] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -13008,7 +13214,8 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/notifications/threads/"
+	var pathParts [3]string
+	pathParts[0] = "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13025,9 +13232,10 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/subscription"
+	pathParts[2] = "/subscription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -13100,7 +13308,8 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/starred/"
+	var pathParts [4]string
+	pathParts[0] = "/user/starred/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13117,9 +13326,9 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13136,8 +13345,9 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -13205,7 +13415,8 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/starred/"
+	var pathParts [4]string
+	pathParts[0] = "/user/starred/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13222,9 +13433,9 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13241,8 +13452,9 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -13315,7 +13527,8 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/installations/"
+	var pathParts [4]string
+	pathParts[0] = "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13332,9 +13545,9 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[2] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13351,8 +13564,9 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -13425,7 +13639,8 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/"
+	var pathParts [3]string
+	pathParts[0] = "/applications/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13442,9 +13657,10 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/token"
+	pathParts[2] = "/token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -13533,7 +13749,8 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13550,9 +13767,9 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13569,9 +13786,9 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/content_references/"
+	pathParts[4] = "/content_references/"
 	{
 		// Encode "content_reference_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13588,9 +13805,10 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/attachments"
+	pathParts[6] = "/attachments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -13664,7 +13882,8 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app-manifests/"
+	var pathParts [3]string
+	pathParts[0] = "/app-manifests/"
 	{
 		// Encode "code" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13681,9 +13900,10 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/conversions"
+	pathParts[2] = "/conversions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -13779,7 +13999,8 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/installations/"
+	var pathParts [3]string
+	pathParts[0] = "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13796,9 +14017,10 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/access_tokens"
+	pathParts[2] = "/access_tokens"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -13878,7 +14100,8 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/"
+	var pathParts [3]string
+	pathParts[0] = "/applications/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13895,9 +14118,10 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/grant"
+	pathParts[2] = "/grant"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -13973,7 +14197,8 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/installations/"
+	var pathParts [2]string
+	pathParts[0] = "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -13990,8 +14215,9 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -14062,7 +14288,8 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/"
+	var pathParts [3]string
+	pathParts[0] = "/applications/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14079,9 +14306,10 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/token"
+	pathParts[2] = "/token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -14159,7 +14387,9 @@ func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app"
+	var pathParts [1]string
+	pathParts[0] = "/app"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14234,7 +14464,8 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/apps/"
+	var pathParts [2]string
+	pathParts[0] = "/apps/"
 	{
 		// Encode "app_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14251,8 +14482,9 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14327,7 +14559,8 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/accounts/"
+	var pathParts [2]string
+	pathParts[0] = "/marketplace_listing/accounts/"
 	{
 		// Encode "account_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14344,8 +14577,9 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14420,7 +14654,8 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/stubbed/accounts/"
+	var pathParts [2]string
+	pathParts[0] = "/marketplace_listing/stubbed/accounts/"
 	{
 		// Encode "account_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14437,8 +14672,9 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14510,7 +14746,9 @@ func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *Webho
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/hook/config"
+	var pathParts [1]string
+	pathParts[0] = "/app/hook/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14581,7 +14819,8 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/hook/deliveries/"
+	var pathParts [2]string
+	pathParts[0] = "/app/hook/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14598,8 +14837,9 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -14675,7 +14915,8 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/plans/"
+	var pathParts [3]string
+	pathParts[0] = "/marketplace_listing/plans/"
 	{
 		// Encode "plan_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14692,9 +14933,10 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/accounts"
+	pathParts[2] = "/accounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -14842,7 +15084,8 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/stubbed/plans/"
+	var pathParts [3]string
+	pathParts[0] = "/marketplace_listing/stubbed/plans/"
 	{
 		// Encode "plan_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -14859,9 +15102,10 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/accounts"
+	pathParts[2] = "/accounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15007,7 +15251,8 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/installations/"
+	var pathParts [3]string
+	pathParts[0] = "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -15024,9 +15269,10 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[2] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15137,7 +15383,9 @@ func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/plans"
+	var pathParts [1]string
+	pathParts[0] = "/marketplace_listing/plans"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15248,7 +15496,9 @@ func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPl
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/marketplace_listing/stubbed/plans"
+	var pathParts [1]string
+	pathParts[0] = "/marketplace_listing/stubbed/plans"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15357,7 +15607,9 @@ func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/installation/repositories"
+	var pathParts [1]string
+	pathParts[0] = "/installation/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15465,7 +15717,9 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/marketplace_purchases"
+	var pathParts [1]string
+	pathParts[0] = "/user/marketplace_purchases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15573,7 +15827,9 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/marketplace_purchases/stubbed"
+	var pathParts [1]string
+	pathParts[0] = "/user/marketplace_purchases/stubbed"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15682,7 +15938,9 @@ func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/hook/deliveries"
+	var pathParts [1]string
+	pathParts[0] = "/app/hook/deliveries"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -15791,7 +16049,8 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/hook/deliveries/"
+	var pathParts [3]string
+	pathParts[0] = "/app/hook/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -15808,9 +16067,10 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/attempts"
+	pathParts[2] = "/attempts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -15883,7 +16143,8 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/installations/"
+	var pathParts [4]string
+	pathParts[0] = "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -15900,9 +16161,9 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repositories/"
+	pathParts[2] = "/repositories/"
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -15919,8 +16180,9 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -15993,7 +16255,8 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/"
+	var pathParts [3]string
+	pathParts[0] = "/applications/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16010,9 +16273,10 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/token"
+	pathParts[2] = "/token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -16092,7 +16356,9 @@ func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/installation/token"
+	var pathParts [1]string
+	pathParts[0] = "/installation/token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -16174,7 +16440,8 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/"
+	var pathParts [3]string
+	pathParts[0] = "/applications/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16191,9 +16458,10 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/token/scoped"
+	pathParts[2] = "/token/scoped"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -16269,7 +16537,8 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/installations/"
+	var pathParts [3]string
+	pathParts[0] = "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16286,9 +16555,10 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/suspended"
+	pathParts[2] = "/suspended"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -16359,7 +16629,8 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/installations/"
+	var pathParts [3]string
+	pathParts[0] = "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16376,9 +16647,10 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/suspended"
+	pathParts[2] = "/suspended"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -16466,7 +16738,9 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/app/hook/config"
+	var pathParts [1]string
+	pathParts[0] = "/app/hook/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -16544,7 +16818,8 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16561,9 +16836,10 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/actions"
+	pathParts[2] = "/settings/billing/actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -16638,7 +16914,8 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16655,9 +16932,10 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/actions"
+	pathParts[2] = "/settings/billing/actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -16732,7 +17010,8 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16749,9 +17028,10 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/actions"
+	pathParts[2] = "/settings/billing/actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -16823,7 +17103,8 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16840,9 +17121,10 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/packages"
+	pathParts[2] = "/settings/billing/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -16914,7 +17196,8 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -16931,9 +17214,10 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/packages"
+	pathParts[2] = "/settings/billing/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17005,7 +17289,8 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17022,9 +17307,10 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/packages"
+	pathParts[2] = "/settings/billing/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17096,7 +17382,8 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17113,9 +17400,10 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/shared-storage"
+	pathParts[2] = "/settings/billing/shared-storage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17187,7 +17475,8 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17204,9 +17493,10 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/shared-storage"
+	pathParts[2] = "/settings/billing/shared-storage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17278,7 +17568,8 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17295,9 +17586,10 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/settings/billing/shared-storage"
+	pathParts[2] = "/settings/billing/shared-storage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17373,7 +17665,8 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17390,9 +17683,9 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17409,9 +17702,10 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-suites"
+	pathParts[4] = "/check-suites"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -17487,7 +17781,8 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17504,9 +17799,9 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17523,9 +17818,9 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-runs/"
+	pathParts[4] = "/check-runs/"
 	{
 		// Encode "check_run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17542,8 +17837,9 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17616,7 +17912,8 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17633,9 +17930,9 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17652,9 +17949,9 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-suites/"
+	pathParts[4] = "/check-suites/"
 	{
 		// Encode "check_suite_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17671,8 +17968,9 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -17743,7 +18041,8 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17760,9 +18059,9 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17779,9 +18078,9 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-runs/"
+	pathParts[4] = "/check-runs/"
 	{
 		// Encode "check_run_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17798,9 +18097,10 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/annotations"
+	pathParts[6] = "/annotations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -17912,7 +18212,8 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17929,9 +18230,9 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17948,9 +18249,9 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -17967,9 +18268,10 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/check-runs"
+	pathParts[6] = "/check-runs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18148,7 +18450,8 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18165,9 +18468,9 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18184,9 +18487,9 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-suites/"
+	pathParts[4] = "/check-suites/"
 	{
 		// Encode "check_suite_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18203,9 +18506,10 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/check-runs"
+	pathParts[6] = "/check-runs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18368,7 +18672,8 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18385,9 +18690,9 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18404,9 +18709,9 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18423,9 +18728,10 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/check-suites"
+	pathParts[6] = "/check-suites"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -18570,7 +18876,8 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18587,9 +18894,9 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18606,9 +18913,9 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-suites/"
+	pathParts[4] = "/check-suites/"
 	{
 		// Encode "check_suite_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18625,9 +18932,10 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/rerequest"
+	pathParts[6] = "/rerequest"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -18699,7 +19007,8 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18716,9 +19025,9 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18735,9 +19044,10 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/check-suites/preferences"
+	pathParts[4] = "/check-suites/preferences"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -18866,7 +19176,8 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18883,9 +19194,9 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18902,9 +19213,9 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/analyses/"
+	pathParts[4] = "/code-scanning/analyses/"
 	{
 		// Encode "analysis_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -18921,8 +19232,9 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19017,7 +19329,8 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19034,9 +19347,9 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19053,9 +19366,9 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/alerts/"
+	pathParts[4] = "/code-scanning/alerts/"
 	{
 		// Encode "alert_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19075,8 +19388,9 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -19162,7 +19476,8 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19179,9 +19494,9 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19198,9 +19513,9 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/analyses/"
+	pathParts[4] = "/code-scanning/analyses/"
 	{
 		// Encode "analysis_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19217,8 +19532,9 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -19291,7 +19607,8 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19308,9 +19625,9 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19327,9 +19644,9 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/sarifs/"
+	pathParts[4] = "/code-scanning/sarifs/"
 	{
 		// Encode "sarif_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19346,8 +19663,9 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -19417,7 +19735,8 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19434,9 +19753,9 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19453,9 +19772,9 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/alerts/"
+	pathParts[4] = "/code-scanning/alerts/"
 	{
 		// Encode "alert_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19475,9 +19794,10 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/instances"
+	pathParts[6] = "/instances"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19610,7 +19930,8 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19627,9 +19948,9 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19646,9 +19967,10 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/alerts"
+	pathParts[4] = "/code-scanning/alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -19845,7 +20167,8 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19862,9 +20185,9 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -19881,9 +20204,10 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/analyses"
+	pathParts[4] = "/code-scanning/analyses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -20080,7 +20404,8 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20097,9 +20422,9 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20116,9 +20441,9 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/alerts/"
+	pathParts[4] = "/code-scanning/alerts/"
 	{
 		// Encode "alert_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20138,8 +20463,9 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -20245,7 +20571,8 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20262,9 +20589,9 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20281,9 +20608,10 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/code-scanning/sarifs"
+	pathParts[4] = "/code-scanning/sarifs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -20354,7 +20682,9 @@ func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/codes_of_conduct"
+	var pathParts [1]string
+	pathParts[0] = "/codes_of_conduct"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -20422,7 +20752,8 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/codes_of_conduct/"
+	var pathParts [2]string
+	pathParts[0] = "/codes_of_conduct/"
 	{
 		// Encode "key" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20439,8 +20770,9 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -20508,7 +20840,9 @@ func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/emojis"
+	var pathParts [1]string
+	pathParts[0] = "/emojis"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -20580,7 +20914,8 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [6]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20597,9 +20932,9 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20616,9 +20951,9 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/organizations/"
+	pathParts[4] = "/organizations/"
 	{
 		// Encode "org_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20635,8 +20970,9 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -20706,7 +21042,8 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [6]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20723,9 +21060,9 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20742,9 +21079,9 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners/"
+	pathParts[4] = "/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20761,8 +21098,9 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -20837,7 +21175,8 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20854,9 +21193,10 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/registration-token"
+	pathParts[2] = "/actions/runners/registration-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -20933,7 +21273,8 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -20950,9 +21291,10 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/remove-token"
+	pathParts[2] = "/actions/runners/remove-token"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -21030,7 +21372,8 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21047,9 +21390,10 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups"
+	pathParts[2] = "/actions/runner-groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -21121,7 +21465,8 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21138,9 +21483,9 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups/"
+	pathParts[2] = "/Groups/"
 	{
 		// Encode "scim_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21157,8 +21502,9 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21228,7 +21574,8 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21245,9 +21592,9 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[2] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21264,8 +21611,9 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21334,7 +21682,8 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21351,9 +21700,9 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21370,8 +21719,9 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21440,7 +21790,8 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21457,9 +21808,9 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users/"
+	pathParts[2] = "/Users/"
 	{
 		// Encode "scim_user_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21476,8 +21827,9 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21549,7 +21901,8 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21566,9 +21919,9 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/organizations/"
+	pathParts[2] = "/actions/permissions/organizations/"
 	{
 		// Encode "org_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21585,8 +21938,9 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21658,7 +22012,8 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21675,9 +22030,9 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/organizations/"
+	pathParts[2] = "/actions/permissions/organizations/"
 	{
 		// Encode "org_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21694,8 +22049,9 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -21767,7 +22123,8 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21784,9 +22141,10 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[2] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -21855,7 +22213,8 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -21872,9 +22231,10 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/audit-log"
+	pathParts[2] = "/audit-log"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22066,7 +22426,8 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22083,9 +22444,10 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[2] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -22154,7 +22516,8 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22171,9 +22534,9 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups/"
+	pathParts[2] = "/Groups/"
 	{
 		// Encode "scim_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22190,8 +22553,9 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22281,7 +22645,8 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22298,9 +22663,9 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users/"
+	pathParts[2] = "/Users/"
 	{
 		// Encode "scim_user_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22317,8 +22682,9 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -22387,7 +22753,8 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22404,9 +22771,9 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/"
+	pathParts[2] = "/actions/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22423,8 +22790,9 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -22493,7 +22861,8 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22510,9 +22879,9 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22529,8 +22898,9 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -22599,7 +22969,8 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [5]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22616,9 +22987,9 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22635,9 +23006,10 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/organizations"
+	pathParts[4] = "/organizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22744,7 +23116,8 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22761,9 +23134,10 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups"
+	pathParts[2] = "/Groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -22929,7 +23303,8 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -22946,9 +23321,10 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users"
+	pathParts[2] = "/Users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23072,7 +23448,8 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23089,9 +23466,10 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners/downloads"
+	pathParts[2] = "/actions/runners/downloads"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -23163,7 +23541,8 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23180,9 +23559,10 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/organizations"
+	pathParts[2] = "/actions/permissions/organizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23289,7 +23669,8 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23306,9 +23687,10 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups"
+	pathParts[2] = "/actions/runner-groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23415,7 +23797,8 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23432,9 +23815,10 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runners"
+	pathParts[2] = "/actions/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23541,7 +23925,8 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [5]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23558,9 +23943,9 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23577,9 +23962,10 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners"
+	pathParts[4] = "/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -23698,7 +24084,8 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23715,9 +24102,10 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups"
+	pathParts[2] = "/Groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -23803,7 +24191,8 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23820,9 +24209,10 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users"
+	pathParts[2] = "/Users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -23897,7 +24287,8 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [6]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23914,9 +24305,9 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23933,9 +24324,9 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/organizations/"
+	pathParts[4] = "/organizations/"
 	{
 		// Encode "org_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -23952,8 +24343,9 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24023,7 +24415,8 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [6]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24040,9 +24433,9 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24059,9 +24452,9 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners/"
+	pathParts[4] = "/runners/"
 	{
 		// Encode "runner_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24078,8 +24471,9 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24151,7 +24545,8 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24168,9 +24563,10 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/selected-actions"
+	pathParts[2] = "/actions/permissions/selected-actions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24251,7 +24647,8 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24268,9 +24665,10 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions"
+	pathParts[2] = "/actions/permissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24356,7 +24754,8 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24373,9 +24772,9 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups/"
+	pathParts[2] = "/Groups/"
 	{
 		// Encode "scim_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24392,8 +24791,9 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24482,7 +24882,8 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24499,9 +24900,9 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users/"
+	pathParts[2] = "/Users/"
 	{
 		// Encode "scim_user_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24518,8 +24919,9 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24601,7 +25003,8 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [5]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24618,9 +25021,9 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24637,9 +25040,10 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/organizations"
+	pathParts[4] = "/organizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24723,7 +25127,8 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [3]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24740,9 +25145,10 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/permissions/organizations"
+	pathParts[2] = "/actions/permissions/organizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24823,7 +25229,8 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [5]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24840,9 +25247,9 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24859,9 +25266,10 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/runners"
+	pathParts[4] = "/runners"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -24946,7 +25354,8 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24963,9 +25372,9 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Groups/"
+	pathParts[2] = "/Groups/"
 	{
 		// Encode "scim_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -24982,8 +25391,9 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -25085,7 +25495,8 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25102,9 +25513,9 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users/"
+	pathParts[2] = "/Users/"
 	{
 		// Encode "scim_user_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25121,8 +25532,9 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -25210,7 +25622,8 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/enterprises/"
+	var pathParts [4]string
+	pathParts[0] = "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25227,9 +25640,9 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/actions/runner-groups/"
+	pathParts[2] = "/actions/runner-groups/"
 	{
 		// Encode "runner_group_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25246,8 +25659,9 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -25318,7 +25732,8 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25335,9 +25750,10 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/star"
+	pathParts[2] = "/star"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -25416,7 +25832,9 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists"
+	var pathParts [1]string
+	pathParts[0] = "/gists"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -25496,7 +25914,8 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25513,9 +25932,10 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[2] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -25586,7 +26006,8 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [2]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25603,8 +26024,9 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -25672,7 +26094,8 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [4]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25689,9 +26112,9 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[2] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25708,8 +26131,9 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -25777,7 +26201,8 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25794,9 +26219,10 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/forks"
+	pathParts[2] = "/forks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -25864,7 +26290,8 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [2]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25881,8 +26308,9 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -25950,7 +26378,8 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [4]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25967,9 +26396,9 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[2] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -25986,8 +26415,9 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -26055,7 +26485,8 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [4]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26072,9 +26503,9 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26091,8 +26522,9 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -26161,7 +26593,9 @@ func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists"
+	var pathParts [1]string
+	pathParts[0] = "/gists"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26284,7 +26718,8 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26301,9 +26736,10 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[2] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26409,7 +26845,8 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26426,9 +26863,10 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/commits"
+	pathParts[2] = "/commits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26534,7 +26972,8 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26551,9 +26990,10 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/gists"
+	pathParts[2] = "/gists"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26676,7 +27116,8 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -26693,9 +27134,10 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/forks"
+	pathParts[2] = "/forks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26804,7 +27246,9 @@ func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublic
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/public"
+	var pathParts [1]string
+	pathParts[0] = "/gists/public"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -26927,7 +27371,9 @@ func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/starred"
+	var pathParts [1]string
+	pathParts[0] = "/gists/starred"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -27052,7 +27498,8 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27069,9 +27516,10 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/star"
+	pathParts[2] = "/star"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -27139,7 +27587,8 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [3]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27156,9 +27605,10 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/star"
+	pathParts[2] = "/star"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -27235,7 +27685,8 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gists/"
+	var pathParts [4]string
+	pathParts[0] = "/gists/"
 	{
 		// Encode "gist_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27252,9 +27703,9 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[2] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27271,8 +27722,9 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -27343,7 +27795,8 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27360,9 +27813,9 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27379,9 +27832,10 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/blobs"
+	pathParts[4] = "/git/blobs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -27485,7 +27939,8 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27502,9 +27957,9 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27521,9 +27976,10 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/commits"
+	pathParts[4] = "/git/commits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -27596,7 +28052,8 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27613,9 +28070,9 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27632,9 +28089,10 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/refs"
+	pathParts[4] = "/git/refs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -27750,7 +28208,8 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27767,9 +28226,9 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27786,9 +28245,10 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/tags"
+	pathParts[4] = "/git/tags"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -27874,7 +28334,8 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27891,9 +28352,9 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -27910,9 +28371,10 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/trees"
+	pathParts[4] = "/git/trees"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -27983,7 +28445,8 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28000,9 +28463,9 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28019,9 +28482,9 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/refs/"
+	pathParts[4] = "/git/refs/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28038,8 +28501,9 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -28108,7 +28572,8 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28125,9 +28590,9 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28144,9 +28609,9 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/blobs/"
+	pathParts[4] = "/git/blobs/"
 	{
 		// Encode "file_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28163,8 +28628,9 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -28265,7 +28731,8 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28282,9 +28749,9 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28301,9 +28768,9 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/commits/"
+	pathParts[4] = "/git/commits/"
 	{
 		// Encode "commit_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28320,8 +28787,9 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -28396,7 +28864,8 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28413,9 +28882,9 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28432,9 +28901,9 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/ref/"
+	pathParts[4] = "/git/ref/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28451,8 +28920,9 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -28551,7 +29021,8 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28568,9 +29039,9 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28587,9 +29058,9 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/tags/"
+	pathParts[4] = "/git/tags/"
 	{
 		// Encode "tag_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28606,8 +29077,9 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -28678,7 +29150,8 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28695,9 +29168,9 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28714,9 +29187,9 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/trees/"
+	pathParts[4] = "/git/trees/"
 	{
 		// Encode "tree_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28733,8 +29206,9 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -28837,7 +29311,8 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28854,9 +29329,9 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28873,9 +29348,9 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/matching-refs/"
+	pathParts[4] = "/git/matching-refs/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -28892,8 +29367,9 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -28999,7 +29475,8 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29016,9 +29493,9 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29035,9 +29512,9 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/git/refs/"
+	pathParts[4] = "/git/refs/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29054,8 +29531,9 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -29127,7 +29605,9 @@ func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res Gitignor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gitignore/templates"
+	var pathParts [1]string
+	pathParts[0] = "/gitignore/templates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -29197,7 +29677,8 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/gitignore/templates/"
+	var pathParts [2]string
+	pathParts[0] = "/gitignore/templates/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29214,8 +29695,9 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -29283,7 +29765,9 @@ func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/interaction-limits"
+	var pathParts [1]string
+	pathParts[0] = "/user/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -29352,7 +29836,8 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29369,9 +29854,10 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/interaction-limits"
+	pathParts[2] = "/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -29442,7 +29928,8 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29459,9 +29946,9 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29478,9 +29965,10 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/interaction-limits"
+	pathParts[4] = "/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -29559,7 +30047,9 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/interaction-limits"
+	var pathParts [1]string
+	pathParts[0] = "/user/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -29642,7 +30132,8 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29659,9 +30150,10 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/interaction-limits"
+	pathParts[2] = "/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -29744,7 +30236,8 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29761,9 +30254,9 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29780,9 +30273,10 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/interaction-limits"
+	pathParts[4] = "/interaction-limits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -29853,7 +30347,8 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29870,9 +30365,9 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29889,9 +30384,9 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -29908,9 +30403,10 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/assignees"
+	pathParts[6] = "/assignees"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -29984,7 +30480,8 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30001,9 +30498,9 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30020,9 +30517,9 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/assignees/"
+	pathParts[4] = "/assignees/"
 	{
 		// Encode "assignee" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30039,8 +30536,9 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -30117,7 +30615,8 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30134,9 +30633,9 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30153,9 +30652,10 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues"
+	pathParts[4] = "/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -30232,7 +30732,8 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30249,9 +30750,9 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30268,9 +30769,9 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30287,9 +30788,10 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -30360,7 +30862,8 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30377,9 +30880,9 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30396,9 +30899,10 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/labels"
+	pathParts[4] = "/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -30478,7 +30982,8 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30495,9 +31000,9 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30514,9 +31019,10 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones"
+	pathParts[4] = "/milestones"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -30587,7 +31093,8 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30604,9 +31111,9 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30623,9 +31130,9 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30642,8 +31149,9 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -30711,7 +31219,8 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30728,9 +31237,9 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30747,9 +31256,9 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/labels/"
+	pathParts[4] = "/labels/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30766,8 +31275,9 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -30835,7 +31345,8 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30852,9 +31363,9 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30871,9 +31382,9 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones/"
+	pathParts[4] = "/milestones/"
 	{
 		// Encode "milestone_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30890,8 +31401,9 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -30977,7 +31489,8 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -30994,9 +31507,9 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31013,9 +31526,9 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31032,8 +31545,9 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -31101,7 +31615,8 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31118,9 +31633,9 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31137,9 +31652,9 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31156,8 +31671,9 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -31225,7 +31741,8 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31242,9 +31759,9 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31261,9 +31778,9 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/events/"
+	pathParts[4] = "/issues/events/"
 	{
 		// Encode "event_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31280,8 +31797,9 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -31349,7 +31867,8 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31366,9 +31885,9 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31385,9 +31904,9 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/labels/"
+	pathParts[4] = "/labels/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31404,8 +31923,9 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -31473,7 +31993,8 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31490,9 +32011,9 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31509,9 +32030,9 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones/"
+	pathParts[4] = "/milestones/"
 	{
 		// Encode "milestone_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31528,8 +32049,9 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -31609,7 +32131,9 @@ func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/issues"
+	var pathParts [1]string
+	pathParts[0] = "/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -31886,7 +32410,8 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31903,9 +32428,9 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -31922,9 +32447,10 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/assignees"
+	pathParts[4] = "/assignees"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32030,7 +32556,8 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32047,9 +32574,9 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32066,9 +32593,9 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32085,9 +32612,10 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32210,7 +32738,8 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32227,9 +32756,9 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32246,9 +32775,10 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments"
+	pathParts[4] = "/issues/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32405,7 +32935,8 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32422,9 +32953,9 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32441,9 +32972,10 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/events"
+	pathParts[4] = "/issues/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32557,7 +33089,9 @@ func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/issues"
+	var pathParts [1]string
+	pathParts[0] = "/user/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -32773,7 +33307,8 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -32790,9 +33325,10 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/issues"
+	pathParts[2] = "/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33008,7 +33544,8 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33025,9 +33562,9 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33044,9 +33581,10 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues"
+	pathParts[4] = "/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33305,7 +33843,8 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33322,9 +33861,9 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33341,9 +33880,9 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones/"
+	pathParts[4] = "/milestones/"
 	{
 		// Encode "milestone_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33360,9 +33899,10 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/labels"
+	pathParts[6] = "/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33468,7 +34008,8 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33485,9 +34026,9 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33504,9 +34045,10 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/labels"
+	pathParts[4] = "/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33612,7 +34154,8 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33629,9 +34172,9 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33648,9 +34191,9 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33667,9 +34210,10 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/labels"
+	pathParts[6] = "/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33775,7 +34319,8 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33792,9 +34337,9 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -33811,9 +34356,10 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones"
+	pathParts[4] = "/milestones"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -33989,7 +34535,8 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34006,9 +34553,9 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34025,9 +34572,9 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34044,9 +34591,10 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/lock"
+	pathParts[6] = "/lock"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -34117,7 +34665,8 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34134,9 +34683,9 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34153,9 +34702,9 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34172,9 +34721,10 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/labels"
+	pathParts[6] = "/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34242,7 +34792,8 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34259,9 +34810,9 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34278,9 +34829,9 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34297,9 +34848,10 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/assignees"
+	pathParts[6] = "/assignees"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34371,7 +34923,8 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34388,9 +34941,9 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34407,9 +34960,9 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34426,9 +34979,9 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/labels/"
+	pathParts[6] = "/labels/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34445,8 +34998,9 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34514,7 +35068,8 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34531,9 +35086,9 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34550,9 +35105,9 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34569,9 +35124,10 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/lock"
+	pathParts[6] = "/lock"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34655,7 +35211,8 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34672,9 +35229,9 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34691,9 +35248,9 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34710,8 +35267,9 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -34782,7 +35340,8 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34799,9 +35358,9 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34818,9 +35377,9 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34837,8 +35396,9 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -34909,7 +35469,8 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34926,9 +35487,9 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34945,9 +35506,9 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/labels/"
+	pathParts[4] = "/labels/"
 	{
 		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -34964,8 +35525,9 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -35052,7 +35614,8 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35069,9 +35632,9 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35088,9 +35651,9 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/milestones/"
+	pathParts[4] = "/milestones/"
 	{
 		// Encode "milestone_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35107,8 +35670,9 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -35179,7 +35743,8 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/licenses/"
+	var pathParts [2]string
+	pathParts[0] = "/licenses/"
 	{
 		// Encode "license" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35196,8 +35761,9 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -35265,7 +35831,9 @@ func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params Lice
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/licenses"
+	var pathParts [1]string
+	pathParts[0] = "/licenses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35392,7 +35960,8 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35409,9 +35978,9 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35428,9 +35997,10 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/license"
+	pathParts[4] = "/license"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -35507,7 +36077,9 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/markdown"
+	var pathParts [1]string
+	pathParts[0] = "/markdown"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -35592,7 +36164,9 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/markdown/raw"
+	var pathParts [1]string
+	pathParts[0] = "/markdown/raw"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -35667,7 +36241,9 @@ func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/meta"
+	var pathParts [1]string
+	pathParts[0] = "/meta"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -35735,7 +36311,9 @@ func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/octocat"
+	var pathParts [1]string
+	pathParts[0] = "/octocat"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -35824,7 +36402,9 @@ func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err erro
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/zen"
+	var pathParts [1]string
+	pathParts[0] = "/zen"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -35892,7 +36472,9 @@ func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/"
+	var pathParts [1]string
+	pathParts[0] = "/"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -35960,7 +36542,8 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35977,9 +36560,9 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -35996,9 +36579,10 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import"
+	pathParts[4] = "/import"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36070,7 +36654,8 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations/"
+	var pathParts [3]string
+	pathParts[0] = "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36087,9 +36672,10 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/archive"
+	pathParts[2] = "/archive"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36158,7 +36744,8 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36175,9 +36762,9 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations/"
+	pathParts[2] = "/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36194,9 +36781,10 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/archive"
+	pathParts[4] = "/archive"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36264,7 +36852,8 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36281,9 +36870,9 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations/"
+	pathParts[2] = "/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36300,9 +36889,10 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/archive"
+	pathParts[4] = "/archive"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -36390,7 +36980,8 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations/"
+	var pathParts [3]string
+	pathParts[0] = "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36407,9 +36998,10 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/archive"
+	pathParts[2] = "/archive"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -36484,7 +37076,8 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36501,9 +37094,9 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36520,9 +37113,10 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import/authors"
+	pathParts[4] = "/import/authors"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -36663,7 +37257,8 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36680,9 +37275,9 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36699,9 +37294,10 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import"
+	pathParts[4] = "/import"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -36769,7 +37365,8 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36786,9 +37383,9 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36805,9 +37402,10 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import/large_files"
+	pathParts[4] = "/import/large_files"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -36882,7 +37480,8 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations/"
+	var pathParts [2]string
+	pathParts[0] = "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -36899,8 +37498,9 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37000,7 +37600,8 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37017,9 +37618,9 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations/"
+	pathParts[2] = "/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37036,8 +37637,9 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37132,7 +37734,9 @@ func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations"
+	var pathParts [1]string
+	pathParts[0] = "/user/migrations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37238,7 +37842,8 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37255,9 +37860,10 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations"
+	pathParts[2] = "/migrations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37386,7 +37992,8 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37403,9 +38010,9 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations/"
+	pathParts[2] = "/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37422,9 +38029,10 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[4] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37530,7 +38138,8 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations/"
+	var pathParts [3]string
+	pathParts[0] = "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37547,9 +38156,10 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repositories"
+	pathParts[2] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -37656,7 +38266,8 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37673,9 +38284,9 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37692,9 +38303,9 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import/authors/"
+	pathParts[4] = "/import/authors/"
 	{
 		// Encode "author_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37711,8 +38322,9 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -37795,7 +38407,8 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37812,9 +38425,9 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -37831,9 +38444,10 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import/lfs"
+	pathParts[4] = "/import/lfs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -37913,7 +38527,9 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations"
+	var pathParts [1]string
+	pathParts[0] = "/user/migrations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -37993,7 +38609,8 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38010,9 +38627,10 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations"
+	pathParts[2] = "/migrations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -38092,7 +38710,8 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38109,9 +38728,9 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38128,9 +38747,10 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import"
+	pathParts[4] = "/import"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -38205,7 +38825,8 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/migrations/"
+	var pathParts [5]string
+	pathParts[0] = "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38222,9 +38843,9 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[2] = "/repos/"
 	{
 		// Encode "repo_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38241,9 +38862,10 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/lock"
+	pathParts[4] = "/lock"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -38313,7 +38935,8 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38330,9 +38953,9 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/migrations/"
+	pathParts[2] = "/migrations/"
 	{
 		// Encode "migration_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38349,9 +38972,9 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[4] = "/repos/"
 	{
 		// Encode "repo_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38368,9 +38991,10 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/lock"
+	pathParts[6] = "/lock"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -38440,7 +39064,8 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38457,9 +39082,9 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38476,9 +39101,10 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/import"
+	pathParts[4] = "/import"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -38594,7 +39220,9 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations"
+	var pathParts [1]string
+	pathParts[0] = "/authorizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -38674,7 +39302,8 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations/"
+	var pathParts [2]string
+	pathParts[0] = "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38691,8 +39320,9 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -38772,7 +39402,8 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/grants/"
+	var pathParts [2]string
+	pathParts[0] = "/applications/grants/"
 	{
 		// Encode "grant_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38789,8 +39420,9 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -38867,7 +39499,8 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations/"
+	var pathParts [2]string
+	pathParts[0] = "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38884,8 +39517,9 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -38962,7 +39596,8 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/grants/"
+	var pathParts [2]string
+	pathParts[0] = "/applications/grants/"
 	{
 		// Encode "grant_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -38979,8 +39614,9 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -39085,7 +39721,8 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations/clients/"
+	var pathParts [2]string
+	pathParts[0] = "/authorizations/clients/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39102,8 +39739,9 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -39206,7 +39844,8 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations/clients/"
+	var pathParts [4]string
+	pathParts[0] = "/authorizations/clients/"
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39223,9 +39862,9 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "fingerprint" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39242,8 +39881,9 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -39323,7 +39963,9 @@ func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations"
+	var pathParts [1]string
+	pathParts[0] = "/authorizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39466,7 +40108,9 @@ func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params O
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/applications/grants"
+	var pathParts [1]string
+	pathParts[0] = "/applications/grants"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -39618,7 +40262,8 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/authorizations/"
+	var pathParts [2]string
+	pathParts[0] = "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39635,8 +40280,9 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -39707,7 +40353,8 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39724,9 +40371,9 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/blocks/"
+	pathParts[2] = "/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39743,8 +40390,9 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -39815,7 +40463,8 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39832,9 +40481,9 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/invitations/"
+	pathParts[2] = "/invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39851,8 +40500,9 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -39920,7 +40570,8 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39937,9 +40588,9 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/blocks/"
+	pathParts[2] = "/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -39956,8 +40607,9 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -40025,7 +40677,8 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40042,9 +40695,9 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members/"
+	pathParts[2] = "/members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40061,8 +40714,9 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -40130,7 +40784,8 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40147,9 +40802,9 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/public_members/"
+	pathParts[2] = "/public_members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40166,8 +40821,9 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -40239,7 +40895,8 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40256,9 +40913,9 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/outside_collaborators/"
+	pathParts[2] = "/outside_collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40275,8 +40932,9 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -40368,7 +41026,8 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40385,9 +41044,10 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/invitations"
+	pathParts[2] = "/invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -40467,7 +41127,8 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40484,9 +41145,10 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks"
+	pathParts[2] = "/hooks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -40557,7 +41219,8 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40574,9 +41237,9 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40593,8 +41256,9 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -40670,7 +41334,8 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [2]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40687,8 +41352,9 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -40761,7 +41427,8 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40778,9 +41445,10 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/audit-log"
+	pathParts[2] = "/audit-log"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -40971,7 +41639,8 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/memberships/orgs/"
+	var pathParts [2]string
+	pathParts[0] = "/user/memberships/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -40988,8 +41657,9 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41059,7 +41729,8 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41076,9 +41747,9 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41095,8 +41766,9 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41166,7 +41838,8 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41183,9 +41856,9 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41202,8 +41875,9 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41275,7 +41949,8 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41292,9 +41967,9 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41311,9 +41986,10 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/config"
+	pathParts[4] = "/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41381,7 +42057,8 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41398,9 +42075,9 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41417,9 +42094,9 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deliveries/"
+	pathParts[4] = "/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41436,8 +42113,9 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41508,7 +42186,9 @@ func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res O
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/organizations"
+	var pathParts [1]string
+	pathParts[0] = "/organizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41614,7 +42294,8 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41631,9 +42312,10 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/blocks"
+	pathParts[2] = "/blocks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -41702,7 +42384,8 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41719,9 +42402,10 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/failed_invitations"
+	pathParts[2] = "/failed_invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41832,7 +42516,9 @@ func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params Or
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/orgs"
+	var pathParts [1]string
+	pathParts[0] = "/user/orgs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -41943,7 +42629,8 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -41960,9 +42647,10 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/orgs"
+	pathParts[2] = "/orgs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42069,7 +42757,8 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42086,9 +42775,9 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/invitations/"
+	pathParts[2] = "/invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42105,9 +42794,10 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[4] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42214,7 +42904,8 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42231,9 +42922,10 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members"
+	pathParts[2] = "/members"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42373,7 +43065,9 @@ func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/memberships/orgs"
+	var pathParts [1]string
+	pathParts[0] = "/user/memberships/orgs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42496,7 +43190,8 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42513,9 +43208,10 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/outside_collaborators"
+	pathParts[2] = "/outside_collaborators"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42641,7 +43337,8 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42658,9 +43355,10 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/invitations"
+	pathParts[2] = "/invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42766,7 +43464,8 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42783,9 +43482,10 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/public_members"
+	pathParts[2] = "/public_members"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -42898,7 +43598,8 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -42915,9 +43616,10 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/credential-authorizations"
+	pathParts[2] = "/credential-authorizations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -42985,7 +43687,8 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43002,9 +43705,9 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43021,9 +43724,10 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deliveries"
+	pathParts[4] = "/deliveries"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43129,7 +43833,8 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43146,9 +43851,10 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks"
+	pathParts[2] = "/hooks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -43255,7 +43961,8 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43272,9 +43979,9 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43291,9 +43998,10 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pings"
+	pathParts[4] = "/pings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -43361,7 +44069,8 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43378,9 +44087,9 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43397,9 +44106,9 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deliveries/"
+	pathParts[4] = "/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43416,9 +44125,10 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/attempts"
+	pathParts[6] = "/attempts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -43487,7 +44197,8 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43504,9 +44215,9 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members/"
+	pathParts[2] = "/members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43523,8 +44234,9 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -43596,7 +44308,8 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43613,9 +44326,9 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43632,8 +44345,9 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -43701,7 +44415,8 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43718,9 +44433,9 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/outside_collaborators/"
+	pathParts[2] = "/outside_collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43737,8 +44452,9 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -43806,7 +44522,8 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43823,9 +44540,9 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/public_members/"
+	pathParts[2] = "/public_members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43842,8 +44559,9 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -43917,7 +44635,8 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43934,9 +44653,9 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/credential-authorizations/"
+	pathParts[2] = "/credential-authorizations/"
 	{
 		// Encode "credential_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -43953,8 +44672,9 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -44051,7 +44771,8 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44068,9 +44789,9 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44087,8 +44808,9 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -44163,7 +44885,8 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44180,9 +44903,9 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/public_members/"
+	pathParts[2] = "/public_members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44199,8 +44922,9 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -44268,7 +44992,8 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44285,9 +45010,9 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/blocks/"
+	pathParts[2] = "/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44304,8 +45029,9 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -44382,7 +45108,8 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/memberships/orgs/"
+	var pathParts [2]string
+	pathParts[0] = "/user/memberships/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44399,8 +45126,9 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -44491,7 +45219,8 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44508,9 +45237,9 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44527,8 +45256,9 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -44619,7 +45349,8 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44636,9 +45367,9 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[2] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44655,9 +45386,10 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/config"
+	pathParts[4] = "/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -44733,7 +45465,8 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [4]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44750,9 +45483,9 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44769,8 +45502,9 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -44845,7 +45579,8 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44862,9 +45597,9 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44881,9 +45616,9 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44900,8 +45635,9 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -44976,7 +45712,8 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [6]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -44993,9 +45730,9 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45012,9 +45749,9 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45031,8 +45768,9 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -45105,7 +45843,8 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [6]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45122,9 +45861,9 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45141,9 +45880,9 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[4] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45160,8 +45899,9 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -45236,7 +45976,8 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45253,9 +45994,9 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45272,9 +46013,9 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45291,9 +46032,9 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45310,8 +46051,9 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -45386,7 +46128,8 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [8]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45403,9 +46146,9 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45422,9 +46165,9 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45441,9 +46184,9 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45460,8 +46203,9 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -45531,7 +46275,8 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [5]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45548,9 +46293,9 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45567,9 +46312,10 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/versions"
+	pathParts[4] = "/versions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45694,7 +46440,8 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45711,9 +46458,9 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45730,9 +46477,9 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45749,9 +46496,10 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions"
+	pathParts[6] = "/versions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -45876,7 +46624,8 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [7]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45893,9 +46642,9 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45912,9 +46661,9 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -45931,9 +46680,10 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions"
+	pathParts[6] = "/versions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46003,7 +46753,8 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [4]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46020,9 +46771,9 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46039,8 +46790,9 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46110,7 +46862,8 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46127,9 +46880,9 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46146,9 +46899,9 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46165,8 +46918,9 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46236,7 +46990,8 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [6]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46253,9 +47008,9 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46272,9 +47027,9 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46291,8 +47046,9 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46362,7 +47118,8 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [6]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46379,9 +47136,9 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46398,9 +47155,9 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[4] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46417,8 +47174,9 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46488,7 +47246,8 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46505,9 +47264,9 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46524,9 +47283,9 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46543,9 +47302,9 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46562,8 +47321,9 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46634,7 +47394,8 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [8]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46651,9 +47412,9 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46670,9 +47431,9 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46689,9 +47450,9 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46708,8 +47469,9 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -46779,7 +47541,9 @@ func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages"
+	var pathParts [1]string
+	pathParts[0] = "/user/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -46884,7 +47648,8 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -46901,9 +47666,10 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages"
+	pathParts[2] = "/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47008,7 +47774,8 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47025,9 +47792,10 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages"
+	pathParts[2] = "/packages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47139,7 +47907,8 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [5]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47156,9 +47925,9 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47175,9 +47944,10 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[4] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47277,7 +48047,8 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47294,9 +48065,9 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47313,9 +48084,9 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47332,9 +48103,10 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[6] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47434,7 +48206,8 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [7]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47451,9 +48224,9 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47470,9 +48243,9 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47489,9 +48262,10 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[6] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -47589,7 +48363,8 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/packages/"
+	var pathParts [7]string
+	pathParts[0] = "/user/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47606,9 +48381,9 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47625,9 +48400,9 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[4] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47644,9 +48419,10 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[6] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -47725,7 +48501,8 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [9]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47742,9 +48519,9 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47761,9 +48538,9 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47780,9 +48557,9 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47799,9 +48576,10 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[8] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -47880,7 +48658,8 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [9]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47897,9 +48676,9 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/packages/"
+	pathParts[2] = "/packages/"
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47916,9 +48695,9 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "package_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47935,9 +48714,9 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/versions/"
+	pathParts[6] = "/versions/"
 	{
 		// Encode "package_version_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -47954,9 +48733,10 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/restore"
+	pathParts[8] = "/restore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -48041,7 +48821,8 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [4]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48058,9 +48839,9 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[2] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48077,8 +48858,9 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -48149,7 +48931,8 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48166,9 +48949,10 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/columns"
+	pathParts[2] = "/columns"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -48239,7 +49023,9 @@ func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, req
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/projects"
+	var pathParts [1]string
+	pathParts[0] = "/user/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -48312,7 +49098,8 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48329,9 +49116,10 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[2] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -48404,7 +49192,8 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48421,9 +49210,9 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48440,9 +49229,10 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[4] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -48513,7 +49303,8 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48530,8 +49321,9 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -48599,7 +49391,8 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/cards/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48616,8 +49409,9 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -48685,7 +49479,8 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48702,8 +49497,9 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -48773,7 +49569,8 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48790,8 +49587,9 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -48859,7 +49657,8 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/cards/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48876,8 +49675,9 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -48945,7 +49745,8 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -48962,8 +49763,9 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -49033,7 +49835,8 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [5]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49050,9 +49853,9 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[2] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49069,9 +49872,10 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/permission"
+	pathParts[4] = "/permission"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -49139,7 +49943,8 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49156,9 +49961,10 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cards"
+	pathParts[2] = "/cards"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49285,7 +50091,8 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49302,9 +50109,10 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/collaborators"
+	pathParts[2] = "/collaborators"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49427,7 +50235,8 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49444,9 +50253,10 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/columns"
+	pathParts[2] = "/columns"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49554,7 +50364,8 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49571,9 +50382,10 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[2] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49698,7 +50510,8 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49715,9 +50528,9 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49734,9 +50547,10 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[4] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -49859,7 +50673,8 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -49876,9 +50691,10 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[2] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -50010,7 +50826,8 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/cards/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50027,9 +50844,10 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/moves"
+	pathParts[2] = "/moves"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -50109,7 +50927,8 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/"
+	var pathParts [3]string
+	pathParts[0] = "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50126,9 +50945,10 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/moves"
+	pathParts[2] = "/moves"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -50200,7 +51020,8 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [4]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50217,9 +51038,9 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[2] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50236,8 +51057,9 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -50323,7 +51145,8 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50340,8 +51163,9 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -50412,7 +51236,8 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/cards/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50429,8 +51254,9 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -50501,7 +51327,8 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/projects/columns/"
+	var pathParts [2]string
+	pathParts[0] = "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50518,8 +51345,9 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -50590,7 +51418,8 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50607,9 +51436,9 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50626,9 +51455,9 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50645,9 +51474,10 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/merge"
+	pathParts[6] = "/merge"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -50730,7 +51560,8 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50747,9 +51578,9 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50766,9 +51597,10 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls"
+	pathParts[4] = "/pulls"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -50848,7 +51680,8 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [9]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50865,9 +51698,9 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50884,9 +51717,9 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50903,9 +51736,9 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -50922,9 +51755,10 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/replies"
+	pathParts[8] = "/replies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -51029,7 +51863,8 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51046,9 +51881,9 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51065,9 +51900,9 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51084,9 +51919,10 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews"
+	pathParts[6] = "/reviews"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -51185,7 +52021,8 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51202,9 +52039,9 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51221,9 +52058,9 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51240,9 +52077,10 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -51313,7 +52151,8 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51330,9 +52169,9 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51349,9 +52188,9 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51368,9 +52207,9 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51387,8 +52226,9 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -51456,7 +52296,8 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51473,9 +52314,9 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51492,9 +52333,9 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51511,8 +52352,9 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -51582,7 +52424,8 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [9]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51599,9 +52442,9 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51618,9 +52461,9 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51637,9 +52480,9 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51656,9 +52499,10 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/dismissals"
+	pathParts[8] = "/dismissals"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -51762,7 +52606,8 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51779,9 +52624,9 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51798,9 +52643,9 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51817,8 +52662,9 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -51886,7 +52732,8 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51903,9 +52750,9 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51922,9 +52769,9 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51941,9 +52788,9 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -51960,8 +52807,9 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -52029,7 +52877,8 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52046,9 +52895,9 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52065,9 +52914,9 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52084,8 +52933,9 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -52157,7 +53007,8 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52174,9 +53025,9 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52193,9 +53044,10 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls"
+	pathParts[4] = "/pulls"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52386,7 +53238,8 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [9]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52403,9 +53256,9 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52422,9 +53275,9 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52441,9 +53294,9 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52460,9 +53313,10 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[8] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52570,7 +53424,8 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52587,9 +53442,9 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52606,9 +53461,9 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52625,9 +53480,10 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/commits"
+	pathParts[6] = "/commits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52734,7 +53590,8 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52751,9 +53608,9 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52770,9 +53627,9 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52789,9 +53646,10 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/files"
+	pathParts[6] = "/files"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -52897,7 +53755,8 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52914,9 +53773,9 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52933,9 +53792,9 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -52952,9 +53811,10 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/requested_reviewers"
+	pathParts[6] = "/requested_reviewers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53061,7 +53921,8 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53078,9 +53939,9 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53097,9 +53958,9 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53116,9 +53977,10 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53276,7 +54138,8 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53293,9 +54156,9 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53312,9 +54175,10 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments"
+	pathParts[4] = "/pulls/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53471,7 +54335,8 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53488,9 +54353,9 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53507,9 +54372,9 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53526,9 +54391,10 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews"
+	pathParts[6] = "/reviews"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -53656,7 +54522,8 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53673,9 +54540,9 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53692,9 +54559,9 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53711,9 +54578,10 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/merge"
+	pathParts[6] = "/merge"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -53793,7 +54661,8 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53810,9 +54679,9 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53829,9 +54698,9 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53848,9 +54717,10 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/requested_reviewers"
+	pathParts[6] = "/requested_reviewers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -53930,7 +54800,8 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [9]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53947,9 +54818,9 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53966,9 +54837,9 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -53985,9 +54856,9 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54004,9 +54875,10 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/events"
+	pathParts[8] = "/events"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -54100,7 +54972,8 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54117,9 +54990,9 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54136,9 +55009,9 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54155,8 +55028,9 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -54228,7 +55102,8 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54245,9 +55120,9 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54264,9 +55139,9 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54283,9 +55158,10 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/update-branch"
+	pathParts[6] = "/update-branch"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -54356,7 +55232,8 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54373,9 +55250,9 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54392,9 +55269,9 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/"
+	pathParts[4] = "/pulls/"
 	{
 		// Encode "pull_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54411,9 +55288,9 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reviews/"
+	pathParts[6] = "/reviews/"
 	{
 		// Encode "review_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54430,8 +55307,9 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -54502,7 +55380,8 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54519,9 +55398,9 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54538,9 +55417,9 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54557,8 +55436,9 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -54632,7 +55512,9 @@ func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/rate_limit"
+	var pathParts [1]string
+	pathParts[0] = "/rate_limit"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -54711,7 +55593,8 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54728,9 +55611,9 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54747,9 +55630,9 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54766,9 +55649,10 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -54849,7 +55733,8 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54866,9 +55751,9 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54885,9 +55770,9 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -54904,9 +55789,10 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -54988,7 +55874,8 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55005,9 +55892,9 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55024,9 +55911,9 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55043,9 +55930,10 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55127,7 +56015,8 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55144,9 +56033,9 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55163,9 +56052,9 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55182,9 +56071,10 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55265,7 +56155,8 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55282,9 +56173,9 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55301,9 +56192,9 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55320,9 +56211,10 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55408,7 +56300,8 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [9]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55425,9 +56318,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55444,9 +56337,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55463,9 +56356,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55482,9 +56375,10 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[8] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55574,7 +56468,8 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [7]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55591,9 +56486,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55610,9 +56505,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55629,9 +56524,10 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55718,7 +56614,8 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55735,9 +56632,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55754,9 +56651,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55773,9 +56670,10 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55866,7 +56764,8 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [5]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55883,9 +56782,9 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55902,9 +56801,10 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[4] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -55977,7 +56877,8 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -55994,9 +56895,9 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56013,9 +56914,9 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56032,9 +56933,9 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[6] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56051,8 +56952,9 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56122,7 +57024,8 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56139,9 +57042,9 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56158,9 +57061,9 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56177,9 +57080,9 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[6] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56196,8 +57099,9 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56267,7 +57171,8 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56284,9 +57189,9 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56303,9 +57208,9 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56322,9 +57227,9 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[6] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56341,8 +57246,9 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56413,7 +57319,8 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56430,9 +57337,9 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56449,9 +57356,9 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56468,9 +57375,9 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[6] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56487,8 +57394,9 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56563,7 +57471,8 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56580,9 +57489,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56599,9 +57508,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56618,9 +57527,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[6] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56637,8 +57546,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56711,7 +57621,8 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [10]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56728,9 +57639,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56747,9 +57658,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56766,9 +57677,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56785,9 +57696,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/reactions/"
+	pathParts[8] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56804,8 +57715,9 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[9] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56882,7 +57794,8 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/reactions/"
+	var pathParts [2]string
+	pathParts[0] = "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56899,8 +57812,9 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -56968,7 +57882,8 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -56985,9 +57900,9 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57004,9 +57919,9 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57023,9 +57938,10 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57148,7 +58064,8 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57165,9 +58082,9 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57184,9 +58101,9 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/"
+	pathParts[4] = "/issues/"
 	{
 		// Encode "issue_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57203,9 +58120,10 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57328,7 +58246,8 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57345,9 +58264,9 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57364,9 +58283,9 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/issues/comments/"
+	pathParts[4] = "/issues/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57383,9 +58302,10 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57509,7 +58429,8 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57526,9 +58447,9 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57545,9 +58466,9 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pulls/comments/"
+	pathParts[4] = "/pulls/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57564,9 +58485,10 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57693,7 +58615,8 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [9]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57710,9 +58633,9 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57729,9 +58652,9 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57748,9 +58671,9 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57767,9 +58690,10 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[8] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -57900,7 +58824,8 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [7]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57917,9 +58842,9 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57936,9 +58861,9 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -57955,9 +58880,10 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58084,7 +59010,8 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58101,9 +59028,9 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58120,9 +59047,9 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58139,9 +59066,10 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[6] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58272,7 +59200,8 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [5]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58289,9 +59218,9 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58308,9 +59237,10 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/reactions"
+	pathParts[4] = "/reactions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -58433,7 +59363,8 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/repository_invitations/"
+	var pathParts [2]string
+	pathParts[0] = "/user/repository_invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58450,8 +59381,9 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -58549,7 +59481,8 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58566,9 +59499,9 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58585,9 +59518,9 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58604,9 +59537,10 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/apps"
+	pathParts[6] = "/protection/restrictions/apps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -58712,7 +59646,8 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58729,9 +59664,9 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58748,9 +59683,9 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[4] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58767,8 +59702,9 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -58859,7 +59795,8 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58876,9 +59813,9 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58895,9 +59832,9 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -58914,9 +59851,10 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks/contexts"
+	pathParts[6] = "/protection/required_status_checks/contexts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -59017,7 +59955,8 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59034,9 +59973,9 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59053,9 +59992,9 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59072,9 +60011,10 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/teams"
+	pathParts[6] = "/protection/restrictions/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -59174,7 +60114,8 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59191,9 +60132,9 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59210,9 +60151,9 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59229,9 +60170,10 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/users"
+	pathParts[6] = "/protection/restrictions/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -59306,7 +60248,8 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59323,9 +60266,9 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59342,9 +60285,9 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[4] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59361,8 +60304,9 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -59433,7 +60377,8 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59450,9 +60395,9 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59469,9 +60414,10 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/vulnerability-alerts"
+	pathParts[4] = "/vulnerability-alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -59593,7 +60539,8 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59610,9 +60557,9 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59629,9 +60576,9 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/compare/"
+	pathParts[4] = "/compare/"
 	{
 		// Encode "basehead" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59648,8 +60595,9 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -59755,7 +60703,8 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59772,9 +60721,9 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59791,9 +60740,10 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/autolinks"
+	pathParts[4] = "/autolinks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -59871,7 +60821,8 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59888,9 +60839,9 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59907,9 +60858,9 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "commit_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -59926,9 +60877,10 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60005,7 +60957,8 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60022,9 +60975,9 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60041,9 +60994,9 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60060,9 +61013,10 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_signatures"
+	pathParts[6] = "/protection/required_signatures"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60141,7 +61095,8 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60158,9 +61113,9 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60177,9 +61132,9 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/statuses/"
+	pathParts[4] = "/statuses/"
 	{
 		// Encode "sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60196,8 +61151,9 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60268,7 +61224,8 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60285,9 +61242,9 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60304,9 +61261,10 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/keys"
+	pathParts[4] = "/keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60432,7 +61390,8 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60449,9 +61408,9 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60468,9 +61427,10 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments"
+	pathParts[4] = "/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60552,7 +61512,8 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60569,9 +61530,9 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60588,9 +61549,9 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[4] = "/deployments/"
 	{
 		// Encode "deployment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60607,9 +61568,10 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/statuses"
+	pathParts[6] = "/statuses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60708,7 +61670,8 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60725,9 +61688,9 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60744,9 +61707,10 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/dispatches"
+	pathParts[4] = "/dispatches"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60823,7 +61787,9 @@ func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/repos"
+	var pathParts [1]string
+	pathParts[0] = "/user/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -60897,7 +61863,8 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60914,9 +61881,9 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -60933,9 +61900,10 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/forks"
+	pathParts[4] = "/forks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61022,7 +61990,8 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61039,9 +62008,10 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos"
+	pathParts[2] = "/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61112,7 +62082,8 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61129,9 +62100,9 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61148,9 +62119,9 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/contents/"
+	pathParts[4] = "/contents/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61167,8 +62138,9 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -61249,7 +62221,8 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61266,9 +62239,9 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61285,9 +62258,10 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages"
+	pathParts[4] = "/pages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61365,7 +62339,8 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61382,9 +62357,9 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61401,9 +62376,10 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases"
+	pathParts[4] = "/releases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61485,7 +62461,8 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "template_owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61502,9 +62479,9 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "template_repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61521,9 +62498,10 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/generate"
+	pathParts[4] = "/generate"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61612,7 +62590,8 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61629,9 +62608,9 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61648,9 +62627,10 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks"
+	pathParts[4] = "/hooks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -61721,7 +62701,8 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/repository_invitations/"
+	var pathParts [2]string
+	pathParts[0] = "/user/repository_invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61738,8 +62719,9 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -61810,7 +62792,8 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [4]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61827,9 +62810,9 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61846,8 +62829,9 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -61920,7 +62904,8 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61937,9 +62922,9 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61956,9 +62941,9 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -61975,9 +62960,10 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions"
+	pathParts[6] = "/protection/restrictions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62051,7 +63037,8 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62068,9 +63055,9 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62087,9 +63074,9 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62106,9 +63093,10 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/enforce_admins"
+	pathParts[6] = "/protection/enforce_admins"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62176,7 +63164,8 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62193,9 +63182,9 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62212,9 +63201,9 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/environments/"
+	pathParts[4] = "/environments/"
 	{
 		// Encode "environment_name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62231,8 +63220,9 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62301,7 +63291,8 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62318,9 +63309,9 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62337,9 +63328,9 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/autolinks/"
+	pathParts[4] = "/autolinks/"
 	{
 		// Encode "autolink_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62356,8 +63347,9 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62429,7 +63421,8 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62446,9 +63439,9 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62465,9 +63458,9 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62484,9 +63477,10 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection"
+	pathParts[6] = "/protection"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62554,7 +63548,8 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62571,9 +63566,9 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62590,9 +63585,9 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62609,8 +63604,9 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62685,7 +63681,8 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62702,9 +63699,9 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62721,9 +63718,9 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62740,9 +63737,10 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_signatures"
+	pathParts[6] = "/protection/required_signatures"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62811,7 +63809,8 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62828,9 +63827,9 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62847,9 +63846,9 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/keys/"
+	pathParts[4] = "/keys/"
 	{
 		// Encode "key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62866,8 +63865,9 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -62943,7 +63943,8 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62960,9 +63961,9 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62979,9 +63980,9 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[4] = "/deployments/"
 	{
 		// Encode "deployment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -62998,8 +63999,9 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63074,7 +64076,8 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63091,9 +64094,9 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63110,9 +64113,9 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/contents/"
+	pathParts[4] = "/contents/"
 	{
 		// Encode "path" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63129,8 +64132,9 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63201,7 +64205,8 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63218,9 +64223,9 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63237,9 +64242,9 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/invitations/"
+	pathParts[4] = "/invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63256,8 +64261,9 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63325,7 +64331,8 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63342,9 +64349,9 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63361,9 +64368,10 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages"
+	pathParts[4] = "/pages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63435,7 +64443,8 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63452,9 +64461,9 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63471,9 +64480,9 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63490,9 +64499,10 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_pull_request_reviews"
+	pathParts[6] = "/protection/required_pull_request_reviews"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63560,7 +64570,8 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63577,9 +64588,9 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63596,9 +64607,9 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63615,8 +64626,9 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63684,7 +64696,8 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63701,9 +64714,9 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63720,9 +64733,9 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/assets/"
+	pathParts[4] = "/releases/assets/"
 	{
 		// Encode "asset_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63739,8 +64752,9 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63808,7 +64822,8 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63825,9 +64840,9 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63844,9 +64859,9 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63863,8 +64878,9 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -63934,7 +64950,8 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63951,9 +64968,9 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -63970,9 +64987,10 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/automated-security-fixes"
+	pathParts[4] = "/automated-security-fixes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -64040,7 +65058,8 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64057,9 +65076,9 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64076,9 +65095,10 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/lfs"
+	pathParts[4] = "/lfs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -64149,7 +65169,8 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64166,9 +65187,9 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64185,9 +65206,10 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/vulnerability-alerts"
+	pathParts[4] = "/vulnerability-alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -64260,7 +65282,8 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64277,9 +65300,9 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64296,9 +65319,9 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/tarball/"
+	pathParts[4] = "/tarball/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64315,8 +65338,9 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -64389,7 +65413,8 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64406,9 +65431,9 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64425,9 +65450,9 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/zipball/"
+	pathParts[4] = "/zipball/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64444,8 +65469,9 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -64515,7 +65541,8 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64532,9 +65559,9 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64551,9 +65578,10 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/automated-security-fixes"
+	pathParts[4] = "/automated-security-fixes"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -64621,7 +65649,8 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64638,9 +65667,9 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64657,9 +65686,10 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/lfs"
+	pathParts[4] = "/lfs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -64730,7 +65760,8 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64747,9 +65778,9 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64766,9 +65797,10 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/vulnerability-alerts"
+	pathParts[4] = "/vulnerability-alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -64837,7 +65869,8 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [4]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64854,9 +65887,9 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64873,8 +65906,9 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -64949,7 +65983,8 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64966,9 +66001,9 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -64985,9 +66020,9 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65004,9 +66039,10 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions"
+	pathParts[6] = "/protection/restrictions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65078,7 +66114,8 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65095,9 +66132,9 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65114,9 +66151,9 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65133,9 +66170,10 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/enforce_admins"
+	pathParts[6] = "/protection/enforce_admins"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65207,7 +66245,8 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65224,9 +66263,9 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65243,9 +66282,9 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65262,9 +66301,10 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks/contexts"
+	pathParts[6] = "/protection/required_status_checks/contexts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65332,7 +66372,8 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65349,9 +66390,9 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65368,9 +66409,10 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/topics"
+	pathParts[4] = "/topics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -65483,7 +66525,8 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65500,9 +66543,9 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65519,9 +66562,9 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65538,9 +66581,10 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/apps"
+	pathParts[6] = "/protection/restrictions/apps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65609,7 +66653,8 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65626,9 +66671,9 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65645,9 +66690,9 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/autolinks/"
+	pathParts[4] = "/autolinks/"
 	{
 		// Encode "autolink_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65664,8 +66709,9 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65733,7 +66779,8 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65750,9 +66797,9 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65769,9 +66816,9 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65788,8 +66835,9 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65861,7 +66909,8 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65878,9 +66927,9 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65897,9 +66946,9 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -65916,9 +66965,10 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection"
+	pathParts[6] = "/protection"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -65987,7 +67037,8 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66004,9 +67055,9 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66023,9 +67074,10 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/traffic/clones"
+	pathParts[4] = "/traffic/clones"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66114,7 +67166,8 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66131,9 +67184,9 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66150,9 +67203,10 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/stats/code_frequency"
+	pathParts[4] = "/stats/code_frequency"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -66221,7 +67275,8 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66238,9 +67293,9 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66257,9 +67312,9 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[4] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66276,9 +67331,10 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/permission"
+	pathParts[6] = "/permission"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -66354,7 +67410,8 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66371,9 +67428,9 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66390,9 +67447,9 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66409,9 +67466,10 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/status"
+	pathParts[6] = "/status"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66563,7 +67621,8 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66580,9 +67639,9 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66599,9 +67658,9 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66618,8 +67677,9 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -66726,7 +67786,8 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66743,9 +67804,9 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66762,9 +67823,10 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/stats/commit_activity"
+	pathParts[4] = "/stats/commit_activity"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -66832,7 +67894,8 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66849,9 +67912,9 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66868,9 +67931,9 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66887,8 +67950,9 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -66965,7 +68029,8 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -66982,9 +68047,9 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67001,9 +68066,9 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67020,9 +68085,10 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_signatures"
+	pathParts[6] = "/protection/required_signatures"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67099,7 +68165,8 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67116,9 +68183,9 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67135,9 +68202,10 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/community/profile"
+	pathParts[4] = "/community/profile"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67210,7 +68278,8 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67227,9 +68296,9 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67246,9 +68315,10 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/stats/contributors"
+	pathParts[4] = "/stats/contributors"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67316,7 +68386,8 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67333,9 +68404,9 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67352,9 +68423,9 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/keys/"
+	pathParts[4] = "/keys/"
 	{
 		// Encode "key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67371,8 +68442,9 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67440,7 +68512,8 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67457,9 +68530,9 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67476,9 +68549,9 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[4] = "/deployments/"
 	{
 		// Encode "deployment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67495,8 +68568,9 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67564,7 +68638,8 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67581,9 +68656,9 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67600,9 +68675,9 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[4] = "/deployments/"
 	{
 		// Encode "deployment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67619,9 +68694,9 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/statuses/"
+	pathParts[6] = "/statuses/"
 	{
 		// Encode "status_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67638,8 +68713,9 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67707,7 +68783,8 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67724,9 +68801,9 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67743,9 +68820,10 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages/builds/latest"
+	pathParts[4] = "/pages/builds/latest"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67816,7 +68894,8 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67833,9 +68912,9 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67852,9 +68931,10 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/latest"
+	pathParts[4] = "/releases/latest"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -67922,7 +69002,8 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67939,9 +69020,9 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -67958,9 +69039,10 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages"
+	pathParts[4] = "/pages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68028,7 +69110,8 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68045,9 +69128,9 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68064,9 +69147,9 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages/builds/"
+	pathParts[4] = "/pages/builds/"
 	{
 		// Encode "build_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68083,8 +69166,9 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68158,7 +69242,8 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68175,9 +69260,9 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68194,9 +69279,10 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages/health"
+	pathParts[4] = "/pages/health"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68267,7 +69353,8 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68284,9 +69371,9 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68303,9 +69390,10 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/stats/participation"
+	pathParts[4] = "/stats/participation"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68377,7 +69465,8 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68394,9 +69483,9 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68413,9 +69502,9 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68432,9 +69521,10 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_pull_request_reviews"
+	pathParts[6] = "/protection/required_pull_request_reviews"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68507,7 +69597,8 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68524,9 +69615,9 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68543,9 +69634,10 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/stats/punch_card"
+	pathParts[4] = "/stats/punch_card"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -68615,7 +69707,8 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68632,9 +69725,9 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68651,9 +69744,10 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/readme"
+	pathParts[4] = "/readme"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -68744,7 +69838,8 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68761,9 +69856,9 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68780,9 +69875,9 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/readme/"
+	pathParts[4] = "/readme/"
 	{
 		// Encode "dir" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68799,8 +69894,9 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -68891,7 +69987,8 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68908,9 +70005,9 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68927,9 +70024,9 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -68946,8 +70043,9 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69018,7 +70116,8 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69035,9 +70134,9 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69054,9 +70153,9 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/assets/"
+	pathParts[4] = "/releases/assets/"
 	{
 		// Encode "asset_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69073,8 +70172,9 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69142,7 +70242,8 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69159,9 +70260,9 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69178,9 +70279,9 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/tags/"
+	pathParts[4] = "/releases/tags/"
 	{
 		// Encode "tag" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69197,8 +70298,9 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69270,7 +70372,8 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69287,9 +70390,9 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69306,9 +70409,9 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69325,9 +70428,10 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks"
+	pathParts[6] = "/protection/required_status_checks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69400,7 +70504,8 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69417,9 +70522,9 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69436,9 +70541,9 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69455,9 +70560,10 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/teams"
+	pathParts[6] = "/protection/restrictions/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69525,7 +70631,8 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69542,9 +70649,9 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69561,9 +70668,10 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/traffic/popular/paths"
+	pathParts[4] = "/traffic/popular/paths"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69631,7 +70739,8 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69648,9 +70757,9 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69667,9 +70776,10 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/traffic/popular/referrers"
+	pathParts[4] = "/traffic/popular/referrers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69742,7 +70852,8 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69759,9 +70870,9 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69778,9 +70889,9 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69797,9 +70908,10 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/users"
+	pathParts[6] = "/protection/restrictions/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -69868,7 +70980,8 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69885,9 +70998,9 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -69904,9 +71017,10 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/traffic/views"
+	pathParts[4] = "/traffic/views"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -69997,7 +71111,8 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70014,9 +71129,9 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70033,9 +71148,9 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70052,8 +71167,9 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -70125,7 +71241,8 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70142,9 +71259,9 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70161,9 +71278,9 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70180,9 +71297,10 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/config"
+	pathParts[6] = "/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -70250,7 +71368,8 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [8]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70267,9 +71386,9 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70286,9 +71405,9 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70305,9 +71424,9 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/deliveries/"
+	pathParts[6] = "/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70324,8 +71443,9 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -70394,7 +71514,8 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70411,9 +71532,9 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70430,9 +71551,10 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/autolinks"
+	pathParts[4] = "/autolinks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70521,7 +71643,8 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70538,9 +71661,9 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70557,9 +71680,10 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches"
+	pathParts[4] = "/branches"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70687,7 +71811,8 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70704,9 +71829,9 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70723,9 +71848,9 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "commit_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70742,9 +71867,10 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/branches-where-head"
+	pathParts[6] = "/branches-where-head"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -70816,7 +71942,8 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70833,9 +71960,9 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70852,9 +71979,10 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/collaborators"
+	pathParts[4] = "/collaborators"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -70977,7 +72105,8 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -70994,9 +72123,9 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71013,9 +72142,9 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "commit_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71032,9 +72161,10 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71143,7 +72273,8 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71160,9 +72291,9 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71179,9 +72310,10 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[4] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71290,7 +72422,8 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71307,9 +72440,9 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71326,9 +72459,9 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "ref" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71345,9 +72478,10 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/statuses"
+	pathParts[6] = "/statuses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71484,7 +72618,8 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71501,9 +72636,9 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71520,9 +72655,10 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits"
+	pathParts[4] = "/commits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71719,7 +72855,8 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71736,9 +72873,9 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71755,9 +72892,10 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/contributors"
+	pathParts[4] = "/contributors"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -71880,7 +73018,8 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71897,9 +73036,9 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -71916,9 +73055,10 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/keys"
+	pathParts[4] = "/keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72024,7 +73164,8 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72041,9 +73182,9 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72060,9 +73201,9 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments/"
+	pathParts[4] = "/deployments/"
 	{
 		// Encode "deployment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72079,9 +73220,10 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/statuses"
+	pathParts[6] = "/statuses"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72187,7 +73329,8 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72204,9 +73347,9 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72223,9 +73366,10 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/deployments"
+	pathParts[4] = "/deployments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72402,7 +73546,9 @@ func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/repos"
+	var pathParts [1]string
+	pathParts[0] = "/user/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72627,7 +73773,8 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72644,9 +73791,10 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos"
+	pathParts[2] = "/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72804,7 +73952,8 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72821,9 +73970,10 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos"
+	pathParts[2] = "/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -72980,7 +74130,8 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -72997,9 +74148,9 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73016,9 +74167,10 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/forks"
+	pathParts[4] = "/forks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73142,7 +74294,8 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73159,9 +74312,9 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73178,9 +74331,10 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/invitations"
+	pathParts[4] = "/invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73287,7 +74441,9 @@ func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/repository_invitations"
+	var pathParts [1]string
+	pathParts[0] = "/user/repository_invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73394,7 +74550,8 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73411,9 +74568,9 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73430,9 +74587,10 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/languages"
+	pathParts[4] = "/languages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -73500,7 +74658,8 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73517,9 +74676,9 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73536,9 +74695,10 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages/builds"
+	pathParts[4] = "/pages/builds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73650,7 +74810,9 @@ func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublic
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repositories"
+	var pathParts [1]string
+	pathParts[0] = "/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73744,7 +74906,8 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73761,9 +74924,9 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73780,9 +74943,9 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/commits/"
+	pathParts[4] = "/commits/"
 	{
 		// Encode "commit_sha" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73799,9 +74962,10 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/pulls"
+	pathParts[6] = "/pulls"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -73907,7 +75071,8 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73924,9 +75089,9 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73943,9 +75108,9 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -73962,9 +75127,10 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/assets"
+	pathParts[6] = "/assets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74074,7 +75240,8 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74091,9 +75258,9 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74110,9 +75277,10 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases"
+	pathParts[4] = "/releases"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74218,7 +75386,8 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74235,9 +75404,9 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74254,9 +75423,10 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/tags"
+	pathParts[4] = "/tags"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74362,7 +75532,8 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74379,9 +75550,9 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74398,9 +75569,10 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[4] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74506,7 +75678,8 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74523,9 +75696,9 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74542,9 +75715,9 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74561,9 +75734,10 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/deliveries"
+	pathParts[6] = "/deliveries"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74669,7 +75843,8 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74686,9 +75861,9 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74705,9 +75880,10 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks"
+	pathParts[4] = "/hooks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -74813,7 +75989,8 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74830,9 +76007,9 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74849,9 +76026,10 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/merges"
+	pathParts[4] = "/merges"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -74923,7 +76101,8 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74940,9 +76119,9 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -74959,9 +76138,10 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/merge-upstream"
+	pathParts[4] = "/merge-upstream"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -75033,7 +76213,8 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75050,9 +76231,9 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75069,9 +76250,9 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75088,9 +76269,10 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/pings"
+	pathParts[6] = "/pings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -75158,7 +76340,8 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [9]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75175,9 +76358,9 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75194,9 +76377,9 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75213,9 +76396,9 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/deliveries/"
+	pathParts[6] = "/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75232,9 +76415,10 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
-	u.Path += "/attempts"
+	pathParts[8] = "/attempts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -75332,7 +76516,8 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75349,9 +76534,9 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75368,9 +76553,9 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75387,9 +76572,10 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/apps"
+	pathParts[6] = "/protection/restrictions/apps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -75460,7 +76646,8 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75477,9 +76664,9 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75496,9 +76683,9 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/collaborators/"
+	pathParts[4] = "/collaborators/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75515,8 +76702,9 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -75604,7 +76792,8 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75621,9 +76810,9 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75640,9 +76829,9 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75659,9 +76848,10 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks/contexts"
+	pathParts[6] = "/protection/required_status_checks/contexts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -75736,7 +76926,8 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75753,9 +76944,9 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75772,9 +76963,9 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75791,9 +76982,10 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks"
+	pathParts[6] = "/protection/required_status_checks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -75891,7 +77083,8 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75908,9 +77101,9 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75927,9 +77120,9 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -75946,9 +77139,10 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/teams"
+	pathParts[6] = "/protection/restrictions/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -76048,7 +77242,8 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76065,9 +77260,9 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76084,9 +77279,9 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76103,9 +77298,10 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/users"
+	pathParts[6] = "/protection/restrictions/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -76188,7 +77384,8 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76205,9 +77402,9 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76224,9 +77421,9 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76243,9 +77440,10 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/rename"
+	pathParts[6] = "/rename"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -76325,7 +77523,8 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76342,9 +77541,9 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76361,9 +77560,10 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/topics"
+	pathParts[4] = "/topics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -76439,7 +77639,8 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76456,9 +77657,9 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76475,9 +77676,10 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/pages/builds"
+	pathParts[4] = "/pages/builds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -76551,7 +77753,8 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76568,9 +77771,9 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76587,9 +77790,9 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76606,9 +77809,10 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/enforce_admins"
+	pathParts[6] = "/protection/enforce_admins"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -76708,7 +77912,8 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76725,9 +77930,9 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76744,9 +77949,9 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76763,9 +77968,10 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/apps"
+	pathParts[6] = "/protection/restrictions/apps"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -76856,7 +78062,8 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76873,9 +78080,9 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76892,9 +78099,9 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -76911,9 +78118,10 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks/contexts"
+	pathParts[6] = "/protection/required_status_checks/contexts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -77015,7 +78223,8 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77032,9 +78241,9 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77051,9 +78260,9 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77070,9 +78279,10 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/teams"
+	pathParts[6] = "/protection/restrictions/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -77173,7 +78383,8 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77190,9 +78401,9 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77209,9 +78420,9 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77228,9 +78439,10 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/restrictions/users"
+	pathParts[6] = "/protection/restrictions/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -77304,7 +78516,8 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77321,9 +78534,9 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77340,9 +78553,9 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77359,9 +78572,10 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/tests"
+	pathParts[6] = "/tests"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -77433,7 +78647,8 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77450,9 +78665,9 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77469,9 +78684,10 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/transfer"
+	pathParts[4] = "/transfer"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -77559,7 +78775,8 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [4]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77576,9 +78793,9 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77595,8 +78812,9 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -77683,7 +78901,8 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77700,9 +78919,9 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77719,9 +78938,9 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77738,9 +78957,10 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection"
+	pathParts[6] = "/protection"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -77811,7 +79031,8 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77828,9 +79049,9 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77847,9 +79068,9 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77866,8 +79087,9 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -77954,7 +79176,8 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77971,9 +79194,9 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -77990,9 +79213,9 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/invitations/"
+	pathParts[4] = "/invitations/"
 	{
 		// Encode "invitation_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78009,8 +79232,9 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78088,7 +79312,8 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78105,9 +79330,9 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78124,9 +79349,9 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78143,9 +79368,10 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_pull_request_reviews"
+	pathParts[6] = "/protection/required_pull_request_reviews"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78216,7 +79442,8 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78233,9 +79460,9 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78252,9 +79479,9 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78271,8 +79498,9 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78343,7 +79571,8 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78360,9 +79589,9 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78379,9 +79608,9 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/assets/"
+	pathParts[4] = "/releases/assets/"
 	{
 		// Encode "asset_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78398,8 +79627,9 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78476,7 +79706,8 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78493,9 +79724,9 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78512,9 +79743,9 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/branches/"
+	pathParts[4] = "/branches/"
 	{
 		// Encode "branch" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78531,9 +79762,10 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/protection/required_status_checks"
+	pathParts[6] = "/protection/required_status_checks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78623,7 +79855,8 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78640,9 +79873,9 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78659,9 +79892,9 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78678,8 +79911,9 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78770,7 +80004,8 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78787,9 +80022,9 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78806,9 +80041,9 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/hooks/"
+	pathParts[4] = "/hooks/"
 	{
 		// Encode "hook_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78825,9 +80060,10 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/config"
+	pathParts[6] = "/config"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -78923,7 +80159,8 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78940,9 +80177,9 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78959,9 +80196,9 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/releases/"
+	pathParts[4] = "/releases/"
 	{
 		// Encode "release_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -78978,9 +80215,10 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/assets"
+	pathParts[6] = "/assets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79086,7 +80324,8 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/scim/v2/organizations/"
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/organizations/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -79103,9 +80342,9 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/Users/"
+	pathParts[2] = "/Users/"
 	{
 		// Encode "scim_user_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -79122,8 +80361,9 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -79210,7 +80450,9 @@ func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/code"
+	var pathParts [1]string
+	pathParts[0] = "/search/code"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79374,7 +80616,9 @@ func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/commits"
+	var pathParts [1]string
+	pathParts[0] = "/search/commits"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79550,7 +80794,9 @@ func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params Sea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/issues"
+	var pathParts [1]string
+	pathParts[0] = "/search/issues"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79713,7 +80959,9 @@ func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/labels"
+	var pathParts [1]string
+	pathParts[0] = "/search/labels"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -79896,7 +81144,9 @@ func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/repositories"
+	var pathParts [1]string
+	pathParts[0] = "/search/repositories"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80063,7 +81313,9 @@ func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/topics"
+	var pathParts [1]string
+	pathParts[0] = "/search/topics"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80194,7 +81446,9 @@ func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/search/users"
+	var pathParts [1]string
+	pathParts[0] = "/search/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80351,7 +81605,8 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80368,9 +81623,9 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80387,9 +81642,9 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secret-scanning/alerts/"
+	pathParts[4] = "/secret-scanning/alerts/"
 	{
 		// Encode "alert_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80409,8 +81664,9 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -80482,7 +81738,8 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80499,9 +81756,10 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/secret-scanning/alerts"
+	pathParts[2] = "/secret-scanning/alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80644,7 +81902,8 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80661,9 +81920,9 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80680,9 +81939,10 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secret-scanning/alerts"
+	pathParts[4] = "/secret-scanning/alerts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -80834,7 +82094,8 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/repos/"
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80851,9 +82112,9 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80870,9 +82131,9 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/secret-scanning/alerts/"
+	pathParts[4] = "/secret-scanning/alerts/"
 	{
 		// Encode "alert_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -80892,8 +82153,9 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -80985,7 +82247,8 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81002,9 +82265,9 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members/"
+	pathParts[2] = "/members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81021,8 +82284,9 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81127,7 +82391,8 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81144,9 +82409,9 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81163,9 +82428,9 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[4] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81182,8 +82447,9 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81296,7 +82562,8 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81313,9 +82580,9 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81332,8 +82599,9 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81424,7 +82692,8 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81441,9 +82710,9 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81460,9 +82729,9 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[4] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81479,8 +82748,9 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81575,7 +82845,8 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81592,9 +82863,9 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[2] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81611,8 +82882,9 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81710,7 +82982,8 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81727,9 +83000,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81746,9 +83019,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[4] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81765,9 +83038,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/"
+	pathParts[6] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81784,8 +83057,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -81885,7 +83159,8 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81902,9 +83177,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[2] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81921,9 +83196,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -81940,8 +83215,9 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -82015,7 +83291,8 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82032,9 +83309,9 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82051,9 +83328,9 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[4] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82070,8 +83347,9 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -82146,7 +83424,8 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82163,9 +83442,9 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[2] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82182,8 +83461,9 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -82259,7 +83539,8 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82276,9 +83557,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82295,9 +83576,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[4] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82314,9 +83595,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/"
+	pathParts[6] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82333,8 +83614,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -82411,7 +83693,8 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82428,9 +83711,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[2] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82447,9 +83730,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82466,8 +83749,9 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -82551,7 +83835,8 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82568,9 +83853,10 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[2] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -82651,7 +83937,8 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82668,9 +83955,9 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82687,9 +83974,9 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82706,9 +83993,10 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -82792,7 +84080,8 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [5]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82809,9 +84098,9 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82828,9 +84117,10 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[4] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -82911,7 +84201,8 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82928,9 +84219,9 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -82947,9 +84238,10 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions"
+	pathParts[4] = "/discussions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -83033,7 +84325,8 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83050,9 +84343,10 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions"
+	pathParts[2] = "/discussions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -83130,7 +84424,8 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83147,9 +84442,9 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83166,9 +84461,10 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/team-sync/group-mappings"
+	pathParts[4] = "/team-sync/group-mappings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -83259,7 +84555,8 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83276,9 +84573,10 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/team-sync/group-mappings"
+	pathParts[2] = "/team-sync/group-mappings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -83352,7 +84650,8 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83369,9 +84668,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83388,9 +84687,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83407,9 +84706,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83426,8 +84725,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -83501,7 +84801,8 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83518,9 +84819,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83537,9 +84838,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83556,8 +84857,9 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -83628,7 +84930,8 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83645,9 +84948,9 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83664,9 +84967,9 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83683,8 +84986,9 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -83758,7 +85062,8 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83775,9 +85080,9 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83794,8 +85099,9 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -83867,7 +85173,8 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83884,9 +85191,9 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83903,8 +85210,9 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -83979,7 +85287,8 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [2]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -83996,8 +85305,9 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -84067,7 +85377,8 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84084,9 +85395,9 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84103,8 +85414,9 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84175,7 +85487,8 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84192,9 +85505,9 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84211,9 +85524,9 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84230,9 +85543,9 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84249,8 +85562,9 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84324,7 +85638,8 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84341,9 +85656,9 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84360,9 +85675,9 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84379,8 +85694,9 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84451,7 +85767,8 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84468,9 +85785,9 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84487,9 +85804,9 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84506,8 +85823,9 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84581,7 +85899,8 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84598,9 +85917,9 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84617,8 +85936,9 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84690,7 +86010,8 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [2]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84707,8 +86028,9 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84782,7 +86104,8 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84799,9 +86122,9 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members/"
+	pathParts[2] = "/members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84818,8 +86141,9 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -84894,7 +86218,8 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84911,9 +86236,9 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84930,9 +86255,9 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[4] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -84949,8 +86274,9 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -85028,7 +86354,8 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85045,9 +86372,9 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85064,8 +86391,9 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -85133,7 +86461,8 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85150,9 +86479,10 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[2] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85260,7 +86590,8 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85277,9 +86608,9 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85296,9 +86627,10 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[4] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85408,7 +86740,8 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85425,9 +86758,10 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams"
+	pathParts[2] = "/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85536,7 +86870,8 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [7]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85553,9 +86888,9 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85572,9 +86907,9 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85591,9 +86926,10 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[6] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85722,7 +87058,8 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [5]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85739,9 +87076,9 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85758,9 +87095,10 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments"
+	pathParts[4] = "/comments"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -85886,7 +87224,8 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85903,9 +87242,9 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -85922,9 +87261,10 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions"
+	pathParts[4] = "/discussions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86070,7 +87410,8 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86087,9 +87428,10 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions"
+	pathParts[2] = "/discussions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86215,7 +87557,9 @@ func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params T
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/teams"
+	var pathParts [1]string
+	pathParts[0] = "/user/teams"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86329,7 +87673,8 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86346,9 +87691,10 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/team-sync/group-mappings"
+	pathParts[2] = "/team-sync/group-mappings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -86422,7 +87768,8 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [3]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86439,9 +87786,10 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/team-sync/groups"
+	pathParts[2] = "/team-sync/groups"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86552,7 +87900,8 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86569,9 +87918,9 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86588,9 +87937,10 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/team-sync/group-mappings"
+	pathParts[4] = "/team-sync/group-mappings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -86659,7 +88009,8 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86676,9 +88027,9 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86695,9 +88046,10 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/members"
+	pathParts[4] = "/members"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86825,7 +88177,8 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86842,9 +88195,10 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members"
+	pathParts[2] = "/members"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -86972,7 +88326,8 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -86989,9 +88344,9 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87008,9 +88363,10 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/invitations"
+	pathParts[4] = "/invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87124,7 +88480,8 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87141,9 +88498,10 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/invitations"
+	pathParts[2] = "/invitations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87251,7 +88609,8 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87268,9 +88627,9 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87287,9 +88646,10 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[4] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87400,7 +88760,8 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87417,9 +88778,10 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects"
+	pathParts[2] = "/projects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87527,7 +88889,8 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [5]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87544,9 +88907,9 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87563,9 +88926,10 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repos"
+	pathParts[4] = "/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87675,7 +89039,8 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [3]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87692,9 +89057,10 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos"
+	pathParts[2] = "/repos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -87820,7 +89186,8 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87837,9 +89204,9 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/members/"
+	pathParts[2] = "/members/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87856,8 +89223,9 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -87939,7 +89307,8 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87956,9 +89325,9 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87975,9 +89344,9 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[4] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -87994,8 +89363,9 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88080,7 +89450,8 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88097,9 +89468,9 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/memberships/"
+	pathParts[2] = "/memberships/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88116,8 +89487,9 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88190,7 +89562,8 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88207,9 +89580,9 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88226,9 +89599,9 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[4] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88245,8 +89618,9 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88322,7 +89696,8 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88339,9 +89714,9 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/projects/"
+	pathParts[2] = "/projects/"
 	{
 		// Encode "project_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88358,8 +89733,9 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88432,7 +89808,8 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88449,9 +89826,9 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88468,9 +89845,9 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[4] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88487,9 +89864,9 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/"
+	pathParts[6] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88506,8 +89883,9 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88583,7 +89961,8 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88600,9 +89979,9 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/repos/"
+	pathParts[2] = "/repos/"
 	{
 		// Encode "owner" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88619,9 +89998,9 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "repo" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88638,8 +90017,9 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -88710,7 +90090,8 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [8]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88727,9 +90108,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88746,9 +90127,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88765,9 +90146,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[6] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88784,8 +90165,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[7] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -88862,7 +90244,8 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [6]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88879,9 +90262,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88898,9 +90281,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/comments/"
+	pathParts[4] = "/comments/"
 	{
 		// Encode "comment_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -88917,8 +90300,9 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -88993,7 +90377,8 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [6]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89010,9 +90395,9 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89029,9 +90414,9 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[4] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89048,8 +90433,9 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -89127,7 +90513,8 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [4]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89144,9 +90531,9 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/discussions/"
+	pathParts[2] = "/discussions/"
 	{
 		// Encode "discussion_number" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89163,8 +90550,9 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -89253,7 +90641,8 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orgs/"
+	var pathParts [4]string
+	pathParts[0] = "/orgs/"
 	{
 		// Encode "org" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89270,9 +90659,9 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/teams/"
+	pathParts[2] = "/teams/"
 	{
 		// Encode "team_slug" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89289,8 +90678,9 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -89376,7 +90766,8 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/teams/"
+	var pathParts [2]string
+	pathParts[0] = "/teams/"
 	{
 		// Encode "team_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89393,8 +90784,9 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -89481,7 +90873,9 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/emails"
+	var pathParts [1]string
+	pathParts[0] = "/user/emails"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -89552,7 +90946,8 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/blocks/"
+	var pathParts [2]string
+	pathParts[0] = "/user/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89569,8 +90964,9 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -89638,7 +91034,8 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/blocks/"
+	var pathParts [2]string
+	pathParts[0] = "/user/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89655,8 +91052,9 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -89724,7 +91122,8 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [4]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89741,9 +91140,9 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/following/"
+	pathParts[2] = "/following/"
 	{
 		// Encode "target_user" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89760,8 +91159,9 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -89829,7 +91229,8 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/following/"
+	var pathParts [2]string
+	pathParts[0] = "/user/following/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -89846,8 +91247,9 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -89917,7 +91319,9 @@ func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, requ
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/gpg_keys"
+	var pathParts [1]string
+	pathParts[0] = "/user/gpg_keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -89999,7 +91403,9 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/keys"
+	var pathParts [1]string
+	pathParts[0] = "/user/keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -90086,7 +91492,9 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/emails"
+	var pathParts [1]string
+	pathParts[0] = "/user/emails"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -90159,7 +91567,8 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/gpg_keys/"
+	var pathParts [2]string
+	pathParts[0] = "/user/gpg_keys/"
 	{
 		// Encode "gpg_key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90176,8 +91585,9 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -90247,7 +91657,8 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/keys/"
+	var pathParts [2]string
+	pathParts[0] = "/user/keys/"
 	{
 		// Encode "key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90264,8 +91675,9 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -90337,7 +91749,8 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/following/"
+	var pathParts [2]string
+	pathParts[0] = "/user/following/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90354,8 +91767,9 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PUT", u, nil)
@@ -90426,7 +91840,9 @@ func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAut
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user"
+	var pathParts [1]string
+	pathParts[0] = "/user"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -90508,7 +91924,8 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [2]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90525,8 +91942,9 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -90603,7 +92021,8 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90620,9 +92039,10 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/hovercard"
+	pathParts[2] = "/hovercard"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -90730,7 +92150,8 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/gpg_keys/"
+	var pathParts [2]string
+	pathParts[0] = "/user/gpg_keys/"
 	{
 		// Encode "gpg_key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90747,8 +92168,9 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -90818,7 +92240,8 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/keys/"
+	var pathParts [2]string
+	pathParts[0] = "/user/keys/"
 	{
 		// Encode "key_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -90835,8 +92258,9 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -90908,7 +92332,9 @@ func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users"
+	var pathParts [1]string
+	pathParts[0] = "/users"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91014,7 +92440,9 @@ func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res U
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/blocks"
+	var pathParts [1]string
+	pathParts[0] = "/user/blocks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -91083,7 +92511,9 @@ func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/emails"
+	var pathParts [1]string
+	pathParts[0] = "/user/emails"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91189,7 +92619,9 @@ func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/following"
+	var pathParts [1]string
+	pathParts[0] = "/user/following"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91295,7 +92727,9 @@ func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/followers"
+	var pathParts [1]string
+	pathParts[0] = "/user/followers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91401,7 +92835,8 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -91418,9 +92853,10 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/followers"
+	pathParts[2] = "/followers"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91526,7 +92962,8 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -91543,9 +92980,10 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/following"
+	pathParts[2] = "/following"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91653,7 +93091,9 @@ func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, param
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/gpg_keys"
+	var pathParts [1]string
+	pathParts[0] = "/user/gpg_keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91759,7 +93199,8 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -91776,9 +93217,10 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/gpg_keys"
+	pathParts[2] = "/gpg_keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91887,7 +93329,9 @@ func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/public_emails"
+	var pathParts [1]string
+	pathParts[0] = "/user/public_emails"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -91993,7 +93437,8 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/users/"
+	var pathParts [3]string
+	pathParts[0] = "/users/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -92010,9 +93455,10 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/keys"
+	pathParts[2] = "/keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92120,7 +93566,9 @@ func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/keys"
+	var pathParts [1]string
+	pathParts[0] = "/user/keys"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -92235,7 +93683,9 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/email/visibility"
+	var pathParts [1]string
+	pathParts[0] = "/user/email/visibility"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -92306,7 +93756,8 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/blocks/"
+	var pathParts [2]string
+	pathParts[0] = "/user/blocks/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -92323,8 +93774,9 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -92393,7 +93845,8 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/following/"
+	var pathParts [2]string
+	pathParts[0] = "/user/following/"
 	{
 		// Encode "username" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -92410,8 +93863,9 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -92481,7 +93935,9 @@ func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUs
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user"
+	var pathParts [1]string
+	pathParts[0] = "/user"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "PATCH", u, nil)

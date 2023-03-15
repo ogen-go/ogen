@@ -24,7 +24,7 @@ import (
 // Creates data.
 //
 // POST /data
-func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -134,7 +134,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 // Retrieve data.
 //
 // GET /data
-func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPMethodKey.String("GET"),

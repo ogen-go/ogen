@@ -111,7 +111,8 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/name/"
+	var pathParts [4]string
+	pathParts[0] = "/name/"
 	{
 		// Encode "id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -128,9 +129,9 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "key" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -147,8 +148,9 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -216,7 +218,9 @@ func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/name"
+	var pathParts [1]string
+	pathParts[0] = "/name"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -284,7 +288,8 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/name/"
+	var pathParts [2]string
+	pathParts[0] = "/name/"
 	{
 		// Encode "id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -301,8 +306,9 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

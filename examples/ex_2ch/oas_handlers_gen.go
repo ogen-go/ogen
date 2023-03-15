@@ -19,7 +19,7 @@ import (
 // Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
-func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -50,7 +50,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 			ID:   "",
 		}
 	)
-	params, err := decodeAPICaptcha2chcaptchaIDGetParams(args, r)
+	params, err := decodeAPICaptcha2chcaptchaIDGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -120,7 +120,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 // Отображение 2chcaptcha по id.
 //
 // GET /api/captcha/2chcaptcha/show
-func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -151,7 +151,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 			ID:   "",
 		}
 	)
-	params, err := decodeAPICaptcha2chcaptchaShowGetParams(args, r)
+	params, err := decodeAPICaptcha2chcaptchaShowGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -221,7 +221,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 // Срок жизни id: 180 секунд.
 //
 // GET /api/captcha/app/id/{public_key}
-func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -252,7 +252,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 			ID:   "",
 		}
 	)
-	params, err := decodeAPICaptchaAppIDPublicKeyGetParams(args, r)
+	params, err := decodeAPICaptchaAppIDPublicKeyGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -326,7 +326,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 // Получение публичного ключа invisible recaptcha.
 //
 // GET /api/captcha/invisible_recaptcha/id
-func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -357,7 +357,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			ID:   "",
 		}
 	)
-	params, err := decodeAPICaptchaInvisibleRecaptchaIDGetParams(args, r)
+	params, err := decodeAPICaptchaInvisibleRecaptchaIDGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -427,7 +427,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -505,7 +505,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 // Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
-func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -536,7 +536,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 			ID:   "",
 		}
 	)
-	params, err := decodeAPICaptchaRecaptchaIDGetParams(args, r)
+	params, err := decodeAPICaptchaRecaptchaIDGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -606,7 +606,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -684,7 +684,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 // Добавление дизлайка на пост.
 //
 // GET /api/dislike
-func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -715,7 +715,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 			ID:   "",
 		}
 	)
-	params, err := decodeAPIDislikeGetParams(args, r)
+	params, err := decodeAPIDislikeGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -785,7 +785,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 // Добавление лайка на пост.
 //
 // GET /api/like
-func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -816,7 +816,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "",
 		}
 	)
-	params, err := decodeAPILikeGetParams(args, r)
+	params, err := decodeAPILikeGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -888,7 +888,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 // целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
-func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -919,7 +919,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			ID:   "",
 		}
 	)
-	params, err := decodeAPIMobileV2AfterBoardThreadNumGetParams(args, r)
+	params, err := decodeAPIMobileV2AfterBoardThreadNumGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -993,7 +993,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 // Получение списка досок и их настроек.
 //
 // GET /api/mobile/v2/boards
-func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1071,7 +1071,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 // Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
-func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1102,7 +1102,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 			ID:   "",
 		}
 	)
-	params, err := decodeAPIMobileV2InfoBoardThreadGetParams(args, r)
+	params, err := decodeAPIMobileV2InfoBoardThreadGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1172,7 +1172,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 // Получение информации о посте.
 //
 // GET /api/mobile/v2/post/{board}/{num}
-func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1203,7 +1203,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 			ID:   "",
 		}
 	)
-	params, err := decodeAPIMobileV2PostBoardNumGetParams(args, r)
+	params, err := decodeAPIMobileV2PostBoardNumGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1273,7 +1273,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 // Авторизация пасскода.
 //
 // POST /user/passlogin
-func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1304,7 +1304,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 			ID:   "",
 		}
 	)
-	params, err := decodeUserPassloginPostParams(args, r)
+	params, err := decodeUserPassloginPostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1385,7 +1385,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 // Создание нового поста или треда.
 //
 // POST /user/posting
-func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1482,7 +1482,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 // Отправка жалобы.
 //
 // POST /user/report
-func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.

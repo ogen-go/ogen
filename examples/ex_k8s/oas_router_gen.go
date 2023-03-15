@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -64,7 +66,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleGetServiceAccountIssuerOpenIDConfigurationRequest([0]string{}, w, r)
+						s.handleGetServiceAccountIssuerOpenIDConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -92,7 +94,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleGetCoreAPIVersionsRequest([0]string{}, w, r)
+							s.handleGetCoreAPIVersionsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -110,7 +112,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetCoreV1APIResourcesRequest([0]string{}, w, r)
+								s.handleGetCoreV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -139,7 +141,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1ComponentStatusRequest([0]string{}, w, r)
+										s.handleListCoreV1ComponentStatusRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -165,7 +167,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleReadCoreV1ComponentStatusRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -184,7 +186,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1ConfigMapForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1ConfigMapForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -214,7 +216,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1EndpointsForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1EndpointsForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -232,7 +234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1EventForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1EventForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -251,7 +253,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleListCoreV1LimitRangeForAllNamespacesRequest([0]string{}, w, r)
+									s.handleListCoreV1LimitRangeForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -279,7 +281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1NamespaceRequest([0]string{}, w, r)
+										s.handleListCoreV1NamespaceRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -308,7 +310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleReadCoreV1NamespaceRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -339,7 +341,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListCoreV1NamespacedConfigMapRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -366,7 +368,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadCoreV1NamespacedConfigMapRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -397,7 +399,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListCoreV1NamespacedEndpointsRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -424,7 +426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadCoreV1NamespacedEndpointsRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -444,7 +446,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListCoreV1NamespacedEventRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -471,7 +473,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadCoreV1NamespacedEventRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -492,7 +494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListCoreV1NamespacedLimitRangeRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -519,7 +521,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadCoreV1NamespacedLimitRangeRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -550,7 +552,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListCoreV1NamespacedPersistentVolumeClaimRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -580,7 +582,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -602,7 +604,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -634,7 +636,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListCoreV1NamespacedPodRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -664,7 +666,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadCoreV1NamespacedPodRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -697,12 +699,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleConnectCoreV1GetNamespacedPodAttachRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "POST":
 																		s.handleConnectCoreV1PostNamespacedPodAttachRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET,POST")
 																	}
@@ -734,7 +736,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -755,12 +757,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleConnectCoreV1GetNamespacedPodExecRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "POST":
 																			s.handleConnectCoreV1PostNamespacedPodExecRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET,POST")
 																		}
@@ -782,7 +784,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleReadCoreV1NamespacedPodLogRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -814,12 +816,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleConnectCoreV1GetNamespacedPodPortforwardRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "POST":
 																			s.handleConnectCoreV1PostNamespacedPodPortforwardRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET,POST")
 																		}
@@ -839,37 +841,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleConnectCoreV1DeleteNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "GET":
 																			s.handleConnectCoreV1GetNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "HEAD":
 																			s.handleConnectCoreV1HeadNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "OPTIONS":
 																			s.handleConnectCoreV1OptionsNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "PATCH":
 																			s.handleConnectCoreV1PatchNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "POST":
 																			s.handleConnectCoreV1PostNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "PUT":
 																			s.handleConnectCoreV1PutNamespacedPodProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 																		}
@@ -897,43 +899,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleConnectCoreV1GetNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "HEAD":
 																				s.handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "OPTIONS":
 																				s.handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PATCH":
 																				s.handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleConnectCoreV1PostNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PUT":
 																				s.handleConnectCoreV1PutNamespacedPodProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 																			}
@@ -956,7 +958,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleReadCoreV1NamespacedPodStatusRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -978,7 +980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -1005,7 +1007,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadCoreV1NamespacedPodTemplateRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -1038,7 +1040,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListCoreV1NamespacedReplicationControllerRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -1068,7 +1070,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadCoreV1NamespacedReplicationControllerRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -1101,7 +1103,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadCoreV1NamespacedReplicationControllerScaleRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -1122,7 +1124,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -1144,7 +1146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -1174,7 +1176,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadCoreV1NamespacedResourceQuotaRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -1196,7 +1198,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadCoreV1NamespacedResourceQuotaStatusRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -1240,7 +1242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListCoreV1NamespacedSecretRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -1267,7 +1269,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadCoreV1NamespacedSecretRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -1298,7 +1300,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -1325,7 +1327,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadCoreV1NamespacedServiceAccountRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -1345,7 +1347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleListCoreV1NamespacedServiceRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -1375,7 +1377,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadCoreV1NamespacedServiceRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -1407,37 +1409,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleConnectCoreV1DeleteNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "GET":
 																			s.handleConnectCoreV1GetNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "HEAD":
 																			s.handleConnectCoreV1HeadNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "OPTIONS":
 																			s.handleConnectCoreV1OptionsNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "PATCH":
 																			s.handleConnectCoreV1PatchNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "POST":
 																			s.handleConnectCoreV1PostNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "PUT":
 																			s.handleConnectCoreV1PutNamespacedServiceProxyRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 																		}
@@ -1465,43 +1467,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "HEAD":
 																				s.handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "OPTIONS":
 																				s.handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PATCH":
 																				s.handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PUT":
 																				s.handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 																			}
@@ -1523,7 +1525,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
 																				args[0],
 																				args[1],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -1548,7 +1550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadCoreV1NamespaceStatusRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -1569,7 +1571,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1NodeRequest([0]string{}, w, r)
+										s.handleListCoreV1NodeRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1598,7 +1600,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleReadCoreV1NodeRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1629,31 +1631,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "DELETE":
 													s.handleConnectCoreV1DeleteNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleConnectCoreV1GetNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "HEAD":
 													s.handleConnectCoreV1HeadNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "OPTIONS":
 													s.handleConnectCoreV1OptionsNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PATCH":
 													s.handleConnectCoreV1PatchNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleConnectCoreV1PostNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleConnectCoreV1PutNodeProxyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 												}
@@ -1680,37 +1682,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleConnectCoreV1DeleteNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleConnectCoreV1GetNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "HEAD":
 														s.handleConnectCoreV1HeadNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "OPTIONS":
 														s.handleConnectCoreV1OptionsNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleConnectCoreV1PatchNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "POST":
 														s.handleConnectCoreV1PostNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleConnectCoreV1PutNodeProxyWithPathRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
 													}
@@ -1731,7 +1733,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadCoreV1NodeStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -1775,7 +1777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1792,7 +1794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1PersistentVolumeRequest([0]string{}, w, r)
+											s.handleListCoreV1PersistentVolumeRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1821,7 +1823,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadCoreV1PersistentVolumeRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -1842,7 +1844,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -1874,7 +1876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1PodForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoreV1PodForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1892,7 +1894,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1PodTemplateForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoreV1PodTemplateForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1923,7 +1925,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1ReplicationControllerForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1ReplicationControllerForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1941,7 +1943,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1ResourceQuotaForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1ResourceQuotaForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1971,7 +1973,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleListCoreV1SecretForAllNamespacesRequest([0]string{}, w, r)
+										s.handleListCoreV1SecretForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -2000,7 +2002,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1ServiceAccountForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoreV1ServiceAccountForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2018,7 +2020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoreV1ServiceForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoreV1ServiceForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2049,7 +2051,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest([0]string{}, w, r)
+										s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -2078,7 +2080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1EndpointsListForAllNamespacesRequest([0]string{}, w, r)
+											s.handleWatchCoreV1EndpointsListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2096,7 +2098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1EventListForAllNamespacesRequest([0]string{}, w, r)
+											s.handleWatchCoreV1EventListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2115,7 +2117,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest([0]string{}, w, r)
+										s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -2143,7 +2145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1NamespaceListRequest([0]string{}, w, r)
+											s.handleWatchCoreV1NamespaceListRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2172,7 +2174,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleWatchCoreV1NamespaceRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2203,7 +2205,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchCoreV1NamespacedConfigMapListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -2230,7 +2232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchCoreV1NamespacedConfigMapRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2261,7 +2263,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedEndpointsListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2288,7 +2290,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2308,7 +2310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedEventListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2335,7 +2337,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedEventRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2356,7 +2358,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchCoreV1NamespacedLimitRangeListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -2383,7 +2385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchCoreV1NamespacedLimitRangeRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2414,7 +2416,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2441,7 +2443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2472,7 +2474,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchCoreV1NamespacedPodListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2499,7 +2501,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchCoreV1NamespacedPodRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -2519,7 +2521,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchCoreV1NamespacedPodTemplateListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2546,7 +2548,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -2579,7 +2581,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedReplicationControllerListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2606,7 +2608,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedReplicationControllerRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2626,7 +2628,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedResourceQuotaListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2653,7 +2655,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2685,7 +2687,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchCoreV1NamespacedSecretListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2712,7 +2714,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchCoreV1NamespacedSecretRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2743,7 +2745,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchCoreV1NamespacedServiceAccountListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2770,7 +2772,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -2790,7 +2792,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchCoreV1NamespacedServiceListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -2817,7 +2819,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchCoreV1NamespacedServiceRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -2840,7 +2842,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1NodeListRequest([0]string{}, w, r)
+											s.handleWatchCoreV1NodeListRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2866,7 +2868,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleWatchCoreV1NodeRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2908,7 +2910,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2925,7 +2927,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1PersistentVolumeListRequest([0]string{}, w, r)
+												s.handleWatchCoreV1PersistentVolumeListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2951,7 +2953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchCoreV1PersistentVolumeRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -2982,7 +2984,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1PodListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoreV1PodListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3000,7 +3002,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3031,7 +3033,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest([0]string{}, w, r)
+											s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3049,7 +3051,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest([0]string{}, w, r)
+											s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3079,7 +3081,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleWatchCoreV1SecretListForAllNamespacesRequest([0]string{}, w, r)
+											s.handleWatchCoreV1SecretListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3108,7 +3110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3126,7 +3128,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoreV1ServiceListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoreV1ServiceListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3148,7 +3150,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleGetAPIVersionsRequest([0]string{}, w, r)
+							s.handleGetAPIVersionsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -3177,7 +3179,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetAdmissionregistrationAPIGroupRequest([0]string{}, w, r)
+									s.handleGetAdmissionregistrationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -3195,7 +3197,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetAdmissionregistrationV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetAdmissionregistrationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3213,7 +3215,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest([0]string{}, w, r)
+											s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3239,7 +3241,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3257,7 +3259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest([0]string{}, w, r)
+											s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3283,7 +3285,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3312,7 +3314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest([0]string{}, w, r)
+												s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3338,7 +3340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3356,7 +3358,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest([0]string{}, w, r)
+												s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3382,7 +3384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3425,7 +3427,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetApiextensionsAPIGroupRequest([0]string{}, w, r)
+											s.handleGetApiextensionsAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3443,7 +3445,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleGetApiextensionsV1APIResourcesRequest([0]string{}, w, r)
+												s.handleGetApiextensionsV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3461,7 +3463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleListApiextensionsV1CustomResourceDefinitionRequest([0]string{}, w, r)
+													s.handleListApiextensionsV1CustomResourceDefinitionRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3490,7 +3492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3511,7 +3513,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3530,7 +3532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest([0]string{}, w, r)
+													s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3556,7 +3558,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchApiextensionsV1CustomResourceDefinitionRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3576,7 +3578,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetApiregistrationAPIGroupRequest([0]string{}, w, r)
+											s.handleGetApiregistrationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3594,7 +3596,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleGetApiregistrationV1APIResourcesRequest([0]string{}, w, r)
+												s.handleGetApiregistrationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3612,7 +3614,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleListApiregistrationV1APIServiceRequest([0]string{}, w, r)
+													s.handleListApiregistrationV1APIServiceRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3641,7 +3643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadApiregistrationV1APIServiceRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3662,7 +3664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3681,7 +3683,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchApiregistrationV1APIServiceListRequest([0]string{}, w, r)
+													s.handleWatchApiregistrationV1APIServiceListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3707,7 +3709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchApiregistrationV1APIServiceRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3728,7 +3730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetAppsAPIGroupRequest([0]string{}, w, r)
+										s.handleGetAppsAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3746,7 +3748,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetAppsV1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetAppsV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3765,7 +3767,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListAppsV1ControllerRevisionForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListAppsV1ControllerRevisionForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3794,7 +3796,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleListAppsV1DaemonSetForAllNamespacesRequest([0]string{}, w, r)
+													s.handleListAppsV1DaemonSetForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3812,7 +3814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleListAppsV1DeploymentForAllNamespacesRequest([0]string{}, w, r)
+													s.handleListAppsV1DeploymentForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3863,7 +3865,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListAppsV1NamespacedControllerRevisionRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3890,7 +3892,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadAppsV1NamespacedControllerRevisionRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3921,7 +3923,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3951,7 +3953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadAppsV1NamespacedDaemonSetRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -3973,7 +3975,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAppsV1NamespacedDaemonSetStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -3994,7 +3996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListAppsV1NamespacedDeploymentRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4024,7 +4026,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadAppsV1NamespacedDeploymentRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4057,7 +4059,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleReadAppsV1NamespacedDeploymentScaleRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -4078,7 +4080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -4101,7 +4103,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListAppsV1NamespacedReplicaSetRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4131,7 +4133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadAppsV1NamespacedReplicaSetRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4164,7 +4166,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAppsV1NamespacedReplicaSetScaleRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4185,7 +4187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4207,7 +4209,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListAppsV1NamespacedStatefulSetRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4237,7 +4239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadAppsV1NamespacedStatefulSetRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4270,7 +4272,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAppsV1NamespacedStatefulSetScaleRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4291,7 +4293,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4314,7 +4316,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListAppsV1ReplicaSetForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListAppsV1ReplicaSetForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4332,7 +4334,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListAppsV1StatefulSetForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListAppsV1StatefulSetForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4361,7 +4363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -4390,7 +4392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest([0]string{}, w, r)
+														s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4408,7 +4410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleWatchAppsV1DeploymentListForAllNamespacesRequest([0]string{}, w, r)
+														s.handleWatchAppsV1DeploymentListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4459,7 +4461,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchAppsV1NamespacedControllerRevisionListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4486,7 +4488,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchAppsV1NamespacedControllerRevisionRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4517,7 +4519,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchAppsV1NamespacedDaemonSetListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4544,7 +4546,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4564,7 +4566,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchAppsV1NamespacedDeploymentListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4591,7 +4593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -4612,7 +4614,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchAppsV1NamespacedReplicaSetListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4639,7 +4641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchAppsV1NamespacedReplicaSetRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4659,7 +4661,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchAppsV1NamespacedStatefulSetListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4686,7 +4688,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchAppsV1NamespacedStatefulSetRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -4707,7 +4709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -4725,7 +4727,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -4768,7 +4770,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetAuthenticationAPIGroupRequest([0]string{}, w, r)
+											s.handleGetAuthenticationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -4787,7 +4789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleGetAuthenticationV1APIResourcesRequest([0]string{}, w, r)
+												s.handleGetAuthenticationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4805,7 +4807,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetAuthorizationAPIGroupRequest([0]string{}, w, r)
+											s.handleGetAuthorizationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -4824,7 +4826,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleGetAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+												s.handleGetAuthorizationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4843,7 +4845,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetAutoscalingAPIGroupRequest([0]string{}, w, r)
+										s.handleGetAutoscalingAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -4872,7 +4874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleGetAutoscalingV1APIResourcesRequest([0]string{}, w, r)
+												s.handleGetAutoscalingV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4891,7 +4893,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+													s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -4930,7 +4932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4960,7 +4962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4982,7 +4984,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5014,7 +5016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+														s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5053,7 +5055,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5080,7 +5082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5112,7 +5114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleGetAutoscalingV2beta1APIResourcesRequest([0]string{}, w, r)
+													s.handleGetAutoscalingV2beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -5131,7 +5133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+														s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5170,7 +5172,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5200,7 +5202,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5222,7 +5224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -5254,7 +5256,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "GET":
-															s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+															s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5293,7 +5295,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5320,7 +5322,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -5341,7 +5343,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleGetAutoscalingV2beta2APIResourcesRequest([0]string{}, w, r)
+													s.handleGetAutoscalingV2beta2APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -5360,7 +5362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+														s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5399,7 +5401,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5429,7 +5431,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5451,7 +5453,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -5483,7 +5485,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "GET":
-															s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+															s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5522,7 +5524,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "GET":
 																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5549,7 +5551,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -5575,7 +5577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetBatchAPIGroupRequest([0]string{}, w, r)
+								s.handleGetBatchAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -5604,7 +5606,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetBatchV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetBatchV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -5623,7 +5625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListBatchV1CronJobForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListBatchV1CronJobForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -5641,7 +5643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListBatchV1JobForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListBatchV1JobForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -5691,7 +5693,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListBatchV1NamespacedCronJobRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -5721,7 +5723,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadBatchV1NamespacedCronJobRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5743,7 +5745,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadBatchV1NamespacedCronJobStatusRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5764,7 +5766,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListBatchV1NamespacedJobRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -5794,7 +5796,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadBatchV1NamespacedJobRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5816,7 +5818,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadBatchV1NamespacedJobStatusRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5849,7 +5851,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchBatchV1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchBatchV1CronJobListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -5867,7 +5869,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchBatchV1JobListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchBatchV1JobListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -5917,7 +5919,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchBatchV1NamespacedCronJobListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5944,7 +5946,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchBatchV1NamespacedCronJobRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5964,7 +5966,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchBatchV1NamespacedJobListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5991,7 +5993,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchBatchV1NamespacedJobRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -6013,7 +6015,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetBatchV1beta1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetBatchV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -6032,7 +6034,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListBatchV1beta1CronJobForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListBatchV1beta1CronJobForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6071,7 +6073,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListBatchV1beta1NamespacedCronJobRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6101,7 +6103,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadBatchV1beta1NamespacedCronJobRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6123,7 +6125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadBatchV1beta1NamespacedCronJobStatusRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6155,7 +6157,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6194,7 +6196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchBatchV1beta1NamespacedCronJobListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6221,7 +6223,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6255,7 +6257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetCertificatesAPIGroupRequest([0]string{}, w, r)
+									s.handleGetCertificatesAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -6273,7 +6275,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetCertificatesV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetCertificatesV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -6291,7 +6293,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListCertificatesV1CertificateSigningRequestRequest([0]string{}, w, r)
+											s.handleListCertificatesV1CertificateSigningRequestRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6320,7 +6322,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6352,7 +6354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6372,7 +6374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6392,7 +6394,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleWatchCertificatesV1CertificateSigningRequestListRequest([0]string{}, w, r)
+											s.handleWatchCertificatesV1CertificateSigningRequestListRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6418,7 +6420,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleWatchCertificatesV1CertificateSigningRequestRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6438,7 +6440,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetCoordinationAPIGroupRequest([0]string{}, w, r)
+									s.handleGetCoordinationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -6456,7 +6458,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetCoordinationV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetCoordinationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -6475,7 +6477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListCoordinationV1LeaseForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListCoordinationV1LeaseForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6514,7 +6516,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListCoordinationV1NamespacedLeaseRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6541,7 +6543,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadCoordinationV1NamespacedLeaseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6572,7 +6574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6611,7 +6613,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchCoordinationV1NamespacedLeaseListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6638,7 +6640,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6661,7 +6663,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetDiscoveryAPIGroupRequest([0]string{}, w, r)
+								s.handleGetDiscoveryAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -6690,7 +6692,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetDiscoveryV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetDiscoveryV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -6709,7 +6711,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6748,7 +6750,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListDiscoveryV1NamespacedEndpointSliceRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6775,7 +6777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadDiscoveryV1NamespacedEndpointSliceRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6806,7 +6808,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6845,7 +6847,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6872,7 +6874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6893,7 +6895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetDiscoveryV1beta1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetDiscoveryV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -6912,7 +6914,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -6951,7 +6953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6978,7 +6980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7009,7 +7011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7048,7 +7050,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7075,7 +7077,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -7098,7 +7100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetEventsAPIGroupRequest([0]string{}, w, r)
+								s.handleGetEventsAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -7127,7 +7129,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetEventsV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetEventsV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -7146,7 +7148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListEventsV1EventForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListEventsV1EventForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7185,7 +7187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListEventsV1NamespacedEventRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7212,7 +7214,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadEventsV1NamespacedEventRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7243,7 +7245,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchEventsV1EventListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchEventsV1EventListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7282,7 +7284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchEventsV1NamespacedEventListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7309,7 +7311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchEventsV1NamespacedEventRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -7330,7 +7332,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetEventsV1beta1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetEventsV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -7349,7 +7351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListEventsV1beta1EventForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListEventsV1beta1EventForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7388,7 +7390,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListEventsV1beta1NamespacedEventRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7415,7 +7417,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadEventsV1beta1NamespacedEventRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7446,7 +7448,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchEventsV1beta1EventListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchEventsV1beta1EventListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7485,7 +7487,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchEventsV1beta1NamespacedEventListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7512,7 +7514,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -7535,7 +7537,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetFlowcontrolApiserverAPIGroupRequest([0]string{}, w, r)
+								s.handleGetFlowcontrolApiserverAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -7564,7 +7566,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -7582,7 +7584,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest([0]string{}, w, r)
+											s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7611,7 +7613,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7632,7 +7634,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7651,7 +7653,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([0]string{}, w, r)
+											s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7680,7 +7682,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7701,7 +7703,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7731,7 +7733,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest([0]string{}, w, r)
+												s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7757,7 +7759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7775,7 +7777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest([0]string{}, w, r)
+												s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7801,7 +7803,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7821,7 +7823,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest([0]string{}, w, r)
+										s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -7839,7 +7841,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest([0]string{}, w, r)
+											s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7868,7 +7870,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7889,7 +7891,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7908,7 +7910,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([0]string{}, w, r)
+											s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -7937,7 +7939,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -7958,7 +7960,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -7988,7 +7990,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest([0]string{}, w, r)
+												s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8014,7 +8016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8032,7 +8034,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest([0]string{}, w, r)
+												s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8058,7 +8060,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8080,7 +8082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetInternalApiserverAPIGroupRequest([0]string{}, w, r)
+								s.handleGetInternalApiserverAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -8098,7 +8100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetInternalApiserverV1alpha1APIResourcesRequest([0]string{}, w, r)
+									s.handleGetInternalApiserverV1alpha1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -8116,7 +8118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleListInternalApiserverV1alpha1StorageVersionRequest([0]string{}, w, r)
+										s.handleListInternalApiserverV1alpha1StorageVersionRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -8145,7 +8147,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -8166,7 +8168,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8185,7 +8187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest([0]string{}, w, r)
+										s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -8211,7 +8213,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleWatchInternalApiserverV1alpha1StorageVersionRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -8242,7 +8244,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetNetworkingAPIGroupRequest([0]string{}, w, r)
+									s.handleGetNetworkingAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -8260,7 +8262,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetNetworkingV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetNetworkingV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -8289,7 +8291,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListNetworkingV1IngressClassRequest([0]string{}, w, r)
+												s.handleListNetworkingV1IngressClassRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8315,7 +8317,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadNetworkingV1IngressClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8334,7 +8336,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListNetworkingV1IngressForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListNetworkingV1IngressForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8396,7 +8398,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListNetworkingV1NamespacedIngressRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -8426,7 +8428,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadNetworkingV1NamespacedIngressRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8448,7 +8450,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReadNetworkingV1NamespacedIngressStatusRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8469,7 +8471,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -8496,7 +8498,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadNetworkingV1NamespacedNetworkPolicyRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8517,7 +8519,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8557,7 +8559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchNetworkingV1IngressClassListRequest([0]string{}, w, r)
+													s.handleWatchNetworkingV1IngressClassListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8583,7 +8585,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchNetworkingV1IngressClassRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -8602,7 +8604,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchNetworkingV1IngressListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchNetworkingV1IngressListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8664,7 +8666,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchNetworkingV1NamespacedIngressListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8691,7 +8693,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8711,7 +8713,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8738,7 +8740,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8759,7 +8761,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8780,7 +8782,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetNodeAPIGroupRequest([0]string{}, w, r)
+									s.handleGetNodeAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -8809,7 +8811,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetNodeV1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetNodeV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -8827,7 +8829,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListNodeV1RuntimeClassRequest([0]string{}, w, r)
+												s.handleListNodeV1RuntimeClassRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8853,7 +8855,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadNodeV1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8871,7 +8873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchNodeV1RuntimeClassListRequest([0]string{}, w, r)
+												s.handleWatchNodeV1RuntimeClassListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8897,7 +8899,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchNodeV1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8916,7 +8918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetNodeV1alpha1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetNodeV1alpha1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -8934,7 +8936,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListNodeV1alpha1RuntimeClassRequest([0]string{}, w, r)
+												s.handleListNodeV1alpha1RuntimeClassRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -8960,7 +8962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadNodeV1alpha1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8978,7 +8980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchNodeV1alpha1RuntimeClassListRequest([0]string{}, w, r)
+												s.handleWatchNodeV1alpha1RuntimeClassListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9004,7 +9006,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchNodeV1alpha1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9023,7 +9025,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetNodeV1beta1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetNodeV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -9041,7 +9043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListNodeV1beta1RuntimeClassRequest([0]string{}, w, r)
+												s.handleListNodeV1beta1RuntimeClassRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9067,7 +9069,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadNodeV1beta1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9085,7 +9087,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchNodeV1beta1RuntimeClassListRequest([0]string{}, w, r)
+												s.handleWatchNodeV1beta1RuntimeClassListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9111,7 +9113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchNodeV1beta1RuntimeClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9133,7 +9135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetPolicyAPIGroupRequest([0]string{}, w, r)
+								s.handleGetPolicyAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -9162,7 +9164,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetPolicyV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetPolicyV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -9202,7 +9204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9232,7 +9234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9254,7 +9256,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9275,7 +9277,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -9325,7 +9327,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9352,7 +9354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9372,7 +9374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9391,7 +9393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetPolicyV1beta1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetPolicyV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -9431,7 +9433,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9461,7 +9463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9483,7 +9485,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9515,7 +9517,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9532,7 +9534,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListPolicyV1beta1PodSecurityPolicyRequest([0]string{}, w, r)
+												s.handleListPolicyV1beta1PodSecurityPolicyRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9558,7 +9560,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadPolicyV1beta1PodSecurityPolicyRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9610,7 +9612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9637,7 +9639,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9668,7 +9670,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9685,7 +9687,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest([0]string{}, w, r)
+													s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9711,7 +9713,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchPolicyV1beta1PodSecurityPolicyRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9734,7 +9736,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleGetRbacAuthorizationAPIGroupRequest([0]string{}, w, r)
+								s.handleGetRbacAuthorizationAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -9752,7 +9754,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetRbacAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+									s.handleGetRbacAuthorizationV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -9781,7 +9783,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListRbacAuthorizationV1ClusterRoleBindingRequest([0]string{}, w, r)
+											s.handleListRbacAuthorizationV1ClusterRoleBindingRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -9807,7 +9809,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9825,7 +9827,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListRbacAuthorizationV1ClusterRoleRequest([0]string{}, w, r)
+											s.handleListRbacAuthorizationV1ClusterRoleRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -9851,7 +9853,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadRbacAuthorizationV1ClusterRoleRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9903,7 +9905,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9930,7 +9932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9950,7 +9952,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleListRbacAuthorizationV1NamespacedRoleRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -9977,7 +9979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadRbacAuthorizationV1NamespacedRoleRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10009,7 +10011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10027,7 +10029,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest([0]string{}, w, r)
+											s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10067,7 +10069,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest([0]string{}, w, r)
+												s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10093,7 +10095,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10111,7 +10113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleWatchRbacAuthorizationV1ClusterRoleListRequest([0]string{}, w, r)
+												s.handleWatchRbacAuthorizationV1ClusterRoleListRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10137,7 +10139,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchRbacAuthorizationV1ClusterRoleRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10189,7 +10191,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10216,7 +10218,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10236,7 +10238,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10263,7 +10265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10295,7 +10297,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10313,7 +10315,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest([0]string{}, w, r)
+												s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10345,7 +10347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetSchedulingAPIGroupRequest([0]string{}, w, r)
+									s.handleGetSchedulingAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -10363,7 +10365,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleGetSchedulingV1APIResourcesRequest([0]string{}, w, r)
+										s.handleGetSchedulingV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -10381,7 +10383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleListSchedulingV1PriorityClassRequest([0]string{}, w, r)
+											s.handleListSchedulingV1PriorityClassRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10407,7 +10409,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleReadSchedulingV1PriorityClassRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10425,7 +10427,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleWatchSchedulingV1PriorityClassListRequest([0]string{}, w, r)
+											s.handleWatchSchedulingV1PriorityClassListRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10451,7 +10453,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleWatchSchedulingV1PriorityClassRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10471,7 +10473,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleGetStorageAPIGroupRequest([0]string{}, w, r)
+									s.handleGetStorageAPIGroupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -10500,7 +10502,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetStorageV1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetStorageV1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10529,7 +10531,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleListStorageV1CSIDriverRequest([0]string{}, w, r)
+													s.handleListStorageV1CSIDriverRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10555,7 +10557,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadStorageV1CSIDriverRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10573,7 +10575,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleListStorageV1CSINodeRequest([0]string{}, w, r)
+													s.handleListStorageV1CSINodeRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10599,7 +10601,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadStorageV1CSINodeRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10618,7 +10620,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListStorageV1StorageClassRequest([0]string{}, w, r)
+												s.handleListStorageV1StorageClassRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10644,7 +10646,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadStorageV1StorageClassRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10662,7 +10664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleListStorageV1VolumeAttachmentRequest([0]string{}, w, r)
+												s.handleListStorageV1VolumeAttachmentRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10691,7 +10693,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleReadStorageV1VolumeAttachmentRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10712,7 +10714,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10753,7 +10755,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "GET":
-														s.handleWatchStorageV1CSIDriverListRequest([0]string{}, w, r)
+														s.handleWatchStorageV1CSIDriverListRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10779,7 +10781,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchStorageV1CSIDriverRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10797,7 +10799,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "GET":
-														s.handleWatchStorageV1CSINodeListRequest([0]string{}, w, r)
+														s.handleWatchStorageV1CSINodeListRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10823,7 +10825,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleWatchStorageV1CSINodeRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10842,7 +10844,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchStorageV1StorageClassListRequest([0]string{}, w, r)
+													s.handleWatchStorageV1StorageClassListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10868,7 +10870,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchStorageV1StorageClassRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10886,7 +10888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleWatchStorageV1VolumeAttachmentListRequest([0]string{}, w, r)
+													s.handleWatchStorageV1VolumeAttachmentListRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10912,7 +10914,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchStorageV1VolumeAttachmentRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10932,7 +10934,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetStorageV1alpha1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetStorageV1alpha1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -10951,7 +10953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -10990,7 +10992,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -11017,7 +11019,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11048,7 +11050,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -11087,7 +11089,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11114,7 +11116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -11135,7 +11137,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "GET":
-											s.handleGetStorageV1beta1APIResourcesRequest([0]string{}, w, r)
+											s.handleGetStorageV1beta1APIResourcesRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -11154,7 +11156,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf node.
 											switch r.Method {
 											case "GET":
-												s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+												s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -11193,7 +11195,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -11220,7 +11222,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11251,7 +11253,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+													s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -11290,7 +11292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11317,7 +11319,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -11351,7 +11353,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "GET":
 						s.handleLogFileHandlerRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -11369,7 +11371,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleGetServiceAccountIssuerOpenIDKeysetRequest([0]string{}, w, r)
+						s.handleGetServiceAccountIssuerOpenIDKeysetRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -11387,7 +11389,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleGetCodeVersionRequest([0]string{}, w, r)
+						s.handleGetCodeVersionRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}

@@ -22,7 +22,7 @@ import (
 // Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
 //
 // PUT /snapshot/create
-func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSnapshot"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -124,7 +124,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 // Creates a synchronous action.
 //
 // PUT /actions
-func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSyncAction"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -226,7 +226,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 // Returns the current balloon device configuration.
 //
 // GET /balloon
-func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -309,7 +309,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 // Returns the latest balloon device statistics, only if enabled pre-boot.
 //
 // GET /balloon/statistics
-func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -392,7 +392,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 // Returns general information about an instance.
 //
 // GET /
-func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -475,7 +475,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 // Gets configuration for all VM resources.
 //
 // GET /vm/config
-func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -560,7 +560,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 // disabled and there is no CPU Template.
 //
 // GET /machine-config
-func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -644,7 +644,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 // configuring any resource other than the Logger and Metrics).
 //
 // PUT /snapshot/load
-func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -746,7 +746,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 // Creates MMDS configuration to be used by the MMDS network stack.
 //
 // PUT /mmds/config
-func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -843,7 +843,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 // Get the MMDS data store.
 //
 // GET /mmds
-func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -921,7 +921,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 // Updates the MMDS data store.
 //
 // PATCH /mmds
-func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1018,7 +1018,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 // Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
-func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1116,7 +1116,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 // possible.
 //
 // PATCH /balloon
-func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1219,7 +1219,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 // if update is not possible.
 //
 // PATCH /balloon/statistics
-func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1322,7 +1322,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 // update is not possible.
 //
 // PATCH /drives/{drive_id}
-func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestDriveByID"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1358,7 +1358,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			ID:   "patchGuestDriveByID",
 		}
 	)
-	params, err := decodePatchGuestDriveByIDParams(args, r)
+	params, err := decodePatchGuestDriveByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1439,7 +1439,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 // Updates the rate limiters applied to a network interface.
 //
 // PATCH /network-interfaces/{iface_id}
-func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1475,7 +1475,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			ID:   "patchGuestNetworkInterfaceByID",
 		}
 	)
-	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
+	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1557,7 +1557,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 // parameters has an incorrect value, the whole update fails.
 //
 // PATCH /machine-config
-func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchMachineConfiguration"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1659,7 +1659,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 // Sets the desired state (Paused or Resumed) for the microVM.
 //
 // PATCH /vm
-func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchVm"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -1762,7 +1762,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 // startup. This will fail after machine startup. Will fail if update is not possible.
 //
 // PUT /balloon
-func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -1865,7 +1865,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 // is not possible.
 //
 // PUT /boot-source
-func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -1968,7 +1968,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 // already exists, updates its state based on new input. Will fail if update is not possible.
 //
 // PUT /drives/{drive_id}
-func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestDriveByID"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -2004,7 +2004,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			ID:   "putGuestDriveByID",
 		}
 	)
-	params, err := decodePutGuestDriveByIDParams(args, r)
+	params, err := decodePutGuestDriveByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2085,7 +2085,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 // Creates new network interface with ID specified by iface_id path parameter.
 //
 // PUT /network-interfaces/{iface_id}
-func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -2121,7 +2121,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			ID:   "putGuestNetworkInterfaceByID",
 		}
 	)
-	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
+	params, err := decodePutGuestNetworkInterfaceByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2203,7 +2203,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 // update the device configuration. May fail if update is not possible.
 //
 // PUT /vsock
-func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestVsock"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -2305,7 +2305,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 // Initializes the logger by specifying a named pipe or a file for the logs output.
 //
 // PUT /logger
-func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putLogger"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -2410,7 +2410,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 // the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
 //
 // PUT /machine-config
-func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMachineConfiguration"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -2512,7 +2512,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 // Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
-func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
 		semconv.HTTPMethodKey.String("PUT"),

@@ -32,12 +32,16 @@ func unpackPatchGuestDriveByIDParams(packed middleware.Parameters) (params Patch
 	return params
 }
 
-func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params PatchGuestDriveByIDParams, _ error) {
+func decodePatchGuestDriveByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PatchGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94,12 +98,16 @@ func unpackPatchGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PatchGuestNetworkInterfaceByIDParams, _ error) {
+func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PatchGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -156,12 +164,16 @@ func unpackPutGuestDriveByIDParams(packed middleware.Parameters) (params PutGues
 	return params
 }
 
-func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutGuestDriveByIDParams, _ error) {
+func decodePutGuestDriveByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PutGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -218,12 +230,16 @@ func unpackPutGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PutGuestNetworkInterfaceByIDParams, _ error) {
+func decodePutGuestNetworkInterfaceByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PutGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{

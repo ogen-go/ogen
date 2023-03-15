@@ -128,7 +128,9 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/nullableStrings"
+	var pathParts [1]string
+	pathParts[0] = "/nullableStrings"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -208,7 +210,9 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/objectsWithConflictingArrayProperty"
+	var pathParts [1]string
+	pathParts[0] = "/objectsWithConflictingArrayProperty"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -288,7 +292,9 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/objectsWithConflictingProperties"
+	var pathParts [1]string
+	pathParts[0] = "/objectsWithConflictingProperties"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -382,7 +388,9 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/referencedAllof"
+	var pathParts [1]string
+	pathParts[0] = "/referencedAllof"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -478,7 +486,9 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/referencedAllofOptional"
+	var pathParts [1]string
+	pathParts[0] = "/referencedAllofOptional"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -567,7 +577,9 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/simpleInteger"
+	var pathParts [1]string
+	pathParts[0] = "/simpleInteger"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -638,7 +650,9 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/simpleObjects"
+	var pathParts [1]string
+	pathParts[0] = "/simpleObjects"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -724,7 +738,9 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/stringsNotype"
+	var pathParts [1]string
+	pathParts[0] = "/stringsNotype"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

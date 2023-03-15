@@ -28,7 +28,7 @@ func unpackCachingParams(packed middleware.Parameters) (params CachingParams) {
 	return params
 }
 
-func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams, _ error) {
+func decodeCachingParams(args [0]string, argsEscaped bool, r *http.Request) (params CachingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
 	if err := func() error {
@@ -85,7 +85,7 @@ func unpackQueriesParams(packed middleware.Parameters) (params QueriesParams) {
 	return params
 }
 
-func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams, _ error) {
+func decodeQueriesParams(args [0]string, argsEscaped bool, r *http.Request) (params QueriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
 	if err := func() error {
@@ -142,7 +142,7 @@ func unpackUpdatesParams(packed middleware.Parameters) (params UpdatesParams) {
 	return params
 }
 
-func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams, _ error) {
+func decodeUpdatesParams(args [0]string, argsEscaped bool, r *http.Request) (params UpdatesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
 	if err := func() error {

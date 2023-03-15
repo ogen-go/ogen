@@ -23,7 +23,7 @@ import (
 // Liveness probe for kubernetes.
 //
 // GET /healthz
-func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
 		semconv.HTTPMethodKey.String("GET"),

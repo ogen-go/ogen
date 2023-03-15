@@ -52,7 +52,7 @@ func unpackPhoneGetParams(packed middleware.Parameters) (params PhoneGetParams) 
 	return params
 }
 
-func decodePhoneGetParams(args [0]string, r *http.Request) (params PhoneGetParams, _ error) {
+func decodePhoneGetParams(args [0]string, argsEscaped bool, r *http.Request) (params PhoneGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: phone.
 	if err := func() error {

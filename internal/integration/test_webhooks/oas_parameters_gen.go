@@ -38,7 +38,7 @@ func unpackUpdateWebhookParams(packed middleware.Parameters) (params UpdateWebho
 	return params
 }
 
-func decodeUpdateWebhookParams(args [0]string, r *http.Request) (params UpdateWebhookParams, _ error) {
+func decodeUpdateWebhookParams(args [0]string, argsEscaped bool, r *http.Request) (params UpdateWebhookParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	h := uri.NewHeaderDecoder(r.Header)
 	// Decode query: event_type.

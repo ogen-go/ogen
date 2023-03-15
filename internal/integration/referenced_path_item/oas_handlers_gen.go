@@ -16,7 +16,7 @@ import (
 // handleFooGetRequest handles GET /foo operation.
 //
 // GET /foo
-func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.

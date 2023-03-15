@@ -20,7 +20,7 @@ import (
 // handleDisjointSecurityRequest handles disjointSecurity operation.
 //
 // GET /disjointSecurity
-func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -201,7 +201,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWr
 // handleIntersectSecurityRequest handles intersectSecurity operation.
 //
 // GET /intersectSecurity
-func (s *Server) handleIntersectSecurityRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -365,7 +365,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, w http.ResponseW
 // handleOptionalSecurityRequest handles optionalSecurity operation.
 //
 // GET /optionalSecurity
-func (s *Server) handleOptionalSecurityRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
 		semconv.HTTPMethodKey.String("GET"),

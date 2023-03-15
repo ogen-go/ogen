@@ -64,12 +64,16 @@ func unpackDataGetFormatParams(packed middleware.Parameters) (params DataGetForm
 	return params
 }
 
-func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetFormatParams, _ error) {
+func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request) (params DataGetFormatParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -125,9 +129,13 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: foo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -182,9 +190,13 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: bar.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -239,9 +251,13 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: baz.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -296,9 +312,13 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: kek.
 	if err := func() error {
-		param, err := url.PathUnescape(args[4])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[4]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[4])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -372,7 +392,7 @@ func unpackDefaultTestParams(packed middleware.Parameters) (params DefaultTestPa
 	return params
 }
 
-func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTestParams, _ error) {
+func decodeDefaultTestParams(args [0]string, argsEscaped bool, r *http.Request) (params DefaultTestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: default.
 	{
@@ -449,7 +469,7 @@ func unpackFoobarGetParams(packed middleware.Parameters) (params FoobarGetParams
 	return params
 }
 
-func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetParams, _ error) {
+func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (params FoobarGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: inlinedParam.
 	if err := func() error {
@@ -543,12 +563,16 @@ func unpackPetFriendsNamesByIDParams(packed middleware.Parameters) (params PetFr
 	return params
 }
 
-func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
+func decodePetFriendsNamesByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -632,7 +656,7 @@ func unpackPetGetParams(packed middleware.Parameters) (params PetGetParams) {
 	return params
 }
 
-func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _ error) {
+func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (params PetGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	h := uri.NewHeaderDecoder(r.Header)
 	// Decode query: petID.
@@ -846,7 +870,7 @@ func unpackPetGetAvatarByIDParams(packed middleware.Parameters) (params PetGetAv
 	return params
 }
 
-func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGetAvatarByIDParams, _ error) {
+func decodePetGetAvatarByIDParams(args [0]string, argsEscaped bool, r *http.Request) (params PetGetAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
 	if err := func() error {
@@ -904,12 +928,16 @@ func unpackPetGetAvatarByNameParams(packed middleware.Parameters) (params PetGet
 	return params
 }
 
-func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
+func decodePetGetAvatarByNameParams(args [1]string, argsEscaped bool, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -966,12 +994,16 @@ func unpackPetGetByNameParams(packed middleware.Parameters) (params PetGetByName
 	return params
 }
 
-func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByNameParams, _ error) {
+func decodePetGetByNameParams(args [1]string, argsEscaped bool, r *http.Request) (params PetGetByNameParams, _ error) {
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1028,12 +1060,16 @@ func unpackPetNameByIDParams(packed middleware.Parameters) (params PetNameByIDPa
 	return params
 }
 
-func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByIDParams, _ error) {
+func decodePetNameByIDParams(args [1]string, argsEscaped bool, r *http.Request) (params PetNameByIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1090,7 +1126,7 @@ func unpackPetUploadAvatarByIDParams(packed middleware.Parameters) (params PetUp
 	return params
 }
 
-func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params PetUploadAvatarByIDParams, _ error) {
+func decodePetUploadAvatarByIDParams(args [0]string, argsEscaped bool, r *http.Request) (params PetUploadAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
 	if err := func() error {

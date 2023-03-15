@@ -22,7 +22,7 @@ import (
 // Retrieve data.
 //
 // GET /name/{id}/{key}
-func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58,7 +58,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 			ID:   "dataGet",
 		}
 	)
-	params, err := decodeDataGetParams(args, r)
+	params, err := decodeDataGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -128,7 +128,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 // Retrieve any data.
 //
 // GET /name
-func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetAny"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -211,7 +211,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 // Retrieve data.
 //
 // GET /name/{id}
-func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetID"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -247,7 +247,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "dataGetID",
 		}
 	)
-	params, err := decodeDataGetIDParams(args, r)
+	params, err := decodeDataGetIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
