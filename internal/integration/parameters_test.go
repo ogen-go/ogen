@@ -2,8 +2,7 @@ package integration
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
+	"fmt"
 	"net/http/httptest"
 	"testing"
 
@@ -46,19 +45,21 @@ func (s *testParameters) ContentParameters(ctx context.Context, params api.Conte
 	}, nil
 }
 
-func (s *testParameters) HeaderParameter(ctx context.Context, params api.HeaderParameterParams) (*api.Hash, error) {
-	h := sha256.Sum256([]byte(params.XAuthToken))
-	return &api.Hash{
-		Raw: h[:],
-		Hex: hex.EncodeToString(h[:]),
+func (s *testParameters) PathParameter(ctx context.Context, params api.PathParameterParams) (*api.Value, error) {
+	return &api.Value{
+		Value: params.Value,
 	}, nil
 }
 
-func (s *testParameters) CookieParameter(ctx context.Context, params api.CookieParameterParams) (*api.Hash, error) {
-	h := sha256.Sum256([]byte(params.Value))
-	return &api.Hash{
-		Raw: h[:],
-		Hex: hex.EncodeToString(h[:]),
+func (s *testParameters) HeaderParameter(ctx context.Context, params api.HeaderParameterParams) (*api.Value, error) {
+	return &api.Value{
+		Value: params.XValue,
+	}, nil
+}
+
+func (s *testParameters) CookieParameter(ctx context.Context, params api.CookieParameterParams) (*api.Value, error) {
+	return &api.Value{
+		Value: params.Value,
 	}, nil
 }
 
@@ -112,20 +113,33 @@ func TestParameters(t *testing.T) {
 		require.Equal(t, oneLevel, *resp)
 	})
 
-	t.Run("HeaderParameter", func(t *testing.T) {
-		h, err := client.HeaderParameter(ctx, api.HeaderParameterParams{XAuthToken: "hello, world"})
-		require.NoError(t, err)
-		assert.NotEmpty(t, h.Raw)
-		assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
-		assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
-	})
-	t.Run("CookieParameter", func(t *testing.T) {
-		h, err := client.CookieParameter(ctx, api.CookieParameterParams{Value: "hello, world"})
-		require.NoError(t, err)
-		assert.NotEmpty(t, h.Raw)
-		assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
-		assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
-	})
+	const plainParam = "`\"';,./<>?[]{}\\|~!@#$%^&*()_+-="
+	for i, param := range []string{
+		"%",
+		"/",
+		"&",
+		"/%",
+		plainParam,
+	} {
+		param := param
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			t.Run("PathParameter", func(t *testing.T) {
+				h, err := client.PathParameter(ctx, api.PathParameterParams{Value: param})
+				require.NoError(t, err)
+				assert.Equal(t, param, h.Value)
+			})
+			t.Run("HeaderParameter", func(t *testing.T) {
+				h, err := client.HeaderParameter(ctx, api.HeaderParameterParams{XValue: param})
+				require.NoError(t, err)
+				assert.Equal(t, param, h.Value)
+			})
+			t.Run("CookieParameter", func(t *testing.T) {
+				h, err := client.CookieParameter(ctx, api.CookieParameterParams{Value: param})
+				require.NoError(t, err)
+				assert.Equal(t, param, h.Value)
+			})
+		})
+	}
 
 	t.Run("ContentParameters", func(t *testing.T) {
 		user := api.User{
@@ -140,7 +154,7 @@ func TestParameters(t *testing.T) {
 				},
 				{
 					ID:       3,
-					Username: "`\"';,./<>?[]{}\\|~!@#$%^&*()_+-=",
+					Username: plainParam,
 					Role:     api.UserRoleBot,
 				},
 			},
