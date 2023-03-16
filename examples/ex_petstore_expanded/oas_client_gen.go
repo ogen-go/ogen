@@ -111,7 +111,9 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res AddPetRes
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pets"
+	var pathParts [1]string
+	pathParts[0] = "/pets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -182,7 +184,8 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pets/"
+	var pathParts [2]string
+	pathParts[0] = "/pets/"
 	{
 		// Encode "id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -199,8 +202,9 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -268,7 +272,8 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pets/"
+	var pathParts [2]string
+	pathParts[0] = "/pets/"
 	{
 		// Encode "id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -285,8 +290,9 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -372,7 +378,9 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res F
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pets"
+	var pathParts [1]string
+	pathParts[0] = "/pets"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()

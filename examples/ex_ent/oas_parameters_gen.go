@@ -32,12 +32,16 @@ func unpackCreatePetCategoriesParams(packed middleware.Parameters) (params Creat
 	return params
 }
 
-func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params CreatePetCategoriesParams, _ error) {
+func decodeCreatePetCategoriesParams(args [1]string, argsEscaped bool, r *http.Request) (params CreatePetCategoriesParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94,12 +98,16 @@ func unpackCreatePetFriendsParams(packed middleware.Parameters) (params CreatePe
 	return params
 }
 
-func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params CreatePetFriendsParams, _ error) {
+func decodeCreatePetFriendsParams(args [1]string, argsEscaped bool, r *http.Request) (params CreatePetFriendsParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -156,12 +164,16 @@ func unpackCreatePetOwnerParams(packed middleware.Parameters) (params CreatePetO
 	return params
 }
 
-func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreatePetOwnerParams, _ error) {
+func decodeCreatePetOwnerParams(args [1]string, argsEscaped bool, r *http.Request) (params CreatePetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -218,12 +230,16 @@ func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams
 	return params
 }
 
-func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
+func decodeDeletePetParams(args [1]string, argsEscaped bool, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -280,12 +296,16 @@ func unpackDeletePetOwnerParams(packed middleware.Parameters) (params DeletePetO
 	return params
 }
 
-func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeletePetOwnerParams, _ error) {
+func decodeDeletePetOwnerParams(args [1]string, argsEscaped bool, r *http.Request) (params DeletePetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -355,7 +375,7 @@ func unpackListPetParams(packed middleware.Parameters) (params ListPetParams) {
 	return params
 }
 
-func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams, _ error) {
+func decodeListPetParams(args [0]string, argsEscaped bool, r *http.Request) (params ListPetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: page.
 	if err := func() error {
@@ -481,13 +501,17 @@ func unpackListPetCategoriesParams(packed middleware.Parameters) (params ListPet
 	return params
 }
 
-func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params ListPetCategoriesParams, _ error) {
+func decodeListPetCategoriesParams(args [1]string, argsEscaped bool, r *http.Request) (params ListPetCategoriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -648,13 +672,17 @@ func unpackListPetFriendsParams(packed middleware.Parameters) (params ListPetFri
 	return params
 }
 
-func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPetFriendsParams, _ error) {
+func decodeListPetFriendsParams(args [1]string, argsEscaped bool, r *http.Request) (params ListPetFriendsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -793,12 +821,16 @@ func unpackReadPetParams(packed middleware.Parameters) (params ReadPetParams) {
 	return params
 }
 
-func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams, _ error) {
+func decodeReadPetParams(args [1]string, argsEscaped bool, r *http.Request) (params ReadPetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -855,12 +887,16 @@ func unpackReadPetOwnerParams(packed middleware.Parameters) (params ReadPetOwner
 	return params
 }
 
-func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOwnerParams, _ error) {
+func decodeReadPetOwnerParams(args [1]string, argsEscaped bool, r *http.Request) (params ReadPetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -917,12 +953,16 @@ func unpackUpdatePetParams(packed middleware.Parameters) (params UpdatePetParams
 	return params
 }
 
-func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetParams, _ error) {
+func decodeUpdatePetParams(args [1]string, argsEscaped bool, r *http.Request) (params UpdatePetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{

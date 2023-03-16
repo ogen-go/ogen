@@ -108,7 +108,9 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/integerNumber"
+	var pathParts [1]string
+	pathParts[0] = "/integerNumber"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -174,7 +176,9 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/jaegerAnyOf"
+	var pathParts [1]string
+	pathParts[0] = "/jaegerAnyOf"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -240,7 +244,9 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/oneUUID"
+	var pathParts [1]string
+	pathParts[0] = "/oneUUID"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

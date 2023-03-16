@@ -103,7 +103,9 @@ func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err e
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/event"
+	var pathParts [1]string
+	pathParts[0] = "/event"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -169,7 +171,9 @@ func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/phone"
+	var pathParts [1]string
+	pathParts[0] = "/phone"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()

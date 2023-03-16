@@ -22,7 +22,7 @@ import (
 // handleAddStickerToSetRequest handles addStickerToSet operation.
 //
 // POST /addStickerToSet
-func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAddStickerToSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addStickerToSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -130,7 +130,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 // handleAnswerCallbackQueryRequest handles answerCallbackQuery operation.
 //
 // POST /answerCallbackQuery
-func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerCallbackQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -238,7 +238,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 // handleAnswerInlineQueryRequest handles answerInlineQuery operation.
 //
 // POST /answerInlineQuery
-func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerInlineQueryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerInlineQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -346,7 +346,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 // handleAnswerPreCheckoutQueryRequest handles answerPreCheckoutQuery operation.
 //
 // POST /answerPreCheckoutQuery
-func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerPreCheckoutQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -454,7 +454,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 // handleAnswerShippingQueryRequest handles answerShippingQuery operation.
 //
 // POST /answerShippingQuery
-func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerShippingQueryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerShippingQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -562,7 +562,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 // handleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
-func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("approveChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -670,7 +670,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 // handleBanChatMemberRequest handles banChatMember operation.
 //
 // POST /banChatMember
-func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBanChatMemberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -778,7 +778,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 // handleBanChatSenderChatRequest handles banChatSenderChat operation.
 //
 // POST /banChatSenderChat
-func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBanChatSenderChatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -886,7 +886,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 // handleCloseRequest handles close operation.
 //
 // POST /close
-func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCloseRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("close"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -975,7 +975,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 // handleCopyMessageRequest handles copyMessage operation.
 //
 // POST /copyMessage
-func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCopyMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("copyMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1083,7 +1083,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 // handleCreateChatInviteLinkRequest handles createChatInviteLink operation.
 //
 // POST /createChatInviteLink
-func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1191,7 +1191,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 // handleCreateNewStickerSetRequest handles createNewStickerSet operation.
 //
 // POST /createNewStickerSet
-func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateNewStickerSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createNewStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1299,7 +1299,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 // handleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
 //
 // POST /declineChatJoinRequest
-func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("declineChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1407,7 +1407,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 // handleDeleteChatPhotoRequest handles deleteChatPhoto operation.
 //
 // POST /deleteChatPhoto
-func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteChatPhotoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1515,7 +1515,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 // handleDeleteChatStickerSetRequest handles deleteChatStickerSet operation.
 //
 // POST /deleteChatStickerSet
-func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1623,7 +1623,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 // handleDeleteMessageRequest handles deleteMessage operation.
 //
 // POST /deleteMessage
-func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1731,7 +1731,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 // handleDeleteMyCommandsRequest handles deleteMyCommands operation.
 //
 // POST /deleteMyCommands
-func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteMyCommandsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1839,7 +1839,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 // handleDeleteStickerFromSetRequest handles deleteStickerFromSet operation.
 //
 // POST /deleteStickerFromSet
-func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteStickerFromSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1947,7 +1947,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 // handleDeleteWebhookRequest handles deleteWebhook operation.
 //
 // POST /deleteWebhook
-func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2055,7 +2055,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 // handleEditChatInviteLinkRequest handles editChatInviteLink operation.
 //
 // POST /editChatInviteLink
-func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditChatInviteLinkRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2163,7 +2163,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 // handleEditMessageCaptionRequest handles editMessageCaption operation.
 //
 // POST /editMessageCaption
-func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditMessageCaptionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageCaption"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2271,7 +2271,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 // handleEditMessageLiveLocationRequest handles editMessageLiveLocation operation.
 //
 // POST /editMessageLiveLocation
-func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2379,7 +2379,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 // handleEditMessageMediaRequest handles editMessageMedia operation.
 //
 // POST /editMessageMedia
-func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditMessageMediaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageMedia"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2487,7 +2487,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 // handleEditMessageReplyMarkupRequest handles editMessageReplyMarkup operation.
 //
 // POST /editMessageReplyMarkup
-func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageReplyMarkup"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2595,7 +2595,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 // handleEditMessageTextRequest handles editMessageText operation.
 //
 // POST /editMessageText
-func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEditMessageTextRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageText"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2703,7 +2703,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 // handleExportChatInviteLinkRequest handles exportChatInviteLink operation.
 //
 // POST /exportChatInviteLink
-func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleExportChatInviteLinkRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("exportChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2811,7 +2811,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 // handleForwardMessageRequest handles forwardMessage operation.
 //
 // POST /forwardMessage
-func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleForwardMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("forwardMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2919,7 +2919,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 // handleGetChatRequest handles getChat operation.
 //
 // POST /getChat
-func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetChatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChat"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3027,7 +3027,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 // handleGetChatAdministratorsRequest handles getChatAdministrators operation.
 //
 // POST /getChatAdministrators
-func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetChatAdministratorsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatAdministrators"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3135,7 +3135,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 // handleGetChatMemberRequest handles getChatMember operation.
 //
 // POST /getChatMember
-func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetChatMemberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3243,7 +3243,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 // handleGetChatMemberCountRequest handles getChatMemberCount operation.
 //
 // POST /getChatMemberCount
-func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetChatMemberCountRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMemberCount"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3351,7 +3351,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 // handleGetFileRequest handles getFile operation.
 //
 // POST /getFile
-func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFileRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFile"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3459,7 +3459,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 // handleGetGameHighScoresRequest handles getGameHighScores operation.
 //
 // POST /getGameHighScores
-func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetGameHighScoresRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getGameHighScores"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3567,7 +3567,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 // handleGetMeRequest handles getMe operation.
 //
 // POST /getMe
-func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMe"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3656,7 +3656,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 // handleGetMyCommandsRequest handles getMyCommands operation.
 //
 // POST /getMyCommands
-func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMyCommandsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3764,7 +3764,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 // handleGetStickerSetRequest handles getStickerSet operation.
 //
 // POST /getStickerSet
-func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStickerSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3872,7 +3872,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 // handleGetUpdatesRequest handles getUpdates operation.
 //
 // POST /getUpdates
-func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetUpdatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUpdates"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3980,7 +3980,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 // handleGetUserProfilePhotosRequest handles getUserProfilePhotos operation.
 //
 // POST /getUserProfilePhotos
-func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUserProfilePhotos"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4088,7 +4088,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 // handleGetWebhookInfoRequest handles getWebhookInfo operation.
 //
 // POST /getWebhookInfo
-func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetWebhookInfoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getWebhookInfo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4177,7 +4177,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 // handleLeaveChatRequest handles leaveChat operation.
 //
 // POST /leaveChat
-func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLeaveChatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("leaveChat"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4285,7 +4285,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 // handleLogOutRequest handles logOut operation.
 //
 // POST /logOut
-func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogOutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logOut"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4374,7 +4374,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 // handlePinChatMessageRequest handles pinChatMessage operation.
 //
 // POST /pinChatMessage
-func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePinChatMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4482,7 +4482,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 // handlePromoteChatMemberRequest handles promoteChatMember operation.
 //
 // POST /promoteChatMember
-func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePromoteChatMemberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("promoteChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4590,7 +4590,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 // handleRestrictChatMemberRequest handles restrictChatMember operation.
 //
 // POST /restrictChatMember
-func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRestrictChatMemberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("restrictChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4698,7 +4698,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 // handleRevokeChatInviteLinkRequest handles revokeChatInviteLink operation.
 //
 // POST /revokeChatInviteLink
-func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("revokeChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4806,7 +4806,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 // handleSendAnimationRequest handles sendAnimation operation.
 //
 // POST /sendAnimation
-func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendAnimationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAnimation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4914,7 +4914,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 // handleSendAudioRequest handles sendAudio operation.
 //
 // POST /sendAudio
-func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendAudioRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAudio"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5022,7 +5022,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 // handleSendChatActionRequest handles sendChatAction operation.
 //
 // POST /sendChatAction
-func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendChatActionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendChatAction"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5130,7 +5130,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 // handleSendContactRequest handles sendContact operation.
 //
 // POST /sendContact
-func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendContactRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendContact"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5238,7 +5238,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 // handleSendDiceRequest handles sendDice operation.
 //
 // POST /sendDice
-func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendDiceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5346,7 +5346,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 // handleSendDocumentRequest handles sendDocument operation.
 //
 // POST /sendDocument
-func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendDocumentRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDocument"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5454,7 +5454,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 // handleSendGameRequest handles sendGame operation.
 //
 // POST /sendGame
-func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendGameRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendGame"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5562,7 +5562,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 // handleSendInvoiceRequest handles sendInvoice operation.
 //
 // POST /sendInvoice
-func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendInvoiceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendInvoice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5670,7 +5670,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 // handleSendLocationRequest handles sendLocation operation.
 //
 // POST /sendLocation
-func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendLocationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5778,7 +5778,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 // handleSendMediaGroupRequest handles sendMediaGroup operation.
 //
 // POST /sendMediaGroup
-func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendMediaGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMediaGroup"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5886,7 +5886,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 // handleSendMessageRequest handles sendMessage operation.
 //
 // POST /sendMessage
-func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5994,7 +5994,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 // handleSendPhotoRequest handles sendPhoto operation.
 //
 // POST /sendPhoto
-func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendPhotoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6102,7 +6102,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 // handleSendPollRequest handles sendPoll operation.
 //
 // POST /sendPoll
-func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendPollRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPoll"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6210,7 +6210,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 // handleSendStickerRequest handles sendSticker operation.
 //
 // POST /sendSticker
-func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendStickerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendSticker"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6318,7 +6318,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 // handleSendVenueRequest handles sendVenue operation.
 //
 // POST /sendVenue
-func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendVenueRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVenue"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6426,7 +6426,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 // handleSendVideoRequest handles sendVideo operation.
 //
 // POST /sendVideo
-func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendVideoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6534,7 +6534,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 // handleSendVideoNoteRequest handles sendVideoNote operation.
 //
 // POST /sendVideoNote
-func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendVideoNoteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideoNote"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6642,7 +6642,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 // handleSendVoiceRequest handles sendVoice operation.
 //
 // POST /sendVoice
-func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendVoiceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVoice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6750,7 +6750,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 // handleSetChatAdministratorCustomTitleRequest handles setChatAdministratorCustomTitle operation.
 //
 // POST /setChatAdministratorCustomTitle
-func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6858,7 +6858,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 // handleSetChatDescriptionRequest handles setChatDescription operation.
 //
 // POST /setChatDescription
-func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatDescriptionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatDescription"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6966,7 +6966,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 // handleSetChatPermissionsRequest handles setChatPermissions operation.
 //
 // POST /setChatPermissions
-func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatPermissionsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPermissions"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7074,7 +7074,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 // handleSetChatPhotoRequest handles setChatPhoto operation.
 //
 // POST /setChatPhoto
-func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatPhotoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7182,7 +7182,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 // handleSetChatStickerSetRequest handles setChatStickerSet operation.
 //
 // POST /setChatStickerSet
-func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatStickerSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7290,7 +7290,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 // handleSetChatTitleRequest handles setChatTitle operation.
 //
 // POST /setChatTitle
-func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetChatTitleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatTitle"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7398,7 +7398,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 // handleSetGameScoreRequest handles setGameScore operation.
 //
 // POST /setGameScore
-func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetGameScoreRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setGameScore"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7506,7 +7506,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 // handleSetMyCommandsRequest handles setMyCommands operation.
 //
 // POST /setMyCommands
-func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetMyCommandsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7614,7 +7614,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 // handleSetPassportDataErrorsRequest handles setPassportDataErrors operation.
 //
 // POST /setPassportDataErrors
-func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setPassportDataErrors"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7722,7 +7722,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 // handleSetStickerPositionInSetRequest handles setStickerPositionInSet operation.
 //
 // POST /setStickerPositionInSet
-func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerPositionInSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7830,7 +7830,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 // handleSetStickerSetThumbRequest handles setStickerSetThumb operation.
 //
 // POST /setStickerSetThumb
-func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetStickerSetThumbRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerSetThumb"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7938,7 +7938,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 // handleSetWebhookRequest handles setWebhook operation.
 //
 // POST /setWebhook
-func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8046,7 +8046,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 // handleStopMessageLiveLocationRequest handles stopMessageLiveLocation operation.
 //
 // POST /stopMessageLiveLocation
-func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8154,7 +8154,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 // handleStopPollRequest handles stopPoll operation.
 //
 // POST /stopPoll
-func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleStopPollRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopPoll"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8262,7 +8262,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 // handleUnbanChatMemberRequest handles unbanChatMember operation.
 //
 // POST /unbanChatMember
-func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUnbanChatMemberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8370,7 +8370,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 // handleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
 //
 // POST /unbanChatSenderChat
-func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8478,7 +8478,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 // handleUnpinAllChatMessagesRequest handles unpinAllChatMessages operation.
 //
 // POST /unpinAllChatMessages
-func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinAllChatMessages"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8586,7 +8586,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 // handleUnpinChatMessageRequest handles unpinChatMessage operation.
 //
 // POST /unpinChatMessage
-func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUnpinChatMessageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8694,7 +8694,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 // handleUploadStickerFileRequest handles uploadStickerFile operation.
 //
 // POST /uploadStickerFile
-func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUploadStickerFileRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("uploadStickerFile"),
 		semconv.HTTPMethodKey.String("POST"),

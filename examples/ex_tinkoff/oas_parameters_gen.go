@@ -57,7 +57,7 @@ func unpackMarketCandlesGetParams(packed middleware.Parameters) (params MarketCa
 	return params
 }
 
-func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params MarketCandlesGetParams, _ error) {
+func decodeMarketCandlesGetParams(args [0]string, argsEscaped bool, r *http.Request) (params MarketCandlesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
 	if err := func() error {
@@ -240,7 +240,7 @@ func unpackMarketOrderbookGetParams(packed middleware.Parameters) (params Market
 	return params
 }
 
-func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params MarketOrderbookGetParams, _ error) {
+func decodeMarketOrderbookGetParams(args [0]string, argsEscaped bool, r *http.Request) (params MarketOrderbookGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
 	if err := func() error {
@@ -334,7 +334,7 @@ func unpackMarketSearchByFigiGetParams(packed middleware.Parameters) (params Mar
 	return params
 }
 
-func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params MarketSearchByFigiGetParams, _ error) {
+func decodeMarketSearchByFigiGetParams(args [0]string, argsEscaped bool, r *http.Request) (params MarketSearchByFigiGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
 	if err := func() error {
@@ -392,7 +392,7 @@ func unpackMarketSearchByTickerGetParams(packed middleware.Parameters) (params M
 	return params
 }
 
-func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (params MarketSearchByTickerGetParams, _ error) {
+func decodeMarketSearchByTickerGetParams(args [0]string, argsEscaped bool, r *http.Request) (params MarketSearchByTickerGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: ticker.
 	if err := func() error {
@@ -481,7 +481,7 @@ func unpackOperationsGetParams(packed middleware.Parameters) (params OperationsG
 	return params
 }
 
-func decodeOperationsGetParams(args [0]string, r *http.Request) (params OperationsGetParams, _ error) {
+func decodeOperationsGetParams(args [0]string, argsEscaped bool, r *http.Request) (params OperationsGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: from.
 	if err := func() error {
@@ -668,7 +668,7 @@ func unpackOrdersCancelPostParams(packed middleware.Parameters) (params OrdersCa
 	return params
 }
 
-func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params OrdersCancelPostParams, _ error) {
+func decodeOrdersCancelPostParams(args [0]string, argsEscaped bool, r *http.Request) (params OrdersCancelPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: orderId.
 	if err := func() error {
@@ -769,7 +769,7 @@ func unpackOrdersGetParams(packed middleware.Parameters) (params OrdersGetParams
 	return params
 }
 
-func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetParams, _ error) {
+func decodeOrdersGetParams(args [0]string, argsEscaped bool, r *http.Request) (params OrdersGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -843,7 +843,7 @@ func unpackOrdersLimitOrderPostParams(packed middleware.Parameters) (params Orde
 	return params
 }
 
-func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params OrdersLimitOrderPostParams, _ error) {
+func decodeOrdersLimitOrderPostParams(args [0]string, argsEscaped bool, r *http.Request) (params OrdersLimitOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
 	if err := func() error {
@@ -954,7 +954,7 @@ func unpackOrdersMarketOrderPostParams(packed middleware.Parameters) (params Ord
 	return params
 }
 
-func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params OrdersMarketOrderPostParams, _ error) {
+func decodeOrdersMarketOrderPostParams(args [0]string, argsEscaped bool, r *http.Request) (params OrdersMarketOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
 	if err := func() error {
@@ -1055,7 +1055,7 @@ func unpackPortfolioCurrenciesGetParams(packed middleware.Parameters) (params Po
 	return params
 }
 
-func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params PortfolioCurrenciesGetParams, _ error) {
+func decodePortfolioCurrenciesGetParams(args [0]string, argsEscaped bool, r *http.Request) (params PortfolioCurrenciesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -1120,7 +1120,7 @@ func unpackPortfolioGetParams(packed middleware.Parameters) (params PortfolioGet
 	return params
 }
 
-func decodePortfolioGetParams(args [0]string, r *http.Request) (params PortfolioGetParams, _ error) {
+func decodePortfolioGetParams(args [0]string, argsEscaped bool, r *http.Request) (params PortfolioGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -1185,7 +1185,7 @@ func unpackSandboxClearPostParams(packed middleware.Parameters) (params SandboxC
 	return params
 }
 
-func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params SandboxClearPostParams, _ error) {
+func decodeSandboxClearPostParams(args [0]string, argsEscaped bool, r *http.Request) (params SandboxClearPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -1250,7 +1250,7 @@ func unpackSandboxCurrenciesBalancePostParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (params SandboxCurrenciesBalancePostParams, _ error) {
+func decodeSandboxCurrenciesBalancePostParams(args [0]string, argsEscaped bool, r *http.Request) (params SandboxCurrenciesBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -1315,7 +1315,7 @@ func unpackSandboxPositionsBalancePostParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (params SandboxPositionsBalancePostParams, _ error) {
+func decodeSandboxPositionsBalancePostParams(args [0]string, argsEscaped bool, r *http.Request) (params SandboxPositionsBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {
@@ -1380,7 +1380,7 @@ func unpackSandboxRemovePostParams(packed middleware.Parameters) (params Sandbox
 	return params
 }
 
-func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params SandboxRemovePostParams, _ error) {
+func decodeSandboxRemovePostParams(args [0]string, argsEscaped bool, r *http.Request) (params SandboxRemovePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
 	if err := func() error {

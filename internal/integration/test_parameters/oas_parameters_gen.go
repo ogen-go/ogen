@@ -64,7 +64,7 @@ func unpackComplicatedParameterNameGetParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeComplicatedParameterNameGetParams(args [0]string, r *http.Request) (params ComplicatedParameterNameGetParams, _ error) {
+func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r *http.Request) (params ComplicatedParameterNameGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: =.
 	if err := func() error {
@@ -289,7 +289,7 @@ func unpackContentParametersParams(packed middleware.Parameters) (params Content
 	return params
 }
 
-func decodeContentParametersParams(args [1]string, r *http.Request) (params ContentParametersParams, _ error) {
+func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Request) (params ContentParametersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	h := uri.NewHeaderDecoder(r.Header)
 	c := uri.NewCookieDecoder(r)
@@ -340,9 +340,13 @@ func decodeContentParametersParams(args [1]string, r *http.Request) (params Cont
 	}
 	// Decode path: path.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -493,7 +497,7 @@ func unpackCookieParameterParams(packed middleware.Parameters) (params CookiePar
 	return params
 }
 
-func decodeCookieParameterParams(args [0]string, r *http.Request) (params CookieParameterParams, _ error) {
+func decodeCookieParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params CookieParameterParams, _ error) {
 	c := uri.NewCookieDecoder(r)
 	// Decode cookie: value.
 	if err := func() error {
@@ -534,26 +538,26 @@ func decodeCookieParameterParams(args [0]string, r *http.Request) (params Cookie
 
 // HeaderParameterParams is parameters of headerParameter operation.
 type HeaderParameterParams struct {
-	XAuthToken string
+	XValue string
 }
 
 func unpackHeaderParameterParams(packed middleware.Parameters) (params HeaderParameterParams) {
 	{
 		key := middleware.ParameterKey{
-			Name: "X-Auth-Token",
+			Name: "X-Value",
 			In:   "header",
 		}
-		params.XAuthToken = packed[key].(string)
+		params.XValue = packed[key].(string)
 	}
 	return params
 }
 
-func decodeHeaderParameterParams(args [0]string, r *http.Request) (params HeaderParameterParams, _ error) {
+func decodeHeaderParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params HeaderParameterParams, _ error) {
 	h := uri.NewHeaderDecoder(r.Header)
-	// Decode header: X-Auth-Token.
+	// Decode header: X-Value.
 	if err := func() error {
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "X-Auth-Token",
+			Name:    "X-Value",
 			Explode: false,
 		}
 		if err := h.HasParam(cfg); err == nil {
@@ -568,7 +572,7 @@ func decodeHeaderParameterParams(args [0]string, r *http.Request) (params Header
 					return err
 				}
 
-				params.XAuthToken = c
+				params.XValue = c
 				return nil
 			}); err != nil {
 				return err
@@ -579,7 +583,7 @@ func decodeHeaderParameterParams(args [0]string, r *http.Request) (params Header
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "X-Auth-Token",
+			Name: "X-Value",
 			In:   "header",
 			Err:  err,
 		}
@@ -603,7 +607,7 @@ func unpackObjectCookieParameterParams(packed middleware.Parameters) (params Obj
 	return params
 }
 
-func decodeObjectCookieParameterParams(args [0]string, r *http.Request) (params ObjectCookieParameterParams, _ error) {
+func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params ObjectCookieParameterParams, _ error) {
 	c := uri.NewCookieDecoder(r)
 	// Decode cookie: value.
 	if err := func() error {
@@ -659,7 +663,7 @@ func unpackObjectQueryParameterParams(packed middleware.Parameters) (params Obje
 	return params
 }
 
-func decodeObjectQueryParameterParams(args [0]string, r *http.Request) (params ObjectQueryParameterParams, _ error) {
+func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params ObjectQueryParameterParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: formObject.
 	if err := func() error {
@@ -726,6 +730,71 @@ func decodeObjectQueryParameterParams(args [0]string, r *http.Request) (params O
 	return params, nil
 }
 
+// PathParameterParams is parameters of pathParameter operation.
+type PathParameterParams struct {
+	Value string
+}
+
+func unpackPathParameterParams(packed middleware.Parameters) (params PathParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "value",
+			In:   "path",
+		}
+		params.Value = packed[key].(string)
+	}
+	return params
+}
+
+func decodePathParameterParams(args [1]string, argsEscaped bool, r *http.Request) (params PathParameterParams, _ error) {
+	// Decode path: value.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "value",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Value = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "value",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // SameNameParams is parameters of sameName operation.
 type SameNameParams struct {
 	pathPath  string
@@ -750,13 +819,17 @@ func unpackSameNameParams(packed middleware.Parameters) (params SameNameParams) 
 	return params
 }
 
-func decodeSameNameParams(args [1]string, r *http.Request) (params SameNameParams, _ error) {
+func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (params SameNameParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: path.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{

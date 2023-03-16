@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -63,7 +65,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleEventPostRequest([0]string{}, w, r)
+						s.handleEventPostRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
@@ -81,7 +83,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handlePhoneGetRequest([0]string{}, w, r)
+						s.handlePhoneGetRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}

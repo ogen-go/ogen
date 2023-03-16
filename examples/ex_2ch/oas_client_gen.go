@@ -106,7 +106,9 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/2chcaptcha/id"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/2chcaptcha/id"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -209,7 +211,9 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/2chcaptcha/show"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/2chcaptcha/show"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -296,7 +300,8 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/app/id/"
+	var pathParts [2]string
+	pathParts[0] = "/api/captcha/app/id/"
 	{
 		// Encode "public_key" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -313,8 +318,9 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -417,7 +423,9 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/invisible_recaptcha/id"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/invisible_recaptcha/id"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -520,7 +528,9 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/invisible_recaptcha/mobile"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/invisible_recaptcha/mobile"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -585,7 +595,9 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/recaptcha/id"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/recaptcha/id"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -688,7 +700,9 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/captcha/recaptcha/mobile"
+	var pathParts [1]string
+	pathParts[0] = "/api/captcha/recaptcha/mobile"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -753,7 +767,9 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/dislike"
+	var pathParts [1]string
+	pathParts[0] = "/api/dislike"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -850,7 +866,9 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/like"
+	var pathParts [1]string
+	pathParts[0] = "/api/like"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -949,7 +967,8 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/mobile/v2/after/"
+	var pathParts [6]string
+	pathParts[0] = "/api/mobile/v2/after/"
 	{
 		// Encode "board" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -966,9 +985,9 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "thread" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -985,9 +1004,9 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "/"
+	pathParts[4] = "/"
 	{
 		// Encode "num" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1004,8 +1023,9 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -1070,7 +1090,9 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/mobile/v2/boards"
+	var pathParts [1]string
+	pathParts[0] = "/api/mobile/v2/boards"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -1135,7 +1157,8 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/mobile/v2/info/"
+	var pathParts [4]string
+	pathParts[0] = "/api/mobile/v2/info/"
 	{
 		// Encode "board" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1152,9 +1175,9 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "thread" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1171,8 +1194,9 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -1237,7 +1261,8 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/mobile/v2/post/"
+	var pathParts [4]string
+	pathParts[0] = "/api/mobile/v2/post/"
 	{
 		// Encode "board" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1254,9 +1279,9 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "num" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -1273,8 +1298,9 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -1339,7 +1365,9 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/passlogin"
+	var pathParts [1]string
+	pathParts[0] = "/user/passlogin"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1441,7 +1469,9 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/posting"
+	var pathParts [1]string
+	pathParts[0] = "/user/posting"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1509,7 +1539,9 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/report"
+	var pathParts [1]string
+	pathParts[0] = "/user/report"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

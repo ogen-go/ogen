@@ -125,7 +125,9 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/allRequestBodies"
+	var pathParts [1]string
+	pathParts[0] = "/allRequestBodies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -211,7 +213,9 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/allRequestBodiesOptional"
+	var pathParts [1]string
+	pathParts[0] = "/allRequestBodiesOptional"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -280,7 +284,9 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/base64Request"
+	var pathParts [1]string
+	pathParts[0] = "/base64Request"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -349,7 +355,9 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/maskContentType"
+	var pathParts [1]string
+	pathParts[0] = "/maskContentType"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -418,7 +426,9 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/maskContentTypeOptional"
+	var pathParts [1]string
+	pathParts[0] = "/maskContentTypeOptional"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -513,7 +523,9 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/streamJSON"
+	var pathParts [1]string
+	pathParts[0] = "/streamJSON"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

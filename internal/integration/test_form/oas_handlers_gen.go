@@ -20,7 +20,7 @@ import (
 // handleTestFormURLEncodedRequest handles testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -120,7 +120,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 // handleTestMultipartRequest handles testMultipart operation.
 //
 // POST /testMultipart
-func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -220,7 +220,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 // handleTestMultipartUploadRequest handles testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -320,7 +320,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 // handleTestShareFormSchemaRequest handles testShareFormSchema operation.
 //
 // POST /testShareFormSchema
-func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
 		semconv.HTTPMethodKey.String("POST"),

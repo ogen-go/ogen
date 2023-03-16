@@ -109,7 +109,9 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/bonds"
+	var pathParts [1]string
+	pathParts[0] = "/market/bonds"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -207,7 +209,9 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/candles"
+	var pathParts [1]string
+	pathParts[0] = "/market/candles"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -365,7 +369,9 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/currencies"
+	var pathParts [1]string
+	pathParts[0] = "/market/currencies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -463,7 +469,9 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/etfs"
+	var pathParts [1]string
+	pathParts[0] = "/market/etfs"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -561,7 +569,9 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/orderbook"
+	var pathParts [1]string
+	pathParts[0] = "/market/orderbook"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -691,7 +701,9 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/search/by-figi"
+	var pathParts [1]string
+	pathParts[0] = "/market/search/by-figi"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -807,7 +819,9 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/search/by-ticker"
+	var pathParts [1]string
+	pathParts[0] = "/market/search/by-ticker"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -923,7 +937,9 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/market/stocks"
+	var pathParts [1]string
+	pathParts[0] = "/market/stocks"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -1021,7 +1037,9 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/operations"
+	var pathParts [1]string
+	pathParts[0] = "/operations"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1185,7 +1203,9 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orders/cancel"
+	var pathParts [1]string
+	pathParts[0] = "/orders/cancel"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1318,7 +1338,9 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orders"
+	var pathParts [1]string
+	pathParts[0] = "/orders"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1446,7 +1468,9 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orders/limit-order"
+	var pathParts [1]string
+	pathParts[0] = "/orders/limit-order"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1591,7 +1615,9 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/orders/market-order"
+	var pathParts [1]string
+	pathParts[0] = "/orders/market-order"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1727,7 +1753,9 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/portfolio/currencies"
+	var pathParts [1]string
+	pathParts[0] = "/portfolio/currencies"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1846,7 +1874,9 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/portfolio"
+	var pathParts [1]string
+	pathParts[0] = "/portfolio"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -1965,7 +1995,9 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sandbox/clear"
+	var pathParts [1]string
+	pathParts[0] = "/sandbox/clear"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2093,7 +2125,9 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sandbox/currencies/balance"
+	var pathParts [1]string
+	pathParts[0] = "/sandbox/currencies/balance"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2224,7 +2258,9 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sandbox/positions/balance"
+	var pathParts [1]string
+	pathParts[0] = "/sandbox/positions/balance"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2362,7 +2398,9 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sandbox/register"
+	var pathParts [1]string
+	pathParts[0] = "/sandbox/register"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2463,7 +2501,9 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sandbox/remove"
+	var pathParts [1]string
+	pathParts[0] = "/sandbox/remove"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -2582,7 +2622,9 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/user/accounts"
+	var pathParts [1]string
+	pathParts[0] = "/user/accounts"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

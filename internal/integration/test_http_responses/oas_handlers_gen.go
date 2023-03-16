@@ -20,7 +20,7 @@ import (
 // handleAnyContentTypeBinaryStringSchemaRequest handles anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
-func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -101,7 +101,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 // handleAnyContentTypeBinaryStringSchemaDefaultRequest handles anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -182,7 +182,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 // handleCombinedRequest handles combined operation.
 //
 // GET /combined
-func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -218,7 +218,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "combined",
 		}
 	)
-	params, err := decodeCombinedParams(args, r)
+	params, err := decodeCombinedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -282,7 +282,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 // handleHeaders200Request handles headers200 operation.
 //
 // GET /headers200
-func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -363,7 +363,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 // handleHeadersCombinedRequest handles headersCombined operation.
 //
 // GET /headersCombined
-func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -399,7 +399,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			ID:   "headersCombined",
 		}
 	)
-	params, err := decodeHeadersCombinedParams(args, r)
+	params, err := decodeHeadersCombinedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -463,7 +463,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 // handleHeadersDefaultRequest handles headersDefault operation.
 //
 // GET /headersDefault
-func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -544,7 +544,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 // handleHeadersJSONRequest handles headersJSON operation.
 //
 // GET /headersJSON
-func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -625,7 +625,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 // handleHeadersPatternRequest handles headersPattern operation.
 //
 // GET /headersPattern
-func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -709,7 +709,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 // over the range definition for that code.
 //
 // GET /intersectPatternCode
-func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -745,7 +745,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			ID:   "intersectPatternCode",
 		}
 	)
-	params, err := decodeIntersectPatternCodeParams(args, r)
+	params, err := decodeIntersectPatternCodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -809,7 +809,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 // handleMultipleGenericResponsesRequest handles multipleGenericResponses operation.
 //
 // GET /multipleGenericResponses
-func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -890,7 +890,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 // handleOctetStreamBinaryStringSchemaRequest handles octetStreamBinaryStringSchema operation.
 //
 // GET /octetStreamBinaryStringSchema
-func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -971,7 +971,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 // handleOctetStreamEmptySchemaRequest handles octetStreamEmptySchema operation.
 //
 // GET /octetStreamEmptySchema
-func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1052,7 +1052,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 // handleStreamJSONRequest handles streamJSON operation.
 //
 // POST /streamJSON
-func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1088,7 +1088,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "streamJSON",
 		}
 	)
-	params, err := decodeStreamJSONParams(args, r)
+	params, err := decodeStreamJSONParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1152,7 +1152,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, 
 // handleTextPlainBinaryStringSchemaRequest handles textPlainBinaryStringSchema operation.
 //
 // GET /textPlainBinaryStringSchema
-func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),

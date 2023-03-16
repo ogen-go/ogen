@@ -1,8 +1,9 @@
 {{ define "encode_path_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 u := uri.Clone(c.requestURL(ctx))
-{{- range $part := $.PathParts }}{{/* Range over path parts */}}
+var pathParts [{{ len $.PathParts }}]string
+{{- range $idx, $part := $.PathParts }}{{/* Range over path parts */}}
 	{{- if $part.Raw }}
-		u.Path += {{ quote $part.Raw }}
+		pathParts[{{ $idx }}] = {{ quote $part.Raw }}
 	{{- else }}
 	{
 		{{- $p := $part.Param }}
@@ -21,10 +22,11 @@ u := uri.Clone(c.requestURL(ctx))
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[{{ $idx }}] = encoded
 	}
 	{{- end }}
 {{- end }}
+uri.AddPathParts(u, pathParts[:]...)
 {{- end }}
 
 {{ define "encode_query_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}

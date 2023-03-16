@@ -667,7 +667,7 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 	return params
 }
 
-func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params TestQueryParameterParams, _ error) {
+func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params TestQueryParameterParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: boolean.
 	if err := func() error {

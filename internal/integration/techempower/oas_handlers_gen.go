@@ -27,7 +27,7 @@ import (
 // (Note: a distributed caching test type could be added later.).
 //
 // GET /cached-worlds
-func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63,7 +63,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "Caching",
 		}
 	)
-	params, err := decodeCachingParams(args, r)
+	params, err := decodeCachingParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -130,7 +130,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 // random number generator, database driver, and database connection pool.
 //
 // GET /db
-func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -215,7 +215,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 // response header generation, and request count throughput.
 //
 // GET /json
-func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -301,7 +301,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 // convergence toward zero requests-per-second as database activity increases.
 //
 // GET /queries
-func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -337,7 +337,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "Queries",
 		}
 	)
-	params, err := decodeQueriesParams(args, r)
+	params, err := decodeQueriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -405,7 +405,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 // spirit of this test is to exercise a variable number of read-then-write style database operations.
 //
 // GET /updates
-func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -441,7 +441,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "Updates",
 		}
 	)
-	params, err := decodeUpdatesParams(args, r)
+	params, err := decodeUpdatesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

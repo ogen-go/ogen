@@ -17,7 +17,7 @@ import (
 // handleEventPostRequest handles POST /event operation.
 //
 // POST /event
-func (s *Server) handleEventPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEventPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -112,7 +112,7 @@ func (s *Server) handleEventPostRequest(args [0]string, w http.ResponseWriter, r
 // handlePhoneGetRequest handles GET /phone operation.
 //
 // GET /phone
-func (s *Server) handlePhoneGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePhoneGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -143,7 +143,7 @@ func (s *Server) handlePhoneGetRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "",
 		}
 	)
-	params, err := decodePhoneGetParams(args, r)
+	params, err := decodePhoneGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

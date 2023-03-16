@@ -50,12 +50,16 @@ func unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middlew
 	return params
 }
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94,9 +98,13 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -135,9 +143,13 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -210,12 +222,16 @@ func unpackActionsAddSelectedRepoToOrgSecretParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Request) (params ActionsAddSelectedRepoToOrgSecretParams, _ error) {
+func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsAddSelectedRepoToOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -254,9 +270,13 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -295,9 +315,13 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -371,12 +395,16 @@ func unpackActionsAddSelfHostedRunnerToGroupForOrgParams(packed middleware.Param
 	return params
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http.Request) (params ActionsAddSelfHostedRunnerToGroupForOrgParams, _ error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsAddSelfHostedRunnerToGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -415,9 +443,13 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -456,9 +488,13 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -531,12 +567,16 @@ func unpackActionsApproveWorkflowRunParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (params ActionsApproveWorkflowRunParams, _ error) {
+func decodeActionsApproveWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsApproveWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -575,9 +615,13 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -616,9 +660,13 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -691,12 +739,16 @@ func unpackActionsCancelWorkflowRunParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (params ActionsCancelWorkflowRunParams, _ error) {
+func decodeActionsCancelWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsCancelWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -735,9 +787,13 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -776,9 +832,13 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -852,12 +912,16 @@ func unpackActionsCreateOrUpdateEnvironmentSecretParams(packed middleware.Parame
 	return params
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateEnvironmentSecretParams, _ error) {
+func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsCreateOrUpdateEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -896,9 +960,13 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -937,9 +1005,13 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1004,12 +1076,16 @@ func unpackActionsCreateOrUpdateOrgSecretParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request) (params ActionsCreateOrUpdateOrgSecretParams, _ error) {
+func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsCreateOrUpdateOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1048,9 +1124,13 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1123,12 +1203,16 @@ func unpackActionsCreateOrUpdateRepoSecretParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateRepoSecretParams, _ error) {
+func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsCreateOrUpdateRepoSecretParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1167,9 +1251,13 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1208,9 +1296,13 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1266,12 +1358,16 @@ func unpackActionsCreateRegistrationTokenForOrgParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRegistrationTokenForOrgParams, _ error) {
+func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsCreateRegistrationTokenForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1335,12 +1431,16 @@ func unpackActionsCreateRegistrationTokenForRepoParams(packed middleware.Paramet
 	return params
 }
 
-func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRegistrationTokenForRepoParams, _ error) {
+func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsCreateRegistrationTokenForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1379,9 +1479,13 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1437,12 +1541,16 @@ func unpackActionsCreateRemoveTokenForOrgParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRemoveTokenForOrgParams, _ error) {
+func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsCreateRemoveTokenForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1506,12 +1614,16 @@ func unpackActionsCreateRemoveTokenForRepoParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRemoveTokenForRepoParams, _ error) {
+func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsCreateRemoveTokenForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1550,9 +1662,13 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1608,12 +1724,16 @@ func unpackActionsCreateSelfHostedRunnerGroupForOrgParams(packed middleware.Para
 	return params
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *http.Request) (params ActionsCreateSelfHostedRunnerGroupForOrgParams, _ error) {
+func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsCreateSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1686,12 +1806,16 @@ func unpackActionsDeleteArtifactParams(packed middleware.Parameters) (params Act
 	return params
 }
 
-func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params ActionsDeleteArtifactParams, _ error) {
+func decodeActionsDeleteArtifactParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteArtifactParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1730,9 +1854,13 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1771,9 +1899,13 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: artifact_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1847,12 +1979,16 @@ func unpackActionsDeleteEnvironmentSecretParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsDeleteEnvironmentSecretParams, _ error) {
+func decodeActionsDeleteEnvironmentSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1891,9 +2027,13 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1932,9 +2072,13 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1999,12 +2143,16 @@ func unpackActionsDeleteOrgSecretParams(packed middleware.Parameters) (params Ac
 	return params
 }
 
-func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params ActionsDeleteOrgSecretParams, _ error) {
+func decodeActionsDeleteOrgSecretParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsDeleteOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2043,9 +2191,13 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2118,12 +2270,16 @@ func unpackActionsDeleteRepoSecretParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (params ActionsDeleteRepoSecretParams, _ error) {
+func decodeActionsDeleteRepoSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteRepoSecretParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2162,9 +2318,13 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2203,9 +2363,13 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2270,12 +2434,16 @@ func unpackActionsDeleteSelfHostedRunnerFromOrgParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromOrgParams, _ error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2314,9 +2482,13 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2389,12 +2561,16 @@ func unpackActionsDeleteSelfHostedRunnerFromRepoParams(packed middleware.Paramet
 	return params
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromRepoParams, _ error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2433,9 +2609,13 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2474,9 +2654,13 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2541,12 +2725,16 @@ func unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams(packed middleware.Par
 	return params
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams, _ error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2585,9 +2773,13 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2660,12 +2852,16 @@ func unpackActionsDeleteWorkflowRunParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunParams, _ error) {
+func decodeActionsDeleteWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2704,9 +2900,13 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2745,9 +2945,13 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2820,12 +3024,16 @@ func unpackActionsDeleteWorkflowRunLogsParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunLogsParams, _ error) {
+func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDeleteWorkflowRunLogsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2864,9 +3072,13 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2905,9 +3117,13 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -2971,12 +3187,16 @@ func unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams(packe
 	return params
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3015,9 +3235,13 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3098,12 +3322,16 @@ func unpackActionsDownloadArtifactParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (params ActionsDownloadArtifactParams, _ error) {
+func decodeActionsDownloadArtifactParams(args [4]string, argsEscaped bool, r *http.Request) (params ActionsDownloadArtifactParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3142,9 +3370,13 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3183,9 +3415,13 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: artifact_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3224,9 +3460,13 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: archive_format.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3299,12 +3539,16 @@ func unpackActionsDownloadJobLogsForWorkflowRunParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDownloadJobLogsForWorkflowRunParams, _ error) {
+func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDownloadJobLogsForWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3343,9 +3587,13 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3384,9 +3632,13 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 	}
 	// Decode path: job_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3459,12 +3711,16 @@ func unpackActionsDownloadWorkflowRunLogsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDownloadWorkflowRunLogsParams, _ error) {
+func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDownloadWorkflowRunLogsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3503,9 +3759,13 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3544,9 +3804,13 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3610,12 +3874,16 @@ func unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams(packed
 	return params
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3654,9 +3922,13 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3712,12 +3984,16 @@ func unpackActionsGetAllowedActionsOrganizationParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetAllowedActionsOrganizationParams, _ error) {
+func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsGetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3781,12 +4057,16 @@ func unpackActionsGetAllowedActionsRepositoryParams(packed middleware.Parameters
 	return params
 }
 
-func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetAllowedActionsRepositoryParams, _ error) {
+func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetAllowedActionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3825,9 +4105,13 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3900,12 +4184,16 @@ func unpackActionsGetArtifactParams(packed middleware.Parameters) (params Action
 	return params
 }
 
-func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params ActionsGetArtifactParams, _ error) {
+func decodeActionsGetArtifactParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetArtifactParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3944,9 +4232,13 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -3985,9 +4277,13 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 	}
 	// Decode path: artifact_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4052,12 +4348,16 @@ func unpackActionsGetEnvironmentPublicKeyParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetEnvironmentPublicKeyParams, _ error) {
+func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetEnvironmentPublicKeyParams, _ error) {
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4096,9 +4396,13 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4172,12 +4476,16 @@ func unpackActionsGetEnvironmentSecretParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsGetEnvironmentSecretParams, _ error) {
+func decodeActionsGetEnvironmentSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4216,9 +4524,13 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4257,9 +4569,13 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4315,12 +4631,16 @@ func unpackActionsGetGithubActionsPermissionsOrganizationParams(packed middlewar
 	return params
 }
 
-func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetGithubActionsPermissionsOrganizationParams, _ error) {
+func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsGetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4384,12 +4704,16 @@ func unpackActionsGetGithubActionsPermissionsRepositoryParams(packed middleware.
 	return params
 }
 
-func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetGithubActionsPermissionsRepositoryParams, _ error) {
+func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetGithubActionsPermissionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4428,9 +4752,13 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4503,12 +4831,16 @@ func unpackActionsGetJobForWorkflowRunParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetJobForWorkflowRunParams, _ error) {
+func decodeActionsGetJobForWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetJobForWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4547,9 +4879,13 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4588,9 +4924,13 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: job_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4646,12 +4986,16 @@ func unpackActionsGetOrgPublicKeyParams(packed middleware.Parameters) (params Ac
 	return params
 }
 
-func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params ActionsGetOrgPublicKeyParams, _ error) {
+func decodeActionsGetOrgPublicKeyParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsGetOrgPublicKeyParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4716,12 +5060,16 @@ func unpackActionsGetOrgSecretParams(packed middleware.Parameters) (params Actio
 	return params
 }
 
-func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params ActionsGetOrgSecretParams, _ error) {
+func decodeActionsGetOrgSecretParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4760,9 +5108,13 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params Ac
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4826,12 +5178,16 @@ func unpackActionsGetRepoPublicKeyParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetRepoPublicKeyParams, _ error) {
+func decodeActionsGetRepoPublicKeyParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetRepoPublicKeyParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4870,9 +5226,13 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4945,12 +5305,16 @@ func unpackActionsGetRepoSecretParams(packed middleware.Parameters) (params Acti
 	return params
 }
 
-func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params ActionsGetRepoSecretParams, _ error) {
+func decodeActionsGetRepoSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetRepoSecretParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -4989,9 +5353,13 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5030,9 +5398,13 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5105,12 +5477,16 @@ func unpackActionsGetReviewsForRunParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (params ActionsGetReviewsForRunParams, _ error) {
+func decodeActionsGetReviewsForRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetReviewsForRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5149,9 +5525,13 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5190,9 +5570,13 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5257,12 +5641,16 @@ func unpackActionsGetSelfHostedRunnerForOrgParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerForOrgParams, _ error) {
+func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetSelfHostedRunnerForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5301,9 +5689,13 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5376,12 +5768,16 @@ func unpackActionsGetSelfHostedRunnerForRepoParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Request) (params ActionsGetSelfHostedRunnerForRepoParams, _ error) {
+func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetSelfHostedRunnerForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5420,9 +5816,13 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5461,9 +5861,13 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5528,12 +5932,16 @@ func unpackActionsGetSelfHostedRunnerGroupForOrgParams(packed middleware.Paramet
 	return params
 }
 
-func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerGroupForOrgParams, _ error) {
+func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsGetSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5572,9 +5980,13 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5647,12 +6059,16 @@ func unpackActionsGetWorkflowRunParams(packed middleware.Parameters) (params Act
 	return params
 }
 
-func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunParams, _ error) {
+func decodeActionsGetWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5691,9 +6107,13 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5732,9 +6152,13 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5807,12 +6231,16 @@ func unpackActionsGetWorkflowRunUsageParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunUsageParams, _ error) {
+func decodeActionsGetWorkflowRunUsageParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetWorkflowRunUsageParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5851,9 +6279,13 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5892,9 +6324,13 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -5980,13 +6416,17 @@ func unpackActionsListArtifactsForRepoParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (params ActionsListArtifactsForRepoParams, _ error) {
+func decodeActionsListArtifactsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListArtifactsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6025,9 +6465,13 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6206,13 +6650,17 @@ func unpackActionsListEnvironmentSecretsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) (params ActionsListEnvironmentSecretsParams, _ error) {
+func decodeActionsListEnvironmentSecretsParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListEnvironmentSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6251,9 +6699,13 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6453,13 +6905,17 @@ func unpackActionsListJobsForWorkflowRunParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsListJobsForWorkflowRunParams, _ error) {
+func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsListJobsForWorkflowRunParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6498,9 +6954,13 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6539,9 +6999,13 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6772,13 +7236,17 @@ func unpackActionsListOrgSecretsParams(packed middleware.Parameters) (params Act
 	return params
 }
 
-func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params ActionsListOrgSecretsParams, _ error) {
+func decodeActionsListOrgSecretsParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsListOrgSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -6957,13 +7425,17 @@ func unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middle
 	return params
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7002,9 +7474,13 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7182,13 +7658,17 @@ func unpackActionsListRepoSecretsParams(packed middleware.Parameters) (params Ac
 	return params
 }
 
-func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params ActionsListRepoSecretsParams, _ error) {
+func decodeActionsListRepoSecretsParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListRepoSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7227,9 +7707,13 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7407,13 +7891,17 @@ func unpackActionsListRepoWorkflowsParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (params ActionsListRepoWorkflowsParams, _ error) {
+func decodeActionsListRepoWorkflowsParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListRepoWorkflowsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7452,9 +7940,13 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7602,12 +8094,16 @@ func unpackActionsListRunnerApplicationsForOrgParams(packed middleware.Parameter
 	return params
 }
 
-func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Request) (params ActionsListRunnerApplicationsForOrgParams, _ error) {
+func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsListRunnerApplicationsForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7671,12 +8167,16 @@ func unpackActionsListRunnerApplicationsForRepoParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Request) (params ActionsListRunnerApplicationsForRepoParams, _ error) {
+func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListRunnerApplicationsForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7715,9 +8215,13 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7804,13 +8308,17 @@ func unpackActionsListSelectedReposForOrgSecretParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsListSelectedReposForOrgSecretParams, _ error) {
+func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListSelectedReposForOrgSecretParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -7849,9 +8357,13 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8021,13 +8533,17 @@ func unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	return params
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8197,13 +8713,17 @@ func unpackActionsListSelfHostedRunnerGroupsForOrgParams(packed middleware.Param
 	return params
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnerGroupsForOrgParams, _ error) {
+func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsListSelfHostedRunnerGroupsForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8373,13 +8893,17 @@ func unpackActionsListSelfHostedRunnersForOrgParams(packed middleware.Parameters
 	return params
 }
 
-func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnersForOrgParams, _ error) {
+func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsListSelfHostedRunnersForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8557,13 +9081,17 @@ func unpackActionsListSelfHostedRunnersForRepoParams(packed middleware.Parameter
 	return params
 }
 
-func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersForRepoParams, _ error) {
+func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListSelfHostedRunnersForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8602,9 +9130,13 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8783,13 +9315,17 @@ func unpackActionsListSelfHostedRunnersInGroupForOrgParams(packed middleware.Par
 	return params
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersInGroupForOrgParams, _ error) {
+func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListSelfHostedRunnersInGroupForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -8828,9 +9364,13 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9017,13 +9557,17 @@ func unpackActionsListWorkflowRunArtifactsParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request) (params ActionsListWorkflowRunArtifactsParams, _ error) {
+func decodeActionsListWorkflowRunArtifactsParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsListWorkflowRunArtifactsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9062,9 +9606,13 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9103,9 +9651,13 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9343,13 +9895,17 @@ func unpackActionsListWorkflowRunsForRepoParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request) (params ActionsListWorkflowRunsForRepoParams, _ error) {
+func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsListWorkflowRunsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9388,9 +9944,13 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9775,12 +10335,16 @@ func unpackActionsReRunWorkflowParams(packed middleware.Parameters) (params Acti
 	return params
 }
 
-func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params ActionsReRunWorkflowParams, _ error) {
+func decodeActionsReRunWorkflowParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsReRunWorkflowParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9819,9 +10383,13 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9860,9 +10428,13 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9935,12 +10507,16 @@ func unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(packed midd
 	return params
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -9979,9 +10555,13 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10020,9 +10600,13 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10095,12 +10679,16 @@ func unpackActionsRemoveSelectedRepoFromOrgSecretParams(packed middleware.Parame
 	return params
 }
 
-func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.Request) (params ActionsRemoveSelectedRepoFromOrgSecretParams, _ error) {
+func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsRemoveSelectedRepoFromOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10139,9 +10727,13 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10180,9 +10772,13 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10256,12 +10852,16 @@ func unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams(packed middleware.
 	return params
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r *http.Request) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, _ error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10300,9 +10900,13 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10341,9 +10945,13 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10416,12 +11024,16 @@ func unpackActionsRetryWorkflowParams(packed middleware.Parameters) (params Acti
 	return params
 }
 
-func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params ActionsRetryWorkflowParams, _ error) {
+func decodeActionsRetryWorkflowParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsRetryWorkflowParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10460,9 +11072,13 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10501,9 +11117,13 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10576,12 +11196,16 @@ func unpackActionsReviewPendingDeploymentsForRunParams(packed middleware.Paramet
 	return params
 }
 
-func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.Request) (params ActionsReviewPendingDeploymentsForRunParams, _ error) {
+func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsReviewPendingDeploymentsForRunParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10620,9 +11244,13 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10661,9 +11289,13 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 	}
 	// Decode path: run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10719,12 +11351,16 @@ func unpackActionsSetAllowedActionsOrganizationParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetAllowedActionsOrganizationParams, _ error) {
+func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsSetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10788,12 +11424,16 @@ func unpackActionsSetAllowedActionsRepositoryParams(packed middleware.Parameters
 	return params
 }
 
-func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetAllowedActionsRepositoryParams, _ error) {
+func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsSetAllowedActionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10832,9 +11472,13 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10890,12 +11534,16 @@ func unpackActionsSetGithubActionsPermissionsOrganizationParams(packed middlewar
 	return params
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetGithubActionsPermissionsOrganizationParams, _ error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsSetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -10959,12 +11607,16 @@ func unpackActionsSetGithubActionsPermissionsRepositoryParams(packed middleware.
 	return params
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetGithubActionsPermissionsRepositoryParams, _ error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsSetGithubActionsPermissionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11003,9 +11655,13 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11070,12 +11726,16 @@ func unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middlew
 	return params
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11114,9 +11774,13 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11181,12 +11845,16 @@ func unpackActionsSetSelectedReposForOrgSecretParams(packed middleware.Parameter
 	return params
 }
 
-func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsSetSelectedReposForOrgSecretParams, _ error) {
+func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsSetSelectedReposForOrgSecretParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11225,9 +11893,13 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 	}
 	// Decode path: secret_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11283,12 +11955,16 @@ func unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 	return params
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11353,12 +12029,16 @@ func unpackActionsSetSelfHostedRunnersInGroupForOrgParams(packed middleware.Para
 	return params
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsSetSelfHostedRunnersInGroupForOrgParams, _ error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsSetSelfHostedRunnersInGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11397,9 +12077,13 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *htt
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11464,12 +12148,16 @@ func unpackActionsUpdateSelfHostedRunnerGroupForOrgParams(packed middleware.Para
 	return params
 }
 
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams, _ error) {
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11508,9 +12196,13 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11574,12 +12266,16 @@ func unpackActivityCheckRepoIsStarredByAuthenticatedUserParams(packed middleware
 	return params
 }
 
-func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams, _ error) {
+func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11618,9 +12314,13 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11684,12 +12384,16 @@ func unpackActivityDeleteRepoSubscriptionParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityDeleteRepoSubscriptionParams, _ error) {
+func decodeActivityDeleteRepoSubscriptionParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityDeleteRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11728,9 +12432,13 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11787,12 +12495,16 @@ func unpackActivityDeleteThreadSubscriptionParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivityDeleteThreadSubscriptionParams, _ error) {
+func decodeActivityDeleteThreadSubscriptionParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityDeleteThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11856,12 +12568,16 @@ func unpackActivityGetRepoSubscriptionParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityGetRepoSubscriptionParams, _ error) {
+func decodeActivityGetRepoSubscriptionParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityGetRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11900,9 +12616,13 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -11959,12 +12679,16 @@ func unpackActivityGetThreadParams(packed middleware.Parameters) (params Activit
 	return params
 }
 
-func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params ActivityGetThreadParams, _ error) {
+func decodeActivityGetThreadParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityGetThreadParams, _ error) {
 	// Decode path: thread_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -12021,12 +12745,16 @@ func unpackActivityGetThreadSubscriptionForAuthenticatedUserParams(packed middle
 	return params
 }
 
-func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams, _ error) {
+func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams, _ error) {
 	// Decode path: thread_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -12104,13 +12832,17 @@ func unpackActivityListEventsForAuthenticatedUserParams(packed middleware.Parame
 	return params
 }
 
-func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityListEventsForAuthenticatedUserParams, _ error) {
+func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListEventsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -12318,7 +13050,7 @@ func unpackActivityListNotificationsForAuthenticatedUserParams(packed middleware
 	return params
 }
 
-func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListNotificationsForAuthenticatedUserParams, _ error) {
+func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params ActivityListNotificationsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: all.
 	{
@@ -12635,13 +13367,17 @@ func unpackActivityListOrgEventsForAuthenticatedUserParams(packed middleware.Par
 	return params
 }
 
-func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListOrgEventsForAuthenticatedUserParams, _ error) {
+func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityListOrgEventsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -12680,9 +13416,13 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -12844,7 +13584,7 @@ func unpackActivityListPublicEventsParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (params ActivityListPublicEventsParams, _ error) {
+func decodeActivityListPublicEventsParams(args [0]string, argsEscaped bool, r *http.Request) (params ActivityListPublicEventsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -12987,13 +13727,17 @@ func unpackActivityListPublicEventsForRepoNetworkParams(packed middleware.Parame
 	return params
 }
 
-func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.Request) (params ActivityListPublicEventsForRepoNetworkParams, _ error) {
+func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityListPublicEventsForRepoNetworkParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13032,9 +13776,13 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13204,13 +13952,17 @@ func unpackActivityListPublicEventsForUserParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListPublicEventsForUserParams, _ error) {
+func decodeActivityListPublicEventsForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListPublicEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13380,13 +14132,17 @@ func unpackActivityListPublicOrgEventsParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (params ActivityListPublicOrgEventsParams, _ error) {
+func decodeActivityListPublicOrgEventsParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListPublicOrgEventsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13556,13 +14312,17 @@ func unpackActivityListReceivedEventsForUserParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedEventsForUserParams, _ error) {
+func decodeActivityListReceivedEventsForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListReceivedEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13732,13 +14492,17 @@ func unpackActivityListReceivedPublicEventsForUserParams(packed middleware.Param
 	return params
 }
 
-func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedPublicEventsForUserParams, _ error) {
+func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListReceivedPublicEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13916,13 +14680,17 @@ func unpackActivityListRepoEventsParams(packed middleware.Parameters) (params Ac
 	return params
 }
 
-func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params ActivityListRepoEventsParams, _ error) {
+func decodeActivityListRepoEventsParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityListRepoEventsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -13961,9 +14729,13 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -14187,13 +14959,17 @@ func unpackActivityListRepoNotificationsForAuthenticatedUserParams(packed middle
 	return params
 }
 
-func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListRepoNotificationsForAuthenticatedUserParams, _ error) {
+func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityListRepoNotificationsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -14232,9 +15008,13 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -14592,7 +15372,7 @@ func unpackActivityListReposStarredByAuthenticatedUserParams(packed middleware.P
 	return params
 }
 
-func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListReposStarredByAuthenticatedUserParams, _ error) {
+func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params ActivityListReposStarredByAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: sort.
 	{
@@ -14849,13 +15629,17 @@ func unpackActivityListReposWatchedByUserParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request) (params ActivityListReposWatchedByUserParams, _ error) {
+func decodeActivityListReposWatchedByUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityListReposWatchedByUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15017,7 +15801,7 @@ func unpackActivityListWatchedReposForAuthenticatedUserParams(packed middleware.
 	return params
 }
 
-func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListWatchedReposForAuthenticatedUserParams, _ error) {
+func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params ActivityListWatchedReposForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -15160,13 +15944,17 @@ func unpackActivityListWatchersForRepoParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (params ActivityListWatchersForRepoParams, _ error) {
+func decodeActivityListWatchersForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityListWatchersForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15205,9 +15993,13 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15363,12 +16155,16 @@ func unpackActivityMarkRepoNotificationsAsReadParams(packed middleware.Parameter
 	return params
 }
 
-func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Request) (params ActivityMarkRepoNotificationsAsReadParams, _ error) {
+func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityMarkRepoNotificationsAsReadParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15407,9 +16203,13 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15466,12 +16266,16 @@ func unpackActivityMarkThreadAsReadParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (params ActivityMarkThreadAsReadParams, _ error) {
+func decodeActivityMarkThreadAsReadParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivityMarkThreadAsReadParams, _ error) {
 	// Decode path: thread_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15535,12 +16339,16 @@ func unpackActivitySetRepoSubscriptionParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivitySetRepoSubscriptionParams, _ error) {
+func decodeActivitySetRepoSubscriptionParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivitySetRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15579,9 +16387,13 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15638,12 +16450,16 @@ func unpackActivitySetThreadSubscriptionParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivitySetThreadSubscriptionParams, _ error) {
+func decodeActivitySetThreadSubscriptionParams(args [1]string, argsEscaped bool, r *http.Request) (params ActivitySetThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15707,12 +16523,16 @@ func unpackActivityStarRepoForAuthenticatedUserParams(packed middleware.Paramete
 	return params
 }
 
-func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityStarRepoForAuthenticatedUserParams, _ error) {
+func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityStarRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15751,9 +16571,13 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15817,12 +16641,16 @@ func unpackActivityUnstarRepoForAuthenticatedUserParams(packed middleware.Parame
 	return params
 }
 
-func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityUnstarRepoForAuthenticatedUserParams, _ error) {
+func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ActivityUnstarRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15861,9 +16689,13 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15928,12 +16760,16 @@ func unpackAppsAddRepoToInstallationParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (params AppsAddRepoToInstallationParams, _ error) {
+func decodeAppsAddRepoToInstallationParams(args [2]string, argsEscaped bool, r *http.Request) (params AppsAddRepoToInstallationParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -15972,9 +16808,13 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16031,12 +16871,16 @@ func unpackAppsCheckTokenParams(packed middleware.Parameters) (params AppsCheckT
 	return params
 }
 
-func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsCheckTokenParams, _ error) {
+func decodeAppsCheckTokenParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsCheckTokenParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16113,12 +16957,16 @@ func unpackAppsCreateContentAttachmentParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (params AppsCreateContentAttachmentParams, _ error) {
+func decodeAppsCreateContentAttachmentParams(args [3]string, argsEscaped bool, r *http.Request) (params AppsCreateContentAttachmentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16157,9 +17005,13 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16198,9 +17050,13 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: content_reference_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16256,12 +17112,16 @@ func unpackAppsCreateFromManifestParams(packed middleware.Parameters) (params Ap
 	return params
 }
 
-func decodeAppsCreateFromManifestParams(args [1]string, r *http.Request) (params AppsCreateFromManifestParams, _ error) {
+func decodeAppsCreateFromManifestParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsCreateFromManifestParams, _ error) {
 	// Decode path: code.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16318,12 +17178,16 @@ func unpackAppsCreateInstallationAccessTokenParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Request) (params AppsCreateInstallationAccessTokenParams, _ error) {
+func decodeAppsCreateInstallationAccessTokenParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsCreateInstallationAccessTokenParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16380,12 +17244,16 @@ func unpackAppsDeleteAuthorizationParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (params AppsDeleteAuthorizationParams, _ error) {
+func decodeAppsDeleteAuthorizationParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsDeleteAuthorizationParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16442,12 +17310,16 @@ func unpackAppsDeleteInstallationParams(packed middleware.Parameters) (params Ap
 	return params
 }
 
-func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params AppsDeleteInstallationParams, _ error) {
+func decodeAppsDeleteInstallationParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsDeleteInstallationParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16504,12 +17376,16 @@ func unpackAppsDeleteTokenParams(packed middleware.Parameters) (params AppsDelet
 	return params
 }
 
-func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDeleteTokenParams, _ error) {
+func decodeAppsDeleteTokenParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsDeleteTokenParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16565,12 +17441,16 @@ func unpackAppsGetBySlugParams(packed middleware.Parameters) (params AppsGetBySl
 	return params
 }
 
-func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetBySlugParams, _ error) {
+func decodeAppsGetBySlugParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsGetBySlugParams, _ error) {
 	// Decode path: app_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16627,12 +17507,16 @@ func unpackAppsGetSubscriptionPlanForAccountParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountParams, _ error) {
+func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsGetSubscriptionPlanForAccountParams, _ error) {
 	// Decode path: account_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16689,12 +17573,16 @@ func unpackAppsGetSubscriptionPlanForAccountStubbedParams(packed middleware.Para
 	return params
 }
 
-func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountStubbedParams, _ error) {
+func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsGetSubscriptionPlanForAccountStubbedParams, _ error) {
 	// Decode path: account_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16750,12 +17638,16 @@ func unpackAppsGetWebhookDeliveryParams(packed middleware.Parameters) (params Ap
 	return params
 }
 
-func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsGetWebhookDeliveryParams, _ error) {
+func decodeAppsGetWebhookDeliveryParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsGetWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -16857,13 +17749,17 @@ func unpackAppsListAccountsForPlanParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanParams, _ error) {
+func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsListAccountsForPlanParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: plan_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -17174,13 +18070,17 @@ func unpackAppsListAccountsForPlanStubbedParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanStubbedParams, _ error) {
+func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsListAccountsForPlanStubbedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: plan_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -17468,13 +18368,17 @@ func unpackAppsListInstallationReposForAuthenticatedUserParams(packed middleware
 	return params
 }
 
-func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r *http.Request) (params AppsListInstallationReposForAuthenticatedUserParams, _ error) {
+func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsListInstallationReposForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -17636,7 +18540,7 @@ func unpackAppsListPlansParams(packed middleware.Parameters) (params AppsListPla
 	return params
 }
 
-func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsListPlansParams, _ error) {
+func decodeAppsListPlansParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListPlansParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -17763,7 +18667,7 @@ func unpackAppsListPlansStubbedParams(packed middleware.Parameters) (params Apps
 	return params
 }
 
-func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params AppsListPlansStubbedParams, _ error) {
+func decodeAppsListPlansStubbedParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListPlansStubbedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -17890,7 +18794,7 @@ func unpackAppsListReposAccessibleToInstallationParams(packed middleware.Paramet
 	return params
 }
 
-func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.Request) (params AppsListReposAccessibleToInstallationParams, _ error) {
+func decodeAppsListReposAccessibleToInstallationParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListReposAccessibleToInstallationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -18017,7 +18921,7 @@ func unpackAppsListSubscriptionsForAuthenticatedUserParams(packed middleware.Par
 	return params
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserParams, _ error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -18144,7 +19048,7 @@ func unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams(packed middlew
 	return params
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams, _ error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -18272,7 +19176,7 @@ func unpackAppsListWebhookDeliveriesParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (params AppsListWebhookDeliveriesParams, _ error) {
+func decodeAppsListWebhookDeliveriesParams(args [0]string, argsEscaped bool, r *http.Request) (params AppsListWebhookDeliveriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -18380,12 +19284,16 @@ func unpackAppsRedeliverWebhookDeliveryParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsRedeliverWebhookDeliveryParams, _ error) {
+func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18450,12 +19358,16 @@ func unpackAppsRemoveRepoFromInstallationParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request) (params AppsRemoveRepoFromInstallationParams, _ error) {
+func decodeAppsRemoveRepoFromInstallationParams(args [2]string, argsEscaped bool, r *http.Request) (params AppsRemoveRepoFromInstallationParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18494,9 +19406,13 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repository_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18553,12 +19469,16 @@ func unpackAppsResetTokenParams(packed middleware.Parameters) (params AppsResetT
 	return params
 }
 
-func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsResetTokenParams, _ error) {
+func decodeAppsResetTokenParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsResetTokenParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18615,12 +19535,16 @@ func unpackAppsScopeTokenParams(packed middleware.Parameters) (params AppsScopeT
 	return params
 }
 
-func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsScopeTokenParams, _ error) {
+func decodeAppsScopeTokenParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsScopeTokenParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18677,12 +19601,16 @@ func unpackAppsSuspendInstallationParams(packed middleware.Parameters) (params A
 	return params
 }
 
-func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (params AppsSuspendInstallationParams, _ error) {
+func decodeAppsSuspendInstallationParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsSuspendInstallationParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18739,12 +19667,16 @@ func unpackAppsUnsuspendInstallationParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (params AppsUnsuspendInstallationParams, _ error) {
+func decodeAppsUnsuspendInstallationParams(args [1]string, argsEscaped bool, r *http.Request) (params AppsUnsuspendInstallationParams, _ error) {
 	// Decode path: installation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18801,12 +19733,16 @@ func unpackBillingGetGithubActionsBillingGheParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingGheParams, _ error) {
+func decodeBillingGetGithubActionsBillingGheParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubActionsBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18862,12 +19798,16 @@ func unpackBillingGetGithubActionsBillingOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingOrgParams, _ error) {
+func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubActionsBillingOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18923,12 +19863,16 @@ func unpackBillingGetGithubActionsBillingUserParams(packed middleware.Parameters
 	return params
 }
 
-func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingUserParams, _ error) {
+func decodeBillingGetGithubActionsBillingUserParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubActionsBillingUserParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -18985,12 +19929,16 @@ func unpackBillingGetGithubPackagesBillingGheParams(packed middleware.Parameters
 	return params
 }
 
-func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingGheParams, _ error) {
+func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubPackagesBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19046,12 +19994,16 @@ func unpackBillingGetGithubPackagesBillingOrgParams(packed middleware.Parameters
 	return params
 }
 
-func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingOrgParams, _ error) {
+func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubPackagesBillingOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19107,12 +20059,16 @@ func unpackBillingGetGithubPackagesBillingUserParams(packed middleware.Parameter
 	return params
 }
 
-func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingUserParams, _ error) {
+func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetGithubPackagesBillingUserParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19169,12 +20125,16 @@ func unpackBillingGetSharedStorageBillingGheParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingGheParams, _ error) {
+func decodeBillingGetSharedStorageBillingGheParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetSharedStorageBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19230,12 +20190,16 @@ func unpackBillingGetSharedStorageBillingOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingOrgParams, _ error) {
+func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetSharedStorageBillingOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19291,12 +20255,16 @@ func unpackBillingGetSharedStorageBillingUserParams(packed middleware.Parameters
 	return params
 }
 
-func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingUserParams, _ error) {
+func decodeBillingGetSharedStorageBillingUserParams(args [1]string, argsEscaped bool, r *http.Request) (params BillingGetSharedStorageBillingUserParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19360,12 +20328,16 @@ func unpackChecksCreateSuiteParams(packed middleware.Parameters) (params ChecksC
 	return params
 }
 
-func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params ChecksCreateSuiteParams, _ error) {
+func decodeChecksCreateSuiteParams(args [2]string, argsEscaped bool, r *http.Request) (params ChecksCreateSuiteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19404,9 +20376,13 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params Chec
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19479,12 +20455,16 @@ func unpackChecksGetParams(packed middleware.Parameters) (params ChecksGetParams
 	return params
 }
 
-func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetParams, _ error) {
+func decodeChecksGetParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksGetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19523,9 +20503,13 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19564,9 +20548,13 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 	}
 	// Decode path: check_run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19639,12 +20627,16 @@ func unpackChecksGetSuiteParams(packed middleware.Parameters) (params ChecksGetS
 	return params
 }
 
-func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksGetSuiteParams, _ error) {
+func decodeChecksGetSuiteParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksGetSuiteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19683,9 +20675,13 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19724,9 +20720,13 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 	}
 	// Decode path: check_suite_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19821,13 +20821,17 @@ func unpackChecksListAnnotationsParams(packed middleware.Parameters) (params Che
 	return params
 }
 
-func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params ChecksListAnnotationsParams, _ error) {
+func decodeChecksListAnnotationsParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksListAnnotationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19866,9 +20870,13 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -19907,9 +20915,13 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: check_run_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20141,13 +21153,17 @@ func unpackChecksListForRefParams(packed middleware.Parameters) (params ChecksLi
 	return params
 }
 
-func decodeChecksListForRefParams(args [3]string, r *http.Request) (params ChecksListForRefParams, _ error) {
+func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksListForRefParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20186,9 +21202,13 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20227,9 +21247,13 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20650,13 +21674,17 @@ func unpackChecksListForSuiteParams(packed middleware.Parameters) (params Checks
 	return params
 }
 
-func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params ChecksListForSuiteParams, _ error) {
+func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksListForSuiteParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20695,9 +21723,13 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -20736,9 +21768,13 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	}
 	// Decode path: check_suite_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21105,13 +22141,17 @@ func unpackChecksListSuitesForRefParams(packed middleware.Parameters) (params Ch
 	return params
 }
 
-func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params ChecksListSuitesForRefParams, _ error) {
+func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksListSuitesForRefParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21150,9 +22190,13 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21191,9 +22235,13 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21440,12 +22488,16 @@ func unpackChecksRerequestSuiteParams(packed middleware.Parameters) (params Chec
 	return params
 }
 
-func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params ChecksRerequestSuiteParams, _ error) {
+func decodeChecksRerequestSuiteParams(args [3]string, argsEscaped bool, r *http.Request) (params ChecksRerequestSuiteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21484,9 +22536,13 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21525,9 +22581,13 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: check_suite_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21591,12 +22651,16 @@ func unpackChecksSetSuitesPreferencesParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (params ChecksSetSuitesPreferencesParams, _ error) {
+func decodeChecksSetSuitesPreferencesParams(args [2]string, argsEscaped bool, r *http.Request) (params ChecksSetSuitesPreferencesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21635,9 +22699,13 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21725,13 +22793,17 @@ func unpackCodeScanningDeleteAnalysisParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (params CodeScanningDeleteAnalysisParams, _ error) {
+func decodeCodeScanningDeleteAnalysisParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningDeleteAnalysisParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21770,9 +22842,13 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21811,9 +22887,13 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: analysis_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21929,12 +23009,16 @@ func unpackCodeScanningGetAlertParams(packed middleware.Parameters) (params Code
 	return params
 }
 
-func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params CodeScanningGetAlertParams, _ error) {
+func decodeCodeScanningGetAlertParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -21973,9 +23057,13 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22014,9 +23102,13 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: alert_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22097,12 +23189,16 @@ func unpackCodeScanningGetAnalysisParams(packed middleware.Parameters) (params C
 	return params
 }
 
-func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (params CodeScanningGetAnalysisParams, _ error) {
+func decodeCodeScanningGetAnalysisParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningGetAnalysisParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22141,9 +23237,13 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22182,9 +23282,13 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: analysis_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22257,12 +23361,16 @@ func unpackCodeScanningGetSarifParams(packed middleware.Parameters) (params Code
 	return params
 }
 
-func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params CodeScanningGetSarifParams, _ error) {
+func decodeCodeScanningGetSarifParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningGetSarifParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22301,9 +23409,13 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22342,9 +23454,13 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 	}
 	// Decode path: sarif_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22454,13 +23570,17 @@ func unpackCodeScanningListAlertInstancesParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request) (params CodeScanningListAlertInstancesParams, _ error) {
+func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningListAlertInstancesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22499,9 +23619,13 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22540,9 +23664,13 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode path: alert_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22824,13 +23952,17 @@ func unpackCodeScanningListAlertsForRepoParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params CodeScanningListAlertsForRepoParams, _ error) {
+func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params CodeScanningListAlertsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -22869,9 +24001,13 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23298,13 +24434,17 @@ func unpackCodeScanningListRecentAnalysesParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request) (params CodeScanningListRecentAnalysesParams, _ error) {
+func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool, r *http.Request) (params CodeScanningListRecentAnalysesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23343,9 +24483,13 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23704,12 +24848,16 @@ func unpackCodeScanningUpdateAlertParams(packed middleware.Parameters) (params C
 	return params
 }
 
-func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (params CodeScanningUpdateAlertParams, _ error) {
+func decodeCodeScanningUpdateAlertParams(args [3]string, argsEscaped bool, r *http.Request) (params CodeScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23748,9 +24896,13 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23789,9 +24941,13 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: alert_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23862,12 +25018,16 @@ func unpackCodeScanningUploadSarifParams(packed middleware.Parameters) (params C
 	return params
 }
 
-func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (params CodeScanningUploadSarifParams, _ error) {
+func decodeCodeScanningUploadSarifParams(args [2]string, argsEscaped bool, r *http.Request) (params CodeScanningUploadSarifParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23906,9 +25066,13 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -23964,12 +25128,16 @@ func unpackCodesOfConductGetConductCodeParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (params CodesOfConductGetConductCodeParams, _ error) {
+func decodeCodesOfConductGetConductCodeParams(args [1]string, argsEscaped bool, r *http.Request) (params CodesOfConductGetConductCodeParams, _ error) {
 	// Decode path: key.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24044,12 +25212,16 @@ func unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24088,9 +25260,13 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24129,9 +25305,13 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: org_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24206,12 +25386,16 @@ func unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(packed m
 	return params
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24250,9 +25434,13 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24291,9 +25479,13 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24350,12 +25542,16 @@ func unpackEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(packed midd
 	return params
 }
 
-func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24412,12 +25608,16 @@ func unpackEnterpriseAdminCreateRemoveTokenForEnterpriseParams(packed middleware
 	return params
 }
 
-func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24474,12 +25674,16 @@ func unpackEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(packed 
 	return params
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24545,12 +25749,16 @@ func unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams(packed middleware.
 	return params
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams, _ error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24589,9 +25797,13 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 	}
 	// Decode path: scim_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24657,12 +25869,16 @@ func unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(packed midd
 	return params
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, _ error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24701,9 +25917,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24769,12 +25989,16 @@ func unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(packed
 	return params
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, _ error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24813,9 +26037,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24881,12 +26109,16 @@ func unpackEnterpriseAdminDeleteUserFromEnterpriseParams(packed middleware.Param
 	return params
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteUserFromEnterpriseParams, _ error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminDeleteUserFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24925,9 +26157,13 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 	}
 	// Decode path: scim_user_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -24993,12 +26229,16 @@ func unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	return params
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25037,9 +26277,13 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	}
 	// Decode path: org_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25105,12 +26349,16 @@ func unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	return params
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25149,9 +26397,13 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	}
 	// Decode path: org_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25208,12 +26460,16 @@ func unpackEnterpriseAdminGetAllowedActionsEnterpriseParams(packed middleware.Pa
 	return params
 }
 
-func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAllowedActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25358,13 +26614,17 @@ func unpackEnterpriseAdminGetAuditLogParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAuditLogParams, _ error) {
+func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetAuditLogParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25748,12 +27008,16 @@ func unpackEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(packed mid
 	return params
 }
 
-func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25830,13 +27094,17 @@ func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(pac
 	return params
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, _ error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25875,9 +27143,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	}
 	// Decode path: scim_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -25984,12 +27256,16 @@ func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(pack
 	return params
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, _ error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26028,9 +27304,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 	}
 	// Decode path: scim_user_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26096,12 +27376,16 @@ func unpackEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(packed middlewa
 	return params
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26140,9 +27424,13 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26208,12 +27496,16 @@ func unpackEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(packed mid
 	return params
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26252,9 +27544,13 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26342,13 +27638,17 @@ func unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	return params
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26387,9 +27687,13 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26582,13 +27886,17 @@ func unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams(packed middlewar
 	return params
 }
 
-func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -26842,13 +28150,17 @@ func unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(packed middl
 	return params
 }
 
-func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27028,12 +28340,16 @@ func unpackEnterpriseAdminListRunnerApplicationsForEnterpriseParams(packed middl
 	return params
 }
 
-func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27112,13 +28428,17 @@ func unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return params
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27289,13 +28609,17 @@ func unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(packed m
 	return params
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27466,13 +28790,17 @@ func unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(packed middle
 	return params
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27652,13 +28980,17 @@ func unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(packed
 	return params
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27697,9 +29029,13 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27848,12 +29184,16 @@ func unpackEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(packed middlew
 	return params
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, _ error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27910,12 +29250,16 @@ func unpackEnterpriseAdminProvisionAndInviteEnterpriseUserParams(packed middlewa
 	return params
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams, _ error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -27990,12 +29334,16 @@ func unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	return params
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28034,9 +29382,13 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28075,9 +29427,13 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	}
 	// Decode path: org_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28152,12 +29508,16 @@ func unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(pac
 	return params
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args [3]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28196,9 +29556,13 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28237,9 +29601,13 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 	}
 	// Decode path: runner_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28296,12 +29664,16 @@ func unpackEnterpriseAdminSetAllowedActionsEnterpriseParams(packed middleware.Pa
 	return params
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetAllowedActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28358,12 +29730,16 @@ func unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(packed mid
 	return params
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28429,12 +29805,16 @@ func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(pack
 	return params
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, _ error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28473,9 +29853,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 	}
 	// Decode path: scim_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28541,12 +29925,16 @@ func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(packe
 	return params
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, _ error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28585,9 +29973,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 	}
 	// Decode path: scim_user_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28653,12 +30045,16 @@ func unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28697,9 +30093,13 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28756,12 +30156,16 @@ func unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	return params
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28827,12 +30231,16 @@ func unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(packed 
 	return params
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28871,9 +30279,13 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28939,12 +30351,16 @@ func unpackEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(packed middlew
 	return params
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, _ error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -28983,9 +30399,13 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 	}
 	// Decode path: scim_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29051,12 +30471,16 @@ func unpackEnterpriseAdminUpdateAttributeForEnterpriseUserParams(packed middlewa
 	return params
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams, _ error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29095,9 +30519,13 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 	}
 	// Decode path: scim_user_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29163,12 +30591,16 @@ func unpackEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(packed 
 	return params
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2]string, argsEscaped bool, r *http.Request) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29207,9 +30639,13 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 	}
 	// Decode path: runner_group_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29266,12 +30702,16 @@ func unpackGistsCheckIsStarredParams(packed middleware.Parameters) (params Gists
 	return params
 }
 
-func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params GistsCheckIsStarredParams, _ error) {
+func decodeGistsCheckIsStarredParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsCheckIsStarredParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29328,12 +30768,16 @@ func unpackGistsCreateCommentParams(packed middleware.Parameters) (params GistsC
 	return params
 }
 
-func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params GistsCreateCommentParams, _ error) {
+func decodeGistsCreateCommentParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsCreateCommentParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29390,12 +30834,16 @@ func unpackGistsDeleteParams(packed middleware.Parameters) (params GistsDeletePa
 	return params
 }
 
-func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDeleteParams, _ error) {
+func decodeGistsDeleteParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsDeleteParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29461,12 +30909,16 @@ func unpackGistsDeleteCommentParams(packed middleware.Parameters) (params GistsD
 	return params
 }
 
-func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params GistsDeleteCommentParams, _ error) {
+func decodeGistsDeleteCommentParams(args [2]string, argsEscaped bool, r *http.Request) (params GistsDeleteCommentParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29505,9 +30957,13 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params Gis
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29564,12 +31020,16 @@ func unpackGistsForkParams(packed middleware.Parameters) (params GistsForkParams
 	return params
 }
 
-func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkParams, _ error) {
+func decodeGistsForkParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsForkParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29626,12 +31086,16 @@ func unpackGistsGetParams(packed middleware.Parameters) (params GistsGetParams) 
 	return params
 }
 
-func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParams, _ error) {
+func decodeGistsGetParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsGetParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29697,12 +31161,16 @@ func unpackGistsGetCommentParams(packed middleware.Parameters) (params GistsGetC
 	return params
 }
 
-func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsGetCommentParams, _ error) {
+func decodeGistsGetCommentParams(args [2]string, argsEscaped bool, r *http.Request) (params GistsGetCommentParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29741,9 +31209,13 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsG
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29808,12 +31280,16 @@ func unpackGistsGetRevisionParams(packed middleware.Parameters) (params GistsGet
 	return params
 }
 
-func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params GistsGetRevisionParams, _ error) {
+func decodeGistsGetRevisionParams(args [2]string, argsEscaped bool, r *http.Request) (params GistsGetRevisionParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29852,9 +31328,13 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 	}
 	// Decode path: sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -29936,7 +31416,7 @@ func unpackGistsListParams(packed middleware.Parameters) (params GistsListParams
 	return params
 }
 
-func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListParams, _ error) {
+func decodeGistsListParams(args [0]string, argsEscaped bool, r *http.Request) (params GistsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -30113,13 +31593,17 @@ func unpackGistsListCommentsParams(packed middleware.Parameters) (params GistsLi
 	return params
 }
 
-func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params GistsListCommentsParams, _ error) {
+func decodeGistsListCommentsParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsListCommentsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -30290,13 +31774,17 @@ func unpackGistsListCommitsParams(packed middleware.Parameters) (params GistsLis
 	return params
 }
 
-func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params GistsListCommitsParams, _ error) {
+func decodeGistsListCommitsParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsListCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -30478,13 +31966,17 @@ func unpackGistsListForUserParams(packed middleware.Parameters) (params GistsLis
 	return params
 }
 
-func decodeGistsListForUserParams(args [1]string, r *http.Request) (params GistsListForUserParams, _ error) {
+func decodeGistsListForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsListForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -30696,13 +32188,17 @@ func unpackGistsListForksParams(packed middleware.Parameters) (params GistsListF
 	return params
 }
 
-func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsListForksParams, _ error) {
+func decodeGistsListForksParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsListForksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -30876,7 +32372,7 @@ func unpackGistsListPublicParams(packed middleware.Parameters) (params GistsList
 	return params
 }
 
-func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsListPublicParams, _ error) {
+func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Request) (params GistsListPublicParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -31056,7 +32552,7 @@ func unpackGistsListStarredParams(packed middleware.Parameters) (params GistsLis
 	return params
 }
 
-func decodeGistsListStarredParams(args [0]string, r *http.Request) (params GistsListStarredParams, _ error) {
+func decodeGistsListStarredParams(args [0]string, argsEscaped bool, r *http.Request) (params GistsListStarredParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -31211,12 +32707,16 @@ func unpackGistsStarParams(packed middleware.Parameters) (params GistsStarParams
 	return params
 }
 
-func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarParams, _ error) {
+func decodeGistsStarParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsStarParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31273,12 +32773,16 @@ func unpackGistsUnstarParams(packed middleware.Parameters) (params GistsUnstarPa
 	return params
 }
 
-func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnstarParams, _ error) {
+func decodeGistsUnstarParams(args [1]string, argsEscaped bool, r *http.Request) (params GistsUnstarParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31344,12 +32848,16 @@ func unpackGistsUpdateCommentParams(packed middleware.Parameters) (params GistsU
 	return params
 }
 
-func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params GistsUpdateCommentParams, _ error) {
+func decodeGistsUpdateCommentParams(args [2]string, argsEscaped bool, r *http.Request) (params GistsUpdateCommentParams, _ error) {
 	// Decode path: gist_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31388,9 +32896,13 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params Gis
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31454,12 +32966,16 @@ func unpackGitCreateBlobParams(packed middleware.Parameters) (params GitCreateBl
 	return params
 }
 
-func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreateBlobParams, _ error) {
+func decodeGitCreateBlobParams(args [2]string, argsEscaped bool, r *http.Request) (params GitCreateBlobParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31498,9 +33014,13 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreat
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31564,12 +33084,16 @@ func unpackGitCreateCommitParams(packed middleware.Parameters) (params GitCreate
 	return params
 }
 
-func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCreateCommitParams, _ error) {
+func decodeGitCreateCommitParams(args [2]string, argsEscaped bool, r *http.Request) (params GitCreateCommitParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31608,9 +33132,13 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCre
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31674,12 +33202,16 @@ func unpackGitCreateRefParams(packed middleware.Parameters) (params GitCreateRef
 	return params
 }
 
-func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreateRefParams, _ error) {
+func decodeGitCreateRefParams(args [2]string, argsEscaped bool, r *http.Request) (params GitCreateRefParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31718,9 +33250,13 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreate
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31784,12 +33320,16 @@ func unpackGitCreateTagParams(packed middleware.Parameters) (params GitCreateTag
 	return params
 }
 
-func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreateTagParams, _ error) {
+func decodeGitCreateTagParams(args [2]string, argsEscaped bool, r *http.Request) (params GitCreateTagParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31828,9 +33368,13 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreate
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31894,12 +33438,16 @@ func unpackGitCreateTreeParams(packed middleware.Parameters) (params GitCreateTr
 	return params
 }
 
-func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreateTreeParams, _ error) {
+func decodeGitCreateTreeParams(args [2]string, argsEscaped bool, r *http.Request) (params GitCreateTreeParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -31938,9 +33486,13 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreat
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32013,12 +33565,16 @@ func unpackGitDeleteRefParams(packed middleware.Parameters) (params GitDeleteRef
 	return params
 }
 
-func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDeleteRefParams, _ error) {
+func decodeGitDeleteRefParams(args [3]string, argsEscaped bool, r *http.Request) (params GitDeleteRefParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32057,9 +33613,13 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32098,9 +33658,13 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32172,12 +33736,16 @@ func unpackGitGetBlobParams(packed middleware.Parameters) (params GitGetBlobPara
 	return params
 }
 
-func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobParams, _ error) {
+func decodeGitGetBlobParams(args [3]string, argsEscaped bool, r *http.Request) (params GitGetBlobParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32216,9 +33784,13 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32257,9 +33829,13 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 	}
 	// Decode path: file_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32332,12 +33908,16 @@ func unpackGitGetCommitParams(packed middleware.Parameters) (params GitGetCommit
 	return params
 }
 
-func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCommitParams, _ error) {
+func decodeGitGetCommitParams(args [3]string, argsEscaped bool, r *http.Request) (params GitGetCommitParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32376,9 +33956,13 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32417,9 +34001,13 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 	}
 	// Decode path: commit_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32492,12 +34080,16 @@ func unpackGitGetRefParams(packed middleware.Parameters) (params GitGetRefParams
 	return params
 }
 
-func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefParams, _ error) {
+func decodeGitGetRefParams(args [3]string, argsEscaped bool, r *http.Request) (params GitGetRefParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32536,9 +34128,13 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32577,9 +34173,13 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32651,12 +34251,16 @@ func unpackGitGetTagParams(packed middleware.Parameters) (params GitGetTagParams
 	return params
 }
 
-func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagParams, _ error) {
+func decodeGitGetTagParams(args [3]string, argsEscaped bool, r *http.Request) (params GitGetTagParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32695,9 +34299,13 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32736,9 +34344,13 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 	}
 	// Decode path: tag_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32824,13 +34436,17 @@ func unpackGitGetTreeParams(packed middleware.Parameters) (params GitGetTreePara
 	return params
 }
 
-func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeParams, _ error) {
+func decodeGitGetTreeParams(args [3]string, argsEscaped bool, r *http.Request) (params GitGetTreeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32869,9 +34485,13 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -32910,9 +34530,13 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 	}
 	// Decode path: tree_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33048,13 +34672,17 @@ func unpackGitListMatchingRefsParams(packed middleware.Parameters) (params GitLi
 	return params
 }
 
-func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params GitListMatchingRefsParams, _ error) {
+func decodeGitListMatchingRefsParams(args [3]string, argsEscaped bool, r *http.Request) (params GitListMatchingRefsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33093,9 +34721,13 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33134,9 +34766,13 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33301,12 +34937,16 @@ func unpackGitUpdateRefParams(packed middleware.Parameters) (params GitUpdateRef
 	return params
 }
 
-func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdateRefParams, _ error) {
+func decodeGitUpdateRefParams(args [3]string, argsEscaped bool, r *http.Request) (params GitUpdateRefParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33345,9 +34985,13 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33386,9 +35030,13 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33444,12 +35092,16 @@ func unpackGitignoreGetTemplateParams(packed middleware.Parameters) (params Giti
 	return params
 }
 
-func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params GitignoreGetTemplateParams, _ error) {
+func decodeGitignoreGetTemplateParams(args [1]string, argsEscaped bool, r *http.Request) (params GitignoreGetTemplateParams, _ error) {
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33505,12 +35157,16 @@ func unpackInteractionsRemoveRestrictionsForOrgParams(packed middleware.Paramete
 	return params
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsRemoveRestrictionsForOrgParams, _ error) {
+func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params InteractionsRemoveRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33574,12 +35230,16 @@ func unpackInteractionsRemoveRestrictionsForRepoParams(packed middleware.Paramet
 	return params
 }
 
-func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsRemoveRestrictionsForRepoParams, _ error) {
+func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params InteractionsRemoveRestrictionsForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33618,9 +35278,13 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33676,12 +35340,16 @@ func unpackInteractionsSetRestrictionsForOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsSetRestrictionsForOrgParams, _ error) {
+func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params InteractionsSetRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33745,12 +35413,16 @@ func unpackInteractionsSetRestrictionsForRepoParams(packed middleware.Parameters
 	return params
 }
 
-func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsSetRestrictionsForRepoParams, _ error) {
+func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params InteractionsSetRestrictionsForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33789,9 +35461,13 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33864,12 +35540,16 @@ func unpackIssuesAddAssigneesParams(packed middleware.Parameters) (params Issues
 	return params
 }
 
-func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params IssuesAddAssigneesParams, _ error) {
+func decodeIssuesAddAssigneesParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesAddAssigneesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33908,9 +35588,13 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -33949,9 +35633,13 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34023,12 +35711,16 @@ func unpackIssuesCheckUserCanBeAssignedParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (params IssuesCheckUserCanBeAssignedParams, _ error) {
+func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesCheckUserCanBeAssignedParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34067,9 +35759,13 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34108,9 +35804,13 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: assignee.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34174,12 +35874,16 @@ func unpackIssuesCreateParams(packed middleware.Parameters) (params IssuesCreate
 	return params
 }
 
-func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCreateParams, _ error) {
+func decodeIssuesCreateParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesCreateParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34218,9 +35922,13 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCre
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34293,12 +36001,16 @@ func unpackIssuesCreateCommentParams(packed middleware.Parameters) (params Issue
 	return params
 }
 
-func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params IssuesCreateCommentParams, _ error) {
+func decodeIssuesCreateCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesCreateCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34337,9 +36049,13 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34378,9 +36094,13 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34444,12 +36164,16 @@ func unpackIssuesCreateLabelParams(packed middleware.Parameters) (params IssuesC
 	return params
 }
 
-func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params IssuesCreateLabelParams, _ error) {
+func decodeIssuesCreateLabelParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesCreateLabelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34488,9 +36212,13 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params Issu
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34554,12 +36282,16 @@ func unpackIssuesCreateMilestoneParams(packed middleware.Parameters) (params Iss
 	return params
 }
 
-func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params IssuesCreateMilestoneParams, _ error) {
+func decodeIssuesCreateMilestoneParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesCreateMilestoneParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34598,9 +36330,13 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34673,12 +36409,16 @@ func unpackIssuesDeleteCommentParams(packed middleware.Parameters) (params Issue
 	return params
 }
 
-func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params IssuesDeleteCommentParams, _ error) {
+func decodeIssuesDeleteCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesDeleteCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34717,9 +36457,13 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34758,9 +36502,13 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34832,12 +36580,16 @@ func unpackIssuesDeleteLabelParams(packed middleware.Parameters) (params IssuesD
 	return params
 }
 
-func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params IssuesDeleteLabelParams, _ error) {
+func decodeIssuesDeleteLabelParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesDeleteLabelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34876,9 +36628,13 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34917,9 +36673,13 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 	}
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -34992,12 +36752,16 @@ func unpackIssuesDeleteMilestoneParams(packed middleware.Parameters) (params Iss
 	return params
 }
 
-func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params IssuesDeleteMilestoneParams, _ error) {
+func decodeIssuesDeleteMilestoneParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesDeleteMilestoneParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35036,9 +36800,13 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35077,9 +36845,13 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: milestone_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35152,12 +36924,16 @@ func unpackIssuesGetParams(packed middleware.Parameters) (params IssuesGetParams
 	return params
 }
 
-func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetParams, _ error) {
+func decodeIssuesGetParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesGetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35196,9 +36972,13 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35237,9 +37017,13 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35312,12 +37096,16 @@ func unpackIssuesGetCommentParams(packed middleware.Parameters) (params IssuesGe
 	return params
 }
 
-func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params IssuesGetCommentParams, _ error) {
+func decodeIssuesGetCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesGetCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35356,9 +37144,13 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35397,9 +37189,13 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35471,12 +37267,16 @@ func unpackIssuesGetEventParams(packed middleware.Parameters) (params IssuesGetE
 	return params
 }
 
-func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesGetEventParams, _ error) {
+func decodeIssuesGetEventParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesGetEventParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35515,9 +37315,13 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35556,9 +37360,13 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 	}
 	// Decode path: event_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35630,12 +37438,16 @@ func unpackIssuesGetLabelParams(packed middleware.Parameters) (params IssuesGetL
 	return params
 }
 
-func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesGetLabelParams, _ error) {
+func decodeIssuesGetLabelParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesGetLabelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35674,9 +37486,13 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35715,9 +37531,13 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 	}
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35790,12 +37610,16 @@ func unpackIssuesGetMilestoneParams(packed middleware.Parameters) (params Issues
 	return params
 }
 
-func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params IssuesGetMilestoneParams, _ error) {
+func decodeIssuesGetMilestoneParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesGetMilestoneParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35834,9 +37658,13 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -35875,9 +37703,13 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: milestone_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -36060,7 +37892,7 @@ func unpackIssuesListParams(packed middleware.Parameters) (params IssuesListPara
 	return params
 }
 
-func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListParams, _ error) {
+func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (params IssuesListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: filter.
 	{
@@ -36693,13 +38525,17 @@ func unpackIssuesListAssigneesParams(packed middleware.Parameters) (params Issue
 	return params
 }
 
-func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params IssuesListAssigneesParams, _ error) {
+func decodeIssuesListAssigneesParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListAssigneesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -36738,9 +38574,13 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -36939,13 +38779,17 @@ func unpackIssuesListCommentsParams(packed middleware.Parameters) (params Issues
 	return params
 }
 
-func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params IssuesListCommentsParams, _ error) {
+func decodeIssuesListCommentsParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesListCommentsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -36984,9 +38828,13 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37025,9 +38873,13 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37280,13 +39132,17 @@ func unpackIssuesListCommentsForRepoParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (params IssuesListCommentsForRepoParams, _ error) {
+func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListCommentsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37325,9 +39181,13 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37663,13 +39523,17 @@ func unpackIssuesListEventsForRepoParams(packed middleware.Parameters) (params I
 	return params
 }
 
-func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (params IssuesListEventsForRepoParams, _ error) {
+func decodeIssuesListEventsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListEventsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37708,9 +39572,13 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -37945,7 +39813,7 @@ func unpackIssuesListForAuthenticatedUserParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request) (params IssuesListForAuthenticatedUserParams, _ error) {
+func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params IssuesListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: filter.
 	{
@@ -38479,13 +40347,17 @@ func unpackIssuesListForOrgParams(packed middleware.Parameters) (params IssuesLi
 	return params
 }
 
-func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params IssuesListForOrgParams, _ error) {
+func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params IssuesListForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -39092,13 +40964,17 @@ func unpackIssuesListForRepoParams(packed middleware.Parameters) (params IssuesL
 	return params
 }
 
-func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params IssuesListForRepoParams, _ error) {
+func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -39137,9 +41013,13 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -39755,13 +41635,17 @@ func unpackIssuesListLabelsForMilestoneParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (params IssuesListLabelsForMilestoneParams, _ error) {
+func decodeIssuesListLabelsForMilestoneParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesListLabelsForMilestoneParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -39800,9 +41684,13 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -39841,9 +41729,13 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: milestone_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40021,13 +41913,17 @@ func unpackIssuesListLabelsForRepoParams(packed middleware.Parameters) (params I
 	return params
 }
 
-func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (params IssuesListLabelsForRepoParams, _ error) {
+func decodeIssuesListLabelsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListLabelsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40066,9 +41962,13 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40255,13 +42155,17 @@ func unpackIssuesListLabelsOnIssueParams(packed middleware.Parameters) (params I
 	return params
 }
 
-func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (params IssuesListLabelsOnIssueParams, _ error) {
+func decodeIssuesListLabelsOnIssueParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesListLabelsOnIssueParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40300,9 +42204,13 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40341,9 +42249,13 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40554,13 +42466,17 @@ func unpackIssuesListMilestonesParams(packed middleware.Parameters) (params Issu
 	return params
 }
 
-func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params IssuesListMilestonesParams, _ error) {
+func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.Request) (params IssuesListMilestonesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40599,9 +42515,13 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40949,12 +42869,16 @@ func unpackIssuesLockParams(packed middleware.Parameters) (params IssuesLockPara
 	return params
 }
 
-func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockParams, _ error) {
+func decodeIssuesLockParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesLockParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -40993,9 +42917,13 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41034,9 +42962,13 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41109,12 +43041,16 @@ func unpackIssuesRemoveAllLabelsParams(packed middleware.Parameters) (params Iss
 	return params
 }
 
-func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params IssuesRemoveAllLabelsParams, _ error) {
+func decodeIssuesRemoveAllLabelsParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesRemoveAllLabelsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41153,9 +43089,13 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41194,9 +43134,13 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41269,12 +43213,16 @@ func unpackIssuesRemoveAssigneesParams(packed middleware.Parameters) (params Iss
 	return params
 }
 
-func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params IssuesRemoveAssigneesParams, _ error) {
+func decodeIssuesRemoveAssigneesParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesRemoveAssigneesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41313,9 +43261,13 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41354,9 +43306,13 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41437,12 +43393,16 @@ func unpackIssuesRemoveLabelParams(packed middleware.Parameters) (params IssuesR
 	return params
 }
 
-func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params IssuesRemoveLabelParams, _ error) {
+func decodeIssuesRemoveLabelParams(args [4]string, argsEscaped bool, r *http.Request) (params IssuesRemoveLabelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41481,9 +43441,13 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41522,9 +43486,13 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41563,9 +43531,13 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 	}
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41638,12 +43610,16 @@ func unpackIssuesUnlockParams(packed middleware.Parameters) (params IssuesUnlock
 	return params
 }
 
-func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnlockParams, _ error) {
+func decodeIssuesUnlockParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesUnlockParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41682,9 +43658,13 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41723,9 +43703,13 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41798,12 +43782,16 @@ func unpackIssuesUpdateParams(packed middleware.Parameters) (params IssuesUpdate
 	return params
 }
 
-func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpdateParams, _ error) {
+func decodeIssuesUpdateParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesUpdateParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41842,9 +43830,13 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41883,9 +43875,13 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -41958,12 +43954,16 @@ func unpackIssuesUpdateCommentParams(packed middleware.Parameters) (params Issue
 	return params
 }
 
-func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params IssuesUpdateCommentParams, _ error) {
+func decodeIssuesUpdateCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesUpdateCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42002,9 +44002,13 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42043,9 +44047,13 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42117,12 +44125,16 @@ func unpackIssuesUpdateLabelParams(packed middleware.Parameters) (params IssuesU
 	return params
 }
 
-func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params IssuesUpdateLabelParams, _ error) {
+func decodeIssuesUpdateLabelParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesUpdateLabelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42161,9 +44173,13 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42202,9 +44218,13 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 	}
 	// Decode path: name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42277,12 +44297,16 @@ func unpackIssuesUpdateMilestoneParams(packed middleware.Parameters) (params Iss
 	return params
 }
 
-func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params IssuesUpdateMilestoneParams, _ error) {
+func decodeIssuesUpdateMilestoneParams(args [3]string, argsEscaped bool, r *http.Request) (params IssuesUpdateMilestoneParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42321,9 +44345,13 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42362,9 +44390,13 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: milestone_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42420,12 +44452,16 @@ func unpackLicensesGetParams(packed middleware.Parameters) (params LicensesGetPa
 	return params
 }
 
-func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGetParams, _ error) {
+func decodeLicensesGetParams(args [1]string, argsEscaped bool, r *http.Request) (params LicensesGetParams, _ error) {
 	// Decode path: license.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42505,7 +44541,7 @@ func unpackLicensesGetAllCommonlyUsedParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (params LicensesGetAllCommonlyUsedParams, _ error) {
+func decodeLicensesGetAllCommonlyUsedParams(args [0]string, argsEscaped bool, r *http.Request) (params LicensesGetAllCommonlyUsedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: featured.
 	if err := func() error {
@@ -42667,12 +44703,16 @@ func unpackLicensesGetForRepoParams(packed middleware.Parameters) (params Licens
 	return params
 }
 
-func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params LicensesGetForRepoParams, _ error) {
+func decodeLicensesGetForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params LicensesGetForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42711,9 +44751,13 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42772,7 +44816,7 @@ func unpackMetaGetOctocatParams(packed middleware.Parameters) (params MetaGetOct
 	return params
 }
 
-func decodeMetaGetOctocatParams(args [0]string, r *http.Request) (params MetaGetOctocatParams, _ error) {
+func decodeMetaGetOctocatParams(args [0]string, argsEscaped bool, r *http.Request) (params MetaGetOctocatParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: s.
 	if err := func() error {
@@ -42842,12 +44886,16 @@ func unpackMigrationsCancelImportParams(packed middleware.Parameters) (params Mi
 	return params
 }
 
-func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params MigrationsCancelImportParams, _ error) {
+func decodeMigrationsCancelImportParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsCancelImportParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42886,9 +44934,13 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -42945,12 +44997,16 @@ func unpackMigrationsDeleteArchiveForAuthenticatedUserParams(packed middleware.P
 	return params
 }
 
-func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsDeleteArchiveForAuthenticatedUserParams, _ error) {
+func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsDeleteArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43015,12 +45071,16 @@ func unpackMigrationsDeleteArchiveForOrgParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDeleteArchiveForOrgParams, _ error) {
+func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsDeleteArchiveForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43059,9 +45119,13 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43126,12 +45190,16 @@ func unpackMigrationsDownloadArchiveForOrgParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDownloadArchiveForOrgParams, _ error) {
+func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsDownloadArchiveForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43170,9 +45238,13 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 	}
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43229,12 +45301,16 @@ func unpackMigrationsGetArchiveForAuthenticatedUserParams(packed middleware.Para
 	return params
 }
 
-func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetArchiveForAuthenticatedUserParams, _ error) {
+func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsGetArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43309,13 +45385,17 @@ func unpackMigrationsGetCommitAuthorsParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (params MigrationsGetCommitAuthorsParams, _ error) {
+func decodeMigrationsGetCommitAuthorsParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsGetCommitAuthorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43354,9 +45434,13 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43461,12 +45545,16 @@ func unpackMigrationsGetImportStatusParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (params MigrationsGetImportStatusParams, _ error) {
+func decodeMigrationsGetImportStatusParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsGetImportStatusParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43505,9 +45593,13 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43571,12 +45663,16 @@ func unpackMigrationsGetLargeFilesParams(packed middleware.Parameters) (params M
 	return params
 }
 
-func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (params MigrationsGetLargeFilesParams, _ error) {
+func decodeMigrationsGetLargeFilesParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsGetLargeFilesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43615,9 +45711,13 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43684,13 +45784,17 @@ func unpackMigrationsGetStatusForAuthenticatedUserParams(packed middleware.Param
 	return params
 }
 
-func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetStatusForAuthenticatedUserParams, _ error) {
+func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsGetStatusForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43809,13 +45913,17 @@ func unpackMigrationsGetStatusForOrgParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (params MigrationsGetStatusForOrgParams, _ error) {
+func decodeMigrationsGetStatusForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsGetStatusForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43854,9 +45962,13 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -43991,7 +46103,7 @@ func unpackMigrationsListForAuthenticatedUserParams(packed middleware.Parameters
 	return params
 }
 
-func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params MigrationsListForAuthenticatedUserParams, _ error) {
+func decodeMigrationsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params MigrationsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -44137,13 +46249,17 @@ func unpackMigrationsListForOrgParams(packed middleware.Parameters) (params Migr
 	return params
 }
 
-func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params MigrationsListForOrgParams, _ error) {
+func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsListForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44387,13 +46503,17 @@ func unpackMigrationsListReposForOrgParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (params MigrationsListReposForOrgParams, _ error) {
+func decodeMigrationsListReposForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsListReposForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44432,9 +46552,13 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44605,13 +46729,17 @@ func unpackMigrationsListReposForUserParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (params MigrationsListReposForUserParams, _ error) {
+func decodeMigrationsListReposForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsListReposForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44775,12 +46903,16 @@ func unpackMigrationsMapCommitAuthorParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (params MigrationsMapCommitAuthorParams, _ error) {
+func decodeMigrationsMapCommitAuthorParams(args [3]string, argsEscaped bool, r *http.Request) (params MigrationsMapCommitAuthorParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44819,9 +46951,13 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44860,9 +46996,13 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: author_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44926,12 +47066,16 @@ func unpackMigrationsSetLfsPreferenceParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (params MigrationsSetLfsPreferenceParams, _ error) {
+func decodeMigrationsSetLfsPreferenceParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsSetLfsPreferenceParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -44970,9 +47114,13 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45028,12 +47176,16 @@ func unpackMigrationsStartForOrgParams(packed middleware.Parameters) (params Mig
 	return params
 }
 
-func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params MigrationsStartForOrgParams, _ error) {
+func decodeMigrationsStartForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params MigrationsStartForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45097,12 +47249,16 @@ func unpackMigrationsStartImportParams(packed middleware.Parameters) (params Mig
 	return params
 }
 
-func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params MigrationsStartImportParams, _ error) {
+func decodeMigrationsStartImportParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsStartImportParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45141,9 +47297,13 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45209,12 +47369,16 @@ func unpackMigrationsUnlockRepoForAuthenticatedUserParams(packed middleware.Para
 	return params
 }
 
-func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params MigrationsUnlockRepoForAuthenticatedUserParams, _ error) {
+func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsUnlockRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45253,9 +47417,13 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 	}
 	// Decode path: repo_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45329,12 +47497,16 @@ func unpackMigrationsUnlockRepoForOrgParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (params MigrationsUnlockRepoForOrgParams, _ error) {
+func decodeMigrationsUnlockRepoForOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params MigrationsUnlockRepoForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45373,9 +47545,13 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: migration_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45414,9 +47590,13 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45480,12 +47660,16 @@ func unpackMigrationsUpdateImportParams(packed middleware.Parameters) (params Mi
 	return params
 }
 
-func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params MigrationsUpdateImportParams, _ error) {
+func decodeMigrationsUpdateImportParams(args [2]string, argsEscaped bool, r *http.Request) (params MigrationsUpdateImportParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45524,9 +47708,13 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45583,12 +47771,16 @@ func unpackOAuthAuthorizationsDeleteAuthorizationParams(packed middleware.Parame
 	return params
 }
 
-func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteAuthorizationParams, _ error) {
+func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsDeleteAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45645,12 +47837,16 @@ func unpackOAuthAuthorizationsDeleteGrantParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteGrantParams, _ error) {
+func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsDeleteGrantParams, _ error) {
 	// Decode path: grant_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45707,12 +47903,16 @@ func unpackOAuthAuthorizationsGetAuthorizationParams(packed middleware.Parameter
 	return params
 }
 
-func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetAuthorizationParams, _ error) {
+func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsGetAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45769,12 +47969,16 @@ func unpackOAuthAuthorizationsGetGrantParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetGrantParams, _ error) {
+func decodeOAuthAuthorizationsGetGrantParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsGetGrantParams, _ error) {
 	// Decode path: grant_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45831,12 +48035,16 @@ func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(packed middle
 	return params
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, _ error) {
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45901,12 +48109,16 @@ func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 	return params
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args [2]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, _ error) {
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args [2]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, _ error) {
 	// Decode path: client_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -45945,9 +48157,13 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 	}
 	// Decode path: fingerprint.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46028,7 +48244,7 @@ func unpackOAuthAuthorizationsListAuthorizationsParams(packed middleware.Paramet
 	return params
 }
 
-func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListAuthorizationsParams, _ error) {
+func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsListAuthorizationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -46207,7 +48423,7 @@ func unpackOAuthAuthorizationsListGrantsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListGrantsParams, _ error) {
+func decodeOAuthAuthorizationsListGrantsParams(args [0]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsListGrantsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -46362,12 +48578,16 @@ func unpackOAuthAuthorizationsUpdateAuthorizationParams(packed middleware.Parame
 	return params
 }
 
-func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsUpdateAuthorizationParams, _ error) {
+func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, argsEscaped bool, r *http.Request) (params OAuthAuthorizationsUpdateAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46431,12 +48651,16 @@ func unpackOrgsBlockUserParams(packed middleware.Parameters) (params OrgsBlockUs
 	return params
 }
 
-func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBlockUserParams, _ error) {
+func decodeOrgsBlockUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsBlockUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46475,9 +48699,13 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBloc
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46542,12 +48770,16 @@ func unpackOrgsCancelInvitationParams(packed middleware.Parameters) (params Orgs
 	return params
 }
 
-func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params OrgsCancelInvitationParams, _ error) {
+func decodeOrgsCancelInvitationParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsCancelInvitationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46586,9 +48818,13 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params O
 	}
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46652,12 +48888,16 @@ func unpackOrgsCheckBlockedUserParams(packed middleware.Parameters) (params Orgs
 	return params
 }
 
-func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params OrgsCheckBlockedUserParams, _ error) {
+func decodeOrgsCheckBlockedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsCheckBlockedUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46696,9 +48936,13 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params O
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46762,12 +49006,16 @@ func unpackOrgsCheckMembershipForUserParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckMembershipForUserParams, _ error) {
+func decodeOrgsCheckMembershipForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsCheckMembershipForUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46806,9 +49054,13 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46872,12 +49124,16 @@ func unpackOrgsCheckPublicMembershipForUserParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckPublicMembershipForUserParams, _ error) {
+func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsCheckPublicMembershipForUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46916,9 +49172,13 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -46982,12 +49242,16 @@ func unpackOrgsConvertMemberToOutsideCollaboratorParams(packed middleware.Parame
 	return params
 }
 
-func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsConvertMemberToOutsideCollaboratorParams, _ error) {
+func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsConvertMemberToOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47026,9 +49290,13 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47084,12 +49352,16 @@ func unpackOrgsCreateInvitationParams(packed middleware.Parameters) (params Orgs
 	return params
 }
 
-func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params OrgsCreateInvitationParams, _ error) {
+func decodeOrgsCreateInvitationParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsCreateInvitationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47145,12 +49417,16 @@ func unpackOrgsCreateWebhookParams(packed middleware.Parameters) (params OrgsCre
 	return params
 }
 
-func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params OrgsCreateWebhookParams, _ error) {
+func decodeOrgsCreateWebhookParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsCreateWebhookParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47214,12 +49490,16 @@ func unpackOrgsDeleteWebhookParams(packed middleware.Parameters) (params OrgsDel
 	return params
 }
 
-func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params OrgsDeleteWebhookParams, _ error) {
+func decodeOrgsDeleteWebhookParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsDeleteWebhookParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47258,9 +49538,13 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params Orgs
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47316,12 +49600,16 @@ func unpackOrgsGetParams(packed middleware.Parameters) (params OrgsGetParams) {
 	return params
 }
 
-func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams, _ error) {
+func decodeOrgsGetParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsGetParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47465,13 +49753,17 @@ func unpackOrgsGetAuditLogParams(packed middleware.Parameters) (params OrgsGetAu
 	return params
 }
 
-func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGetAuditLogParams, _ error) {
+func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsGetAuditLogParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47854,12 +50146,16 @@ func unpackOrgsGetMembershipForAuthenticatedUserParams(packed middleware.Paramet
 	return params
 }
 
-func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsGetMembershipForAuthenticatedUserParams, _ error) {
+func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsGetMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47923,12 +50219,16 @@ func unpackOrgsGetMembershipForUserParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsGetMembershipForUserParams, _ error) {
+func decodeOrgsGetMembershipForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsGetMembershipForUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -47967,9 +50267,13 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48033,12 +50337,16 @@ func unpackOrgsGetWebhookParams(packed middleware.Parameters) (params OrgsGetWeb
 	return params
 }
 
-func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGetWebhookParams, _ error) {
+func decodeOrgsGetWebhookParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsGetWebhookParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48077,9 +50385,13 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGet
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48143,12 +50455,16 @@ func unpackOrgsGetWebhookConfigForOrgParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsGetWebhookConfigForOrgParams, _ error) {
+func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsGetWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48187,9 +50503,13 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48261,12 +50581,16 @@ func unpackOrgsGetWebhookDeliveryParams(packed middleware.Parameters) (params Or
 	return params
 }
 
-func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsGetWebhookDeliveryParams, _ error) {
+func decodeOrgsGetWebhookDeliveryParams(args [3]string, argsEscaped bool, r *http.Request) (params OrgsGetWebhookDeliveryParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48305,9 +50629,13 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48346,9 +50674,13 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48418,7 +50750,7 @@ func unpackOrgsListParams(packed middleware.Parameters) (params OrgsListParams) 
 	return params
 }
 
-func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParams, _ error) {
+func decodeOrgsListParams(args [0]string, argsEscaped bool, r *http.Request) (params OrgsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -48526,12 +50858,16 @@ func unpackOrgsListBlockedUsersParams(packed middleware.Parameters) (params Orgs
 	return params
 }
 
-func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params OrgsListBlockedUsersParams, _ error) {
+func decodeOrgsListBlockedUsersParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListBlockedUsersParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48609,13 +50945,17 @@ func unpackOrgsListFailedInvitationsParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (params OrgsListFailedInvitationsParams, _ error) {
+func decodeOrgsListFailedInvitationsParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListFailedInvitationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -48777,7 +51117,7 @@ func unpackOrgsListForAuthenticatedUserParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListForAuthenticatedUserParams, _ error) {
+func decodeOrgsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params OrgsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -48912,13 +51252,17 @@ func unpackOrgsListForUserParams(packed middleware.Parameters) (params OrgsListF
 	return params
 }
 
-func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsListForUserParams, _ error) {
+func decodeOrgsListForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -49097,13 +51441,17 @@ func unpackOrgsListInvitationTeamsParams(packed middleware.Parameters) (params O
 	return params
 }
 
-func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (params OrgsListInvitationTeamsParams, _ error) {
+func decodeOrgsListInvitationTeamsParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsListInvitationTeamsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -49142,9 +51490,13 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -49342,13 +51694,17 @@ func unpackOrgsListMembersParams(packed middleware.Parameters) (params OrgsListM
 	return params
 }
 
-func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsListMembersParams, _ error) {
+func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListMembersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -49644,7 +52000,7 @@ func unpackOrgsListMembershipsForAuthenticatedUserParams(packed middleware.Param
 	return params
 }
 
-func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListMembershipsForAuthenticatedUserParams, _ error) {
+func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params OrgsListMembershipsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: state.
 	if err := func() error {
@@ -49849,13 +52205,17 @@ func unpackOrgsListOutsideCollaboratorsParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (params OrgsListOutsideCollaboratorsParams, _ error) {
+func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListOutsideCollaboratorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50086,13 +52446,17 @@ func unpackOrgsListPendingInvitationsParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (params OrgsListPendingInvitationsParams, _ error) {
+func decodeOrgsListPendingInvitationsParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListPendingInvitationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50262,13 +52626,17 @@ func unpackOrgsListPublicMembersParams(packed middleware.Parameters) (params Org
 	return params
 }
 
-func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params OrgsListPublicMembersParams, _ error) {
+func decodeOrgsListPublicMembersParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListPublicMembersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50416,12 +52784,16 @@ func unpackOrgsListSamlSSOAuthorizationsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) (params OrgsListSamlSSOAuthorizationsParams, _ error) {
+func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListSamlSSOAuthorizationsParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50508,13 +52880,17 @@ func unpackOrgsListWebhookDeliveriesParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (params OrgsListWebhookDeliveriesParams, _ error) {
+func decodeOrgsListWebhookDeliveriesParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsListWebhookDeliveriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50553,9 +52929,13 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50720,13 +53100,17 @@ func unpackOrgsListWebhooksParams(packed middleware.Parameters) (params OrgsList
 	return params
 }
 
-func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsListWebhooksParams, _ error) {
+func decodeOrgsListWebhooksParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsListWebhooksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50882,12 +53266,16 @@ func unpackOrgsPingWebhookParams(packed middleware.Parameters) (params OrgsPingW
 	return params
 }
 
-func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPingWebhookParams, _ error) {
+func decodeOrgsPingWebhookParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsPingWebhookParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -50926,9 +53314,13 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPi
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51000,12 +53392,16 @@ func unpackOrgsRedeliverWebhookDeliveryParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsRedeliverWebhookDeliveryParams, _ error) {
+func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, argsEscaped bool, r *http.Request) (params OrgsRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51044,9 +53440,13 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51085,9 +53485,13 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51151,12 +53555,16 @@ func unpackOrgsRemoveMemberParams(packed middleware.Parameters) (params OrgsRemo
 	return params
 }
 
-func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsRemoveMemberParams, _ error) {
+func decodeOrgsRemoveMemberParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsRemoveMemberParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51195,9 +53603,13 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsR
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51261,12 +53673,16 @@ func unpackOrgsRemoveMembershipForUserParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (params OrgsRemoveMembershipForUserParams, _ error) {
+func decodeOrgsRemoveMembershipForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsRemoveMembershipForUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51305,9 +53721,13 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51371,12 +53791,16 @@ func unpackOrgsRemoveOutsideCollaboratorParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsRemoveOutsideCollaboratorParams, _ error) {
+func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsRemoveOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51415,9 +53839,13 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51481,12 +53909,16 @@ func unpackOrgsRemovePublicMembershipForAuthenticatedUserParams(packed middlewar
 	return params
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsRemovePublicMembershipForAuthenticatedUserParams, _ error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsRemovePublicMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51525,9 +53957,13 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51591,12 +54027,16 @@ func unpackOrgsRemoveSamlSSOAuthorizationParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request) (params OrgsRemoveSamlSSOAuthorizationParams, _ error) {
+func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsRemoveSamlSSOAuthorizationParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51635,9 +54075,13 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 	}
 	// Decode path: credential_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51701,12 +54145,16 @@ func unpackOrgsSetMembershipForUserParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsSetMembershipForUserParams, _ error) {
+func decodeOrgsSetMembershipForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsSetMembershipForUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51745,9 +54193,13 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51811,12 +54263,16 @@ func unpackOrgsSetPublicMembershipForAuthenticatedUserParams(packed middleware.P
 	return params
 }
 
-func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsSetPublicMembershipForAuthenticatedUserParams, _ error) {
+func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsSetPublicMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51855,9 +54311,13 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51921,12 +54381,16 @@ func unpackOrgsUnblockUserParams(packed middleware.Parameters) (params OrgsUnblo
 	return params
 }
 
-func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUnblockUserParams, _ error) {
+func decodeOrgsUnblockUserParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsUnblockUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -51965,9 +54429,13 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUn
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52023,12 +54491,16 @@ func unpackOrgsUpdateMembershipForAuthenticatedUserParams(packed middleware.Para
 	return params
 }
 
-func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsUpdateMembershipForAuthenticatedUserParams, _ error) {
+func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, argsEscaped bool, r *http.Request) (params OrgsUpdateMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52092,12 +54564,16 @@ func unpackOrgsUpdateWebhookParams(packed middleware.Parameters) (params OrgsUpd
 	return params
 }
 
-func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookParams, _ error) {
+func decodeOrgsUpdateWebhookParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsUpdateWebhookParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52136,9 +54612,13 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params Orgs
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52202,12 +54682,16 @@ func unpackOrgsUpdateWebhookConfigForOrgParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookConfigForOrgParams, _ error) {
+func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params OrgsUpdateWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52246,9 +54730,13 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52318,12 +54806,16 @@ func unpackPackagesDeletePackageForAuthenticatedUserParams(packed middleware.Par
 	return params
 }
 
-func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesDeletePackageForAuthenticatedUserParams, _ error) {
+func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52370,9 +54862,13 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52450,12 +54946,16 @@ func unpackPackagesDeletePackageForOrgParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (params PackagesDeletePackageForOrgParams, _ error) {
+func decodePackagesDeletePackageForOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageForOrgParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52502,9 +55002,13 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52543,9 +55047,13 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52623,12 +55131,16 @@ func unpackPackagesDeletePackageForUserParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageForUserParams, _ error) {
+func decodePackagesDeletePackageForUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageForUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52675,9 +55187,13 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52716,9 +55232,13 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52797,12 +55317,16 @@ func unpackPackagesDeletePackageVersionForAuthenticatedUserParams(packed middlew
 	return params
 }
 
-func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageVersionForAuthenticatedUserParams, _ error) {
+func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52849,9 +55373,13 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52890,9 +55418,13 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -52979,12 +55511,16 @@ func unpackPackagesDeletePackageVersionForOrgParams(packed middleware.Parameters
 	return params
 }
 
-func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForOrgParams, _ error) {
+func decodePackagesDeletePackageVersionForOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageVersionForOrgParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53031,9 +55567,13 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53072,9 +55612,13 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53113,9 +55657,13 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53202,12 +55750,16 @@ func unpackPackagesDeletePackageVersionForUserParams(packed middleware.Parameter
 	return params
 }
 
-func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForUserParams, _ error) {
+func decodePackagesDeletePackageVersionForUserParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesDeletePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53254,9 +55806,13 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53295,9 +55851,13 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53336,9 +55896,13 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53441,13 +56005,17 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	return params
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, _ error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53494,9 +56062,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53760,13 +56332,17 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed middle
 	return params
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, _ error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53813,9 +56389,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -53854,9 +56434,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54087,12 +56671,16 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed middl
 	return params
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams, _ error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54139,9 +56727,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54180,9 +56772,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54252,12 +56848,16 @@ func unpackPackagesGetPackageForAuthenticatedUserParams(packed middleware.Parame
 	return params
 }
 
-func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetPackageForAuthenticatedUserParams, _ error) {
+func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54304,9 +56904,13 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54384,12 +56988,16 @@ func unpackPackagesGetPackageForOrganizationParams(packed middleware.Parameters)
 	return params
 }
 
-func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Request) (params PackagesGetPackageForOrganizationParams, _ error) {
+func decodePackagesGetPackageForOrganizationParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageForOrganizationParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54436,9 +57044,13 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54477,9 +57089,13 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54557,12 +57173,16 @@ func unpackPackagesGetPackageForUserParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (params PackagesGetPackageForUserParams, _ error) {
+func decodePackagesGetPackageForUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageForUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54609,9 +57229,13 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54650,9 +57274,13 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54731,12 +57359,16 @@ func unpackPackagesGetPackageVersionForAuthenticatedUserParams(packed middleware
 	return params
 }
 
-func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesGetPackageVersionForAuthenticatedUserParams, _ error) {
+func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54783,9 +57415,13 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54824,9 +57460,13 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54913,12 +57553,16 @@ func unpackPackagesGetPackageVersionForOrganizationParams(packed middleware.Para
 	return params
 }
 
-func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForOrganizationParams, _ error) {
+func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageVersionForOrganizationParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -54965,9 +57609,13 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55006,9 +57654,13 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55047,9 +57699,13 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55136,12 +57792,16 @@ func unpackPackagesGetPackageVersionForUserParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForUserParams, _ error) {
+func decodePackagesGetPackageVersionForUserParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesGetPackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55188,9 +57848,13 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55229,9 +57893,13 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55270,9 +57938,13 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55347,7 +58019,7 @@ func unpackPackagesListPackagesForAuthenticatedUserParams(packed middleware.Para
 	return params
 }
 
-func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *http.Request) (params PackagesListPackagesForAuthenticatedUserParams, _ error) {
+func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params PackagesListPackagesForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	if err := func() error {
@@ -55495,7 +58167,7 @@ func unpackPackagesListPackagesForOrganizationParams(packed middleware.Parameter
 	return params
 }
 
-func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Request) (params PackagesListPackagesForOrganizationParams, _ error) {
+func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped bool, r *http.Request) (params PackagesListPackagesForOrganizationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	if err := func() error {
@@ -55543,9 +58215,13 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55684,7 +58360,7 @@ func unpackPackagesListPackagesForUserParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (params PackagesListPackagesForUserParams, _ error) {
+func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params PackagesListPackagesForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	if err := func() error {
@@ -55788,9 +58464,13 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (p
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55871,13 +58551,17 @@ func unpackPackagesRestorePackageForAuthenticatedUserParams(packed middleware.Pa
 	return params
 }
 
-func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesRestorePackageForAuthenticatedUserParams, _ error) {
+func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55924,9 +58608,13 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56056,13 +58744,17 @@ func unpackPackagesRestorePackageForOrgParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (params PackagesRestorePackageForOrgParams, _ error) {
+func decodePackagesRestorePackageForOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56109,9 +58801,13 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56150,9 +58846,13 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56282,13 +58982,17 @@ func unpackPackagesRestorePackageForUserParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageForUserParams, _ error) {
+func decodePackagesRestorePackageForUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56335,9 +59039,13 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56376,9 +59084,13 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56498,12 +59210,16 @@ func unpackPackagesRestorePackageVersionForAuthenticatedUserParams(packed middle
 	return params
 }
 
-func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageVersionForAuthenticatedUserParams, _ error) {
+func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56550,9 +59266,13 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56591,9 +59311,13 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56680,12 +59404,16 @@ func unpackPackagesRestorePackageVersionForOrgParams(packed middleware.Parameter
 	return params
 }
 
-func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForOrgParams, _ error) {
+func decodePackagesRestorePackageVersionForOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageVersionForOrgParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56732,9 +59460,13 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56773,9 +59505,13 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	}
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56814,9 +59550,13 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56903,12 +59643,16 @@ func unpackPackagesRestorePackageVersionForUserParams(packed middleware.Paramete
 	return params
 }
 
-func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForUserParams, _ error) {
+func decodePackagesRestorePackageVersionForUserParams(args [4]string, argsEscaped bool, r *http.Request) (params PackagesRestorePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56955,9 +59699,13 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	}
 	// Decode path: package_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56996,9 +59744,13 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57037,9 +59789,13 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	}
 	// Decode path: package_version_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57103,12 +59859,16 @@ func unpackProjectsAddCollaboratorParams(packed middleware.Parameters) (params P
 	return params
 }
 
-func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (params ProjectsAddCollaboratorParams, _ error) {
+func decodeProjectsAddCollaboratorParams(args [2]string, argsEscaped bool, r *http.Request) (params ProjectsAddCollaboratorParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57147,9 +59907,13 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57205,12 +59969,16 @@ func unpackProjectsCreateColumnParams(packed middleware.Parameters) (params Proj
 	return params
 }
 
-func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params ProjectsCreateColumnParams, _ error) {
+func decodeProjectsCreateColumnParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsCreateColumnParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57266,12 +60034,16 @@ func unpackProjectsCreateForOrgParams(packed middleware.Parameters) (params Proj
 	return params
 }
 
-func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params ProjectsCreateForOrgParams, _ error) {
+func decodeProjectsCreateForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsCreateForOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57335,12 +60107,16 @@ func unpackProjectsCreateForRepoParams(packed middleware.Parameters) (params Pro
 	return params
 }
 
-func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params ProjectsCreateForRepoParams, _ error) {
+func decodeProjectsCreateForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ProjectsCreateForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57379,9 +60155,13 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57437,12 +60217,16 @@ func unpackProjectsDeleteParams(packed middleware.Parameters) (params ProjectsDe
 	return params
 }
 
-func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params ProjectsDeleteParams, _ error) {
+func decodeProjectsDeleteParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsDeleteParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57499,12 +60283,16 @@ func unpackProjectsDeleteCardParams(packed middleware.Parameters) (params Projec
 	return params
 }
 
-func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params ProjectsDeleteCardParams, _ error) {
+func decodeProjectsDeleteCardParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsDeleteCardParams, _ error) {
 	// Decode path: card_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57561,12 +60349,16 @@ func unpackProjectsDeleteColumnParams(packed middleware.Parameters) (params Proj
 	return params
 }
 
-func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params ProjectsDeleteColumnParams, _ error) {
+func decodeProjectsDeleteColumnParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsDeleteColumnParams, _ error) {
 	// Decode path: column_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57622,12 +60414,16 @@ func unpackProjectsGetParams(packed middleware.Parameters) (params ProjectsGetPa
 	return params
 }
 
-func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGetParams, _ error) {
+func decodeProjectsGetParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsGetParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57684,12 +60480,16 @@ func unpackProjectsGetCardParams(packed middleware.Parameters) (params ProjectsG
 	return params
 }
 
-func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params ProjectsGetCardParams, _ error) {
+func decodeProjectsGetCardParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsGetCardParams, _ error) {
 	// Decode path: card_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57746,12 +60546,16 @@ func unpackProjectsGetColumnParams(packed middleware.Parameters) (params Project
 	return params
 }
 
-func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params ProjectsGetColumnParams, _ error) {
+func decodeProjectsGetColumnParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsGetColumnParams, _ error) {
 	// Decode path: column_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57815,12 +60619,16 @@ func unpackProjectsGetPermissionForUserParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (params ProjectsGetPermissionForUserParams, _ error) {
+func decodeProjectsGetPermissionForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ProjectsGetPermissionForUserParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57859,9 +60667,13 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -57952,13 +60764,17 @@ func unpackProjectsListCardsParams(packed middleware.Parameters) (params Project
 	return params
 }
 
-func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params ProjectsListCardsParams, _ error) {
+func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsListCardsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: column_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -58205,13 +61021,17 @@ func unpackProjectsListCollaboratorsParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (params ProjectsListCollaboratorsParams, _ error) {
+func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsListCollaboratorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -58442,13 +61262,17 @@ func unpackProjectsListColumnsParams(packed middleware.Parameters) (params Proje
 	return params
 }
 
-func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params ProjectsListColumnsParams, _ error) {
+func decodeProjectsListColumnsParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsListColumnsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -58629,13 +61453,17 @@ func unpackProjectsListForOrgParams(packed middleware.Parameters) (params Projec
 	return params
 }
 
-func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params ProjectsListForOrgParams, _ error) {
+func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsListForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -58885,13 +61713,17 @@ func unpackProjectsListForRepoParams(packed middleware.Parameters) (params Proje
 	return params
 }
 
-func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params ProjectsListForRepoParams, _ error) {
+func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ProjectsListForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -58930,9 +61762,13 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59174,13 +62010,17 @@ func unpackProjectsListForUserParams(packed middleware.Parameters) (params Proje
 	return params
 }
 
-func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params ProjectsListForUserParams, _ error) {
+func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsListForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59390,12 +62230,16 @@ func unpackProjectsMoveCardParams(packed middleware.Parameters) (params Projects
 	return params
 }
 
-func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params ProjectsMoveCardParams, _ error) {
+func decodeProjectsMoveCardParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsMoveCardParams, _ error) {
 	// Decode path: card_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59452,12 +62296,16 @@ func unpackProjectsMoveColumnParams(packed middleware.Parameters) (params Projec
 	return params
 }
 
-func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params ProjectsMoveColumnParams, _ error) {
+func decodeProjectsMoveColumnParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsMoveColumnParams, _ error) {
 	// Decode path: column_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59521,12 +62369,16 @@ func unpackProjectsRemoveCollaboratorParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (params ProjectsRemoveCollaboratorParams, _ error) {
+func decodeProjectsRemoveCollaboratorParams(args [2]string, argsEscaped bool, r *http.Request) (params ProjectsRemoveCollaboratorParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59565,9 +62417,13 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59623,12 +62479,16 @@ func unpackProjectsUpdateParams(packed middleware.Parameters) (params ProjectsUp
 	return params
 }
 
-func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params ProjectsUpdateParams, _ error) {
+func decodeProjectsUpdateParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsUpdateParams, _ error) {
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59685,12 +62545,16 @@ func unpackProjectsUpdateCardParams(packed middleware.Parameters) (params Projec
 	return params
 }
 
-func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params ProjectsUpdateCardParams, _ error) {
+func decodeProjectsUpdateCardParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsUpdateCardParams, _ error) {
 	// Decode path: card_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59747,12 +62611,16 @@ func unpackProjectsUpdateColumnParams(packed middleware.Parameters) (params Proj
 	return params
 }
 
-func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params ProjectsUpdateColumnParams, _ error) {
+func decodeProjectsUpdateColumnParams(args [1]string, argsEscaped bool, r *http.Request) (params ProjectsUpdateColumnParams, _ error) {
 	// Decode path: column_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59824,12 +62692,16 @@ func unpackPullsCheckIfMergedParams(packed middleware.Parameters) (params PullsC
 	return params
 }
 
-func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params PullsCheckIfMergedParams, _ error) {
+func decodePullsCheckIfMergedParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsCheckIfMergedParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59868,9 +62740,13 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59909,9 +62785,13 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -59975,12 +62855,16 @@ func unpackPullsCreateParams(packed middleware.Parameters) (params PullsCreatePa
 	return params
 }
 
-func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreateParams, _ error) {
+func decodePullsCreateParams(args [2]string, argsEscaped bool, r *http.Request) (params PullsCreateParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60019,9 +62903,13 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreat
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60102,12 +62990,16 @@ func unpackPullsCreateReplyForReviewCommentParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Request) (params PullsCreateReplyForReviewCommentParams, _ error) {
+func decodePullsCreateReplyForReviewCommentParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsCreateReplyForReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60146,9 +63038,13 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60187,9 +63083,13 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60228,9 +63128,13 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60302,12 +63206,16 @@ func unpackPullsCreateReviewParams(packed middleware.Parameters) (params PullsCr
 	return params
 }
 
-func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params PullsCreateReviewParams, _ error) {
+func decodePullsCreateReviewParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsCreateReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60346,9 +63254,13 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60387,9 +63299,13 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60461,12 +63377,16 @@ func unpackPullsCreateReviewCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (params PullsCreateReviewCommentParams, _ error) {
+func decodePullsCreateReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsCreateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60505,9 +63425,13 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60546,9 +63470,13 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60629,12 +63557,16 @@ func unpackPullsDeletePendingReviewParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (params PullsDeletePendingReviewParams, _ error) {
+func decodePullsDeletePendingReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsDeletePendingReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60673,9 +63605,13 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60714,9 +63650,13 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60755,9 +63695,13 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60830,12 +63774,16 @@ func unpackPullsDeleteReviewCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (params PullsDeleteReviewCommentParams, _ error) {
+func decodePullsDeleteReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsDeleteReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60874,9 +63822,13 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60915,9 +63867,13 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -60998,12 +63954,16 @@ func unpackPullsDismissReviewParams(packed middleware.Parameters) (params PullsD
 	return params
 }
 
-func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params PullsDismissReviewParams, _ error) {
+func decodePullsDismissReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsDismissReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61042,9 +64002,13 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61083,9 +64047,13 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61124,9 +64092,13 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61198,12 +64170,16 @@ func unpackPullsGetParams(packed middleware.Parameters) (params PullsGetParams) 
 	return params
 }
 
-func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParams, _ error) {
+func decodePullsGetParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsGetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61242,9 +64218,13 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61283,9 +64263,13 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61366,12 +64350,16 @@ func unpackPullsGetReviewParams(packed middleware.Parameters) (params PullsGetRe
 	return params
 }
 
-func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGetReviewParams, _ error) {
+func decodePullsGetReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsGetReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61410,9 +64398,13 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61451,9 +64443,13 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61492,9 +64488,13 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61567,12 +64567,16 @@ func unpackPullsGetReviewCommentParams(packed middleware.Parameters) (params Pul
 	return params
 }
 
-func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params PullsGetReviewCommentParams, _ error) {
+func decodePullsGetReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsGetReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61611,9 +64615,13 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61652,9 +64660,13 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61798,13 +64810,17 @@ func unpackPullsListParams(packed middleware.Parameters) (params PullsListParams
 	return params
 }
 
-func decodePullsListParams(args [2]string, r *http.Request) (params PullsListParams, _ error) {
+func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (params PullsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -61843,9 +64859,13 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62300,13 +65320,17 @@ func unpackPullsListCommentsForReviewParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (params PullsListCommentsForReviewParams, _ error) {
+func decodePullsListCommentsForReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsListCommentsForReviewParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62345,9 +65369,13 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62386,9 +65414,13 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62427,9 +65459,13 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62615,13 +65651,17 @@ func unpackPullsListCommitsParams(packed middleware.Parameters) (params PullsLis
 	return params
 }
 
-func decodePullsListCommitsParams(args [3]string, r *http.Request) (params PullsListCommitsParams, _ error) {
+func decodePullsListCommitsParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsListCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62660,9 +65700,13 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62701,9 +65745,13 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62889,13 +65937,17 @@ func unpackPullsListFilesParams(packed middleware.Parameters) (params PullsListF
 	return params
 }
 
-func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsListFilesParams, _ error) {
+func decodePullsListFilesParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsListFilesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62934,9 +65986,13 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -62975,9 +66031,13 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63163,13 +66223,17 @@ func unpackPullsListRequestedReviewersParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (params PullsListRequestedReviewersParams, _ error) {
+func decodePullsListRequestedReviewersParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsListRequestedReviewersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63208,9 +66272,13 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63249,9 +66317,13 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63471,13 +66543,17 @@ func unpackPullsListReviewCommentsParams(packed middleware.Parameters) (params P
 	return params
 }
 
-func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (params PullsListReviewCommentsParams, _ error) {
+func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsListReviewCommentsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63516,9 +66592,13 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63557,9 +66637,13 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63928,13 +67012,17 @@ func unpackPullsListReviewCommentsForRepoParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request) (params PullsListReviewCommentsForRepoParams, _ error) {
+func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params PullsListReviewCommentsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63973,9 +67061,13 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64314,13 +67406,17 @@ func unpackPullsListReviewsParams(packed middleware.Parameters) (params PullsLis
 	return params
 }
 
-func decodePullsListReviewsParams(args [3]string, r *http.Request) (params PullsListReviewsParams, _ error) {
+func decodePullsListReviewsParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsListReviewsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64359,9 +67455,13 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64400,9 +67500,13 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64566,12 +67670,16 @@ func unpackPullsMergeParams(packed middleware.Parameters) (params PullsMergePara
 	return params
 }
 
-func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeParams, _ error) {
+func decodePullsMergeParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsMergeParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64610,9 +67718,13 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64651,9 +67763,13 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64725,12 +67841,16 @@ func unpackPullsRemoveRequestedReviewersParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) (params PullsRemoveRequestedReviewersParams, _ error) {
+func decodePullsRemoveRequestedReviewersParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsRemoveRequestedReviewersParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64769,9 +67889,13 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64810,9 +67934,13 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64893,12 +68021,16 @@ func unpackPullsSubmitReviewParams(packed middleware.Parameters) (params PullsSu
 	return params
 }
 
-func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params PullsSubmitReviewParams, _ error) {
+func decodePullsSubmitReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsSubmitReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64937,9 +68069,13 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -64978,9 +68114,13 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65019,9 +68159,13 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65093,12 +68237,16 @@ func unpackPullsUpdateParams(packed middleware.Parameters) (params PullsUpdatePa
 	return params
 }
 
-func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdateParams, _ error) {
+func decodePullsUpdateParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsUpdateParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65137,9 +68285,13 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65178,9 +68330,13 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65252,12 +68408,16 @@ func unpackPullsUpdateBranchParams(packed middleware.Parameters) (params PullsUp
 	return params
 }
 
-func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params PullsUpdateBranchParams, _ error) {
+func decodePullsUpdateBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsUpdateBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65296,9 +68456,13 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65337,9 +68501,13 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65420,12 +68588,16 @@ func unpackPullsUpdateReviewParams(packed middleware.Parameters) (params PullsUp
 	return params
 }
 
-func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params PullsUpdateReviewParams, _ error) {
+func decodePullsUpdateReviewParams(args [4]string, argsEscaped bool, r *http.Request) (params PullsUpdateReviewParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65464,9 +68636,13 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65505,9 +68681,13 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: pull_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65546,9 +68726,13 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 	}
 	// Decode path: review_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65621,12 +68805,16 @@ func unpackPullsUpdateReviewCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (params PullsUpdateReviewCommentParams, _ error) {
+func decodePullsUpdateReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params PullsUpdateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65665,9 +68853,13 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65706,9 +68898,13 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65781,12 +68977,16 @@ func unpackReactionsCreateForCommitCommentParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForCommitCommentParams, _ error) {
+func decodeReactionsCreateForCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65825,9 +69025,13 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65866,9 +69070,13 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65941,12 +69149,16 @@ func unpackReactionsCreateForIssueParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueParams, _ error) {
+func decodeReactionsCreateForIssueParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForIssueParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -65985,9 +69197,13 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66026,9 +69242,13 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66101,12 +69321,16 @@ func unpackReactionsCreateForIssueCommentParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueCommentParams, _ error) {
+func decodeReactionsCreateForIssueCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForIssueCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66145,9 +69369,13 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66186,9 +69414,13 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66261,12 +69493,16 @@ func unpackReactionsCreateForPullRequestReviewCommentParams(packed middleware.Pa
 	return params
 }
 
-func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForPullRequestReviewCommentParams, _ error) {
+func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForPullRequestReviewCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66305,9 +69541,13 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66346,9 +69586,13 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66421,12 +69665,16 @@ func unpackReactionsCreateForReleaseParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (params ReactionsCreateForReleaseParams, _ error) {
+func decodeReactionsCreateForReleaseParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66465,9 +69713,13 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66506,9 +69758,13 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66589,12 +69845,16 @@ func unpackReactionsCreateForTeamDiscussionCommentInOrgParams(packed middleware.
 	return params
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentInOrgParams, _ error) {
+func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66633,9 +69893,13 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66674,9 +69938,13 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66715,9 +69983,13 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66789,12 +70061,16 @@ func unpackReactionsCreateForTeamDiscussionCommentLegacyParams(packed middleware
 	return params
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentLegacyParams, _ error) {
+func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66833,9 +70109,13 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66874,9 +70154,13 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66949,12 +70233,16 @@ func unpackReactionsCreateForTeamDiscussionInOrgParams(packed middleware.Paramet
 	return params
 }
 
-func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionInOrgParams, _ error) {
+func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForTeamDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -66993,9 +70281,13 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67034,9 +70326,13 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67100,12 +70396,16 @@ func unpackReactionsCreateForTeamDiscussionLegacyParams(packed middleware.Parame
 	return params
 }
 
-func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsCreateForTeamDiscussionLegacyParams, _ error) {
+func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params ReactionsCreateForTeamDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67144,9 +70444,13 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67227,12 +70531,16 @@ func unpackReactionsDeleteForCommitCommentParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForCommitCommentParams, _ error) {
+func decodeReactionsDeleteForCommitCommentParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67271,9 +70579,13 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67312,9 +70624,13 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67353,9 +70669,13 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67436,12 +70756,16 @@ func unpackReactionsDeleteForIssueParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueParams, _ error) {
+func decodeReactionsDeleteForIssueParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForIssueParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67480,9 +70804,13 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67521,9 +70849,13 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67562,9 +70894,13 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67645,12 +70981,16 @@ func unpackReactionsDeleteForIssueCommentParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueCommentParams, _ error) {
+func decodeReactionsDeleteForIssueCommentParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForIssueCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67689,9 +71029,13 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67730,9 +71074,13 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67771,9 +71119,13 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67854,12 +71206,16 @@ func unpackReactionsDeleteForPullRequestCommentParams(packed middleware.Paramete
 	return params
 }
 
-func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForPullRequestCommentParams, _ error) {
+func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForPullRequestCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67898,9 +71254,13 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67939,9 +71299,13 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -67980,9 +71344,13 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68063,12 +71431,16 @@ func unpackReactionsDeleteForTeamDiscussionParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionParams, _ error) {
+func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForTeamDiscussionParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68107,9 +71479,13 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68148,9 +71524,13 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68189,9 +71569,13 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68280,12 +71664,16 @@ func unpackReactionsDeleteForTeamDiscussionCommentParams(packed middleware.Param
 	return params
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionCommentParams, _ error) {
+func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteForTeamDiscussionCommentParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68324,9 +71712,13 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68365,9 +71757,13 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68406,9 +71802,13 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68447,9 +71847,13 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	}
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[4])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[4]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[4])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68505,12 +71909,16 @@ func unpackReactionsDeleteLegacyParams(packed middleware.Parameters) (params Rea
 	return params
 }
 
-func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params ReactionsDeleteLegacyParams, _ error) {
+func decodeReactionsDeleteLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params ReactionsDeleteLegacyParams, _ error) {
 	// Decode path: reaction_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68617,13 +72025,17 @@ func unpackReactionsListForCommitCommentParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsListForCommitCommentParams, _ error) {
+func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForCommitCommentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68662,9 +72074,13 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68703,9 +72119,13 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -68960,13 +72380,17 @@ func unpackReactionsListForIssueParams(packed middleware.Parameters) (params Rea
 	return params
 }
 
-func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params ReactionsListForIssueParams, _ error) {
+func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForIssueParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69005,9 +72429,13 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69046,9 +72474,13 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: issue_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69303,13 +72735,17 @@ func unpackReactionsListForIssueCommentParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsListForIssueCommentParams, _ error) {
+func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForIssueCommentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69348,9 +72784,13 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69389,9 +72829,13 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69646,13 +73090,17 @@ func unpackReactionsListForPullRequestReviewCommentParams(packed middleware.Para
 	return params
 }
 
-func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsListForPullRequestReviewCommentParams, _ error) {
+func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForPullRequestReviewCommentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69691,9 +73139,13 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69732,9 +73184,13 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -69997,13 +73453,17 @@ func unpackReactionsListForTeamDiscussionCommentInOrgParams(packed middleware.Pa
 	return params
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentInOrgParams, _ error) {
+func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params ReactionsListForTeamDiscussionCommentInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70042,9 +73502,13 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70083,9 +73547,13 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70124,9 +73592,13 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70380,13 +73852,17 @@ func unpackReactionsListForTeamDiscussionCommentLegacyParams(packed middleware.P
 	return params
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentLegacyParams, _ error) {
+func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForTeamDiscussionCommentLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70425,9 +73901,13 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70466,9 +73946,13 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70723,13 +74207,17 @@ func unpackReactionsListForTeamDiscussionInOrgParams(packed middleware.Parameter
 	return params
 }
 
-func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionInOrgParams, _ error) {
+func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params ReactionsListForTeamDiscussionInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70768,9 +74256,13 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -70809,9 +74301,13 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71057,13 +74553,17 @@ func unpackReactionsListForTeamDiscussionLegacyParams(packed middleware.Paramete
 	return params
 }
 
-func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsListForTeamDiscussionLegacyParams, _ error) {
+func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params ReactionsListForTeamDiscussionLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71102,9 +74602,13 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71309,12 +74813,16 @@ func unpackReposAcceptInvitationParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params ReposAcceptInvitationParams, _ error) {
+func decodeReposAcceptInvitationParams(args [1]string, argsEscaped bool, r *http.Request) (params ReposAcceptInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71387,12 +74895,16 @@ func unpackReposAddAppAccessRestrictionsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddAppAccessRestrictionsParams, _ error) {
+func decodeReposAddAppAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposAddAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71431,9 +74943,13 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71472,9 +74988,13 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71546,12 +75066,16 @@ func unpackReposAddCollaboratorParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params ReposAddCollaboratorParams, _ error) {
+func decodeReposAddCollaboratorParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposAddCollaboratorParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71590,9 +75114,13 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71631,9 +75159,13 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71706,12 +75238,16 @@ func unpackReposAddStatusCheckContextsParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposAddStatusCheckContextsParams, _ error) {
+func decodeReposAddStatusCheckContextsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposAddStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71750,9 +75286,13 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71791,9 +75331,13 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71866,12 +75410,16 @@ func unpackReposAddTeamAccessRestrictionsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddTeamAccessRestrictionsParams, _ error) {
+func decodeReposAddTeamAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposAddTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71910,9 +75458,13 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -71951,9 +75503,13 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72026,12 +75582,16 @@ func unpackReposAddUserAccessRestrictionsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddUserAccessRestrictionsParams, _ error) {
+func decodeReposAddUserAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposAddUserAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72070,9 +75630,13 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72111,9 +75675,13 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72185,12 +75753,16 @@ func unpackReposCheckCollaboratorParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params ReposCheckCollaboratorParams, _ error) {
+func decodeReposCheckCollaboratorParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCheckCollaboratorParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72229,9 +75801,13 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72270,9 +75846,13 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72336,12 +75916,16 @@ func unpackReposCheckVulnerabilityAlertsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposCheckVulnerabilityAlertsParams, _ error) {
+func decodeReposCheckVulnerabilityAlertsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCheckVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72380,9 +75964,13 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72477,13 +76065,17 @@ func unpackReposCompareCommitsParams(packed middleware.Parameters) (params Repos
 	return params
 }
 
-func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params ReposCompareCommitsParams, _ error) {
+func decodeReposCompareCommitsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCompareCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72522,9 +76114,13 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72655,9 +76251,13 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	}
 	// Decode path: basehead.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72721,12 +76321,16 @@ func unpackReposCreateAutolinkParams(packed middleware.Parameters) (params Repos
 	return params
 }
 
-func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params ReposCreateAutolinkParams, _ error) {
+func decodeReposCreateAutolinkParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateAutolinkParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72765,9 +76369,13 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72840,12 +76448,16 @@ func unpackReposCreateCommitCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (params ReposCreateCommitCommentParams, _ error) {
+func decodeReposCreateCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCreateCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72884,9 +76496,13 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -72925,9 +76541,13 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: commit_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73000,12 +76620,16 @@ func unpackReposCreateCommitSignatureProtectionParams(packed middleware.Paramete
 	return params
 }
 
-func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposCreateCommitSignatureProtectionParams, _ error) {
+func decodeReposCreateCommitSignatureProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCreateCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73044,9 +76668,13 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73085,9 +76713,13 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73159,12 +76791,16 @@ func unpackReposCreateCommitStatusParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (params ReposCreateCommitStatusParams, _ error) {
+func decodeReposCreateCommitStatusParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCreateCommitStatusParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73203,9 +76839,13 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73244,9 +76884,13 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73310,12 +76954,16 @@ func unpackReposCreateDeployKeyParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params ReposCreateDeployKeyParams, _ error) {
+func decodeReposCreateDeployKeyParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateDeployKeyParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73354,9 +77002,13 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73420,12 +77072,16 @@ func unpackReposCreateDeploymentParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params ReposCreateDeploymentParams, _ error) {
+func decodeReposCreateDeploymentParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateDeploymentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73464,9 +77120,13 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73539,12 +77199,16 @@ func unpackReposCreateDeploymentStatusParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (params ReposCreateDeploymentStatusParams, _ error) {
+func decodeReposCreateDeploymentStatusParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCreateDeploymentStatusParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73583,9 +77247,13 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73624,9 +77292,13 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: deployment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73690,12 +77362,16 @@ func unpackReposCreateDispatchEventParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (params ReposCreateDispatchEventParams, _ error) {
+func decodeReposCreateDispatchEventParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateDispatchEventParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73734,9 +77410,13 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73800,12 +77480,16 @@ func unpackReposCreateForkParams(packed middleware.Parameters) (params ReposCrea
 	return params
 }
 
-func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposCreateForkParams, _ error) {
+func decodeReposCreateForkParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateForkParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73844,9 +77528,13 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposC
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73902,12 +77590,16 @@ func unpackReposCreateInOrgParams(packed middleware.Parameters) (params ReposCre
 	return params
 }
 
-func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params ReposCreateInOrgParams, _ error) {
+func decodeReposCreateInOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ReposCreateInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -73980,12 +77672,16 @@ func unpackReposCreateOrUpdateFileContentsParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request) (params ReposCreateOrUpdateFileContentsParams, _ error) {
+func decodeReposCreateOrUpdateFileContentsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposCreateOrUpdateFileContentsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74024,9 +77720,13 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74065,9 +77765,13 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 	}
 	// Decode path: path.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74131,12 +77835,16 @@ func unpackReposCreatePagesSiteParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params ReposCreatePagesSiteParams, _ error) {
+func decodeReposCreatePagesSiteParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreatePagesSiteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74175,9 +77883,13 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74241,12 +77953,16 @@ func unpackReposCreateReleaseParams(packed middleware.Parameters) (params ReposC
 	return params
 }
 
-func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params ReposCreateReleaseParams, _ error) {
+func decodeReposCreateReleaseParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74285,9 +78001,13 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74351,12 +78071,16 @@ func unpackReposCreateUsingTemplateParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (params ReposCreateUsingTemplateParams, _ error) {
+func decodeReposCreateUsingTemplateParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateUsingTemplateParams, _ error) {
 	// Decode path: template_owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74395,9 +78119,13 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: template_repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74461,12 +78189,16 @@ func unpackReposCreateWebhookParams(packed middleware.Parameters) (params ReposC
 	return params
 }
 
-func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params ReposCreateWebhookParams, _ error) {
+func decodeReposCreateWebhookParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposCreateWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74505,9 +78237,13 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74564,12 +78300,16 @@ func unpackReposDeclineInvitationParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params ReposDeclineInvitationParams, _ error) {
+func decodeReposDeclineInvitationParams(args [1]string, argsEscaped bool, r *http.Request) (params ReposDeclineInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74633,12 +78373,16 @@ func unpackReposDeleteParams(packed middleware.Parameters) (params ReposDeletePa
 	return params
 }
 
-func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDeleteParams, _ error) {
+func decodeReposDeleteParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposDeleteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74677,9 +78421,13 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDelet
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74752,12 +78500,16 @@ func unpackReposDeleteAccessRestrictionsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposDeleteAccessRestrictionsParams, _ error) {
+func decodeReposDeleteAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74796,9 +78548,13 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74837,9 +78593,13 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74912,12 +78672,16 @@ func unpackReposDeleteAdminBranchProtectionParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteAdminBranchProtectionParams, _ error) {
+func decodeReposDeleteAdminBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74956,9 +78720,13 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -74997,9 +78765,13 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75072,12 +78844,16 @@ func unpackReposDeleteAnEnvironmentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (params ReposDeleteAnEnvironmentParams, _ error) {
+func decodeReposDeleteAnEnvironmentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteAnEnvironmentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75116,9 +78892,13 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75157,9 +78937,13 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: environment_name.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75232,12 +79016,16 @@ func unpackReposDeleteAutolinkParams(packed middleware.Parameters) (params Repos
 	return params
 }
 
-func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params ReposDeleteAutolinkParams, _ error) {
+func decodeReposDeleteAutolinkParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteAutolinkParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75276,9 +79064,13 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75317,9 +79109,13 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 	}
 	// Decode path: autolink_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75392,12 +79188,16 @@ func unpackReposDeleteBranchProtectionParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteBranchProtectionParams, _ error) {
+func decodeReposDeleteBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75436,9 +79236,13 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75477,9 +79281,13 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75552,12 +79360,16 @@ func unpackReposDeleteCommitCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (params ReposDeleteCommitCommentParams, _ error) {
+func decodeReposDeleteCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75596,9 +79408,13 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75637,9 +79453,13 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75712,12 +79532,16 @@ func unpackReposDeleteCommitSignatureProtectionParams(packed middleware.Paramete
 	return params
 }
 
-func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposDeleteCommitSignatureProtectionParams, _ error) {
+func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75756,9 +79580,13 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75797,9 +79625,13 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75872,12 +79704,16 @@ func unpackReposDeleteDeployKeyParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params ReposDeleteDeployKeyParams, _ error) {
+func decodeReposDeleteDeployKeyParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteDeployKeyParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75916,9 +79752,13 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -75957,9 +79797,13 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76032,12 +79876,16 @@ func unpackReposDeleteDeploymentParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params ReposDeleteDeploymentParams, _ error) {
+func decodeReposDeleteDeploymentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteDeploymentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76076,9 +79924,13 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76117,9 +79969,13 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: deployment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76192,12 +80048,16 @@ func unpackReposDeleteFileParams(packed middleware.Parameters) (params ReposDele
 	return params
 }
 
-func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposDeleteFileParams, _ error) {
+func decodeReposDeleteFileParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteFileParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76236,9 +80096,13 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76277,9 +80141,13 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 	}
 	// Decode path: path.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76352,12 +80220,16 @@ func unpackReposDeleteInvitationParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params ReposDeleteInvitationParams, _ error) {
+func decodeReposDeleteInvitationParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteInvitationParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76396,9 +80268,13 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76437,9 +80313,13 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76503,12 +80383,16 @@ func unpackReposDeletePagesSiteParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params ReposDeletePagesSiteParams, _ error) {
+func decodeReposDeletePagesSiteParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposDeletePagesSiteParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76547,9 +80431,13 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76622,12 +80510,16 @@ func unpackReposDeletePullRequestReviewProtectionParams(packed middleware.Parame
 	return params
 }
 
-func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposDeletePullRequestReviewProtectionParams, _ error) {
+func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeletePullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76666,9 +80558,13 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76707,9 +80603,13 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76782,12 +80682,16 @@ func unpackReposDeleteReleaseParams(packed middleware.Parameters) (params ReposD
 	return params
 }
 
-func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params ReposDeleteReleaseParams, _ error) {
+func decodeReposDeleteReleaseParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76826,9 +80730,13 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76867,9 +80775,13 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76942,12 +80854,16 @@ func unpackReposDeleteReleaseAssetParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (params ReposDeleteReleaseAssetParams, _ error) {
+func decodeReposDeleteReleaseAssetParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -76986,9 +80902,13 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77027,9 +80947,13 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: asset_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77101,12 +81025,16 @@ func unpackReposDeleteWebhookParams(packed middleware.Parameters) (params ReposD
 	return params
 }
 
-func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params ReposDeleteWebhookParams, _ error) {
+func decodeReposDeleteWebhookParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDeleteWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77145,9 +81073,13 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77186,9 +81118,13 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77252,12 +81188,16 @@ func unpackReposDisableAutomatedSecurityFixesParams(packed middleware.Parameters
 	return params
 }
 
-func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposDisableAutomatedSecurityFixesParams, _ error) {
+func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposDisableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77296,9 +81236,13 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77362,12 +81306,16 @@ func unpackReposDisableLfsForRepoParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params ReposDisableLfsForRepoParams, _ error) {
+func decodeReposDisableLfsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposDisableLfsForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77406,9 +81354,13 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77472,12 +81424,16 @@ func unpackReposDisableVulnerabilityAlertsParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposDisableVulnerabilityAlertsParams, _ error) {
+func decodeReposDisableVulnerabilityAlertsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposDisableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77516,9 +81472,13 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77590,12 +81550,16 @@ func unpackReposDownloadTarballArchiveParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadTarballArchiveParams, _ error) {
+func decodeReposDownloadTarballArchiveParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDownloadTarballArchiveParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77634,9 +81598,13 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77675,9 +81643,13 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77749,12 +81721,16 @@ func unpackReposDownloadZipballArchiveParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadZipballArchiveParams, _ error) {
+func decodeReposDownloadZipballArchiveParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposDownloadZipballArchiveParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77793,9 +81769,13 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77834,9 +81814,13 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77900,12 +81884,16 @@ func unpackReposEnableAutomatedSecurityFixesParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposEnableAutomatedSecurityFixesParams, _ error) {
+func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposEnableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -77944,9 +81932,13 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78010,12 +82002,16 @@ func unpackReposEnableLfsForRepoParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params ReposEnableLfsForRepoParams, _ error) {
+func decodeReposEnableLfsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposEnableLfsForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78054,9 +82050,13 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78120,12 +82120,16 @@ func unpackReposEnableVulnerabilityAlertsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposEnableVulnerabilityAlertsParams, _ error) {
+func decodeReposEnableVulnerabilityAlertsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposEnableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78164,9 +82168,13 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78230,12 +82238,16 @@ func unpackReposGetParams(packed middleware.Parameters) (params ReposGetParams) 
 	return params
 }
 
-func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParams, _ error) {
+func decodeReposGetParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78274,9 +82286,13 @@ func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParam
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78349,12 +82365,16 @@ func unpackReposGetAccessRestrictionsParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposGetAccessRestrictionsParams, _ error) {
+func decodeReposGetAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78393,9 +82413,13 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78434,9 +82458,13 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78509,12 +82537,16 @@ func unpackReposGetAdminBranchProtectionParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetAdminBranchProtectionParams, _ error) {
+func decodeReposGetAdminBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78553,9 +82585,13 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78594,9 +82630,13 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78669,12 +82709,16 @@ func unpackReposGetAllStatusCheckContextsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposGetAllStatusCheckContextsParams, _ error) {
+func decodeReposGetAllStatusCheckContextsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetAllStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78713,9 +82757,13 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78754,9 +82802,13 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78842,13 +82894,17 @@ func unpackReposGetAllTopicsParams(packed middleware.Parameters) (params ReposGe
 	return params
 }
 
-func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params ReposGetAllTopicsParams, _ error) {
+func decodeReposGetAllTopicsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetAllTopicsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -78887,9 +82943,13 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79054,12 +83114,16 @@ func unpackReposGetAppsWithAccessToProtectedBranchParams(packed middleware.Param
 	return params
 }
 
-func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetAppsWithAccessToProtectedBranchParams, _ error) {
+func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetAppsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79098,9 +83162,13 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79139,9 +83207,13 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79214,12 +83286,16 @@ func unpackReposGetAutolinkParams(packed middleware.Parameters) (params ReposGet
 	return params
 }
 
-func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params ReposGetAutolinkParams, _ error) {
+func decodeReposGetAutolinkParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetAutolinkParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79258,9 +83334,13 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79299,9 +83379,13 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 	}
 	// Decode path: autolink_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79374,12 +83458,16 @@ func unpackReposGetBranchParams(packed middleware.Parameters) (params ReposGetBr
 	return params
 }
 
-func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGetBranchParams, _ error) {
+func decodeReposGetBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79418,9 +83506,13 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79459,9 +83551,13 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79534,12 +83630,16 @@ func unpackReposGetBranchProtectionParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetBranchProtectionParams, _ error) {
+func decodeReposGetBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79578,9 +83678,13 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79619,9 +83723,13 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79696,13 +83804,17 @@ func unpackReposGetClonesParams(packed middleware.Parameters) (params ReposGetCl
 	return params
 }
 
-func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGetClonesParams, _ error) {
+func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetClonesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79741,9 +83853,13 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79868,12 +83984,16 @@ func unpackReposGetCodeFrequencyStatsParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (params ReposGetCodeFrequencyStatsParams, _ error) {
+func decodeReposGetCodeFrequencyStatsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetCodeFrequencyStatsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79912,9 +84032,13 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -79986,12 +84110,16 @@ func unpackReposGetCollaboratorPermissionLevelParams(packed middleware.Parameter
 	return params
 }
 
-func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Request) (params ReposGetCollaboratorPermissionLevelParams, _ error) {
+func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetCollaboratorPermissionLevelParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80030,9 +84158,13 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80071,9 +84203,13 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80168,13 +84304,17 @@ func unpackReposGetCombinedStatusForRefParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (params ReposGetCombinedStatusForRefParams, _ error) {
+func decodeReposGetCombinedStatusForRefParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetCombinedStatusForRefParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80213,9 +84353,13 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80254,9 +84398,13 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80443,13 +84591,17 @@ func unpackReposGetCommitParams(packed middleware.Parameters) (params ReposGetCo
 	return params
 }
 
-func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGetCommitParams, _ error) {
+func decodeReposGetCommitParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetCommitParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80488,9 +84640,13 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80621,9 +84777,13 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80687,12 +84847,16 @@ func unpackReposGetCommitActivityStatsParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (params ReposGetCommitActivityStatsParams, _ error) {
+func decodeReposGetCommitActivityStatsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetCommitActivityStatsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80731,9 +84895,13 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80806,12 +84974,16 @@ func unpackReposGetCommitCommentParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params ReposGetCommitCommentParams, _ error) {
+func decodeReposGetCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80850,9 +85022,13 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80891,9 +85067,13 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -80966,12 +85146,16 @@ func unpackReposGetCommitSignatureProtectionParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposGetCommitSignatureProtectionParams, _ error) {
+func decodeReposGetCommitSignatureProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81010,9 +85194,13 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81051,9 +85239,13 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81117,12 +85309,16 @@ func unpackReposGetCommunityProfileMetricsParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request) (params ReposGetCommunityProfileMetricsParams, _ error) {
+func decodeReposGetCommunityProfileMetricsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetCommunityProfileMetricsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81161,9 +85357,13 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81227,12 +85427,16 @@ func unpackReposGetContributorsStatsParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (params ReposGetContributorsStatsParams, _ error) {
+func decodeReposGetContributorsStatsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetContributorsStatsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81271,9 +85475,13 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81346,12 +85554,16 @@ func unpackReposGetDeployKeyParams(packed middleware.Parameters) (params ReposGe
 	return params
 }
 
-func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params ReposGetDeployKeyParams, _ error) {
+func decodeReposGetDeployKeyParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetDeployKeyParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81390,9 +85602,13 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81431,9 +85647,13 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 	}
 	// Decode path: key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81506,12 +85726,16 @@ func unpackReposGetDeploymentParams(packed middleware.Parameters) (params ReposG
 	return params
 }
 
-func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params ReposGetDeploymentParams, _ error) {
+func decodeReposGetDeploymentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetDeploymentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81550,9 +85774,13 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81591,9 +85819,13 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: deployment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81674,12 +85906,16 @@ func unpackReposGetDeploymentStatusParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (params ReposGetDeploymentStatusParams, _ error) {
+func decodeReposGetDeploymentStatusParams(args [4]string, argsEscaped bool, r *http.Request) (params ReposGetDeploymentStatusParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81718,9 +85954,13 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81759,9 +85999,13 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: deployment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81800,9 +86044,13 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 	}
 	// Decode path: status_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81866,12 +86114,16 @@ func unpackReposGetLatestPagesBuildParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (params ReposGetLatestPagesBuildParams, _ error) {
+func decodeReposGetLatestPagesBuildParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetLatestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81910,9 +86162,13 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -81976,12 +86232,16 @@ func unpackReposGetLatestReleaseParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params ReposGetLatestReleaseParams, _ error) {
+func decodeReposGetLatestReleaseParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetLatestReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82020,9 +86280,13 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82086,12 +86350,16 @@ func unpackReposGetPagesParams(packed middleware.Parameters) (params ReposGetPag
 	return params
 }
 
-func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGetPagesParams, _ error) {
+func decodeReposGetPagesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetPagesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82130,9 +86398,13 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGet
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82204,12 +86476,16 @@ func unpackReposGetPagesBuildParams(packed middleware.Parameters) (params ReposG
 	return params
 }
 
-func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params ReposGetPagesBuildParams, _ error) {
+func decodeReposGetPagesBuildParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetPagesBuildParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82248,9 +86524,13 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82289,9 +86569,13 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: build_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82355,12 +86639,16 @@ func unpackReposGetPagesHealthCheckParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (params ReposGetPagesHealthCheckParams, _ error) {
+func decodeReposGetPagesHealthCheckParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetPagesHealthCheckParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82399,9 +86687,13 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82465,12 +86757,16 @@ func unpackReposGetParticipationStatsParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (params ReposGetParticipationStatsParams, _ error) {
+func decodeReposGetParticipationStatsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetParticipationStatsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82509,9 +86805,13 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82584,12 +86884,16 @@ func unpackReposGetPullRequestReviewProtectionParams(packed middleware.Parameter
 	return params
 }
 
-func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposGetPullRequestReviewProtectionParams, _ error) {
+func decodeReposGetPullRequestReviewProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetPullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82628,9 +86932,13 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82669,9 +86977,13 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82735,12 +87047,16 @@ func unpackReposGetPunchCardStatsParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params ReposGetPunchCardStatsParams, _ error) {
+func decodeReposGetPunchCardStatsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetPunchCardStatsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82779,9 +87095,13 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82856,13 +87176,17 @@ func unpackReposGetReadmeParams(packed middleware.Parameters) (params ReposGetRe
 	return params
 }
 
-func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGetReadmeParams, _ error) {
+func decodeReposGetReadmeParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetReadmeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -82901,9 +87225,13 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGe
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83028,13 +87356,17 @@ func unpackReposGetReadmeInDirectoryParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (params ReposGetReadmeInDirectoryParams, _ error) {
+func decodeReposGetReadmeInDirectoryParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetReadmeInDirectoryParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83073,9 +87405,13 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83114,9 +87450,13 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: dir.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83230,12 +87570,16 @@ func unpackReposGetReleaseParams(packed middleware.Parameters) (params ReposGetR
 	return params
 }
 
-func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposGetReleaseParams, _ error) {
+func decodeReposGetReleaseParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83274,9 +87618,13 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83315,9 +87663,13 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83390,12 +87742,16 @@ func unpackReposGetReleaseAssetParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params ReposGetReleaseAssetParams, _ error) {
+func decodeReposGetReleaseAssetParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83434,9 +87790,13 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83475,9 +87835,13 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: asset_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83550,12 +87914,16 @@ func unpackReposGetReleaseByTagParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params ReposGetReleaseByTagParams, _ error) {
+func decodeReposGetReleaseByTagParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetReleaseByTagParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83594,9 +87962,13 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83635,9 +88007,13 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: tag.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83710,12 +88086,16 @@ func unpackReposGetStatusChecksProtectionParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request) (params ReposGetStatusChecksProtectionParams, _ error) {
+func decodeReposGetStatusChecksProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetStatusChecksProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83754,9 +88134,13 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83795,9 +88179,13 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83870,12 +88258,16 @@ func unpackReposGetTeamsWithAccessToProtectedBranchParams(packed middleware.Para
 	return params
 }
 
-func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetTeamsWithAccessToProtectedBranchParams, _ error) {
+func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetTeamsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83914,9 +88306,13 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -83955,9 +88351,13 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84021,12 +88421,16 @@ func unpackReposGetTopPathsParams(packed middleware.Parameters) (params ReposGet
 	return params
 }
 
-func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params ReposGetTopPathsParams, _ error) {
+func decodeReposGetTopPathsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetTopPathsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84065,9 +88469,13 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params Repos
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84131,12 +88539,16 @@ func unpackReposGetTopReferrersParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params ReposGetTopReferrersParams, _ error) {
+func decodeReposGetTopReferrersParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetTopReferrersParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84175,9 +88587,13 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84250,12 +88666,16 @@ func unpackReposGetUsersWithAccessToProtectedBranchParams(packed middleware.Para
 	return params
 }
 
-func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetUsersWithAccessToProtectedBranchParams, _ error) {
+func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetUsersWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84294,9 +88714,13 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84335,9 +88759,13 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84412,13 +88840,17 @@ func unpackReposGetViewsParams(packed middleware.Parameters) (params ReposGetVie
 	return params
 }
 
-func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGetViewsParams, _ error) {
+func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposGetViewsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84457,9 +88889,13 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84592,12 +89028,16 @@ func unpackReposGetWebhookParams(packed middleware.Parameters) (params ReposGetW
 	return params
 }
 
-func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposGetWebhookParams, _ error) {
+func decodeReposGetWebhookParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84636,9 +89076,13 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84677,9 +89121,13 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84751,12 +89199,16 @@ func unpackReposGetWebhookConfigForRepoParams(packed middleware.Parameters) (par
 	return params
 }
 
-func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposGetWebhookConfigForRepoParams, _ error) {
+func decodeReposGetWebhookConfigForRepoParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposGetWebhookConfigForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84795,9 +89247,13 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84836,9 +89292,13 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84918,12 +89378,16 @@ func unpackReposGetWebhookDeliveryParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposGetWebhookDeliveryParams, _ error) {
+func decodeReposGetWebhookDeliveryParams(args [4]string, argsEscaped bool, r *http.Request) (params ReposGetWebhookDeliveryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -84962,9 +89426,13 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85003,9 +89471,13 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85044,9 +89516,13 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 	}
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85121,13 +89597,17 @@ func unpackReposListAutolinksParams(packed middleware.Parameters) (params ReposL
 	return params
 }
 
-func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params ReposListAutolinksParams, _ error) {
+func decodeReposListAutolinksParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListAutolinksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85166,9 +89646,13 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85312,13 +89796,17 @@ func unpackReposListBranchesParams(packed middleware.Parameters) (params ReposLi
 	return params
 }
 
-func decodeReposListBranchesParams(args [2]string, r *http.Request) (params ReposListBranchesParams, _ error) {
+func decodeReposListBranchesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListBranchesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85357,9 +89845,13 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85565,12 +90057,16 @@ func unpackReposListBranchesForHeadCommitParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request) (params ReposListBranchesForHeadCommitParams, _ error) {
+func decodeReposListBranchesForHeadCommitParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListBranchesForHeadCommitParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85609,9 +90105,13 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85650,9 +90150,13 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 	}
 	// Decode path: commit_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85753,13 +90257,17 @@ func unpackReposListCollaboratorsParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params ReposListCollaboratorsParams, _ error) {
+func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListCollaboratorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -85798,9 +90306,13 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86048,13 +90560,17 @@ func unpackReposListCommentsForCommitParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (params ReposListCommentsForCommitParams, _ error) {
+func decodeReposListCommentsForCommitParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListCommentsForCommitParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86093,9 +90609,13 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86134,9 +90654,13 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: commit_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86314,13 +90838,17 @@ func unpackReposListCommitCommentsForRepoParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request) (params ReposListCommitCommentsForRepoParams, _ error) {
+func decodeReposListCommitCommentsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListCommitCommentsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86359,9 +90887,13 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86548,13 +91080,17 @@ func unpackReposListCommitStatusesForRefParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) (params ReposListCommitStatusesForRefParams, _ error) {
+func decodeReposListCommitStatusesForRefParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListCommitStatusesForRefParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86593,9 +91129,13 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86634,9 +91174,13 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: ref.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86872,13 +91416,17 @@ func unpackReposListCommitsParams(packed middleware.Parameters) (params ReposLis
 	return params
 }
 
-func decodeReposListCommitsParams(args [2]string, r *http.Request) (params ReposListCommitsParams, _ error) {
+func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -86917,9 +91465,13 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87313,13 +91865,17 @@ func unpackReposListContributorsParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposListContributorsParams(args [2]string, r *http.Request) (params ReposListContributorsParams, _ error) {
+func decodeReposListContributorsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListContributorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87358,9 +91914,13 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87579,13 +92139,17 @@ func unpackReposListDeployKeysParams(packed middleware.Parameters) (params Repos
 	return params
 }
 
-func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params ReposListDeployKeysParams, _ error) {
+func decodeReposListDeployKeysParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListDeployKeysParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87624,9 +92188,13 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87813,13 +92381,17 @@ func unpackReposListDeploymentStatusesParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (params ReposListDeploymentStatusesParams, _ error) {
+func decodeReposListDeploymentStatusesParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListDeploymentStatusesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87858,9 +92430,13 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -87899,9 +92475,13 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: deployment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -88123,13 +92703,17 @@ func unpackReposListDeploymentsParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params ReposListDeploymentsParams, _ error) {
+func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListDeploymentsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -88168,9 +92752,13 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -88603,7 +93191,7 @@ func unpackReposListForAuthenticatedUserParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListForAuthenticatedUserParams, _ error) {
+func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params ReposListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: visibility.
 	{
@@ -89143,13 +93731,17 @@ func unpackReposListForOrgParams(packed middleware.Parameters) (params ReposList
 	return params
 }
 
-func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposListForOrgParams, _ error) {
+func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params ReposListForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -89525,13 +94117,17 @@ func unpackReposListForUserParams(packed middleware.Parameters) (params ReposLis
 	return params
 }
 
-func decodeReposListForUserParams(args [1]string, r *http.Request) (params ReposListForUserParams, _ error) {
+func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ReposListForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -89898,13 +94494,17 @@ func unpackReposListForksParams(packed middleware.Parameters) (params ReposListF
 	return params
 }
 
-func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposListForksParams, _ error) {
+func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListForksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -89943,9 +94543,13 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90184,13 +94788,17 @@ func unpackReposListInvitationsParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params ReposListInvitationsParams, _ error) {
+func decodeReposListInvitationsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListInvitationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90229,9 +94837,13 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90393,7 +95005,7 @@ func unpackReposListInvitationsForAuthenticatedUserParams(packed middleware.Para
 	return params
 }
 
-func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListInvitationsForAuthenticatedUserParams, _ error) {
+func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params ReposListInvitationsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -90514,12 +95126,16 @@ func unpackReposListLanguagesParams(packed middleware.Parameters) (params ReposL
 	return params
 }
 
-func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params ReposListLanguagesParams, _ error) {
+func decodeReposListLanguagesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListLanguagesParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90558,9 +95174,13 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90646,13 +95266,17 @@ func unpackReposListPagesBuildsParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params ReposListPagesBuildsParams, _ error) {
+func decodeReposListPagesBuildsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListPagesBuildsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90691,9 +95315,13 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90844,7 +95472,7 @@ func unpackReposListPublicParams(packed middleware.Parameters) (params ReposList
 	return params
 }
 
-func decodeReposListPublicParams(args [0]string, r *http.Request) (params ReposListPublicParams, _ error) {
+func decodeReposListPublicParams(args [0]string, argsEscaped bool, r *http.Request) (params ReposListPublicParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -90945,13 +95573,17 @@ func unpackReposListPullRequestsAssociatedWithCommitParams(packed middleware.Par
 	return params
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *http.Request) (params ReposListPullRequestsAssociatedWithCommitParams, _ error) {
+func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListPullRequestsAssociatedWithCommitParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -90990,9 +95622,13 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91031,9 +95667,13 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode path: commit_sha.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91220,13 +95860,17 @@ func unpackReposListReleaseAssetsParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params ReposListReleaseAssetsParams, _ error) {
+func decodeReposListReleaseAssetsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListReleaseAssetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91265,9 +95909,13 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91306,9 +95954,13 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91486,13 +96138,17 @@ func unpackReposListReleasesParams(packed middleware.Parameters) (params ReposLi
 	return params
 }
 
-func decodeReposListReleasesParams(args [2]string, r *http.Request) (params ReposListReleasesParams, _ error) {
+func decodeReposListReleasesParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListReleasesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91531,9 +96187,13 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91711,13 +96371,17 @@ func unpackReposListTagsParams(packed middleware.Parameters) (params ReposListTa
 	return params
 }
 
-func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposListTagsParams, _ error) {
+func decodeReposListTagsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListTagsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91756,9 +96420,13 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91936,13 +96604,17 @@ func unpackReposListTeamsParams(packed middleware.Parameters) (params ReposListT
 	return params
 }
 
-func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposListTeamsParams, _ error) {
+func decodeReposListTeamsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListTeamsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -91981,9 +96653,13 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92170,13 +96846,17 @@ func unpackReposListWebhookDeliveriesParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (params ReposListWebhookDeliveriesParams, _ error) {
+func decodeReposListWebhookDeliveriesParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposListWebhookDeliveriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92215,9 +96895,13 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92256,9 +96940,13 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92431,13 +97119,17 @@ func unpackReposListWebhooksParams(packed middleware.Parameters) (params ReposLi
 	return params
 }
 
-func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params ReposListWebhooksParams, _ error) {
+func decodeReposListWebhooksParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposListWebhooksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92476,9 +97168,13 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92634,12 +97330,16 @@ func unpackReposMergeParams(packed middleware.Parameters) (params ReposMergePara
 	return params
 }
 
-func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeParams, _ error) {
+func decodeReposMergeParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposMergeParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92678,9 +97378,13 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeP
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92744,12 +97448,16 @@ func unpackReposMergeUpstreamParams(packed middleware.Parameters) (params ReposM
 	return params
 }
 
-func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params ReposMergeUpstreamParams, _ error) {
+func decodeReposMergeUpstreamParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposMergeUpstreamParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92788,9 +97496,13 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92862,12 +97574,16 @@ func unpackReposPingWebhookParams(packed middleware.Parameters) (params ReposPin
 	return params
 }
 
-func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params ReposPingWebhookParams, _ error) {
+func decodeReposPingWebhookParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposPingWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92906,9 +97622,13 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -92947,9 +97667,13 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93029,12 +97753,16 @@ func unpackReposRedeliverWebhookDeliveryParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposRedeliverWebhookDeliveryParams, _ error) {
+func decodeReposRedeliverWebhookDeliveryParams(args [4]string, argsEscaped bool, r *http.Request) (params ReposRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93073,9 +97801,13 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93114,9 +97846,13 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93155,9 +97891,13 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	}
 	// Decode path: delivery_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93230,12 +97970,16 @@ func unpackReposRemoveAppAccessRestrictionsParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveAppAccessRestrictionsParams, _ error) {
+func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93274,9 +98018,13 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93315,9 +98063,13 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93389,12 +98141,16 @@ func unpackReposRemoveCollaboratorParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (params ReposRemoveCollaboratorParams, _ error) {
+func decodeReposRemoveCollaboratorParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveCollaboratorParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93433,9 +98189,13 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93474,9 +98234,13 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93549,12 +98313,16 @@ func unpackReposRemoveStatusCheckContextsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckContextsParams, _ error) {
+func decodeReposRemoveStatusCheckContextsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93593,9 +98361,13 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93634,9 +98406,13 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93709,12 +98485,16 @@ func unpackReposRemoveStatusCheckProtectionParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckProtectionParams, _ error) {
+func decodeReposRemoveStatusCheckProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveStatusCheckProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93753,9 +98533,13 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93794,9 +98578,13 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93869,12 +98657,16 @@ func unpackReposRemoveTeamAccessRestrictionsParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveTeamAccessRestrictionsParams, _ error) {
+func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93913,9 +98705,13 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -93954,9 +98750,13 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94029,12 +98829,16 @@ func unpackReposRemoveUserAccessRestrictionsParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveUserAccessRestrictionsParams, _ error) {
+func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRemoveUserAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94073,9 +98877,13 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94114,9 +98922,13 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94189,12 +99001,16 @@ func unpackReposRenameBranchParams(packed middleware.Parameters) (params ReposRe
 	return params
 }
 
-func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params ReposRenameBranchParams, _ error) {
+func decodeReposRenameBranchParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposRenameBranchParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94233,9 +99049,13 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94274,9 +99094,13 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94340,12 +99164,16 @@ func unpackReposReplaceAllTopicsParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params ReposReplaceAllTopicsParams, _ error) {
+func decodeReposReplaceAllTopicsParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposReplaceAllTopicsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94384,9 +99212,13 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94450,12 +99282,16 @@ func unpackReposRequestPagesBuildParams(packed middleware.Parameters) (params Re
 	return params
 }
 
-func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params ReposRequestPagesBuildParams, _ error) {
+func decodeReposRequestPagesBuildParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposRequestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94494,9 +99330,13 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94569,12 +99409,16 @@ func unpackReposSetAdminBranchProtectionParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposSetAdminBranchProtectionParams, _ error) {
+func decodeReposSetAdminBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposSetAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94613,9 +99457,13 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94654,9 +99502,13 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94729,12 +99581,16 @@ func unpackReposSetAppAccessRestrictionsParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetAppAccessRestrictionsParams, _ error) {
+func decodeReposSetAppAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposSetAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94773,9 +99629,13 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94814,9 +99674,13 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94889,12 +99753,16 @@ func unpackReposSetStatusCheckContextsParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposSetStatusCheckContextsParams, _ error) {
+func decodeReposSetStatusCheckContextsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposSetStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94933,9 +99801,13 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -94974,9 +99846,13 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95049,12 +99925,16 @@ func unpackReposSetTeamAccessRestrictionsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetTeamAccessRestrictionsParams, _ error) {
+func decodeReposSetTeamAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposSetTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95093,9 +99973,13 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95134,9 +100018,13 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95209,12 +100097,16 @@ func unpackReposSetUserAccessRestrictionsParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetUserAccessRestrictionsParams, _ error) {
+func decodeReposSetUserAccessRestrictionsParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposSetUserAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95253,9 +100145,13 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95294,9 +100190,13 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95368,12 +100268,16 @@ func unpackReposTestPushWebhookParams(packed middleware.Parameters) (params Repo
 	return params
 }
 
-func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params ReposTestPushWebhookParams, _ error) {
+func decodeReposTestPushWebhookParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposTestPushWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95412,9 +100316,13 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95453,9 +100361,13 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95519,12 +100431,16 @@ func unpackReposTransferParams(packed middleware.Parameters) (params ReposTransf
 	return params
 }
 
-func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTransferParams, _ error) {
+func decodeReposTransferParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposTransferParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95563,9 +100479,13 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTra
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95629,12 +100549,16 @@ func unpackReposUpdateParams(packed middleware.Parameters) (params ReposUpdatePa
 	return params
 }
 
-func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdateParams, _ error) {
+func decodeReposUpdateParams(args [2]string, argsEscaped bool, r *http.Request) (params ReposUpdateParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95673,9 +100597,13 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdat
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95748,12 +100676,16 @@ func unpackReposUpdateBranchProtectionParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (params ReposUpdateBranchProtectionParams, _ error) {
+func decodeReposUpdateBranchProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95792,9 +100724,13 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95833,9 +100769,13 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95908,12 +100848,16 @@ func unpackReposUpdateCommitCommentParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (params ReposUpdateCommitCommentParams, _ error) {
+func decodeReposUpdateCommitCommentParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateCommitCommentParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95952,9 +100896,13 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -95993,9 +100941,13 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 	}
 	// Decode path: comment_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96068,12 +101020,16 @@ func unpackReposUpdateInvitationParams(packed middleware.Parameters) (params Rep
 	return params
 }
 
-func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params ReposUpdateInvitationParams, _ error) {
+func decodeReposUpdateInvitationParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateInvitationParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96112,9 +101068,13 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96153,9 +101113,13 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: invitation_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96228,12 +101192,16 @@ func unpackReposUpdatePullRequestReviewProtectionParams(packed middleware.Parame
 	return params
 }
 
-func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposUpdatePullRequestReviewProtectionParams, _ error) {
+func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdatePullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96272,9 +101240,13 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96313,9 +101285,13 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96388,12 +101364,16 @@ func unpackReposUpdateReleaseParams(packed middleware.Parameters) (params ReposU
 	return params
 }
 
-func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params ReposUpdateReleaseParams, _ error) {
+func decodeReposUpdateReleaseParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateReleaseParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96432,9 +101412,13 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96473,9 +101457,13 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96548,12 +101536,16 @@ func unpackReposUpdateReleaseAssetParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (params ReposUpdateReleaseAssetParams, _ error) {
+func decodeReposUpdateReleaseAssetParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96592,9 +101584,13 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96633,9 +101629,13 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: asset_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96708,12 +101708,16 @@ func unpackReposUpdateStatusCheckProtectionParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposUpdateStatusCheckProtectionParams, _ error) {
+func decodeReposUpdateStatusCheckProtectionParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateStatusCheckProtectionParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96752,9 +101756,13 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96793,9 +101801,13 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 	}
 	// Decode path: branch.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96867,12 +101879,16 @@ func unpackReposUpdateWebhookParams(packed middleware.Parameters) (params ReposU
 	return params
 }
 
-func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params ReposUpdateWebhookParams, _ error) {
+func decodeReposUpdateWebhookParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateWebhookParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96911,9 +101927,13 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -96952,9 +101972,13 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97026,12 +102050,16 @@ func unpackReposUpdateWebhookConfigForRepoParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposUpdateWebhookConfigForRepoParams, _ error) {
+func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUpdateWebhookConfigForRepoParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97070,9 +102098,13 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97111,9 +102143,13 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 	}
 	// Decode path: hook_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97204,13 +102240,17 @@ func unpackReposUploadReleaseAssetParams(packed middleware.Parameters) (params R
 	return params
 }
 
-func decodeReposUploadReleaseAssetParams(args [3]string, r *http.Request) (params ReposUploadReleaseAssetParams, _ error) {
+func decodeReposUploadReleaseAssetParams(args [3]string, argsEscaped bool, r *http.Request) (params ReposUploadReleaseAssetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97249,9 +102289,13 @@ func decodeReposUploadReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97290,9 +102334,13 @@ func decodeReposUploadReleaseAssetParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: release_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97434,12 +102482,16 @@ func unpackScimDeleteUserFromOrgParams(packed middleware.Parameters) (params Sci
 	return params
 }
 
-func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params ScimDeleteUserFromOrgParams, _ error) {
+func decodeScimDeleteUserFromOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params ScimDeleteUserFromOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97478,9 +102530,13 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: scim_user_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -97588,7 +102644,7 @@ func unpackSearchCodeParams(packed middleware.Parameters) (params SearchCodePara
 	return params
 }
 
-func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeParams, _ error) {
+func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchCodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -97905,7 +102961,7 @@ func unpackSearchCommitsParams(packed middleware.Parameters) (params SearchCommi
 	return params
 }
 
-func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCommitsParams, _ error) {
+func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -98225,7 +103281,7 @@ func unpackSearchIssuesAndPullRequestsParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (params SearchIssuesAndPullRequestsParams, _ error) {
+func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchIssuesAndPullRequestsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -98549,7 +103605,7 @@ func unpackSearchLabelsParams(packed middleware.Parameters) (params SearchLabels
 	return params
 }
 
-func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLabelsParams, _ error) {
+func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchLabelsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: repository_id.
 	if err := func() error {
@@ -98904,7 +103960,7 @@ func unpackSearchReposParams(packed middleware.Parameters) (params SearchReposPa
 	return params
 }
 
-func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchReposParams, _ error) {
+func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchReposParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -99196,7 +104252,7 @@ func unpackSearchTopicsParams(packed middleware.Parameters) (params SearchTopics
 	return params
 }
 
-func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTopicsParams, _ error) {
+func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchTopicsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -99397,7 +104453,7 @@ func unpackSearchUsersParams(packed middleware.Parameters) (params SearchUsersPa
 	return params
 }
 
-func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUsersParams, _ error) {
+func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) (params SearchUsersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	if err := func() error {
@@ -99682,12 +104738,16 @@ func unpackSecretScanningGetAlertParams(packed middleware.Parameters) (params Se
 	return params
 }
 
-func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params SecretScanningGetAlertParams, _ error) {
+func decodeSecretScanningGetAlertParams(args [3]string, argsEscaped bool, r *http.Request) (params SecretScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -99726,9 +104786,13 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -99767,9 +104831,13 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 	}
 	// Decode path: alert_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -99876,13 +104944,17 @@ func unpackSecretScanningListAlertsForOrgParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request) (params SecretScanningListAlertsForOrgParams, _ error) {
+func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params SecretScanningListAlertsForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100181,13 +105253,17 @@ func unpackSecretScanningListAlertsForRepoParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params SecretScanningListAlertsForRepoParams, _ error) {
+func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped bool, r *http.Request) (params SecretScanningListAlertsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100226,9 +105302,13 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100492,12 +105572,16 @@ func unpackSecretScanningUpdateAlertParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (params SecretScanningUpdateAlertParams, _ error) {
+func decodeSecretScanningUpdateAlertParams(args [3]string, argsEscaped bool, r *http.Request) (params SecretScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100536,9 +105620,13 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100577,9 +105665,13 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 	}
 	// Decode path: alert_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100650,12 +105742,16 @@ func unpackTeamsAddMemberLegacyParams(packed middleware.Parameters) (params Team
 	return params
 }
 
-func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params TeamsAddMemberLegacyParams, _ error) {
+func decodeTeamsAddMemberLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsAddMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100694,9 +105790,13 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params T
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100769,12 +105869,16 @@ func unpackTeamsAddOrUpdateMembershipForUserInOrgParams(packed middleware.Parame
 	return params
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserInOrgParams, _ error) {
+func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100813,9 +105917,13 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100854,9 +105962,13 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100920,12 +106032,16 @@ func unpackTeamsAddOrUpdateMembershipForUserLegacyParams(packed middleware.Param
 	return params
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserLegacyParams, _ error) {
+func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -100964,9 +106080,13 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101039,12 +106159,16 @@ func unpackTeamsAddOrUpdateProjectPermissionsInOrgParams(packed middleware.Param
 	return params
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsInOrgParams, _ error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101083,9 +106207,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101124,9 +106252,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101190,12 +106322,16 @@ func unpackTeamsAddOrUpdateProjectPermissionsLegacyParams(packed middleware.Para
 	return params
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsLegacyParams, _ error) {
+func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101234,9 +106370,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101317,12 +106457,16 @@ func unpackTeamsAddOrUpdateRepoPermissionsInOrgParams(packed middleware.Paramete
 	return params
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsInOrgParams, _ error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101361,9 +106505,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101402,9 +106550,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101443,9 +106595,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101517,12 +106673,16 @@ func unpackTeamsAddOrUpdateRepoPermissionsLegacyParams(packed middleware.Paramet
 	return params
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsLegacyParams, _ error) {
+func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101561,9 +106721,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101602,9 +106766,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101677,12 +106845,16 @@ func unpackTeamsCheckPermissionsForProjectInOrgParams(packed middleware.Paramete
 	return params
 }
 
-func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForProjectInOrgParams, _ error) {
+func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsCheckPermissionsForProjectInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101721,9 +106893,13 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101762,9 +106938,13 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101828,12 +107008,16 @@ func unpackTeamsCheckPermissionsForProjectLegacyParams(packed middleware.Paramet
 	return params
 }
 
-func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.Request) (params TeamsCheckPermissionsForProjectLegacyParams, _ error) {
+func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsCheckPermissionsForProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101872,9 +107056,13 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101955,12 +107143,16 @@ func unpackTeamsCheckPermissionsForRepoInOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Request) (params TeamsCheckPermissionsForRepoInOrgParams, _ error) {
+func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsCheckPermissionsForRepoInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -101999,9 +107191,13 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102040,9 +107236,13 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102081,9 +107281,13 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102155,12 +107359,16 @@ func unpackTeamsCheckPermissionsForRepoLegacyParams(packed middleware.Parameters
 	return params
 }
 
-func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForRepoLegacyParams, _ error) {
+func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsCheckPermissionsForRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102199,9 +107407,13 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102240,9 +107452,13 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102298,12 +107514,16 @@ func unpackTeamsCreateParams(packed middleware.Parameters) (params TeamsCreatePa
 	return params
 }
 
-func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreateParams, _ error) {
+func decodeTeamsCreateParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsCreateParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102376,12 +107596,16 @@ func unpackTeamsCreateDiscussionCommentInOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Request) (params TeamsCreateDiscussionCommentInOrgParams, _ error) {
+func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsCreateDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102420,9 +107644,13 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102461,9 +107689,13 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102527,12 +107759,16 @@ func unpackTeamsCreateDiscussionCommentLegacyParams(packed middleware.Parameters
 	return params
 }
 
-func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionCommentLegacyParams, _ error) {
+func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsCreateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102571,9 +107807,13 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Requ
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102638,12 +107878,16 @@ func unpackTeamsCreateDiscussionInOrgParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionInOrgParams, _ error) {
+func decodeTeamsCreateDiscussionInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsCreateDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102682,9 +107926,13 @@ func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102740,12 +107988,16 @@ func unpackTeamsCreateDiscussionLegacyParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (params TeamsCreateDiscussionLegacyParams, _ error) {
+func decodeTeamsCreateDiscussionLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsCreateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102810,12 +108062,16 @@ func unpackTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(packed middleware.P
 	return params
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, _ error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102854,9 +108110,13 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102912,12 +108172,16 @@ func unpackTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(packed middleware.
 	return params
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, _ error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -102998,12 +108262,16 @@ func unpackTeamsDeleteDiscussionCommentInOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsDeleteDiscussionCommentInOrgParams, _ error) {
+func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsDeleteDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103042,9 +108310,13 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103083,9 +108355,13 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103124,9 +108400,13 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103198,12 +108478,16 @@ func unpackTeamsDeleteDiscussionCommentLegacyParams(packed middleware.Parameters
 	return params
 }
 
-func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionCommentLegacyParams, _ error) {
+func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsDeleteDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103242,9 +108526,13 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103283,9 +108571,13 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103358,12 +108650,16 @@ func unpackTeamsDeleteDiscussionInOrgParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionInOrgParams, _ error) {
+func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsDeleteDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103402,9 +108698,13 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103443,9 +108743,13 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103509,12 +108813,16 @@ func unpackTeamsDeleteDiscussionLegacyParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsDeleteDiscussionLegacyParams, _ error) {
+func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsDeleteDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103553,9 +108861,13 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103620,12 +108932,16 @@ func unpackTeamsDeleteInOrgParams(packed middleware.Parameters) (params TeamsDel
 	return params
 }
 
-func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params TeamsDeleteInOrgParams, _ error) {
+func decodeTeamsDeleteInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsDeleteInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103664,9 +108980,13 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params Teams
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103722,12 +109042,16 @@ func unpackTeamsDeleteLegacyParams(packed middleware.Parameters) (params TeamsDe
 	return params
 }
 
-func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params TeamsDeleteLegacyParams, _ error) {
+func decodeTeamsDeleteLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsDeleteLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103792,12 +109116,16 @@ func unpackTeamsGetByNameParams(packed middleware.Parameters) (params TeamsGetBy
 	return params
 }
 
-func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGetByNameParams, _ error) {
+func decodeTeamsGetByNameParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsGetByNameParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103836,9 +109164,13 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGe
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103919,12 +109251,16 @@ func unpackTeamsGetDiscussionCommentInOrgParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsGetDiscussionCommentInOrgParams, _ error) {
+func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsGetDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -103963,9 +109299,13 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104004,9 +109344,13 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104045,9 +109389,13 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104119,12 +109467,16 @@ func unpackTeamsGetDiscussionCommentLegacyParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsGetDiscussionCommentLegacyParams, _ error) {
+func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsGetDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104163,9 +109515,13 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104204,9 +109560,13 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104279,12 +109639,16 @@ func unpackTeamsGetDiscussionInOrgParams(packed middleware.Parameters) (params T
 	return params
 }
 
-func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsGetDiscussionInOrgParams, _ error) {
+func decodeTeamsGetDiscussionInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsGetDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104323,9 +109687,13 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104364,9 +109732,13 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104430,12 +109802,16 @@ func unpackTeamsGetDiscussionLegacyParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsGetDiscussionLegacyParams, _ error) {
+func decodeTeamsGetDiscussionLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsGetDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104474,9 +109850,13 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104532,12 +109912,16 @@ func unpackTeamsGetLegacyParams(packed middleware.Parameters) (params TeamsGetLe
 	return params
 }
 
-func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGetLegacyParams, _ error) {
+func decodeTeamsGetLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsGetLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104601,12 +109985,16 @@ func unpackTeamsGetMemberLegacyParams(packed middleware.Parameters) (params Team
 	return params
 }
 
-func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params TeamsGetMemberLegacyParams, _ error) {
+func decodeTeamsGetMemberLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsGetMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104645,9 +110033,13 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params T
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104720,12 +110112,16 @@ func unpackTeamsGetMembershipForUserInOrgParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsGetMembershipForUserInOrgParams, _ error) {
+func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsGetMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104764,9 +110160,13 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104805,9 +110205,13 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104871,12 +110275,16 @@ func unpackTeamsGetMembershipForUserLegacyParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsGetMembershipForUserLegacyParams, _ error) {
+func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsGetMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104915,9 +110323,13 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -104995,13 +110407,17 @@ func unpackTeamsListParams(packed middleware.Parameters) (params TeamsListParams
 	return params
 }
 
-func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListParams, _ error) {
+func decodeTeamsListParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105180,13 +110596,17 @@ func unpackTeamsListChildInOrgParams(packed middleware.Parameters) (params Teams
 	return params
 }
 
-func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params TeamsListChildInOrgParams, _ error) {
+func decodeTeamsListChildInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListChildInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105225,9 +110645,13 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105397,13 +110821,17 @@ func unpackTeamsListChildLegacyParams(packed middleware.Parameters) (params Team
 	return params
 }
 
-func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params TeamsListChildLegacyParams, _ error) {
+func decodeTeamsListChildLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListChildLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105601,13 +111029,17 @@ func unpackTeamsListDiscussionCommentsInOrgParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Request) (params TeamsListDiscussionCommentsInOrgParams, _ error) {
+func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsListDiscussionCommentsInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105646,9 +111078,13 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105687,9 +111123,13 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105939,13 +111379,17 @@ func unpackTeamsListDiscussionCommentsLegacyParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Request) (params TeamsListDiscussionCommentsLegacyParams, _ error) {
+func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListDiscussionCommentsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -105984,9 +111428,13 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -106248,13 +111696,17 @@ func unpackTeamsListDiscussionsInOrgParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (params TeamsListDiscussionsInOrgParams, _ error) {
+func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListDiscussionsInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -106293,9 +111745,13 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -106578,13 +112034,17 @@ func unpackTeamsListDiscussionsLegacyParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (params TeamsListDiscussionsLegacyParams, _ error) {
+func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListDiscussionsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -106807,7 +112267,7 @@ func unpackTeamsListForAuthenticatedUserParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params TeamsListForAuthenticatedUserParams, _ error) {
+func decodeTeamsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params TeamsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -106920,12 +112380,16 @@ func unpackTeamsListIdpGroupsForLegacyParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForLegacyParams, _ error) {
+func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListIdpGroupsForLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107003,13 +112467,17 @@ func unpackTeamsListIdpGroupsForOrgParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForOrgParams, _ error) {
+func decodeTeamsListIdpGroupsForOrgParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListIdpGroupsForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107161,12 +112629,16 @@ func unpackTeamsListIdpGroupsInOrgParams(packed middleware.Parameters) (params T
 	return params
 }
 
-func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (params TeamsListIdpGroupsInOrgParams, _ error) {
+func decodeTeamsListIdpGroupsInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListIdpGroupsInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107205,9 +112677,13 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107308,13 +112784,17 @@ func unpackTeamsListMembersInOrgParams(packed middleware.Parameters) (params Tea
 	return params
 }
 
-func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params TeamsListMembersInOrgParams, _ error) {
+func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListMembersInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107353,9 +112833,13 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107600,13 +113084,17 @@ func unpackTeamsListMembersLegacyParams(packed middleware.Parameters) (params Te
 	return params
 }
 
-func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params TeamsListMembersLegacyParams, _ error) {
+func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListMembersLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107846,13 +113334,17 @@ func unpackTeamsListPendingInvitationsInOrgParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Request) (params TeamsListPendingInvitationsInOrgParams, _ error) {
+func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListPendingInvitationsInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107891,9 +113383,13 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108063,13 +113559,17 @@ func unpackTeamsListPendingInvitationsLegacyParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Request) (params TeamsListPendingInvitationsLegacyParams, _ error) {
+func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListPendingInvitationsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108248,13 +113748,17 @@ func unpackTeamsListProjectsInOrgParams(packed middleware.Parameters) (params Te
 	return params
 }
 
-func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params TeamsListProjectsInOrgParams, _ error) {
+func decodeTeamsListProjectsInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListProjectsInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108293,9 +113797,13 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108465,13 +113973,17 @@ func unpackTeamsListProjectsLegacyParams(packed middleware.Parameters) (params T
 	return params
 }
 
-func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (params TeamsListProjectsLegacyParams, _ error) {
+func decodeTeamsListProjectsLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListProjectsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108650,13 +114162,17 @@ func unpackTeamsListReposInOrgParams(packed middleware.Parameters) (params Teams
 	return params
 }
 
-func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params TeamsListReposInOrgParams, _ error) {
+func decodeTeamsListReposInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsListReposInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108695,9 +114211,13 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -108867,13 +114387,17 @@ func unpackTeamsListReposLegacyParams(packed middleware.Parameters) (params Team
 	return params
 }
 
-func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params TeamsListReposLegacyParams, _ error) {
+func decodeTeamsListReposLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsListReposLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109029,12 +114553,16 @@ func unpackTeamsRemoveMemberLegacyParams(packed middleware.Parameters) (params T
 	return params
 }
 
-func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMemberLegacyParams, _ error) {
+func decodeTeamsRemoveMemberLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsRemoveMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109073,9 +114601,13 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (param
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109148,12 +114680,16 @@ func unpackTeamsRemoveMembershipForUserInOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveMembershipForUserInOrgParams, _ error) {
+func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsRemoveMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109192,9 +114728,13 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109233,9 +114773,13 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109299,12 +114843,16 @@ func unpackTeamsRemoveMembershipForUserLegacyParams(packed middleware.Parameters
 	return params
 }
 
-func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMembershipForUserLegacyParams, _ error) {
+func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsRemoveMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109343,9 +114891,13 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 	}
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109418,12 +114970,16 @@ func unpackTeamsRemoveProjectInOrgParams(packed middleware.Parameters) (params T
 	return params
 }
 
-func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveProjectInOrgParams, _ error) {
+func decodeTeamsRemoveProjectInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsRemoveProjectInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109462,9 +115018,13 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109503,9 +115063,13 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109569,12 +115133,16 @@ func unpackTeamsRemoveProjectLegacyParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveProjectLegacyParams, _ error) {
+func decodeTeamsRemoveProjectLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsRemoveProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109613,9 +115181,13 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (para
 	}
 	// Decode path: project_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109696,12 +115268,16 @@ func unpackTeamsRemoveRepoInOrgParams(packed middleware.Parameters) (params Team
 	return params
 }
 
-func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params TeamsRemoveRepoInOrgParams, _ error) {
+func decodeTeamsRemoveRepoInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsRemoveRepoInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109740,9 +115316,13 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109781,9 +115361,13 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109822,9 +115406,13 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109896,12 +115484,16 @@ func unpackTeamsRemoveRepoLegacyParams(packed middleware.Parameters) (params Tea
 	return params
 }
 
-func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params TeamsRemoveRepoLegacyParams, _ error) {
+func decodeTeamsRemoveRepoLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsRemoveRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109940,9 +115532,13 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: owner.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -109981,9 +115577,13 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 	}
 	// Decode path: repo.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110064,12 +115664,16 @@ func unpackTeamsUpdateDiscussionCommentInOrgParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsUpdateDiscussionCommentInOrgParams, _ error) {
+func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, argsEscaped bool, r *http.Request) (params TeamsUpdateDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110108,9 +115712,13 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110149,9 +115757,13 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110190,9 +115802,13 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[3])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[3]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[3])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110264,12 +115880,16 @@ func unpackTeamsUpdateDiscussionCommentLegacyParams(packed middleware.Parameters
 	return params
 }
 
-func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionCommentLegacyParams, _ error) {
+func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsUpdateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110308,9 +115928,13 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110349,9 +115973,13 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	}
 	// Decode path: comment_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110424,12 +116052,16 @@ func unpackTeamsUpdateDiscussionInOrgParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionInOrgParams, _ error) {
+func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, argsEscaped bool, r *http.Request) (params TeamsUpdateDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110468,9 +116100,13 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110509,9 +116145,13 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110575,12 +116215,16 @@ func unpackTeamsUpdateDiscussionLegacyParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsUpdateDiscussionLegacyParams, _ error) {
+func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsUpdateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110619,9 +116263,13 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (p
 	}
 	// Decode path: discussion_number.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110686,12 +116334,16 @@ func unpackTeamsUpdateInOrgParams(packed middleware.Parameters) (params TeamsUpd
 	return params
 }
 
-func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params TeamsUpdateInOrgParams, _ error) {
+func decodeTeamsUpdateInOrgParams(args [2]string, argsEscaped bool, r *http.Request) (params TeamsUpdateInOrgParams, _ error) {
 	// Decode path: org.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110730,9 +116382,13 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params Teams
 	}
 	// Decode path: team_slug.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110788,12 +116444,16 @@ func unpackTeamsUpdateLegacyParams(packed middleware.Parameters) (params TeamsUp
 	return params
 }
 
-func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params TeamsUpdateLegacyParams, _ error) {
+func decodeTeamsUpdateLegacyParams(args [1]string, argsEscaped bool, r *http.Request) (params TeamsUpdateLegacyParams, _ error) {
 	// Decode path: team_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110849,12 +116509,16 @@ func unpackUsersBlockParams(packed middleware.Parameters) (params UsersBlockPara
 	return params
 }
 
-func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockParams, _ error) {
+func decodeUsersBlockParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersBlockParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110910,12 +116574,16 @@ func unpackUsersCheckBlockedParams(packed middleware.Parameters) (params UsersCh
 	return params
 }
 
-func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params UsersCheckBlockedParams, _ error) {
+func decodeUsersCheckBlockedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersCheckBlockedParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -110979,12 +116647,16 @@ func unpackUsersCheckFollowingForUserParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (params UsersCheckFollowingForUserParams, _ error) {
+func decodeUsersCheckFollowingForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params UsersCheckFollowingForUserParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111023,9 +116695,13 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: target_user.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111081,12 +116757,16 @@ func unpackUsersCheckPersonIsFollowedByAuthenticatedParams(packed middleware.Par
 	return params
 }
 
-func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *http.Request) (params UsersCheckPersonIsFollowedByAuthenticatedParams, _ error) {
+func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersCheckPersonIsFollowedByAuthenticatedParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111143,12 +116823,16 @@ func unpackUsersDeleteGpgKeyForAuthenticatedParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeleteGpgKeyForAuthenticatedParams, _ error) {
+func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersDeleteGpgKeyForAuthenticatedParams, _ error) {
 	// Decode path: gpg_key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111205,12 +116889,16 @@ func unpackUsersDeletePublicSSHKeyForAuthenticatedParams(packed middleware.Param
 	return params
 }
 
-func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeletePublicSSHKeyForAuthenticatedParams, _ error) {
+func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersDeletePublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111266,12 +116954,16 @@ func unpackUsersFollowParams(packed middleware.Parameters) (params UsersFollowPa
 	return params
 }
 
-func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollowParams, _ error) {
+func decodeUsersFollowParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersFollowParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111327,12 +117019,16 @@ func unpackUsersGetByUsernameParams(packed middleware.Parameters) (params UsersG
 	return params
 }
 
-func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params UsersGetByUsernameParams, _ error) {
+func decodeUsersGetByUsernameParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersGetByUsernameParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111411,13 +117107,17 @@ func unpackUsersGetContextForUserParams(packed middleware.Parameters) (params Us
 	return params
 }
 
-func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params UsersGetContextForUserParams, _ error) {
+func decodeUsersGetContextForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersGetContextForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111571,12 +117271,16 @@ func unpackUsersGetGpgKeyForAuthenticatedParams(packed middleware.Parameters) (p
 	return params
 }
 
-func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetGpgKeyForAuthenticatedParams, _ error) {
+func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersGetGpgKeyForAuthenticatedParams, _ error) {
 	// Decode path: gpg_key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111633,12 +117337,16 @@ func unpackUsersGetPublicSSHKeyForAuthenticatedParams(packed middleware.Paramete
 	return params
 }
 
-func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetPublicSSHKeyForAuthenticatedParams, _ error) {
+func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersGetPublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111708,7 +117416,7 @@ func unpackUsersListParams(packed middleware.Parameters) (params UsersListParams
 	return params
 }
 
-func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListParams, _ error) {
+func decodeUsersListParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	if err := func() error {
@@ -111830,7 +117538,7 @@ func unpackUsersListEmailsForAuthenticatedParams(packed middleware.Parameters) (
 	return params
 }
 
-func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListEmailsForAuthenticatedParams, _ error) {
+func decodeUsersListEmailsForAuthenticatedParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListEmailsForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -111957,7 +117665,7 @@ func unpackUsersListFollowedByAuthenticatedParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Request) (params UsersListFollowedByAuthenticatedParams, _ error) {
+func decodeUsersListFollowedByAuthenticatedParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListFollowedByAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -112084,7 +117792,7 @@ func unpackUsersListFollowersForAuthenticatedUserParams(packed middleware.Parame
 	return params
 }
 
-func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.Request) (params UsersListFollowersForAuthenticatedUserParams, _ error) {
+func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListFollowersForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -112219,13 +117927,17 @@ func unpackUsersListFollowersForUserParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (params UsersListFollowersForUserParams, _ error) {
+func decodeUsersListFollowersForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersListFollowersForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -112395,13 +118107,17 @@ func unpackUsersListFollowingForUserParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (params UsersListFollowingForUserParams, _ error) {
+func decodeUsersListFollowingForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersListFollowingForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -112563,7 +118279,7 @@ func unpackUsersListGpgKeysForAuthenticatedParams(packed middleware.Parameters) 
 	return params
 }
 
-func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListGpgKeysForAuthenticatedParams, _ error) {
+func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListGpgKeysForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -112698,13 +118414,17 @@ func unpackUsersListGpgKeysForUserParams(packed middleware.Parameters) (params U
 	return params
 }
 
-func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (params UsersListGpgKeysForUserParams, _ error) {
+func decodeUsersListGpgKeysForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersListGpgKeysForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -112866,7 +118586,7 @@ func unpackUsersListPublicEmailsForAuthenticatedParams(packed middleware.Paramet
 	return params
 }
 
-func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicEmailsForAuthenticatedParams, _ error) {
+func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListPublicEmailsForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -113001,13 +118721,17 @@ func unpackUsersListPublicKeysForUserParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (params UsersListPublicKeysForUserParams, _ error) {
+func decodeUsersListPublicKeysForUserParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersListPublicKeysForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -113169,7 +118893,7 @@ func unpackUsersListPublicSSHKeysForAuthenticatedParams(packed middleware.Parame
 	return params
 }
 
-func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicSSHKeysForAuthenticatedParams, _ error) {
+func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, argsEscaped bool, r *http.Request) (params UsersListPublicSSHKeysForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
@@ -113282,12 +119006,16 @@ func unpackUsersUnblockParams(packed middleware.Parameters) (params UsersUnblock
 	return params
 }
 
-func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnblockParams, _ error) {
+func decodeUsersUnblockParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersUnblockParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -113343,12 +119071,16 @@ func unpackUsersUnfollowParams(packed middleware.Parameters) (params UsersUnfoll
 	return params
 }
 
-func decodeUsersUnfollowParams(args [1]string, r *http.Request) (params UsersUnfollowParams, _ error) {
+func decodeUsersUnfollowParams(args [1]string, argsEscaped bool, r *http.Request) (params UsersUnfollowParams, _ error) {
 	// Decode path: username.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{

@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -52,7 +54,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(elem) == 0 {
 				switch r.Method {
 				case "GET":
-					s.handleDescribeInstanceRequest([0]string{}, w, r)
+					s.handleDescribeInstanceRequest([0]string{}, elemIsEscaped, w, r)
 				default:
 					s.notAllowed(w, r, "GET")
 				}
@@ -71,7 +73,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "PUT":
-						s.handleCreateSyncActionRequest([0]string{}, w, r)
+						s.handleCreateSyncActionRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "PUT")
 					}
@@ -99,11 +101,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleDescribeBalloonConfigRequest([0]string{}, w, r)
+							s.handleDescribeBalloonConfigRequest([0]string{}, elemIsEscaped, w, r)
 						case "PATCH":
-							s.handlePatchBalloonRequest([0]string{}, w, r)
+							s.handlePatchBalloonRequest([0]string{}, elemIsEscaped, w, r)
 						case "PUT":
-							s.handlePutBalloonRequest([0]string{}, w, r)
+							s.handlePutBalloonRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,PATCH,PUT")
 						}
@@ -122,9 +124,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleDescribeBalloonStatsRequest([0]string{}, w, r)
+								s.handleDescribeBalloonStatsRequest([0]string{}, elemIsEscaped, w, r)
 							case "PATCH":
-								s.handlePatchBalloonStatsIntervalRequest([0]string{}, w, r)
+								s.handlePatchBalloonStatsIntervalRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,PATCH")
 							}
@@ -143,7 +145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "PUT":
-							s.handlePutGuestBootSourceRequest([0]string{}, w, r)
+							s.handlePutGuestBootSourceRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PUT")
 						}
@@ -169,11 +171,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "PATCH":
 						s.handlePatchGuestDriveByIDRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "PUT":
 						s.handlePutGuestDriveByIDRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "PATCH,PUT")
 					}
@@ -191,7 +193,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "PUT":
-						s.handlePutLoggerRequest([0]string{}, w, r)
+						s.handlePutLoggerRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "PUT")
 					}
@@ -220,11 +222,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleGetMachineConfigurationRequest([0]string{}, w, r)
+							s.handleGetMachineConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 						case "PATCH":
-							s.handlePatchMachineConfigurationRequest([0]string{}, w, r)
+							s.handlePatchMachineConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 						case "PUT":
-							s.handlePutMachineConfigurationRequest([0]string{}, w, r)
+							s.handlePutMachineConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,PATCH,PUT")
 						}
@@ -242,7 +244,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "PUT":
-							s.handlePutMetricsRequest([0]string{}, w, r)
+							s.handlePutMetricsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PUT")
 						}
@@ -259,11 +261,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleMmdsGetRequest([0]string{}, w, r)
+							s.handleMmdsGetRequest([0]string{}, elemIsEscaped, w, r)
 						case "PATCH":
-							s.handleMmdsPatchRequest([0]string{}, w, r)
+							s.handleMmdsPatchRequest([0]string{}, elemIsEscaped, w, r)
 						case "PUT":
-							s.handleMmdsPutRequest([0]string{}, w, r)
+							s.handleMmdsPutRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,PATCH,PUT")
 						}
@@ -282,7 +284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "PUT":
-								s.handleMmdsConfigPutRequest([0]string{}, w, r)
+								s.handleMmdsConfigPutRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "PUT")
 							}
@@ -309,11 +311,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "PATCH":
 						s.handlePatchGuestNetworkInterfaceByIDRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "PUT":
 						s.handlePutGuestNetworkInterfaceByIDRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "PATCH,PUT")
 					}
@@ -342,7 +344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "PUT":
-							s.handleCreateSnapshotRequest([0]string{}, w, r)
+							s.handleCreateSnapshotRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PUT")
 						}
@@ -360,7 +362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "PUT":
-							s.handleLoadSnapshotRequest([0]string{}, w, r)
+							s.handleLoadSnapshotRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PUT")
 						}
@@ -389,7 +391,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "PATCH":
-							s.handlePatchVmRequest([0]string{}, w, r)
+							s.handlePatchVmRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PATCH")
 						}
@@ -408,7 +410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleGetExportVmConfigRequest([0]string{}, w, r)
+								s.handleGetExportVmConfigRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -427,7 +429,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "PUT":
-							s.handlePutGuestVsockRequest([0]string{}, w, r)
+							s.handlePutGuestVsockRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "PUT")
 						}

@@ -22,7 +22,7 @@
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
-func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
 	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}
@@ -129,7 +129,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
     {{- end }}
 
 	{{- if $op.Params }}
-	params, err := decode{{ $op.Name }}Params(args, r)
+	params, err := decode{{ $op.Name }}Params(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

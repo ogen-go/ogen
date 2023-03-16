@@ -121,7 +121,9 @@ func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToS
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/addStickerToSet"
+	var pathParts [1]string
+	pathParts[0] = "/addStickerToSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -199,7 +201,9 @@ func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCal
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/answerCallbackQuery"
+	var pathParts [1]string
+	pathParts[0] = "/answerCallbackQuery"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -277,7 +281,9 @@ func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlin
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/answerInlineQuery"
+	var pathParts [1]string
+	pathParts[0] = "/answerInlineQuery"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -346,7 +352,9 @@ func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *Answer
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/answerPreCheckoutQuery"
+	var pathParts [1]string
+	pathParts[0] = "/answerPreCheckoutQuery"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -424,7 +432,9 @@ func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShi
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/answerShippingQuery"
+	var pathParts [1]string
+	pathParts[0] = "/answerShippingQuery"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -502,7 +512,9 @@ func (c *Client) sendAnswerWebAppQuery(ctx context.Context, request *AnswerWebAp
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/answerWebAppQuery"
+	var pathParts [1]string
+	pathParts[0] = "/answerWebAppQuery"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -571,7 +583,9 @@ func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *Approv
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/approveChatJoinRequest"
+	var pathParts [1]string
+	pathParts[0] = "/approveChatJoinRequest"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -640,7 +654,9 @@ func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/banChatMember"
+	var pathParts [1]string
+	pathParts[0] = "/banChatMember"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -709,7 +725,9 @@ func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSend
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/banChatSenderChat"
+	var pathParts [1]string
+	pathParts[0] = "/banChatSenderChat"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -778,7 +796,9 @@ func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/close"
+	var pathParts [1]string
+	pathParts[0] = "/close"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -853,7 +873,9 @@ func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/copyMessage"
+	var pathParts [1]string
+	pathParts[0] = "/copyMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -931,7 +953,9 @@ func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/createChatInviteLink"
+	var pathParts [1]string
+	pathParts[0] = "/createChatInviteLink"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1009,7 +1033,9 @@ func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNew
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/createNewStickerSet"
+	var pathParts [1]string
+	pathParts[0] = "/createNewStickerSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1078,7 +1104,9 @@ func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *Declin
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/declineChatJoinRequest"
+	var pathParts [1]string
+	pathParts[0] = "/declineChatJoinRequest"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1147,7 +1175,9 @@ func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPho
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteChatPhoto"
+	var pathParts [1]string
+	pathParts[0] = "/deleteChatPhoto"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1216,7 +1246,9 @@ func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteChatStickerSet"
+	var pathParts [1]string
+	pathParts[0] = "/deleteChatStickerSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1285,7 +1317,9 @@ func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteMessage"
+	var pathParts [1]string
+	pathParts[0] = "/deleteMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1354,7 +1388,9 @@ func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteMyCommands"
+	var pathParts [1]string
+	pathParts[0] = "/deleteMyCommands"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1423,7 +1459,9 @@ func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteSt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteStickerFromSet"
+	var pathParts [1]string
+	pathParts[0] = "/deleteStickerFromSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1492,7 +1530,9 @@ func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/deleteWebhook"
+	var pathParts [1]string
+	pathParts[0] = "/deleteWebhook"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1570,7 +1610,9 @@ func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatIn
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editChatInviteLink"
+	var pathParts [1]string
+	pathParts[0] = "/editChatInviteLink"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1648,7 +1690,9 @@ func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessag
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editMessageCaption"
+	var pathParts [1]string
+	pathParts[0] = "/editMessageCaption"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1726,7 +1770,9 @@ func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editMessageLiveLocation"
+	var pathParts [1]string
+	pathParts[0] = "/editMessageLiveLocation"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1804,7 +1850,9 @@ func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editMessageMedia"
+	var pathParts [1]string
+	pathParts[0] = "/editMessageMedia"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1882,7 +1930,9 @@ func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editMessageReplyMarkup"
+	var pathParts [1]string
+	pathParts[0] = "/editMessageReplyMarkup"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -1960,7 +2010,9 @@ func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageTe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/editMessageText"
+	var pathParts [1]string
+	pathParts[0] = "/editMessageText"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2029,7 +2081,9 @@ func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/exportChatInviteLink"
+	var pathParts [1]string
+	pathParts[0] = "/exportChatInviteLink"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2098,7 +2152,9 @@ func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/forwardMessage"
+	var pathParts [1]string
+	pathParts[0] = "/forwardMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2167,7 +2223,9 @@ func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *Result
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getChat"
+	var pathParts [1]string
+	pathParts[0] = "/getChat"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2236,7 +2294,9 @@ func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getChatAdministrators"
+	var pathParts [1]string
+	pathParts[0] = "/getChatAdministrators"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2305,7 +2365,9 @@ func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getChatMember"
+	var pathParts [1]string
+	pathParts[0] = "/getChatMember"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2374,7 +2436,9 @@ func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMem
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getChatMemberCount"
+	var pathParts [1]string
+	pathParts[0] = "/getChatMemberCount"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2443,7 +2507,9 @@ func (c *Client) sendGetChatMenuButton(ctx context.Context, request OptGetChatMe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getChatMenuButton"
+	var pathParts [1]string
+	pathParts[0] = "/getChatMenuButton"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2512,7 +2578,9 @@ func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getFile"
+	var pathParts [1]string
+	pathParts[0] = "/getFile"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2581,7 +2649,9 @@ func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHigh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getGameHighScores"
+	var pathParts [1]string
+	pathParts[0] = "/getGameHighScores"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2650,7 +2720,9 @@ func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getMe"
+	var pathParts [1]string
+	pathParts[0] = "/getMe"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2716,7 +2788,9 @@ func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getMyCommands"
+	var pathParts [1]string
+	pathParts[0] = "/getMyCommands"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2785,7 +2859,9 @@ func (c *Client) sendGetMyDefaultAdministratorRights(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getMyDefaultAdministratorRights"
+	var pathParts [1]string
+	pathParts[0] = "/getMyDefaultAdministratorRights"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2854,7 +2930,9 @@ func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getStickerSet"
+	var pathParts [1]string
+	pathParts[0] = "/getStickerSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -2939,7 +3017,9 @@ func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getUpdates"
+	var pathParts [1]string
+	pathParts[0] = "/getUpdates"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3017,7 +3097,9 @@ func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserP
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getUserProfilePhotos"
+	var pathParts [1]string
+	pathParts[0] = "/getUserProfilePhotos"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3086,7 +3168,9 @@ func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/getWebhookInfo"
+	var pathParts [1]string
+	pathParts[0] = "/getWebhookInfo"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3152,7 +3236,9 @@ func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/leaveChat"
+	var pathParts [1]string
+	pathParts[0] = "/leaveChat"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3221,7 +3307,9 @@ func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/logOut"
+	var pathParts [1]string
+	pathParts[0] = "/logOut"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3287,7 +3375,9 @@ func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pinChatMessage"
+	var pathParts [1]string
+	pathParts[0] = "/pinChatMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3356,7 +3446,9 @@ func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/promoteChatMember"
+	var pathParts [1]string
+	pathParts[0] = "/promoteChatMember"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3425,7 +3517,9 @@ func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/restrictChatMember"
+	var pathParts [1]string
+	pathParts[0] = "/restrictChatMember"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3494,7 +3588,9 @@ func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeCh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/revokeChatInviteLink"
+	var pathParts [1]string
+	pathParts[0] = "/revokeChatInviteLink"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3572,7 +3668,9 @@ func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendAnimation"
+	var pathParts [1]string
+	pathParts[0] = "/sendAnimation"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3650,7 +3748,9 @@ func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendAudio"
+	var pathParts [1]string
+	pathParts[0] = "/sendAudio"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3719,7 +3819,9 @@ func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendChatAction"
+	var pathParts [1]string
+	pathParts[0] = "/sendChatAction"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3797,7 +3899,9 @@ func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendContact"
+	var pathParts [1]string
+	pathParts[0] = "/sendContact"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3875,7 +3979,9 @@ func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *Resu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendDice"
+	var pathParts [1]string
+	pathParts[0] = "/sendDice"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -3953,7 +4059,9 @@ func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendDocument"
+	var pathParts [1]string
+	pathParts[0] = "/sendDocument"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4031,7 +4139,9 @@ func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *Resu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendGame"
+	var pathParts [1]string
+	pathParts[0] = "/sendGame"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4109,7 +4219,9 @@ func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendInvoice"
+	var pathParts [1]string
+	pathParts[0] = "/sendInvoice"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4187,7 +4299,9 @@ func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendLocation"
+	var pathParts [1]string
+	pathParts[0] = "/sendLocation"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4265,7 +4379,9 @@ func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendMediaGroup"
+	var pathParts [1]string
+	pathParts[0] = "/sendMediaGroup"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4343,7 +4459,9 @@ func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendMessage"
+	var pathParts [1]string
+	pathParts[0] = "/sendMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4421,7 +4539,9 @@ func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendPhoto"
+	var pathParts [1]string
+	pathParts[0] = "/sendPhoto"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4499,7 +4619,9 @@ func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *Resu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendPoll"
+	var pathParts [1]string
+	pathParts[0] = "/sendPoll"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4577,7 +4699,9 @@ func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendSticker"
+	var pathParts [1]string
+	pathParts[0] = "/sendSticker"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4655,7 +4779,9 @@ func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendVenue"
+	var pathParts [1]string
+	pathParts[0] = "/sendVenue"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4733,7 +4859,9 @@ func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendVideo"
+	var pathParts [1]string
+	pathParts[0] = "/sendVideo"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4811,7 +4939,9 @@ func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendVideoNote"
+	var pathParts [1]string
+	pathParts[0] = "/sendVideoNote"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4889,7 +5019,9 @@ func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *Re
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/sendVoice"
+	var pathParts [1]string
+	pathParts[0] = "/sendVoice"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -4967,7 +5099,9 @@ func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatAdministratorCustomTitle"
+	var pathParts [1]string
+	pathParts[0] = "/setChatAdministratorCustomTitle"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5045,7 +5179,9 @@ func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDes
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatDescription"
+	var pathParts [1]string
+	pathParts[0] = "/setChatDescription"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5114,7 +5250,9 @@ func (c *Client) sendSetChatMenuButton(ctx context.Context, request OptSetChatMe
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatMenuButton"
+	var pathParts [1]string
+	pathParts[0] = "/setChatMenuButton"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5183,7 +5321,9 @@ func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPer
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatPermissions"
+	var pathParts [1]string
+	pathParts[0] = "/setChatPermissions"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5252,7 +5392,9 @@ func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatPhoto"
+	var pathParts [1]string
+	pathParts[0] = "/setChatPhoto"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5321,7 +5463,9 @@ func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStic
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatStickerSet"
+	var pathParts [1]string
+	pathParts[0] = "/setChatStickerSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5399,7 +5543,9 @@ func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setChatTitle"
+	var pathParts [1]string
+	pathParts[0] = "/setChatTitle"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5468,7 +5614,9 @@ func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (r
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setGameScore"
+	var pathParts [1]string
+	pathParts[0] = "/setGameScore"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5546,7 +5694,9 @@ func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setMyCommands"
+	var pathParts [1]string
+	pathParts[0] = "/setMyCommands"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5615,7 +5765,9 @@ func (c *Client) sendSetMyDefaultAdministratorRights(ctx context.Context, reques
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setMyDefaultAdministratorRights"
+	var pathParts [1]string
+	pathParts[0] = "/setMyDefaultAdministratorRights"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5693,7 +5845,9 @@ func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPass
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setPassportDataErrors"
+	var pathParts [1]string
+	pathParts[0] = "/setPassportDataErrors"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5762,7 +5916,9 @@ func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetSt
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setStickerPositionInSet"
+	var pathParts [1]string
+	pathParts[0] = "/setStickerPositionInSet"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5831,7 +5987,9 @@ func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetSticker
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setStickerSetThumb"
+	var pathParts [1]string
+	pathParts[0] = "/setStickerSetThumb"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5900,7 +6058,9 @@ func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/setWebhook"
+	var pathParts [1]string
+	pathParts[0] = "/setWebhook"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -5978,7 +6138,9 @@ func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopM
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/stopMessageLiveLocation"
+	var pathParts [1]string
+	pathParts[0] = "/stopMessageLiveLocation"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6056,7 +6218,9 @@ func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *Resu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/stopPoll"
+	var pathParts [1]string
+	pathParts[0] = "/stopPoll"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6125,7 +6289,9 @@ func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMemb
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/unbanChatMember"
+	var pathParts [1]string
+	pathParts[0] = "/unbanChatMember"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6194,7 +6360,9 @@ func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChat
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/unbanChatSenderChat"
+	var pathParts [1]string
+	pathParts[0] = "/unbanChatSenderChat"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6263,7 +6431,9 @@ func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAll
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/unpinAllChatMessages"
+	var pathParts [1]string
+	pathParts[0] = "/unpinAllChatMessages"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6332,7 +6502,9 @@ func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMes
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/unpinChatMessage"
+	var pathParts [1]string
+	pathParts[0] = "/unpinChatMessage"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)
@@ -6401,7 +6573,9 @@ func (c *Client) sendUploadStickerFile(ctx context.Context, request *UploadStick
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/uploadStickerFile"
+	var pathParts [1]string
+	pathParts[0] = "/uploadStickerFile"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

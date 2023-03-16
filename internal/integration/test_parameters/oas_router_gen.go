@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -75,7 +77,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleComplicatedParameterNameGetRequest([0]string{}, w, r)
+							s.handleComplicatedParameterNameGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -100,7 +102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "GET":
 							s.handleContentParametersRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -118,7 +120,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleCookieParameterRequest([0]string{}, w, r)
+							s.handleCookieParameterRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -137,7 +139,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleHeaderParameterRequest([0]string{}, w, r)
+						s.handleHeaderParameterRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -166,7 +168,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleObjectCookieParameterRequest([0]string{}, w, r)
+							s.handleObjectCookieParameterRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -184,13 +186,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleObjectQueryParameterRequest([0]string{}, w, r)
+							s.handleObjectQueryParameterRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
 
 						return
 					}
+				}
+			case 'p': // Prefix: "pathParameter/"
+				if l := len("pathParameter/"); len(elem) >= l && elem[0:l] == "pathParameter/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "value"
+				// Leaf parameter
+				args[0] = elem
+				elem = ""
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handlePathParameterRequest([1]string{
+							args[0],
+						}, elemIsEscaped, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
+
+					return
 				}
 			case 's': // Prefix: "same_name/"
 				if l := len("same_name/"); len(elem) >= l && elem[0:l] == "same_name/" {
@@ -210,7 +237,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "GET":
 						s.handleSameNameRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -451,6 +478,32 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						default:
 							return
 						}
+					}
+				}
+			case 'p': // Prefix: "pathParameter/"
+				if l := len("pathParameter/"); len(elem) >= l && elem[0:l] == "pathParameter/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "value"
+				// Leaf parameter
+				args[0] = elem
+				elem = ""
+
+				if len(elem) == 0 {
+					switch method {
+					case "GET":
+						// Leaf: PathParameter
+						r.name = "PathParameter"
+						r.operationID = "pathParameter"
+						r.pathPattern = "/pathParameter/{value}"
+						r.args = args
+						r.count = 1
+						return r, true
+					default:
+						return
 					}
 				}
 			case 's': // Prefix: "same_name/"

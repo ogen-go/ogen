@@ -141,15 +141,15 @@
         }
       }
     },
-    "/headerParameter": {
+    "/pathParameter/{value}": {
       "get": {
-        "description": "Test for header param",
-        "operationId": "headerParameter",
+        "description": "Test for path param",
+        "operationId": "pathParameter",
         "parameters": [
           {
-            "in": "header",
+            "name": "value",
+            "in": "path",
             "required": true,
-            "name": "X-Auth-Token",
             "schema": {
               "type": "string"
             }
@@ -157,11 +157,39 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns sha256 of header value",
+            "description": "Returns path value",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Hash"
+                  "$ref": "#/components/schemas/Value"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/headerParameter": {
+      "get": {
+        "description": "Test for header param",
+        "operationId": "headerParameter",
+        "parameters": [
+          {
+            "name": "X-Value",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns header value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Value"
                 }
               }
             }
@@ -175,9 +203,9 @@
         "operationId": "cookieParameter",
         "parameters": [
           {
+            "name": "value",
             "in": "cookie",
             "required": true,
-            "name": "value",
             "schema": {
               "type": "string"
             }
@@ -185,11 +213,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns sha256 of cookie value",
+            "description": "Returns cookie value",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Hash"
+                  "$ref": "#/components/schemas/Value"
                 }
               }
             }
@@ -280,21 +308,14 @@
   },
   "components": {
     "schemas": {
-      "Hash": {
+      "Value": {
         "type": "object",
         "required": [
-          "raw",
-          "hex"
+          "value"
         ],
         "properties": {
-          "raw": {
-            "type": "string",
-            "format": "byte"
-          },
-          "hex": {
-            "type": "string",
-            "minLength": 64,
-            "maxLength": 64
+          "value": {
+            "type": "string"
           }
         }
       },

@@ -22,7 +22,7 @@ import (
 // handlePublishEventRequest handles publishEvent operation.
 //
 // POST /event
-func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -128,7 +128,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 }
 
 // handleStatusWebhookRequest handles statusWebhook operation.
-func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("statusWebhook"),
 		otelogen.WebhookName("status"),
@@ -206,7 +206,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 }
 
 // handleUpdateDeleteRequest handles DELETE update operation.
-func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.WebhookName("update"),
 	}
@@ -283,7 +283,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 }
 
 // handleUpdateWebhookRequest handles updateWebhook operation.
-func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updateWebhook"),
 		otelogen.WebhookName("update"),
@@ -318,7 +318,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 			ID:   "updateWebhook",
 		}
 	)
-	params, err := decodeUpdateWebhookParams(args, r)
+	params, err := decodeUpdateWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,

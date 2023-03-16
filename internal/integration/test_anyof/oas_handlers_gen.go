@@ -19,7 +19,7 @@ import (
 // handleIntegerNumberRequest handles integerNumber operation.
 //
 // GET /integerNumber
-func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -100,7 +100,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 // handleJaegerAnyOfRequest handles jaegerAnyOf operation.
 //
 // GET /jaegerAnyOf
-func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -181,7 +181,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 // handleOneUUIDRequest handles oneUUID operation.
 //
 // GET /oneUUID
-func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
 		semconv.HTTPMethodKey.String("GET"),

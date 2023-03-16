@@ -111,7 +111,9 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/disjointSecurity"
+	var pathParts [1]string
+	pathParts[0] = "/disjointSecurity"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -244,7 +246,9 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/intersectSecurity"
+	var pathParts [1]string
+	pathParts[0] = "/intersectSecurity"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -366,7 +370,9 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/optionalSecurity"
+	var pathParts [1]string
+	pathParts[0] = "/optionalSecurity"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

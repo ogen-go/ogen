@@ -45,7 +45,7 @@ func unpackAPICaptcha2chcaptchaIDGetParams(packed middleware.Parameters) (params
 	return params
 }
 
-func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
+func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	if err := func() error {
@@ -173,7 +173,7 @@ func unpackAPICaptcha2chcaptchaShowGetParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
+func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: id.
 	if err := func() error {
@@ -255,13 +255,17 @@ func unpackAPICaptchaAppIDPublicKeyGetParams(packed middleware.Parameters) (para
 	return params
 }
 
-func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
+func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: public_key.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -437,7 +441,7 @@ func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
+func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	if err := func() error {
@@ -578,7 +582,7 @@ func unpackAPICaptchaRecaptchaIDGetParams(packed middleware.Parameters) (params 
 	return params
 }
 
-func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
+func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	if err := func() error {
@@ -715,7 +719,7 @@ func unpackAPIDislikeGetParams(packed middleware.Parameters) (params APIDislikeG
 	return params
 }
 
-func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDislikeGetParams, _ error) {
+func decodeAPIDislikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APIDislikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	if err := func() error {
@@ -835,7 +839,7 @@ func unpackAPILikeGetParams(packed middleware.Parameters) (params APILikeGetPara
 	return params
 }
 
-func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetParams, _ error) {
+func decodeAPILikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (params APILikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	if err := func() error {
@@ -964,12 +968,16 @@ func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed middleware.Parameters)
 	return params
 }
 
-func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
+func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, argsEscaped bool, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1008,9 +1016,13 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	}
 	// Decode path: thread.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1066,9 +1078,13 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	}
 	// Decode path: num.
 	if err := func() error {
-		param, err := url.PathUnescape(args[2])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1151,12 +1167,16 @@ func unpackAPIMobileV2InfoBoardThreadGetParams(packed middleware.Parameters) (pa
 	return params
 }
 
-func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
+func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, argsEscaped bool, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1195,9 +1215,13 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: thread.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1280,12 +1304,16 @@ func unpackAPIMobileV2PostBoardNumGetParams(packed middleware.Parameters) (param
 	return params
 }
 
-func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
+func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, argsEscaped bool, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1324,9 +1352,13 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: num.
 	if err := func() error {
-		param, err := url.PathUnescape(args[1])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1401,7 +1433,7 @@ func unpackUserPassloginPostParams(packed middleware.Parameters) (params UserPas
 	return params
 }
 
-func decodeUserPassloginPostParams(args [0]string, r *http.Request) (params UserPassloginPostParams, _ error) {
+func decodeUserPassloginPostParams(args [0]string, argsEscaped bool, r *http.Request) (params UserPassloginPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: json.
 	{

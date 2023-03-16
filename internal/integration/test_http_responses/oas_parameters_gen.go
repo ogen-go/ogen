@@ -28,7 +28,7 @@ func unpackCombinedParams(packed middleware.Parameters) (params CombinedParams) 
 	return params
 }
 
-func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParams, _ error) {
+func decodeCombinedParams(args [0]string, argsEscaped bool, r *http.Request) (params CombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
 	if err := func() error {
@@ -93,7 +93,7 @@ func unpackHeadersCombinedParams(packed middleware.Parameters) (params HeadersCo
 	return params
 }
 
-func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params HeadersCombinedParams, _ error) {
+func decodeHeadersCombinedParams(args [0]string, argsEscaped bool, r *http.Request) (params HeadersCombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
 	if err := func() error {
@@ -158,7 +158,7 @@ func unpackIntersectPatternCodeParams(packed middleware.Parameters) (params Inte
 	return params
 }
 
-func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params IntersectPatternCodeParams, _ error) {
+func decodeIntersectPatternCodeParams(args [0]string, argsEscaped bool, r *http.Request) (params IntersectPatternCodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: code.
 	if err := func() error {
@@ -215,7 +215,7 @@ func unpackStreamJSONParams(packed middleware.Parameters) (params StreamJSONPara
 	return params
 }
 
-func decodeStreamJSONParams(args [0]string, r *http.Request) (params StreamJSONParams, _ error) {
+func decodeStreamJSONParams(args [0]string, argsEscaped bool, r *http.Request) (params StreamJSONParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
 	if err := func() error {

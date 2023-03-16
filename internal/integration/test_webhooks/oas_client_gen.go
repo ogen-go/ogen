@@ -113,7 +113,9 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/event"
+	var pathParts [1]string
+	pathParts[0] = "/event"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "POST", u, nil)

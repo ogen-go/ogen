@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -52,7 +54,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(elem) == 0 {
 				switch r.Method {
 				case "GET":
-					s.handleMetaRootRequest([0]string{}, w, r)
+					s.handleMetaRootRequest([0]string{}, elemIsEscaped, w, r)
 				default:
 					s.notAllowed(w, r, "GET")
 				}
@@ -81,7 +83,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleAppsGetAuthenticatedRequest([0]string{}, w, r)
+							s.handleAppsGetAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -122,7 +124,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleAppsCreateFromManifestRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -163,9 +165,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleAppsGetWebhookConfigForAppRequest([0]string{}, w, r)
+										s.handleAppsGetWebhookConfigForAppRequest([0]string{}, elemIsEscaped, w, r)
 									case "PATCH":
-										s.handleAppsUpdateWebhookConfigForAppRequest([0]string{}, w, r)
+										s.handleAppsUpdateWebhookConfigForAppRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,PATCH")
 									}
@@ -182,7 +184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleAppsListWebhookDeliveriesRequest([0]string{}, w, r)
+										s.handleAppsListWebhookDeliveriesRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -211,7 +213,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleAppsGetWebhookDeliveryRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -232,7 +234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleAppsRedeliverWebhookDeliveryRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -263,7 +265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "DELETE":
 									s.handleAppsDeleteInstallationRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE")
 								}
@@ -295,7 +297,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleAppsCreateInstallationAccessTokenRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -315,11 +317,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "DELETE":
 											s.handleAppsUnsuspendInstallationRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleAppsSuspendInstallationRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,PUT")
 										}
@@ -350,7 +352,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleOAuthAuthorizationsListGrantsRequest([0]string{}, w, r)
+									s.handleOAuthAuthorizationsListGrantsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -376,11 +378,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleOAuthAuthorizationsDeleteGrantRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "GET":
 										s.handleOAuthAuthorizationsGetGrantRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,GET")
 									}
@@ -426,7 +428,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleAppsDeleteAuthorizationRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE")
 									}
@@ -445,15 +447,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleAppsDeleteTokenRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PATCH":
 										s.handleAppsResetTokenRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleAppsCheckTokenRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,PATCH,POST")
 									}
@@ -474,7 +476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleAppsScopeTokenRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -502,7 +504,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleAppsGetBySlugRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -520,9 +522,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleOAuthAuthorizationsListAuthorizationsRequest([0]string{}, w, r)
+							s.handleOAuthAuthorizationsListAuthorizationsRequest([0]string{}, elemIsEscaped, w, r)
 						case "POST":
-							s.handleOAuthAuthorizationsCreateAuthorizationRequest([0]string{}, w, r)
+							s.handleOAuthAuthorizationsCreateAuthorizationRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,POST")
 						}
@@ -562,7 +564,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "PUT":
 									s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "PUT")
 								}
@@ -589,7 +591,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest([2]string{
 											args[0],
 											args[1],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "PUT")
 									}
@@ -609,15 +611,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "DELETE":
 								s.handleOAuthAuthorizationsDeleteAuthorizationRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "GET":
 								s.handleOAuthAuthorizationsGetAuthorizationRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "PATCH":
 								s.handleOAuthAuthorizationsUpdateAuthorizationRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "DELETE,GET,PATCH")
 							}
@@ -636,7 +638,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(elem) == 0 {
 					switch r.Method {
 					case "GET":
-						s.handleCodesOfConductGetAllCodesOfConductRequest([0]string{}, w, r)
+						s.handleCodesOfConductGetAllCodesOfConductRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -662,7 +664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "GET":
 							s.handleCodesOfConductGetConductCodeRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -692,7 +694,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleEmojisGetRequest([0]string{}, w, r)
+							s.handleEmojisGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -764,11 +766,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,PUT")
 										}
@@ -799,11 +801,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,PUT")
 												}
@@ -830,12 +832,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,PUT")
 													}
@@ -856,11 +858,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,PUT")
 												}
@@ -892,11 +894,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "POST":
 												s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,POST")
 											}
@@ -926,17 +928,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PATCH":
 													s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,PATCH")
 												}
@@ -968,12 +970,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,PUT")
 														}
@@ -1001,13 +1003,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,PUT")
 															}
@@ -1028,12 +1030,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,PUT")
 														}
@@ -1061,13 +1063,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,PUT")
 															}
@@ -1090,7 +1092,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -1122,7 +1124,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -1153,7 +1155,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1173,7 +1175,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1194,12 +1196,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET")
 												}
@@ -1222,7 +1224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleEnterpriseAdminGetAuditLogRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1254,7 +1256,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleBillingGetGithubActionsBillingGheRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1274,7 +1276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleBillingGetGithubPackagesBillingGheRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1294,7 +1296,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleBillingGetSharedStorageBillingGheRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1315,7 +1317,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleActivityListPublicEventsRequest([0]string{}, w, r)
+							s.handleActivityListPublicEventsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -1334,7 +1336,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleActivityGetFeedsRequest([0]string{}, w, r)
+						s.handleActivityGetFeedsRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -1362,9 +1364,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleGistsListRequest([0]string{}, w, r)
+							s.handleGistsListRequest([0]string{}, elemIsEscaped, w, r)
 						case "POST":
-							s.handleGistsCreateRequest([0]string{}, w, r)
+							s.handleGistsCreateRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,POST")
 						}
@@ -1394,7 +1396,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleGistsListPublicRequest([0]string{}, w, r)
+									s.handleGistsListPublicRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1412,7 +1414,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleGistsListStarredRequest([0]string{}, w, r)
+									s.handleGistsListStarredRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1434,11 +1436,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "DELETE":
 								s.handleGistsDeleteRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "GET":
 								s.handleGistsGetRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "DELETE,GET")
 							}
@@ -1480,11 +1482,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleGistsListCommentsRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleGistsCreateCommentRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -1511,17 +1513,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleGistsDeleteCommentRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleGistsGetCommentRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PATCH":
 												s.handleGistsUpdateCommentRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PATCH")
 											}
@@ -1542,7 +1544,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleGistsListCommitsRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1563,11 +1565,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleGistsListForksRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleGistsForkRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,POST")
 									}
@@ -1587,15 +1589,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleGistsUnstarRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "GET":
 										s.handleGistsCheckIsStarredRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PUT":
 										s.handleGistsStarRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,GET,PUT")
 									}
@@ -1615,7 +1617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleGistsGetRevisionRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1634,7 +1636,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleGitignoreGetAllTemplatesRequest([0]string{}, w, r)
+							s.handleGitignoreGetAllTemplatesRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -1660,7 +1662,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleGitignoreGetTemplateRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -1702,7 +1704,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleAppsListReposAccessibleToInstallationRequest([0]string{}, w, r)
+								s.handleAppsListReposAccessibleToInstallationRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -1720,7 +1722,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "DELETE":
-								s.handleAppsRevokeInstallationAccessTokenRequest([0]string{}, w, r)
+								s.handleAppsRevokeInstallationAccessTokenRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "DELETE")
 							}
@@ -1739,7 +1741,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleIssuesListRequest([0]string{}, w, r)
+							s.handleIssuesListRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -1757,7 +1759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(elem) == 0 {
 					switch r.Method {
 					case "GET":
-						s.handleLicensesGetAllCommonlyUsedRequest([0]string{}, w, r)
+						s.handleLicensesGetAllCommonlyUsedRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -1783,7 +1785,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "GET":
 							s.handleLicensesGetRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -1823,7 +1825,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "POST":
-								s.handleMarkdownRenderRequest([0]string{}, w, r)
+								s.handleMarkdownRenderRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -1842,7 +1844,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleMarkdownRenderRawRequest([0]string{}, w, r)
+									s.handleMarkdownRenderRawRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1879,7 +1881,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handleAppsGetSubscriptionPlanForAccountRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1896,7 +1898,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleAppsListPlansRequest([0]string{}, w, r)
+									s.handleAppsListPlansRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1937,7 +1939,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleAppsListAccountsForPlanRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -1975,7 +1977,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleAppsGetSubscriptionPlanForAccountStubbedRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -1992,7 +1994,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleAppsListPlansStubbedRequest([0]string{}, w, r)
+										s.handleAppsListPlansStubbedRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -2033,7 +2035,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleAppsListAccountsForPlanStubbedRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2056,7 +2058,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleMetaGetRequest([0]string{}, w, r)
+							s.handleMetaGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -2129,7 +2131,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleActivityListPublicEventsForRepoNetworkRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -2148,9 +2150,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleActivityListNotificationsForAuthenticatedUserRequest([0]string{}, w, r)
+							s.handleActivityListNotificationsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 						case "PUT":
-							s.handleActivityMarkNotificationsAsReadRequest([0]string{}, w, r)
+							s.handleActivityMarkNotificationsAsReadRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,PUT")
 						}
@@ -2179,11 +2181,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleActivityGetThreadRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "PATCH":
 								s.handleActivityMarkThreadAsReadRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,PATCH")
 							}
@@ -2204,15 +2206,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "DELETE":
 									s.handleActivityDeleteThreadSubscriptionRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleActivitySetThreadSubscriptionRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PUT")
 								}
@@ -2244,7 +2246,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleMetaGetOctocatRequest([0]string{}, w, r)
+							s.handleMetaGetOctocatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -2273,7 +2275,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleOrgsListRequest([0]string{}, w, r)
+								s.handleOrgsListRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -2301,7 +2303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleOrgsGetRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -2354,11 +2356,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleActionsGetGithubActionsPermissionsOrganizationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleActionsSetGithubActionsPermissionsOrganizationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,PUT")
 											}
@@ -2389,11 +2391,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PUT")
 													}
@@ -2420,12 +2422,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,PUT")
 														}
@@ -2446,11 +2448,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleActionsGetAllowedActionsOrganizationRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleActionsSetAllowedActionsOrganizationRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PUT")
 													}
@@ -2482,11 +2484,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleActionsListSelfHostedRunnerGroupsForOrgRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -2516,17 +2518,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET,PATCH")
 													}
@@ -2558,12 +2560,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,PUT")
 															}
@@ -2591,13 +2593,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "PUT":
 																	s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,PUT")
 																}
@@ -2618,12 +2620,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,PUT")
 															}
@@ -2651,13 +2653,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "PUT":
 																	s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,PUT")
 																}
@@ -2680,7 +2682,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleActionsListSelfHostedRunnersForOrgRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -2712,7 +2714,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "GET":
 															s.handleActionsListRunnerApplicationsForOrgRequest([1]string{
 																args[0],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -2743,7 +2745,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleActionsCreateRegistrationTokenForOrgRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2763,7 +2765,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleActionsCreateRemoveTokenForOrgRequest([1]string{
 																	args[0],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2784,12 +2786,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsDeleteSelfHostedRunnerFromOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleActionsGetSelfHostedRunnerForOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET")
 													}
@@ -2810,7 +2812,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleActionsListOrgSecretsRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -2842,7 +2844,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "GET":
 														s.handleActionsGetOrgPublicKeyRequest([1]string{
 															args[0],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -2865,17 +2867,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleActionsDeleteOrgSecretRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleActionsGetOrgSecretRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleActionsCreateOrUpdateOrgSecretRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,PUT")
 												}
@@ -2896,12 +2898,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsListSelectedReposForOrgSecretRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleActionsSetSelectedReposForOrgSecretRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PUT")
 													}
@@ -2929,13 +2931,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleActionsAddSelectedRepoToOrgSecretRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,PUT")
 														}
@@ -2959,7 +2961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleOrgsGetAuditLogRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -2979,7 +2981,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListBlockedUsersRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3006,17 +3008,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleOrgsUnblockUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handleOrgsCheckBlockedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleOrgsBlockUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET,PUT")
 										}
@@ -3036,7 +3038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListSamlSSOAuthorizationsRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3063,7 +3065,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleOrgsRemoveSamlSSOAuthorizationRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE")
 										}
@@ -3084,7 +3086,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleActivityListPublicOrgEventsRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3104,7 +3106,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListFailedInvitationsRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3123,11 +3125,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListWebhooksRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleOrgsCreateWebhookRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,POST")
 									}
@@ -3157,17 +3159,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleOrgsDeleteWebhookRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handleOrgsGetWebhookRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PATCH":
 											s.handleOrgsUpdateWebhookRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET,PATCH")
 										}
@@ -3200,12 +3202,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleOrgsGetWebhookConfigForOrgRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PATCH":
 													s.handleOrgsUpdateWebhookConfigForOrgRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,PATCH")
 												}
@@ -3225,7 +3227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleOrgsListWebhookDeliveriesRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -3256,7 +3258,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3279,7 +3281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3302,7 +3304,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleOrgsPingWebhookRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -3347,11 +3349,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "DELETE":
 												s.handleInteractionsRemoveRestrictionsForOrgRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleInteractionsSetRestrictionsForOrgRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,PUT")
 											}
@@ -3370,11 +3372,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleOrgsListPendingInvitationsRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "POST":
 												s.handleOrgsCreateInvitationRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,POST")
 											}
@@ -3404,7 +3406,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleOrgsCancelInvitationRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE")
 												}
@@ -3426,7 +3428,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleOrgsListInvitationTeamsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -3449,7 +3451,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleIssuesListForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3480,7 +3482,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleOrgsListMembersRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3507,12 +3509,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleOrgsRemoveMemberRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleOrgsCheckMembershipForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET")
 											}
@@ -3538,17 +3540,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleOrgsRemoveMembershipForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleOrgsGetMembershipForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleOrgsSetMembershipForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PUT")
 											}
@@ -3568,11 +3570,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleMigrationsListForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleMigrationsStartForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -3602,7 +3604,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleMigrationsGetStatusForOrgRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -3635,12 +3637,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleMigrationsDeleteArchiveForOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleMigrationsDownloadArchiveForOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET")
 													}
@@ -3693,7 +3695,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE")
 															}
@@ -3715,7 +3717,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleMigrationsListReposForOrgRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3739,7 +3741,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListOutsideCollaboratorsRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -3766,12 +3768,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleOrgsRemoveOutsideCollaboratorRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleOrgsConvertMemberToOutsideCollaboratorRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,PUT")
 										}
@@ -3802,7 +3804,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handlePackagesListPackagesForOrganizationRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -3853,13 +3855,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handlePackagesGetPackageForOrganizationRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET")
 												}
@@ -3893,7 +3895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3914,7 +3916,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -3946,14 +3948,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handlePackagesGetPackageVersionForOrganizationRequest([4]string{
 																	args[0],
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET")
 															}
@@ -3977,7 +3979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[1],
 																		args[2],
 																		args[3],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -4003,11 +4005,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleProjectsListForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleProjectsCreateForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -4026,7 +4028,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleOrgsListPublicMembersRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -4053,17 +4055,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleOrgsCheckPublicMembershipForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PUT")
 											}
@@ -4085,11 +4087,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleReposListForOrgRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleReposCreateInOrgRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,POST")
 									}
@@ -4120,7 +4122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleSecretScanningListAlertsForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -4151,7 +4153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetGithubActionsBillingOrgRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4171,7 +4173,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetGithubPackagesBillingOrgRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4191,7 +4193,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetSharedStorageBillingOrgRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -4224,7 +4226,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleTeamsListIdpGroupsForOrgRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -4243,11 +4245,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleTeamsListRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleTeamsCreateRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -4277,17 +4279,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleTeamsDeleteInOrgRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleTeamsGetByNameRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PATCH":
 												s.handleTeamsUpdateInOrgRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PATCH")
 											}
@@ -4319,12 +4321,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleTeamsListDiscussionsInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "POST":
 														s.handleTeamsCreateDiscussionInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,POST")
 													}
@@ -4355,19 +4357,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleTeamsGetDiscussionInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleTeamsUpdateDiscussionInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PATCH")
 														}
@@ -4400,13 +4402,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handleTeamsCreateDiscussionCommentInOrgRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -4438,21 +4440,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "GET":
 																		s.handleTeamsGetDiscussionCommentInOrgRequest([4]string{
 																			args[0],
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "PATCH":
 																		s.handleTeamsUpdateDiscussionCommentInOrgRequest([4]string{
 																			args[0],
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE,GET,PATCH")
 																	}
@@ -4475,14 +4477,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[1],
 																				args[2],
 																				args[3],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "POST":
 																			s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest([4]string{
 																				args[0],
 																				args[1],
 																				args[2],
 																				args[3],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET,POST")
 																		}
@@ -4512,7 +4514,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[2],
 																					args[3],
 																					args[4],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE")
 																			}
@@ -4536,13 +4538,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handleReactionsCreateForTeamDiscussionInOrgRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -4571,7 +4573,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE")
 																	}
@@ -4596,7 +4598,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleTeamsListPendingInvitationsInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4616,7 +4618,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleTeamsListMembersInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4644,19 +4646,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleTeamsGetMembershipForUserInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PUT")
 														}
@@ -4677,7 +4679,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleTeamsListProjectsInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4705,19 +4707,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleTeamsCheckPermissionsForProjectInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PUT")
 														}
@@ -4738,7 +4740,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleTeamsListReposInOrgRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -4787,21 +4789,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handleTeamsCheckPermissionsForRepoInOrgRequest([4]string{
 																	args[0],
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest([4]string{
 																	args[0],
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET,PUT")
 															}
@@ -4835,12 +4837,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleTeamsListIdpGroupsInOrgRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,PATCH")
 														}
@@ -4861,7 +4863,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleTeamsListChildInOrgRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -4920,15 +4922,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "DELETE":
 								s.handleProjectsDeleteCardRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "GET":
 								s.handleProjectsGetCardRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "PATCH":
 								s.handleProjectsUpdateCardRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "DELETE,GET,PATCH")
 							}
@@ -4949,7 +4951,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleProjectsMoveCardRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -4972,15 +4974,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "DELETE":
 							s.handleProjectsDeleteColumnRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						case "GET":
 							s.handleProjectsGetColumnRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						case "PATCH":
 							s.handleProjectsUpdateColumnRequest([1]string{
 								args[0],
-							}, w, r)
+							}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "DELETE,GET,PATCH")
 						}
@@ -5012,7 +5014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handleProjectsListCardsRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -5032,7 +5034,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleProjectsMoveColumnRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -5056,15 +5058,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "DELETE":
 						s.handleProjectsDeleteRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "GET":
 						s.handleProjectsGetRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "PATCH":
 						s.handleProjectsUpdateRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "DELETE,GET,PATCH")
 					}
@@ -5095,7 +5097,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleProjectsListCollaboratorsRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -5125,12 +5127,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleProjectsRemoveCollaboratorRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleProjectsAddCollaboratorRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,PUT")
 								}
@@ -5152,7 +5154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleProjectsGetPermissionForUserRequest([2]string{
 											args[0],
 											args[1],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -5174,11 +5176,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleProjectsListColumnsRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "POST":
 								s.handleProjectsCreateColumnRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,POST")
 							}
@@ -5209,7 +5211,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleRateLimitGetRequest([0]string{}, w, r)
+							s.handleRateLimitGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -5245,7 +5247,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "DELETE":
 								s.handleReactionsDeleteLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "DELETE")
 							}
@@ -5305,17 +5307,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReposDeleteRequest([2]string{
 											args[0],
 											args[1],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "GET":
 										s.handleReposGetRequest([2]string{
 											args[0],
 											args[1],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PATCH":
 										s.handleReposUpdateRequest([2]string{
 											args[0],
 											args[1],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,GET,PATCH")
 									}
@@ -5369,7 +5371,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsListArtifactsForRepoRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5400,13 +5402,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleActionsGetArtifactRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET")
 														}
@@ -5435,7 +5437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -5467,7 +5469,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -5490,7 +5492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5511,12 +5513,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsGetGithubActionsPermissionsRepositoryRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleActionsSetGithubActionsPermissionsRepositoryRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PUT")
 													}
@@ -5538,12 +5540,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleActionsGetAllowedActionsRepositoryRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleActionsSetAllowedActionsRepositoryRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,PUT")
 														}
@@ -5575,7 +5577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleActionsListSelfHostedRunnersForRepoRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5608,7 +5610,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleActionsListRunnerApplicationsForRepoRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -5640,7 +5642,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleActionsCreateRegistrationTokenForRepoRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -5661,7 +5663,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		s.handleActionsCreateRemoveTokenForRepoRequest([2]string{
 																			args[0],
 																			args[1],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -5683,13 +5685,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handleActionsGetSelfHostedRunnerForRepoRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET")
 															}
@@ -5710,7 +5712,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleActionsListWorkflowRunsForRepoRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -5741,13 +5743,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handleActionsGetWorkflowRunRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET")
 															}
@@ -5803,7 +5805,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "GET")
 																			}
@@ -5825,7 +5827,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "POST")
 																			}
@@ -5848,7 +5850,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -5871,7 +5873,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -5893,7 +5895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -5915,13 +5917,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "GET":
 																		s.handleActionsDownloadWorkflowRunLogsRequest([3]string{
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE,GET")
 																	}
@@ -5943,7 +5945,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "POST")
 																	}
@@ -5976,7 +5978,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -5998,7 +6000,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -6021,7 +6023,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -6045,7 +6047,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsListRepoSecretsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6078,7 +6080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleActionsGetRepoPublicKeyRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -6099,19 +6101,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleActionsGetRepoSecretRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleActionsCreateOrUpdateRepoSecretRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PUT")
 														}
@@ -6133,7 +6135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsListRepoWorkflowsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6154,7 +6156,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleIssuesListAssigneesRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6182,7 +6184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6214,12 +6216,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposListAutolinksRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "POST":
 														s.handleReposCreateAutolinkRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,POST")
 													}
@@ -6247,13 +6249,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleReposGetAutolinkRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET")
 														}
@@ -6275,12 +6277,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposDisableAutomatedSecurityFixesRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleReposEnableAutomatedSecurityFixesRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,PUT")
 													}
@@ -6302,7 +6304,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReposListBranchesRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -6333,7 +6335,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -6366,19 +6368,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleReposGetBranchProtectionRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleReposUpdateBranchProtectionRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PUT")
 														}
@@ -6412,19 +6414,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "GET":
 																	s.handleReposGetAdminBranchProtectionRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handleReposSetAdminBranchProtectionRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,GET,POST")
 																}
@@ -6468,19 +6470,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "GET":
 																			s.handleReposGetPullRequestReviewProtectionRequest([3]string{
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		case "PATCH":
 																			s.handleReposUpdatePullRequestReviewProtectionRequest([3]string{
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "DELETE,GET,PATCH")
 																		}
@@ -6513,19 +6515,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleReposGetCommitSignatureProtectionRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleReposCreateCommitSignatureProtectionRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,POST")
 																			}
@@ -6546,19 +6548,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleReposGetStatusChecksProtectionRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PATCH":
 																				s.handleReposUpdateStatusCheckProtectionRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,PATCH")
 																			}
@@ -6581,25 +6583,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				case "GET":
 																					s.handleReposGetAllStatusCheckContextsRequest([3]string{
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				case "POST":
 																					s.handleReposAddStatusCheckContextsRequest([3]string{
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				case "PUT":
 																					s.handleReposSetStatusCheckContextsRequest([3]string{
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				default:
 																					s.notAllowed(w, r, "DELETE,GET,POST,PUT")
 																				}
@@ -6623,13 +6625,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "GET":
 																		s.handleReposGetAccessRestrictionsRequest([3]string{
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE,GET")
 																	}
@@ -6663,25 +6665,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleReposGetAppsWithAccessToProtectedBranchRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleReposAddAppAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PUT":
 																				s.handleReposSetAppAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,POST,PUT")
 																			}
@@ -6703,25 +6705,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleReposGetTeamsWithAccessToProtectedBranchRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleReposAddTeamAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PUT":
 																				s.handleReposSetTeamAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,POST,PUT")
 																			}
@@ -6743,25 +6745,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "GET":
 																				s.handleReposGetUsersWithAccessToProtectedBranchRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleReposAddUserAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "PUT":
 																				s.handleReposSetUserAccessRestrictionsRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "DELETE,GET,POST,PUT")
 																			}
@@ -6788,7 +6790,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -6843,7 +6845,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -6866,7 +6868,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -6887,7 +6889,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleChecksCreateSuiteRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -6920,7 +6922,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleChecksSetSuitesPreferencesRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "PATCH")
 															}
@@ -6944,7 +6946,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -6978,7 +6980,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -7000,7 +7002,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7057,7 +7059,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleCodeScanningListAlertsForRepoRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7088,13 +7090,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "PATCH":
 																	s.handleCodeScanningUpdateAlertRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,PATCH")
 																}
@@ -7117,7 +7119,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET")
 																	}
@@ -7139,7 +7141,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleCodeScanningListRecentAnalysesRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7167,13 +7169,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "GET":
 																	s.handleCodeScanningGetAnalysisRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,GET")
 																}
@@ -7195,7 +7197,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleCodeScanningUploadSarifRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -7223,7 +7225,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7245,7 +7247,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposListCollaboratorsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -7276,19 +7278,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleReposCheckCollaboratorRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PUT":
 															s.handleReposAddCollaboratorRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PUT")
 														}
@@ -7311,7 +7313,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7355,7 +7357,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposListCommitCommentsForRepoRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7386,19 +7388,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "GET":
 																	s.handleReposGetCommitCommentRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "PATCH":
 																	s.handleReposUpdateCommitCommentRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,GET,PATCH")
 																}
@@ -7420,13 +7422,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "POST":
 																		s.handleReactionsCreateForCommitCommentRequest([3]string{
 																			args[0],
 																			args[1],
 																			args[2],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "GET,POST")
 																	}
@@ -7455,7 +7457,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[1],
 																				args[2],
 																				args[3],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "DELETE")
 																		}
@@ -7478,7 +7480,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposListCommitsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7509,7 +7511,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -7543,7 +7545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -7587,7 +7589,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				default:
 																					s.notAllowed(w, r, "GET")
 																				}
@@ -7609,7 +7611,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																						args[0],
 																						args[1],
 																						args[2],
-																					}, w, r)
+																					}, elemIsEscaped, w, r)
 																				default:
 																					s.notAllowed(w, r, "GET")
 																				}
@@ -7632,13 +7634,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			case "POST":
 																				s.handleReposCreateCommitCommentRequest([3]string{
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "GET,POST")
 																			}
@@ -7661,7 +7663,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -7682,7 +7684,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																				args[2],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "GET")
 																		}
@@ -7705,7 +7707,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[0],
 																					args[1],
 																					args[2],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "GET")
 																			}
@@ -7730,7 +7732,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetCommunityProfileMetricsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -7758,7 +7760,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -7823,7 +7825,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -7851,13 +7853,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handleReposCreateOrUpdateFileContentsRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,PUT")
 															}
@@ -7879,7 +7881,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposListContributorsRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -7913,12 +7915,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposListDeploymentsRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleReposCreateDeploymentRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -7949,13 +7951,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleReposGetDeploymentRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET")
 													}
@@ -7977,13 +7979,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "POST":
 															s.handleReposCreateDeploymentStatusRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,POST")
 														}
@@ -8012,7 +8014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8036,7 +8038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposCreateDispatchEventRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8075,7 +8077,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE")
 												}
@@ -8096,7 +8098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleActivityListRepoEventsRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -8118,12 +8120,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReposListForksRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "POST":
 												s.handleReposCreateForkRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,POST")
 											}
@@ -8155,7 +8157,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposCreateUsingTemplateRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -8186,7 +8188,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleGitCreateBlobRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8214,7 +8216,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8235,7 +8237,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleGitCreateCommitRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8263,7 +8265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8291,7 +8293,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -8329,7 +8331,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8349,7 +8351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleGitCreateRefRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8377,13 +8379,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PATCH":
 																s.handleGitUpdateRefRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,PATCH")
 															}
@@ -8416,7 +8418,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleGitCreateTagRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8444,7 +8446,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8465,7 +8467,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleGitCreateTreeRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8493,7 +8495,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8517,12 +8519,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReposListWebhooksRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "POST":
 												s.handleReposCreateWebhookRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,POST")
 											}
@@ -8553,19 +8555,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleReposGetWebhookRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PATCH":
 													s.handleReposUpdateWebhookRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,PATCH")
 												}
@@ -8599,13 +8601,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleReposUpdateWebhookConfigForRepoRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,PATCH")
 														}
@@ -8626,7 +8628,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8658,7 +8660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8682,7 +8684,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[1],
 																		args[2],
 																		args[3],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -8706,7 +8708,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8728,7 +8730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -8762,22 +8764,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleMigrationsCancelImportRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleMigrationsGetImportStatusRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PATCH":
 													s.handleMigrationsUpdateImportRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleMigrationsStartImportRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,PATCH,PUT")
 												}
@@ -8809,7 +8811,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleMigrationsGetCommitAuthorsRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -8837,7 +8839,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "PATCH")
 															}
@@ -8870,7 +8872,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleMigrationsGetLargeFilesRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -8891,7 +8893,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleMigrationsSetLfsPreferenceRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "PATCH")
 															}
@@ -8926,12 +8928,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleInteractionsRemoveRestrictionsForRepoRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleInteractionsSetRestrictionsForRepoRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,PUT")
 													}
@@ -8951,7 +8953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposListInvitationsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -8979,13 +8981,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleReposUpdateInvitationRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,PATCH")
 														}
@@ -9007,12 +9009,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleIssuesListForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleIssuesCreateRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -9044,7 +9046,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleIssuesListCommentsForRepoRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -9075,19 +9077,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handleIssuesGetCommentRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PATCH":
 																s.handleIssuesUpdateCommentRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET,PATCH")
 															}
@@ -9109,13 +9111,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handleReactionsCreateForIssueCommentRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -9144,7 +9146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE")
 																	}
@@ -9167,7 +9169,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleIssuesListEventsForRepoRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -9195,7 +9197,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -9220,13 +9222,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleIssuesUpdateRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PATCH")
 													}
@@ -9260,13 +9262,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "POST":
 																s.handleIssuesAddAssigneesRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,POST")
 															}
@@ -9288,13 +9290,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "POST":
 																s.handleIssuesCreateCommentRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,POST")
 															}
@@ -9326,13 +9328,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "GET":
 																	s.handleIssuesListLabelsOnIssueRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,GET")
 																}
@@ -9361,7 +9363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE")
 																	}
@@ -9384,13 +9386,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "PUT":
 																	s.handleIssuesLockRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,PUT")
 																}
@@ -9412,13 +9414,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "POST":
 																s.handleReactionsCreateForIssueRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,POST")
 															}
@@ -9447,7 +9449,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[1],
 																		args[2],
 																		args[3],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE")
 																}
@@ -9472,12 +9474,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReposListDeployKeysRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "POST":
 												s.handleReposCreateDeployKeyRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,POST")
 											}
@@ -9505,13 +9507,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleReposGetDeployKeyRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET")
 												}
@@ -9554,12 +9556,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleIssuesListLabelsForRepoRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "POST":
 														s.handleIssuesCreateLabelRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,POST")
 													}
@@ -9587,19 +9589,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleIssuesGetLabelRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleIssuesUpdateLabelRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PATCH")
 														}
@@ -9621,7 +9623,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposListLanguagesRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -9643,12 +9645,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposDisableLfsForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleReposEnableLfsForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,PUT")
 												}
@@ -9669,7 +9671,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleLicensesGetForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -9713,7 +9715,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposMergeUpstreamRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9734,7 +9736,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposMergeRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -9755,12 +9757,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleIssuesListMilestonesRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleIssuesCreateMilestoneRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -9791,19 +9793,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleIssuesGetMilestoneRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleIssuesUpdateMilestoneRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET,PATCH")
 													}
@@ -9826,7 +9828,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -9850,12 +9852,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleActivityListRepoNotificationsForAuthenticatedUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleActivityMarkRepoNotificationsAsReadRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET,PUT")
 											}
@@ -9886,17 +9888,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposDeletePagesSiteRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleReposGetPagesRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleReposCreatePagesSiteRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,POST")
 												}
@@ -9928,12 +9930,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposListPagesBuildsRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "POST":
 															s.handleReposRequestPagesBuildRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET,POST")
 														}
@@ -9966,7 +9968,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	s.handleReposGetLatestPagesBuildRequest([2]string{
 																		args[0],
 																		args[1],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -9987,7 +9989,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -10009,7 +10011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposGetPagesHealthCheckRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10032,12 +10034,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleProjectsListForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleProjectsCreateForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -10057,12 +10059,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handlePullsListRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handlePullsCreateRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -10094,7 +10096,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handlePullsListReviewCommentsForRepoRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10125,19 +10127,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handlePullsGetReviewCommentRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PATCH":
 																s.handlePullsUpdateReviewCommentRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET,PATCH")
 															}
@@ -10159,13 +10161,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handleReactionsCreateForPullRequestReviewCommentRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -10194,7 +10196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE")
 																	}
@@ -10221,13 +10223,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handlePullsUpdateRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PATCH")
 													}
@@ -10271,13 +10273,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handlePullsCreateReviewCommentRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -10321,7 +10323,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[1],
 																				args[2],
 																				args[3],
-																			}, w, r)
+																			}, elemIsEscaped, w, r)
 																		default:
 																			s.notAllowed(w, r, "POST")
 																		}
@@ -10345,7 +10347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET")
 																}
@@ -10368,7 +10370,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -10390,13 +10392,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "PUT":
 																s.handlePullsMergeRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,PUT")
 															}
@@ -10429,13 +10431,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "GET":
 																	s.handlePullsListRequestedReviewersRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "DELETE,GET")
 																}
@@ -10456,13 +10458,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																case "POST":
 																	s.handlePullsCreateReviewRequest([3]string{
 																		args[0],
 																		args[1],
 																		args[2],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "GET,POST")
 																}
@@ -10494,21 +10496,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "GET":
 																		s.handlePullsGetReviewRequest([4]string{
 																			args[0],
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	case "PUT":
 																		s.handlePullsUpdateReviewRequest([4]string{
 																			args[0],
 																			args[1],
 																			args[2],
 																			args[3],
-																		}, w, r)
+																		}, elemIsEscaped, w, r)
 																	default:
 																		s.notAllowed(w, r, "DELETE,GET,PUT")
 																	}
@@ -10543,7 +10545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[1],
 																					args[2],
 																					args[3],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "GET")
 																			}
@@ -10566,7 +10568,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[1],
 																					args[2],
 																					args[3],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "PUT")
 																			}
@@ -10589,7 +10591,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																					args[1],
 																					args[2],
 																					args[3],
-																				}, w, r)
+																				}, elemIsEscaped, w, r)
 																			default:
 																				s.notAllowed(w, r, "POST")
 																			}
@@ -10615,7 +10617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "PUT")
 															}
@@ -10650,7 +10652,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposGetReadmeRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10678,7 +10680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -10699,12 +10701,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposListReleasesRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleReposCreateReleaseRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -10743,19 +10745,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "GET":
 															s.handleReposGetReleaseAssetRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														case "PATCH":
 															s.handleReposUpdateReleaseAssetRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "DELETE,GET,PATCH")
 														}
@@ -10776,7 +10778,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposGetLatestReleaseRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10803,7 +10805,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -10827,19 +10829,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleReposGetReleaseRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleReposUpdateReleaseRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET,PATCH")
 													}
@@ -10873,13 +10875,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "POST":
 																s.handleReposUploadReleaseAssetRequest([3]string{
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET,POST")
 															}
@@ -10901,7 +10903,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																	args[2],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10936,7 +10938,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleSecretScanningListAlertsForRepoRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -10964,13 +10966,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PATCH":
 														s.handleSecretScanningUpdateAlertRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET,PATCH")
 													}
@@ -11025,7 +11027,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetCodeFrequencyStatsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11046,7 +11048,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetCommitActivityStatsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11067,7 +11069,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetContributorsStatsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11100,7 +11102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetParticipationStatsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11121,7 +11123,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetPunchCardStatsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11150,7 +11152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11183,7 +11185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActivityListWatchersForRepoRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11204,17 +11206,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActivityDeleteRepoSubscriptionRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handleActivityGetRepoSubscriptionRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "PUT":
 														s.handleActivitySetRepoSubscriptionRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET,PUT")
 													}
@@ -11259,7 +11261,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposListTagsRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11286,7 +11288,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11308,7 +11310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposListTeamsRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -11329,12 +11331,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReposGetAllTopicsRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleReposReplaceAllTopicsRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,PUT")
 												}
@@ -11377,7 +11379,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposGetClonesRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -11409,7 +11411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetTopPathsRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11430,7 +11432,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																s.handleReposGetTopReferrersRequest([2]string{
 																	args[0],
 																	args[1],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "GET")
 															}
@@ -11452,7 +11454,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReposGetViewsRequest([2]string{
 																args[0],
 																args[1],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -11474,7 +11476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReposTransferRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -11497,17 +11499,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReposDisableVulnerabilityAlertsRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleReposCheckVulnerabilityAlertsRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleReposEnableVulnerabilityAlertsRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PUT")
 											}
@@ -11534,7 +11536,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													args[0],
 													args[1],
 													args[2],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -11554,7 +11556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleReposListPublicRequest([0]string{}, w, r)
+									s.handleReposListPublicRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -11615,7 +11617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleActionsListEnvironmentSecretsRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -11648,7 +11650,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleActionsGetEnvironmentPublicKeyRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "GET")
 													}
@@ -11669,19 +11671,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handleActionsGetEnvironmentSecretRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "PUT":
 													s.handleActionsCreateOrUpdateEnvironmentSecretRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET,PUT")
 												}
@@ -11760,11 +11762,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,POST")
 									}
@@ -11791,22 +11793,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PATCH":
 											s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET,PATCH,PUT")
 										}
@@ -11826,11 +11828,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "POST":
 										s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,POST")
 									}
@@ -11857,22 +11859,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PATCH":
 											s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET,PATCH,PUT")
 										}
@@ -11921,7 +11923,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleScimDeleteUserFromOrgRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE")
 								}
@@ -11963,7 +11965,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleSearchCodeRequest([0]string{}, w, r)
+									s.handleSearchCodeRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -11981,7 +11983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleSearchCommitsRequest([0]string{}, w, r)
+									s.handleSearchCommitsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -12000,7 +12002,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleSearchIssuesAndPullRequestsRequest([0]string{}, w, r)
+								s.handleSearchIssuesAndPullRequestsRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12018,7 +12020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleSearchLabelsRequest([0]string{}, w, r)
+								s.handleSearchLabelsRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12036,7 +12038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleSearchReposRequest([0]string{}, w, r)
+								s.handleSearchReposRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12054,7 +12056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleSearchTopicsRequest([0]string{}, w, r)
+								s.handleSearchTopicsRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12072,7 +12074,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleSearchUsersRequest([0]string{}, w, r)
+								s.handleSearchUsersRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12102,15 +12104,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "DELETE":
 						s.handleTeamsDeleteLegacyRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "GET":
 						s.handleTeamsGetLegacyRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					case "PATCH":
 						s.handleTeamsUpdateLegacyRequest([1]string{
 							args[0],
-						}, w, r)
+						}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "DELETE,GET,PATCH")
 					}
@@ -12141,11 +12143,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleTeamsListDiscussionsLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							case "POST":
 								s.handleTeamsCreateDiscussionLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,POST")
 							}
@@ -12175,17 +12177,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleTeamsDeleteDiscussionLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleTeamsGetDiscussionLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PATCH":
 									s.handleTeamsUpdateDiscussionLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PATCH")
 								}
@@ -12217,12 +12219,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleTeamsListDiscussionCommentsLegacyRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleTeamsCreateDiscussionCommentLegacyRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -12253,19 +12255,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													args[0],
 													args[1],
 													args[2],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleTeamsGetDiscussionCommentLegacyRequest([3]string{
 													args[0],
 													args[1],
 													args[2],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PATCH":
 												s.handleTeamsUpdateDiscussionCommentLegacyRequest([3]string{
 													args[0],
 													args[1],
 													args[2],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET,PATCH")
 											}
@@ -12288,13 +12290,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "POST":
 													s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET,POST")
 												}
@@ -12317,12 +12319,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReactionsListForTeamDiscussionLegacyRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "POST":
 											s.handleReactionsCreateForTeamDiscussionLegacyRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET,POST")
 										}
@@ -12345,7 +12347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleTeamsListPendingInvitationsLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12364,7 +12366,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleTeamsListMembersLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12391,17 +12393,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleTeamsRemoveMemberLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleTeamsGetMemberLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleTeamsAddMemberLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PUT")
 								}
@@ -12427,17 +12429,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleTeamsRemoveMembershipForUserLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleTeamsGetMembershipForUserLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PUT")
 								}
@@ -12457,7 +12459,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleTeamsListProjectsLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12484,17 +12486,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleTeamsRemoveProjectLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleTeamsCheckPermissionsForProjectLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest([2]string{
 										args[0],
 										args[1],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PUT")
 								}
@@ -12514,7 +12516,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleTeamsListReposLegacyRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12562,19 +12564,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args[0],
 											args[1],
 											args[2],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "GET":
 										s.handleTeamsCheckPermissionsForRepoLegacyRequest([3]string{
 											args[0],
 											args[1],
 											args[2],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PUT":
 										s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest([3]string{
 											args[0],
 											args[1],
 											args[2],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,GET,PUT")
 									}
@@ -12607,11 +12609,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handleTeamsListIdpGroupsForLegacyRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PATCH":
 									s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET,PATCH")
 								}
@@ -12631,7 +12633,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handleTeamsListChildLegacyRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -12651,9 +12653,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(elem) == 0 {
 					switch r.Method {
 					case "GET":
-						s.handleUsersGetAuthenticatedRequest([0]string{}, w, r)
+						s.handleUsersGetAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 					case "PATCH":
-						s.handleUsersUpdateAuthenticatedRequest([0]string{}, w, r)
+						s.handleUsersUpdateAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET,PATCH")
 					}
@@ -12682,7 +12684,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleUsersListBlockedByAuthenticatedRequest([0]string{}, w, r)
+								s.handleUsersListBlockedByAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -12708,15 +12710,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "DELETE":
 									s.handleUsersUnblockRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleUsersCheckBlockedRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "PUT":
 									s.handleUsersBlockRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,PUT")
 								}
@@ -12746,7 +12748,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "PATCH":
-									s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "PATCH")
 								}
@@ -12764,11 +12766,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "DELETE":
-									s.handleUsersDeleteEmailForAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersDeleteEmailForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								case "GET":
-									s.handleUsersListEmailsForAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersListEmailsForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								case "POST":
-									s.handleUsersAddEmailForAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersAddEmailForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET,POST")
 								}
@@ -12798,7 +12800,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleUsersListFollowersForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleUsersListFollowersForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -12815,7 +12817,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleUsersListFollowedByAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersListFollowedByAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -12841,15 +12843,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleUsersUnfollowRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "GET":
 										s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PUT":
 										s.handleUsersFollowRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,GET,PUT")
 									}
@@ -12868,9 +12870,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleUsersListGpgKeysForAuthenticatedRequest([0]string{}, w, r)
+								s.handleUsersListGpgKeysForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 							case "POST":
-								s.handleUsersCreateGpgKeyForAuthenticatedRequest([0]string{}, w, r)
+								s.handleUsersCreateGpgKeyForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,POST")
 							}
@@ -12896,11 +12898,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "DELETE":
 									s.handleUsersDeleteGpgKeyForAuthenticatedRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleUsersGetGpgKeyForAuthenticatedRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET")
 								}
@@ -12962,7 +12964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleAppsListInstallationReposForAuthenticatedUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -12989,12 +12991,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleAppsRemoveRepoFromInstallationRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "PUT":
 												s.handleAppsAddRepoToInstallationRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,PUT")
 											}
@@ -13014,9 +13016,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "DELETE":
-										s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest([0]string{}, w, r)
+										s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 									case "PUT":
-										s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest([0]string{}, w, r)
+										s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,PUT")
 									}
@@ -13035,7 +13037,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleIssuesListForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleIssuesListForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13053,9 +13055,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleUsersListPublicSSHKeysForAuthenticatedRequest([0]string{}, w, r)
+								s.handleUsersListPublicSSHKeysForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 							case "POST":
-								s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest([0]string{}, w, r)
+								s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,POST")
 							}
@@ -13081,11 +13083,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "DELETE":
 									s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								case "GET":
 									s.handleUsersGetPublicSSHKeyForAuthenticatedRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "DELETE,GET")
 								}
@@ -13114,7 +13116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleAppsListSubscriptionsForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleAppsListSubscriptionsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13133,7 +13135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest([0]string{}, w, r)
+										s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -13151,7 +13153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleOrgsListMembershipsForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleOrgsListMembershipsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13177,11 +13179,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsGetMembershipForAuthenticatedUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PATCH":
 										s.handleOrgsUpdateMembershipForAuthenticatedUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET,PATCH")
 									}
@@ -13199,9 +13201,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleMigrationsListForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleMigrationsListForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								case "POST":
-									s.handleMigrationsStartForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleMigrationsStartForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET,POST")
 								}
@@ -13230,7 +13232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleMigrationsGetStatusForAuthenticatedUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -13262,11 +13264,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "DELETE":
 												s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											case "GET":
 												s.handleMigrationsGetArchiveForAuthenticatedUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "DELETE,GET")
 											}
@@ -13318,7 +13320,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleMigrationsUnlockRepoForAuthenticatedUserRequest([2]string{
 															args[0],
 															args[1],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE")
 													}
@@ -13339,7 +13341,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "GET":
 													s.handleMigrationsListReposForUserRequest([1]string{
 														args[0],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -13362,7 +13364,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleOrgsListForAuthenticatedUserRequest([0]string{}, w, r)
+								s.handleOrgsListForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -13390,7 +13392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handlePackagesListPackagesForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handlePackagesListPackagesForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13440,12 +13442,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handlePackagesDeletePackageForAuthenticatedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handlePackagesGetPackageForAuthenticatedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET")
 										}
@@ -13478,7 +13480,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handlePackagesRestorePackageForAuthenticatedUserRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13498,7 +13500,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest([2]string{
 														args[0],
 														args[1],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "GET")
 												}
@@ -13529,13 +13531,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													case "GET":
 														s.handlePackagesGetPackageVersionForAuthenticatedUserRequest([3]string{
 															args[0],
 															args[1],
 															args[2],
-														}, w, r)
+														}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "DELETE,GET")
 													}
@@ -13558,7 +13560,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -13582,7 +13584,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleProjectsCreateForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleProjectsCreateForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -13600,7 +13602,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleUsersListPublicEmailsForAuthenticatedRequest([0]string{}, w, r)
+									s.handleUsersListPublicEmailsForAuthenticatedRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13618,9 +13620,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							switch r.Method {
 							case "GET":
-								s.handleReposListForAuthenticatedUserRequest([0]string{}, w, r)
+								s.handleReposListForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 							case "POST":
-								s.handleReposCreateForAuthenticatedUserRequest([0]string{}, w, r)
+								s.handleReposCreateForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET,POST")
 							}
@@ -13638,7 +13640,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleReposListInvitationsForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleReposListInvitationsForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13664,11 +13666,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "DELETE":
 										s.handleReposDeclineInvitationRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									case "PATCH":
 										s.handleReposAcceptInvitationRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "DELETE,PATCH")
 									}
@@ -13698,7 +13700,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleActivityListReposStarredByAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleActivityListReposStarredByAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13745,17 +13747,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleActivityUnstarRepoForAuthenticatedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "GET":
 											s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										case "PUT":
 											s.handleActivityStarRepoForAuthenticatedUserRequest([2]string{
 												args[0],
 												args[1],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "DELETE,GET,PUT")
 										}
@@ -13775,7 +13777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleActivityListWatchedReposForAuthenticatedUserRequest([0]string{}, w, r)
+									s.handleActivityListWatchedReposForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -13794,7 +13796,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "GET":
-								s.handleTeamsListForAuthenticatedUserRequest([0]string{}, w, r)
+								s.handleTeamsListForAuthenticatedUserRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -13812,7 +13814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handleUsersListRequest([0]string{}, w, r)
+							s.handleUsersListRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -13841,7 +13843,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleUsersGetByUsernameRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -13872,7 +13874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleActivityListEventsForAuthenticatedUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -13910,7 +13912,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleActivityListOrgEventsForAuthenticatedUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -13930,7 +13932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleActivityListPublicEventsForUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -13963,7 +13965,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleUsersListFollowersForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -13982,7 +13984,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleUsersListFollowingForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14009,7 +14011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleUsersCheckFollowingForUserRequest([2]string{
 													args[0],
 													args[1],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -14042,7 +14044,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleGistsListForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14062,7 +14064,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleUsersListGpgKeysForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14083,7 +14085,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleUsersGetContextForUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -14103,7 +14105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleUsersListPublicKeysForUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -14123,7 +14125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "GET":
 										s.handleOrgsListForUserRequest([1]string{
 											args[0],
-										}, w, r)
+										}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "GET")
 									}
@@ -14153,7 +14155,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handlePackagesListPackagesForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14204,13 +14206,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												case "GET":
 													s.handlePackagesGetPackageForUserRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
-													}, w, r)
+													}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "DELETE,GET")
 												}
@@ -14244,7 +14246,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -14265,7 +14267,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 																args[2],
-															}, w, r)
+															}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "GET")
 														}
@@ -14297,14 +14299,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															case "GET":
 																s.handlePackagesGetPackageVersionForUserRequest([4]string{
 																	args[0],
 																	args[1],
 																	args[2],
 																	args[3],
-																}, w, r)
+																}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "DELETE,GET")
 															}
@@ -14328,7 +14330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[1],
 																		args[2],
 																		args[3],
-																	}, w, r)
+																	}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -14354,7 +14356,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleProjectsListForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14385,7 +14387,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleActivityListReceivedEventsForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14406,7 +14408,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleActivityListReceivedPublicEventsForUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -14427,7 +14429,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleReposListForUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14470,7 +14472,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetGithubActionsBillingUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -14490,7 +14492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetGithubPackagesBillingUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -14510,7 +14512,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "GET":
 												s.handleBillingGetSharedStorageBillingUserRequest([1]string{
 													args[0],
-												}, w, r)
+												}, elemIsEscaped, w, r)
 											default:
 												s.notAllowed(w, r, "GET")
 											}
@@ -14531,7 +14533,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "GET":
 											s.handleActivityListReposWatchedByUserRequest([1]string{
 												args[0],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -14554,7 +14556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleMetaGetZenRequest([0]string{}, w, r)
+						s.handleMetaGetZenRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}

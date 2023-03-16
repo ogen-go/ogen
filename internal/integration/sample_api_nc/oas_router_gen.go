@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -64,7 +66,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleDefaultTestRequest([0]string{}, w, r)
+						s.handleDefaultTestRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
@@ -82,7 +84,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleErrorGetRequest([0]string{}, w, r)
+						s.handleErrorGetRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET")
 					}
@@ -100,11 +102,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleFoobarGetRequest([0]string{}, w, r)
+						s.handleFoobarGetRequest([0]string{}, elemIsEscaped, w, r)
 					case "POST":
-						s.handleFoobarPostRequest([0]string{}, w, r)
+						s.handleFoobarPostRequest([0]string{}, elemIsEscaped, w, r)
 					case "PUT":
-						s.handleFoobarPutRequest([0]string{}, w, r)
+						s.handleFoobarPutRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "GET,POST,PUT")
 					}
@@ -224,7 +226,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												args[2],
 												args[3],
 												args[4],
-											}, w, r)
+											}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "GET")
 										}
@@ -246,7 +248,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
+							s.handleNoAdditionalPropertiesTestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -264,7 +266,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleNullableDefaultResponseRequest([0]string{}, w, r)
+							s.handleNullableDefaultResponseRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -283,7 +285,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleOneofBugRequest([0]string{}, w, r)
+						s.handleOneofBugRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
@@ -312,7 +314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handlePatternRecursiveMapGetRequest([0]string{}, w, r)
+							s.handlePatternRecursiveMapGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -329,9 +331,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "GET":
-							s.handlePetGetRequest([0]string{}, w, r)
+							s.handlePetGetRequest([0]string{}, elemIsEscaped, w, r)
 						case "POST":
-							s.handlePetCreateRequest([0]string{}, w, r)
+							s.handlePetCreateRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET,POST")
 						}
@@ -361,9 +363,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
+									s.handlePetGetAvatarByIDRequest([0]string{}, elemIsEscaped, w, r)
 								case "POST":
-									s.handlePetUploadAvatarByIDRequest([0]string{}, w, r)
+									s.handlePetUploadAvatarByIDRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET,POST")
 								}
@@ -388,7 +390,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handlePetFriendsNamesByIDRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -413,7 +415,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handlePetNameByIDRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -430,7 +432,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handlePetUpdateNamePostRequest([0]string{}, w, r)
+									s.handlePetUpdateNamePostRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -449,7 +451,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handlePetUpdateNameAliasPostRequest([0]string{}, w, r)
+										s.handlePetUpdateNameAliasPostRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -472,7 +474,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handlePetGetByNameRequest([1]string{
 									args[0],
-								}, w, r)
+								}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "GET")
 							}
@@ -493,7 +495,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "GET":
 									s.handlePetGetAvatarByNameRequest([1]string{
 										args[0],
-									}, w, r)
+									}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -525,7 +527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleRecursiveArrayGetRequest([0]string{}, w, r)
+							s.handleRecursiveArrayGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -543,7 +545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleRecursiveMapGetRequest([0]string{}, w, r)
+							s.handleRecursiveMapGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -573,7 +575,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleSecurityTestRequest([0]string{}, w, r)
+							s.handleSecurityTestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -591,7 +593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleStringIntMapGetRequest([0]string{}, w, r)
+							s.handleStringIntMapGetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -621,7 +623,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleTestFloatValidationRequest([0]string{}, w, r)
+							s.handleTestFloatValidationRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -639,7 +641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleTestNullableOneofsRequest([0]string{}, w, r)
+							s.handleTestNullableOneofsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}

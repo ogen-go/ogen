@@ -21,13 +21,13 @@ type Handler interface {
 	// Test for cookie param.
 	//
 	// GET /cookieParameter
-	CookieParameter(ctx context.Context, params CookieParameterParams) (*Hash, error)
+	CookieParameter(ctx context.Context, params CookieParameterParams) (*Value, error)
 	// HeaderParameter implements headerParameter operation.
 	//
 	// Test for header param.
 	//
 	// GET /headerParameter
-	HeaderParameter(ctx context.Context, params HeaderParameterParams) (*Hash, error)
+	HeaderParameter(ctx context.Context, params HeaderParameterParams) (*Value, error)
 	// ObjectCookieParameter implements objectCookieParameter operation.
 	//
 	// GET /objectCookieParameter
@@ -36,6 +36,12 @@ type Handler interface {
 	//
 	// GET /objectQueryParameter
 	ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error)
+	// PathParameter implements pathParameter operation.
+	//
+	// Test for path param.
+	//
+	// GET /pathParameter/{value}
+	PathParameter(ctx context.Context, params PathParameterParams) (*Value, error)
 	// SameName implements sameName operation.
 	//
 	// Parameter with different location, but the same name.

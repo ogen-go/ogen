@@ -30,7 +30,7 @@ import (
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -66,7 +66,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			ID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
-	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
+	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -144,7 +144,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 // `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -180,7 +180,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 			ID:   "actions/add-selected-repo-to-org-secret",
 		}
 	)
-	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
+	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -259,7 +259,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -295,7 +295,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			ID:   "actions/add-self-hosted-runner-to-group-for-org",
 		}
 	)
-	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
+	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -373,7 +373,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 // Apps must have the `actions:write` permission to use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
-func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/approve-workflow-run"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -409,7 +409,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 			ID:   "actions/approve-workflow-run",
 		}
 	)
-	params, err := decodeActionsApproveWorkflowRunParams(args, r)
+	params, err := decodeActionsApproveWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -485,7 +485,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 // endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/cancel-workflow-run"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -521,7 +521,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 			ID:   "actions/cancel-workflow-run",
 		}
 	)
-	params, err := decodeActionsCancelWorkflowRunParams(args, r)
+	params, err := decodeActionsCancelWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -648,7 +648,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 // ```.
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -684,7 +684,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 			ID:   "actions/create-or-update-environment-secret",
 		}
 	)
-	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
+	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -826,7 +826,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 // ```.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -862,7 +862,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 			ID:   "actions/create-or-update-org-secret",
 		}
 	)
-	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
+	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1000,7 +1000,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 // ```.
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -1036,7 +1036,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 			ID:   "actions/create-or-update-repo-secret",
 		}
 	)
-	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
+	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1132,7 +1132,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 // ```.
 //
 // POST /orgs/{org}/actions/runners/registration-token
-func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1168,7 +1168,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 			ID:   "actions/create-registration-token-for-org",
 		}
 	)
-	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
+	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1242,7 +1242,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
-func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1278,7 +1278,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 			ID:   "actions/create-registration-token-for-repo",
 		}
 	)
-	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
+	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1357,7 +1357,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 // ```.
 //
 // POST /orgs/{org}/actions/runners/remove-token
-func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1393,7 +1393,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 			ID:   "actions/create-remove-token-for-org",
 		}
 	)
-	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
+	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1467,7 +1467,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
-func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1503,7 +1503,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 			ID:   "actions/create-remove-token-for-repo",
 		}
 	)
-	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
+	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1577,7 +1577,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // POST /orgs/{org}/actions/runner-groups
-func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1613,7 +1613,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 			ID:   "actions/create-self-hosted-runner-group-for-org",
 		}
 	)
-	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
+	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1696,7 +1696,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -1732,7 +1732,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 			ID:   "actions/delete-artifact",
 		}
 	)
-	params, err := decodeActionsDeleteArtifactParams(args, r)
+	params, err := decodeActionsDeleteArtifactParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1808,7 +1808,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 // permission to use this endpoint.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -1844,7 +1844,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 			ID:   "actions/delete-environment-secret",
 		}
 	)
-	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
+	params, err := decodeActionsDeleteEnvironmentSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1920,7 +1920,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 // organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -1956,7 +1956,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 			ID:   "actions/delete-org-secret",
 		}
 	)
-	params, err := decodeActionsDeleteOrgSecretParams(args, r)
+	params, err := decodeActionsDeleteOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2028,7 +2028,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2064,7 +2064,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 			ID:   "actions/delete-repo-secret",
 		}
 	)
-	params, err := decodeActionsDeleteRepoSecretParams(args, r)
+	params, err := decodeActionsDeleteRepoSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2140,7 +2140,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2176,7 +2176,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			ID:   "actions/delete-self-hosted-runner-from-org",
 		}
 	)
-	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
+	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2249,7 +2249,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 // scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2285,7 +2285,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			ID:   "actions/delete-self-hosted-runner-from-repo",
 		}
 	)
-	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
+	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2363,7 +2363,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2399,7 +2399,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			ID:   "actions/delete-self-hosted-runner-group-from-org",
 		}
 	)
-	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
+	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2473,7 +2473,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2509,7 +2509,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 			ID:   "actions/delete-workflow-run",
 		}
 	)
-	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
+	params, err := decodeActionsDeleteWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2585,7 +2585,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 // endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2621,7 +2621,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 			ID:   "actions/delete-workflow-run-logs",
 		}
 	)
-	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
+	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2700,7 +2700,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -2736,7 +2736,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			ID:   "actions/disable-selected-repository-github-actions-organization",
 		}
 	)
-	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
+	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2812,7 +2812,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -2848,7 +2848,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 			ID:   "actions/download-artifact",
 		}
 	)
-	params, err := decodeActionsDownloadArtifactParams(args, r)
+	params, err := decodeActionsDownloadArtifactParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2934,7 +2934,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -2970,7 +2970,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 			ID:   "actions/download-job-logs-for-workflow-run",
 		}
 	)
-	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
+	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3050,7 +3050,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 // the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3086,7 +3086,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 			ID:   "actions/download-workflow-run-logs",
 		}
 	)
-	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
+	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3165,7 +3165,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -3201,7 +3201,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			ID:   "actions/enable-selected-repository-github-actions-organization",
 		}
 	)
-	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
+	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3276,7 +3276,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
-func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3312,7 +3312,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 			ID:   "actions/get-allowed-actions-organization",
 		}
 	)
-	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
+	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3383,7 +3383,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 // Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3419,7 +3419,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 			ID:   "actions/get-allowed-actions-repository",
 		}
 	)
-	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
+	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3491,7 +3491,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-artifact"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3527,7 +3527,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 			ID:   "actions/get-artifact",
 		}
 	)
-	params, err := decodeActionsGetArtifactParams(args, r)
+	params, err := decodeActionsGetArtifactParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3604,7 +3604,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 // the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
-func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3640,7 +3640,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 			ID:   "actions/get-environment-public-key",
 		}
 	)
-	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
+	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3712,7 +3712,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 // `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-secret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3748,7 +3748,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 			ID:   "actions/get-environment-secret",
 		}
 	)
-	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
+	params, err := decodeActionsGetEnvironmentSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3824,7 +3824,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions
-func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3860,7 +3860,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 			ID:   "actions/get-github-actions-permissions-organization",
 		}
 	)
-	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
+	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -3929,7 +3929,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 // endpoint. GitHub Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
-func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -3965,7 +3965,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 			ID:   "actions/get-github-actions-permissions-repository",
 		}
 	)
-	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
+	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4037,7 +4037,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
-func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4073,7 +4073,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 			ID:   "actions/get-job-for-workflow-run",
 		}
 	)
-	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
+	params, err := decodeActionsGetJobForWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4150,7 +4150,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/public-key
-func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4186,7 +4186,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 			ID:   "actions/get-org-public-key",
 		}
 	)
-	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
+	params, err := decodeActionsGetOrgPublicKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4254,7 +4254,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 // `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-secret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4290,7 +4290,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 			ID:   "actions/get-org-secret",
 		}
 	)
-	params, err := decodeActionsGetOrgSecretParams(args, r)
+	params, err := decodeActionsGetOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4363,7 +4363,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
-func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4399,7 +4399,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 			ID:   "actions/get-repo-public-key",
 		}
 	)
-	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
+	params, err := decodeActionsGetRepoPublicKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4471,7 +4471,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 // repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-secret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4507,7 +4507,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 			ID:   "actions/get-repo-secret",
 		}
 	)
-	params, err := decodeActionsGetRepoSecretParams(args, r)
+	params, err := decodeActionsGetRepoSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4583,7 +4583,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
-func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-reviews-for-run"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4619,7 +4619,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 			ID:   "actions/get-reviews-for-run",
 		}
 	)
-	params, err := decodeActionsGetReviewsForRunParams(args, r)
+	params, err := decodeActionsGetReviewsForRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4694,7 +4694,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
-func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4730,7 +4730,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 			ID:   "actions/get-self-hosted-runner-for-org",
 		}
 	)
-	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
+	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4802,7 +4802,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 // endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4838,7 +4838,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 			ID:   "actions/get-self-hosted-runner-for-repo",
 		}
 	)
-	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
+	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -4916,7 +4916,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -4952,7 +4952,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 			ID:   "actions/get-self-hosted-runner-group-for-org",
 		}
 	)
-	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
+	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5024,7 +5024,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
-func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5060,7 +5060,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 			ID:   "actions/get-workflow-run",
 		}
 	)
-	params, err := decodeActionsGetWorkflowRunParams(args, r)
+	params, err := decodeActionsGetWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5143,7 +5143,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
-func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run-usage"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5179,7 +5179,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 			ID:   "actions/get-workflow-run-usage",
 		}
 	)
-	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
+	params, err := decodeActionsGetWorkflowRunUsageParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5255,7 +5255,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
-func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5291,7 +5291,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 			ID:   "actions/list-artifacts-for-repo",
 		}
 	)
-	params, err := decodeActionsListArtifactsForRepoParams(args, r)
+	params, err := decodeActionsListArtifactsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5371,7 +5371,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
-func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-environment-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5407,7 +5407,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 			ID:   "actions/list-environment-secrets",
 		}
 	)
-	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
+	params, err := decodeActionsListEnvironmentSecretsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5489,7 +5489,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 // com/rest/overview/resources-in-the-rest-api#parameters).
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5525,7 +5525,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 			ID:   "actions/list-jobs-for-workflow-run",
 		}
 	)
-	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
+	params, err := decodeActionsListJobsForWorkflowRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5613,7 +5613,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 // must have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets
-func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-org-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5649,7 +5649,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 			ID:   "actions/list-org-secrets",
 		}
 	)
-	params, err := decodeActionsListOrgSecretsParams(args, r)
+	params, err := decodeActionsListOrgSecretsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5727,7 +5727,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5763,7 +5763,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 			ID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
-	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
+	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5843,7 +5843,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
-func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5879,7 +5879,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 			ID:   "actions/list-repo-secrets",
 		}
 	)
-	params, err := decodeActionsListRepoSecretsParams(args, r)
+	params, err := decodeActionsListRepoSecretsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -5959,7 +5959,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
-func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-workflows"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -5995,7 +5995,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 			ID:   "actions/list-repo-workflows",
 		}
 	)
-	params, err := decodeActionsListRepoWorkflowsParams(args, r)
+	params, err := decodeActionsListRepoWorkflowsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6074,7 +6074,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/downloads
-func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6110,7 +6110,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 			ID:   "actions/list-runner-applications-for-org",
 		}
 	)
-	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
+	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6177,7 +6177,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 // You must authenticate using an access token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/downloads
-func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6213,7 +6213,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 			ID:   "actions/list-runner-applications-for-repo",
 		}
 	)
-	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
+	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6286,7 +6286,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6322,7 +6322,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 			ID:   "actions/list-selected-repos-for-org-secret",
 		}
 	)
-	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
+	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6405,7 +6405,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/repositories
-func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6441,7 +6441,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 			ID:   "actions/list-selected-repositories-enabled-github-actions-organization",
 		}
 	)
-	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
+	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6519,7 +6519,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups
-func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6555,7 +6555,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 			ID:   "actions/list-self-hosted-runner-groups-for-org",
 		}
 	)
-	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
+	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6630,7 +6630,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners
-func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6666,7 +6666,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 			ID:   "actions/list-self-hosted-runners-for-org",
 		}
 	)
-	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
+	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6741,7 +6741,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 // token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners
-func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6777,7 +6777,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 			ID:   "actions/list-self-hosted-runners-for-repo",
 		}
 	)
-	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
+	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6859,7 +6859,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -6895,7 +6895,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 			ID:   "actions/list-self-hosted-runners-in-group-for-org",
 		}
 	)
-	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
+	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -6975,7 +6975,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -7011,7 +7011,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 			ID:   "actions/list-workflow-run-artifacts",
 		}
 	)
-	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
+	params, err := decodeActionsListWorkflowRunArtifactsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7098,7 +7098,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs
-func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -7134,7 +7134,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 			ID:   "actions/list-workflow-runs-for-repo",
 		}
 	)
-	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
+	params, err := decodeActionsListWorkflowRunsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7239,7 +7239,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/re-run-workflow"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7275,7 +7275,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 			ID:   "actions/re-run-workflow",
 		}
 	)
-	params, err := decodeActionsReRunWorkflowParams(args, r)
+	params, err := decodeActionsReRunWorkflowParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7356,7 +7356,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -7392,7 +7392,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			ID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
-	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
+	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7470,7 +7470,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -7506,7 +7506,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 			ID:   "actions/remove-selected-repo-from-org-secret",
 		}
 	)
-	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
+	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7585,7 +7585,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -7621,7 +7621,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			ID:   "actions/remove-self-hosted-runner-from-group-for-org",
 		}
 	)
-	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
+	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7697,7 +7697,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 // this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/retry-workflow"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7733,7 +7733,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 			ID:   "actions/retry-workflow",
 		}
 	)
-	params, err := decodeActionsRetryWorkflowParams(args, r)
+	params, err := decodeActionsRetryWorkflowParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7808,7 +7808,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 // Anyone with read access to the repository contents and deployments can use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
-func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7844,7 +7844,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 			ID:   "actions/review-pending-deployments-for-run",
 		}
 	)
-	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
+	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -7943,7 +7943,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -7979,7 +7979,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			ID:   "actions/set-allowed-actions-organization",
 		}
 	)
-	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
+	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8069,7 +8069,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8105,7 +8105,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			ID:   "actions/set-allowed-actions-repository",
 		}
 	)
-	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
+	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8195,7 +8195,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
-func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8231,7 +8231,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			ID:   "actions/set-github-actions-permissions-organization",
 		}
 	)
-	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
+	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8318,7 +8318,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8354,7 +8354,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			ID:   "actions/set-github-actions-permissions-repository",
 		}
 	)
-	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
+	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8444,7 +8444,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8480,7 +8480,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			ID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
-	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
+	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8569,7 +8569,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8605,7 +8605,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			ID:   "actions/set-selected-repos-for-org-secret",
 		}
 	)
-	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
+	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8695,7 +8695,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8731,7 +8731,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			ID:   "actions/set-selected-repositories-enabled-github-actions-organization",
 		}
 	)
-	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
+	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8816,7 +8816,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -8852,7 +8852,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			ID:   "actions/set-self-hosted-runners-in-group-for-org",
 		}
 	)
-	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
+	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -8941,7 +8941,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -8977,7 +8977,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 			ID:   "actions/update-self-hosted-runner-group-for-org",
 		}
 	)
-	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
+	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9062,7 +9062,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 // Check if a repository is starred by the authenticated user.
 //
 // GET /user/starred/{owner}/{repo}
-func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9098,7 +9098,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 			ID:   "activity/check-repo-is-starred-by-authenticated-user",
 		}
 	)
-	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
+	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9170,7 +9170,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 // manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -9206,7 +9206,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 			ID:   "activity/delete-repo-subscription",
 		}
 	)
-	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
+	params, err := decodeActivityDeleteRepoSubscriptionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9280,7 +9280,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 // endpoint and set `ignore` to `true`.
 //
 // DELETE /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-thread-subscription"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -9316,7 +9316,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 			ID:   "activity/delete-thread-subscription",
 		}
 	)
-	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
+	params, err := decodeActivityDeleteThreadSubscriptionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9396,7 +9396,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 // the older, non revocable auth tokens.
 //
 // GET /feeds
-func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-feeds"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9479,7 +9479,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 // Get a repository subscription.
 //
 // GET /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-repo-subscription"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9515,7 +9515,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 			ID:   "activity/get-repo-subscription",
 		}
 	)
-	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
+	params, err := decodeActivityGetRepoSubscriptionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9585,7 +9585,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 // Get a thread.
 //
 // GET /notifications/threads/{thread_id}
-func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9621,7 +9621,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 			ID:   "activity/get-thread",
 		}
 	)
-	params, err := decodeActivityGetThreadParams(args, r)
+	params, err := decodeActivityGetThreadParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9690,7 +9690,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 // example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
 //
 // GET /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9726,7 +9726,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 			ID:   "activity/get-thread-subscription-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9793,7 +9793,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 // only see public events.
 //
 // GET /users/{username}/events
-func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9829,7 +9829,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 			ID:   "activity/list-events-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -9903,7 +9903,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 // List all notifications for the current user, sorted by most recently updated.
 //
 // GET /notifications
-func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -9939,7 +9939,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 			ID:   "activity/list-notifications-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10025,7 +10025,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 // This is the user's organization dashboard. You must be authenticated as the user to view this.
 //
 // GET /users/{username}/events/orgs/{org}
-func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10061,7 +10061,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 			ID:   "activity/list-org-events-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10140,7 +10140,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 // public events API actually occurred at least five minutes ago.
 //
 // GET /events
-func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10176,7 +10176,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 			ID:   "activity/list-public-events",
 		}
 	)
-	params, err := decodeActivityListPublicEventsParams(args, r)
+	params, err := decodeActivityListPublicEventsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10246,7 +10246,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 // List public events for a network of repositories.
 //
 // GET /networks/{owner}/{repo}/events
-func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10282,7 +10282,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 			ID:   "activity/list-public-events-for-repo-network",
 		}
 	)
-	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
+	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10360,7 +10360,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 // List public events for a user.
 //
 // GET /users/{username}/events/public
-func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10396,7 +10396,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 			ID:   "activity/list-public-events-for-user",
 		}
 	)
-	params, err := decodeActivityListPublicEventsForUserParams(args, r)
+	params, err := decodeActivityListPublicEventsForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10470,7 +10470,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 // List public organization events.
 //
 // GET /orgs/{org}/events
-func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-org-events"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10506,7 +10506,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 			ID:   "activity/list-public-org-events",
 		}
 	)
-	params, err := decodeActivityListPublicOrgEventsParams(args, r)
+	params, err := decodeActivityListPublicOrgEventsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10582,7 +10582,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 // events.
 //
 // GET /users/{username}/received_events
-func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10618,7 +10618,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 			ID:   "activity/list-received-events-for-user",
 		}
 	)
-	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
+	params, err := decodeActivityListReceivedEventsForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10692,7 +10692,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 // List public events received by a user.
 //
 // GET /users/{username}/received_events/public
-func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10728,7 +10728,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 			ID:   "activity/list-received-public-events-for-user",
 		}
 	)
-	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
+	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10802,7 +10802,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 // List repository events.
 //
 // GET /repos/{owner}/{repo}/events
-func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-events"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10838,7 +10838,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 			ID:   "activity/list-repo-events",
 		}
 	)
-	params, err := decodeActivityListRepoEventsParams(args, r)
+	params, err := decodeActivityListRepoEventsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -10916,7 +10916,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 // List all notifications for the current user.
 //
 // GET /repos/{owner}/{repo}/notifications
-func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -10952,7 +10952,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 			ID:   "activity/list-repo-notifications-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11048,7 +11048,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 // type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:.
 //
 // GET /user/starred
-func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11084,7 +11084,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 			ID:   "activity/list-repos-starred-by-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11162,7 +11162,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 // Lists repositories a user is watching.
 //
 // GET /users/{username}/subscriptions
-func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11198,7 +11198,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 			ID:   "activity/list-repos-watched-by-user",
 		}
 	)
-	params, err := decodeActivityListReposWatchedByUserParams(args, r)
+	params, err := decodeActivityListReposWatchedByUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11272,7 +11272,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 // Lists repositories the authenticated user is watching.
 //
 // GET /user/subscriptions
-func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11308,7 +11308,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 			ID:   "activity/list-watched-repos-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11378,7 +11378,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 // Lists the people watching the specified repository.
 //
 // GET /repos/{owner}/{repo}/subscribers
-func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watchers-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -11414,7 +11414,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 			ID:   "activity/list-watchers-for-repo",
 		}
 	)
-	params, err := decodeActivityListWatchersForRepoParams(args, r)
+	params, err := decodeActivityListWatchersForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11498,7 +11498,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 // query parameter `all=false`.
 //
 // PUT /notifications
-func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -11606,7 +11606,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 // pass the query parameter `all=false`.
 //
 // PUT /repos/{owner}/{repo}/notifications
-func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -11642,7 +11642,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 			ID:   "activity/mark-repo-notifications-as-read",
 		}
 	)
-	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
+	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11727,7 +11727,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 // Mark a thread as read.
 //
 // PATCH /notifications/threads/{thread_id}
-func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-thread-as-read"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -11763,7 +11763,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 			ID:   "activity/mark-thread-as-read",
 		}
 	)
-	params, err := decodeActivityMarkThreadAsReadParams(args, r)
+	params, err := decodeActivityMarkThreadAsReadParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11832,7 +11832,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 // com/rest/reference/activity#delete-a-repository-subscription) completely.
 //
 // PUT /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -11868,7 +11868,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 			ID:   "activity/set-repo-subscription",
 		}
 	)
-	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
+	params, err := decodeActivitySetRepoSubscriptionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -11960,7 +11960,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 // com/rest/reference/activity#delete-a-thread-subscription) endpoint.
 //
 // PUT /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -11996,7 +11996,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 			ID:   "activity/set-thread-subscription",
 		}
 	)
-	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
+	params, err := decodeActivitySetThreadSubscriptionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12079,7 +12079,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /user/starred/{owner}/{repo}
-func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -12115,7 +12115,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 			ID:   "activity/star-repo-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12185,7 +12185,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 // Unstar a repository for the authenticated user.
 //
 // DELETE /user/starred/{owner}/{repo}
-func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -12221,7 +12221,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 			ID:   "activity/unstar-repo-for-authenticated-user",
 		}
 	)
-	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
+	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12296,7 +12296,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 // com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
 //
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
-func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/add-repo-to-installation"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -12332,7 +12332,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 			ID:   "apps/add-repo-to-installation",
 		}
 	)
-	params, err := decodeAppsAddRepoToInstallationParams(args, r)
+	params, err := decodeAppsAddRepoToInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12407,7 +12407,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 // tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token
-func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12443,7 +12443,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 			ID:   "apps/check-token",
 		}
 	)
-	params, err := decodeAppsCheckTokenParams(args, r)
+	params, err := decodeAppsCheckTokenParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12533,7 +12533,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 // to access this endpoint.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
-func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-content-attachment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12569,7 +12569,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 			ID:   "apps/create-content-attachment",
 		}
 	)
-	params, err := decodeAppsCreateContentAttachmentParams(args, r)
+	params, err := decodeAppsCreateContentAttachmentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12661,7 +12661,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 // retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
 //
 // POST /app-manifests/{code}/conversions
-func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12697,7 +12697,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 			ID:   "apps/create-from-manifest",
 		}
 	)
-	params, err := decodeAppsCreateFromManifestParams(args, r)
+	params, err := decodeAppsCreateFromManifestParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12787,7 +12787,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 // access this endpoint.
 //
 // POST /app/installations/{installation_id}/access_tokens
-func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-installation-access-token"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12823,7 +12823,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 			ID:   "apps/create-installation-access-token",
 		}
 	)
-	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
+	params, err := decodeAppsCreateInstallationAccessTokenParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -12913,7 +12913,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 // GitHub](https://github.com/settings/applications#authorized).
 //
 // DELETE /applications/{client_id}/grant
-func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -12949,7 +12949,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 			ID:   "apps/delete-authorization",
 		}
 	)
-	params, err := decodeAppsDeleteAuthorizationParams(args, r)
+	params, err := decodeAppsDeleteAuthorizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13035,7 +13035,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 // access this endpoint.
 //
 // DELETE /app/installations/{installation_id}
-func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -13071,7 +13071,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 			ID:   "apps/delete-installation",
 		}
 	)
-	params, err := decodeAppsDeleteInstallationParams(args, r)
+	params, err := decodeAppsDeleteInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13140,7 +13140,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 // using the OAuth application's `client_id` and `client_secret` as the username and password.
 //
 // DELETE /applications/{client_id}/token
-func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -13176,7 +13176,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 			ID:   "apps/delete-token",
 		}
 	)
-	params, err := decodeAppsDeleteTokenParams(args, r)
+	params, err := decodeAppsDeleteTokenParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13264,7 +13264,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 // access this endpoint.
 //
 // GET /app
-func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13354,7 +13354,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 // to access this endpoint.
 //
 // GET /apps/{app_slug}
-func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-by-slug"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13390,7 +13390,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 			ID:   "apps/get-by-slug",
 		}
 	)
-	params, err := decodeAppsGetBySlugParams(args, r)
+	params, err := decodeAppsGetBySlugParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13463,7 +13463,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/accounts/{account_id}
-func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13499,7 +13499,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 			ID:   "apps/get-subscription-plan-for-account",
 		}
 	)
-	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
+	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13572,7 +13572,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/accounts/{account_id}
-func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13608,7 +13608,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 			ID:   "apps/get-subscription-plan-for-account-stubbed",
 		}
 	)
-	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
+	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13678,7 +13678,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 // access this endpoint.
 //
 // GET /app/hook/config
-func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13764,7 +13764,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 // access this endpoint.
 //
 // GET /app/hook/deliveries/{delivery_id}
-func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13800,7 +13800,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 			ID:   "apps/get-webhook-delivery",
 		}
 	)
-	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
+	params, err := decodeAppsGetWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -13874,7 +13874,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans/{plan_id}/accounts
-func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -13910,7 +13910,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 			ID:   "apps/list-accounts-for-plan",
 		}
 	)
-	params, err := decodeAppsListAccountsForPlanParams(args, r)
+	params, err := decodeAppsListAccountsForPlanParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14000,7 +14000,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
-func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14036,7 +14036,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 			ID:   "apps/list-accounts-for-plan-stubbed",
 		}
 	)
-	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
+	params, err := decodeAppsListAccountsForPlanStubbedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14124,7 +14124,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 // The access the user has to each repository is included in the hash under the `permissions` key.
 //
 // GET /user/installations/{installation_id}/repositories
-func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14160,7 +14160,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 			ID:   "apps/list-installation-repos-for-authenticated-user",
 		}
 	)
-	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
+	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14239,7 +14239,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans
-func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14275,7 +14275,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 			ID:   "apps/list-plans",
 		}
 	)
-	params, err := decodeAppsListPlansParams(args, r)
+	params, err := decodeAppsListPlansParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14350,7 +14350,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans
-func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14386,7 +14386,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 			ID:   "apps/list-plans-stubbed",
 		}
 	)
-	params, err := decodeAppsListPlansStubbedParams(args, r)
+	params, err := decodeAppsListPlansStubbedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14459,7 +14459,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 // to access this endpoint.
 //
 // GET /installation/repositories
-func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14495,7 +14495,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 			ID:   "apps/list-repos-accessible-to-installation",
 		}
 	)
-	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
+	params, err := decodeAppsListReposAccessibleToInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14567,7 +14567,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 // com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
 //
 // GET /user/marketplace_purchases
-func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14603,7 +14603,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 			ID:   "apps/list-subscriptions-for-authenticated-user",
 		}
 	)
-	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
+	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14675,7 +14675,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 // com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
 //
 // GET /user/marketplace_purchases/stubbed
-func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14711,7 +14711,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 			ID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
 		}
 	)
-	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
+	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14784,7 +14784,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 // access this endpoint.
 //
 // GET /app/hook/deliveries
-func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -14820,7 +14820,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 			ID:   "apps/list-webhook-deliveries",
 		}
 	)
-	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
+	params, err := decodeAppsListWebhookDeliveriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -14893,7 +14893,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 // access this endpoint.
 //
 // POST /app/hook/deliveries/{delivery_id}/attempts
-func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14929,7 +14929,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 			ID:   "apps/redeliver-webhook-delivery",
 		}
 	)
-	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
+	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15000,7 +15000,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 // com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
-func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/remove-repo-from-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -15036,7 +15036,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 			ID:   "apps/remove-repo-from-installation",
 		}
 	)
-	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
+	params, err := decodeAppsRemoveRepoFromInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15111,7 +15111,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 // Invalid tokens will return `404 NOT FOUND`.
 //
 // PATCH /applications/{client_id}/token
-func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -15147,7 +15147,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 			ID:   "apps/reset-token",
 		}
 	)
-	params, err := decodeAppsResetTokenParams(args, r)
+	params, err := decodeAppsResetTokenParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15237,7 +15237,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 // to access this endpoint.
 //
 // DELETE /installation/token
-func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -15325,7 +15325,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 // password. Invalid tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token/scoped
-func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/scope-token"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15361,7 +15361,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 			ID:   "apps/scope-token",
 		}
 	)
-	params, err := decodeAppsScopeTokenParams(args, r)
+	params, err := decodeAppsScopeTokenParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15447,7 +15447,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 // access this endpoint.
 //
 // PUT /app/installations/{installation_id}/suspended
-func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/suspend-installation"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -15483,7 +15483,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 			ID:   "apps/suspend-installation",
 		}
 	)
-	params, err := decodeAppsSuspendInstallationParams(args, r)
+	params, err := decodeAppsSuspendInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15552,7 +15552,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 // access this endpoint.
 //
 // DELETE /app/installations/{installation_id}/suspended
-func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/unsuspend-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -15588,7 +15588,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 			ID:   "apps/unsuspend-installation",
 		}
 	)
-	params, err := decodeAppsUnsuspendInstallationParams(args, r)
+	params, err := decodeAppsUnsuspendInstallationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15658,7 +15658,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 // access this endpoint.
 //
 // PATCH /app/hook/config
-func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -15767,7 +15767,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15803,7 +15803,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 			ID:   "billing/get-github-actions-billing-ghe",
 		}
 	)
-	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
+	params, err := decodeBillingGetGithubActionsBillingGheParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15876,7 +15876,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -15912,7 +15912,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 			ID:   "billing/get-github-actions-billing-org",
 		}
 	)
-	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
+	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -15985,7 +15985,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16021,7 +16021,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 			ID:   "billing/get-github-actions-billing-user",
 		}
 	)
-	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
+	params, err := decodeBillingGetGithubActionsBillingUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16091,7 +16091,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16127,7 +16127,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 			ID:   "billing/get-github-packages-billing-ghe",
 		}
 	)
-	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
+	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16197,7 +16197,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16233,7 +16233,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 			ID:   "billing/get-github-packages-billing-org",
 		}
 	)
-	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
+	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16303,7 +16303,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16339,7 +16339,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 			ID:   "billing/get-github-packages-billing-user",
 		}
 	)
-	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
+	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16409,7 +16409,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16445,7 +16445,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 			ID:   "billing/get-shared-storage-billing-ghe",
 		}
 	)
-	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
+	params, err := decodeBillingGetSharedStorageBillingGheParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16515,7 +16515,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16551,7 +16551,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 			ID:   "billing/get-shared-storage-billing-org",
 		}
 	)
-	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
+	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16621,7 +16621,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16657,7 +16657,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 			ID:   "billing/get-shared-storage-billing-user",
 		}
 	)
-	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
+	params, err := decodeBillingGetSharedStorageBillingUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16731,7 +16731,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 // have the `checks:write` permission to create check suites.
 //
 // POST /repos/{owner}/{repo}/check-suites
-func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16767,7 +16767,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 			ID:   "checks/create-suite",
 		}
 	)
-	params, err := decodeChecksCreateSuiteParams(args, r)
+	params, err := decodeChecksCreateSuiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16857,7 +16857,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 // authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
-func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -16893,7 +16893,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 			ID:   "checks/get",
 		}
 	)
-	params, err := decodeChecksGetParams(args, r)
+	params, err := decodeChecksGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -16972,7 +16972,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 // authenticated users must have the `repo` scope to get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
-func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get-suite"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17008,7 +17008,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 			ID:   "checks/get-suite",
 		}
 	)
-	params, err := decodeChecksGetSuiteParams(args, r)
+	params, err := decodeChecksGetSuiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17085,7 +17085,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 // annotations for a check run in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-annotations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17121,7 +17121,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 			ID:   "checks/list-annotations",
 		}
 	)
-	params, err := decodeChecksListAnnotationsParams(args, r)
+	params, err := decodeChecksListAnnotationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17209,7 +17209,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 // check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17245,7 +17245,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 			ID:   "checks/list-for-ref",
 		}
 	)
-	params, err := decodeChecksListForRefParams(args, r)
+	params, err := decodeChecksListForRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17348,7 +17348,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 // Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-suite"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17384,7 +17384,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 			ID:   "checks/list-for-suite",
 		}
 	)
-	params, err := decodeChecksListForSuiteParams(args, r)
+	params, err := decodeChecksListForSuiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17484,7 +17484,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 // get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-suites-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -17520,7 +17520,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 			ID:   "checks/list-suites-for-ref",
 		}
 	)
-	params, err := decodeChecksListSuitesForRefParams(args, r)
+	params, err := decodeChecksListSuitesForRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17615,7 +17615,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 // repository or pull access to a public repository.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/rerequest-suite"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17651,7 +17651,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 			ID:   "checks/rerequest-suite",
 		}
 	)
-	params, err := decodeChecksRerequestSuiteParams(args, r)
+	params, err := decodeChecksRerequestSuiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17729,7 +17729,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 // to set preferences for check suites.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
-func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -17765,7 +17765,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 			ID:   "checks/set-suites-preferences",
 		}
 	)
-	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
+	params, err := decodeChecksSetSuitesPreferencesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -17908,7 +17908,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 // in each set undeleted to avoid removing a tool's analysis entirely.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/delete-analysis"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -17944,7 +17944,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 			ID:   "code-scanning/delete-analysis",
 		}
 	)
-	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
+	params, err := decodeCodeScanningDeleteAnalysisParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18028,7 +18028,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 // a GET request to the URL specified by `instances_url`.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-alert"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18064,7 +18064,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 			ID:   "code-scanning/get-alert",
 		}
 	)
-	params, err := decodeCodeScanningGetAlertParams(args, r)
+	params, err := decodeCodeScanningGetAlertParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18156,7 +18156,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 // `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-analysis"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18192,7 +18192,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 			ID:   "code-scanning/get-analysis",
 		}
 	)
-	params, err := decodeCodeScanningGetAnalysisParams(args, r)
+	params, err := decodeCodeScanningGetAnalysisParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18271,7 +18271,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 // have the `security_events` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
-func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-sarif"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18307,7 +18307,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 			ID:   "code-scanning/get-sarif",
 		}
 	)
-	params, err := decodeCodeScanningGetSarifParams(args, r)
+	params, err := decodeCodeScanningGetSarifParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18383,7 +18383,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
-func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alert-instances"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18419,7 +18419,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 			ID:   "code-scanning/list-alert-instances",
 		}
 	)
-	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
+	params, err := decodeCodeScanningListAlertInstancesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18512,7 +18512,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 // (if you used `ref` in the request).
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts
-func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18548,7 +18548,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 			ID:   "code-scanning/list-alerts-for-repo",
 		}
 	)
-	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
+	params, err := decodeCodeScanningListAlertsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18656,7 +18656,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 // `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses
-func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -18692,7 +18692,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 			ID:   "code-scanning/list-recent-analyses",
 		}
 	)
-	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
+	params, err := decodeCodeScanningListRecentAnalysesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18788,7 +18788,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 // permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/update-alert"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -18824,7 +18824,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 			ID:   "code-scanning/update-alert",
 		}
 	)
-	params, err := decodeCodeScanningUpdateAlertParams(args, r)
+	params, err := decodeCodeScanningUpdateAlertParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -18939,7 +18939,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 // upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
-func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/upload-sarif"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18975,7 +18975,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 			ID:   "code-scanning/upload-sarif",
 		}
 	)
-	params, err := decodeCodeScanningUploadSarifParams(args, r)
+	params, err := decodeCodeScanningUploadSarifParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19060,7 +19060,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 // Get all codes of conduct.
 //
 // GET /codes_of_conduct
-func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19143,7 +19143,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 // Get a code of conduct.
 //
 // GET /codes_of_conduct/{key}
-func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19179,7 +19179,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 			ID:   "codes-of-conduct/get-conduct-code",
 		}
 	)
-	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
+	params, err := decodeCodesOfConductGetConductCodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19245,7 +19245,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 // Lists all the emojis available to use on GitHub.
 //
 // GET /emojis
-func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("emojis/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -19332,7 +19332,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -19368,7 +19368,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			ID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19444,7 +19444,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 // scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -19480,7 +19480,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			ID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19561,7 +19561,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
-func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19597,7 +19597,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 			ID:   "enterprise-admin/create-registration-token-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19672,7 +19672,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
-func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19708,7 +19708,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 			ID:   "enterprise-admin/create-remove-token-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19775,7 +19775,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
-func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19811,7 +19811,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			ID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -19893,7 +19893,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -19929,7 +19929,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			ID:   "enterprise-admin/delete-scim-group-from-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20001,7 +20001,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -20037,7 +20037,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			ID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20108,7 +20108,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -20144,7 +20144,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			ID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20215,7 +20215,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -20251,7 +20251,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			ID:   "enterprise-admin/delete-user-from-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20325,7 +20325,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -20361,7 +20361,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			ID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20435,7 +20435,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -20471,7 +20471,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			ID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20545,7 +20545,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
-func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20581,7 +20581,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 			ID:   "enterprise-admin/get-allowed-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20648,7 +20648,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 // you must use an access token with the `admin:enterprise` scope.
 //
 // GET /enterprises/{enterprise}/audit-log
-func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20684,7 +20684,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 			ID:   "enterprise-admin/get-audit-log",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
+	params, err := decodeEnterpriseAdminGetAuditLogParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20779,7 +20779,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions
-func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20815,7 +20815,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 			ID:   "enterprise-admin/get-github-actions-permissions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20882,7 +20882,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -20918,7 +20918,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
+	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -20993,7 +20993,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21029,7 +21029,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
+	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21100,7 +21100,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21136,7 +21136,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 			ID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21207,7 +21207,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21243,7 +21243,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 			ID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21314,7 +21314,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21350,7 +21350,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 			ID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21429,7 +21429,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
-func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21465,7 +21465,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 			ID:   "enterprise-admin/list-provisioned-groups-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21573,7 +21573,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 // added to the GitHub enterprise, and the external identity `null` entry remains in place.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
-func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21609,7 +21609,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 			ID:   "enterprise-admin/list-provisioned-identities-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21688,7 +21688,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/downloads
-func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21724,7 +21724,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 			ID:   "enterprise-admin/list-runner-applications-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21794,7 +21794,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
-func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21830,7 +21830,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 			ID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -21905,7 +21905,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -21941,7 +21941,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 			ID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22016,7 +22016,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22052,7 +22052,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 			ID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22127,7 +22127,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -22163,7 +22163,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 			ID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22245,7 +22245,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 // to.
 //
 // POST /scim/v2/enterprises/{enterprise}/Groups
-func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22281,7 +22281,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 			ID:   "enterprise-admin/provision-and-invite-enterprise-group",
 		}
 	)
-	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
+	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22368,7 +22368,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 // will be sent.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
-func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22404,7 +22404,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 			ID:   "enterprise-admin/provision-and-invite-enterprise-user",
 		}
 	)
-	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
+	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22489,7 +22489,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -22525,7 +22525,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			ID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22601,7 +22601,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -22637,7 +22637,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			ID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22715,7 +22715,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -22751,7 +22751,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			ID:   "enterprise-admin/set-allowed-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22833,7 +22833,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -22869,7 +22869,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			ID:   "enterprise-admin/set-github-actions-permissions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -22956,7 +22956,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 // group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -22992,7 +22992,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
+	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23086,7 +23086,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 // identity, and deletes the associated `{scim_user_id}`.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -23122,7 +23122,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
+	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23209,7 +23209,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -23245,7 +23245,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			ID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23334,7 +23334,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -23370,7 +23370,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			ID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23452,7 +23452,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -23488,7 +23488,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			ID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23578,7 +23578,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 // [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -23614,7 +23614,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 			ID:   "enterprise-admin/update-attribute-for-enterprise-group",
 		}
 	)
-	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
+	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23721,7 +23721,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 // ```.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -23757,7 +23757,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 			ID:   "enterprise-admin/update-attribute-for-enterprise-user",
 		}
 	)
-	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
+	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23843,7 +23843,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -23879,7 +23879,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			ID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
 		}
 	)
-	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
+	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -23964,7 +23964,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 // Check if a gist is starred.
 //
 // GET /gists/{gist_id}/star
-func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/check-is-starred"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24000,7 +24000,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 			ID:   "gists/check-is-starred",
 		}
 	)
-	params, err := decodeGistsCheckIsStarredParams(args, r)
+	params, err := decodeGistsCheckIsStarredParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24068,7 +24068,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 // automatic naming scheme that Gist uses internally.
 //
 // POST /gists
-func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24170,7 +24170,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 // Create a gist comment.
 //
 // POST /gists/{gist_id}/comments
-func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24206,7 +24206,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 			ID:   "gists/create-comment",
 		}
 	)
-	params, err := decodeGistsCreateCommentParams(args, r)
+	params, err := decodeGistsCreateCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24287,7 +24287,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 // Delete a gist.
 //
 // DELETE /gists/{gist_id}
-func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -24323,7 +24323,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 			ID:   "gists/delete",
 		}
 	)
-	params, err := decodeGistsDeleteParams(args, r)
+	params, err := decodeGistsDeleteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24389,7 +24389,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 // Delete a gist comment.
 //
 // DELETE /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -24425,7 +24425,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 			ID:   "gists/delete-comment",
 		}
 	)
-	params, err := decodeGistsDeleteCommentParams(args, r)
+	params, err := decodeGistsDeleteCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24495,7 +24495,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 // **Note**: This was previously `/gists/:gist_id/fork`.
 //
 // POST /gists/{gist_id}/forks
-func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/fork"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24531,7 +24531,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "gists/fork",
 		}
 	)
-	params, err := decodeGistsForkParams(args, r)
+	params, err := decodeGistsForkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24597,7 +24597,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 // Get a gist.
 //
 // GET /gists/{gist_id}
-func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24633,7 +24633,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 			ID:   "gists/get",
 		}
 	)
-	params, err := decodeGistsGetParams(args, r)
+	params, err := decodeGistsGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24699,7 +24699,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 // Get a gist comment.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24735,7 +24735,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 			ID:   "gists/get-comment",
 		}
 	)
-	params, err := decodeGistsGetCommentParams(args, r)
+	params, err := decodeGistsGetCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24805,7 +24805,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 // Get a gist revision.
 //
 // GET /gists/{gist_id}/{sha}
-func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-revision"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24841,7 +24841,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 			ID:   "gists/get-revision",
 		}
 	)
-	params, err := decodeGistsGetRevisionParams(args, r)
+	params, err := decodeGistsGetRevisionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -24912,7 +24912,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 // gists:.
 //
 // GET /gists
-func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -24948,7 +24948,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "gists/list",
 		}
 	)
-	params, err := decodeGistsListParams(args, r)
+	params, err := decodeGistsListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25022,7 +25022,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 // List gist comments.
 //
 // GET /gists/{gist_id}/comments
-func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-comments"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25058,7 +25058,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 			ID:   "gists/list-comments",
 		}
 	)
-	params, err := decodeGistsListCommentsParams(args, r)
+	params, err := decodeGistsListCommentsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25132,7 +25132,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 // List gist commits.
 //
 // GET /gists/{gist_id}/commits
-func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25168,7 +25168,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 			ID:   "gists/list-commits",
 		}
 	)
-	params, err := decodeGistsListCommitsParams(args, r)
+	params, err := decodeGistsListCommitsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25242,7 +25242,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 // Lists public gists for the specified user:.
 //
 // GET /users/{username}/gists
-func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25278,7 +25278,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 			ID:   "gists/list-for-user",
 		}
 	)
-	params, err := decodeGistsListForUserParams(args, r)
+	params, err := decodeGistsListForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25356,7 +25356,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 // List gist forks.
 //
 // GET /gists/{gist_id}/forks
-func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-forks"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25392,7 +25392,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 			ID:   "gists/list-forks",
 		}
 	)
-	params, err := decodeGistsListForksParams(args, r)
+	params, err := decodeGistsListForksParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25469,7 +25469,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 // example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
 //
 // GET /gists/public
-func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-public"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25505,7 +25505,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 			ID:   "gists/list-public",
 		}
 	)
-	params, err := decodeGistsListPublicParams(args, r)
+	params, err := decodeGistsListPublicParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25579,7 +25579,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 // List the authenticated user's starred gists:.
 //
 // GET /gists/starred
-func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-starred"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -25615,7 +25615,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 			ID:   "gists/list-starred",
 		}
 	)
-	params, err := decodeGistsListStarredParams(args, r)
+	params, err := decodeGistsListStarredParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25691,7 +25691,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /gists/{gist_id}/star
-func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/star"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -25727,7 +25727,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "gists/star",
 		}
 	)
-	params, err := decodeGistsStarParams(args, r)
+	params, err := decodeGistsStarParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25793,7 +25793,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 // Unstar a gist.
 //
 // DELETE /gists/{gist_id}/star
-func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/unstar"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -25829,7 +25829,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 			ID:   "gists/unstar",
 		}
 	)
-	params, err := decodeGistsUnstarParams(args, r)
+	params, err := decodeGistsUnstarParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -25895,7 +25895,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 // Update a gist comment.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/update-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -25931,7 +25931,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 			ID:   "gists/update-comment",
 		}
 	)
-	params, err := decodeGistsUpdateCommentParams(args, r)
+	params, err := decodeGistsUpdateCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26016,7 +26016,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 // Create a blob.
 //
 // POST /repos/{owner}/{repo}/git/blobs
-func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26052,7 +26052,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 			ID:   "git/create-blob",
 		}
 	)
-	params, err := decodeGitCreateBlobParams(args, r)
+	params, err := decodeGitCreateBlobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26170,7 +26170,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/commits
-func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26206,7 +26206,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 			ID:   "git/create-commit",
 		}
 	)
-	params, err := decodeGitCreateCommitParams(args, r)
+	params, err := decodeGitCreateCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26293,7 +26293,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 // without branches.
 //
 // POST /repos/{owner}/{repo}/git/refs
-func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26329,7 +26329,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 			ID:   "git/create-ref",
 		}
 	)
-	params, err := decodeGitCreateRefParams(args, r)
+	params, err := decodeGitCreateRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26450,7 +26450,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/tags
-func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tag"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26486,7 +26486,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 			ID:   "git/create-tag",
 		}
 	)
-	params, err := decodeGitCreateTagParams(args, r)
+	params, err := decodeGitCreateTagParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26577,7 +26577,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 // reference](https://docs.github.com/rest/reference/git#update-a-reference).".
 //
 // POST /repos/{owner}/{repo}/git/trees
-func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tree"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26613,7 +26613,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 			ID:   "git/create-tree",
 		}
 	)
-	params, err := decodeGitCreateTreeParams(args, r)
+	params, err := decodeGitCreateTreeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26698,7 +26698,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 // Delete a reference.
 //
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
-func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/delete-ref"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -26734,7 +26734,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 			ID:   "git/delete-ref",
 		}
 	)
-	params, err := decodeGitDeleteRefParams(args, r)
+	params, err := decodeGitDeleteRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26809,7 +26809,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 // _Note_: This API supports blobs up to 100 megabytes in size.
 //
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
-func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-blob"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26845,7 +26845,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 			ID:   "git/get-blob",
 		}
 	)
-	params, err := decodeGitGetBlobParams(args, r)
+	params, err := decodeGitGetBlobParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -26952,7 +26952,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
-func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-commit"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -26988,7 +26988,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 			ID:   "git/get-commit",
 		}
 	)
-	params, err := decodeGitGetCommitParams(args, r)
+	params, err := decodeGitGetCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27069,7 +27069,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 // com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 //
 // GET /repos/{owner}/{repo}/git/ref/{ref}
-func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-ref"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27105,7 +27105,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 			ID:   "git/get-ref",
 		}
 	)
-	params, err := decodeGitGetRefParams(args, r)
+	params, err := decodeGitGetRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27210,7 +27210,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
-func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tag"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27246,7 +27246,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 			ID:   "git/get-tag",
 		}
 	)
-	params, err := decodeGitGetTagParams(args, r)
+	params, err := decodeGitGetTagParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27323,7 +27323,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 // and fetch one sub-tree at a time.
 //
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
-func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tree"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27359,7 +27359,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 			ID:   "git/get-tree",
 		}
 	)
-	params, err := decodeGitGetTreeParams(args, r)
+	params, err := decodeGitGetTreeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27451,7 +27451,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 // such as `featureA` and `featureB`.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/list-matching-refs"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27487,7 +27487,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 			ID:   "git/list-matching-refs",
 		}
 	)
-	params, err := decodeGitListMatchingRefsParams(args, r)
+	params, err := decodeGitListMatchingRefsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27569,7 +27569,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 // Update a reference.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
-func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -27605,7 +27605,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 			ID:   "git/update-ref",
 		}
 	)
-	params, err := decodeGitUpdateRefParams(args, r)
+	params, err := decodeGitUpdateRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27695,7 +27695,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 // com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
 //
 // GET /gitignore/templates
-func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-all-templates"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27780,7 +27780,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 // contents.
 //
 // GET /gitignore/templates/{name}
-func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-template"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -27816,7 +27816,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 			ID:   "gitignore/get-template",
 		}
 	)
-	params, err := decodeGitignoreGetTemplateParams(args, r)
+	params, err := decodeGitignoreGetTemplateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -27882,7 +27882,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 // Removes any interaction restrictions from your public repositories.
 //
 // DELETE /user/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -27966,7 +27966,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 // be an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -28002,7 +28002,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			ID:   "interactions/remove-restrictions-for-org",
 		}
 	)
-	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
+	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28071,7 +28071,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 // endpoint to change the interaction limit for a single repository.
 //
 // DELETE /repos/{owner}/{repo}/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -28107,7 +28107,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 			ID:   "interactions/remove-restrictions-for-repo",
 		}
 	)
-	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
+	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28179,7 +28179,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 // for individual repositories owned by the user.
 //
 // PUT /user/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -28284,7 +28284,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 // individual repositories owned by the organization.
 //
 // PUT /orgs/{org}/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -28320,7 +28320,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 			ID:   "interactions/set-restrictions-for-org",
 		}
 	)
-	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
+	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28404,7 +28404,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 // will not be able to use this endpoint to change the interaction limit for a single repository.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -28440,7 +28440,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 			ID:   "interactions/set-restrictions-for-repo",
 		}
 	)
-	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
+	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28525,7 +28525,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 // Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28561,7 +28561,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 			ID:   "issues/add-assignees",
 		}
 	)
-	params, err := decodeIssuesAddAssigneesParams(args, r)
+	params, err := decodeIssuesAddAssigneesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28653,7 +28653,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 // Otherwise a `404` status code is returned.
 //
 // GET /repos/{owner}/{repo}/assignees/{assignee}
-func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -28689,7 +28689,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 			ID:   "issues/check-user-can-be-assigned",
 		}
 	)
-	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
+	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28772,7 +28772,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues
-func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28808,7 +28808,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 			ID:   "issues/create",
 		}
 	)
-	params, err := decodeIssuesCreateParams(args, r)
+	params, err := decodeIssuesCreateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -28899,7 +28899,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28935,7 +28935,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 			ID:   "issues/create-comment",
 		}
 	)
-	params, err := decodeIssuesCreateCommentParams(args, r)
+	params, err := decodeIssuesCreateCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29024,7 +29024,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 // Create a label.
 //
 // POST /repos/{owner}/{repo}/labels
-func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29060,7 +29060,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 			ID:   "issues/create-label",
 		}
 	)
-	params, err := decodeIssuesCreateLabelParams(args, r)
+	params, err := decodeIssuesCreateLabelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29145,7 +29145,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 // Create a milestone.
 //
 // POST /repos/{owner}/{repo}/milestones
-func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-milestone"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29181,7 +29181,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 			ID:   "issues/create-milestone",
 		}
 	)
-	params, err := decodeIssuesCreateMilestoneParams(args, r)
+	params, err := decodeIssuesCreateMilestoneParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29266,7 +29266,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 // Delete an issue comment.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -29302,7 +29302,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 			ID:   "issues/delete-comment",
 		}
 	)
-	params, err := decodeIssuesDeleteCommentParams(args, r)
+	params, err := decodeIssuesDeleteCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29376,7 +29376,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 // Delete a label.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -29412,7 +29412,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 			ID:   "issues/delete-label",
 		}
 	)
-	params, err := decodeIssuesDeleteLabelParams(args, r)
+	params, err := decodeIssuesDeleteLabelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29486,7 +29486,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 // Delete a milestone.
 //
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-milestone"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -29522,7 +29522,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 			ID:   "issues/delete-milestone",
 		}
 	)
-	params, err := decodeIssuesDeleteMilestoneParams(args, r)
+	params, err := decodeIssuesDeleteMilestoneParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29614,7 +29614,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}
-func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29650,7 +29650,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 			ID:   "issues/get",
 		}
 	)
-	params, err := decodeIssuesGetParams(args, r)
+	params, err := decodeIssuesGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29724,7 +29724,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 // Get an issue comment.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29760,7 +29760,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 			ID:   "issues/get-comment",
 		}
 	)
-	params, err := decodeIssuesGetCommentParams(args, r)
+	params, err := decodeIssuesGetCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29834,7 +29834,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 // Get an issue event.
 //
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
-func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-event"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29870,7 +29870,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 			ID:   "issues/get-event",
 		}
 	)
-	params, err := decodeIssuesGetEventParams(args, r)
+	params, err := decodeIssuesGetEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -29944,7 +29944,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 // Get a label.
 //
 // GET /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-label"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -29980,7 +29980,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 			ID:   "issues/get-label",
 		}
 	)
-	params, err := decodeIssuesGetLabelParams(args, r)
+	params, err := decodeIssuesGetLabelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30054,7 +30054,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 // Get a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-milestone"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30090,7 +30090,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 			ID:   "issues/get-milestone",
 		}
 	)
-	params, err := decodeIssuesGetMilestoneParams(args, r)
+	params, err := decodeIssuesGetMilestoneParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30176,7 +30176,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /issues
-func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30212,7 +30212,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "issues/list",
 		}
 	)
-	params, err := decodeIssuesListParams(args, r)
+	params, err := decodeIssuesListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30323,7 +30323,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 // com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
 //
 // GET /repos/{owner}/{repo}/assignees
-func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-assignees"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30359,7 +30359,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 			ID:   "issues/list-assignees",
 		}
 	)
-	params, err := decodeIssuesListAssigneesParams(args, r)
+	params, err := decodeIssuesListAssigneesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30437,7 +30437,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 // Issue Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30473,7 +30473,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 			ID:   "issues/list-comments",
 		}
 	)
-	params, err := decodeIssuesListCommentsParams(args, r)
+	params, err := decodeIssuesListCommentsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30559,7 +30559,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 // By default, Issue Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/issues/comments
-func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30595,7 +30595,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 			ID:   "issues/list-comments-for-repo",
 		}
 	)
-	params, err := decodeIssuesListCommentsForRepoParams(args, r)
+	params, err := decodeIssuesListCommentsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30685,7 +30685,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 // List issue events for a repository.
 //
 // GET /repos/{owner}/{repo}/issues/events
-func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-events-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30721,7 +30721,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 			ID:   "issues/list-events-for-repo",
 		}
 	)
-	params, err := decodeIssuesListEventsForRepoParams(args, r)
+	params, err := decodeIssuesListEventsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30807,7 +30807,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /user/issues
-func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30843,7 +30843,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 			ID:   "issues/list-for-authenticated-user",
 		}
 	)
-	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
+	params, err := decodeIssuesListForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -30945,7 +30945,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /orgs/{org}/issues
-func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -30981,7 +30981,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 			ID:   "issues/list-for-org",
 		}
 	)
-	params, err := decodeIssuesListForOrgParams(args, r)
+	params, err := decodeIssuesListForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31087,7 +31087,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues
-func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31123,7 +31123,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 			ID:   "issues/list-for-repo",
 		}
 	)
-	params, err := decodeIssuesListForRepoParams(args, r)
+	params, err := decodeIssuesListForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31237,7 +31237,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 // List labels for issues in a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-milestone"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31273,7 +31273,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 			ID:   "issues/list-labels-for-milestone",
 		}
 	)
-	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
+	params, err := decodeIssuesListLabelsForMilestoneParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31355,7 +31355,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 // List labels for a repository.
 //
 // GET /repos/{owner}/{repo}/labels
-func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31391,7 +31391,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 			ID:   "issues/list-labels-for-repo",
 		}
 	)
-	params, err := decodeIssuesListLabelsForRepoParams(args, r)
+	params, err := decodeIssuesListLabelsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31469,7 +31469,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 // List labels for an issue.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-on-issue"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31505,7 +31505,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 			ID:   "issues/list-labels-on-issue",
 		}
 	)
-	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
+	params, err := decodeIssuesListLabelsOnIssueParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31587,7 +31587,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 // List milestones.
 //
 // GET /repos/{owner}/{repo}/milestones
-func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-milestones"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -31623,7 +31623,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 			ID:   "issues/list-milestones",
 		}
 	)
-	params, err := decodeIssuesListMilestonesParams(args, r)
+	params, err := decodeIssuesListMilestonesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31716,7 +31716,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/lock"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -31752,7 +31752,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 			ID:   "issues/lock",
 		}
 	)
-	params, err := decodeIssuesLockParams(args, r)
+	params, err := decodeIssuesLockParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31841,7 +31841,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 // Remove all labels from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-all-labels"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -31877,7 +31877,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 			ID:   "issues/remove-all-labels",
 		}
 	)
-	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
+	params, err := decodeIssuesRemoveAllLabelsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -31951,7 +31951,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 // Removes one or more assignees from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -31987,7 +31987,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 			ID:   "issues/remove-assignees",
 		}
 	)
-	params, err := decodeIssuesRemoveAssigneesParams(args, r)
+	params, err := decodeIssuesRemoveAssigneesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32077,7 +32077,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 // endpoint returns a `404 Not Found` status if the label does not exist.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
-func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-label"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -32113,7 +32113,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 			ID:   "issues/remove-label",
 		}
 	)
-	params, err := decodeIssuesRemoveLabelParams(args, r)
+	params, err := decodeIssuesRemoveLabelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32191,7 +32191,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 // Users with push access can unlock an issue's conversation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/unlock"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -32227,7 +32227,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 			ID:   "issues/unlock",
 		}
 	)
-	params, err := decodeIssuesUnlockParams(args, r)
+	params, err := decodeIssuesUnlockParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32301,7 +32301,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 // Issue owners and users with push access can edit an issue.
 //
 // PATCH /repos/{owner}/{repo}/issues/{issue_number}
-func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -32337,7 +32337,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 			ID:   "issues/update",
 		}
 	)
-	params, err := decodeIssuesUpdateParams(args, r)
+	params, err := decodeIssuesUpdateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32426,7 +32426,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 // Update an issue comment.
 //
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -32462,7 +32462,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 			ID:   "issues/update-comment",
 		}
 	)
-	params, err := decodeIssuesUpdateCommentParams(args, r)
+	params, err := decodeIssuesUpdateCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32551,7 +32551,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 // Update a label.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -32587,7 +32587,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 			ID:   "issues/update-label",
 		}
 	)
-	params, err := decodeIssuesUpdateLabelParams(args, r)
+	params, err := decodeIssuesUpdateLabelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32676,7 +32676,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 // Update a milestone.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-milestone"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -32712,7 +32712,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 			ID:   "issues/update-milestone",
 		}
 	)
-	params, err := decodeIssuesUpdateMilestoneParams(args, r)
+	params, err := decodeIssuesUpdateMilestoneParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32801,7 +32801,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 // Get a license.
 //
 // GET /licenses/{license}
-func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32837,7 +32837,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 			ID:   "licenses/get",
 		}
 	)
-	params, err := decodeLicensesGetParams(args, r)
+	params, err := decodeLicensesGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -32903,7 +32903,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 // Get all commonly used licenses.
 //
 // GET /licenses
-func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-all-commonly-used"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -32939,7 +32939,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 			ID:   "licenses/get-all-commonly-used",
 		}
 	)
-	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
+	params, err := decodeLicensesGetAllCommonlyUsedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33017,7 +33017,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 // or rendered license HTML.
 //
 // GET /repos/{owner}/{repo}/license
-func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33053,7 +33053,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 			ID:   "licenses/get-for-repo",
 		}
 	)
-	params, err := decodeLicensesGetForRepoParams(args, r)
+	params, err := decodeLicensesGetForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33123,7 +33123,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 // Render a Markdown document.
 //
 // POST /markdown
-func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33228,7 +33228,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 // format like a README.md file. Markdown content must be 400 KB or less.
 //
 // POST /markdown/raw
-func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render-raw"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33334,7 +33334,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseW
 // always query the API directly to get the latest list of IP addresses.
 //
 // GET /meta
-func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33417,7 +33417,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 // Get the octocat as ASCII art.
 //
 // GET /octocat
-func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-octocat"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33453,7 +33453,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 			ID:   "meta/get-octocat",
 		}
 	)
-	params, err := decodeMetaGetOctocatParams(args, r)
+	params, err := decodeMetaGetOctocatParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33519,7 +33519,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 // Get a random sentence from the Zen of GitHub.
 //
 // GET /zen
-func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-zen"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33602,7 +33602,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 // Get Hypermedia links to resources accessible in GitHub's REST API.
 //
 // GET /
-func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/root"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -33685,7 +33685,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 // Stop an import for a repository.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -33721,7 +33721,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 			ID:   "migrations/cancel-import",
 		}
 	)
-	params, err := decodeMigrationsCancelImportParams(args, r)
+	params, err := decodeMigrationsCancelImportParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33795,7 +33795,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 // will continue to be available even after an archive is deleted.
 //
 // DELETE /user/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -33831,7 +33831,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 			ID:   "migrations/delete-archive-for-authenticated-user",
 		}
 	)
-	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
+	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -33898,7 +33898,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 // days.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -33934,7 +33934,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 			ID:   "migrations/delete-archive-for-org",
 		}
 	)
-	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
+	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34004,7 +34004,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 // Fetches the URL to a migration archive.
 //
 // GET /orgs/{org}/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/download-archive-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34040,7 +34040,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 			ID:   "migrations/download-archive-for-org",
 		}
 	)
-	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
+	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34130,7 +34130,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 // uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
 //
 // GET /user/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34166,7 +34166,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 			ID:   "migrations/get-archive-for-authenticated-user",
 		}
 	)
-	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
+	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34239,7 +34239,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 // author information.
 //
 // GET /repos/{owner}/{repo}/import/authors
-func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-commit-authors"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34275,7 +34275,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 			ID:   "migrations/get-commit-authors",
 		}
 	)
-	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
+	params, err := decodeMigrationsGetCommitAuthorsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34401,7 +34401,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 // repository. To see a list of these files, make a "Get Large Files" request.
 //
 // GET /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-import-status"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34437,7 +34437,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 			ID:   "migrations/get-import-status",
 		}
 	)
-	params, err := decodeMigrationsGetImportStatusParams(args, r)
+	params, err := decodeMigrationsGetImportStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34507,7 +34507,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 // List files larger than 100MB found during the import.
 //
 // GET /repos/{owner}/{repo}/import/large_files
-func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-large-files"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34543,7 +34543,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 			ID:   "migrations/get-large-files",
 		}
 	)
-	params, err := decodeMigrationsGetLargeFilesParams(args, r)
+	params, err := decodeMigrationsGetLargeFilesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34620,7 +34620,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 // github.com/rest/reference/migrations#download-a-user-migration-archive).
 //
 // GET /user/migrations/{migration_id}
-func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34656,7 +34656,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 			ID:   "migrations/get-status-for-authenticated-user",
 		}
 	)
-	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
+	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34731,7 +34731,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 // *   `failed`, which means the migration failed.
 //
 // GET /orgs/{org}/migrations/{migration_id}
-func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34767,7 +34767,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 			ID:   "migrations/get-status-for-org",
 		}
 	)
-	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
+	params, err := decodeMigrationsGetStatusForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34841,7 +34841,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 // Lists all migrations a user has started.
 //
 // GET /user/migrations
-func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34877,7 +34877,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 			ID:   "migrations/list-for-authenticated-user",
 		}
 	)
-	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
+	params, err := decodeMigrationsListForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -34947,7 +34947,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 // Lists the most recent migrations.
 //
 // GET /orgs/{org}/migrations
-func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -34983,7 +34983,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 			ID:   "migrations/list-for-org",
 		}
 	)
-	params, err := decodeMigrationsListForOrgParams(args, r)
+	params, err := decodeMigrationsListForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35061,7 +35061,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 // List all the repositories for this organization migration.
 //
 // GET /orgs/{org}/migrations/{migration_id}/repositories
-func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35097,7 +35097,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 			ID:   "migrations/list-repos-for-org",
 		}
 	)
-	params, err := decodeMigrationsListReposForOrgParams(args, r)
+	params, err := decodeMigrationsListReposForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35175,7 +35175,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 // Lists all the repositories for this user migration.
 //
 // GET /user/migrations/{migration_id}/repositories
-func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -35211,7 +35211,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 			ID:   "migrations/list-repos-for-user",
 		}
 	)
-	params, err := decodeMigrationsListReposForUserParams(args, r)
+	params, err := decodeMigrationsListReposForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35286,7 +35286,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 // time before you push new commits to the repository.
 //
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
-func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -35322,7 +35322,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 			ID:   "migrations/map-commit-author",
 		}
 	)
-	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
+	params, err := decodeMigrationsMapCommitAuthorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35414,7 +35414,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 // com/articles/versioning-large-files/).
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
-func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/set-lfs-preference"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -35450,7 +35450,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 			ID:   "migrations/set-lfs-preference",
 		}
 	)
-	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
+	params, err := decodeMigrationsSetLfsPreferenceParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35535,7 +35535,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 // Initiates the generation of a user migration archive.
 //
 // POST /user/migrations
-func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35637,7 +35637,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 // Initiates the generation of a migration archive.
 //
 // POST /orgs/{org}/migrations
-func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35673,7 +35673,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 			ID:   "migrations/start-for-org",
 		}
 	)
-	params, err := decodeMigrationsStartForOrgParams(args, r)
+	params, err := decodeMigrationsStartForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35754,7 +35754,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 // Start a source import to a GitHub repository using GitHub Importer.
 //
 // PUT /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-import"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -35790,7 +35790,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 			ID:   "migrations/start-import",
 		}
 	)
-	params, err := decodeMigrationsStartImportParams(args, r)
+	params, err := decodeMigrationsStartImportParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35879,7 +35879,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 // status of `404 Not Found` if the repository is not locked.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
-func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -35915,7 +35915,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 			ID:   "migrations/unlock-repo-for-authenticated-user",
 		}
 	)
-	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
+	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -35987,7 +35987,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 // is complete and you no longer need the source data.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
-func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -36023,7 +36023,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 			ID:   "migrations/unlock-repo-for-org",
 		}
 	)
-	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
+	params, err := decodeMigrationsUnlockRepoForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36099,7 +36099,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 // request. If no parameters are provided, the import will be restarted.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -36135,7 +36135,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 			ID:   "migrations/update-import",
 		}
 	)
-	params, err := decodeMigrationsUpdateImportParams(args, r)
+	params, err := decodeMigrationsUpdateImportParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36249,7 +36249,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /authorizations
-func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36360,7 +36360,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -36396,7 +36396,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 			ID:   "oauth-authorizations/delete-authorization",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
+	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36474,7 +36474,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /applications/grants/{grant_id}
-func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -36510,7 +36510,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 			ID:   "oauth-authorizations/delete-grant",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
+	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36585,7 +36585,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36621,7 +36621,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 			ID:   "oauth-authorizations/get-authorization",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
+	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36696,7 +36696,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants/{grant_id}
-func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-grant"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -36732,7 +36732,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 			ID:   "oauth-authorizations/get-grant",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
+	params, err := decodeOAuthAuthorizationsGetGrantParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36826,7 +36826,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}
-func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -36862,7 +36862,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			ID:   "oauth-authorizations/get-or-create-authorization-for-app",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
+	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -36966,7 +36966,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
-func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -37002,7 +37002,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			ID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
+	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37096,7 +37096,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations
-func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37132,7 +37132,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 			ID:   "oauth-authorizations/list-authorizations",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
+	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37226,7 +37226,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants
-func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-grants"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37262,7 +37262,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 			ID:   "oauth-authorizations/list-grants",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
+	params, err := decodeOAuthAuthorizationsListGrantsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37349,7 +37349,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -37385,7 +37385,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 			ID:   "oauth-authorizations/update-authorization",
 		}
 	)
-	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
+	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37466,7 +37466,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 // Block a user from an organization.
 //
 // PUT /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/block-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -37502,7 +37502,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 			ID:   "orgs/block-user",
 		}
 	)
-	params, err := decodeOrgsBlockUserParams(args, r)
+	params, err := decodeOrgsBlockUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37575,7 +37575,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 // com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 //
 // DELETE /orgs/{org}/invitations/{invitation_id}
-func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/cancel-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -37611,7 +37611,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 			ID:   "orgs/cancel-invitation",
 		}
 	)
-	params, err := decodeOrgsCancelInvitationParams(args, r)
+	params, err := decodeOrgsCancelInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37681,7 +37681,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 // Check if a user is blocked by an organization.
 //
 // GET /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-blocked-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37717,7 +37717,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 			ID:   "orgs/check-blocked-user",
 		}
 	)
-	params, err := decodeOrgsCheckBlockedUserParams(args, r)
+	params, err := decodeOrgsCheckBlockedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37787,7 +37787,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 // Check if a user is, publicly or privately, a member of the organization.
 //
 // GET /orgs/{org}/members/{username}
-func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37823,7 +37823,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 			ID:   "orgs/check-membership-for-user",
 		}
 	)
-	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
+	params, err := decodeOrgsCheckMembershipForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -37893,7 +37893,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 // Check public organization membership for a user.
 //
 // GET /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -37929,7 +37929,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 			ID:   "orgs/check-public-membership-for-user",
 		}
 	)
-	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
+	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38003,7 +38003,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 // com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
 //
 // PUT /orgs/{org}/outside_collaborators/{username}
-func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -38039,7 +38039,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 			ID:   "orgs/convert-member-to-outside-collaborator",
 		}
 	)
-	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
+	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38117,7 +38117,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /orgs/{org}/invitations
-func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-invitation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38153,7 +38153,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 			ID:   "orgs/create-invitation",
 		}
 	)
-	params, err := decodeOrgsCreateInvitationParams(args, r)
+	params, err := decodeOrgsCreateInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38234,7 +38234,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 // Here's how you can create a hook that posts payloads in JSON format:.
 //
 // POST /orgs/{org}/hooks
-func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38270,7 +38270,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 			ID:   "orgs/create-webhook",
 		}
 	)
-	params, err := decodeOrgsCreateWebhookParams(args, r)
+	params, err := decodeOrgsCreateWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38351,7 +38351,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 // Delete an organization webhook.
 //
 // DELETE /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/delete-webhook"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -38387,7 +38387,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 			ID:   "orgs/delete-webhook",
 		}
 	)
-	params, err := decodeOrgsDeleteWebhookParams(args, r)
+	params, err := decodeOrgsDeleteWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38465,7 +38465,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 // response, see 'Response with GitHub plan information' below.".
 //
 // GET /orgs/{org}
-func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38501,7 +38501,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 			ID:   "orgs/get",
 		}
 	)
-	params, err := decodeOrgsGetParams(args, r)
+	params, err := decodeOrgsGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38572,7 +38572,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 // this endpoint.
 //
 // GET /orgs/{org}/audit-log
-func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-audit-log"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38608,7 +38608,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 			ID:   "orgs/get-audit-log",
 		}
 	)
-	params, err := decodeOrgsGetAuditLogParams(args, r)
+	params, err := decodeOrgsGetAuditLogParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38702,7 +38702,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 // Get an organization membership for the authenticated user.
 //
 // GET /user/memberships/orgs/{org}
-func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38738,7 +38738,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 			ID:   "orgs/get-membership-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38806,7 +38806,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 // membership status.
 //
 // GET /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38842,7 +38842,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 			ID:   "orgs/get-membership-for-user",
 		}
 	)
-	params, err := decodeOrgsGetMembershipForUserParams(args, r)
+	params, err := decodeOrgsGetMembershipForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -38914,7 +38914,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 // organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization).".
 //
 // GET /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -38950,7 +38950,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 			ID:   "orgs/get-webhook",
 		}
 	)
-	params, err := decodeOrgsGetWebhookParams(args, r)
+	params, err := decodeOrgsGetWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39024,7 +39024,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 // `organization_hooks:read` permission.
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
-func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39060,7 +39060,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 			ID:   "orgs/get-webhook-config-for-org",
 		}
 	)
-	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
+	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39130,7 +39130,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 // Returns a delivery for a webhook configured in an organization.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
-func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39166,7 +39166,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 			ID:   "orgs/get-webhook-delivery",
 		}
 	)
-	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
+	params, err := decodeOrgsGetWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39243,7 +39243,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 // URL for the next page of organizations.
 //
 // GET /organizations
-func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39279,7 +39279,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "orgs/list",
 		}
 	)
-	params, err := decodeOrgsListParams(args, r)
+	params, err := decodeOrgsListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39349,7 +39349,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 // List the users blocked by an organization.
 //
 // GET /orgs/{org}/blocks
-func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-blocked-users"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39385,7 +39385,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 			ID:   "orgs/list-blocked-users",
 		}
 	)
-	params, err := decodeOrgsListBlockedUsersParams(args, r)
+	params, err := decodeOrgsListBlockedUsersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39452,7 +39452,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 // the invitation failed and the reason for the failure.
 //
 // GET /orgs/{org}/failed_invitations
-func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-failed-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39488,7 +39488,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 			ID:   "orgs/list-failed-invitations",
 		}
 	)
-	params, err := decodeOrgsListFailedInvitationsParams(args, r)
+	params, err := decodeOrgsListFailedInvitationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39567,7 +39567,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 // requests with insufficient scope receive a `403 Forbidden` response.
 //
 // GET /user/orgs
-func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39603,7 +39603,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 			ID:   "orgs/list-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsListForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39678,7 +39678,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 // com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
 //
 // GET /users/{username}/orgs
-func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39714,7 +39714,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 			ID:   "orgs/list-for-user",
 		}
 	)
-	params, err := decodeOrgsListForUserParams(args, r)
+	params, err := decodeOrgsListForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39789,7 +39789,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 // authenticated user must be an organization owner.
 //
 // GET /orgs/{org}/invitations/{invitation_id}/teams
-func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-invitation-teams"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39825,7 +39825,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 			ID:   "orgs/list-invitation-teams",
 		}
 	)
-	params, err := decodeOrgsListInvitationTeamsParams(args, r)
+	params, err := decodeOrgsListInvitationTeamsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -39904,7 +39904,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 // this organization then both concealed and public members will be returned.
 //
 // GET /orgs/{org}/members
-func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-members"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -39940,7 +39940,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 			ID:   "orgs/list-members",
 		}
 	)
-	params, err := decodeOrgsListMembersParams(args, r)
+	params, err := decodeOrgsListMembersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40022,7 +40022,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 // List organization memberships for the authenticated user.
 //
 // GET /user/memberships/orgs
-func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40058,7 +40058,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 			ID:   "orgs/list-memberships-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40132,7 +40132,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 // List all users who are outside collaborators of an organization.
 //
 // GET /orgs/{org}/outside_collaborators
-func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-outside-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40168,7 +40168,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 			ID:   "orgs/list-outside-collaborators",
 		}
 	)
-	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
+	params, err := decodeOrgsListOutsideCollaboratorsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40249,7 +40249,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 // `null`.
 //
 // GET /orgs/{org}/invitations
-func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-pending-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40285,7 +40285,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 			ID:   "orgs/list-pending-invitations",
 		}
 	)
-	params, err := decodeOrgsListPendingInvitationsParams(args, r)
+	params, err := decodeOrgsListPendingInvitationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40359,7 +40359,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 // Members of an organization can choose to have their membership publicized or not.
 //
 // GET /orgs/{org}/public_members
-func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-public-members"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40395,7 +40395,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 			ID:   "orgs/list-public-members",
 		}
 	)
-	params, err := decodeOrgsListPublicMembersParams(args, r)
+	params, err := decodeOrgsListPublicMembersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40476,7 +40476,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 // com/en/articles/about-authentication-with-saml-single-sign-on).
 //
 // GET /orgs/{org}/credential-authorizations
-func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40512,7 +40512,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 			ID:   "orgs/list-saml-sso-authorizations",
 		}
 	)
-	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
+	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40578,7 +40578,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 // Returns a list of webhook deliveries for a webhook configured in an organization.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
-func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40614,7 +40614,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 			ID:   "orgs/list-webhook-deliveries",
 		}
 	)
-	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
+	params, err := decodeOrgsListWebhookDeliveriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40692,7 +40692,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 // List organization webhooks.
 //
 // GET /orgs/{org}/hooks
-func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhooks"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -40728,7 +40728,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 			ID:   "orgs/list-webhooks",
 		}
 	)
-	params, err := decodeOrgsListWebhooksParams(args, r)
+	params, err := decodeOrgsListWebhooksParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40803,7 +40803,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 // hook.
 //
 // POST /orgs/{org}/hooks/{hook_id}/pings
-func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/ping-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40839,7 +40839,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 			ID:   "orgs/ping-webhook",
 		}
 	)
-	params, err := decodeOrgsPingWebhookParams(args, r)
+	params, err := decodeOrgsPingWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -40909,7 +40909,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 // Redeliver a delivery for a webhook configured in an organization.
 //
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40945,7 +40945,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 			ID:   "orgs/redeliver-webhook-delivery",
 		}
 	)
-	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
+	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41020,7 +41020,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 // access to the organization's repositories.
 //
 // DELETE /orgs/{org}/members/{username}
-func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-member"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41056,7 +41056,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 			ID:   "orgs/remove-member",
 		}
 	)
-	params, err := decodeOrgsRemoveMemberParams(args, r)
+	params, err := decodeOrgsRemoveMemberParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41130,7 +41130,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 // invitation. The specified user will receive an email notification in both cases.
 //
 // DELETE /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-membership-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41166,7 +41166,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 			ID:   "orgs/remove-membership-for-user",
 		}
 	)
-	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
+	params, err := decodeOrgsRemoveMembershipForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41236,7 +41236,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 // Removing a user from this list will remove them from all the organization's repositories.
 //
 // DELETE /orgs/{org}/outside_collaborators/{username}
-func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41272,7 +41272,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 			ID:   "orgs/remove-outside-collaborator",
 		}
 	)
-	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
+	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41342,7 +41342,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 // Remove public organization membership for the authenticated user.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41378,7 +41378,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			ID:   "orgs/remove-public-membership-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41454,7 +41454,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 // for the organization they want to access.
 //
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
-func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41490,7 +41490,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 			ID:   "orgs/remove-saml-sso-authorization",
 		}
 	)
-	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
+	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41573,7 +41573,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 // invitations per 24 hour period.
 //
 // PUT /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-membership-for-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -41609,7 +41609,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 			ID:   "orgs/set-membership-for-user",
 		}
 	)
-	params, err := decodeOrgsSetMembershipForUserParams(args, r)
+	params, err := decodeOrgsSetMembershipForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41698,7 +41698,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -41734,7 +41734,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 			ID:   "orgs/set-public-membership-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41804,7 +41804,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 // Unblock a user from an organization.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -41840,7 +41840,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 			ID:   "orgs/unblock-user",
 		}
 	)
-	params, err := decodeOrgsUnblockUserParams(args, r)
+	params, err := decodeOrgsUnblockUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -41910,7 +41910,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 // Update an organization membership for the authenticated user.
 //
 // PATCH /user/memberships/orgs/{org}
-func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -41946,7 +41946,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 			ID:   "orgs/update-membership-for-authenticated-user",
 		}
 	)
-	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
+	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42031,7 +42031,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 // organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization).".
 //
 // PATCH /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -42067,7 +42067,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 			ID:   "orgs/update-webhook",
 		}
 	)
-	params, err := decodeOrgsUpdateWebhookParams(args, r)
+	params, err := decodeOrgsUpdateWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42156,7 +42156,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 // `organization_hooks:write` permission.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
-func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -42192,7 +42192,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 			ID:   "orgs/update-webhook-config-for-org",
 		}
 	)
-	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
+	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42282,7 +42282,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42318,7 +42318,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 			ID:   "packages/delete-package-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42395,7 +42395,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 // to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42431,7 +42431,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 			ID:   "packages/delete-package-for-org",
 		}
 	)
-	params, err := decodePackagesDeletePackageForOrgParams(args, r)
+	params, err := decodePackagesDeletePackageForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42512,7 +42512,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 // to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42548,7 +42548,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 			ID:   "packages/delete-package-for-user",
 		}
 	)
-	params, err := decodePackagesDeletePackageForUserParams(args, r)
+	params, err := decodePackagesDeletePackageForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42627,7 +42627,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42663,7 +42663,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 			ID:   "packages/delete-package-version-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42744,7 +42744,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 // to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42780,7 +42780,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 			ID:   "packages/delete-package-version-for-org",
 		}
 	)
-	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
+	params, err := decodePackagesDeletePackageVersionForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42865,7 +42865,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 // to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -42901,7 +42901,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 			ID:   "packages/delete-package-version-for-user",
 		}
 	)
-	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
+	params, err := decodePackagesDeletePackageVersionForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -42981,7 +42981,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43017,7 +43017,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 			ID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
 		}
 	)
-	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43101,7 +43101,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43137,7 +43137,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 			ID:   "packages/get-all-package-versions-for-package-owned-by-org",
 		}
 	)
-	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43225,7 +43225,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43261,7 +43261,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 			ID:   "packages/get-all-package-versions-for-package-owned-by-user",
 		}
 	)
-	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43337,7 +43337,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43373,7 +43373,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 			ID:   "packages/get-package-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43445,7 +43445,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43481,7 +43481,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 			ID:   "packages/get-package-for-organization",
 		}
 	)
-	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
+	params, err := decodePackagesGetPackageForOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43557,7 +43557,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43593,7 +43593,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 			ID:   "packages/get-package-for-user",
 		}
 	)
-	params, err := decodePackagesGetPackageForUserParams(args, r)
+	params, err := decodePackagesGetPackageForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43669,7 +43669,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43705,7 +43705,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 			ID:   "packages/get-package-version-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43781,7 +43781,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43817,7 +43817,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 			ID:   "packages/get-package-version-for-organization",
 		}
 	)
-	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
+	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -43898,7 +43898,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -43934,7 +43934,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 			ID:   "packages/get-package-version-for-user",
 		}
 	)
-	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
+	params, err := decodePackagesGetPackageVersionForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44014,7 +44014,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages
-func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44050,7 +44050,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 			ID:   "packages/list-packages-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44122,7 +44122,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages
-func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44158,7 +44158,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 			ID:   "packages/list-packages-for-organization",
 		}
 	)
-	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
+	params, err := decodePackagesListPackagesForOrganizationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44234,7 +44234,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages
-func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -44270,7 +44270,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 			ID:   "packages/list-packages-for-user",
 		}
 	)
-	params, err := decodePackagesListPackagesForUserParams(args, r)
+	params, err := decodePackagesListPackagesForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44353,7 +44353,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 // `repo` scope.
 //
 // POST /user/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44389,7 +44389,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 			ID:   "packages/restore-package-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44474,7 +44474,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 // want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44510,7 +44510,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 			ID:   "packages/restore-package-for-org",
 		}
 	)
-	params, err := decodePackagesRestorePackageForOrgParams(args, r)
+	params, err := decodePackagesRestorePackageForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44599,7 +44599,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 // want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44635,7 +44635,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 			ID:   "packages/restore-package-for-user",
 		}
 	)
-	params, err := decodePackagesRestorePackageForUserParams(args, r)
+	params, err := decodePackagesRestorePackageForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44722,7 +44722,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 // `repo` scope.
 //
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44758,7 +44758,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 			ID:   "packages/restore-package-version-for-authenticated-user",
 		}
 	)
-	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
+	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44843,7 +44843,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 // want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44879,7 +44879,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 			ID:   "packages/restore-package-version-for-org",
 		}
 	)
-	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
+	params, err := decodePackagesRestorePackageVersionForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -44968,7 +44968,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 // want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45004,7 +45004,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 			ID:   "packages/restore-package-version-for-user",
 		}
 	)
-	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
+	params, err := decodePackagesRestorePackageVersionForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45083,7 +45083,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 // organization owner or a project `admin` to add a collaborator.
 //
 // PUT /projects/{project_id}/collaborators/{username}
-func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/add-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -45119,7 +45119,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 			ID:   "projects/add-collaborator",
 		}
 	)
-	params, err := decodeProjectsAddCollaboratorParams(args, r)
+	params, err := decodeProjectsAddCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45204,7 +45204,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 // Create a project column.
 //
 // POST /projects/{project_id}/columns
-func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45240,7 +45240,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 			ID:   "projects/create-column",
 		}
 	)
-	params, err := decodeProjectsCreateColumnParams(args, r)
+	params, err := decodeProjectsCreateColumnParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45321,7 +45321,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 // Create a user project.
 //
 // POST /user/projects
-func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45425,7 +45425,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /orgs/{org}/projects
-func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45461,7 +45461,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 			ID:   "projects/create-for-org",
 		}
 	)
-	params, err := decodeProjectsCreateForOrgParams(args, r)
+	params, err := decodeProjectsCreateForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45544,7 +45544,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /repos/{owner}/{repo}/projects
-func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45580,7 +45580,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 			ID:   "projects/create-for-repo",
 		}
 	)
-	params, err := decodeProjectsCreateForRepoParams(args, r)
+	params, err := decodeProjectsCreateForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45665,7 +45665,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 // Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
 //
 // DELETE /projects/{project_id}
-func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -45701,7 +45701,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 			ID:   "projects/delete",
 		}
 	)
-	params, err := decodeProjectsDeleteParams(args, r)
+	params, err := decodeProjectsDeleteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45767,7 +45767,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 // Delete a project card.
 //
 // DELETE /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-card"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -45803,7 +45803,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 			ID:   "projects/delete-card",
 		}
 	)
-	params, err := decodeProjectsDeleteCardParams(args, r)
+	params, err := decodeProjectsDeleteCardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45869,7 +45869,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 // Delete a project column.
 //
 // DELETE /projects/columns/{column_id}
-func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-column"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -45905,7 +45905,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 			ID:   "projects/delete-column",
 		}
 	)
-	params, err := decodeProjectsDeleteColumnParams(args, r)
+	params, err := decodeProjectsDeleteColumnParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -45973,7 +45973,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 // is returned.
 //
 // GET /projects/{project_id}
-func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46009,7 +46009,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 			ID:   "projects/get",
 		}
 	)
-	params, err := decodeProjectsGetParams(args, r)
+	params, err := decodeProjectsGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46075,7 +46075,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 // Get a project card.
 //
 // GET /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-card"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46111,7 +46111,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 			ID:   "projects/get-card",
 		}
 	)
-	params, err := decodeProjectsGetCardParams(args, r)
+	params, err := decodeProjectsGetCardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46177,7 +46177,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 // Get a project column.
 //
 // GET /projects/columns/{column_id}
-func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-column"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46213,7 +46213,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 			ID:   "projects/get-column",
 		}
 	)
-	params, err := decodeProjectsGetColumnParams(args, r)
+	params, err := decodeProjectsGetColumnParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46281,7 +46281,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 // `admin` to review a user's permission level.
 //
 // GET /projects/{project_id}/collaborators/{username}/permission
-func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-permission-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46317,7 +46317,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 			ID:   "projects/get-permission-for-user",
 		}
 	)
-	params, err := decodeProjectsGetPermissionForUserParams(args, r)
+	params, err := decodeProjectsGetPermissionForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46387,7 +46387,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 // List project cards.
 //
 // GET /projects/columns/{column_id}/cards
-func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-cards"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46423,7 +46423,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 			ID:   "projects/list-cards",
 		}
 	)
-	params, err := decodeProjectsListCardsParams(args, r)
+	params, err := decodeProjectsListCardsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46505,7 +46505,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 // `admin` to list collaborators.
 //
 // GET /projects/{project_id}/collaborators
-func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46541,7 +46541,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 			ID:   "projects/list-collaborators",
 		}
 	)
-	params, err := decodeProjectsListCollaboratorsParams(args, r)
+	params, err := decodeProjectsListCollaboratorsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46619,7 +46619,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 // List project columns.
 //
 // GET /projects/{project_id}/columns
-func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-columns"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46655,7 +46655,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 			ID:   "projects/list-columns",
 		}
 	)
-	params, err := decodeProjectsListColumnsParams(args, r)
+	params, err := decodeProjectsListColumnsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46731,7 +46731,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 // Unauthorized` or `410 Gone` status is returned.
 //
 // GET /orgs/{org}/projects
-func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46767,7 +46767,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 			ID:   "projects/list-for-org",
 		}
 	)
-	params, err := decodeProjectsListForOrgParams(args, r)
+	params, err := decodeProjectsListForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46847,7 +46847,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 // Unauthorized` or `410 Gone` status is returned.
 //
 // GET /repos/{owner}/{repo}/projects
-func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -46883,7 +46883,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 			ID:   "projects/list-for-repo",
 		}
 	)
-	params, err := decodeProjectsListForRepoParams(args, r)
+	params, err := decodeProjectsListForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -46965,7 +46965,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 // List user projects.
 //
 // GET /users/{username}/projects
-func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47001,7 +47001,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 			ID:   "projects/list-for-user",
 		}
 	)
-	params, err := decodeProjectsListForUserParams(args, r)
+	params, err := decodeProjectsListForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47079,7 +47079,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 // Move a project card.
 //
 // POST /projects/columns/cards/{card_id}/moves
-func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-card"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47115,7 +47115,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 			ID:   "projects/move-card",
 		}
 	)
-	params, err := decodeProjectsMoveCardParams(args, r)
+	params, err := decodeProjectsMoveCardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47196,7 +47196,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 // Move a project column.
 //
 // POST /projects/columns/{column_id}/moves
-func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-column"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47232,7 +47232,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 			ID:   "projects/move-column",
 		}
 	)
-	params, err := decodeProjectsMoveColumnParams(args, r)
+	params, err := decodeProjectsMoveColumnParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47314,7 +47314,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 // project `admin` to remove a collaborator.
 //
 // DELETE /projects/{project_id}/collaborators/{username}
-func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/remove-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -47350,7 +47350,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 			ID:   "projects/remove-collaborator",
 		}
 	)
-	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
+	params, err := decodeProjectsRemoveCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47422,7 +47422,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 // Gone` status is returned.
 //
 // PATCH /projects/{project_id}
-func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -47458,7 +47458,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 			ID:   "projects/update",
 		}
 	)
-	params, err := decodeProjectsUpdateParams(args, r)
+	params, err := decodeProjectsUpdateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47539,7 +47539,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 // Update an existing project card.
 //
 // PATCH /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -47575,7 +47575,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 			ID:   "projects/update-card",
 		}
 	)
-	params, err := decodeProjectsUpdateCardParams(args, r)
+	params, err := decodeProjectsUpdateCardParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47656,7 +47656,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 // Update an existing project column.
 //
 // PATCH /projects/columns/{column_id}
-func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -47692,7 +47692,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 			ID:   "projects/update-column",
 		}
 	)
-	params, err := decodeProjectsUpdateColumnParams(args, r)
+	params, err := decodeProjectsUpdateColumnParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47773,7 +47773,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 // Check if a pull request has been merged.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/check-if-merged"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -47809,7 +47809,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 			ID:   "pulls/check-if-merged",
 		}
 	)
-	params, err := decodePullsCheckIfMergedParams(args, r)
+	params, err := decodePullsCheckIfMergedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -47898,7 +47898,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 // com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls
-func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47934,7 +47934,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 			ID:   "pulls/create",
 		}
 	)
-	params, err := decodePullsCreateParams(args, r)
+	params, err := decodePullsCreateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48028,7 +48028,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
-func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48064,7 +48064,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 			ID:   "pulls/create-reply-for-review-comment",
 		}
 	)
-	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
+	params, err := decodePullsCreateReplyForReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48175,7 +48175,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 // and additional hunks until the beginning of a new file.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48211,7 +48211,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 			ID:   "pulls/create-review",
 		}
 	)
-	params, err := decodePullsCreateReviewParams(args, r)
+	params, err := decodePullsCreateReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48319,7 +48319,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48355,7 +48355,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 			ID:   "pulls/create-review-comment",
 		}
 	)
-	params, err := decodePullsCreateReviewCommentParams(args, r)
+	params, err := decodePullsCreateReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48444,7 +48444,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 // Delete a pending review for a pull request.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-pending-review"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -48480,7 +48480,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 			ID:   "pulls/delete-pending-review",
 		}
 	)
-	params, err := decodePullsDeletePendingReviewParams(args, r)
+	params, err := decodePullsDeletePendingReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48558,7 +48558,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 // Deletes a review comment.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-review-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -48594,7 +48594,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 			ID:   "pulls/delete-review-comment",
 		}
 	)
-	params, err := decodePullsDeleteReviewCommentParams(args, r)
+	params, err := decodePullsDeleteReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48670,7 +48670,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 // list of people or teams who can dismiss pull request reviews.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
-func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -48706,7 +48706,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 			ID:   "pulls/dismiss-review",
 		}
 	)
-	params, err := decodePullsDismissReviewParams(args, r)
+	params, err := decodePullsDismissReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48832,7 +48832,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 // patch formats.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
-func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48868,7 +48868,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 			ID:   "pulls/get",
 		}
 	)
-	params, err := decodePullsGetParams(args, r)
+	params, err := decodePullsGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -48942,7 +48942,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 // Get a review for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -48978,7 +48978,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 			ID:   "pulls/get-review",
 		}
 	)
-	params, err := decodePullsGetReviewParams(args, r)
+	params, err := decodePullsGetReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49056,7 +49056,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 // Provides details for a review comment.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49092,7 +49092,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 			ID:   "pulls/get-review-comment",
 		}
 	)
-	params, err := decodePullsGetReviewCommentParams(args, r)
+	params, err := decodePullsGetReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49170,7 +49170,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/pulls
-func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49206,7 +49206,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 			ID:   "pulls/list",
 		}
 	)
-	params, err := decodePullsListParams(args, r)
+	params, err := decodePullsListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49304,7 +49304,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 // List comments for a specific pull request review.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
-func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-comments-for-review"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49340,7 +49340,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 			ID:   "pulls/list-comments-for-review",
 		}
 	)
-	params, err := decodePullsListCommentsForReviewParams(args, r)
+	params, err := decodePullsListCommentsForReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49428,7 +49428,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 // com/rest/reference/repos#list-commits) endpoint.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49464,7 +49464,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 			ID:   "pulls/list-commits",
 		}
 	)
-	params, err := decodePullsListCommitsParams(args, r)
+	params, err := decodePullsListCommitsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49547,7 +49547,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 // page by default.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
-func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-files"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49583,7 +49583,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 			ID:   "pulls/list-files",
 		}
 	)
-	params, err := decodePullsListFilesParams(args, r)
+	params, err := decodePullsListFilesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49665,7 +49665,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 // List requested reviewers for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-requested-reviewers"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49701,7 +49701,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 			ID:   "pulls/list-requested-reviewers",
 		}
 	)
-	params, err := decodePullsListRequestedReviewersParams(args, r)
+	params, err := decodePullsListRequestedReviewersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49784,7 +49784,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 // by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49820,7 +49820,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 			ID:   "pulls/list-review-comments",
 		}
 	)
-	params, err := decodePullsListReviewCommentsParams(args, r)
+	params, err := decodePullsListReviewCommentsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -49915,7 +49915,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 // ascending order by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
-func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -49951,7 +49951,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 			ID:   "pulls/list-review-comments-for-repo",
 		}
 	)
-	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
+	params, err := decodePullsListReviewCommentsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50041,7 +50041,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 // The list of reviews returns in chronological order.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-reviews"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -50077,7 +50077,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 			ID:   "pulls/list-reviews",
 		}
 	)
-	params, err := decodePullsListReviewsParams(args, r)
+	params, err := decodePullsListReviewsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50165,7 +50165,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/merge"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -50201,7 +50201,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 			ID:   "pulls/merge",
 		}
 	)
-	params, err := decodePullsMergeParams(args, r)
+	params, err := decodePullsMergeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50290,7 +50290,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 // Remove requested reviewers from a pull request.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -50326,7 +50326,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 			ID:   "pulls/remove-requested-reviewers",
 		}
 	)
-	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
+	params, err := decodePullsRemoveRequestedReviewersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50415,7 +50415,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 // Submit a review for a pull request.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
-func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/submit-review"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50451,7 +50451,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 			ID:   "pulls/submit-review",
 		}
 	)
-	params, err := decodePullsSubmitReviewParams(args, r)
+	params, err := decodePullsSubmitReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50551,7 +50551,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 // that owns the repository to open or update a pull request.
 //
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
-func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -50587,7 +50587,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 			ID:   "pulls/update",
 		}
 	)
-	params, err := decodePullsUpdateParams(args, r)
+	params, err := decodePullsUpdateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50677,7 +50677,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 // branch into the pull request branch.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -50713,7 +50713,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 			ID:   "pulls/update-branch",
 		}
 	)
-	params, err := decodePullsUpdateBranchParams(args, r)
+	params, err := decodePullsUpdateBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50802,7 +50802,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 // Update the review summary comment with new text.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -50838,7 +50838,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 			ID:   "pulls/update-review",
 		}
 	)
-	params, err := decodePullsUpdateReviewParams(args, r)
+	params, err := decodePullsUpdateReviewParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -50931,7 +50931,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 // Enables you to edit a review comment.
 //
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -50967,7 +50967,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 			ID:   "pulls/update-review-comment",
 		}
 	)
-	params, err := decodePullsUpdateReviewCommentParams(args, r)
+	params, err := decodePullsUpdateReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51059,7 +51059,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 // contains the same information that is present in the `rate` object.
 //
 // GET /rate_limit
-func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("rate-limit/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -51144,7 +51144,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 // comment.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-commit-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51180,7 +51180,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 			ID:   "reactions/create-for-commit-comment",
 		}
 	)
-	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
+	params, err := decodeReactionsCreateForCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51270,7 +51270,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 // an HTTP `200` status means that you already added the reaction type to this issue.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51306,7 +51306,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 			ID:   "reactions/create-for-issue",
 		}
 	)
-	params, err := decodeReactionsCreateForIssueParams(args, r)
+	params, err := decodeReactionsCreateForIssueParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51397,7 +51397,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 // comment.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51433,7 +51433,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 			ID:   "reactions/create-for-issue-comment",
 		}
 	)
-	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
+	params, err := decodeReactionsCreateForIssueCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51524,7 +51524,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 // added the reaction type to this pull request review comment.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51560,7 +51560,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 			ID:   "reactions/create-for-pull-request-review-comment",
 		}
 	)
-	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
+	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51650,7 +51650,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 // response with a `Status: 200 OK` means that you already added the reaction type to this release.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
-func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-release"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51686,7 +51686,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 			ID:   "reactions/create-for-release",
 		}
 	)
-	params, err := decodeReactionsCreateForReleaseParams(args, r)
+	params, err := decodeReactionsCreateForReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51781,7 +51781,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51817,7 +51817,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 			ID:   "reactions/create-for-team-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
+	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -51920,7 +51920,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51956,7 +51956,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 			ID:   "reactions/create-for-team-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
+	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52052,7 +52052,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52088,7 +52088,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 			ID:   "reactions/create-for-team-discussion-in-org",
 		}
 	)
-	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
+	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52188,7 +52188,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52224,7 +52224,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 			ID:   "reactions/create-for-team-discussion-legacy",
 		}
 	)
-	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
+	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52311,7 +52311,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 // Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52347,7 +52347,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 			ID:   "reactions/delete-for-commit-comment",
 		}
 	)
-	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
+	params, err := decodeReactionsDeleteForCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52427,7 +52427,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 // Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52463,7 +52463,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 			ID:   "reactions/delete-for-issue",
 		}
 	)
-	params, err := decodeReactionsDeleteForIssueParams(args, r)
+	params, err := decodeReactionsDeleteForIssueParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52543,7 +52543,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 // Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52579,7 +52579,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 			ID:   "reactions/delete-for-issue-comment",
 		}
 	)
-	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
+	params, err := decodeReactionsDeleteForIssueCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52660,7 +52660,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 // com/rest/reference/pulls#review-comments).
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52696,7 +52696,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			ID:   "reactions/delete-for-pull-request-comment",
 		}
 	)
-	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
+	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52781,7 +52781,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52817,7 +52817,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 			ID:   "reactions/delete-for-team-discussion",
 		}
 	)
-	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
+	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -52900,7 +52900,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -52936,7 +52936,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			ID:   "reactions/delete-for-team-discussion-comment",
 		}
 	)
-	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
+	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53027,7 +53027,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -53063,7 +53063,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 			ID:   "reactions/delete-legacy",
 		}
 	)
-	params, err := decodeReactionsDeleteLegacyParams(args, r)
+	params, err := decodeReactionsDeleteLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53129,7 +53129,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 // List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-commit-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53165,7 +53165,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 			ID:   "reactions/list-for-commit-comment",
 		}
 	)
-	params, err := decodeReactionsListForCommitCommentParams(args, r)
+	params, err := decodeReactionsListForCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53251,7 +53251,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 // List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53287,7 +53287,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 			ID:   "reactions/list-for-issue",
 		}
 	)
-	params, err := decodeReactionsListForIssueParams(args, r)
+	params, err := decodeReactionsListForIssueParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53373,7 +53373,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 // List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53409,7 +53409,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 			ID:   "reactions/list-for-issue-comment",
 		}
 	)
-	params, err := decodeReactionsListForIssueCommentParams(args, r)
+	params, err := decodeReactionsListForIssueCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53496,7 +53496,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 // com/rest/reference/pulls#review-comments).
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53532,7 +53532,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 			ID:   "reactions/list-for-pull-request-review-comment",
 		}
 	)
-	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
+	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53622,7 +53622,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53658,7 +53658,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 			ID:   "reactions/list-for-team-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
+	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53756,7 +53756,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53792,7 +53792,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 			ID:   "reactions/list-for-team-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
+	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -53882,7 +53882,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -53918,7 +53918,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 			ID:   "reactions/list-for-team-discussion-in-org",
 		}
 	)
-	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
+	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54012,7 +54012,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54048,7 +54048,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 			ID:   "reactions/list-for-team-discussion-legacy",
 		}
 	)
-	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
+	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54130,7 +54130,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 // Accept a repository invitation.
 //
 // PATCH /user/repository_invitations/{invitation_id}
-func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/accept-invitation"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -54166,7 +54166,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 			ID:   "repos/accept-invitation",
 		}
 	)
-	params, err := decodeReposAcceptInvitationParams(args, r)
+	params, err := decodeReposAcceptInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54246,7 +54246,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54282,7 +54282,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 			ID:   "repos/add-app-access-restrictions",
 		}
 	)
-	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
+	params, err := decodeReposAddAppAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54390,7 +54390,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 // limit if you are inviting organization members to an organization repository.
 //
 // PUT /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -54426,7 +54426,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 			ID:   "repos/add-collaborator",
 		}
 	)
-	params, err := decodeReposAddCollaboratorParams(args, r)
+	params, err := decodeReposAddCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54519,7 +54519,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 // GitHub Help documentation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-status-check-contexts"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54555,7 +54555,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 			ID:   "repos/add-status-check-contexts",
 		}
 	)
-	params, err := decodeReposAddStatusCheckContextsParams(args, r)
+	params, err := decodeReposAddStatusCheckContextsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54658,7 +54658,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54694,7 +54694,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 			ID:   "repos/add-team-access-restrictions",
 		}
 	)
-	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
+	params, err := decodeReposAddTeamAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54796,7 +54796,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 // teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54832,7 +54832,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 			ID:   "repos/add-user-access-restrictions",
 		}
 	)
-	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
+	params, err := decodeReposAddUserAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -54925,7 +54925,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-collaborator"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -54961,7 +54961,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 			ID:   "repos/check-collaborator",
 		}
 	)
-	params, err := decodeReposCheckCollaboratorParams(args, r)
+	params, err := decodeReposCheckCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55038,7 +55038,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // GET /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55074,7 +55074,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 			ID:   "repos/check-vulnerability-alerts",
 		}
 	)
-	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
+	params, err := decodeReposCheckVulnerabilityAlertsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55198,7 +55198,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/compare/{basehead}
-func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/compare-commits"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -55234,7 +55234,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 			ID:   "repos/compare-commits",
 		}
 	)
-	params, err := decodeReposCompareCommitsParams(args, r)
+	params, err := decodeReposCompareCommitsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55316,7 +55316,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 // Users with admin access to the repository can create an autolink.
 //
 // POST /repos/{owner}/{repo}/autolinks
-func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55352,7 +55352,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 			ID:   "repos/create-autolink",
 		}
 	)
-	params, err := decodeReposCreateAutolinkParams(args, r)
+	params, err := decodeReposCreateAutolinkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55444,7 +55444,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55480,7 +55480,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 			ID:   "repos/create-commit-comment",
 		}
 	)
-	params, err := decodeReposCreateCommitCommentParams(args, r)
+	params, err := decodeReposCreateCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55575,7 +55575,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 // require signed commits on a branch. You must enable branch protection to require signed commits.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55611,7 +55611,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 			ID:   "repos/create-commit-signature-protection",
 		}
 	)
-	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
+	params, err := decodeReposCreateCommitSignatureProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55687,7 +55687,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 // create more than 1000 statuses will result in a validation error.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
-func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-status"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55723,7 +55723,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 			ID:   "repos/create-commit-status",
 		}
 	)
-	params, err := decodeReposCreateCommitStatusParams(args, r)
+	params, err := decodeReposCreateCommitStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55812,7 +55812,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 // You can create a read-only deploy key.
 //
 // POST /repos/{owner}/{repo}/keys
-func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55848,7 +55848,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 			ID:   "repos/create-deploy-key",
 		}
 	)
-	params, err := decodeReposCreateDeployKeyParams(args, r)
+	params, err := decodeReposCreateDeployKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -55988,7 +55988,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 // of `success`.
 //
 // POST /repos/{owner}/{repo}/deployments
-func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56024,7 +56024,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 			ID:   "repos/create-deployment",
 		}
 	)
-	params, err := decodeReposCreateDeploymentParams(args, r)
+	params, err := decodeReposCreateDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56111,7 +56111,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 // contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment-status"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56147,7 +56147,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 			ID:   "repos/create-deployment-status",
 		}
 	)
-	params, err := decodeReposCreateDeploymentStatusParams(args, r)
+	params, err := decodeReposCreateDeploymentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56255,7 +56255,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 // This input example shows how you can use the `client_payload` as a test to debug your workflow.
 //
 // POST /repos/{owner}/{repo}/dispatches
-func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-dispatch-event"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56291,7 +56291,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 			ID:   "repos/create-dispatch-event",
 		}
 	)
-	params, err := decodeReposCreateDispatchEventParams(args, r)
+	params, err := decodeReposCreateDispatchEventParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56382,7 +56382,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 // *   `repo` scope to create a private repository.
 //
 // POST /user/repos
-func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56487,7 +56487,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 // [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
 //
 // POST /repos/{owner}/{repo}/forks
-func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56523,7 +56523,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 			ID:   "repos/create-fork",
 		}
 	)
-	params, err := decodeReposCreateForkParams(args, r)
+	params, err := decodeReposCreateForkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56615,7 +56615,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 // *   `repo` scope to create a private repository.
 //
 // POST /orgs/{org}/repos
-func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56651,7 +56651,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 			ID:   "repos/create-in-org",
 		}
 	)
-	params, err := decodeReposCreateInOrgParams(args, r)
+	params, err := decodeReposCreateInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56732,7 +56732,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 // Creates a new file or replaces an existing file in a repository.
 //
 // PUT /repos/{owner}/{repo}/contents/{path}
-func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -56768,7 +56768,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 			ID:   "repos/create-or-update-file-contents",
 		}
 	)
-	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
+	params, err := decodeReposCreateOrUpdateFileContentsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56858,7 +56858,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 // Pages](/github/working-with-github-pages/about-github-pages).".
 //
 // POST /repos/{owner}/{repo}/pages
-func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-pages-site"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56894,7 +56894,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 			ID:   "repos/create-pages-site",
 		}
 	)
-	params, err := decodeReposCreatePagesSiteParams(args, r)
+	params, err := decodeReposCreatePagesSiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -56986,7 +56986,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/releases
-func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57022,7 +57022,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 			ID:   "repos/create-release",
 		}
 	)
-	params, err := decodeReposCreateReleaseParams(args, r)
+	params, err := decodeReposCreateReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57118,7 +57118,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 // *   `repo` scope to create a private repository.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
-func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57154,7 +57154,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 			ID:   "repos/create-using-template",
 		}
 	)
-	params, err := decodeReposCreateUsingTemplateParams(args, r)
+	params, err := decodeReposCreateUsingTemplateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57241,7 +57241,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 // share the same `config` as long as those webhooks do not have any `events` that overlap.
 //
 // POST /repos/{owner}/{repo}/hooks
-func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57277,7 +57277,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 			ID:   "repos/create-webhook",
 		}
 	)
-	params, err := decodeReposCreateWebhookParams(args, r)
+	params, err := decodeReposCreateWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57362,7 +57362,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 // Decline a repository invitation.
 //
 // DELETE /user/repository_invitations/{invitation_id}
-func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/decline-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57398,7 +57398,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 			ID:   "repos/decline-invitation",
 		}
 	)
-	params, err := decodeReposDeclineInvitationParams(args, r)
+	params, err := decodeReposDeclineInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57467,7 +57467,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 // repositories, you will get a `403 Forbidden` response.
 //
 // DELETE /repos/{owner}/{repo}
-func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57503,7 +57503,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 			ID:   "repos/delete",
 		}
 	)
-	params, err := decodeReposDeleteParams(args, r)
+	params, err := decodeReposDeleteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57578,7 +57578,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57614,7 +57614,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 			ID:   "repos/delete-access-restrictions",
 		}
 	)
-	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
+	params, err := decodeReposDeleteAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57694,7 +57694,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 // protection to be enabled.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57730,7 +57730,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 			ID:   "repos/delete-admin-branch-protection",
 		}
 	)
-	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
+	params, err := decodeReposDeleteAdminBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57804,7 +57804,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 // You must authenticate using an access token with the repo scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57840,7 +57840,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 			ID:   "repos/delete-an-environment",
 		}
 	)
-	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
+	params, err := decodeReposDeleteAnEnvironmentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -57915,7 +57915,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 // Information about autolinks are only available to repository administrators.
 //
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-autolink"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -57951,7 +57951,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 			ID:   "repos/delete-autolink",
 		}
 	)
-	params, err := decodeReposDeleteAutolinkParams(args, r)
+	params, err := decodeReposDeleteAutolinkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58029,7 +58029,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-branch-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58065,7 +58065,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 			ID:   "repos/delete-branch-protection",
 		}
 	)
-	params, err := decodeReposDeleteBranchProtectionParams(args, r)
+	params, err := decodeReposDeleteBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58139,7 +58139,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 // Delete a commit comment.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58175,7 +58175,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 			ID:   "repos/delete-commit-comment",
 		}
 	)
-	params, err := decodeReposDeleteCommitCommentParams(args, r)
+	params, err := decodeReposDeleteCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58256,7 +58256,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 // commits.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58292,7 +58292,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 			ID:   "repos/delete-commit-signature-protection",
 		}
 	)
-	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
+	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58367,7 +58367,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 // instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58403,7 +58403,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 			ID:   "repos/delete-deploy-key",
 		}
 	)
-	params, err := decodeReposDeleteDeployKeyParams(args, r)
+	params, err := decodeReposDeleteDeployKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58485,7 +58485,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 // github.com/rest/reference/repos#create-a-deployment-status).".
 //
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
-func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deployment"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58521,7 +58521,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 			ID:   "repos/delete-deployment",
 		}
 	)
-	params, err := decodeReposDeleteDeploymentParams(args, r)
+	params, err := decodeReposDeleteDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58602,7 +58602,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 // `committer`. Otherwise, you'll receive a `422` status code.
 //
 // DELETE /repos/{owner}/{repo}/contents/{path}
-func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58638,7 +58638,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 			ID:   "repos/delete-file",
 		}
 	)
-	params, err := decodeReposDeleteFileParams(args, r)
+	params, err := decodeReposDeleteFileParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58727,7 +58727,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 // Delete a repository invitation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58763,7 +58763,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 			ID:   "repos/delete-invitation",
 		}
 	)
-	params, err := decodeReposDeleteInvitationParams(args, r)
+	params, err := decodeReposDeleteInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58837,7 +58837,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 // Delete a GitHub Pages site.
 //
 // DELETE /repos/{owner}/{repo}/pages
-func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pages-site"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58873,7 +58873,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 			ID:   "repos/delete-pages-site",
 		}
 	)
-	params, err := decodeReposDeletePagesSiteParams(args, r)
+	params, err := decodeReposDeletePagesSiteParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -58947,7 +58947,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -58983,7 +58983,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 			ID:   "repos/delete-pull-request-review-protection",
 		}
 	)
-	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
+	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59057,7 +59057,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 // Users with push access to the repository can delete a release.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59093,7 +59093,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 			ID:   "repos/delete-release",
 		}
 	)
-	params, err := decodeReposDeleteReleaseParams(args, r)
+	params, err := decodeReposDeleteReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59167,7 +59167,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 // Delete a release asset.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59203,7 +59203,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 			ID:   "repos/delete-release-asset",
 		}
 	)
-	params, err := decodeReposDeleteReleaseAssetParams(args, r)
+	params, err := decodeReposDeleteReleaseAssetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59277,7 +59277,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 // Delete a repository webhook.
 //
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-webhook"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59313,7 +59313,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 			ID:   "repos/delete-webhook",
 		}
 	)
-	params, err := decodeReposDeleteWebhookParams(args, r)
+	params, err := decodeReposDeleteWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59389,7 +59389,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59425,7 +59425,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			ID:   "repos/disable-automated-security-fixes",
 		}
 	)
-	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
+	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59495,7 +59495,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59531,7 +59531,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 			ID:   "repos/disable-lfs-for-repo",
 		}
 	)
-	params, err := decodeReposDisableLfsForRepoParams(args, r)
+	params, err := decodeReposDisableLfsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59604,7 +59604,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -59640,7 +59640,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 			ID:   "repos/disable-vulnerability-alerts",
 		}
 	)
-	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
+	params, err := decodeReposDisableVulnerabilityAlertsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59715,7 +59715,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59751,7 +59751,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 			ID:   "repos/download-tarball-archive",
 		}
 	)
-	params, err := decodeReposDownloadTarballArchiveParams(args, r)
+	params, err := decodeReposDownloadTarballArchiveParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59830,7 +59830,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -59866,7 +59866,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 			ID:   "repos/download-zipball-archive",
 		}
 	)
-	params, err := decodeReposDownloadZipballArchiveParams(args, r)
+	params, err := decodeReposDownloadZipballArchiveParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -59942,7 +59942,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -59978,7 +59978,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			ID:   "repos/enable-automated-security-fixes",
 		}
 	)
-	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
+	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60048,7 +60048,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // PUT /repos/{owner}/{repo}/lfs
-func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -60084,7 +60084,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 			ID:   "repos/enable-lfs-for-repo",
 		}
 	)
-	params, err := decodeReposEnableLfsForRepoParams(args, r)
+	params, err := decodeReposEnableLfsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60157,7 +60157,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -60193,7 +60193,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 			ID:   "repos/enable-vulnerability-alerts",
 		}
 	)
-	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
+	params, err := decodeReposEnableVulnerabilityAlertsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60264,7 +60264,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 // repository this repository was forked from, `source` is the ultimate source for the network.
 //
 // GET /repos/{owner}/{repo}
-func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60300,7 +60300,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 			ID:   "repos/get",
 		}
 	)
-	params, err := decodeReposGetParams(args, r)
+	params, err := decodeReposGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60377,7 +60377,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 // repositories.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-access-restrictions"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60413,7 +60413,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 			ID:   "repos/get-access-restrictions",
 		}
 	)
-	params, err := decodeReposGetAccessRestrictionsParams(args, r)
+	params, err := decodeReposGetAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60491,7 +60491,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60527,7 +60527,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 			ID:   "repos/get-admin-branch-protection",
 		}
 	)
-	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
+	params, err := decodeReposGetAdminBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60605,7 +60605,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60641,7 +60641,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 			ID:   "repos/get-all-status-check-contexts",
 		}
 	)
-	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
+	params, err := decodeReposGetAllStatusCheckContextsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60715,7 +60715,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 // Get all repository topics.
 //
 // GET /repos/{owner}/{repo}/topics
-func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-topics"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60751,7 +60751,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 			ID:   "repos/get-all-topics",
 		}
 	)
-	params, err := decodeReposGetAllTopicsParams(args, r)
+	params, err := decodeReposGetAllTopicsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60836,7 +60836,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 // branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60872,7 +60872,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 			ID:   "repos/get-apps-with-access-to-protected-branch",
 		}
 	)
-	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
+	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -60947,7 +60947,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-autolink"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -60983,7 +60983,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 			ID:   "repos/get-autolink",
 		}
 	)
-	params, err := decodeReposGetAutolinkParams(args, r)
+	params, err := decodeReposGetAutolinkParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61057,7 +61057,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 // Get a branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}
-func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61093,7 +61093,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 			ID:   "repos/get-branch",
 		}
 	)
-	params, err := decodeReposGetBranchParams(args, r)
+	params, err := decodeReposGetBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61171,7 +61171,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch-protection"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61207,7 +61207,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 			ID:   "repos/get-branch-protection",
 		}
 	)
-	params, err := decodeReposGetBranchProtectionParams(args, r)
+	params, err := decodeReposGetBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61282,7 +61282,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 // aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 //
 // GET /repos/{owner}/{repo}/traffic/clones
-func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-clones"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61318,7 +61318,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 			ID:   "repos/get-clones",
 		}
 	)
-	params, err := decodeReposGetClonesParams(args, r)
+	params, err := decodeReposGetClonesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61392,7 +61392,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 // Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
 //
 // GET /repos/{owner}/{repo}/stats/code_frequency
-func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-code-frequency-stats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61428,7 +61428,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 			ID:   "repos/get-code-frequency-stats",
 		}
 	)
-	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
+	params, err := decodeReposGetCodeFrequencyStatsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61499,7 +61499,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 // `admin`, `write`, `read`, and `none`.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
-func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61535,7 +61535,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 			ID:   "repos/get-collaborator-permission-level",
 		}
 	)
-	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
+	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61617,7 +61617,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 // *   **success** if the latest status for all contexts is `success`.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/status
-func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61653,7 +61653,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 			ID:   "repos/get-combined-status-for-ref",
 		}
 	)
-	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
+	params, err := decodeReposGetCombinedStatusForRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61781,7 +61781,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}
-func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61817,7 +61817,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 			ID:   "repos/get-commit",
 		}
 	)
-	params, err := decodeReposGetCommitParams(args, r)
+	params, err := decodeReposGetCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -61900,7 +61900,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 // per day, starting on `Sunday`.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
-func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-activity-stats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -61936,7 +61936,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 			ID:   "repos/get-commit-activity-stats",
 		}
 	)
-	params, err := decodeReposGetCommitActivityStatsParams(args, r)
+	params, err := decodeReposGetCommitActivityStatsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62006,7 +62006,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 // Get a commit comment.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-comment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62042,7 +62042,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 			ID:   "repos/get-commit-comment",
 		}
 	)
-	params, err := decodeReposGetCommitCommentParams(args, r)
+	params, err := decodeReposGetCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62125,7 +62125,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 // **Note**: You must enable branch protection to require signed commits.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62161,7 +62161,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 			ID:   "repos/get-commit-signature-protection",
 		}
 	)
-	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
+	params, err := decodeReposGetCommitSignatureProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62244,7 +62244,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 // `content_reports_enabled` is only returned for organization-owned repositories.
 //
 // GET /repos/{owner}/{repo}/community/profile
-func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-community-profile-metrics"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62280,7 +62280,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 			ID:   "repos/get-community-profile-metrics",
 		}
 	)
-	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
+	params, err := decodeReposGetCommunityProfileMetricsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62355,7 +62355,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 // *   `c` - Number of commits.
 //
 // GET /repos/{owner}/{repo}/stats/contributors
-func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-contributors-stats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62391,7 +62391,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 			ID:   "repos/get-contributors-stats",
 		}
 	)
-	params, err := decodeReposGetContributorsStatsParams(args, r)
+	params, err := decodeReposGetContributorsStatsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62461,7 +62461,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 // Get a deploy key.
 //
 // GET /repos/{owner}/{repo}/keys/{key_id}
-func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deploy-key"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62497,7 +62497,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 			ID:   "repos/get-deploy-key",
 		}
 	)
-	params, err := decodeReposGetDeployKeyParams(args, r)
+	params, err := decodeReposGetDeployKeyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62571,7 +62571,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 // Get a deployment.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
-func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62607,7 +62607,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 			ID:   "repos/get-deployment",
 		}
 	)
-	params, err := decodeReposGetDeploymentParams(args, r)
+	params, err := decodeReposGetDeploymentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62681,7 +62681,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 // Users with pull access can view a deployment status for a deployment:.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
-func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment-status"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62717,7 +62717,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 			ID:   "repos/get-deployment-status",
 		}
 	)
-	params, err := decodeReposGetDeploymentStatusParams(args, r)
+	params, err := decodeReposGetDeploymentStatusParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62795,7 +62795,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 // Get latest Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/latest
-func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-pages-build"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62831,7 +62831,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 			ID:   "repos/get-latest-pages-build",
 		}
 	)
-	params, err := decodeReposGetLatestPagesBuildParams(args, r)
+	params, err := decodeReposGetLatestPagesBuildParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -62904,7 +62904,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 // and not the date when the release was drafted or published.
 //
 // GET /repos/{owner}/{repo}/releases/latest
-func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-release"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -62940,7 +62940,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 			ID:   "repos/get-latest-release",
 		}
 	)
-	params, err := decodeReposGetLatestReleaseParams(args, r)
+	params, err := decodeReposGetLatestReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63010,7 +63010,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 // Get a GitHub Pages site.
 //
 // GET /repos/{owner}/{repo}/pages
-func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63046,7 +63046,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 			ID:   "repos/get-pages",
 		}
 	)
-	params, err := decodeReposGetPagesParams(args, r)
+	params, err := decodeReposGetPagesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63116,7 +63116,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 // Get GitHub Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
-func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-build"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63152,7 +63152,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 			ID:   "repos/get-pages-build",
 		}
 	)
-	params, err := decodeReposGetPagesBuildParams(args, r)
+	params, err := decodeReposGetPagesBuildParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63232,7 +63232,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 // `administration:write` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/pages/health
-func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-health-check"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63268,7 +63268,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 			ID:   "repos/get-pages-health-check",
 		}
 	)
-	params, err := decodeReposGetPagesHealthCheckParams(args, r)
+	params, err := decodeReposGetPagesHealthCheckParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63341,7 +63341,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 // The array order is oldest week (index 0) to most recent week.
 //
 // GET /repos/{owner}/{repo}/stats/participation
-func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-participation-stats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63377,7 +63377,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 			ID:   "repos/get-participation-stats",
 		}
 	)
-	params, err := decodeReposGetParticipationStatsParams(args, r)
+	params, err := decodeReposGetParticipationStatsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63451,7 +63451,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63487,7 +63487,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 			ID:   "repos/get-pull-request-review-protection",
 		}
 	)
-	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
+	params, err := decodeReposGetPullRequestReviewProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63566,7 +63566,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 // Tuesdays. All times are based on the time zone of individual commits.
 //
 // GET /repos/{owner}/{repo}/stats/punch_card
-func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-punch-card-stats"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63602,7 +63602,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 			ID:   "repos/get-punch-card-stats",
 		}
 	)
-	params, err := decodeReposGetPunchCardStatsParams(args, r)
+	params, err := decodeReposGetPunchCardStatsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63674,7 +63674,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 // com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme
-func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63710,7 +63710,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 			ID:   "repos/get-readme",
 		}
 	)
-	params, err := decodeReposGetReadmeParams(args, r)
+	params, err := decodeReposGetReadmeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63786,7 +63786,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 // com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme/{dir}
-func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme-in-directory"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63822,7 +63822,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 			ID:   "repos/get-readme-in-directory",
 		}
 	)
-	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
+	params, err := decodeReposGetReadmeInDirectoryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -63902,7 +63902,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 // com/rest/overview/resources-in-the-rest-api#hypermedia).
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -63938,7 +63938,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 			ID:   "repos/get-release",
 		}
 	)
-	params, err := decodeReposGetReleaseParams(args, r)
+	params, err := decodeReposGetReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64015,7 +64015,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 // handle both a `200` or `302` response.
 //
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-asset"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64051,7 +64051,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 			ID:   "repos/get-release-asset",
 		}
 	)
-	params, err := decodeReposGetReleaseAssetParams(args, r)
+	params, err := decodeReposGetReleaseAssetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64125,7 +64125,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 // Get a published release with the specified tag.
 //
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
-func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-by-tag"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64161,7 +64161,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 			ID:   "repos/get-release-by-tag",
 		}
 	)
-	params, err := decodeReposGetReleaseByTagParams(args, r)
+	params, err := decodeReposGetReleaseByTagParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64239,7 +64239,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-status-checks-protection"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64275,7 +64275,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 			ID:   "repos/get-status-checks-protection",
 		}
 	)
-	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
+	params, err := decodeReposGetStatusChecksProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64354,7 +64354,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 // Lists the teams who have push access to this branch. The list includes child teams.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64390,7 +64390,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 			ID:   "repos/get-teams-with-access-to-protected-branch",
 		}
 	)
-	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
+	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64464,7 +64464,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 // Get the top 10 popular contents over the last 14 days.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/paths
-func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-paths"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64500,7 +64500,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 			ID:   "repos/get-top-paths",
 		}
 	)
-	params, err := decodeReposGetTopPathsParams(args, r)
+	params, err := decodeReposGetTopPathsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64570,7 +64570,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 // Get the top 10 referrers over the last 14 days.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
-func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-referrers"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64606,7 +64606,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 			ID:   "repos/get-top-referrers",
 		}
 	)
-	params, err := decodeReposGetTopReferrersParams(args, r)
+	params, err := decodeReposGetTopReferrersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64681,7 +64681,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 // Lists the people who have push access to this branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64717,7 +64717,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 			ID:   "repos/get-users-with-access-to-protected-branch",
 		}
 	)
-	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
+	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64792,7 +64792,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 // aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 //
 // GET /repos/{owner}/{repo}/traffic/views
-func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-views"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64828,7 +64828,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 			ID:   "repos/get-views",
 		}
 	)
-	params, err := decodeReposGetViewsParams(args, r)
+	params, err := decodeReposGetViewsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -64904,7 +64904,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 // repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository).".
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -64940,7 +64940,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 			ID:   "repos/get-webhook",
 		}
 	)
-	params, err := decodeReposGetWebhookParams(args, r)
+	params, err := decodeReposGetWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65018,7 +65018,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 // `repository_hooks:read` permission.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65054,7 +65054,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 			ID:   "repos/get-webhook-config-for-repo",
 		}
 	)
-	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
+	params, err := decodeReposGetWebhookConfigForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65128,7 +65128,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 // Returns a delivery for a webhook configured in a repository.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
-func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65164,7 +65164,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 			ID:   "repos/get-webhook-delivery",
 		}
 	)
-	params, err := decodeReposGetWebhookDeliveryParams(args, r)
+	params, err := decodeReposGetWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65243,7 +65243,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks
-func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-autolinks"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65279,7 +65279,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 			ID:   "repos/list-autolinks",
 		}
 	)
-	params, err := decodeReposListAutolinksParams(args, r)
+	params, err := decodeReposListAutolinksParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65353,7 +65353,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 // List branches.
 //
 // GET /repos/{owner}/{repo}/branches
-func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65389,7 +65389,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 			ID:   "repos/list-branches",
 		}
 	)
-	params, err := decodeReposListBranchesParams(args, r)
+	params, err := decodeReposListBranchesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65476,7 +65476,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 // Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
-func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65512,7 +65512,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 			ID:   "repos/list-branches-for-head-commit",
 		}
 	)
-	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
+	params, err := decodeReposListBranchesForHeadCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65590,7 +65590,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators
-func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65626,7 +65626,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 			ID:   "repos/list-collaborators",
 		}
 	)
-	params, err := decodeReposListCollaboratorsParams(args, r)
+	params, err := decodeReposListCollaboratorsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65708,7 +65708,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 // Use the `:commit_sha` to specify the commit that will have its comments listed.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-comments-for-commit"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65744,7 +65744,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 			ID:   "repos/list-comments-for-commit",
 		}
 	)
-	params, err := decodeReposListCommentsForCommitParams(args, r)
+	params, err := decodeReposListCommentsForCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65829,7 +65829,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 // Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/comments
-func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65865,7 +65865,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 			ID:   "repos/list-commit-comments-for-repo",
 		}
 	)
-	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
+	params, err := decodeReposListCommitCommentsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -65946,7 +65946,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 // This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
-func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -65982,7 +65982,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 			ID:   "repos/list-commit-statuses-for-ref",
 		}
 	)
-	params, err := decodeReposListCommitStatusesForRefParams(args, r)
+	params, err := decodeReposListCommitStatusesForRefParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66095,7 +66095,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/commits
-func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66131,7 +66131,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 			ID:   "repos/list-commits",
 		}
 	)
-	params, err := decodeReposListCommitsParams(args, r)
+	params, err := decodeReposListCommitsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66235,7 +66235,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 // anonymous contributors without associated GitHub user information.
 //
 // GET /repos/{owner}/{repo}/contributors
-func (s *Server) handleReposListContributorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-contributors"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66271,7 +66271,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 			ID:   "repos/list-contributors",
 		}
 	)
-	params, err := decodeReposListContributorsParams(args, r)
+	params, err := decodeReposListContributorsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66353,7 +66353,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 // List deploy keys.
 //
 // GET /repos/{owner}/{repo}/keys
-func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deploy-keys"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66389,7 +66389,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 			ID:   "repos/list-deploy-keys",
 		}
 	)
-	params, err := decodeReposListDeployKeysParams(args, r)
+	params, err := decodeReposListDeployKeysParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66467,7 +66467,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 // Users with pull access can view deployment statuses for a deployment:.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployment-statuses"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66503,7 +66503,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 			ID:   "repos/list-deployment-statuses",
 		}
 	)
-	params, err := decodeReposListDeploymentStatusesParams(args, r)
+	params, err := decodeReposListDeploymentStatusesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66585,7 +66585,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 // Simple filtering of deployments is available via query parameters:.
 //
 // GET /repos/{owner}/{repo}/deployments
-func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployments"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66621,7 +66621,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 			ID:   "repos/list-deployments",
 		}
 	)
-	params, err := decodeReposListDeploymentsParams(args, r)
+	params, err := decodeReposListDeploymentsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66718,7 +66718,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 // they are a collaborator, and repositories that they can access through an organization membership.
 //
 // GET /user/repos
-func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66754,7 +66754,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 			ID:   "repos/list-for-authenticated-user",
 		}
 	)
-	params, err := decodeReposListForAuthenticatedUserParams(args, r)
+	params, err := decodeReposListForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66852,7 +66852,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 // Lists repositories for the specified organization.
 //
 // GET /orgs/{org}/repos
-func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -66888,7 +66888,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 			ID:   "repos/list-for-org",
 		}
 	)
-	params, err := decodeReposListForOrgParams(args, r)
+	params, err := decodeReposListForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -66975,7 +66975,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 // internal repositories for the specified user.
 //
 // GET /users/{username}/repos
-func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67011,7 +67011,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 			ID:   "repos/list-for-user",
 		}
 	)
-	params, err := decodeReposListForUserParams(args, r)
+	params, err := decodeReposListForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67097,7 +67097,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 // List forks.
 //
 // GET /repos/{owner}/{repo}/forks
-func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-forks"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67133,7 +67133,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 			ID:   "repos/list-forks",
 		}
 	)
-	params, err := decodeReposListForksParams(args, r)
+	params, err := decodeReposListForksParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67216,7 +67216,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 // currently open repository invitations.
 //
 // GET /repos/{owner}/{repo}/invitations
-func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67252,7 +67252,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 			ID:   "repos/list-invitations",
 		}
 	)
-	params, err := decodeReposListInvitationsParams(args, r)
+	params, err := decodeReposListInvitationsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67331,7 +67331,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 // for that user.
 //
 // GET /user/repository_invitations
-func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67367,7 +67367,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 			ID:   "repos/list-invitations-for-authenticated-user",
 		}
 	)
-	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
+	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67438,7 +67438,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 // bytes of code written in that language.
 //
 // GET /repos/{owner}/{repo}/languages
-func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-languages"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67474,7 +67474,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 			ID:   "repos/list-languages",
 		}
 	)
-	params, err := decodeReposListLanguagesParams(args, r)
+	params, err := decodeReposListLanguagesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67544,7 +67544,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 // List GitHub Pages builds.
 //
 // GET /repos/{owner}/{repo}/pages/builds
-func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pages-builds"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67580,7 +67580,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 			ID:   "repos/list-pages-builds",
 		}
 	)
-	params, err := decodeReposListPagesBuildsParams(args, r)
+	params, err := decodeReposListPagesBuildsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67664,7 +67664,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 // of repositories.
 //
 // GET /repositories
-func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-public"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67700,7 +67700,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 			ID:   "repos/list-public",
 		}
 	)
-	params, err := decodeReposListPublicParams(args, r)
+	params, err := decodeReposListPublicParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67771,7 +67771,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 // requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67807,7 +67807,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 			ID:   "repos/list-pull-requests-associated-with-commit",
 		}
 	)
-	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
+	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -67889,7 +67889,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 // List release assets.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
-func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-release-assets"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -67925,7 +67925,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 			ID:   "repos/list-release-assets",
 		}
 	)
-	params, err := decodeReposListReleaseAssetsParams(args, r)
+	params, err := decodeReposListReleaseAssetsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68011,7 +68011,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 // receive listings for draft releases.
 //
 // GET /repos/{owner}/{repo}/releases
-func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-releases"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68047,7 +68047,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 			ID:   "repos/list-releases",
 		}
 	)
-	params, err := decodeReposListReleasesParams(args, r)
+	params, err := decodeReposListReleasesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68125,7 +68125,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 // List repository tags.
 //
 // GET /repos/{owner}/{repo}/tags
-func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-tags"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68161,7 +68161,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 			ID:   "repos/list-tags",
 		}
 	)
-	params, err := decodeReposListTagsParams(args, r)
+	params, err := decodeReposListTagsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68239,7 +68239,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 // List repository teams.
 //
 // GET /repos/{owner}/{repo}/teams
-func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-teams"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68275,7 +68275,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 			ID:   "repos/list-teams",
 		}
 	)
-	params, err := decodeReposListTeamsParams(args, r)
+	params, err := decodeReposListTeamsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68353,7 +68353,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 // Returns a list of webhook deliveries for a webhook configured in a repository.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
-func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68389,7 +68389,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 			ID:   "repos/list-webhook-deliveries",
 		}
 	)
-	params, err := decodeReposListWebhookDeliveriesParams(args, r)
+	params, err := decodeReposListWebhookDeliveriesParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68471,7 +68471,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 // List repository webhooks.
 //
 // GET /repos/{owner}/{repo}/hooks
-func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhooks"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -68507,7 +68507,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 			ID:   "repos/list-webhooks",
 		}
 	)
-	params, err := decodeReposListWebhooksParams(args, r)
+	params, err := decodeReposListWebhooksParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68585,7 +68585,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 // Merge a branch.
 //
 // POST /repos/{owner}/{repo}/merges
-func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -68621,7 +68621,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 			ID:   "repos/merge",
 		}
 	)
-	params, err := decodeReposMergeParams(args, r)
+	params, err := decodeReposMergeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68707,7 +68707,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 // Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
-func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -68743,7 +68743,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 			ID:   "repos/merge-upstream",
 		}
 	)
-	params, err := decodeReposMergeUpstreamParams(args, r)
+	params, err := decodeReposMergeUpstreamParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68829,7 +68829,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 // hook.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
-func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/ping-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -68865,7 +68865,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 			ID:   "repos/ping-webhook",
 		}
 	)
-	params, err := decodeReposPingWebhookParams(args, r)
+	params, err := decodeReposPingWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -68939,7 +68939,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 // Redeliver a webhook delivery for a webhook configured in a repository.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -68975,7 +68975,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 			ID:   "repos/redeliver-webhook-delivery",
 		}
 	)
-	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
+	params, err := decodeReposRedeliverWebhookDeliveryParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69067,7 +69067,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69103,7 +69103,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 			ID:   "repos/remove-app-access-restrictions",
 		}
 	)
-	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
+	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69192,7 +69192,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 // Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69228,7 +69228,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 			ID:   "repos/remove-collaborator",
 		}
 	)
-	params, err := decodeReposRemoveCollaboratorParams(args, r)
+	params, err := decodeReposRemoveCollaboratorParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69306,7 +69306,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-contexts"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69342,7 +69342,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 			ID:   "repos/remove-status-check-contexts",
 		}
 	)
-	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
+	params, err := decodeReposRemoveStatusCheckContextsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69435,7 +69435,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69471,7 +69471,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 			ID:   "repos/remove-status-check-protection",
 		}
 	)
-	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
+	params, err := decodeReposRemoveStatusCheckProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69559,7 +69559,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 // list of users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69595,7 +69595,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 			ID:   "repos/remove-team-access-restrictions",
 		}
 	)
-	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
+	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69697,7 +69697,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -69733,7 +69733,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 			ID:   "repos/remove-user-access-restrictions",
 		}
 	)
-	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
+	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69834,7 +69834,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 // * GitHub Apps must have the `administration:write` repository permission.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
-func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -69870,7 +69870,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 			ID:   "repos/rename-branch",
 		}
 	)
-	params, err := decodeReposRenameBranchParams(args, r)
+	params, err := decodeReposRenameBranchParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -69959,7 +69959,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 // Replace all repository topics.
 //
 // PUT /repos/{owner}/{repo}/topics
-func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/replace-all-topics"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -69995,7 +69995,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 			ID:   "repos/replace-all-topics",
 		}
 	)
-	params, err := decodeReposReplaceAllTopicsParams(args, r)
+	params, err := decodeReposReplaceAllTopicsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70085,7 +70085,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 // queued until the first completes.
 //
 // POST /repos/{owner}/{repo}/pages/builds
-func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/request-pages-build"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -70121,7 +70121,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 			ID:   "repos/request-pages-build",
 		}
 	)
-	params, err := decodeReposRequestPagesBuildParams(args, r)
+	params, err := decodeReposRequestPagesBuildParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70197,7 +70197,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 // protection to be enabled.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -70233,7 +70233,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 			ID:   "repos/set-admin-branch-protection",
 		}
 	)
-	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
+	params, err := decodeReposSetAdminBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70323,7 +70323,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -70359,7 +70359,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 			ID:   "repos/set-app-access-restrictions",
 		}
 	)
-	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
+	params, err := decodeReposSetAppAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70452,7 +70452,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 // GitHub Help documentation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-status-check-contexts"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -70488,7 +70488,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 			ID:   "repos/set-status-check-contexts",
 		}
 	)
-	params, err := decodeReposSetStatusCheckContextsParams(args, r)
+	params, err := decodeReposSetStatusCheckContextsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70592,7 +70592,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -70628,7 +70628,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 			ID:   "repos/set-team-access-restrictions",
 		}
 	)
-	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
+	params, err := decodeReposSetTeamAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70731,7 +70731,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 // teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -70767,7 +70767,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 			ID:   "repos/set-user-access-restrictions",
 		}
 	)
-	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
+	params, err := decodeReposSetUserAccessRestrictionsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70859,7 +70859,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 // **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
-func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/test-push-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -70895,7 +70895,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 			ID:   "repos/test-push-webhook",
 		}
 	)
-	params, err := decodeReposTestPushWebhookParams(args, r)
+	params, err := decodeReposTestPushWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -70973,7 +70973,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 // com/articles/about-repository-transfers/).
 //
 // POST /repos/{owner}/{repo}/transfer
-func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -71009,7 +71009,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 			ID:   "repos/transfer",
 		}
 	)
-	params, err := decodeReposTransferParams(args, r)
+	params, err := decodeReposTransferParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71095,7 +71095,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 // github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
 //
 // PATCH /repos/{owner}/{repo}
-func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71131,7 +71131,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 			ID:   "repos/update",
 		}
 	)
-	params, err := decodeReposUpdateParams(args, r)
+	params, err := decodeReposUpdateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71223,7 +71223,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 // **Note**: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-branch-protection"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -71259,7 +71259,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 			ID:   "repos/update-branch-protection",
 		}
 	)
-	params, err := decodeReposUpdateBranchProtectionParams(args, r)
+	params, err := decodeReposUpdateBranchProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71348,7 +71348,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 // Update a commit comment.
 //
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71384,7 +71384,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 			ID:   "repos/update-commit-comment",
 		}
 	)
-	params, err := decodeReposUpdateCommitCommentParams(args, r)
+	params, err := decodeReposUpdateCommitCommentParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71473,7 +71473,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 // Update a repository invitation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-invitation"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71509,7 +71509,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 			ID:   "repos/update-invitation",
 		}
 	)
-	params, err := decodeReposUpdateInvitationParams(args, r)
+	params, err := decodeReposUpdateInvitationParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71605,7 +71605,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 // **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71641,7 +71641,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 			ID:   "repos/update-pull-request-review-protection",
 		}
 	)
-	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
+	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71730,7 +71730,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 // Users with push access to the repository can edit a release.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71766,7 +71766,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 			ID:   "repos/update-release",
 		}
 	)
-	params, err := decodeReposUpdateReleaseParams(args, r)
+	params, err := decodeReposUpdateReleaseParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71855,7 +71855,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 // Users with push access to the repository can edit a release asset.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -71891,7 +71891,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 			ID:   "repos/update-release-asset",
 		}
 	)
-	params, err := decodeReposUpdateReleaseAssetParams(args, r)
+	params, err := decodeReposUpdateReleaseAssetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -71986,7 +71986,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 // protection to be enabled.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -72022,7 +72022,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 			ID:   "repos/update-status-check-protection",
 		}
 	)
-	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
+	params, err := decodeReposUpdateStatusCheckProtectionParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72114,7 +72114,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 // repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository).".
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -72150,7 +72150,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 			ID:   "repos/update-webhook",
 		}
 	)
-	params, err := decodeReposUpdateWebhookParams(args, r)
+	params, err := decodeReposUpdateWebhookParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72243,7 +72243,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 // `repository_hooks:write` permission.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -72279,7 +72279,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 			ID:   "repos/update-webhook-config-for-repo",
 		}
 	)
-	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
+	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72393,7 +72393,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 // error and must delete the old file before you can re-upload the new asset.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/assets
-func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/upload-release-asset"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -72429,7 +72429,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 			ID:   "repos/upload-release-asset",
 		}
 	)
-	params, err := decodeReposUploadReleaseAssetParams(args, r)
+	params, err := decodeReposUploadReleaseAssetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72526,7 +72526,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 // Delete a SCIM user from an organization.
 //
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
-func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("scim/delete-user-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -72562,7 +72562,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 			ID:   "scim/delete-user-from-org",
 		}
 	)
-	params, err := decodeScimDeleteUserFromOrgParams(args, r)
+	params, err := decodeScimDeleteUserFromOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72651,7 +72651,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 // language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
 //
 // GET /search/code
-func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/code"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72687,7 +72687,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "search/code",
 		}
 	)
-	params, err := decodeSearchCodeParams(args, r)
+	params, err := decodeSearchCodeParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72779,7 +72779,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 // `q=repo:octocat/Spoon-Knife+css`.
 //
 // GET /search/commits
-func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/commits"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72815,7 +72815,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 			ID:   "search/commits",
 		}
 	)
-	params, err := decodeSearchCommitsParams(args, r)
+	params, err := decodeSearchCommitsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -72919,7 +72919,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 // com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests).".
 //
 // GET /search/issues
-func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/issues-and-pull-requests"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -72955,7 +72955,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 			ID:   "search/issues-and-pull-requests",
 		}
 	)
-	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
+	params, err := decodeSearchIssuesAndPullRequestsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73046,7 +73046,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 // The labels that best match the query appear first in the search results.
 //
 // GET /search/labels
-func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/labels"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73082,7 +73082,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 			ID:   "search/labels",
 		}
 	)
-	params, err := decodeSearchLabelsParams(args, r)
+	params, err := decodeSearchLabelsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73183,7 +73183,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 // `q=topic:ruby+topic:rails`.
 //
 // GET /search/repositories
-func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/repos"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73219,7 +73219,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 			ID:   "search/repos",
 		}
 	)
-	params, err := decodeSearchReposParams(args, r)
+	params, err := decodeSearchReposParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73314,7 +73314,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 // results.
 //
 // GET /search/topics
-func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/topics"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73350,7 +73350,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 			ID:   "search/topics",
 		}
 	)
-	params, err := decodeSearchTopicsParams(args, r)
+	params, err := decodeSearchTopicsParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73435,7 +73435,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 // than 42 repositories and over 1,000 followers.
 //
 // GET /search/users
-func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/users"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73471,7 +73471,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 			ID:   "search/users",
 		}
 	)
-	params, err := decodeSearchUsersParams(args, r)
+	params, err := decodeSearchUsersParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73556,7 +73556,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/get-alert"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73592,7 +73592,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 			ID:   "secret-scanning/get-alert",
 		}
 	)
-	params, err := decodeSecretScanningGetAlertParams(args, r)
+	params, err := decodeSecretScanningGetAlertParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73670,7 +73670,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /orgs/{org}/secret-scanning/alerts
-func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73706,7 +73706,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 			ID:   "secret-scanning/list-alerts-for-org",
 		}
 	)
-	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
+	params, err := decodeSecretScanningListAlertsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73791,7 +73791,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
-func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -73827,7 +73827,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 			ID:   "secret-scanning/list-alerts-for-repo",
 		}
 	)
-	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
+	params, err := decodeSecretScanningListAlertsForRepoParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -73916,7 +73916,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 // GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/update-alert"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -73952,7 +73952,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 			ID:   "secret-scanning/update-alert",
 		}
 	)
-	params, err := decodeSecretScanningUpdateAlertParams(args, r)
+	params, err := decodeSecretScanningUpdateAlertParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74062,7 +74062,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-member-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74098,7 +74098,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 			ID:   "teams/add-member-legacy",
 		}
 	)
-	params, err := decodeTeamsAddMemberLegacyParams(args, r)
+	params, err := decodeTeamsAddMemberLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74189,7 +74189,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 // /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74225,7 +74225,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 			ID:   "teams/add-or-update-membership-for-user-in-org",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
+	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74340,7 +74340,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74376,7 +74376,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 			ID:   "teams/add-or-update-membership-for-user-legacy",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
+	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74465,7 +74465,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74501,7 +74501,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 			ID:   "teams/add-or-update-project-permissions-in-org",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
+	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74598,7 +74598,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74634,7 +74634,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 			ID:   "teams/add-or-update-project-permissions-legacy",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
+	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74730,7 +74730,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 // com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74766,7 +74766,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			ID:   "teams/add-or-update-repo-permissions-in-org",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
+	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -74872,7 +74872,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -74908,7 +74908,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 			ID:   "teams/add-or-update-repo-permissions-legacy",
 		}
 	)
-	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
+	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75000,7 +75000,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75036,7 +75036,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 			ID:   "teams/check-permissions-for-project-in-org",
 		}
 	)
-	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
+	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75117,7 +75117,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75153,7 +75153,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 			ID:   "teams/check-permissions-for-project-legacy",
 		}
 	)
-	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
+	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75231,7 +75231,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75267,7 +75267,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 			ID:   "teams/check-permissions-for-repo-in-org",
 		}
 	)
-	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
+	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75354,7 +75354,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -75390,7 +75390,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 			ID:   "teams/check-permissions-for-repo-legacy",
 		}
 	)
-	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
+	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75471,7 +75471,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 // com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
 //
 // POST /orgs/{org}/teams
-func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -75507,7 +75507,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 			ID:   "teams/create",
 		}
 	)
-	params, err := decodeTeamsCreateParams(args, r)
+	params, err := decodeTeamsCreateParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75598,7 +75598,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -75634,7 +75634,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 			ID:   "teams/create-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
+	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75736,7 +75736,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -75772,7 +75772,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 			ID:   "teams/create-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
+	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -75867,7 +75867,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
-func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -75903,7 +75903,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 			ID:   "teams/create-discussion-in-org",
 		}
 	)
-	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
+	params, err := decodeTeamsCreateDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76001,7 +76001,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions
-func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -76037,7 +76037,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 			ID:   "teams/create-discussion-legacy",
 		}
 	)
-	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
+	params, err := decodeTeamsCreateDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76125,7 +76125,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -76161,7 +76161,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 			ID:   "teams/create-or-update-idp-group-connections-in-org",
 		}
 	)
-	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
+	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76257,7 +76257,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
-func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -76293,7 +76293,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 			ID:   "teams/create-or-update-idp-group-connections-legacy",
 		}
 	)
-	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
+	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76377,7 +76377,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76413,7 +76413,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			ID:   "teams/delete-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
+	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76497,7 +76497,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76533,7 +76533,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			ID:   "teams/delete-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
+	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76610,7 +76610,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76646,7 +76646,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 			ID:   "teams/delete-discussion-in-org",
 		}
 	)
-	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
+	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76726,7 +76726,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76762,7 +76762,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 			ID:   "teams/delete-discussion-legacy",
 		}
 	)
-	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
+	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76836,7 +76836,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 // /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76872,7 +76872,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 			ID:   "teams/delete-in-org",
 		}
 	)
-	params, err := decodeTeamsDeleteInOrgParams(args, r)
+	params, err := decodeTeamsDeleteInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -76949,7 +76949,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}
-func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -76985,7 +76985,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 			ID:   "teams/delete-legacy",
 		}
 	)
-	params, err := decodeTeamsDeleteLegacyParams(args, r)
+	params, err := decodeTeamsDeleteLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77053,7 +77053,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 // /organizations/{org_id}/team/{team_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-by-name"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77089,7 +77089,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 			ID:   "teams/get-by-name",
 		}
 	)
-	params, err := decodeTeamsGetByNameParams(args, r)
+	params, err := decodeTeamsGetByNameParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77162,7 +77162,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77198,7 +77198,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 			ID:   "teams/get-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
+	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77282,7 +77282,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77318,7 +77318,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 			ID:   "teams/get-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
+	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77395,7 +77395,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77431,7 +77431,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 			ID:   "teams/get-discussion-in-org",
 		}
 	)
-	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
+	params, err := decodeTeamsGetDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77511,7 +77511,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77547,7 +77547,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 			ID:   "teams/get-discussion-legacy",
 		}
 	)
-	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
+	params, err := decodeTeamsGetDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77621,7 +77621,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}
-func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77657,7 +77657,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 			ID:   "teams/get-legacy",
 		}
 	)
-	params, err := decodeTeamsGetLegacyParams(args, r)
+	params, err := decodeTeamsGetLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77729,7 +77729,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-member-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77765,7 +77765,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 			ID:   "teams/get-member-legacy",
 		}
 	)
-	params, err := decodeTeamsGetMemberLegacyParams(args, r)
+	params, err := decodeTeamsGetMemberLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77842,7 +77842,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 // roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
 //
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77878,7 +77878,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 			ID:   "teams/get-membership-for-user-in-org",
 		}
 	)
-	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
+	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -77962,7 +77962,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -77998,7 +77998,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 			ID:   "teams/get-membership-for-user-legacy",
 		}
 	)
-	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
+	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78068,7 +78068,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 // Lists all teams in an organization that are visible to the authenticated user.
 //
 // GET /orgs/{org}/teams
-func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78104,7 +78104,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 			ID:   "teams/list",
 		}
 	)
-	params, err := decodeTeamsListParams(args, r)
+	params, err := decodeTeamsListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78180,7 +78180,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 // /organizations/{org_id}/team/{team_id}/teams`.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
-func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78216,7 +78216,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 			ID:   "teams/list-child-in-org",
 		}
 	)
-	params, err := decodeTeamsListChildInOrgParams(args, r)
+	params, err := decodeTeamsListChildInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78298,7 +78298,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/teams
-func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78334,7 +78334,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 			ID:   "teams/list-child-legacy",
 		}
 	)
-	params, err := decodeTeamsListChildLegacyParams(args, r)
+	params, err := decodeTeamsListChildLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78411,7 +78411,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78447,7 +78447,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 			ID:   "teams/list-discussion-comments-in-org",
 		}
 	)
-	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
+	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78539,7 +78539,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78575,7 +78575,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 			ID:   "teams/list-discussion-comments-legacy",
 		}
 	)
-	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
+	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78660,7 +78660,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
-func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78696,7 +78696,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 			ID:   "teams/list-discussions-in-org",
 		}
 	)
-	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
+	params, err := decodeTeamsListDiscussionsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78788,7 +78788,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions
-func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78824,7 +78824,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 			ID:   "teams/list-discussions-legacy",
 		}
 	)
-	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
+	params, err := decodeTeamsListDiscussionsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -78905,7 +78905,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 // [OAuth](https://docs.github.com/apps/building-oauth-apps/).
 //
 // GET /user/teams
-func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -78941,7 +78941,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 			ID:   "teams/list-for-authenticated-user",
 		}
 	)
-	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
+	params, err := decodeTeamsListForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79019,7 +79019,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
-func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79055,7 +79055,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 			ID:   "teams/list-idp-groups-for-legacy",
 		}
 	)
-	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
+	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79127,7 +79127,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 // explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
 //
 // GET /orgs/{org}/team-sync/groups
-func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79163,7 +79163,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 			ID:   "teams/list-idp-groups-for-org",
 		}
 	)
-	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
+	params, err := decodeTeamsListIdpGroupsForOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79242,7 +79242,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79278,7 +79278,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 			ID:   "teams/list-idp-groups-in-org",
 		}
 	)
-	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
+	params, err := decodeTeamsListIdpGroupsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79349,7 +79349,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
-func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79385,7 +79385,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 			ID:   "teams/list-members-in-org",
 		}
 	)
-	params, err := decodeTeamsListMembersInOrgParams(args, r)
+	params, err := decodeTeamsListMembersInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79472,7 +79472,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members
-func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79508,7 +79508,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 			ID:   "teams/list-members-legacy",
 		}
 	)
-	params, err := decodeTeamsListMembersLegacyParams(args, r)
+	params, err := decodeTeamsListMembersLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79591,7 +79591,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 // /organizations/{org_id}/team/{team_id}/invitations`.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
-func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79627,7 +79627,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 			ID:   "teams/list-pending-invitations-in-org",
 		}
 	)
-	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
+	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79713,7 +79713,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/invitations
-func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79749,7 +79749,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 			ID:   "teams/list-pending-invitations-legacy",
 		}
 	)
-	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
+	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79825,7 +79825,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 // /organizations/{org_id}/team/{team_id}/projects`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
-func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79861,7 +79861,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 			ID:   "teams/list-projects-in-org",
 		}
 	)
-	params, err := decodeTeamsListProjectsInOrgParams(args, r)
+	params, err := decodeTeamsListProjectsInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -79944,7 +79944,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects
-func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -79980,7 +79980,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 			ID:   "teams/list-projects-legacy",
 		}
 	)
-	params, err := decodeTeamsListProjectsLegacyParams(args, r)
+	params, err := decodeTeamsListProjectsLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80056,7 +80056,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 // /organizations/{org_id}/team/{team_id}/repos`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
-func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -80092,7 +80092,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 			ID:   "teams/list-repos-in-org",
 		}
 	)
-	params, err := decodeTeamsListReposInOrgParams(args, r)
+	params, err := decodeTeamsListReposInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80174,7 +80174,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos
-func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -80210,7 +80210,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 			ID:   "teams/list-repos-legacy",
 		}
 	)
-	params, err := decodeTeamsListReposLegacyParams(args, r)
+	params, err := decodeTeamsListReposLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80304,7 +80304,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-member-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80340,7 +80340,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 			ID:   "teams/remove-member-legacy",
 		}
 	)
-	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
+	params, err := decodeTeamsRemoveMemberLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80424,7 +80424,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 // /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80460,7 +80460,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 			ID:   "teams/remove-membership-for-user-in-org",
 		}
 	)
-	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
+	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80551,7 +80551,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80587,7 +80587,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 			ID:   "teams/remove-membership-for-user-legacy",
 		}
 	)
-	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
+	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80662,7 +80662,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80698,7 +80698,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 			ID:   "teams/remove-project-in-org",
 		}
 	)
-	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
+	params, err := decodeTeamsRemoveProjectInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80780,7 +80780,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80816,7 +80816,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 			ID:   "teams/remove-project-legacy",
 		}
 	)
-	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
+	params, err := decodeTeamsRemoveProjectLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -80891,7 +80891,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -80927,7 +80927,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 			ID:   "teams/remove-repo-in-org",
 		}
 	)
-	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
+	params, err := decodeTeamsRemoveRepoInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81013,7 +81013,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -81049,7 +81049,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 			ID:   "teams/remove-repo-legacy",
 		}
 	)
-	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
+	params, err := decodeTeamsRemoveRepoLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81126,7 +81126,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81162,7 +81162,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 			ID:   "teams/update-discussion-comment-in-org",
 		}
 	)
-	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
+	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81261,7 +81261,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81297,7 +81297,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 			ID:   "teams/update-discussion-comment-legacy",
 		}
 	)
-	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
+	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81390,7 +81390,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81426,7 +81426,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 			ID:   "teams/update-discussion-in-org",
 		}
 	)
-	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
+	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81522,7 +81522,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81558,7 +81558,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 			ID:   "teams/update-discussion-legacy",
 		}
 	)
-	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
+	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81645,7 +81645,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 // /organizations/{org_id}/team/{team_id}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81681,7 +81681,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 			ID:   "teams/update-in-org",
 		}
 	)
-	params, err := decodeTeamsUpdateInOrgParams(args, r)
+	params, err := decodeTeamsUpdateInOrgParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81772,7 +81772,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}
-func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -81808,7 +81808,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 			ID:   "teams/update-legacy",
 		}
 	)
-	params, err := decodeTeamsUpdateLegacyParams(args, r)
+	params, err := decodeTeamsUpdateLegacyParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -81889,7 +81889,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 // This endpoint is accessible with the `user` scope.
 //
 // POST /user/emails
-func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/add-email-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -81991,7 +81991,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 // Block a user.
 //
 // PUT /user/blocks/{username}
-func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/block"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -82027,7 +82027,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 			ID:   "users/block",
 		}
 	)
-	params, err := decodeUsersBlockParams(args, r)
+	params, err := decodeUsersBlockParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82093,7 +82093,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 // Check if a user is blocked by the authenticated user.
 //
 // GET /user/blocks/{username}
-func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-blocked"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -82129,7 +82129,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 			ID:   "users/check-blocked",
 		}
 	)
-	params, err := decodeUsersCheckBlockedParams(args, r)
+	params, err := decodeUsersCheckBlockedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82195,7 +82195,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 // Check if a user follows another user.
 //
 // GET /users/{username}/following/{target_user}
-func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-following-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -82231,7 +82231,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 			ID:   "users/check-following-for-user",
 		}
 	)
-	params, err := decodeUsersCheckFollowingForUserParams(args, r)
+	params, err := decodeUsersCheckFollowingForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82301,7 +82301,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 // Check if a person is followed by the authenticated user.
 //
 // GET /user/following/{username}
-func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -82337,7 +82337,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 			ID:   "users/check-person-is-followed-by-authenticated",
 		}
 	)
-	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
+	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82405,7 +82405,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/gpg_keys
-func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -82509,7 +82509,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/keys
-func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -82611,7 +82611,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 // This endpoint is accessible with the `user` scope.
 //
 // DELETE /user/emails
-func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-email-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -82715,7 +82715,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /user/gpg_keys/{gpg_key_id}
-func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -82751,7 +82751,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 			ID:   "users/delete-gpg-key-for-authenticated",
 		}
 	)
-	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
+	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82819,7 +82819,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /user/keys/{key_id}
-func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -82855,7 +82855,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 			ID:   "users/delete-public-ssh-key-for-authenticated",
 		}
 	)
-	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
+	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -82925,7 +82925,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 // the `user:follow` scope.
 //
 // PUT /user/following/{username}
-func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/follow"),
 		semconv.HTTPMethodKey.String("PUT"),
@@ -82961,7 +82961,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 			ID:   "users/follow",
 		}
 	)
-	params, err := decodeUsersFollowParams(args, r)
+	params, err := decodeUsersFollowParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83030,7 +83030,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 // response lists only public profile information.
 //
 // GET /user
-func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83127,7 +83127,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 // com/rest/reference/users#emails)".
 //
 // GET /users/{username}
-func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-by-username"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83163,7 +83163,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 			ID:   "users/get-by-username",
 		}
 	)
-	params, err := decodeUsersGetByUsernameParams(args, r)
+	params, err := decodeUsersGetByUsernameParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83238,7 +83238,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 // ```.
 //
 // GET /users/{username}/hovercard
-func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-context-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83274,7 +83274,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 			ID:   "users/get-context-for-user",
 		}
 	)
-	params, err := decodeUsersGetContextForUserParams(args, r)
+	params, err := decodeUsersGetContextForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83350,7 +83350,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/gpg_keys/{gpg_key_id}
-func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83386,7 +83386,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 			ID:   "users/get-gpg-key-for-authenticated",
 		}
 	)
-	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
+	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83454,7 +83454,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/keys/{key_id}
-func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83490,7 +83490,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 			ID:   "users/get-public-ssh-key-for-authenticated",
 		}
 	)
-	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
+	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83560,7 +83560,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 // URL for the next page of users.
 //
 // GET /users
-func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83596,7 +83596,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "users/list",
 		}
 	)
-	params, err := decodeUsersListParams(args, r)
+	params, err := decodeUsersListParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83666,7 +83666,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 // List the users you've blocked on your personal account.
 //
 // GET /user/blocks
-func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83750,7 +83750,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 // is accessible with the `user:email` scope.
 //
 // GET /user/emails
-func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-emails-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83786,7 +83786,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 			ID:   "users/list-emails-for-authenticated",
 		}
 	)
-	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
+	params, err := decodeUsersListEmailsForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83856,7 +83856,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 // Lists the people who the authenticated user follows.
 //
 // GET /user/following
-func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followed-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83892,7 +83892,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 			ID:   "users/list-followed-by-authenticated",
 		}
 	)
-	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
+	params, err := decodeUsersListFollowedByAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -83962,7 +83962,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 // Lists the people following the authenticated user.
 //
 // GET /user/followers
-func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -83998,7 +83998,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 			ID:   "users/list-followers-for-authenticated-user",
 		}
 	)
-	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
+	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84068,7 +84068,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 // Lists the people following the specified user.
 //
 // GET /users/{username}/followers
-func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84104,7 +84104,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 			ID:   "users/list-followers-for-user",
 		}
 	)
-	params, err := decodeUsersListFollowersForUserParams(args, r)
+	params, err := decodeUsersListFollowersForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84178,7 +84178,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 // Lists the people who the specified user follows.
 //
 // GET /users/{username}/following
-func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-following-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84214,7 +84214,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 			ID:   "users/list-following-for-user",
 		}
 	)
-	params, err := decodeUsersListFollowingForUserParams(args, r)
+	params, err := decodeUsersListFollowingForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84290,7 +84290,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/gpg_keys
-func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84326,7 +84326,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 			ID:   "users/list-gpg-keys-for-authenticated",
 		}
 	)
-	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
+	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84396,7 +84396,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 // Lists the GPG keys for a user. This information is accessible by anyone.
 //
 // GET /users/{username}/gpg_keys
-func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84432,7 +84432,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 			ID:   "users/list-gpg-keys-for-user",
 		}
 	)
-	params, err := decodeUsersListGpgKeysForUserParams(args, r)
+	params, err := decodeUsersListGpgKeysForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84509,7 +84509,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 // endpoint is accessible with the `user:email` scope.
 //
 // GET /user/public_emails
-func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84545,7 +84545,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 			ID:   "users/list-public-emails-for-authenticated",
 		}
 	)
-	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
+	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84615,7 +84615,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 // Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 //
 // GET /users/{username}/keys
-func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-keys-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84651,7 +84651,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 			ID:   "users/list-public-keys-for-user",
 		}
 	)
-	params, err := decodeUsersListPublicKeysForUserParams(args, r)
+	params, err := decodeUsersListPublicKeysForUserParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84727,7 +84727,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/keys
-func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -84763,7 +84763,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 			ID:   "users/list-public-ssh-keys-for-authenticated",
 		}
 	)
-	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
+	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -84833,7 +84833,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 // Sets the visibility for your primary email addresses.
 //
 // PATCH /user/email/visibility
-func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
 		semconv.HTTPMethodKey.String("PATCH"),
@@ -84935,7 +84935,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 // Unblock a user.
 //
 // DELETE /user/blocks/{username}
-func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unblock"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -84971,7 +84971,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 			ID:   "users/unblock",
 		}
 	)
-	params, err := decodeUsersUnblockParams(args, r)
+	params, err := decodeUsersUnblockParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -85038,7 +85038,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 // with the `user:follow` scope.
 //
 // DELETE /user/following/{username}
-func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unfollow"),
 		semconv.HTTPMethodKey.String("DELETE"),
@@ -85074,7 +85074,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 			ID:   "users/unfollow",
 		}
 	)
-	params, err := decodeUsersUnfollowParams(args, r)
+	params, err := decodeUsersUnfollowParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -85142,7 +85142,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 // not be displayed on your public profile or via the API.
 //
 // PATCH /user
-func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
 		semconv.HTTPMethodKey.String("PATCH"),

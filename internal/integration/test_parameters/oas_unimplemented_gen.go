@@ -32,7 +32,7 @@ func (UnimplementedHandler) ContentParameters(ctx context.Context, params Conten
 // Test for cookie param.
 //
 // GET /cookieParameter
-func (UnimplementedHandler) CookieParameter(ctx context.Context, params CookieParameterParams) (r *Hash, _ error) {
+func (UnimplementedHandler) CookieParameter(ctx context.Context, params CookieParameterParams) (r *Value, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -41,7 +41,7 @@ func (UnimplementedHandler) CookieParameter(ctx context.Context, params CookiePa
 // Test for header param.
 //
 // GET /headerParameter
-func (UnimplementedHandler) HeaderParameter(ctx context.Context, params HeaderParameterParams) (r *Hash, _ error) {
+func (UnimplementedHandler) HeaderParameter(ctx context.Context, params HeaderParameterParams) (r *Value, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -56,6 +56,15 @@ func (UnimplementedHandler) ObjectCookieParameter(ctx context.Context, params Ob
 //
 // GET /objectQueryParameter
 func (UnimplementedHandler) ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (r *ObjectQueryParameterOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PathParameter implements pathParameter operation.
+//
+// Test for path param.
+//
+// GET /pathParameter/{value}
+func (UnimplementedHandler) PathParameter(ctx context.Context, params PathParameterParams) (r *Value, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

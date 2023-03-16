@@ -114,7 +114,9 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res string, err error) 
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/healthz"
+	var pathParts [1]string
+	pathParts[0] = "/healthz"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)

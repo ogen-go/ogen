@@ -34,7 +34,7 @@ func unpackListPetsParams(packed middleware.Parameters) (params ListPetsParams) 
 	return params
 }
 
-func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParams, _ error) {
+func decodeListPetsParams(args [0]string, argsEscaped bool, r *http.Request) (params ListPetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: limit.
 	if err := func() error {
@@ -97,12 +97,16 @@ func unpackShowPetByIdParams(packed middleware.Parameters) (params ShowPetByIdPa
 	return params
 }
 
-func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByIdParams, _ error) {
+func decodeShowPetByIdParams(args [1]string, argsEscaped bool, r *http.Request) (params ShowPetByIdParams, _ error) {
 	// Decode path: petId.
 	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{

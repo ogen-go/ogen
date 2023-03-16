@@ -111,7 +111,8 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/gallery/"
+	var pathParts [2]string
+	pathParts[0] = "/api/gallery/"
 	{
 		// Encode "book_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -128,8 +129,9 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -197,7 +199,8 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/galleries/"
+	var pathParts [4]string
+	pathParts[0] = "/galleries/"
 	{
 		// Encode "media_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -214,9 +217,9 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/cover."
+	pathParts[2] = "/cover."
 	{
 		// Encode "format" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -233,8 +236,9 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -302,7 +306,8 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/galleries/"
+	var pathParts [6]string
+	pathParts[0] = "/galleries/"
 	{
 		// Encode "media_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -319,9 +324,9 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "page" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -338,9 +343,9 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "."
+	pathParts[4] = "."
 	{
 		// Encode "format" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -357,8 +362,9 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -426,7 +432,8 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/galleries/"
+	var pathParts [6]string
+	pathParts[0] = "/galleries/"
 	{
 		// Encode "media_id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -443,9 +450,9 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[1] = encoded
 	}
-	u.Path += "/"
+	pathParts[2] = "/"
 	{
 		// Encode "page" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -462,9 +469,9 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[3] = encoded
 	}
-	u.Path += "t."
+	pathParts[4] = "t."
 	{
 		// Encode "format" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -481,8 +488,9 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += encoded
+		pathParts[5] = encoded
 	}
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -550,7 +558,9 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/galleries/search"
+	var pathParts [1]string
+	pathParts[0] = "/api/galleries/search"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
@@ -653,7 +663,9 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/api/galleries/tagged"
+	var pathParts [1]string
+	pathParts[0] = "/api/galleries/tagged"
+	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()

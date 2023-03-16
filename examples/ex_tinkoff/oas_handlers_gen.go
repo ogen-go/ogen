@@ -19,7 +19,7 @@ import (
 // Получение списка облигаций.
 //
 // GET /market/bonds
-func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -145,7 +145,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 // Получение исторических свечей по FIGI.
 //
 // GET /market/candles
-func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -220,7 +220,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			return
 		}
 	}
-	params, err := decodeMarketCandlesGetParams(args, r)
+	params, err := decodeMarketCandlesGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -298,7 +298,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 // Получение списка валютных пар.
 //
 // GET /market/currencies
-func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -424,7 +424,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 // Получение списка ETF.
 //
 // GET /market/etfs
-func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -550,7 +550,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 // Получение стакана по FIGI.
 //
 // GET /market/orderbook
-func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -625,7 +625,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			return
 		}
 	}
-	params, err := decodeMarketOrderbookGetParams(args, r)
+	params, err := decodeMarketOrderbookGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -695,7 +695,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 // Получение инструмента по FIGI.
 //
 // GET /market/search/by-figi
-func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -770,7 +770,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			return
 		}
 	}
-	params, err := decodeMarketSearchByFigiGetParams(args, r)
+	params, err := decodeMarketSearchByFigiGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -836,7 +836,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 // Получение инструмента по тикеру.
 //
 // GET /market/search/by-ticker
-func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -911,7 +911,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			return
 		}
 	}
-	params, err := decodeMarketSearchByTickerGetParams(args, r)
+	params, err := decodeMarketSearchByTickerGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -977,7 +977,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 // Получение списка акций.
 //
 // GET /market/stocks
-func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1103,7 +1103,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 // Получение списка операций.
 //
 // GET /operations
-func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1178,7 +1178,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			return
 		}
 	}
-	params, err := decodeOperationsGetParams(args, r)
+	params, err := decodeOperationsGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1256,7 +1256,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 // Отмена заявки.
 //
 // POST /orders/cancel
-func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1331,7 +1331,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			return
 		}
 	}
-	params, err := decodeOrdersCancelPostParams(args, r)
+	params, err := decodeOrdersCancelPostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1401,7 +1401,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 // Получение списка активных заявок.
 //
 // GET /orders
-func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1476,7 +1476,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			return
 		}
 	}
-	params, err := decodeOrdersGetParams(args, r)
+	params, err := decodeOrdersGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1542,7 +1542,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 // Создание лимитной заявки.
 //
 // POST /orders/limit-order
-func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1617,7 +1617,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			return
 		}
 	}
-	params, err := decodeOrdersLimitOrderPostParams(args, r)
+	params, err := decodeOrdersLimitOrderPostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1702,7 +1702,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 // Создание рыночной заявки.
 //
 // POST /orders/market-order
-func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1777,7 +1777,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			return
 		}
 	}
-	params, err := decodeOrdersMarketOrderPostParams(args, r)
+	params, err := decodeOrdersMarketOrderPostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1862,7 +1862,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 // Получение валютных активов клиента.
 //
 // GET /portfolio/currencies
-func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1937,7 +1937,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			return
 		}
 	}
-	params, err := decodePortfolioCurrenciesGetParams(args, r)
+	params, err := decodePortfolioCurrenciesGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2003,7 +2003,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 // Получение портфеля клиента.
 //
 // GET /portfolio
-func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2078,7 +2078,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			return
 		}
 	}
-	params, err := decodePortfolioGetParams(args, r)
+	params, err := decodePortfolioGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2144,7 +2144,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 // Удаление всех позиций клиента.
 //
 // POST /sandbox/clear
-func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2219,7 +2219,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			return
 		}
 	}
-	params, err := decodeSandboxClearPostParams(args, r)
+	params, err := decodeSandboxClearPostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2285,7 +2285,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 // Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
-func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2360,7 +2360,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			return
 		}
 	}
-	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
+	params, err := decodeSandboxCurrenciesBalancePostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2441,7 +2441,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 // Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
-func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2516,7 +2516,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			return
 		}
 	}
-	params, err := decodeSandboxPositionsBalancePostParams(args, r)
+	params, err := decodeSandboxPositionsBalancePostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2597,7 +2597,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 // Создание счета и валютных позиций для клиента.
 //
 // POST /sandbox/register
-func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2738,7 +2738,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 // Удаление счета клиента.
 //
 // POST /sandbox/remove
-func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2813,7 +2813,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			return
 		}
 	}
-	params, err := decodeSandboxRemovePostParams(args, r)
+	params, err := decodeSandboxRemovePostParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -2879,7 +2879,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 // Получение брокерских счетов клиента.
 //
 // GET /user/accounts
-func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.

@@ -14,9 +14,11 @@ import (
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -74,7 +76,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleAddStickerToSetRequest([0]string{}, w, r)
+							s.handleAddStickerToSetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -103,7 +105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleAnswerCallbackQueryRequest([0]string{}, w, r)
+								s.handleAnswerCallbackQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -121,7 +123,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleAnswerInlineQueryRequest([0]string{}, w, r)
+								s.handleAnswerInlineQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -139,7 +141,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleAnswerPreCheckoutQueryRequest([0]string{}, w, r)
+								s.handleAnswerPreCheckoutQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -157,7 +159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleAnswerShippingQueryRequest([0]string{}, w, r)
+								s.handleAnswerShippingQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -175,7 +177,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleAnswerWebAppQueryRequest([0]string{}, w, r)
+								s.handleAnswerWebAppQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -194,7 +196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleApproveChatJoinRequestRequest([0]string{}, w, r)
+							s.handleApproveChatJoinRequestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -224,7 +226,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleBanChatMemberRequest([0]string{}, w, r)
+							s.handleBanChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -242,7 +244,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleBanChatSenderChatRequest([0]string{}, w, r)
+							s.handleBanChatSenderChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -272,7 +274,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleCloseRequest([0]string{}, w, r)
+							s.handleCloseRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -290,7 +292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleCopyMessageRequest([0]string{}, w, r)
+							s.handleCopyMessageRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -319,7 +321,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleCreateChatInviteLinkRequest([0]string{}, w, r)
+								s.handleCreateChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -337,7 +339,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleCreateNewStickerSetRequest([0]string{}, w, r)
+								s.handleCreateNewStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -368,7 +370,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleDeclineChatJoinRequestRequest([0]string{}, w, r)
+							s.handleDeclineChatJoinRequestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -408,7 +410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleDeleteChatPhotoRequest([0]string{}, w, r)
+									s.handleDeleteChatPhotoRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -426,7 +428,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleDeleteChatStickerSetRequest([0]string{}, w, r)
+									s.handleDeleteChatStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -456,7 +458,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleDeleteMessageRequest([0]string{}, w, r)
+									s.handleDeleteMessageRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -474,7 +476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleDeleteMyCommandsRequest([0]string{}, w, r)
+									s.handleDeleteMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -493,7 +495,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleDeleteStickerFromSetRequest([0]string{}, w, r)
+								s.handleDeleteStickerFromSetRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -511,7 +513,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleDeleteWebhookRequest([0]string{}, w, r)
+								s.handleDeleteWebhookRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -553,7 +555,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleEditChatInviteLinkRequest([0]string{}, w, r)
+								s.handleEditChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -582,7 +584,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleEditMessageCaptionRequest([0]string{}, w, r)
+									s.handleEditMessageCaptionRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -600,7 +602,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleEditMessageLiveLocationRequest([0]string{}, w, r)
+									s.handleEditMessageLiveLocationRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -618,7 +620,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleEditMessageMediaRequest([0]string{}, w, r)
+									s.handleEditMessageMediaRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -636,7 +638,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleEditMessageReplyMarkupRequest([0]string{}, w, r)
+									s.handleEditMessageReplyMarkupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -654,7 +656,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleEditMessageTextRequest([0]string{}, w, r)
+									s.handleEditMessageTextRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -674,7 +676,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleExportChatInviteLinkRequest([0]string{}, w, r)
+							s.handleExportChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -693,7 +695,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleForwardMessageRequest([0]string{}, w, r)
+						s.handleForwardMessageRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
@@ -721,7 +723,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(elem) == 0 {
 						switch r.Method {
 						case "POST":
-							s.handleGetChatRequest([0]string{}, w, r)
+							s.handleGetChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -740,7 +742,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleGetChatAdministratorsRequest([0]string{}, w, r)
+								s.handleGetChatAdministratorsRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -768,7 +770,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "POST":
-									s.handleGetChatMemberRequest([0]string{}, w, r)
+									s.handleGetChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -787,7 +789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleGetChatMemberCountRequest([0]string{}, w, r)
+										s.handleGetChatMemberCountRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -806,7 +808,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleGetChatMenuButtonRequest([0]string{}, w, r)
+									s.handleGetChatMenuButtonRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -826,7 +828,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleGetFileRequest([0]string{}, w, r)
+							s.handleGetFileRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -844,7 +846,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleGetGameHighScoresRequest([0]string{}, w, r)
+							s.handleGetGameHighScoresRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -873,7 +875,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleGetMeRequest([0]string{}, w, r)
+								s.handleGetMeRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -902,7 +904,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleGetMyCommandsRequest([0]string{}, w, r)
+									s.handleGetMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -920,7 +922,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleGetMyDefaultAdministratorRightsRequest([0]string{}, w, r)
+									s.handleGetMyDefaultAdministratorRightsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -940,7 +942,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleGetStickerSetRequest([0]string{}, w, r)
+							s.handleGetStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -969,7 +971,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleGetUpdatesRequest([0]string{}, w, r)
+								s.handleGetUpdatesRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -987,7 +989,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleGetUserProfilePhotosRequest([0]string{}, w, r)
+								s.handleGetUserProfilePhotosRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -1006,7 +1008,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleGetWebhookInfoRequest([0]string{}, w, r)
+							s.handleGetWebhookInfoRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1036,7 +1038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleLeaveChatRequest([0]string{}, w, r)
+							s.handleLeaveChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1054,7 +1056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleLogOutRequest([0]string{}, w, r)
+							s.handleLogOutRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1084,7 +1086,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handlePinChatMessageRequest([0]string{}, w, r)
+							s.handlePinChatMessageRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1102,7 +1104,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handlePromoteChatMemberRequest([0]string{}, w, r)
+							s.handlePromoteChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1132,7 +1134,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleRestrictChatMemberRequest([0]string{}, w, r)
+							s.handleRestrictChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1150,7 +1152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleRevokeChatInviteLinkRequest([0]string{}, w, r)
+							s.handleRevokeChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -1213,7 +1215,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendAnimationRequest([0]string{}, w, r)
+										s.handleSendAnimationRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1231,7 +1233,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendAudioRequest([0]string{}, w, r)
+										s.handleSendAudioRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1261,7 +1263,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendChatActionRequest([0]string{}, w, r)
+										s.handleSendChatActionRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1279,7 +1281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendContactRequest([0]string{}, w, r)
+										s.handleSendContactRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1309,7 +1311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendDiceRequest([0]string{}, w, r)
+										s.handleSendDiceRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1327,7 +1329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendDocumentRequest([0]string{}, w, r)
+										s.handleSendDocumentRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1346,7 +1348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSendGameRequest([0]string{}, w, r)
+									s.handleSendGameRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1364,7 +1366,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSendInvoiceRequest([0]string{}, w, r)
+									s.handleSendInvoiceRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1382,7 +1384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSendLocationRequest([0]string{}, w, r)
+									s.handleSendLocationRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1411,7 +1413,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendMediaGroupRequest([0]string{}, w, r)
+										s.handleSendMediaGroupRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1429,7 +1431,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendMessageRequest([0]string{}, w, r)
+										s.handleSendMessageRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1459,7 +1461,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendPhotoRequest([0]string{}, w, r)
+										s.handleSendPhotoRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1477,7 +1479,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendPollRequest([0]string{}, w, r)
+										s.handleSendPollRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1496,7 +1498,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSendStickerRequest([0]string{}, w, r)
+									s.handleSendStickerRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1525,7 +1527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendVenueRequest([0]string{}, w, r)
+										s.handleSendVenueRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1542,7 +1544,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "POST":
-										s.handleSendVideoRequest([0]string{}, w, r)
+										s.handleSendVideoRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1561,7 +1563,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleSendVideoNoteRequest([0]string{}, w, r)
+											s.handleSendVideoNoteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1580,7 +1582,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSendVoiceRequest([0]string{}, w, r)
+										s.handleSendVoiceRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1622,7 +1624,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetChatAdministratorCustomTitleRequest([0]string{}, w, r)
+										s.handleSetChatAdministratorCustomTitleRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1640,7 +1642,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetChatDescriptionRequest([0]string{}, w, r)
+										s.handleSetChatDescriptionRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1658,7 +1660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetChatMenuButtonRequest([0]string{}, w, r)
+										s.handleSetChatMenuButtonRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1687,7 +1689,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleSetChatPermissionsRequest([0]string{}, w, r)
+											s.handleSetChatPermissionsRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1705,7 +1707,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "POST":
-											s.handleSetChatPhotoRequest([0]string{}, w, r)
+											s.handleSetChatPhotoRequest([0]string{}, elemIsEscaped, w, r)
 										default:
 											s.notAllowed(w, r, "POST")
 										}
@@ -1724,7 +1726,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetChatStickerSetRequest([0]string{}, w, r)
+										s.handleSetChatStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1742,7 +1744,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetChatTitleRequest([0]string{}, w, r)
+										s.handleSetChatTitleRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1761,7 +1763,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSetGameScoreRequest([0]string{}, w, r)
+									s.handleSetGameScoreRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1790,7 +1792,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetMyCommandsRequest([0]string{}, w, r)
+										s.handleSetMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1808,7 +1810,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetMyDefaultAdministratorRightsRequest([0]string{}, w, r)
+										s.handleSetMyDefaultAdministratorRightsRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1827,7 +1829,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSetPassportDataErrorsRequest([0]string{}, w, r)
+									s.handleSetPassportDataErrorsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1856,7 +1858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetStickerPositionInSetRequest([0]string{}, w, r)
+										s.handleSetStickerPositionInSetRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1874,7 +1876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "POST":
-										s.handleSetStickerSetThumbRequest([0]string{}, w, r)
+										s.handleSetStickerSetThumbRequest([0]string{}, elemIsEscaped, w, r)
 									default:
 										s.notAllowed(w, r, "POST")
 									}
@@ -1893,7 +1895,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleSetWebhookRequest([0]string{}, w, r)
+									s.handleSetWebhookRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -1924,7 +1926,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleStopMessageLiveLocationRequest([0]string{}, w, r)
+								s.handleStopMessageLiveLocationRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -1942,7 +1944,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf node.
 							switch r.Method {
 							case "POST":
-								s.handleStopPollRequest([0]string{}, w, r)
+								s.handleStopPollRequest([0]string{}, elemIsEscaped, w, r)
 							default:
 								s.notAllowed(w, r, "POST")
 							}
@@ -1995,7 +1997,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleUnbanChatMemberRequest([0]string{}, w, r)
+									s.handleUnbanChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2013,7 +2015,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
+									s.handleUnbanChatSenderChatRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2043,7 +2045,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleUnpinAllChatMessagesRequest([0]string{}, w, r)
+									s.handleUnpinAllChatMessagesRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2061,7 +2063,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "POST":
-									s.handleUnpinChatMessageRequest([0]string{}, w, r)
+									s.handleUnpinChatMessageRequest([0]string{}, elemIsEscaped, w, r)
 								default:
 									s.notAllowed(w, r, "POST")
 								}
@@ -2081,7 +2083,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleUploadStickerFileRequest([0]string{}, w, r)
+							s.handleUploadStickerFileRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}

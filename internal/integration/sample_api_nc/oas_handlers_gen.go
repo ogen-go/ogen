@@ -22,7 +22,7 @@ import (
 // Retrieve data.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
-func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetFormat"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -58,7 +58,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			ID:   "dataGetFormat",
 		}
 	)
-	params, err := decodeDataGetFormatParams(args, r)
+	params, err := decodeDataGetFormatParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -138,7 +138,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 // handleDefaultTestRequest handles defaultTest operation.
 //
 // POST /defaultTest
-func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -174,7 +174,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			ID:   "defaultTest",
 		}
 	)
-	params, err := decodeDefaultTestParams(args, r)
+	params, err := decodeDefaultTestParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -255,7 +255,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 // Returns error.
 //
 // GET /error
-func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -338,7 +338,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 // Dumb endpoint for testing things.
 //
 // GET /foobar
-func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarGet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -374,7 +374,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "foobarGet",
 		}
 	)
-	params, err := decodeFoobarGetParams(args, r)
+	params, err := decodeFoobarGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -444,7 +444,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 // Dumb endpoint for testing things.
 //
 // POST /foobar
-func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -544,7 +544,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 // handleFoobarPutRequest handles PUT /foobar operation.
 //
 // PUT /foobar
-func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -620,7 +620,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 // handleNoAdditionalPropertiesTestRequest handles noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
-func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -701,7 +701,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 // handleNullableDefaultResponseRequest handles nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
-func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -782,7 +782,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 // handleOneofBugRequest handles oneofBug operation.
 //
 // POST /oneofBug
-func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -882,7 +882,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 // handlePatternRecursiveMapGetRequest handles GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
-func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -960,7 +960,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 // Creates pet.
 //
 // POST /pet
-func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1062,7 +1062,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 // Returns names of all friends of pet.
 //
 // GET /pet/friendNames/{id}
-func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petFriendsNamesByID"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1098,7 +1098,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			ID:   "petFriendsNamesByID",
 		}
 	)
-	params, err := decodePetFriendsNamesByIDParams(args, r)
+	params, err := decodePetFriendsNamesByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1164,7 +1164,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 // Returns pet from the system that the user has access to.
 //
 // GET /pet
-func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGet"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1200,7 +1200,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			ID:   "petGet",
 		}
 	)
-	params, err := decodePetGetParams(args, r)
+	params, err := decodePetGetParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1278,7 +1278,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 // Returns pet avatar by id.
 //
 // GET /pet/avatar
-func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByID"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1314,7 +1314,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			ID:   "petGetAvatarByID",
 		}
 	)
-	params, err := decodePetGetAvatarByIDParams(args, r)
+	params, err := decodePetGetAvatarByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1380,7 +1380,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 // Returns pet's avatar by name.
 //
 // GET /pet/{name}/avatar
-func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByName"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1416,7 +1416,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			ID:   "petGetAvatarByName",
 		}
 	)
-	params, err := decodePetGetAvatarByNameParams(args, r)
+	params, err := decodePetGetAvatarByNameParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1482,7 +1482,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 // Returns pet by name from the system that the user has access to.
 //
 // GET /pet/{name}
-func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1518,7 +1518,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			ID:   "petGetByName",
 		}
 	)
-	params, err := decodePetGetByNameParams(args, r)
+	params, err := decodePetGetByNameParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1584,7 +1584,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 // Returns pet name by pet id.
 //
 // GET /pet/name/{id}
-func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petNameByID"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -1620,7 +1620,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			ID:   "petNameByID",
 		}
 	)
-	params, err := decodePetNameByIDParams(args, r)
+	params, err := decodePetNameByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1684,7 +1684,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 // handlePetUpdateNameAliasPostRequest handles POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
-func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1779,7 +1779,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 // handlePetUpdateNamePostRequest handles POST /pet/updateName operation.
 //
 // POST /pet/updateName
-func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -1876,7 +1876,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 // Uploads pet avatar by id.
 //
 // POST /pet/avatar
-func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petUploadAvatarByID"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1912,7 +1912,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			ID:   "petUploadAvatarByID",
 		}
 	)
-	params, err := decodePetUploadAvatarByIDParams(args, r)
+	params, err := decodePetUploadAvatarByIDParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -1991,7 +1991,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 // handleRecursiveArrayGetRequest handles GET /recursiveArray operation.
 //
 // GET /recursiveArray
-func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2067,7 +2067,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 // handleRecursiveMapGetRequest handles GET /recursiveMap operation.
 //
 // GET /recursiveMap
-func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2143,7 +2143,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 // handleSecurityTestRequest handles securityTest operation.
 //
 // GET /securityTest
-func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("securityTest"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -2272,7 +2272,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 // handleStringIntMapGetRequest handles GET /stringIntMap operation.
 //
 // GET /stringIntMap
-func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
@@ -2348,7 +2348,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 // handleTestFloatValidationRequest handles testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2448,7 +2448,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 // handleTestNullableOneofsRequest handles testNullableOneofs operation.
 //
 // GET /testNullableOneofs
-func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testNullableOneofs"),
 		semconv.HTTPMethodKey.String("GET"),

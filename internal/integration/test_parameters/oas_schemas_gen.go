@@ -56,32 +56,6 @@ func (s *ContentParameters) SetCookie(val User) {
 	s.Cookie = val
 }
 
-// Ref: #/components/schemas/Hash
-type Hash struct {
-	Raw []byte `json:"raw"`
-	Hex string `json:"hex"`
-}
-
-// GetRaw returns the value of Raw.
-func (s *Hash) GetRaw() []byte {
-	return s.Raw
-}
-
-// GetHex returns the value of Hex.
-func (s *Hash) GetHex() string {
-	return s.Hex
-}
-
-// SetRaw sets the value of Raw.
-func (s *Hash) SetRaw(val []byte) {
-	s.Raw = val
-}
-
-// SetHex sets the value of Hex.
-func (s *Hash) SetHex(val string) {
-	s.Hex = val
-}
-
 type ObjectQueryParameterOK struct {
 	Style string         `json:"style"`
 	Value OneLevelObject `json:"value"`
@@ -278,4 +252,19 @@ func (s *UserRole) UnmarshalText(data []byte) error {
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+// Ref: #/components/schemas/Value
+type Value struct {
+	Value string `json:"value"`
+}
+
+// GetValue returns the value of Value.
+func (s *Value) GetValue() string {
+	return s.Value
+}
+
+// SetValue sets the value of Value.
+func (s *Value) SetValue(val string) {
+	s.Value = val
 }
