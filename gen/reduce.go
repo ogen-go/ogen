@@ -1,12 +1,13 @@
 package gen
 
 import (
-	"reflect"
+	"encoding/json"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/internal/location"
+	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -53,10 +54,6 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		return reduceFailed(`operation has no "default" response`, first.Responses)
 	}
 	switch {
-	case d.Ref.IsZero():
-		// TODO(tdakkota): handle cases when response share same JSON Schema and all
-		// 	other fields are the same.
-		return reduceFailed(`response must be a reference`, d)
 	case len(d.Content) < 1:
 		// TODO(tdakkota): point to "content", not to the entire response
 		return reduceFailed(`response is no-content`, d)
@@ -65,11 +62,26 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		return reduceFailed(`response is multi-content`, d)
 	}
 
+	compareResponses := func(a, b *openapi.Response) bool {
+		// FIXME(tdakkota): hacky, probably it is better to define/generate Equal methods?
+		x, err := json.Marshal(a)
+		if err != nil {
+			return false
+		}
+		y, err := json.Marshal(b)
+		if err != nil {
+			return false
+		}
+
+		equal, _ := ogenjson.Equal(x, y)
+		return equal
+	}
+
 	for _, op := range ops[1:] {
 		switch other := op.Responses.Default; {
 		case other == nil:
 			return reduceFailed(`operation has no "default" response`, op.Responses)
-		case !reflect.DeepEqual(other, d):
+		case !compareResponses(d, other):
 			return reduceFailed(`response is different`, other)
 		}
 	}
