@@ -18,8 +18,8 @@ var _ Handler = UnimplementedHandler{}
 // Create a pet.
 //
 // POST /pets
-func (UnimplementedHandler) CreatePets(ctx context.Context) (r CreatePetsRes, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) CreatePets(ctx context.Context) error {
+	return ht.ErrNotImplemented
 }
 
 // ListPets implements listPets operation.
@@ -27,7 +27,7 @@ func (UnimplementedHandler) CreatePets(ctx context.Context) (r CreatePetsRes, _ 
 // List all pets.
 //
 // GET /pets
-func (UnimplementedHandler) ListPets(ctx context.Context, params ListPetsParams) (r ListPetsRes, _ error) {
+func (UnimplementedHandler) ListPets(ctx context.Context, params ListPetsParams) (r *PetsHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -36,6 +36,14 @@ func (UnimplementedHandler) ListPets(ctx context.Context, params ListPetsParams)
 // Info for a specific pet.
 //
 // GET /pets/{petId}
-func (UnimplementedHandler) ShowPetById(ctx context.Context, params ShowPetByIdParams) (r ShowPetByIdRes, _ error) {
+func (UnimplementedHandler) ShowPetById(ctx context.Context, params ShowPetByIdParams) (r *Pet, _ error) {
 	return r, ht.ErrNotImplemented
+}
+
+// NewError creates *ErrorStatusCode from error returned by handler.
+//
+// Used for common default response.
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
+	return r
 }

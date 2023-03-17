@@ -13,19 +13,23 @@ type Handler interface {
 	// Create a pet.
 	//
 	// POST /pets
-	CreatePets(ctx context.Context) (CreatePetsRes, error)
+	CreatePets(ctx context.Context) error
 	// ListPets implements listPets operation.
 	//
 	// List all pets.
 	//
 	// GET /pets
-	ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error)
+	ListPets(ctx context.Context, params ListPetsParams) (*PetsHeaders, error)
 	// ShowPetById implements showPetById operation.
 	//
 	// Info for a specific pet.
 	//
 	// GET /pets/{petId}
-	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)
+	ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pet, error)
+	// NewError creates *ErrorStatusCode from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and

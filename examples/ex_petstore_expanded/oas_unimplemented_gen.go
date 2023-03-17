@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Creates a new pet in the store. Duplicates are allowed.
 //
 // POST /pets
-func (UnimplementedHandler) AddPet(ctx context.Context, req *NewPet) (r AddPetRes, _ error) {
+func (UnimplementedHandler) AddPet(ctx context.Context, req *NewPet) (r *Pet, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -27,8 +27,8 @@ func (UnimplementedHandler) AddPet(ctx context.Context, req *NewPet) (r AddPetRe
 // Deletes a single pet based on the ID supplied.
 //
 // DELETE /pets/{id}
-func (UnimplementedHandler) DeletePet(ctx context.Context, params DeletePetParams) (r DeletePetRes, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) DeletePet(ctx context.Context, params DeletePetParams) error {
+	return ht.ErrNotImplemented
 }
 
 // FindPetByID implements find pet by id operation.
@@ -36,7 +36,7 @@ func (UnimplementedHandler) DeletePet(ctx context.Context, params DeletePetParam
 // Returns a user based on a single ID, if the user does not have access to the pet.
 //
 // GET /pets/{id}
-func (UnimplementedHandler) FindPetByID(ctx context.Context, params FindPetByIDParams) (r FindPetByIDRes, _ error) {
+func (UnimplementedHandler) FindPetByID(ctx context.Context, params FindPetByIDParams) (r *Pet, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -63,6 +63,14 @@ func (UnimplementedHandler) FindPetByID(ctx context.Context, params FindPetByIDP
 // pulvinar elit eu, euismod sapien.
 //
 // GET /pets
-func (UnimplementedHandler) FindPets(ctx context.Context, params FindPetsParams) (r FindPetsRes, _ error) {
+func (UnimplementedHandler) FindPets(ctx context.Context, params FindPetsParams) (r []Pet, _ error) {
 	return r, ht.ErrNotImplemented
+}
+
+// NewError creates *ErrorStatusCode from error returned by handler.
+//
+// Used for common default response.
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
+	return r
 }

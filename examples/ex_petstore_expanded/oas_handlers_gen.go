@@ -7,11 +7,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -74,7 +76,7 @@ func (s *Server) handleAddPetRequest(args [0]string, argsEscaped bool, w http.Re
 		}
 	}()
 
-	var response AddPetRes
+	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -88,7 +90,7 @@ func (s *Server) handleAddPetRequest(args [0]string, argsEscaped bool, w http.Re
 		type (
 			Request  = *NewPet
 			Params   = struct{}
-			Response = AddPetRes
+			Response = *Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -108,7 +110,15 @@ func (s *Server) handleAddPetRequest(args [0]string, argsEscaped bool, w http.Re
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -171,7 +181,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 		return
 	}
 
-	var response DeletePetRes
+	var response *DeletePetNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -190,7 +200,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 		type (
 			Request  = struct{}
 			Params   = DeletePetParams
-			Response = DeletePetRes
+			Response = *DeletePetNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -201,16 +211,24 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 			mreq,
 			unpackDeletePetParams,
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.DeletePet(ctx, params)
+				err = s.h.DeletePet(ctx, params)
 				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.DeletePet(ctx, params)
+		err = s.h.DeletePet(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -273,7 +291,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, argsEscaped bool, w ht
 		return
 	}
 
-	var response FindPetByIDRes
+	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -292,7 +310,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, argsEscaped bool, w ht
 		type (
 			Request  = struct{}
 			Params   = FindPetByIDParams
-			Response = FindPetByIDRes
+			Response = *Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -312,7 +330,15 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, argsEscaped bool, w ht
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -393,7 +419,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, argsEscaped bool, w http.
 		return
 	}
 
-	var response FindPetsRes
+	var response []Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -416,7 +442,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, argsEscaped bool, w http.
 		type (
 			Request  = struct{}
 			Params   = FindPetsParams
-			Response = FindPetsRes
+			Response = []Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -436,7 +462,15 @@ func (s *Server) handleFindPetsRequest(args [0]string, argsEscaped bool, w http.
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 

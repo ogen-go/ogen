@@ -2,10 +2,16 @@
 
 package api
 
+import (
+	"fmt"
+)
+
+func (s *ErrorStatusCode) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
+}
+
 // DeletePetNoContent is response for DeletePet operation.
 type DeletePetNoContent struct{}
-
-func (*DeletePetNoContent) deletePetRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
@@ -58,15 +64,6 @@ func (s *ErrorStatusCode) SetStatusCode(val int) {
 func (s *ErrorStatusCode) SetResponse(val Error) {
 	s.Response = val
 }
-
-func (*ErrorStatusCode) addPetRes()      {}
-func (*ErrorStatusCode) deletePetRes()   {}
-func (*ErrorStatusCode) findPetByIDRes() {}
-func (*ErrorStatusCode) findPetsRes()    {}
-
-type FindPetsOKApplicationJSON []Pet
-
-func (*FindPetsOKApplicationJSON) findPetsRes() {}
 
 // Ref: #/components/schemas/NewPet
 type NewPet struct {
@@ -223,6 +220,3 @@ func (s *Pet) SetTag(val OptString) {
 func (s *Pet) SetID(val int64) {
 	s.ID = val
 }
-
-func (*Pet) addPetRes()      {}
-func (*Pet) findPetByIDRes() {}

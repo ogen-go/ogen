@@ -24,8 +24,12 @@ type Client struct {
 	serverURL *url.URL
 	baseClient
 }
+type errorHandler interface {
+	NewError(ctx context.Context, err error) *ErrorStatusCode
+}
 
 var _ Handler = struct {
+	errorHandler
 	*Client
 }{}
 
@@ -72,13 +76,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates a new pet in the store. Duplicates are allowed.
 //
 // POST /pets
-func (c *Client) AddPet(ctx context.Context, request *NewPet) (AddPetRes, error) {
+func (c *Client) AddPet(ctx context.Context, request *NewPet) (*Pet, error) {
 	res, err := c.sendAddPet(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res AddPetRes, err error) {
+func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addPet"),
 	}
@@ -145,13 +149,13 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res AddPetRes
 // Deletes a single pet based on the ID supplied.
 //
 // DELETE /pets/{id}
-func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error) {
+func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) error {
 	res, err := c.sendDeletePet(ctx, params)
 	_ = res
-	return res, err
+	return err
 }
 
-func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
+func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res *DeletePetNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
 	}
@@ -233,13 +237,13 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 // Returns a user based on a single ID, if the user does not have access to the pet.
 //
 // GET /pets/{id}
-func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (FindPetByIDRes, error) {
+func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (*Pet, error) {
 	res, err := c.sendFindPetByID(ctx, params)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) (res FindPetByIDRes, err error) {
+func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("find pet by id"),
 	}
@@ -339,13 +343,13 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 // pulvinar elit eu, euismod sapien.
 //
 // GET /pets
-func (c *Client) FindPets(ctx context.Context, params FindPetsParams) (FindPetsRes, error) {
+func (c *Client) FindPets(ctx context.Context, params FindPetsParams) ([]Pet, error) {
 	res, err := c.sendFindPets(ctx, params)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res FindPetsRes, err error) {
+func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res []Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("findPets"),
 	}
