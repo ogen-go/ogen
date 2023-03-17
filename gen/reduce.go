@@ -6,6 +6,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
 
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/location"
 	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/openapi"
@@ -60,6 +61,19 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 	case len(d.Content) > 1:
 		// TODO(tdakkota): point to "content", not to the entire response
 		return reduceFailed(`response is multi-content`, d)
+	}
+	{
+		var ct ir.Encoding
+		for key := range d.Content {
+			ct = ir.Encoding(key)
+			break
+		}
+		if override, ok := g.opt.ContentTypeAliases[string(ct)]; ok {
+			ct = override
+		}
+		if !ct.JSON() {
+			return reduceFailed(`response content must be JSON`, d)
+		}
 	}
 
 	compareResponses := func(a, b *openapi.Response) bool {
