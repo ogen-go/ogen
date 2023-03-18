@@ -59,6 +59,12 @@ type Handler interface {
 	//
 	// GET /octetStreamEmptySchema
 	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
+	// OptionalHeaders implements optionalHeaders operation.
+	//
+	// Https://github.com/ogen-go/ogen/issues/822.
+	//
+	// GET /optionalHeaders
+	OptionalHeaders(ctx context.Context) (*OptionalHeadersOK, error)
 	// StreamJSON implements streamJSON operation.
 	//
 	// POST /streamJSON

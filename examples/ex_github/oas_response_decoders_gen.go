@@ -639,28 +639,30 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDow
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -685,28 +687,30 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -731,28 +735,30 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *Act
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -1562,28 +1568,30 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *Action
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1641,28 +1649,30 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *Acti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1720,28 +1730,30 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *Acti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1799,28 +1811,30 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1919,28 +1933,30 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1998,28 +2014,30 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2298,28 +2316,30 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2377,28 +2397,30 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2456,28 +2478,30 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2535,28 +2559,30 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *Ac
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2614,28 +2640,30 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *Act
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -3580,28 +3608,30 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -4332,28 +4362,30 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -4419,28 +4451,30 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -4579,28 +4613,30 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *Act
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -4666,28 +4702,30 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -4826,28 +4864,30 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *Activi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -6910,28 +6950,30 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7102,28 +7144,30 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7216,28 +7260,30 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7376,28 +7422,30 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7533,28 +7581,30 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7647,28 +7697,30 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7807,28 +7859,30 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -7967,28 +8021,30 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -9318,28 +9374,30 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAn
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -9397,28 +9455,30 @@ func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -9476,28 +9536,30 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -9555,28 +9617,30 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListS
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -11959,28 +12023,30 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -12038,28 +12104,30 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -12549,28 +12617,30 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -12736,28 +12806,30 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -13052,28 +13124,30 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -13621,28 +13695,30 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -13746,28 +13822,30 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -13906,28 +13984,30 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -14066,28 +14146,30 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -14188,28 +14270,30 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -14348,28 +14432,30 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -14508,28 +14594,30 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -14900,28 +14988,30 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -15119,28 +15209,30 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -15268,28 +15360,30 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -15382,28 +15476,30 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -15496,28 +15592,30 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -16217,28 +16315,30 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchin
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -16771,28 +16871,30 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -17025,28 +17127,30 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -17244,28 +17348,30 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -17393,28 +17499,30 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18135,28 +18243,30 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18295,28 +18405,30 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18417,28 +18529,30 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18574,28 +18688,30 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18731,28 +18847,30 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18853,28 +18971,30 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -18978,28 +19098,30 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -19100,28 +19222,30 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -19292,28 +19416,30 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *Issue
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -19379,28 +19505,30 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -19501,28 +19629,30 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -19623,28 +19753,30 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -20753,28 +20885,30 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotContentLengthVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotContentLengthVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotContentLengthVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotContentLengthVal = c
+							wrapper.ContentLength.SetTo(wrapperDotContentLengthVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.ContentLength.SetTo(wrapperDotContentLengthVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -20788,28 +20922,30 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXCommonMarkerVersionVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXCommonMarkerVersionVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXCommonMarkerVersionVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXCommonMarkerVersionVal = c
+							wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -20854,28 +20990,30 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRaw
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXCommonMarkerVersionVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXCommonMarkerVersionVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXCommonMarkerVersionVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXCommonMarkerVersionVal = c
+							wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -21801,28 +21939,30 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -21961,28 +22101,30 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -22048,28 +22190,30 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -22170,28 +22314,30 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -22731,28 +22877,30 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -23082,28 +23230,30 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -23696,28 +23846,30 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -23769,28 +23921,30 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -23956,28 +24110,30 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -24029,28 +24185,30 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -24151,28 +24309,30 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -24346,28 +24506,30 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -24749,28 +24911,30 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25033,28 +25197,30 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -25809,28 +25975,30 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -25975,28 +26143,30 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26097,28 +26267,30 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26257,28 +26429,30 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKH
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26344,28 +26518,30 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26466,28 +26642,30 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26509,28 +26687,30 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26628,28 +26808,30 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26823,28 +27005,30 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -26910,28 +27094,30 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -27032,28 +27218,30 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPubl
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -27279,28 +27467,30 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -32425,28 +32615,30 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -32585,28 +32777,30 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -32815,28 +33009,30 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -32975,28 +33171,30 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -33097,28 +33295,30 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -33359,28 +33559,30 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -34455,28 +34657,30 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -34604,28 +34808,30 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -34829,28 +35035,30 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -35518,28 +35726,30 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -35643,28 +35853,30 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -35765,28 +35977,30 @@ func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -35852,28 +36066,30 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -36001,28 +36217,30 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -36088,28 +36306,30 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListR
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -36175,28 +36395,30 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *Pul
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -36262,28 +36484,30 @@ func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -37118,28 +37342,30 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXRateLimitLimitVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXRateLimitLimitVal int
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToInt(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXRateLimitLimitVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXRateLimitLimitVal = c
+							wrapper.XRateLimitLimit.SetTo(wrapperDotXRateLimitLimitVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XRateLimitLimit.SetTo(wrapperDotXRateLimitLimitVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -37153,28 +37379,30 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXRateLimitRemainingVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXRateLimitRemainingVal int
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToInt(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXRateLimitRemainingVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXRateLimitRemainingVal = c
+							wrapper.XRateLimitRemaining.SetTo(wrapperDotXRateLimitRemainingVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XRateLimitRemaining.SetTo(wrapperDotXRateLimitRemainingVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -37188,28 +37416,30 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXRateLimitResetVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXRateLimitResetVal int
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToInt(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXRateLimitResetVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXRateLimitResetVal = c
+							wrapper.XRateLimitReset.SetTo(wrapperDotXRateLimitResetVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XRateLimitReset.SetTo(wrapperDotXRateLimitResetVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -38483,28 +38713,30 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -38640,28 +38872,30 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -38832,28 +39066,30 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -38989,28 +39225,30 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -39146,28 +39384,30 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -39233,28 +39473,30 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -39320,28 +39562,30 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -39407,28 +39651,30 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -40226,28 +40472,30 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -40340,28 +40588,30 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -40565,28 +40815,30 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHead
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -40644,28 +40896,30 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -40872,28 +41126,30 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -41030,28 +41286,30 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -41468,28 +41726,30 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -41944,28 +42204,30 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -42093,28 +42355,30 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *Repositor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -42172,28 +42436,30 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLocationVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLocationVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLocationVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLocationVal = c
+							wrapper.Location.SetTo(wrapperDotLocationVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Location.SetTo(wrapperDotLocationVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -43320,28 +43586,30 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposD
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43366,28 +43634,30 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposD
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
-					return nil
-				}); err != nil {
-					return err
 				}
 				return nil
 			}(); err != nil {
@@ -47101,28 +47371,30 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47299,28 +47571,30 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47421,28 +47695,30 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47508,28 +47784,30 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *Rep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47595,28 +47873,30 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47717,28 +47997,30 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -47944,28 +48226,30 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48104,28 +48388,30 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeplo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48191,28 +48477,30 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48313,28 +48601,30 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDepl
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48549,28 +48839,30 @@ func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKH
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48636,28 +48928,30 @@ func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48723,28 +49017,30 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48845,28 +49141,30 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -48932,28 +49230,30 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49168,28 +49468,30 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPage
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49255,28 +49557,30 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49380,28 +49684,30 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49467,28 +49773,30 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49554,28 +49862,30 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49676,28 +49986,30 @@ func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeade
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49763,28 +50075,30 @@ func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHea
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -49961,28 +50275,30 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -53495,28 +53811,30 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55419,28 +55737,30 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55541,28 +55861,30 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChild
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55628,28 +55950,30 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55820,28 +56144,30 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *T
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55907,28 +56233,30 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -55994,28 +56322,30 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56081,28 +56411,30 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56168,28 +56500,30 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56431,28 +56765,30 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMapp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56559,28 +56895,30 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMem
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56646,28 +56984,30 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56768,28 +57108,30 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *T
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56855,28 +57197,30 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -56942,28 +57286,30 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListPr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -57029,28 +57375,30 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -57151,28 +57499,30 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListRepos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -57238,28 +57588,30 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60045,28 +60397,30 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60319,28 +60673,30 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60514,28 +60870,30 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60674,28 +61032,30 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60834,28 +61194,30 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -60921,28 +61283,30 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -61008,28 +61372,30 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -61203,28 +61569,30 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListG
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -61290,28 +61658,30 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -61485,28 +61855,30 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {
@@ -61572,28 +61944,30 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotLinkVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotLinkVal = c
+							wrapper.Link.SetTo(wrapperDotLinkVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.Link.SetTo(wrapperDotLinkVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {

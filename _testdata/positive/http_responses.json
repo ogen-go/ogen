@@ -369,6 +369,30 @@
         }
       }
     },
+    "/optionalHeaders": {
+      "get": {
+        "operationId": "optionalHeaders",
+        "description": "https://github.com/ogen-go/ogen/issues/822",
+        "responses": {
+          "200": {
+            "description": "test",
+            "headers": {
+              "X-Required": {
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Optional": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/streamJSON": {
       "post": {
         "operationId": "streamJSON",

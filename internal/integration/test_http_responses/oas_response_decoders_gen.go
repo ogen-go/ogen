@@ -249,21 +249,25 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XTestHeader = c
+						return nil
+					}); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -288,21 +292,25 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XTestHeader = c
+						return nil
+					}); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -324,21 +332,25 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XTestHeader = c
+						return nil
+					}); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -358,21 +370,25 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 			Explode: false,
 		}
 		if err := func() error {
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				val, err := d.DecodeValue()
-				if err != nil {
+			if err := h.HasParam(cfg); err == nil {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.XTestHeader = c
+					return nil
+				}); err != nil {
 					return err
 				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				wrapper.XTestHeader = c
-				return nil
-			}); err != nil {
-				return err
+			} else {
+				return validate.ErrFieldRequired
 			}
 			return nil
 		}(); err != nil {
@@ -394,21 +410,25 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 			Explode: false,
 		}
 		if err := func() error {
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				val, err := d.DecodeValue()
-				if err != nil {
+			if err := h.HasParam(cfg); err == nil {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.XTestHeader = c
+					return nil
+				}); err != nil {
 					return err
 				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				wrapper.XTestHeader = c
-				return nil
-			}); err != nil {
-				return err
+			} else {
+				return validate.ErrFieldRequired
 			}
 			return nil
 		}(); err != nil {
@@ -431,24 +451,28 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-					if err := func(d *jx.Decoder) error {
-						v, err := d.RawAppend(nil)
-						wrapper.XJSONCustomHeader = jx.Raw(v)
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
+						if err := func(d *jx.Decoder) error {
+							v, err := d.RawAppend(nil)
+							wrapper.XJSONCustomHeader = jx.Raw(v)
+							if err != nil {
+								return err
+							}
+							return nil
+						}(jx.DecodeStr(val)); err != nil {
+							return err
+						}
 						return nil
-					}(jx.DecodeStr(val)); err != nil {
+					}); err != nil {
 						return err
 					}
-					return nil
-				}); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -462,30 +486,34 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-					if err := func(d *jx.Decoder) error {
-						if err := wrapper.XJSONHeader.Decode(d); err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+						if err := func(d *jx.Decoder) error {
+							if err := wrapper.XJSONHeader.Decode(d); err != nil {
+								return err
+							}
+							return nil
+						}(jx.DecodeStr(val)); err != nil {
 							return err
 						}
 						return nil
-					}(jx.DecodeStr(val)); err != nil {
+					}); err != nil {
 						return err
 					}
-					return nil
-				}); err != nil {
-					return err
-				}
-				if err := func() error {
-					if err := wrapper.XJSONHeader.Validate(); err != nil {
+					if err := func() error {
+						if err := wrapper.XJSONHeader.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
 						return err
 					}
-					return nil
-				}(); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -511,21 +539,25 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XTestHeader = c
+						return nil
+					}); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
+				} else {
+					return validate.ErrFieldRequired
 				}
 				return nil
 			}(); err != nil {
@@ -742,6 +774,86 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		var wrapper OptionalHeadersOK
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse "X-Optional" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "X-Optional",
+				Explode: false,
+			}
+			if err := func() error {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXOptionalVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXOptionalVal = c
+							return nil
+						}(); err != nil {
+							return err
+						}
+						wrapper.XOptional.SetTo(wrapperDotXOptionalVal)
+						return nil
+					}); err != nil {
+						return err
+					}
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse X-Optional header")
+			}
+		}
+		// Parse "X-Required" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "X-Required",
+				Explode: false,
+			}
+			if err := func() error {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XRequired = c
+						return nil
+					}); err != nil {
+						return err
+					}
+				} else {
+					return validate.ErrFieldRequired
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse X-Required header")
+			}
+		}
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

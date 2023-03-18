@@ -148,6 +148,13 @@ func (t testHTTPResponses) HeadersJSON(ctx context.Context) (*api.HeadersJSONOK,
 	}, nil
 }
 
+func (t testHTTPResponses) OptionalHeaders(ctx context.Context) (*api.OptionalHeadersOK, error) {
+	return &api.OptionalHeadersOK{
+		XOptional: api.OptString{},
+		XRequired: "required",
+	}, nil
+}
+
 func (t testHTTPResponses) StreamJSON(ctx context.Context, params api.StreamJSONParams) (api.StreamJSONRes, error) {
 	n := make(api.QueryData, params.Count)
 	for i := range n {
@@ -300,6 +307,71 @@ func TestResponsesHeaders(t *testing.T) {
 			})
 		}
 	})
+}
+
+func TestResponsesOptionalHeaders(t *testing.T) {
+	type header struct {
+		Name  string
+		Value string
+	}
+
+	tests := []struct {
+		Name    string
+		Headers []header
+		Error   string
+	}{
+		{
+			Name:    "NoHeaders",
+			Headers: nil,
+			Error:   `X-Required header: field required`,
+		},
+		{
+			Name: "OnlyOptionalHeaders",
+			Headers: []header{
+				{"X-Optional", "optional"},
+			},
+			Error: `X-Required header: field required`,
+		},
+		{
+			Name: "OnlyRequiredHeaders",
+			Headers: []header{
+				{"X-Required", "required"},
+			},
+		},
+		{
+			Name: "AllHeaders",
+			Headers: []header{
+				{"X-Required", "required"},
+				{"X-Optional", "optional"},
+			},
+		},
+	}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.Name, func(t *testing.T) {
+			a := require.New(t)
+
+			h := func(w http.ResponseWriter, r *http.Request) {
+				for _, h := range tt.Headers {
+					w.Header().Set(h.Name, h.Value)
+				}
+			}
+			s := httptest.NewServer(http.HandlerFunc(h))
+			t.Cleanup(func() {
+				s.Close()
+			})
+
+			client, err := api.NewClient(s.URL)
+			a.NoError(err)
+
+			_, err = client.OptionalHeaders(context.Background())
+			if tt.Error != "" {
+				a.ErrorContains(err, tt.Error)
+				return
+			}
+			a.NoError(err)
+		})
+	}
 }
 
 func TestResponsesJSONHeaders(t *testing.T) {
