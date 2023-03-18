@@ -175,32 +175,36 @@ h := uri.NewHeaderDecoder(resp.Header)
 	}
 	{{- $el := elem $header.Type (printf "wrapper.%s" $header.Name) }}
 	if err := func() error {
-		if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-			{{- if $header.Spec.Content }}
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-				if err := func(d *jx.Decoder) error {
-					{{- template "json/dec" $el }}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				{{- if $header.Spec.Content }}
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+						{{- template "json/dec" $el }}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
 					return nil
-				}(jx.DecodeStr(val)); err != nil {
-					return err
-				}
-				return nil
-			{{- else }}
-				{{- template "uri/decode" $el }}
+				{{- else }}
+					{{- template "uri/decode" $el }}
+				{{- end }}
+			}); err != nil {
+				return err
+			}
+			{{- if $header.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" $el }}
+			}(); err != nil {
+				return err
+			}
 			{{- end }}
-		}); err != nil {
-			return err
-		}
-		{{- if $header.Type.NeedValidation }}
-		if err := func() error {
-			{{- template "validate" $el }}
-		}(); err != nil {
-			return err
-		}
-		{{- end }}
+		} {{ if $header.Spec.Required }} else {
+			return validate.ErrFieldRequired
+		} {{ end }}
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, {{ printf "parse %s header" $header.Spec.Name | quote }})
