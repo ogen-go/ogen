@@ -100,6 +100,15 @@ func (UnimplementedHandler) OctetStreamEmptySchema(ctx context.Context) (r Octet
 	return r, ht.ErrNotImplemented
 }
 
+// OptionalHeaders implements optionalHeaders operation.
+//
+// Https://github.com/ogen-go/ogen/issues/822.
+//
+// GET /optionalHeaders
+func (UnimplementedHandler) OptionalHeaders(ctx context.Context) (r *OptionalHeadersOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // StreamJSON implements streamJSON operation.
 //
 // POST /streamJSON

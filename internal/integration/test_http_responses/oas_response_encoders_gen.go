@@ -461,6 +461,44 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 	return nil
 }
 
+func encodeOptionalHeadersResponse(response *OptionalHeadersOK, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "X-Optional" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "X-Optional",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.XOptional.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode X-Optional header")
+			}
+		}
+		// Encode "X-Required" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "X-Required",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.XRequired))
+			}); err != nil {
+				return errors.Wrap(err, "encode X-Required header")
+			}
+		}
+	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *QueryData:

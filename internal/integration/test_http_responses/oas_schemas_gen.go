@@ -558,6 +558,78 @@ func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// NewOptString returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptString is optional string.
+type OptString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// OptionalHeadersOK is response for OptionalHeaders operation.
+type OptionalHeadersOK struct {
+	XOptional OptString
+	XRequired string
+}
+
+// GetXOptional returns the value of XOptional.
+func (s *OptionalHeadersOK) GetXOptional() OptString {
+	return s.XOptional
+}
+
+// GetXRequired returns the value of XRequired.
+func (s *OptionalHeadersOK) GetXRequired() string {
+	return s.XRequired
+}
+
+// SetXOptional sets the value of XOptional.
+func (s *OptionalHeadersOK) SetXOptional(val OptString) {
+	s.XOptional = val
+}
+
+// SetXRequired sets the value of XRequired.
+func (s *OptionalHeadersOK) SetXRequired(val string) {
+	s.XRequired = val
+}
+
 type QueryData []float64
 
 func (*QueryData) streamJSONRes() {}

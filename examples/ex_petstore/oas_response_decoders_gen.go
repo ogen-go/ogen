@@ -104,28 +104,30 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						var wrapperDotXNextVal string
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotXNextVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotXNextVal = c
+								return nil
+							}(); err != nil {
 								return err
 							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							wrapperDotXNextVal = c
+							wrapper.XNext.SetTo(wrapperDotXNextVal)
 							return nil
-						}(); err != nil {
+						}); err != nil {
 							return err
 						}
-						wrapper.XNext.SetTo(wrapperDotXNextVal)
-						return nil
-					}); err != nil {
-						return err
 					}
 					return nil
 				}(); err != nil {

@@ -247,8 +247,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
-			case 'o': // Prefix: "octetStream"
-				if l := len("octetStream"); len(elem) >= l && elem[0:l] == "octetStream" {
+			case 'o': // Prefix: "o"
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -258,26 +258,56 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'B': // Prefix: "BinaryStringSchema"
-					if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+				case 'c': // Prefix: "ctetStream"
+					if l := len("ctetStream"); len(elem) >= l && elem[0:l] == "ctetStream" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleOctetStreamBinaryStringSchemaRequest([0]string{}, elemIsEscaped, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
+						break
+					}
+					switch elem[0] {
+					case 'B': // Prefix: "BinaryStringSchema"
+						if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+							elem = elem[l:]
+						} else {
+							break
 						}
 
-						return
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOctetStreamBinaryStringSchemaRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+					case 'E': // Prefix: "EmptySchema"
+						if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOctetStreamEmptySchemaRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
 					}
-				case 'E': // Prefix: "EmptySchema"
-					if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+				case 'p': // Prefix: "ptionalHeaders"
+					if l := len("ptionalHeaders"); len(elem) >= l && elem[0:l] == "ptionalHeaders" {
 						elem = elem[l:]
 					} else {
 						break
@@ -287,7 +317,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleOctetStreamEmptySchemaRequest([0]string{}, elemIsEscaped, w, r)
+							s.handleOptionalHeadersRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -635,8 +665,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
-			case 'o': // Prefix: "octetStream"
-				if l := len("octetStream"); len(elem) >= l && elem[0:l] == "octetStream" {
+			case 'o': // Prefix: "o"
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -646,29 +676,62 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'B': // Prefix: "BinaryStringSchema"
-					if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+				case 'c': // Prefix: "ctetStream"
+					if l := len("ctetStream"); len(elem) >= l && elem[0:l] == "ctetStream" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							// Leaf: OctetStreamBinaryStringSchema
-							r.name = "OctetStreamBinaryStringSchema"
-							r.operationID = "octetStreamBinaryStringSchema"
-							r.pathPattern = "/octetStreamBinaryStringSchema"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
+						break
+					}
+					switch elem[0] {
+					case 'B': // Prefix: "BinaryStringSchema"
+						if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: OctetStreamBinaryStringSchema
+								r.name = "OctetStreamBinaryStringSchema"
+								r.operationID = "octetStreamBinaryStringSchema"
+								r.pathPattern = "/octetStreamBinaryStringSchema"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					case 'E': // Prefix: "EmptySchema"
+						if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: OctetStreamEmptySchema
+								r.name = "OctetStreamEmptySchema"
+								r.operationID = "octetStreamEmptySchema"
+								r.pathPattern = "/octetStreamEmptySchema"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
-				case 'E': // Prefix: "EmptySchema"
-					if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+				case 'p': // Prefix: "ptionalHeaders"
+					if l := len("ptionalHeaders"); len(elem) >= l && elem[0:l] == "ptionalHeaders" {
 						elem = elem[l:]
 					} else {
 						break
@@ -677,10 +740,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							// Leaf: OctetStreamEmptySchema
-							r.name = "OctetStreamEmptySchema"
-							r.operationID = "octetStreamEmptySchema"
-							r.pathPattern = "/octetStreamEmptySchema"
+							// Leaf: OptionalHeaders
+							r.name = "OptionalHeaders"
+							r.operationID = "optionalHeaders"
+							r.pathPattern = "/optionalHeaders"
 							r.args = args
 							r.count = 0
 							return r, true
