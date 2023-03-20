@@ -60,17 +60,16 @@ linters:
     # - gochecknoinits (we know when it is ok to use inits)
     # - dupl (validator/parser package are false positive)
 
-
 issues:
   exclude-use-default: false
   exclude-rules:
     # Exclude go:generate from lll
     - source: "//go:generate"
-      linters: [ lll ]
+      linters: [lll]
 
     # Exclude links from lll
     - source: "// See https://"
-      linters: [ lll ]
+      linters: [lll]
 
     # Disable linters that are annoying in tests.
     - path: _test\.go
@@ -84,28 +83,33 @@ issues:
         - gocognit
         - scopelint
         - lll
+    # Do not warn about unused closure parameters in test files.
     - path: _test\.go
-      linters: [ unparam ]
-      text: .*\$\d? # Do not warn about unused closure parameters in test files.
+      linters: [unparam]
+      text: .*\$\d?
 
     # Ignore shadowing of err.
-    - linters: [ govet ]
+    - linters: [govet]
       text: 'declaration of "(err|ctx|log)"'
 
     # Ignore linters in main packages.
     - path: (cmd|tools)
-      linters: [ goconst, funlen, gocognit, gocyclo ]
+      linters: [goconst, funlen, gocognit, gocyclo]
 
     # TODO(tdakkota): add comments?
     - path: (conv|uri|gen|otelogen)
-      linters: [ revive, golint ]
+      linters: [revive, golint]
       text: "(should have comment.+or be unexported|comment on exported)"
 
     # We don't need package comments for internal packages.
     # We don't need comments for command packages.
     - path: (cmd|tools|internal)
-      linters: [ revive, golint ]
+      linters: [revive, golint]
       text: "should have (comment.+or be unexported|a package comment)"
+
+    # Annoying and useless.
+    - linters: [revive, golint]
+      text: "(unused-parameter|if-return)"
 
     # Intended in commands:
     # G307: Deferring unsafe method "Close" on type "*os.File"
@@ -120,17 +124,16 @@ issues:
 
     # We are using quoting algorithm from mime/multipart package. False-positive.
     - path: http[/\\]multipart_file\.go
-      linters: [ gocritic ]
+      linters: [gocritic]
       text: sprintfQuotedString
 
     # Keep empty fallthrough for better readability.
     - path: ogenregex[/\\]convert\.go
-      linters: [ gocritic ]
+      linters: [gocritic]
       text: emptyFallthrough
 
     # Not supposed to be constant.
-    - linters: [ goconst ]
+    - linters: [goconst]
       text: 'string `(string|number|u?int\d{0,2})`'
-    - linters: [ goconst ]
-      text: 'string `(Unix|unix|date|time|ipv6)'
-
+    - linters: [goconst]
+      text: "string `(Unix|unix|date|time|ipv6)"

@@ -148,20 +148,20 @@ func TestParserDeep(t *testing.T) {
 
 			expected := tt.expected()
 			for k, s := range expected.Components.Schemas {
-				if aSchema, has := api.Components.Schemas[k]; !has {
+				aSchema, has := api.Components.Schemas[k]
+				if !has {
 					continue
-				} else {
-					s.Locator = aSchema.Locator
-					s.Source = aSchema.Source
-					pMax := len(aSchema.Properties)
-					if pMax > len(s.Properties) {
-						pMax = len(s.Properties)
-					}
-					for p := 0; p < pMax; p++ {
-						propActual := aSchema.Properties[p]
-						s.Properties[p].Schema.Locator = propActual.Schema.Locator
-						s.Properties[p].Schema.Source = propActual.Schema.Source
-					}
+				}
+				s.Locator = aSchema.Locator
+				s.Source = aSchema.Source
+				pMax := len(aSchema.Properties)
+				if pMax > len(s.Properties) {
+					pMax = len(s.Properties)
+				}
+				for p := 0; p < pMax; p++ {
+					propActual := aSchema.Properties[p]
+					s.Properties[p].Schema.Locator = propActual.Schema.Locator
+					s.Properties[p].Schema.Source = propActual.Schema.Source
 				}
 			}
 
