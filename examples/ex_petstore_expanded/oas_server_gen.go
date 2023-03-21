@@ -13,19 +13,19 @@ type Handler interface {
 	// Creates a new pet in the store. Duplicates are allowed.
 	//
 	// POST /pets
-	AddPet(ctx context.Context, req *NewPet) (AddPetRes, error)
+	AddPet(ctx context.Context, req *NewPet) (*Pet, error)
 	// DeletePet implements deletePet operation.
 	//
 	// Deletes a single pet based on the ID supplied.
 	//
 	// DELETE /pets/{id}
-	DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error)
+	DeletePet(ctx context.Context, params DeletePetParams) error
 	// FindPetByID implements find pet by id operation.
 	//
 	// Returns a user based on a single ID, if the user does not have access to the pet.
 	//
 	// GET /pets/{id}
-	FindPetByID(ctx context.Context, params FindPetByIDParams) (FindPetByIDRes, error)
+	FindPetByID(ctx context.Context, params FindPetByIDParams) (*Pet, error)
 	// FindPets implements findPets operation.
 	//
 	// Returns all pets from the system that the user has access to
@@ -47,7 +47,11 @@ type Handler interface {
 	// pulvinar elit eu, euismod sapien.
 	//
 	// GET /pets
-	FindPets(ctx context.Context, params FindPetsParams) (FindPetsRes, error)
+	FindPets(ctx context.Context, params FindPetsParams) ([]Pet, error)
+	// NewError creates *ErrorStatusCode from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and

@@ -7,11 +7,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -55,7 +57,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 		err error
 	)
 
-	var response CreatePetsRes
+	var response *CreatePetsCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -69,7 +71,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = CreatePetsRes
+			Response = *CreatePetsCreated
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -80,16 +82,24 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.CreatePets(ctx)
+				err = s.h.CreatePets(ctx)
 				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.CreatePets(ctx)
+		err = s.h.CreatePets(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -152,7 +162,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 		return
 	}
 
-	var response ListPetsRes
+	var response *PetsHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -171,7 +181,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 		type (
 			Request  = struct{}
 			Params   = ListPetsParams
-			Response = ListPetsRes
+			Response = *PetsHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -191,7 +201,15 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -254,7 +272,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 		return
 	}
 
-	var response ShowPetByIdRes
+	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -273,7 +291,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 		type (
 			Request  = struct{}
 			Params   = ShowPetByIdParams
-			Response = ShowPetByIdRes
+			Response = *Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -293,7 +311,15 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 	}
 	if err != nil {
 		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
+			encodeErrorResponse(errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 

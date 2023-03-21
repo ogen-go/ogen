@@ -80,6 +80,10 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		}
 	}
 
+	if path.Base(dir) == "convenient_errors" {
+		require.NoError(t, opt.ConvenientErrors.Set("on"))
+	}
+
 	t.Run("Gen", func(t *testing.T) {
 		defer func() {
 			if rr := recover(); rr != nil {

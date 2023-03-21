@@ -24,8 +24,12 @@ type Client struct {
 	serverURL *url.URL
 	baseClient
 }
+type errorHandler interface {
+	NewError(ctx context.Context, err error) *ErrorStatusCode
+}
 
 var _ Handler = struct {
+	errorHandler
 	*Client
 }{}
 
@@ -72,13 +76,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Create a pet.
 //
 // POST /pets
-func (c *Client) CreatePets(ctx context.Context) (CreatePetsRes, error) {
+func (c *Client) CreatePets(ctx context.Context) error {
 	res, err := c.sendCreatePets(ctx)
 	_ = res
-	return res, err
+	return err
 }
 
-func (c *Client) sendCreatePets(ctx context.Context) (res CreatePetsRes, err error) {
+func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
 	}
@@ -142,13 +146,13 @@ func (c *Client) sendCreatePets(ctx context.Context) (res CreatePetsRes, err err
 // List all pets.
 //
 // GET /pets
-func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error) {
+func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (*PetsHeaders, error) {
 	res, err := c.sendListPets(ctx, params)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
+func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *PetsHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
 	}
@@ -233,13 +237,13 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res L
 // Info for a specific pet.
 //
 // GET /pets/{petId}
-func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error) {
+func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pet, error) {
 	res, err := c.sendShowPetById(ctx, params)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {
+func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
 	}

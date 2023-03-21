@@ -17,22 +17,6 @@ func (s *Error) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *FindPetsOKApplicationJSON) SetFake() {
-	var unwrapped []Pet
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Pet
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = FindPetsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *NewPet) SetFake() {
 	{
 		{

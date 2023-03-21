@@ -2,10 +2,16 @@
 
 package api
 
+import (
+	"fmt"
+)
+
+func (s *ErrorStatusCode) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
+}
+
 // CreatePetsCreated is response for CreatePets operation.
 type CreatePetsCreated struct{}
-
-func (*CreatePetsCreated) createPetsRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
@@ -58,10 +64,6 @@ func (s *ErrorStatusCode) SetStatusCode(val int) {
 func (s *ErrorStatusCode) SetResponse(val Error) {
 	s.Response = val
 }
-
-func (*ErrorStatusCode) createPetsRes()  {}
-func (*ErrorStatusCode) listPetsRes()    {}
-func (*ErrorStatusCode) showPetByIdRes() {}
 
 // NewOptInt32 returns new OptInt32 with value set to v.
 func NewOptInt32(v int32) OptInt32 {
@@ -192,8 +194,6 @@ func (s *Pet) SetTag(val OptString) {
 	s.Tag = val
 }
 
-func (*Pet) showPetByIdRes() {}
-
 type Pets []Pet
 
 // PetsHeaders wraps Pets with response headers.
@@ -221,5 +221,3 @@ func (s *PetsHeaders) SetXNext(val OptString) {
 func (s *PetsHeaders) SetResponse(val Pets) {
 	s.Response = val
 }
-
-func (*PetsHeaders) listPetsRes() {}
