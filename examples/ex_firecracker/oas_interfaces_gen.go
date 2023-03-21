@@ -17,18 +17,6 @@ type DescribeBalloonStatsRes interface {
 	describeBalloonStatsRes()
 }
 
-type DescribeInstanceRes interface {
-	describeInstanceRes()
-}
-
-type GetExportVmConfigRes interface {
-	getExportVmConfigRes()
-}
-
-type GetMachineConfigurationRes interface {
-	getMachineConfigurationRes()
-}
-
 type LoadSnapshotRes interface {
 	loadSnapshotRes()
 }

@@ -31,28 +31,6 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -73,28 +51,6 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -131,28 +87,6 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -184,154 +118,48 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 
-func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *InstanceInfo:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
+func encodeDescribeInstanceResponse(response *InstanceInfo, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	default:
-		return errors.Errorf("unexpected response type: %T", response)
+	e := jx.GetEncoder()
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+	return nil
 }
 
-func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *FullVmConfiguration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
+func encodeGetExportVmConfigResponse(response *FullVmConfiguration, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	default:
-		return errors.Errorf("unexpected response type: %T", response)
+	e := jx.GetEncoder()
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+	return nil
 }
 
-func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *MachineConfiguration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
+func encodeGetMachineConfigurationResponse(response *MachineConfiguration, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	default:
-		return errors.Errorf("unexpected response type: %T", response)
+	e := jx.GetEncoder()
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+	return nil
 }
 
 func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter, span trace.Span) error {
@@ -349,28 +177,6 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -396,28 +202,6 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -454,28 +238,6 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -496,28 +258,6 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -548,28 +288,6 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -590,28 +308,6 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -642,28 +338,6 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -684,28 +358,6 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -736,28 +388,6 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -778,28 +408,6 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -830,28 +438,6 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -872,28 +458,6 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -924,28 +488,6 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -966,28 +508,6 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1018,28 +538,6 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -1060,28 +558,6 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1112,28 +588,6 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
@@ -1154,28 +608,6 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 
 		e := jx.GetEncoder()
 		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1206,29 +638,31 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		code := response.StatusCode
-		if code == 0 {
-			// Set default status code.
-			code = http.StatusOK
-		}
-		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
-		}
-
-		e := jx.GetEncoder()
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-		return nil
-
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
+}
+
+func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
+
+	e := jx.GetEncoder()
+	response.Response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
 }

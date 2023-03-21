@@ -63,12 +63,48 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 	}
 
 	compareResponses := func(a, b *openapi.Response) bool {
-		// FIXME(tdakkota): hacky, probably it is better to define/generate Equal methods?
-		x, err := json.Marshal(a)
+		// Compile time check to not forget to update compareResponses.
+		type check struct {
+			Ref         openapi.Ref
+			Description string
+			Headers     map[string]*openapi.Header
+			Content     map[string]*openapi.MediaType
+
+			location.Pointer `json:"-" yaml:"-"`
+		}
+		var (
+			_ = (*check)(a)
+			_ = (*check)(b)
+		)
+
+		switch {
+		case a == b:
+			return true
+		case a == nil || b == nil:
+			return false
+		}
+
+		// Set of fields to compare.
+		type compare struct {
+			Ref     openapi.Ref
+			Headers map[string]*openapi.Header
+			Content map[string]*openapi.MediaType
+		}
+
+		x, err := json.Marshal(compare{
+			a.Ref,
+			a.Headers,
+			a.Content,
+		})
 		if err != nil {
 			return false
 		}
-		y, err := json.Marshal(b)
+
+		y, err := json.Marshal(compare{
+			a.Ref,
+			a.Headers,
+			a.Content,
+		})
 		if err != nil {
 			return false
 		}

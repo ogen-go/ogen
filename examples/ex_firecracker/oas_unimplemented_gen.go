@@ -54,7 +54,7 @@ func (UnimplementedHandler) DescribeBalloonStats(ctx context.Context) (r Describ
 // Returns general information about an instance.
 //
 // GET /
-func (UnimplementedHandler) DescribeInstance(ctx context.Context) (r DescribeInstanceRes, _ error) {
+func (UnimplementedHandler) DescribeInstance(ctx context.Context) (r *InstanceInfo, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -63,7 +63,7 @@ func (UnimplementedHandler) DescribeInstance(ctx context.Context) (r DescribeIns
 // Gets configuration for all VM resources.
 //
 // GET /vm/config
-func (UnimplementedHandler) GetExportVmConfig(ctx context.Context) (r GetExportVmConfigRes, _ error) {
+func (UnimplementedHandler) GetExportVmConfig(ctx context.Context) (r *FullVmConfiguration, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -74,7 +74,7 @@ func (UnimplementedHandler) GetExportVmConfig(ctx context.Context) (r GetExportV
 // disabled and there is no CPU Template.
 //
 // GET /machine-config
-func (UnimplementedHandler) GetMachineConfiguration(ctx context.Context) (r GetMachineConfigurationRes, _ error) {
+func (UnimplementedHandler) GetMachineConfiguration(ctx context.Context) (r *MachineConfiguration, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -259,4 +259,12 @@ func (UnimplementedHandler) PutMachineConfiguration(ctx context.Context, req Opt
 // PUT /metrics
 func (UnimplementedHandler) PutMetrics(ctx context.Context, req *Metrics) (r PutMetricsRes, _ error) {
 	return r, ht.ErrNotImplemented
+}
+
+// NewError creates *ErrorStatusCode from error returned by handler.
+//
+// Used for common default response.
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
+	return r
 }

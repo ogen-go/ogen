@@ -24,8 +24,12 @@ type Client struct {
 	serverURL *url.URL
 	baseClient
 }
+type errorHandler interface {
+	NewError(ctx context.Context, err error) *ErrorStatusCode
+}
 
 var _ Handler = struct {
+	errorHandler
 	*Client
 }{}
 
@@ -376,13 +380,13 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 // Returns general information about an instance.
 //
 // GET /
-func (c *Client) DescribeInstance(ctx context.Context) (DescribeInstanceRes, error) {
+func (c *Client) DescribeInstance(ctx context.Context) (*InstanceInfo, error) {
 	res, err := c.sendDescribeInstance(ctx)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendDescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
+func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
 	}
@@ -446,13 +450,13 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res DescribeInstance
 // Gets configuration for all VM resources.
 //
 // GET /vm/config
-func (c *Client) GetExportVmConfig(ctx context.Context) (GetExportVmConfigRes, error) {
+func (c *Client) GetExportVmConfig(ctx context.Context) (*FullVmConfiguration, error) {
 	res, err := c.sendGetExportVmConfig(ctx)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendGetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
+func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfiguration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
 	}
@@ -518,13 +522,13 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res GetExportVmConf
 // disabled and there is no CPU Template.
 //
 // GET /machine-config
-func (c *Client) GetMachineConfiguration(ctx context.Context) (GetMachineConfigurationRes, error) {
+func (c *Client) GetMachineConfiguration(ctx context.Context) (*MachineConfiguration, error) {
 	res, err := c.sendGetMachineConfiguration(ctx)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
+func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineConfiguration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
 	}

@@ -37,13 +37,13 @@ type Handler interface {
 	// Returns general information about an instance.
 	//
 	// GET /
-	DescribeInstance(ctx context.Context) (DescribeInstanceRes, error)
+	DescribeInstance(ctx context.Context) (*InstanceInfo, error)
 	// GetExportVmConfig implements getExportVmConfig operation.
 	//
 	// Gets configuration for all VM resources.
 	//
 	// GET /vm/config
-	GetExportVmConfig(ctx context.Context) (GetExportVmConfigRes, error)
+	GetExportVmConfig(ctx context.Context) (*FullVmConfiguration, error)
 	// GetMachineConfiguration implements getMachineConfiguration operation.
 	//
 	// Gets the machine configuration of the VM. When called before the PUT operation, it will return the
@@ -51,7 +51,7 @@ type Handler interface {
 	// disabled and there is no CPU Template.
 	//
 	// GET /machine-config
-	GetMachineConfiguration(ctx context.Context) (GetMachineConfigurationRes, error)
+	GetMachineConfiguration(ctx context.Context) (*MachineConfiguration, error)
 	// LoadSnapshot implements loadSnapshot operation.
 	//
 	// Loads the microVM state from a snapshot. Only accepted on a fresh Firecracker process (before
@@ -178,6 +178,10 @@ type Handler interface {
 	//
 	// PUT /metrics
 	PutMetrics(ctx context.Context, req *Metrics) (PutMetricsRes, error)
+	// NewError creates *ErrorStatusCode from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and
