@@ -16,7 +16,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: true
 
       - name: Lint
@@ -24,6 +24,12 @@ jobs:
         with:
           version: latest
           args: --timeout 5m
+          # Package/build cache already provided by actions/setup-go.
+          #
+          # Disable module cache.
+          skip-pkg-cache: true
+          # Disable build cache.
+          skip-build-cache: true
 
   # Check if there are any dirty changes after go mod tidy
   check-mod:
@@ -35,7 +41,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: true
 
       - name: Download dependencies
@@ -54,7 +60,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: true
 
       - name: Download dependencies
