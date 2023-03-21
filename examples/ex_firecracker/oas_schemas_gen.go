@@ -3,8 +3,14 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 )
+
+func (s *ErrorStatusCode) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
+}
 
 // Balloon device descriptor.
 // Ref: #/components/schemas/Balloon
@@ -500,33 +506,6 @@ func (s *ErrorStatusCode) SetResponse(val Error) {
 	s.Response = val
 }
 
-func (*ErrorStatusCode) createSnapshotRes()                 {}
-func (*ErrorStatusCode) createSyncActionRes()               {}
-func (*ErrorStatusCode) describeBalloonConfigRes()          {}
-func (*ErrorStatusCode) describeBalloonStatsRes()           {}
-func (*ErrorStatusCode) describeInstanceRes()               {}
-func (*ErrorStatusCode) getExportVmConfigRes()              {}
-func (*ErrorStatusCode) getMachineConfigurationRes()        {}
-func (*ErrorStatusCode) loadSnapshotRes()                   {}
-func (*ErrorStatusCode) mmdsConfigPutRes()                  {}
-func (*ErrorStatusCode) mmdsGetRes()                        {}
-func (*ErrorStatusCode) mmdsPatchRes()                      {}
-func (*ErrorStatusCode) mmdsPutRes()                        {}
-func (*ErrorStatusCode) patchBalloonRes()                   {}
-func (*ErrorStatusCode) patchBalloonStatsIntervalRes()      {}
-func (*ErrorStatusCode) patchGuestDriveByIDRes()            {}
-func (*ErrorStatusCode) patchGuestNetworkInterfaceByIDRes() {}
-func (*ErrorStatusCode) patchMachineConfigurationRes()      {}
-func (*ErrorStatusCode) patchVmRes()                        {}
-func (*ErrorStatusCode) putBalloonRes()                     {}
-func (*ErrorStatusCode) putGuestBootSourceRes()             {}
-func (*ErrorStatusCode) putGuestDriveByIDRes()              {}
-func (*ErrorStatusCode) putGuestNetworkInterfaceByIDRes()   {}
-func (*ErrorStatusCode) putGuestVsockRes()                  {}
-func (*ErrorStatusCode) putLoggerRes()                      {}
-func (*ErrorStatusCode) putMachineConfigurationRes()        {}
-func (*ErrorStatusCode) putMetricsRes()                     {}
-
 // Ref: #/components/schemas/FullVmConfiguration
 type FullVmConfiguration struct {
 	BalloonDevice OptBalloon `json:"balloon_device"`
@@ -631,8 +610,6 @@ func (s *FullVmConfiguration) SetNetDevices(val []NetworkInterface) {
 func (s *FullVmConfiguration) SetVsockDevice(val OptVsock) {
 	s.VsockDevice = val
 }
-
-func (*FullVmConfiguration) getExportVmConfigRes() {}
 
 // Variant wrapper containing the real action.
 // Ref: #/components/schemas/InstanceActionInfo
@@ -744,8 +721,6 @@ func (s *InstanceInfo) SetState(val InstanceInfoState) {
 func (s *InstanceInfo) SetVmmVersion(val string) {
 	s.VmmVersion = val
 }
-
-func (*InstanceInfo) describeInstanceRes() {}
 
 // The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value
 // is read-only for the control-plane.
@@ -957,8 +932,6 @@ func (s *MachineConfiguration) SetTrackDirtyPages(val OptBool) {
 func (s *MachineConfiguration) SetVcpuCount(val int) {
 	s.VcpuCount = val
 }
-
-func (*MachineConfiguration) getMachineConfigurationRes() {}
 
 // Describes the configuration option for the metrics capability.
 // Ref: #/components/schemas/Metrics
