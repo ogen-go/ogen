@@ -50,7 +50,7 @@ type SecurityError struct {
 
 // Code returns http code to respond.
 func (d *SecurityError) Code() int {
-	return http.StatusBadRequest
+	return http.StatusUnauthorized
 }
 
 // Unwrap returns child error.

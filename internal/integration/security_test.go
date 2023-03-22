@@ -165,7 +165,7 @@ func TestSecurity(t *testing.T) {
 
 		// Set "api_key" query key to invalid value.
 		resp = sendReq(t, "/optionalSecurity", setQuery("api_key", "a"))
-		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
+		require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 
 		// Set "api_key" query key to valid value.
 		resp = sendReq(t, "/optionalSecurity", setQuery("api_key", h.queryKey.APIKey))
@@ -175,10 +175,10 @@ func TestSecurity(t *testing.T) {
 	})
 	t.Run("DisjointSecurity", func(t *testing.T) {
 		resp := sendReq(t, "/disjointSecurity", nil)
-		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
+		require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 
 		resp = sendReq(t, "/disjointSecurity", setQuery("api_key", h.queryKey.APIKey))
-		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
+		require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 
 		resp = sendReq(t, "/disjointSecurity", func(r *http.Request) {
 			r.SetBasicAuth(h.basicAuth.Username, h.basicAuth.Password)
@@ -196,12 +196,12 @@ func TestSecurity(t *testing.T) {
 	})
 	t.Run("IntersectSecurity", func(t *testing.T) {
 		resp := sendReq(t, "/intersectSecurity", nil)
-		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
+		require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 
 		resp = sendReq(t, "/intersectSecurity", func(r *http.Request) {
 			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
 		})
-		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
+		require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 
 		resp = sendReq(t, "/intersectSecurity", func(r *http.Request) {
 			r.SetBasicAuth(h.basicAuth.Username, h.basicAuth.Password)
