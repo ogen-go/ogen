@@ -115,9 +115,9 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		}
 
 		y, err := json.Marshal(compare{
-			a.Ref,
-			a.Headers,
-			a.Content,
+			b.Ref,
+			b.Headers,
+			b.Content,
 		})
 		if err != nil {
 			return false
