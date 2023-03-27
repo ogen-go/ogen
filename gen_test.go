@@ -202,8 +202,10 @@ func TestGenerate(t *testing.T) {
 
 func TestNegative(t *testing.T) {
 	walkTestdata(t, "_testdata/negative", func(t *testing.T, file string, data []byte) {
+		log := zaptest.NewLogger(t)
+
 		a := require.New(t)
-		_, name := path.Split(file)
+		dir, name := path.Split(file)
 
 		spec, err := ogen.Parse(data)
 		a.NoError(err)
@@ -215,10 +217,17 @@ func TestNegative(t *testing.T) {
 		})
 		a.NoError(err, "If the error is related to parser, move this test to parser package testdata")
 
-		_, err = gen.NewGenerator(spec, gen.Options{
+		opt := gen.Options{
 			InferSchemaType: true,
 			File:            f,
-		})
+			Logger:          log,
+		}
+		t.Logf("Dir: %q, file: %q", dir, name)
+		if strings.Contains(dir, "convenient_errors") {
+			require.NoError(t, opt.ConvenientErrors.Set("on"))
+		}
+
+		_, err = gen.NewGenerator(spec, opt)
 		a.Error(err)
 
 		var buf strings.Builder
