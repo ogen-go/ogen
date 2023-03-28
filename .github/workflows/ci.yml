@@ -37,6 +37,7 @@ jobs:
 
       - name: Get Go environment
         id: go-env
+        shell: bash
         run: |
           echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
           echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
