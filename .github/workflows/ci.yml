@@ -42,15 +42,26 @@ jobs:
           echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
           echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
 
+        # Build cache key prefix, using runner OS and arch.
+      - name: Compute cache prefix
+        id: cache-prefix
+        shell: bash
+        env:
+          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go
+          ARCH_PREFIX: ${{ matrix.arch != 'amd64' && format('-{0}', matrix.arch) || '' }}
+          RACE_PREFIX: ${{ contains(matrix.flags, '-race') && '-race' || '' }}
+        run:
+          echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
+
       - name: Set up cache
         uses: actions/cache@v3
         with:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: ${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ env.cache_prefix }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-${{ runner.arch }}-go-
+            ${{ env.cache_prefix }}-
 
       - name: Run tests
         env:
