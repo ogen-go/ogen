@@ -47,9 +47,9 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-go-
+            ${{ runner.os }}-${{ runner.arch }}-go-
 
       - name: Run tests
         env:
@@ -90,9 +90,9 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: test-examples-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: test-examples-${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            test-examples-${{ runner.os }}-go-
+            test-examples-${{ runner.os }}-${{ runner.arch }}-go-
 
       - name: Run tests
         run: cd examples && go test ./...

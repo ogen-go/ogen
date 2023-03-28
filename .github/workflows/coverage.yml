@@ -27,15 +27,12 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: coverage-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: coverage-${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            coverage-${{ runner.os }}-go-
+            coverage-${{ runner.os }}-${{ runner.arch }}-go-
 
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Download dependencies
-        run: go mod download && go mod tidy
 
       - name: Run tests with coverage
         run: make coverage
