@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flags: [ "" ]
+        flags: [""]
         arch:
           - amd64
         runner:
@@ -33,7 +33,35 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.20'
-          cache: true
+          cache: false
+
+      - name: Get Go environment
+        id: go-env
+        shell: bash
+        run: |
+          echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
+          echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
+
+        # Build cache key prefix, using runner OS and arch.
+      - name: Compute cache prefix
+        id: cache-prefix
+        shell: bash
+        env:
+          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go
+          ARCH_PREFIX: ${{ matrix.arch != 'amd64' && format('-{0}', matrix.arch) || '' }}
+          RACE_PREFIX: ${{ contains(matrix.flags, '-race') && '-race' || '' }}
+        run:
+          echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
+
+      - name: Set up cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: ${{ env.cache_prefix }}-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ env.cache_prefix }}-
 
       - name: Run tests
         env:
@@ -60,7 +88,23 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.20'
-          cache: true
+          cache: false
+
+      - name: Get Go environment
+        id: go-env
+        run: |
+          echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
+          echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
+
+      - name: Set up cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: test-examples-${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            test-examples-${{ runner.os }}-${{ runner.arch }}-go-
 
       - name: Run tests
         run: cd examples && go test ./...
