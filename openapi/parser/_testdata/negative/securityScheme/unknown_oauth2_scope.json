@@ -10,12 +10,13 @@
         "security": [
           {
             "api_key": [
-              "read"
+              "known_scope",
+              "unknown_scope"
             ]
           }
         ],
         "responses": {
-          "200": {
+          "default": {
             "description": "default"
           }
         }
@@ -25,9 +26,15 @@
   "components": {
     "securitySchemes": {
       "api_key": {
-        "type": "http",
-        "name": "api_key",
-        "scheme": "basic"
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://example.com/api/oauth/dialog",
+            "scopes": {
+              "known_scope": "The known scope"
+            }
+          }
+        }
       }
     }
   }

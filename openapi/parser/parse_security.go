@@ -213,11 +213,21 @@ func (p *parser) parseSecurityRequirements(
 			if len(scopes) > 0 {
 				switch spec.Type {
 				case "openIdConnect", "oauth2":
-				default:
-					// Point to the first scope in the list.
-					locator := locator.Field(name).Index(0)
-					err := errors.Errorf(`list of scopes MUST be empty for "type" %q`, spec.Type)
-					return nil, p.wrapLocation(p.file(ctx), locator, err)
+					// Do not check scopes for other securityScheme.
+					locator := locator.Field(name)
+
+					if err := forEachFlow(spec.Flows, func(flow *ogen.OAuthFlow, _, _ bool) error {
+						for idx, scope := range scopes {
+							if _, ok := flow.Scopes[scope]; !ok {
+								locator := locator.Index(idx)
+								err := errors.Errorf(`unknown scope %q`, spec.Type)
+								return p.wrapLocation(p.file(ctx), locator, err)
+							}
+						}
+						return nil
+					}); err != nil {
+						return nil, err
+					}
 				}
 			}
 
