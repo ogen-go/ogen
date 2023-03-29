@@ -5,7 +5,7 @@ import (
 	"reflect"
 
 	"github.com/go-faster/errors"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 )
 
 // Enum is JSON Schema enum validator description.

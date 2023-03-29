@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
@@ -186,7 +186,7 @@ func checkDeep(t *testing.T, part string, expected, actual interface{}) {
 	}
 
 	// from github.com/stretchr/testify/assert/assertions.go:diff()
-	var spewConfig = spew.ConfigState{
+	spewConfig := spew.ConfigState{
 		Indent:                  " ",
 		DisablePointerAddresses: true,
 		DisableCapacities:       true,
@@ -194,7 +194,7 @@ func checkDeep(t *testing.T, part string, expected, actual interface{}) {
 		DisableMethods:          true,
 		MaxDepth:                10,
 	}
-	var spewConfigStringerEnabled = spew.ConfigState{
+	spewConfigStringerEnabled := spew.ConfigState{
 		Indent:                  " ",
 		DisablePointerAddresses: true,
 		DisableCapacities:       true,

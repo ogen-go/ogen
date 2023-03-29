@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	helperyaml "github.com/ghodss/yaml"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
 )
 
@@ -26,7 +26,7 @@ func getOutput(t require.TestingT, got *yaml.Node) string {
 }
 
 func TestSpecification(t *testing.T) {
-	var specExample = []byte(`{
+	specExample := []byte(`{
   "foo": ["bar", "baz"],
   "": 0,
   "a/b": 1,
@@ -115,7 +115,7 @@ func TestResolveNilNode(t *testing.T) {
 }
 
 func BenchmarkResolve(b *testing.B) {
-	var specExample = getNode(b, []byte(`{
+	specExample := getNode(b, []byte(`{
   "openapi": "3.0.3",
   "components": {
     "schemas": {

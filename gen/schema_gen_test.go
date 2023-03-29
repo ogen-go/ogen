@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest/observer"
