@@ -12,7 +12,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"

@@ -29,7 +29,7 @@ func run(ctx context.Context) error {
 		q            = flag.String("query", "", "Sourcegraph query")
 		filter       = flag.String("filter", "", "Additional filter to concatenate to the query")
 
-		workers = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+		workers   = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
 		skipWrite = flag.Bool("skip-write", false, "Skip writing generated files (test only parser and IR)")
 
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")

@@ -1,6 +1,6 @@
 package location
 
-import yaml "github.com/go-faster/yamlx"
+import "github.com/go-faster/yaml"
 
 // Locatable is an interface for JSON value position store.
 type Locatable interface {

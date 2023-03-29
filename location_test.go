@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -155,7 +155,7 @@ func TestPosition(t *testing.T) {
 		// Compare get.
 		equalLoc(&get.Common.Locator, 48, 14)
 
-		var user = locationSpec.Components.Schemas["User"]
+		user := locationSpec.Components.Schemas["User"]
 		equalLoc(&user.Common.Locator, 59, 15)
 		equalLoc(&user.Properties[0].Schema.Common.Locator, 62, 19)
 	})
@@ -187,7 +187,7 @@ func TestPosition(t *testing.T) {
 		equalLoc(&requestMedia.Common.Locator, 20, 13)
 		equalLoc(&requestSchema.Common.Locator, 21, 15)
 
-		var user = locationSpec.Components.Schemas["User"]
+		user := locationSpec.Components.Schemas["User"]
 		equalLoc(&user.Common.Locator, 36, 7)
 		equalLoc(&user.Properties[0].Schema.Common.Locator, 39, 11)
 	})

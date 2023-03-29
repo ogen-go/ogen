@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 )
 
 // Position is a JSON value position.

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 )
 
 // Resolve takes given pointer and returns byte slice of requested value if any.
@@ -102,11 +102,9 @@ func findKey(n *yaml.Node, part string) (*yaml.Node, bool) {
 	return nil, false
 }
 
-var (
-	unescapeReplacer = strings.NewReplacer(
-		"~1", "/",
-		"~0", "~",
-	)
+var unescapeReplacer = strings.NewReplacer(
+	"~1", "/",
+	"~0", "~",
 )
 
 func unescape(part string) string {

@@ -3,7 +3,7 @@ package parser
 import (
 	"testing"
 
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"

@@ -5,7 +5,7 @@ import (
 
 	helperyaml "github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
-	yaml "github.com/go-faster/yamlx"
+	"github.com/go-faster/yaml"
 )
 
 type (
