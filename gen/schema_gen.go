@@ -184,9 +184,12 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
-			propertyName := strings.TrimSpace(prop.Name)
+			propertyName := prop.Schema.XOgenFieldName
 			if propertyName == "" {
-				propertyName = fmt.Sprintf("Field%d", i)
+				propertyName = strings.TrimSpace(prop.Name)
+				if propertyName == "" {
+					propertyName = fmt.Sprintf("Field%d", i)
+				}
 			}
 
 			fieldName, err := pascalSpecial(propertyName)
@@ -220,9 +223,17 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 					Kind: ir.KindMap,
 					Name: s.Name + "Additional",
 				})
+
 				// TODO(tdakkota): check name for collision.
+				fieldName := "AdditionalProps"
+				if item := schema.Item; item != nil {
+					if n := item.XOgenFieldName; n != "" {
+						fieldName = n
+					}
+				}
+
 				s.Fields = append(s.Fields, &ir.Field{
-					Name:   "AdditionalProps",
+					Name:   fieldName,
 					Type:   mapType,
 					Inline: ir.InlineAdditional,
 				})
@@ -253,9 +264,17 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 					if err != nil {
 						return nil, errors.Wrapf(err, "pattern schema [%d] %q", idx, pp.Pattern)
 					}
+
 					// TODO(tdakkota): check name for collision.
+					fieldName := suffix + "Props"
+					if item := pp.Schema; item != nil {
+						if n := item.XOgenFieldName; n != "" {
+							fieldName = n
+						}
+					}
+
 					s.Fields = append(s.Fields, &ir.Field{
-						Name:   suffix + "Props",
+						Name:   fieldName,
 						Type:   mapType,
 						Inline: ir.InlinePattern,
 					})

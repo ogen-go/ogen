@@ -3,10 +3,12 @@ package jsonschema
 
 import (
 	"encoding/json"
+	"go/token"
 	"math/big"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/yaml"
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/jsonpointer"
@@ -17,6 +19,7 @@ import (
 
 const (
 	xOgenName      = "x-ogen-name"
+	xOgenFieldName = "x-ogen-field-name"
 	xOapiExtraTags = "x-oapi-codegen-extra-tags"
 )
 
@@ -130,18 +133,40 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 		}
 	}
-	if a, ok := schema.Common.Extensions[xOgenName]; ok {
-		if err := a.Decode(&s.XOgenName); err != nil {
-			return nil, errors.Wrap(err, "parse "+xOgenName)
-		}
-	}
-	if a, ok := schema.Common.Extensions[xOapiExtraTags]; ok {
-		if err := a.Decode(&s.ExtraTags); err != nil {
-			return nil, errors.Wrap(err, "parse "+xOapiExtraTags)
+
+	for _, ex := range []struct {
+		Name string
+		Ptr  any
+	}{
+		{xOgenName, (*goName)(&s.XOgenName)},
+		{xOgenFieldName, (*goName)(&s.XOgenFieldName)},
+		{xOapiExtraTags, &s.ExtraTags},
+	} {
+		if a, ok := schema.Common.Extensions[ex.Name]; ok {
+			if err := a.Decode(ex.Ptr); err != nil {
+				return nil, p.wrapField(ex.Name, p.file(ctx), schema.Common.Locator, err)
+			}
 		}
 	}
 
 	return s, nil
+}
+
+type goName string
+
+func (g *goName) UnmarshalYAML(n *yaml.Node) error {
+	var s string
+	if err := n.Decode(&s); err != nil {
+		return err
+	}
+	switch {
+	case !token.IsIdentifier(s):
+		return errors.Errorf("invalid Go identifier %q", s)
+	case !token.IsExported(s):
+		return errors.Errorf("identifier must be public, got %q", s)
+	}
+	*g = goName(s)
+	return nil
 }
 
 func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (_ *Schema, err error) {

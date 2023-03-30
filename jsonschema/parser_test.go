@@ -360,13 +360,16 @@ func TestSchemaExtensions(t *testing.T) {
 		expectErr bool
 	}{
 		{
-			`{"type": "string", "x-ogen-name": "foo"}`,
+			`{"type": "string", "x-ogen-name": "Foo"}`,
 			&Schema{
 				Type:      String,
-				XOgenName: "foo",
+				XOgenName: "Foo",
 			},
 			false,
 		},
+		// Unexported type name.
+		{`{"type": "string", "x-ogen-name": "foo"}`, nil, true},
+		// Invalid type.
 		{`{"type": "string", "x-ogen-name": {}}`, nil, true},
 	}
 

@@ -33,7 +33,8 @@ type Ref = jsonpointer.RefKey
 
 // Schema is a JSON Schema.
 type Schema struct {
-	XOgenName string // Annotation to set type name.
+	XOgenName      string // Annotation to set type name.
+	XOgenFieldName string // Annotation to set field name.
 
 	Ref Ref // Whether schema is referenced.
 
