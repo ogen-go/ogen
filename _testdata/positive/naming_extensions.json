@@ -1,0 +1,54 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "title",
+        "version": "v0.1.0"
+    },
+    "paths": {
+        "/healthz": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "User info",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "x-ogen-name": "Person",
+                "type": "object",
+                "required": [
+                    "RenameField"
+                ],
+                "properties": {
+                    "RenameField": {
+                        "x-ogen-field-name": "Field",
+                        "type": "string"
+                    },
+                    "RefField": {
+                        "x-ogen-field-name": "Parent",
+                        "$ref": "#/components/schemas/User"
+                    }
+                },
+                "x-ogen-properties": {
+                    "RenameField": {
+                        "name": "Field"
+                    },
+                    "RefField": {
+                        "name": "Parent"
+                    }
+                }
+            }
+        }
+    }
+}
