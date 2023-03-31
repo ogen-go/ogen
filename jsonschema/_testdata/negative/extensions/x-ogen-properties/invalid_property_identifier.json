@@ -2,8 +2,12 @@
     "type": "object",
     "properties": {
         "primary": {
-            "x-ogen-field-name": "foo",
             "type": "string"
+        }
+    },
+    "x-ogen-properties": {
+        "primary": {
+            "name": "Foo*^*$"
         }
     }
 }
