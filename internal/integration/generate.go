@@ -28,4 +28,5 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --generate-tests --target test_allof ../../_testdata/positive/allOf.yml
 //go:generate go run ../../cmd/ogen -v --clean --generate-tests --target test_anyof ../../_testdata/positive/anyOf.json
 //
-//go:generate go run ../../cmd/ogen -v --clean -target test_enum_naming ../../_testdata/positive/enum_naming.yml
+//go:generate go run ../../cmd/ogen -v --clean -target test_enum_naming       ../../_testdata/positive/enum_naming.yml
+//go:generate go run ../../cmd/ogen -v --clean -target test_naming_extensions ../../_testdata/positive/naming_extensions.json

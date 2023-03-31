@@ -3,6 +3,7 @@ package jsonschema
 
 import (
 	"encoding/json"
+	"go/token"
 	"math/big"
 	"strings"
 
@@ -16,8 +17,9 @@ import (
 )
 
 const (
-	xOgenName      = "x-ogen-name"
-	xOapiExtraTags = "x-oapi-codegen-extra-tags"
+	xOgenName       = "x-ogen-name"
+	xOgenProperties = "x-ogen-properties"
+	xOapiExtraTags  = "x-oapi-codegen-extra-tags"
 )
 
 // Parser parses JSON schemas.
@@ -130,18 +132,69 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 		}
 	}
-	if a, ok := schema.Common.Extensions[xOgenName]; ok {
-		if err := a.Decode(&s.XOgenName); err != nil {
-			return nil, errors.Wrap(err, "parse "+xOgenName)
-		}
-	}
-	if a, ok := schema.Common.Extensions[xOapiExtraTags]; ok {
-		if err := a.Decode(&s.ExtraTags); err != nil {
-			return nil, errors.Wrap(err, "parse "+xOapiExtraTags)
+
+	for key, val := range schema.Common.Extensions {
+		if err := func() error {
+			exLocator := schema.Common.Locator.Field(key)
+
+			switch key {
+			case xOgenName:
+				if err := val.Decode(&s.XOgenName); err != nil {
+					return err
+				}
+
+				if err := validateGoIdent(s.XOgenName); err != nil {
+					return p.wrapLocation(p.file(ctx), exLocator, err)
+				}
+			case xOgenProperties:
+				props := map[string]XProperty{}
+				if err := val.Decode(&props); err != nil {
+					return err
+				}
+
+				for propName, x := range props {
+					idx := slices.IndexFunc(s.Properties, func(p Property) bool { return p.Name == propName })
+					if idx < 0 {
+						err := errors.Errorf("unknown property %q", propName)
+						return p.wrapLocation(p.file(ctx), exLocator.Key(propName), err)
+					}
+
+					if n := x.Name; n != nil {
+						if err := validateGoIdent(*n); err != nil {
+							return p.wrapLocation(p.file(ctx), exLocator.Field(propName).Field("name"), err)
+						}
+					}
+
+					s.Properties[idx].X = x
+				}
+
+			case xOapiExtraTags:
+				if err := val.Decode(&s.ExtraTags); err != nil {
+					return err
+				}
+			}
+			return nil
+		}(); err != nil {
+			return nil, errors.Wrapf(err, "parse %q", key)
 		}
 	}
 
 	return s, nil
+}
+
+// validateGoIdent checks that given ident is valid and is exported.
+func validateGoIdent(ident string) error {
+	// TODO(tdakkota): move to generator package?
+	// 	For now, keep as part of parser to use user-friendly location errors
+
+	switch {
+	case !token.IsIdentifier(ident):
+		return errors.Errorf("invalid Go identifier %q", ident)
+	case !token.IsExported(ident):
+		return errors.Errorf("identifier must be public, got %q", ident)
+	default:
+		return nil
+	}
 }
 
 func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (_ *Schema, err error) {

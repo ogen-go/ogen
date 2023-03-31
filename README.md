@@ -15,42 +15,45 @@ Opinionated OpenAPI v3 Code Generator for Go.
 Work is still in progress, so currently no backward compatibility is provided. However, we are close to alpha.
 
 # Install
+
 ```console
 go get -d github.com/ogen-go/ogen
 ```
 
 # Usage
+
 ```go
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target target/dir -package api --clean schema.json
 ```
 
 # Features
 
-* No reflection or `interface{}`
-  * The json encoding is code-generated, optimized and uses [go-faster/jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
-  * Validation is code-generated according to spec
-* Code-generated static radix router
-* No more boilerplate
-  * Structures are generated from OpenAPI v3 specification
-  * Arguments, headers, url queries are parsed according to specification into structures
-  * String formats like `uuid`, `date`, `date-time`, `uri` are represented by go types directly
-* Statically typed client and server
-* Convenient support for optional, nullable and optional nullable fields
-  * No more pointers
-  * Generated Optional[T], Nullable[T] or OptionalNullable[T] wrappers with helpers
-  * Special case for array handling with `nil` semantics relevant to specification
-    * When array is optional, `nil` denotes absence of value
-    * When nullable, `nil` denotes that value is `nil`
-    * When required, `nil` currently the same as `[]`, but is actually invalid
-    * If both nullable and required, wrapper will be generated (TODO)
-* Generated sum types for oneOf
-  * Primitive types (`string`, `number`) are detected by type
-  * Discriminator field is used if defined in schema
-  * Type is inferred by unique fields if possible
-* Extra Go struct field tags in the generated types
-* OpenTelemetry tracing and metrics
+- No reflection or `interface{}`
+  - The json encoding is code-generated, optimized and uses [go-faster/jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
+  - Validation is code-generated according to spec
+- Code-generated static radix router
+- No more boilerplate
+  - Structures are generated from OpenAPI v3 specification
+  - Arguments, headers, url queries are parsed according to specification into structures
+  - String formats like `uuid`, `date`, `date-time`, `uri` are represented by go types directly
+- Statically typed client and server
+- Convenient support for optional, nullable and optional nullable fields
+  - No more pointers
+  - Generated Optional[T], Nullable[T] or OptionalNullable[T] wrappers with helpers
+  - Special case for array handling with `nil` semantics relevant to specification
+    - When array is optional, `nil` denotes absence of value
+    - When nullable, `nil` denotes that value is `nil`
+    - When required, `nil` currently the same as `[]`, but is actually invalid
+    - If both nullable and required, wrapper will be generated (TODO)
+- Generated sum types for oneOf
+  - Primitive types (`string`, `number`) are detected by type
+  - Discriminator field is used if defined in schema
+  - Type is inferred by unique fields if possible
+- Extra Go struct field tags in the generated types
+- OpenTelemetry tracing and metrics
 
 Example generated structure from schema:
+
 ```go
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
@@ -81,6 +84,7 @@ type Pet struct {
 ```
 
 Example generated server interface:
+
 ```go
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
@@ -90,6 +94,7 @@ type Server interface {
 ```
 
 Example generated client method signature:
+
 ```go
 type PetGetByNameParams struct {
     Name string
@@ -100,9 +105,11 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 ```
 
 ## Generics
+
 Instead of using pointers, `ogen` generates generic wrappers.
 
 For example, `OptNilString` is `string` that is optional (no value) and can be `null`.
+
 ```go
 // OptNilString is optional nullable string.
 type OptNilString struct {
@@ -113,6 +120,7 @@ type OptNilString struct {
 ```
 
 Multiple convenience helper methods and functions are generated, some of them:
+
 ```go
 func (OptNilString) Get() (v string, ok bool)
 func (OptNilString) IsNull() bool
@@ -122,10 +130,13 @@ func NewOptNilString(v string) OptNilString
 ```
 
 ## Recursive types
+
 If `ogen` encounters recursive types that can't be expressed in go, pointers are used as fallback.
 
 ## Sum types
+
 For `oneOf` sum-types are generated. `ID` that is one of `[string, integer]` will be represented like that:
+
 ```go
 type ID struct {
 	Type   IDType
@@ -195,6 +206,37 @@ Optionally, type name can be specified by `x-ogen-name`, for example:
 }
 ```
 
+### Custom field name
+
+Optionally, type name can be specified by `x-ogen-properties`, for example:
+
+```yaml
+components:
+  schemas:
+    Node:
+      type: object
+      properties:
+        parent:
+          $ref: "#/components/schemas/Node"
+        child:
+          $ref: "#/components/schemas/Node"
+      x-ogen-properties:
+        parent:
+          name: "Prev"
+        child:
+          name: "Next"
+```
+
+The generated source code looks like:
+
+```go
+// Ref: #/components/schemas/Node
+type Node struct {
+    Prev *Node `json:"parent"`
+    Next *Node `json:"child"`
+}
+```
+
 ### Extra struct field tags
 
 Optionally, additional Go struct field tags can be specified by `x-oapi-codegen-extra-tags`, for example:
@@ -244,6 +286,7 @@ requestBody:
 ## JSON
 
 Code generation provides very efficient and flexible encoding and decoding of json:
+
 ```go
 // Decode decodes Error from json.
 func (s *Error) Decode(d *jx.Decoder) error {

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "primary": {
+            "type": "string"
+        }
+    },
+    "x-ogen-properties": {
+        "unknown": {
+            "name": "Foo"
+        }
+    }
+}
