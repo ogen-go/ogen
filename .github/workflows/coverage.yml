@@ -21,7 +21,7 @@ jobs:
           echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
           echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
 
-      - name: Set up cache
+      - name: Restore cache
         uses: actions/cache/restore@v3
         with:
           path: |
@@ -36,6 +36,14 @@ jobs:
 
       - name: Run tests with coverage
         run: make coverage
+
+      - name: Save cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: coverage-${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

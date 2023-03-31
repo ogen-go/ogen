@@ -53,8 +53,8 @@ jobs:
         run:
           echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
 
-      - name: Set up cache
-        uses: actions/cache@v3
+      - name: Restore cache
+        uses: actions/cache/restore@v3
         with:
           path: |
             ${{ env.cache }}
@@ -77,6 +77,14 @@ jobs:
           GOFLAGS: ${{ matrix.flags }}
         run: go test --timeout 15m --benchtime 3x --benchmem --bench "Benchmark" --run=$^. ./...
 
+      - name: Save cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: ${{ env.cache_prefix }}-${{ hashFiles('**/go.sum') }}
+
   test-examples:
     runs-on: ubuntu-latest
 
@@ -96,8 +104,8 @@ jobs:
           echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
           echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
 
-      - name: Set up cache
-        uses: actions/cache@v3
+      - name: Restore cache
+        uses: actions/cache/restore@v3
         with:
           path: |
             ${{ env.cache }}
@@ -108,3 +116,11 @@ jobs:
 
       - name: Run tests
         run: cd examples && go test ./...
+
+      - name: Save cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: test-examples-${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
