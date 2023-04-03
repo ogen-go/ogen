@@ -7,16 +7,26 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
+	"github.com/mattn/go-isatty"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
-// DefaultColorFlag returns default color flag value by checking NO_COLOR env.
+// DefaultColorFlag returns default color flag value.
 //
 // See https://no-color.org.
 func DefaultColorFlag() bool {
-	_, ok := os.LookupEnv("NO_COLOR")
-	return !ok
+	if _, ok := os.LookupEnv("NO_COLOR"); ok {
+		return false
+	}
+
+	if os.Getenv("TERM") == "dumb" {
+		return false
+	}
+
+	// By default, NewDevelopmentConfig uses stderr.
+	fd := os.Stderr.Fd()
+	return isatty.IsTerminal(fd) || isatty.IsCygwinTerminal(fd)
 }
 
 // Options is options for Create.
