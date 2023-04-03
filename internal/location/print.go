@@ -33,6 +33,9 @@ func (p padLine) Format(f fmt.State, verb rune) {
 	_, _ = f.Write(b)
 }
 
+// ColorFunc defines a simple printer callback.
+type ColorFunc func(w io.Writer, s string, args ...any) (int, error)
+
 // PrintListingOptions is a set of options for PrintListing.
 type PrintListingOptions struct {
 	// Filename is a name of the file to print with location.
@@ -42,15 +45,15 @@ type PrintListingOptions struct {
 	// If is zero, the default value 5 is used.
 	Context int
 	// If is nil, the default value color.New(color.FgRed) is used.
-	ErrColor *color.Color
+	ErrColor ColorFunc
 	// If is nil, the default value color.New(color.Reset) is used.
-	PlainColor *color.Color
+	PlainColor ColorFunc
 }
 
 // WithoutColor creates a copy of the options with disabled color.
 func (o PrintListingOptions) WithoutColor() PrintListingOptions {
-	o.ErrColor = color.New(color.Reset)
-	o.PlainColor = color.New(color.Reset)
+	o.ErrColor = fmt.Fprintf
+	o.PlainColor = fmt.Fprintf
 	return o
 }
 
@@ -76,10 +79,10 @@ func (o *PrintListingOptions) setDefaults() {
 		o.Context = 5
 	}
 	if o.ErrColor == nil {
-		o.ErrColor = color.New(color.FgRed)
+		o.ErrColor = color.New(color.FgRed).Fprintf
 	}
 	if o.PlainColor == nil {
-		o.PlainColor = color.New(color.Reset)
+		o.PlainColor = color.New(color.Reset).Fprintf
 	}
 }
 
@@ -111,7 +114,7 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintLis
 		padNum, top, bottom = opts.contextLines(loc.Line)
 	)
 
-	if _, err := errColor.Fprintf(w, "%s- %s -> %s\n",
+	if _, err := errColor(w, "%s- %s -> %s\n",
 		leftPad,
 		loc.WithFilename(filename),
 		msg,
@@ -126,7 +129,7 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintLis
 		}
 		return bytes.Trim(l.data[start:end], "\r\n")
 	}
-	printLine := func(leftPad string, n int, c *color.Color) error {
+	printLine := func(leftPad string, n int, colored ColorFunc) error {
 		lineNumber := padLine{
 			pad: padNum,
 			// Line number is 1-based.
@@ -134,7 +137,7 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintLis
 		}
 		// Line number is 1-based, but index is 0-based.
 		lineText := line(n + 1)
-		_, err := c.Fprintf(w, "\t%s%d %s %s\t\n", leftPad, lineNumber, verticalBorder, lineText)
+		_, err := colored(w, "\t%s%d %s %s\t\n", leftPad, lineNumber, verticalBorder, lineText)
 		return err
 	}
 
@@ -155,7 +158,7 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintLis
 
 	// Print column pointer.
 	if loc.Column > 0 {
-		if _, err := errColor.Fprintf(w,
+		if _, err := errColor(w,
 			"\t%s%s %s %s%s\t\n",
 			leftPad,
 			strings.Repeat(" ", padNum+1),
