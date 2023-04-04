@@ -94,7 +94,8 @@ jobs:
     uses: ogen-go/ogen/.github/workflows/tidy-autocommit.yml@main
     needs: [check-mod]
     secrets:
-      APP_TOKEN: ${{ secrets.DEPENDABOT_TIDY_TOKEN }}
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
     with:
       repository: ${{ github.event.pull_request.head.repo.full_name }}
       ref: ${{ github.event.pull_request.head.ref }}

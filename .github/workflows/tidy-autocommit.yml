@@ -3,7 +3,9 @@ name: Autocommit `go mod tidy`
 on:
   workflow_call:
     secrets:
-      APP_TOKEN:
+      APP_ID:
+        required: true
+      APP_PRIVATE_KEY:
         required: true
     inputs:
       repository:
@@ -17,12 +19,19 @@ jobs:
   autocommit-tidy:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           repository: ${{ inputs.repository }}
           ref: ${{ inputs.ref }}
-          token: ${{ secrets.APP_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: Install Go
         uses: actions/setup-go@v4
