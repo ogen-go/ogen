@@ -16,7 +16,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: false
 
       - name: Get Go environment
@@ -60,7 +60,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: false
 
       - name: Get Go environment
@@ -82,11 +82,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-go-
 
-      - name: Download dependencies
-        run: go mod download && go mod tidy
+      - name: Run `go mod tidy`
+        run: make tidy_all
 
       - name: Check git diff
+        id: git-diff
         run: git diff --exit-code
+
+  go-mod-tidy:
+    if: ${{ always() && github.event.pull_request.user.login == 'dependabot[bot]' && needs.check-mod.result == 'failure' && needs.check-mod.git-diff.outcome != 'success' }}
+    uses: ./.github/workflows/tidy-autocommit.yml
+    needs: [check-mod]
+    secrets:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+    with:
+      repository: ${{ github.event.pull_request.head.repo.full_name }}
+      ref: ${{ github.event.pull_request.head.ref }}
 
   # Check if there are any dirty changes after go generate
   check-generate:
@@ -98,7 +110,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.20'
+          go-version: "1.20"
           cache: false
 
       - name: Get Go environment
