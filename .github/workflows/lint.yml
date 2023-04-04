@@ -84,8 +84,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-go-
 
-      - name: Download dependencies
-        run: go mod download && go mod tidy -v
+      - name: Run `go mod tidy`
+        run: make tidy_all
 
       - name: Check git diff
         id: git-diff

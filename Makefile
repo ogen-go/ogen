@@ -30,12 +30,14 @@ tidy:
 tidy_examples:
 	cd examples && go mod tidy
 
+tidy_all: tidy tidy_examples
+
 lint:
 	@go version
 	@golangci-lint version
 	golangci-lint run -v -c .golangci.yml ./...
 
-clean: tidy generate tidy_examples examples
+clean: tidy_all generate examples
 
 commit_gen:
 	git add ./examples ./internal/integration/*/*_gen*.go
