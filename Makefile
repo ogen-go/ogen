@@ -39,4 +39,4 @@ clean: tidy generate tidy_examples examples
 
 commit_gen:
 	git add ./examples ./internal/integration/*/*_gen*.go
-	git commit -m "chore(gen): update"
+	git commit -m "chore: commit generated files"
