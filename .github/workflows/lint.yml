@@ -91,7 +91,7 @@ jobs:
 
   go-mod-tidy:
     if: ${{ always() && github.event.pull_request.user.login == 'dependabot[bot]' && needs.check-mod.result == 'failure' && needs.check-mod.git-diff.outcome != 'success' }}
-    uses: ogen-go/ogen/.github/workflows/tidy-autocommit.yml@main
+    uses: ./.github/workflows/tidy-autocommit.yml
     needs: [check-mod]
     secrets:
       APP_ID: ${{ secrets.APP_ID }}
