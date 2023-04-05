@@ -174,6 +174,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 						fieldNames[*n] = struct{}{}
 					}
 
+					x.Pointer = locator.Field(propName).Pointer(p.file(ctx))
 					s.Properties[idx].X = x
 				}
 

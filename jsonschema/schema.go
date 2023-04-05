@@ -35,6 +35,8 @@ type Ref = jsonpointer.RefKey
 type XProperty struct {
 	// Name is a property Go name to override.
 	Name *string `json:"name" yaml:"name"`
+
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // Schema is a JSON Schema.
