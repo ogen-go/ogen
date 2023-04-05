@@ -7,7 +7,7 @@ import (
 	"github.com/go-faster/yaml"
 )
 
-// Position is a JSON value position.
+// Position is a value position.
 type Position struct {
 	Line, Column int
 	Node         *yaml.Node
@@ -22,25 +22,33 @@ func (p *Position) FromNode(node *yaml.Node) {
 	}
 }
 
+func (p Position) mapping() ([]*yaml.Node, bool) {
+	n := p.Node
+	if n != nil && n.Kind == yaml.DocumentNode {
+		if len(n.Content) < 1 {
+			return nil, false
+		}
+		n = n.Content[0]
+	}
+
+	if n == nil || n.Kind != yaml.MappingNode || len(n.Content) < 2 {
+		return nil, false
+	}
+
+	return n.Content, true
+}
+
 // Key tries to find the child node using given key and returns its position.
 // If such node is not found or parent node is not a mapping, Key returns position of the parent node.
 //
 // NOTE: child position will point to the key node, not to the value node.
 // Use Field if you want position of the value.
 func (p Position) Key(key string) (loc Position) {
-	n := p.Node
-	if n != nil && n.Kind == yaml.DocumentNode {
-		if len(n.Content) < 1 {
-			return p
-		}
-		n = n.Content[0]
+	children, ok := p.mapping()
+	if !ok {
+		return loc
 	}
 
-	if n == nil || n.Kind != yaml.MappingNode || len(n.Content) < 2 {
-		return p
-	}
-
-	children := n.Content
 	for i := 0; i < len(children); i += 2 {
 		keyNode := children[i]
 		if keyNode.Value == key {
@@ -57,19 +65,11 @@ func (p Position) Key(key string) (loc Position) {
 // NOTE: child position will point to the value node, not to the key node.
 // Use Key if you want position of the key.
 func (p Position) Field(key string) (loc Position) {
-	n := p.Node
-	if n != nil && n.Kind == yaml.DocumentNode {
-		if len(n.Content) < 1 {
-			return p
-		}
-		n = n.Content[0]
+	children, ok := p.mapping()
+	if !ok {
+		return loc
 	}
 
-	if n == nil || n.Kind != yaml.MappingNode || len(n.Content) < 2 {
-		return p
-	}
-
-	children := n.Content
 	for i := 0; i < len(children); i += 2 {
 		keyNode, valueNode := children[i], children[i+1]
 		if keyNode.Value == key {

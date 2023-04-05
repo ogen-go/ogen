@@ -135,7 +135,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 	for key, val := range schema.Common.Extensions {
 		if err := func() error {
-			exLocator := schema.Common.Locator.Field(key)
+			locator := schema.Common.Locator.Field(key)
 
 			switch key {
 			case xOgenName:
@@ -144,7 +144,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 				}
 
 				if err := validateGoIdent(s.XOgenName); err != nil {
-					return p.wrapLocation(p.file(ctx), exLocator, err)
+					return p.wrapLocation(p.file(ctx), locator, err)
 				}
 			case xOgenProperties:
 				props := map[string]XProperty{}
@@ -152,19 +152,29 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 					return err
 				}
 
+				fieldNames := map[string]struct{}{}
 				for propName, x := range props {
+					// FIXME(tdakkota): linear search
 					idx := slices.IndexFunc(s.Properties, func(p Property) bool { return p.Name == propName })
 					if idx < 0 {
 						err := errors.Errorf("unknown property %q", propName)
-						return p.wrapLocation(p.file(ctx), exLocator.Key(propName), err)
+						return p.wrapLocation(p.file(ctx), locator.Key(propName), err)
 					}
 
 					if n := x.Name; n != nil {
+						locator := locator.Field(propName).Field("name")
 						if err := validateGoIdent(*n); err != nil {
-							return p.wrapLocation(p.file(ctx), exLocator.Field(propName).Field("name"), err)
+							return p.wrapLocation(p.file(ctx), locator, err)
 						}
+
+						if _, ok := fieldNames[*n]; ok {
+							err := errors.Errorf("duplicate field name %q", *n)
+							return p.wrapLocation(p.file(ctx), locator, err)
+						}
+						fieldNames[*n] = struct{}{}
 					}
 
+					x.Pointer = locator.Field(propName).Pointer(p.file(ctx))
 					s.Properties[idx].X = x
 				}
 

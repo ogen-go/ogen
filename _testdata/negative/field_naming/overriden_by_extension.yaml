@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: title
+  version: v0.1.0
+paths:
+  "/test":
+    post:
+      operationId: test
+      description: test
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: ok
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+      x-ogen-properties:
+        id:
+          name: "Username"
+      patternProperties:
+        "^x-.*":
+          type: string
+      additionalProperties:
+        type: string
