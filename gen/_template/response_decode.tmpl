@@ -19,7 +19,7 @@
 
 {{ define "response_decoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
-func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoType }}, err error) {
+func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoType }}, _ error) {
 	{{- with $statusCodes := $op.Responses.StatusCode }}
 	switch resp.StatusCode {
 	{{- range $statusCode, $response := $statusCodes }}{{/* Range over responses */}}
@@ -35,21 +35,33 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
     {{- range $idx, $response := $op.Responses.Pattern }}{{- if $response }}
 	case {{ add $idx 1 }}:
 		// Pattern {{ add $idx 1 }}XX.
-    	{{- template "decode_response" response_elem $response $op.Responses.DoTakePtr }}
+		res, err := func() (res {{ $op.Responses.GoType }}, err error) {
+			{{- template "decode_response" response_elem $response $op.Responses.DoTakePtr }}
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern {{ add $idx 1 }}XX (code %d)", resp.StatusCode)
+		}
+		return res, nil
     {{- end }}{{- end }}
 	}
 	{{- end }}
 
 	{{- if $op.Responses.Default }}
 		// Default response.
-		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.DoTakePtr }}
+		res, err := func() (res {{ $op.Responses.GoType }}, err error) {
+			{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.DoTakePtr }}
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
+		}
+		return res, nil
 	{{- else if and $.Config.Error (not $op.WebhookInfo) }}
 		// Convenient error response.
 		defRes, err := func() (res {{ $.Config.ErrorGoType }}, err error) {
 			{{- template "decode_response" response_elem $.Config.Error true }}
 		}()
 		if err != nil {
-			return res, errors.Wrap(err, "default")
+			return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 		}
 		return res, errors.Wrap(defRes, "error")
 	{{- else }}
