@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeHealthzGetResponse(resp *http.Response) (res *Person, err error) {
+func decodeHealthzGetResponse(resp *http.Response) (res *Person, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

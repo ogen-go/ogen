@@ -18,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaOK, err error) {
+func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43,31 +43,37 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
 	// Default response.
-	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-	if err != nil {
-		return res, errors.Wrap(err, "parse media type")
-	}
-	switch {
-	case ht.MatchContentType("*/*", ct):
-		reader := resp.Body
-		b, err := io.ReadAll(reader)
+	res, err := func() (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
-			return res, err
+			return res, errors.Wrap(err, "parse media type")
 		}
+		switch {
+		case ht.MatchContentType("*/*", ct):
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
 
-		response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
-		return &AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
-			StatusCode: resp.StatusCode,
-			Response:   response,
-		}, nil
-	default:
-		return res, validate.InvalidContentType(ct)
+			response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
+			return &AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}()
+	if err != nil {
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
+	return res, nil
 }
 
-func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
+func decodeCombinedResponse(resp *http.Response) (res CombinedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -108,46 +114,99 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 	switch resp.StatusCode / 100 {
 	case 2:
 		// Pattern 2XX.
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			buf, err := io.ReadAll(resp.Body)
+		res, err := func() (res CombinedRes, err error) {
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 			if err != nil {
-				return res, err
+				return res, errors.Wrap(err, "parse media type")
 			}
-			d := jx.DecodeBytes(buf)
-
-			var response int
-			if err := func() error {
-				v, err := d.Int()
-				response = int(v)
+			switch {
+			case ct == "application/json":
+				buf, err := io.ReadAll(resp.Body)
 				if err != nil {
-					return err
+					return res, err
 				}
-				if err := d.Skip(); err != io.EOF {
-					return errors.New("unexpected trailing data")
+				d := jx.DecodeBytes(buf)
+
+				var response int
+				if err := func() error {
+					v, err := d.Int()
+					response = int(v)
+					if err != nil {
+						return err
+					}
+					if err := d.Skip(); err != io.EOF {
+						return errors.New("unexpected trailing data")
+					}
+					return nil
+				}(); err != nil {
+					err = &ogenerrors.DecodeBodyError{
+						ContentType: ct,
+						Body:        buf,
+						Err:         err,
+					}
+					return res, err
 				}
-				return nil
-			}(); err != nil {
-				err = &ogenerrors.DecodeBodyError{
-					ContentType: ct,
-					Body:        buf,
-					Err:         err,
-				}
-				return res, err
+				return &Combined2XXStatusCode{
+					StatusCode: resp.StatusCode,
+					Response:   response,
+				}, nil
+			default:
+				return res, validate.InvalidContentType(ct)
 			}
-			return &Combined2XXStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern 2XX (code %d)", resp.StatusCode)
 		}
+		return res, nil
 	case 5:
 		// Pattern 5XX.
+		res, err := func() (res CombinedRes, err error) {
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
+				buf, err := io.ReadAll(resp.Body)
+				if err != nil {
+					return res, err
+				}
+				d := jx.DecodeBytes(buf)
+
+				var response bool
+				if err := func() error {
+					v, err := d.Bool()
+					response = bool(v)
+					if err != nil {
+						return err
+					}
+					if err := d.Skip(); err != io.EOF {
+						return errors.New("unexpected trailing data")
+					}
+					return nil
+				}(); err != nil {
+					err = &ogenerrors.DecodeBodyError{
+						ContentType: ct,
+						Body:        buf,
+						Err:         err,
+					}
+					return res, err
+				}
+				return &Combined5XXStatusCode{
+					StatusCode: resp.StatusCode,
+					Response:   response,
+				}, nil
+			default:
+				return res, validate.InvalidContentType(ct)
+			}
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern 5XX (code %d)", resp.StatusCode)
+		}
+		return res, nil
+	}
+	// Default response.
+	res, err := func() (res CombinedRes, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -160,11 +219,19 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response bool
+			var response []string
 			if err := func() error {
-				v, err := d.Bool()
-				response = bool(v)
-				if err != nil {
+				response = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
 					return err
 				}
 				if err := d.Skip(); err != io.EOF {
@@ -179,64 +246,21 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				}
 				return res, err
 			}
-			return &Combined5XXStatusCode{
+			return &CombinedDefStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	}
-	// Default response.
-	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}()
 	if err != nil {
-		return res, errors.Wrap(err, "parse media type")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
-	switch {
-	case ct == "application/json":
-		buf, err := io.ReadAll(resp.Body)
-		if err != nil {
-			return res, err
-		}
-		d := jx.DecodeBytes(buf)
-
-		var response []string
-		if err := func() error {
-			response = make([]string, 0)
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				response = append(response, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-			if err := d.Skip(); err != io.EOF {
-				return errors.New("unexpected trailing data")
-			}
-			return nil
-		}(); err != nil {
-			err = &ogenerrors.DecodeBodyError{
-				ContentType: ct,
-				Body:        buf,
-				Err:         err,
-			}
-			return res, err
-		}
-		return &CombinedDefStatusCode{
-			StatusCode: resp.StatusCode,
-			Response:   response,
-		}, nil
-	default:
-		return res, validate.InvalidContentType(ct)
-	}
+	return res, nil
 }
 
-func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error) {
+func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -279,7 +303,7 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes, err error) {
+func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -322,7 +346,52 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 	switch resp.StatusCode / 100 {
 	case 4:
 		// Pattern 4XX.
-		var wrapper HeadersCombined4XX
+		res, err := func() (res HeadersCombinedRes, err error) {
+			var wrapper HeadersCombined4XX
+			wrapper.StatusCode = resp.StatusCode
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse "X-Test-Header" header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "X-Test-Header",
+					Explode: false,
+				}
+				if err := func() error {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapper.XTestHeader = c
+							return nil
+						}); err != nil {
+							return err
+						}
+					} else {
+						return validate.ErrFieldRequired
+					}
+					return nil
+				}(); err != nil {
+					return res, errors.Wrap(err, "parse X-Test-Header header")
+				}
+			}
+			return &wrapper, nil
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern 4XX (code %d)", resp.StatusCode)
+		}
+		return res, nil
+	}
+	// Default response.
+	res, err := func() (res HeadersCombinedRes, err error) {
+		var wrapper HeadersCombinedDef
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse "X-Test-Header" header.
@@ -358,87 +427,60 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 			}
 		}
 		return &wrapper, nil
+	}()
+	if err != nil {
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
-	// Default response.
-	var wrapper HeadersCombinedDef
-	wrapper.StatusCode = resp.StatusCode
-	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse "X-Test-Header" header.
-	{
-		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "X-Test-Header",
-			Explode: false,
-		}
-		if err := func() error {
-			if err := h.HasParam(cfg); err == nil {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
-				}
-			} else {
-				return validate.ErrFieldRequired
-			}
-			return nil
-		}(); err != nil {
-			return res, errors.Wrap(err, "parse X-Test-Header header")
-		}
-	}
-	return &wrapper, nil
+	return res, nil
 }
 
-func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, err error) {
+func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, _ error) {
 	// Default response.
-	var wrapper HeadersDefaultDef
-	wrapper.StatusCode = resp.StatusCode
-	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse "X-Test-Header" header.
-	{
-		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "X-Test-Header",
-			Explode: false,
-		}
-		if err := func() error {
-			if err := h.HasParam(cfg); err == nil {
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapper.XTestHeader = c
-					return nil
-				}); err != nil {
-					return err
-				}
-			} else {
-				return validate.ErrFieldRequired
+	res, err := func() (res *HeadersDefaultDef, err error) {
+		var wrapper HeadersDefaultDef
+		wrapper.StatusCode = resp.StatusCode
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse "X-Test-Header" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "X-Test-Header",
+				Explode: false,
 			}
-			return nil
-		}(); err != nil {
-			return res, errors.Wrap(err, "parse X-Test-Header header")
+			if err := func() error {
+				if err := h.HasParam(cfg); err == nil {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapper.XTestHeader = c
+						return nil
+					}); err != nil {
+						return err
+					}
+				} else {
+					return validate.ErrFieldRequired
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse X-Test-Header header")
+			}
 		}
+		return &wrapper, nil
+	}()
+	if err != nil {
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
-	return &wrapper, nil
+	return res, nil
 }
 
-func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err error) {
+func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -525,51 +567,57 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, err error) {
+func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, _ error) {
 	switch resp.StatusCode / 100 {
 	case 4:
 		// Pattern 4XX.
-		var wrapper HeadersPattern4XX
-		wrapper.StatusCode = resp.StatusCode
-		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "X-Test-Header" header.
-		{
-			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "X-Test-Header",
-				Explode: false,
-			}
-			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
-					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-						val, err := d.DecodeValue()
-						if err != nil {
-							return err
-						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapper.XTestHeader = c
-						return nil
-					}); err != nil {
-						return err
-					}
-				} else {
-					return validate.ErrFieldRequired
+		res, err := func() (res *HeadersPattern4XX, err error) {
+			var wrapper HeadersPattern4XX
+			wrapper.StatusCode = resp.StatusCode
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse "X-Test-Header" header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "X-Test-Header",
+					Explode: false,
 				}
-				return nil
-			}(); err != nil {
-				return res, errors.Wrap(err, "parse X-Test-Header header")
+				if err := func() error {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapper.XTestHeader = c
+							return nil
+						}); err != nil {
+							return err
+						}
+					} else {
+						return validate.ErrFieldRequired
+					}
+					return nil
+				}(); err != nil {
+					return res, errors.Wrap(err, "parse X-Test-Header header")
+				}
 			}
+			return &wrapper, nil
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern 4XX (code %d)", resp.StatusCode)
 		}
-		return &wrapper, nil
+		return res, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatternCodeRes, err error) {
+func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatternCodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -610,49 +658,55 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 	switch resp.StatusCode / 100 {
 	case 2:
 		// Pattern 2XX.
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			buf, err := io.ReadAll(resp.Body)
+		res, err := func() (res IntersectPatternCodeRes, err error) {
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 			if err != nil {
-				return res, err
+				return res, errors.Wrap(err, "parse media type")
 			}
-			d := jx.DecodeBytes(buf)
-
-			var response int
-			if err := func() error {
-				v, err := d.Int()
-				response = int(v)
+			switch {
+			case ct == "application/json":
+				buf, err := io.ReadAll(resp.Body)
 				if err != nil {
-					return err
+					return res, err
 				}
-				if err := d.Skip(); err != io.EOF {
-					return errors.New("unexpected trailing data")
+				d := jx.DecodeBytes(buf)
+
+				var response int
+				if err := func() error {
+					v, err := d.Int()
+					response = int(v)
+					if err != nil {
+						return err
+					}
+					if err := d.Skip(); err != io.EOF {
+						return errors.New("unexpected trailing data")
+					}
+					return nil
+				}(); err != nil {
+					err = &ogenerrors.DecodeBodyError{
+						ContentType: ct,
+						Body:        buf,
+						Err:         err,
+					}
+					return res, err
 				}
-				return nil
-			}(); err != nil {
-				err = &ogenerrors.DecodeBodyError{
-					ContentType: ct,
-					Body:        buf,
-					Err:         err,
-				}
-				return res, err
+				return &IntersectPatternCode2XXStatusCode{
+					StatusCode: resp.StatusCode,
+					Response:   response,
+				}, nil
+			default:
+				return res, validate.InvalidContentType(ct)
 			}
-			return &IntersectPatternCode2XXStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+		}()
+		if err != nil {
+			return res, errors.Wrapf(err, "pattern 2XX (code %d)", resp.StatusCode)
 		}
+		return res, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGenericResponsesRes, err error) {
+func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGenericResponsesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -728,7 +782,7 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res OctetStreamBinaryStringSchemaOK, err error) {
+func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res OctetStreamBinaryStringSchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -753,7 +807,7 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res Octet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamEmptySchemaOK, err error) {
+func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamEmptySchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -778,7 +832,7 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK, err error) {
+func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -858,7 +912,7 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, err error) {
+func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -925,7 +979,7 @@ func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPlainBinaryStringSchemaOK, err error) {
+func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPlainBinaryStringSchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

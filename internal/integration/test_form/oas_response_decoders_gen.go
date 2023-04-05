@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEncodedOK, err error) {
+func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEncodedOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23,7 +23,7 @@ func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEnco
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, err error) {
+func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32,7 +32,7 @@ func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartUploadOK, err error) {
+func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartUploadOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -73,7 +73,7 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormSchemaOK, err error) {
+func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormSchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
+func decodeGetBookResponse(resp *http.Response) (res GetBookRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60,7 +60,7 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, err error) {
+func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -88,7 +88,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err error) {
+func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -116,7 +116,7 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, err error) {
+func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -144,7 +144,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
+func decodeSearchResponse(resp *http.Response) (res SearchRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -188,7 +188,7 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err error) {
+func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

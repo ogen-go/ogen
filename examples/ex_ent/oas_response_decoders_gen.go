@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreatePetResponse(resp *http.Response) (res CreatePetRes, err error) {
+func decodeCreatePetResponse(resp *http.Response) (res CreatePetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -160,7 +160,7 @@ func decodeCreatePetResponse(resp *http.Response) (res CreatePetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCreatePetCategoriesResponse(resp *http.Response) (res CreatePetCategoriesRes, err error) {
+func decodeCreatePetCategoriesResponse(resp *http.Response) (res CreatePetCategoriesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -306,7 +306,7 @@ func decodeCreatePetCategoriesResponse(resp *http.Response) (res CreatePetCatego
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCreatePetFriendsResponse(resp *http.Response) (res CreatePetFriendsRes, err error) {
+func decodeCreatePetFriendsResponse(resp *http.Response) (res CreatePetFriendsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -452,7 +452,7 @@ func decodeCreatePetFriendsResponse(resp *http.Response) (res CreatePetFriendsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCreatePetOwnerResponse(resp *http.Response) (res CreatePetOwnerRes, err error) {
+func decodeCreatePetOwnerResponse(resp *http.Response) (res CreatePetOwnerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -598,7 +598,7 @@ func decodeCreatePetOwnerResponse(resp *http.Response) (res CreatePetOwnerRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, err error) {
+func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -712,7 +712,7 @@ func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDeletePetOwnerResponse(resp *http.Response) (res DeletePetOwnerRes, err error) {
+func decodeDeletePetOwnerResponse(resp *http.Response) (res DeletePetOwnerRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -826,7 +826,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response) (res DeletePetOwnerRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPetResponse(resp *http.Response) (res ListPetRes, err error) {
+func decodeListPetResponse(resp *http.Response) (res ListPetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -972,7 +972,7 @@ func decodeListPetResponse(resp *http.Response) (res ListPetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategoriesRes, err error) {
+func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategoriesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1118,7 +1118,7 @@ func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategories
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, err error) {
+func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1264,7 +1264,7 @@ func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPetResponse(resp *http.Response) (res ReadPetRes, err error) {
+func decodeReadPetResponse(resp *http.Response) (res ReadPetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1410,7 +1410,7 @@ func decodeReadPetResponse(resp *http.Response) (res ReadPetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPetOwnerResponse(resp *http.Response) (res ReadPetOwnerRes, err error) {
+func decodeReadPetOwnerResponse(resp *http.Response) (res ReadPetOwnerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1556,7 +1556,7 @@ func decodeReadPetOwnerResponse(resp *http.Response) (res ReadPetOwnerRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUpdatePetResponse(resp *http.Response) (res UpdatePetRes, err error) {
+func decodeUpdatePetResponse(resp *http.Response) (res UpdatePetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

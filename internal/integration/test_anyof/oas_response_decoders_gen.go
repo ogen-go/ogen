@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, err error) {
+func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55,7 +55,7 @@ func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, err error) {
+func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -96,7 +96,7 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, err error) {
+func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

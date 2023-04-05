@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreatePetsResponse(resp *http.Response) (res *CreatePetsCreated, err error) {
+func decodeCreatePetsResponse(resp *http.Response) (res *CreatePetsCreated, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -62,12 +62,12 @@ func decodeCreatePetsResponse(resp *http.Response) (res *CreatePetsCreated, err 
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, err error) {
+func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -185,12 +185,12 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, err error) {
+func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -268,7 +268,7 @@ func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeCachingResponse(resp *http.Response) (res WorldObjects, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55,7 +55,7 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDBResponse(resp *http.Response) (res *WorldObject, err error) {
+func decodeDBResponse(resp *http.Response) (res *WorldObject, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -96,7 +96,7 @@ func decodeDBResponse(resp *http.Response) (res *WorldObject, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeJSONResponse(resp *http.Response) (res *HelloWorld, err error) {
+func decodeJSONResponse(resp *http.Response) (res *HelloWorld, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -137,7 +137,7 @@ func decodeJSONResponse(resp *http.Response) (res *HelloWorld, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeQueriesResponse(resp *http.Response) (res WorldObjects, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -178,7 +178,7 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

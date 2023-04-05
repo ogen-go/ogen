@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, err error) {
+func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -95,12 +95,12 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRes, err error) {
+func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -181,12 +181,12 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigRes, err error) {
+func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -299,12 +299,12 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsRes, err error) {
+func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -417,12 +417,12 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, err error) {
+func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -500,12 +500,12 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, err
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfiguration, err error) {
+func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfiguration, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -583,12 +583,12 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineConfiguration, err error) {
+func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineConfiguration, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -666,12 +666,12 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err error) {
+func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -752,12 +752,12 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err error) {
+func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -838,12 +838,12 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
+func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -956,12 +956,12 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) {
+func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1042,12 +1042,12 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
+func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1128,12 +1128,12 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err error) {
+func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1214,12 +1214,12 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalRes, err error) {
+func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1300,12 +1300,12 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDRes, err error) {
+func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1386,12 +1386,12 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1472,12 +1472,12 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationRes, err error) {
+func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1558,12 +1558,12 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
+func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1644,12 +1644,12 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error) {
+func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1730,12 +1730,12 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceRes, err error) {
+func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1816,12 +1816,12 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDRes, err error) {
+func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1902,12 +1902,12 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDRes, err error) {
+func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1988,12 +1988,12 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err error) {
+func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2074,12 +2074,12 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) {
+func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2160,12 +2160,12 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationRes, err error) {
+func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2246,12 +2246,12 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error) {
+func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2332,7 +2332,7 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }

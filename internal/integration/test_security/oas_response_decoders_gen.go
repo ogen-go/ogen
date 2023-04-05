@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityOK, err error) {
+func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17,7 +17,7 @@ func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurityOK, err error) {
+func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26,7 +26,7 @@ func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurit
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, err error) {
+func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

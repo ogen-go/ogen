@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK, err error) {
+func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41,7 +41,7 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequestBodiesOptionalOK, err error) {
+func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequestBodiesOptionalOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -66,7 +66,7 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, err error) {
+func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -91,7 +91,7 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, err error) {
+func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -132,7 +132,7 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskResponse, err error) {
+func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskResponse, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -173,7 +173,7 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeStreamJSONResponse(resp *http.Response) (res float64, err error) {
+func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

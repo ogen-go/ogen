@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
+func decodeProbeLivenessResponse(resp *http.Response) (res string, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -94,7 +94,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
