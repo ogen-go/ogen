@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "first": {
+            "type": "string"
+        },
+        "second": {
+            "type": "string"
+        }
+    },
+    "x-ogen-properties": {
+        "first": {
+            "name": "Same"
+        },
+        "second": {
+            "name": "Same"
+        }
+    }
+}
