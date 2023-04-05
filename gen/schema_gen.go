@@ -8,6 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -172,6 +173,40 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		})
 		s.Validators.SetObject(schema)
 
+		type fieldSlot struct {
+			// Stores spec name of the field.
+			original      string
+			nameDefinedAt location.Pointer
+		}
+		fieldNames := map[string]fieldSlot{}
+
+		addField := func(f *ir.Field, adding fieldSlot) error {
+			existing, ok := fieldNames[f.Name]
+			if !ok {
+				s.Fields = append(s.Fields, f)
+				fieldNames[f.Name] = adding
+				return nil
+			}
+
+			err := errors.Errorf("conflict: field %q already defined by %s", f.Name, existing.original)
+			ptr := adding.nameDefinedAt
+			if _, ok := ptr.Position(); !ok {
+				// Use existing as a fallback.
+				ptr = existing.nameDefinedAt
+			}
+
+			pos, ok := ptr.Position()
+			if !ok {
+				return err
+			}
+
+			return &location.Error{
+				File: ptr.File(),
+				Pos:  pos,
+				Err:  err,
+			}
+		}
+
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
 			propTypeName, err := pascalSpecial(name, prop.Name)
@@ -184,23 +219,36 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
-			var propertyName string
+			var (
+				fieldName string
+				slot      fieldSlot
+			)
 			if n := prop.X.Name; n != nil {
-				propertyName = *n
-			}
-			if propertyName == "" {
-				propertyName = strings.TrimSpace(prop.Name)
+				fieldName = *n
+
+				slot = fieldSlot{
+					original:      fmt.Sprintf("property %q (overridden by extension as %q)", prop.Name, *n),
+					nameDefinedAt: prop.X.Pointer.Field("name"),
+				}
+			} else {
+				propertyName := strings.TrimSpace(prop.Name)
 				if propertyName == "" {
 					propertyName = fmt.Sprintf("Field%d", i)
 				}
+
+				generated, err := pascalSpecial(propertyName)
+				if err != nil {
+					return nil, errors.Wrapf(err, "property name: %q", propertyName)
+				}
+				fieldName = generated
+
+				slot = fieldSlot{
+					original:      fmt.Sprintf("property %q", prop.Name),
+					nameDefinedAt: schema.Pointer.Field("properties").Key(prop.Name),
+				}
 			}
 
-			fieldName, err := pascalSpecial(propertyName)
-			if err != nil {
-				return nil, errors.Wrapf(err, "property name: %q", propertyName)
-			}
-
-			s.Fields = append(s.Fields, &ir.Field{
+			if err := addField(&ir.Field{
 				Name: fieldName,
 				Type: t,
 				Tag: ir.Tag{
@@ -208,7 +256,9 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 					ExtraTags: prop.Schema.ExtraTags,
 				},
 				Spec: &prop,
-			})
+			}, slot); err != nil {
+				return nil, err
+			}
 		}
 
 		item := func(prefix string, schItem *jsonschema.Schema) (*ir.Type, error) {
@@ -227,12 +277,18 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 					Name: s.Name + "Additional",
 				})
 
-				// TODO(tdakkota): check name for collision.
-				s.Fields = append(s.Fields, &ir.Field{
+				const key = "additionalProperties"
+				slot := fieldSlot{
+					original:      key,
+					nameDefinedAt: schema.Pointer.Key(key),
+				}
+				if err := addField(&ir.Field{
 					Name:   "AdditionalProps",
 					Type:   mapType,
 					Inline: ir.InlineAdditional,
-				})
+				}, slot); err != nil {
+					return nil, err
+				}
 			}
 
 			mapType.Item, err = item(mapType.Name, schema.Item)
@@ -251,6 +307,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			} else {
 				for idx, pp := range schema.PatternProperties {
 					suffix := fmt.Sprintf("Pattern%d", idx)
+
 					mapType := g.regtype(name, &ir.Type{
 						Kind:       ir.KindMap,
 						Name:       s.Name + suffix,
@@ -261,12 +318,18 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 						return nil, errors.Wrapf(err, "pattern schema [%d] %q", idx, pp.Pattern)
 					}
 
-					// TODO(tdakkota): check name for collision.
-					s.Fields = append(s.Fields, &ir.Field{
-						Name:   suffix + "Props",
+					fieldName := suffix + "Props"
+					slot := fieldSlot{
+						original:      fmt.Sprintf("pattern %q", pp.Pattern),
+						nameDefinedAt: pp.Schema.Pointer,
+					}
+					if err := addField(&ir.Field{
+						Name:   fieldName,
 						Type:   mapType,
 						Inline: ir.InlinePattern,
-					})
+					}, slot); err != nil {
+						return nil, err
+					}
 				}
 			}
 		}
