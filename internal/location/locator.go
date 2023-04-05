@@ -11,7 +11,10 @@ type Locatable interface {
 	Position() (Position, bool)
 }
 
-// Locator stores the Position of a JSON value.
+// Locator is a Position holder.
+//
+// Basically, it is a simple wrapper around Position to
+// embed it to spec types.
 type Locator struct {
 	position Position
 	set      bool
