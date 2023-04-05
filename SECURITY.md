@@ -1,8 +1,5 @@
 # Security Policy
 
-Use [Full Disclosure](<https://en.wikipedia.org/wiki/Full_disclosure_(computer_security)>)
-strategy and open public issue.
+Use [GitHub Security Reporting][reporting] to report security vulnerabilities under the "Security" section.
 
-The project is in its early development stage so a "coordinated vulnerability disclosure" is redundant.
-
-No formal security audits were performed.
+[reporting]: https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability#privately-reporting-a-security-vulnerability
