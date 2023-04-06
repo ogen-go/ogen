@@ -54,6 +54,18 @@ func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
 {{- if $v.Nullable  }}
 // IsSet returns true if value is Null.
 func (o {{ $.ReadOnlyReceiver }}) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *{{ $.Name }}) SetToNull() {
+	{{- if $v.Optional }}
+	o.Set = true
+	{{- end }}
+	{{- if $v.Nullable }}
+	o.Null = true
+	{{- end }}
+	var v {{ $g.Go }}
+	o.Value = v
+}
 {{ end }}
 
 // Get returns value and boolean that denotes whether value was set.
