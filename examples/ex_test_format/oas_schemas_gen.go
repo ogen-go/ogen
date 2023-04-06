@@ -59,6 +59,13 @@ func (o *NilBool) SetTo(v bool) {
 // IsSet returns true if value is Null.
 func (o NilBool) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilBool) SetToNull() {
+	o.Null = true
+	var v bool
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilBool) Get() (v bool, ok bool) {
 	if o.Null {
@@ -96,6 +103,13 @@ func (o *NilDate) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilDate) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilDate) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilDate) Get() (v time.Time, ok bool) {
@@ -135,6 +149,13 @@ func (o *NilDateTime) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o NilDateTime) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilDateTime) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilDateTime) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -172,6 +193,13 @@ func (o *NilDuration) SetTo(v time.Duration) {
 
 // IsSet returns true if value is Null.
 func (o NilDuration) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilDuration) SetToNull() {
+	o.Null = true
+	var v time.Duration
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilDuration) Get() (v time.Duration, ok bool) {
@@ -211,6 +239,13 @@ func (o *NilFloat32) SetTo(v float32) {
 // IsSet returns true if value is Null.
 func (o NilFloat32) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilFloat32) SetToNull() {
+	o.Null = true
+	var v float32
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilFloat32) Get() (v float32, ok bool) {
 	if o.Null {
@@ -248,6 +283,13 @@ func (o *NilFloat64) SetTo(v float64) {
 
 // IsSet returns true if value is Null.
 func (o NilFloat64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilFloat64) SetToNull() {
+	o.Null = true
+	var v float64
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilFloat64) Get() (v float64, ok bool) {
@@ -287,6 +329,13 @@ func (o *NilIP) SetTo(v netip.Addr) {
 // IsSet returns true if value is Null.
 func (o NilIP) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilIP) SetToNull() {
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilIP) Get() (v netip.Addr, ok bool) {
 	if o.Null {
@@ -324,6 +373,13 @@ func (o *NilIPv4) SetTo(v netip.Addr) {
 
 // IsSet returns true if value is Null.
 func (o NilIPv4) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilIPv4) SetToNull() {
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilIPv4) Get() (v netip.Addr, ok bool) {
@@ -363,6 +419,13 @@ func (o *NilIPv6) SetTo(v netip.Addr) {
 // IsSet returns true if value is Null.
 func (o NilIPv6) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilIPv6) SetToNull() {
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilIPv6) Get() (v netip.Addr, ok bool) {
 	if o.Null {
@@ -400,6 +463,13 @@ func (o *NilInt) SetTo(v int) {
 
 // IsSet returns true if value is Null.
 func (o NilInt) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilInt) SetToNull() {
+	o.Null = true
+	var v int
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilInt) Get() (v int, ok bool) {
@@ -439,6 +509,13 @@ func (o *NilInt32) SetTo(v int32) {
 // IsSet returns true if value is Null.
 func (o NilInt32) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilInt32) SetToNull() {
+	o.Null = true
+	var v int32
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilInt32) Get() (v int32, ok bool) {
 	if o.Null {
@@ -476,6 +553,13 @@ func (o *NilInt64) SetTo(v int64) {
 
 // IsSet returns true if value is Null.
 func (o NilInt64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilInt64) SetToNull() {
+	o.Null = true
+	var v int64
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilInt64) Get() (v int64, ok bool) {
@@ -515,6 +599,13 @@ func (o *NilString) SetTo(v string) {
 // IsSet returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilString) SetToNull() {
+	o.Null = true
+	var v string
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilString) Get() (v string, ok bool) {
 	if o.Null {
@@ -552,6 +643,13 @@ func (o *NilStringInt32) SetTo(v int32) {
 
 // IsSet returns true if value is Null.
 func (o NilStringInt32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringInt32) SetToNull() {
+	o.Null = true
+	var v int32
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringInt32) Get() (v int32, ok bool) {
@@ -591,6 +689,13 @@ func (o *NilStringInt64) SetTo(v int64) {
 // IsSet returns true if value is Null.
 func (o NilStringInt64) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilStringInt64) SetToNull() {
+	o.Null = true
+	var v int64
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringInt64) Get() (v int64, ok bool) {
 	if o.Null {
@@ -628,6 +733,13 @@ func (o *NilStringUnixMicro) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilStringUnixMicro) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUnixMicro) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringUnixMicro) Get() (v time.Time, ok bool) {
@@ -667,6 +779,13 @@ func (o *NilStringUnixMilli) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o NilStringUnixMilli) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilStringUnixMilli) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringUnixMilli) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -704,6 +823,13 @@ func (o *NilStringUnixNano) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilStringUnixNano) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUnixNano) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringUnixNano) Get() (v time.Time, ok bool) {
@@ -743,6 +869,13 @@ func (o *NilStringUnixSeconds) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o NilStringUnixSeconds) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilStringUnixSeconds) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilStringUnixSeconds) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -780,6 +913,13 @@ func (o *NilTime) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilTime) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilTime) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilTime) Get() (v time.Time, ok bool) {
@@ -819,6 +959,13 @@ func (o *NilURI) SetTo(v url.URL) {
 // IsSet returns true if value is Null.
 func (o NilURI) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilURI) SetToNull() {
+	o.Null = true
+	var v url.URL
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilURI) Get() (v url.URL, ok bool) {
 	if o.Null {
@@ -856,6 +1003,13 @@ func (o *NilUUID) SetTo(v uuid.UUID) {
 
 // IsSet returns true if value is Null.
 func (o NilUUID) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUUID) SetToNull() {
+	o.Null = true
+	var v uuid.UUID
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUUID) Get() (v uuid.UUID, ok bool) {
@@ -895,6 +1049,13 @@ func (o *NilUint) SetTo(v uint) {
 // IsSet returns true if value is Null.
 func (o NilUint) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilUint) SetToNull() {
+	o.Null = true
+	var v uint
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUint) Get() (v uint, ok bool) {
 	if o.Null {
@@ -932,6 +1093,13 @@ func (o *NilUint32) SetTo(v uint32) {
 
 // IsSet returns true if value is Null.
 func (o NilUint32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUint32) SetToNull() {
+	o.Null = true
+	var v uint32
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUint32) Get() (v uint32, ok bool) {
@@ -971,6 +1139,13 @@ func (o *NilUint64) SetTo(v uint64) {
 // IsSet returns true if value is Null.
 func (o NilUint64) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilUint64) SetToNull() {
+	o.Null = true
+	var v uint64
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUint64) Get() (v uint64, ok bool) {
 	if o.Null {
@@ -1008,6 +1183,13 @@ func (o *NilUnixMicro) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilUnixMicro) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUnixMicro) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUnixMicro) Get() (v time.Time, ok bool) {
@@ -1047,6 +1229,13 @@ func (o *NilUnixMilli) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o NilUnixMilli) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilUnixMilli) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUnixMilli) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -1085,6 +1274,13 @@ func (o *NilUnixNano) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o NilUnixNano) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilUnixNano) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUnixNano) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -1122,6 +1318,13 @@ func (o *NilUnixSeconds) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o NilUnixSeconds) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUnixSeconds) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o NilUnixSeconds) Get() (v time.Time, ok bool) {
@@ -1727,6 +1930,14 @@ func (o *OptNilBool) SetTo(v bool) {
 // IsSet returns true if value is Null.
 func (o OptNilBool) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilBool) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v bool
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilBool) Get() (v bool, ok bool) {
 	if o.Null {
@@ -1781,6 +1992,14 @@ func (o *OptNilByte) SetTo(v []byte) {
 
 // IsSet returns true if value is Null.
 func (o OptNilByte) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilByte) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v []byte
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilByte) Get() (v []byte, ok bool) {
@@ -1837,6 +2056,14 @@ func (o *OptNilDate) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilDate) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilDate) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilDate) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -1891,6 +2118,14 @@ func (o *OptNilDateTime) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o OptNilDateTime) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilDateTime) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilDateTime) Get() (v time.Time, ok bool) {
@@ -1947,6 +2182,14 @@ func (o *OptNilDuration) SetTo(v time.Duration) {
 // IsSet returns true if value is Null.
 func (o OptNilDuration) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilDuration) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Duration
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilDuration) Get() (v time.Duration, ok bool) {
 	if o.Null {
@@ -2001,6 +2244,14 @@ func (o *OptNilFloat32) SetTo(v float32) {
 
 // IsSet returns true if value is Null.
 func (o OptNilFloat32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilFloat32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v float32
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilFloat32) Get() (v float32, ok bool) {
@@ -2057,6 +2308,14 @@ func (o *OptNilFloat64) SetTo(v float64) {
 // IsSet returns true if value is Null.
 func (o OptNilFloat64) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilFloat64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v float64
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilFloat64) Get() (v float64, ok bool) {
 	if o.Null {
@@ -2111,6 +2370,14 @@ func (o *OptNilIP) SetTo(v netip.Addr) {
 
 // IsSet returns true if value is Null.
 func (o OptNilIP) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilIP) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIP) Get() (v netip.Addr, ok bool) {
@@ -2167,6 +2434,14 @@ func (o *OptNilIPv4) SetTo(v netip.Addr) {
 // IsSet returns true if value is Null.
 func (o OptNilIPv4) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilIPv4) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIPv4) Get() (v netip.Addr, ok bool) {
 	if o.Null {
@@ -2221,6 +2496,14 @@ func (o *OptNilIPv6) SetTo(v netip.Addr) {
 
 // IsSet returns true if value is Null.
 func (o OptNilIPv6) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilIPv6) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v netip.Addr
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIPv6) Get() (v netip.Addr, ok bool) {
@@ -2277,6 +2560,14 @@ func (o *OptNilInt) SetTo(v int) {
 // IsSet returns true if value is Null.
 func (o OptNilInt) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilInt) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt) Get() (v int, ok bool) {
 	if o.Null {
@@ -2331,6 +2622,14 @@ func (o *OptNilInt32) SetTo(v int32) {
 
 // IsSet returns true if value is Null.
 func (o OptNilInt32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilInt32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int32
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt32) Get() (v int32, ok bool) {
@@ -2387,6 +2686,14 @@ func (o *OptNilInt64) SetTo(v int64) {
 // IsSet returns true if value is Null.
 func (o OptNilInt64) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilInt64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int64
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt64) Get() (v int64, ok bool) {
 	if o.Null {
@@ -2441,6 +2748,14 @@ func (o *OptNilString) SetTo(v string) {
 
 // IsSet returns true if value is Null.
 func (o OptNilString) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilString) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v string
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilString) Get() (v string, ok bool) {
@@ -2497,6 +2812,14 @@ func (o *OptNilStringInt32) SetTo(v int32) {
 // IsSet returns true if value is Null.
 func (o OptNilStringInt32) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilStringInt32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int32
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringInt32) Get() (v int32, ok bool) {
 	if o.Null {
@@ -2551,6 +2874,14 @@ func (o *OptNilStringInt64) SetTo(v int64) {
 
 // IsSet returns true if value is Null.
 func (o OptNilStringInt64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringInt64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int64
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringInt64) Get() (v int64, ok bool) {
@@ -2607,6 +2938,14 @@ func (o *OptNilStringUnixMicro) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilStringUnixMicro) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilStringUnixMicro) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixMicro) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -2661,6 +3000,14 @@ func (o *OptNilStringUnixMilli) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o OptNilStringUnixMilli) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUnixMilli) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixMilli) Get() (v time.Time, ok bool) {
@@ -2717,6 +3064,14 @@ func (o *OptNilStringUnixNano) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilStringUnixNano) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilStringUnixNano) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixNano) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -2771,6 +3126,14 @@ func (o *OptNilStringUnixSeconds) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o OptNilStringUnixSeconds) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUnixSeconds) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixSeconds) Get() (v time.Time, ok bool) {
@@ -2827,6 +3190,14 @@ func (o *OptNilTime) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilTime) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilTime) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilTime) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -2881,6 +3252,14 @@ func (o *OptNilURI) SetTo(v url.URL) {
 
 // IsSet returns true if value is Null.
 func (o OptNilURI) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilURI) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v url.URL
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilURI) Get() (v url.URL, ok bool) {
@@ -2937,6 +3316,14 @@ func (o *OptNilUUID) SetTo(v uuid.UUID) {
 // IsSet returns true if value is Null.
 func (o OptNilUUID) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilUUID) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uuid.UUID
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUUID) Get() (v uuid.UUID, ok bool) {
 	if o.Null {
@@ -2991,6 +3378,14 @@ func (o *OptNilUint) SetTo(v uint) {
 
 // IsSet returns true if value is Null.
 func (o OptNilUint) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUint) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUint) Get() (v uint, ok bool) {
@@ -3047,6 +3442,14 @@ func (o *OptNilUint32) SetTo(v uint32) {
 // IsSet returns true if value is Null.
 func (o OptNilUint32) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilUint32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint32
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUint32) Get() (v uint32, ok bool) {
 	if o.Null {
@@ -3101,6 +3504,14 @@ func (o *OptNilUint64) SetTo(v uint64) {
 
 // IsSet returns true if value is Null.
 func (o OptNilUint64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUint64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint64
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUint64) Get() (v uint64, ok bool) {
@@ -3157,6 +3568,14 @@ func (o *OptNilUnixMicro) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilUnixMicro) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilUnixMicro) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixMicro) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -3211,6 +3630,14 @@ func (o *OptNilUnixMilli) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o OptNilUnixMilli) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUnixMilli) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixMilli) Get() (v time.Time, ok bool) {
@@ -3267,6 +3694,14 @@ func (o *OptNilUnixNano) SetTo(v time.Time) {
 // IsSet returns true if value is Null.
 func (o OptNilUnixNano) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *OptNilUnixNano) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixNano) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -3321,6 +3756,14 @@ func (o *OptNilUnixSeconds) SetTo(v time.Time) {
 
 // IsSet returns true if value is Null.
 func (o OptNilUnixSeconds) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUnixSeconds) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixSeconds) Get() (v time.Time, ok bool) {

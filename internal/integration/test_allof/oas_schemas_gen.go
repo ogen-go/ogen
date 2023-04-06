@@ -55,6 +55,13 @@ func (o *NilString) SetTo(v string) {
 // IsSet returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
+// SetNull sets value to null.
+func (o *NilString) SetToNull() {
+	o.Null = true
+	var v string
+	o.Value = v
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o NilString) Get() (v string, ok bool) {
 	if o.Null {
