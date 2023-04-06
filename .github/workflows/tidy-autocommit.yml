@@ -17,11 +17,16 @@ on:
 
 jobs:
   autocommit-tidy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Generate token
         uses: tibdex/github-app-token@v1
         id: generate-token
+        env:
+          # Use default OpenSSL config.
+          #
+          # See https://github.com/tibdex/github-app-token/issues/54.
+          OPENSSL_CONF: /dev/null
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
