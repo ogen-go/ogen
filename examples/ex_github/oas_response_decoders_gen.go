@@ -17,7 +17,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -26,7 +26,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
+func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res ActionsAddSelectedRepoToOrgSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38,7 +38,7 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -47,7 +47,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsApproveWorkflowRunRes, err error) {
+func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsApproveWorkflowRunRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -158,7 +158,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res *ActionsCancelWorkflowRunAccepted, err error) {
+func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res *ActionsCancelWorkflowRunAccepted, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -199,7 +199,7 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res *ActionsCa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
+func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateEnvironmentSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -243,7 +243,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
+func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateOrgSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -287,7 +287,7 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res Acti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
+func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateRepoSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -331,7 +331,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -372,7 +372,7 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -413,7 +413,7 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -454,7 +454,7 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res *Aut
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -495,7 +495,7 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res *Au
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
+func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -536,7 +536,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteArtifactResponse(resp *http.Response) (res *ActionsDeleteArtifactNoContent, err error) {
+func decodeActionsDeleteArtifactResponse(resp *http.Response) (res *ActionsDeleteArtifactNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -545,7 +545,7 @@ func decodeActionsDeleteArtifactResponse(resp *http.Response) (res *ActionsDelet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res *ActionsDeleteEnvironmentSecretNoContent, err error) {
+func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res *ActionsDeleteEnvironmentSecretNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -554,7 +554,7 @@ func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res *ActionsDeleteOrgSecretNoContent, err error) {
+func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res *ActionsDeleteOrgSecretNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -563,7 +563,7 @@ func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res *ActionsDele
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res *ActionsDeleteRepoSecretNoContent, err error) {
+func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res *ActionsDeleteRepoSecretNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -572,7 +572,7 @@ func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res *ActionsDel
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -581,7 +581,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -590,7 +590,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -599,7 +599,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunNoContent, err error) {
+func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -608,7 +608,7 @@ func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res *ActionsDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunLogsNoContent, err error) {
+func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunLogsNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -617,7 +617,7 @@ func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res *Actio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -626,7 +626,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDownloadArtifactFound, err error) {
+func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDownloadArtifactFound, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -674,7 +674,7 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDow
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (res *ActionsDownloadJobLogsForWorkflowRunFound, err error) {
+func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (res *ActionsDownloadJobLogsForWorkflowRunFound, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -722,7 +722,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDownloadWorkflowRunLogsFound, err error) {
+func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDownloadWorkflowRunLogsFound, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -770,7 +770,7 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -779,7 +779,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (res *SelectedActions, err error) {
+func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (res *SelectedActions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -820,7 +820,7 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res *SelectedActions, err error) {
+func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res *SelectedActions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -861,7 +861,7 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetArtifactResponse(resp *http.Response) (res *Artifact, err error) {
+func decodeActionsGetArtifactResponse(resp *http.Response) (res *Artifact, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -902,7 +902,7 @@ func decodeActionsGetArtifactResponse(resp *http.Response) (res *Artifact, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
+func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -943,7 +943,7 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res *ActionsSecret, err error) {
+func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res *ActionsSecret, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -984,7 +984,7 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res *Action
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsOrganizationPermissions, err error) {
+func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsOrganizationPermissions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1025,7 +1025,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsRepositoryPermissions, err error) {
+func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsRepositoryPermissions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1066,7 +1066,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res *Job, err error) {
+func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res *Job, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1107,7 +1107,7 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res *Job, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
+func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1148,7 +1148,7 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res *ActionsPubl
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetOrgSecretResponse(resp *http.Response) (res *OrganizationActionsSecret, err error) {
+func decodeActionsGetOrgSecretResponse(resp *http.Response) (res *OrganizationActionsSecret, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1189,7 +1189,7 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res *OrganizationAc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
+func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1230,7 +1230,7 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res *ActionsPub
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetRepoSecretResponse(resp *http.Response) (res *ActionsSecret, err error) {
+func decodeActionsGetRepoSecretResponse(resp *http.Response) (res *ActionsSecret, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1271,7 +1271,7 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response) (res *ActionsSecret
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []EnvironmentApprovals, err error) {
+func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []EnvironmentApprovals, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1320,7 +1320,7 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res *Runner, err error) {
+func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res *Runner, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1361,7 +1361,7 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res *R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res *Runner, err error) {
+func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res *Runner, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1402,7 +1402,7 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
+func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1443,7 +1443,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res *WorkflowRun, err error) {
+func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res *WorkflowRun, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1484,7 +1484,7 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res *WorkflowRun,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res *WorkflowRunUsage, err error) {
+func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res *WorkflowRunUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1525,7 +1525,7 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res *Workflo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *ActionsListArtifactsForRepoOKHeaders, err error) {
+func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *ActionsListArtifactsForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1606,7 +1606,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *Action
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *ActionsListEnvironmentSecretsOKHeaders, err error) {
+func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *ActionsListEnvironmentSecretsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1687,7 +1687,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *Acti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *ActionsListJobsForWorkflowRunOKHeaders, err error) {
+func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *ActionsListJobsForWorkflowRunOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1768,7 +1768,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *Acti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListOrgSecretsOKHeaders, err error) {
+func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListOrgSecretsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1849,7 +1849,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1890,7 +1890,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsListRepoSecretsOKHeaders, err error) {
+func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsListRepoSecretsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1971,7 +1971,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsListRepoWorkflowsOKHeaders, err error) {
+func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsListRepoWorkflowsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2052,7 +2052,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res []RunnerApplication, err error) {
+func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res []RunnerApplication, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2101,7 +2101,7 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (res []RunnerApplication, err error) {
+func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (res []RunnerApplication, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2150,7 +2150,7 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsListSelectedReposForOrgSecretOK, err error) {
+func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsListSelectedReposForOrgSecretOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2191,7 +2191,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2232,7 +2232,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
+func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2273,7 +2273,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2354,7 +2354,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2435,7 +2435,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2516,7 +2516,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *ActionsListWorkflowRunArtifactsOKHeaders, err error) {
+func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *ActionsListWorkflowRunArtifactsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2597,7 +2597,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *Ac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *ActionsListWorkflowRunsForRepoOKHeaders, err error) {
+func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *ActionsListWorkflowRunsForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2678,7 +2678,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsReRunWorkflowResponse(resp *http.Response) (res *ActionsReRunWorkflowCreated, err error) {
+func decodeActionsReRunWorkflowResponse(resp *http.Response) (res *ActionsReRunWorkflowCreated, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -2719,7 +2719,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response) (res *ActionsReRunW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2728,7 +2728,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
+func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (res ActionsRemoveSelectedRepoFromOrgSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2740,7 +2740,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2749,7 +2749,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRetryWorkflowResponse(resp *http.Response) (res *ActionsRetryWorkflowCreated, err error) {
+func decodeActionsRetryWorkflowResponse(resp *http.Response) (res *ActionsRetryWorkflowCreated, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -2790,7 +2790,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response) (res *ActionsRetryW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (res []Deployment, err error) {
+func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (res []Deployment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2839,7 +2839,7 @@ func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (res *ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (res *ActionsSetAllowedActionsOrganizationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2848,7 +2848,7 @@ func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res *ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res *ActionsSetAllowedActionsRepositoryNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2857,7 +2857,7 @@ func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2866,7 +2866,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2875,7 +2875,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2884,7 +2884,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
+func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsSetSelectedReposForOrgSecretNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2893,7 +2893,7 @@ func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2902,7 +2902,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -2911,7 +2911,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2952,7 +2952,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
+func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -3069,7 +3069,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res *ActivityDeleteRepoSubscriptionNoContent, err error) {
+func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res *ActivityDeleteRepoSubscriptionNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -3078,7 +3078,7 @@ func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res ActivityDeleteThreadSubscriptionRes, err error) {
+func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res ActivityDeleteThreadSubscriptionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -3160,7 +3160,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityGetFeedsResponse(resp *http.Response) (res *Feed, err error) {
+func decodeActivityGetFeedsResponse(resp *http.Response) (res *Feed, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3201,7 +3201,7 @@ func decodeActivityGetFeedsResponse(resp *http.Response) (res *Feed, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res ActivityGetRepoSubscriptionRes, err error) {
+func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res ActivityGetRepoSubscriptionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3280,7 +3280,7 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res Activit
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThreadRes, err error) {
+func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThreadRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3394,7 +3394,7 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.Response) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
+func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.Response) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3508,7 +3508,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3557,7 +3557,7 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Response) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
+func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Response) (res ActivityListNotificationsForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3754,7 +3754,7 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3803,7 +3803,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityListPublicEventsRes, err error) {
+func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityListPublicEventsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3917,7 +3917,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
+func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (res ActivityListPublicEventsForRepoNetworkRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4066,7 +4066,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListPublicEventsForUserResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListPublicEventsForUserResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4115,7 +4115,7 @@ func decodeActivityListPublicEventsForUserResponse(resp *http.Response) (res []E
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListPublicOrgEventsResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListPublicOrgEventsResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4164,7 +4164,7 @@ func decodeActivityListPublicOrgEventsResponse(resp *http.Response) (res []Event
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4213,7 +4213,7 @@ func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (res [
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4262,7 +4262,7 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, err error) {
+func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4311,7 +4311,7 @@ func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.Response) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
+func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.Response) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4400,7 +4400,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
+func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityListReposStarredByAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4562,7 +4562,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *ActivityListReposWatchedByUserOKHeaders, err error) {
+func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *ActivityListReposWatchedByUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4651,7 +4651,7 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Response) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
+func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Response) (res ActivityListWatchedReposForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4813,7 +4813,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *ActivityListWatchersForRepoOKHeaders, err error) {
+func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *ActivityListWatchersForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4902,7 +4902,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *Activi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkNotificationsAsReadRes, err error) {
+func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkNotificationsAsReadRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -5019,7 +5019,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
+func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkRepoNotificationsAsReadRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -5063,7 +5063,7 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMarkThreadAsReadRes, err error) {
+func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMarkThreadAsReadRes, _ error) {
 	switch resp.StatusCode {
 	case 205:
 		// Code 205.
@@ -5110,7 +5110,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res *RepositorySubscription, err error) {
+func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res *RepositorySubscription, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5151,7 +5151,7 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res *Reposi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res ActivitySetThreadSubscriptionRes, err error) {
+func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res ActivitySetThreadSubscriptionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5265,7 +5265,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
+func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityStarRepoForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -5382,7 +5382,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
+func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityUnstarRepoForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -5499,7 +5499,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRepoToInstallationRes, err error) {
+func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRepoToInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -5581,7 +5581,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, err error) {
+func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5692,7 +5692,7 @@ func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCreateContentAttachmentRes, err error) {
+func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCreateContentAttachmentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5911,7 +5911,7 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFromManifestRes, err error) {
+func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFromManifestRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -6022,7 +6022,7 @@ func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res AppsCreateInstallationAccessTokenRes, err error) {
+func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res AppsCreateInstallationAccessTokenRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -6238,7 +6238,7 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsDeleteAuthorizationResponse(resp *http.Response) (res AppsDeleteAuthorizationRes, err error) {
+func decodeAppsDeleteAuthorizationResponse(resp *http.Response) (res AppsDeleteAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -6282,7 +6282,7 @@ func decodeAppsDeleteAuthorizationResponse(resp *http.Response) (res AppsDeleteA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteInstallationRes, err error) {
+func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -6326,7 +6326,7 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteIn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsDeleteTokenResponse(resp *http.Response) (res AppsDeleteTokenRes, err error) {
+func decodeAppsDeleteTokenResponse(resp *http.Response) (res AppsDeleteTokenRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -6370,7 +6370,7 @@ func decodeAppsDeleteTokenResponse(resp *http.Response) (res AppsDeleteTokenRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res *Integration, err error) {
+func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res *Integration, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6411,7 +6411,7 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res *Integration, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err error) {
+func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6557,7 +6557,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountRes, err error) {
+func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6668,7 +6668,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
+func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountStubbedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6747,7 +6747,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6788,7 +6788,7 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res *Webhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebhookDeliveryRes, err error) {
+func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6899,7 +6899,7 @@ func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAccountsForPlanRes, err error) {
+func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAccountsForPlanRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7093,7 +7093,7 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res AppsListAccountsForPlanStubbedRes, err error) {
+func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res AppsListAccountsForPlanStubbedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7217,7 +7217,7 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Response) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
+func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Response) (res AppsListInstallationReposForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7371,7 +7371,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err error) {
+func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7530,7 +7530,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansStubbedRes, err error) {
+func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansStubbedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7654,7 +7654,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (res AppsListReposAccessibleToInstallationRes, err error) {
+func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (res AppsListReposAccessibleToInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7808,7 +7808,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7970,7 +7970,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8097,7 +8097,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListWebhookDeliveriesRes, err error) {
+func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListWebhookDeliveriesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8208,7 +8208,7 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRedeliverWebhookDeliveryRes, err error) {
+func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRedeliverWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -8319,7 +8319,7 @@ func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res AppsRemoveRepoFromInstallationRes, err error) {
+func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res AppsRemoveRepoFromInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -8401,7 +8401,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, err error) {
+func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8477,7 +8477,7 @@ func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res *AppsRevokeInstallationAccessTokenNoContent, err error) {
+func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res *AppsRevokeInstallationAccessTokenNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -8486,7 +8486,7 @@ func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, err error) {
+func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8667,7 +8667,7 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspendInstallationRes, err error) {
+func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspendInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -8711,7 +8711,7 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspend
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsuspendInstallationRes, err error) {
+func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsuspendInstallationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -8755,7 +8755,7 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsus
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8796,7 +8796,7 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res *Webh
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res *ActionsBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8837,7 +8837,7 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res *ActionsBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8878,7 +8878,7 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res *ActionsBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8919,7 +8919,7 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res *PackagesBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8960,7 +8960,7 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res *PackagesBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9001,7 +9001,7 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res *PackagesBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9042,7 +9042,7 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res *CombinedBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9083,7 +9083,7 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res *CombinedBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9124,7 +9124,7 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res *CombinedBillingUsage, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9165,7 +9165,7 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuiteRes, err error) {
+func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuiteRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9241,7 +9241,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksGetResponse(resp *http.Response) (res *CheckRun, err error) {
+func decodeChecksGetResponse(resp *http.Response) (res *CheckRun, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9282,7 +9282,7 @@ func decodeChecksGetResponse(resp *http.Response) (res *CheckRun, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksGetSuiteResponse(resp *http.Response) (res *CheckSuite, err error) {
+func decodeChecksGetSuiteResponse(resp *http.Response) (res *CheckSuite, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9323,7 +9323,7 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (res *CheckSuite, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAnnotationsOKHeaders, err error) {
+func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAnnotationsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9412,7 +9412,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefOKHeaders, err error) {
+func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9493,7 +9493,7 @@ func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSuiteOKHeaders, err error) {
+func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSuiteOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9574,7 +9574,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListSuitesForRefOKHeaders, err error) {
+func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListSuitesForRefOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9655,7 +9655,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksRerequestSuiteResponse(resp *http.Response) (res *ChecksRerequestSuiteCreated, err error) {
+func decodeChecksRerequestSuiteResponse(resp *http.Response) (res *ChecksRerequestSuiteCreated, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -9696,7 +9696,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res *ChecksRereque
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res *CheckSuitePreference, err error) {
+func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res *CheckSuitePreference, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9737,7 +9737,7 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res *CheckSu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisRes, err error) {
+func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9918,7 +9918,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGetAlertRes, err error) {
+func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGetAlertRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10064,7 +10064,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScanningGetAnalysisRes, err error) {
+func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScanningGetAnalysisRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10219,7 +10219,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGetSarifRes, err error) {
+func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGetSarifRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10333,7 +10333,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesRes, err error) {
+func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10479,7 +10479,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeScanningListAlertsForRepoRes, err error) {
+func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeScanningListAlertsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10625,7 +10625,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res CodeScanningListRecentAnalysesRes, err error) {
+func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res CodeScanningListRecentAnalysesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10771,7 +10771,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScanningUpdateAlertRes, err error) {
+func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScanningUpdateAlertRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10917,7 +10917,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScanningUploadSarifRes, err error) {
+func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScanningUploadSarifRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -11069,7 +11069,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res CodesOfConductGetAllCodesOfConductRes, err error) {
+func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res CodesOfConductGetAllCodesOfConductRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11113,7 +11113,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesOfConductGetConductCodeRes, err error) {
+func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesOfConductGetConductCodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11192,7 +11192,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) {
+func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11236,7 +11236,7 @@ func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11245,7 +11245,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11254,7 +11254,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -11295,7 +11295,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, err error) {
+func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -11336,7 +11336,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -11377,7 +11377,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11386,7 +11386,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11395,7 +11395,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11404,7 +11404,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11413,7 +11413,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11422,7 +11422,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -11431,7 +11431,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRespo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response) (res *SelectedActions, err error) {
+func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response) (res *SelectedActions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11472,7 +11472,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, err error) {
+func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11521,7 +11521,7 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (res []AuditL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *ActionsEnterprisePermissions, err error) {
+func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *ActionsEnterprisePermissions, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11562,7 +11562,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11603,7 +11603,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11644,7 +11644,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Response) (res *Runner, err error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Response) (res *Runner, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11685,7 +11685,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11726,7 +11726,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11767,7 +11767,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Response) (res *ScimGroupListEnterprise, err error) {
+func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Response) (res *ScimGroupListEnterprise, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11808,7 +11808,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (res *ScimUserListEnterprise, err error) {
+func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (res *ScimUserListEnterprise, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11849,7 +11849,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http.Response) (res []RunnerApplication, err error) {
+func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http.Response) (res []RunnerApplication, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11898,7 +11898,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11939,7 +11939,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11980,7 +11980,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12061,7 +12061,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12142,7 +12142,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -12183,7 +12183,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -12224,7 +12224,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12233,7 +12233,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12242,7 +12242,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12251,7 +12251,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12260,7 +12260,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12301,7 +12301,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12342,7 +12342,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12351,7 +12351,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12360,7 +12360,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12369,7 +12369,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12410,7 +12410,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12451,7 +12451,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12492,7 +12492,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsStarredRes, err error) {
+func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsStarredRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12574,7 +12574,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err error) {
+func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -12763,7 +12763,7 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateCommentRes, err error) {
+func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -12917,7 +12917,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err error) {
+func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -12999,7 +12999,7 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteCommentRes, err error) {
+func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -13081,7 +13081,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) {
+func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -13270,7 +13270,7 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, err error) {
+func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13384,7 +13384,7 @@ func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes, err error) {
+func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13498,7 +13498,7 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRes, err error) {
+func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13644,7 +13644,7 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) {
+func decodeGistsListResponse(resp *http.Response) (res GistsListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13771,7 +13771,7 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListCommentsRes, err error) {
+func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListCommentsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13933,7 +13933,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRes, err error) {
+func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14095,7 +14095,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRes, err error) {
+func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14219,7 +14219,7 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, err error) {
+func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14381,7 +14381,7 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes, err error) {
+func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14543,7 +14543,7 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRes, err error) {
+func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14705,7 +14705,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) {
+func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -14787,7 +14787,7 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err error) {
+func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -14869,7 +14869,7 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateCommentRes, err error) {
+func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14945,7 +14945,7 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err error) {
+func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -15166,7 +15166,7 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes, err error) {
+func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -15317,7 +15317,7 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err error) {
+func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -15433,7 +15433,7 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err error) {
+func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -15549,7 +15549,7 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err error) {
+func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -15735,7 +15735,7 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitDeleteRefResponse(resp *http.Response) (res GitDeleteRefRes, err error) {
+func decodeGitDeleteRefResponse(resp *http.Response) (res GitDeleteRefRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -15779,7 +15779,7 @@ func decodeGitDeleteRefResponse(resp *http.Response) (res GitDeleteRefRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error) {
+func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15925,7 +15925,7 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err error) {
+func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16001,7 +16001,7 @@ func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) {
+func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16077,7 +16077,7 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) {
+func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16153,7 +16153,7 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error) {
+func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16264,7 +16264,7 @@ func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchingRefsOKHeaders, err error) {
+func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchingRefsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16353,7 +16353,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitUpdateRefResponse(resp *http.Response) (res GitUpdateRefRes, err error) {
+func decodeGitUpdateRefResponse(resp *http.Response) (res GitUpdateRefRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16429,7 +16429,7 @@ func decodeGitUpdateRefResponse(resp *http.Response) (res GitUpdateRefRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreGetAllTemplatesRes, err error) {
+func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreGetAllTemplatesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16473,7 +16473,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreG
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTemplateRes, err error) {
+func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTemplateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16517,7 +16517,7 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -16526,7 +16526,7 @@ func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForOrgNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -16535,7 +16535,7 @@ func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
+func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -16547,7 +16547,7 @@ func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
+func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res InteractionsSetRestrictionsForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16623,7 +16623,7 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (res InteractionsSetRestrictionsForOrgRes, err error) {
+func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (res InteractionsSetRestrictionsForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16699,7 +16699,7 @@ func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (res I
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res InteractionsSetRestrictionsForRepoRes, err error) {
+func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res InteractionsSetRestrictionsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16743,7 +16743,7 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesAddAssigneesResponse(resp *http.Response) (res *IssueSimple, err error) {
+func decodeIssuesAddAssigneesResponse(resp *http.Response) (res *IssueSimple, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -16784,7 +16784,7 @@ func decodeIssuesAddAssigneesResponse(resp *http.Response) (res *IssueSimple, er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res IssuesCheckUserCanBeAssignedRes, err error) {
+func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res IssuesCheckUserCanBeAssignedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -16828,7 +16828,7 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res Issues
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err error) {
+func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -17084,7 +17084,7 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCommentRes, err error) {
+func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -17305,7 +17305,7 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabelRes, err error) {
+func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabelRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -17456,7 +17456,7 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateMilestoneRes, err error) {
+func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateMilestoneRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -17607,7 +17607,7 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesDeleteCommentResponse(resp *http.Response) (res *IssuesDeleteCommentNoContent, err error) {
+func decodeIssuesDeleteCommentResponse(resp *http.Response) (res *IssuesDeleteCommentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -17616,7 +17616,7 @@ func decodeIssuesDeleteCommentResponse(resp *http.Response) (res *IssuesDeleteCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesDeleteLabelResponse(resp *http.Response) (res *IssuesDeleteLabelNoContent, err error) {
+func decodeIssuesDeleteLabelResponse(resp *http.Response) (res *IssuesDeleteLabelNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -17625,7 +17625,7 @@ func decodeIssuesDeleteLabelResponse(resp *http.Response) (res *IssuesDeleteLabe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteMilestoneRes, err error) {
+func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteMilestoneRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -17669,7 +17669,7 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteM
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) {
+func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17818,7 +17818,7 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRes, err error) {
+func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17894,7 +17894,7 @@ func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, err error) {
+func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18040,7 +18040,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, err error) {
+func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18116,7 +18116,7 @@ func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilestoneRes, err error) {
+func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilestoneRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18192,7 +18192,7 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error) {
+func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18354,7 +18354,7 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssigneesRes, err error) {
+func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssigneesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18478,7 +18478,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommentsRes, err error) {
+func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommentsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18637,7 +18637,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesListCommentsForRepoRes, err error) {
+func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesListCommentsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18796,7 +18796,7 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListEventsForRepoRes, err error) {
+func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListEventsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18920,7 +18920,7 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res IssuesListForAuthenticatedUserRes, err error) {
+func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res IssuesListForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19047,7 +19047,7 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRes, err error) {
+func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19171,7 +19171,7 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepoRes, err error) {
+func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19365,7 +19365,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *IssuesListLabelsForMilestoneOKHeaders, err error) {
+func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *IssuesListLabelsForMilestoneOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19454,7 +19454,7 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *Issue
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListLabelsForRepoRes, err error) {
+func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListLabelsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19578,7 +19578,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListLabelsOnIssueRes, err error) {
+func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListLabelsOnIssueRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19702,7 +19702,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMilestonesRes, err error) {
+func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMilestonesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19826,7 +19826,7 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error) {
+func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -19975,7 +19975,7 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveAllLabelsRes, err error) {
+func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveAllLabelsRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -20019,7 +20019,7 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res *IssueSimple, err error) {
+func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res *IssueSimple, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20060,7 +20060,7 @@ func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res *IssueSimple,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabelRes, err error) {
+func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabelRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20171,7 +20171,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err error) {
+func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -20250,7 +20250,7 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err error) {
+func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20501,7 +20501,7 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCommentRes, err error) {
+func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20577,7 +20577,7 @@ func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCom
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateLabelResponse(resp *http.Response) (res *Label, err error) {
+func decodeIssuesUpdateLabelResponse(resp *http.Response) (res *Label, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20618,7 +20618,7 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (res *Label, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res *Milestone, err error) {
+func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res *Milestone, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20659,7 +20659,7 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res *Milestone, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err error) {
+func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20773,7 +20773,7 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res LicensesGetAllCommonlyUsedRes, err error) {
+func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res LicensesGetAllCommonlyUsedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20817,7 +20817,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res Licenses
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLicensesGetForRepoResponse(resp *http.Response) (res *LicenseContent, err error) {
+func decodeLicensesGetForRepoResponse(resp *http.Response) (res *LicenseContent, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20858,7 +20858,7 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res *LicenseContent,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, err error) {
+func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20963,7 +20963,7 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRawRes, err error) {
+func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRawRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21031,7 +21031,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRaw
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
+func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21075,7 +21075,7 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMetaGetOctocatResponse(resp *http.Response) (res MetaGetOctocatOK, err error) {
+func decodeMetaGetOctocatResponse(resp *http.Response) (res MetaGetOctocatOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21100,7 +21100,7 @@ func decodeMetaGetOctocatResponse(resp *http.Response) (res MetaGetOctocatOK, er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, err error) {
+func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21125,7 +21125,7 @@ func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, err error)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMetaRootResponse(resp *http.Response) (res *MetaRootOK, err error) {
+func decodeMetaRootResponse(resp *http.Response) (res *MetaRootOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21166,7 +21166,7 @@ func decodeMetaRootResponse(resp *http.Response) (res *MetaRootOK, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsCancelImportResponse(resp *http.Response) (res *MigrationsCancelImportNoContent, err error) {
+func decodeMigrationsCancelImportResponse(resp *http.Response) (res *MigrationsCancelImportNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -21175,7 +21175,7 @@ func decodeMigrationsCancelImportResponse(resp *http.Response) (res *MigrationsC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
+func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsDeleteArchiveForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -21292,7 +21292,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res MigrationsDeleteArchiveForOrgRes, err error) {
+func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res MigrationsDeleteArchiveForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -21336,7 +21336,7 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res Migra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res MigrationsDownloadArchiveForOrgRes, err error) {
+func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res MigrationsDownloadArchiveForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -21380,7 +21380,7 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res Mig
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
+func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetArchiveForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -21462,7 +21462,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res MigrationsGetCommitAuthorsRes, err error) {
+func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res MigrationsGetCommitAuthorsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21538,7 +21538,7 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res Migratio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res MigrationsGetImportStatusRes, err error) {
+func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res MigrationsGetImportStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21614,7 +21614,7 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res Migration
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLargeFile, err error) {
+func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLargeFile, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21663,7 +21663,7 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLar
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
+func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetStatusForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21812,7 +21812,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (res MigrationsGetStatusForOrgRes, err error) {
+func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (res MigrationsGetStatusForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21888,7 +21888,7 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (res Migration
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res MigrationsListForAuthenticatedUserRes, err error) {
+func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res MigrationsListForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22050,7 +22050,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsListForOrgOKHeaders, err error) {
+func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsListForOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22139,7 +22139,7 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res MigrationsListReposForOrgRes, err error) {
+func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res MigrationsListReposForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22263,7 +22263,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsListReposForUserResponse(resp *http.Response) (res MigrationsListReposForUserRes, err error) {
+func decodeMigrationsListReposForUserResponse(resp *http.Response) (res MigrationsListReposForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22387,7 +22387,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res MigrationsMapCommitAuthorRes, err error) {
+func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res MigrationsMapCommitAuthorRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22498,7 +22498,7 @@ func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res Migration
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (res MigrationsSetLfsPreferenceRes, err error) {
+func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (res MigrationsSetLfsPreferenceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22574,7 +22574,7 @@ func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (res Migratio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res MigrationsStartForAuthenticatedUserRes, err error) {
+func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res MigrationsStartForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -22723,7 +22723,7 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsStartForOrgRes, err error) {
+func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsStartForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -22834,7 +22834,7 @@ func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsSta
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsStartImportRes, err error) {
+func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsStartImportRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -22985,7 +22985,7 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
+func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response) (res MigrationsUnlockRepoForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -23102,7 +23102,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res MigrationsUnlockRepoForOrgRes, err error) {
+func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res MigrationsUnlockRepoForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -23146,7 +23146,7 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res Migratio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsUpdateImportResponse(resp *http.Response) (res *Import, err error) {
+func decodeMigrationsUpdateImportResponse(resp *http.Response) (res *Import, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23187,7 +23187,7 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response) (res *Import, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
+func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsCreateAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -23411,7 +23411,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
+func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsDeleteAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -23493,7 +23493,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAuthAuthorizationsDeleteGrantRes, err error) {
+func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAuthAuthorizationsDeleteGrantRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -23575,7 +23575,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
+func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsGetAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23689,7 +23689,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAuthorizationsGetGrantRes, err error) {
+func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAuthorizationsGetGrantRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23803,7 +23803,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.Response) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.Response) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24067,7 +24067,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp *http.Response) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp *http.Response) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24258,7 +24258,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
+func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (res OAuthAuthorizationsListAuthorizationsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24455,7 +24455,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuthAuthorizationsListGrantsRes, err error) {
+func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuthAuthorizationsListGrantsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24652,7 +24652,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
+func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsUpdateAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24728,7 +24728,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsBlockUserResponse(resp *http.Response) (res OrgsBlockUserRes, err error) {
+func decodeOrgsBlockUserResponse(resp *http.Response) (res OrgsBlockUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -24772,7 +24772,7 @@ func decodeOrgsBlockUserResponse(resp *http.Response) (res OrgsBlockUserRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCancelInvitationResponse(resp *http.Response) (res OrgsCancelInvitationRes, err error) {
+func decodeOrgsCancelInvitationResponse(resp *http.Response) (res OrgsCancelInvitationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -24851,7 +24851,7 @@ func decodeOrgsCancelInvitationResponse(resp *http.Response) (res OrgsCancelInvi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlockedUserRes, err error) {
+func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlockedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -24895,7 +24895,7 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlock
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsCheckMembershipForUserRes, err error) {
+func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsCheckMembershipForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -24949,7 +24949,7 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res OrgsCheckPublicMembershipForUserRes, err error) {
+func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res OrgsCheckPublicMembershipForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -24961,7 +24961,7 @@ func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res Or
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
+func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (res OrgsConvertMemberToOutsideCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -25043,7 +25043,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvitationRes, err error) {
+func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvitationRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -25154,7 +25154,7 @@ func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhookRes, err error) {
+func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -25305,7 +25305,7 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhookRes, err error) {
+func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -25349,7 +25349,7 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
+func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25425,7 +25425,7 @@ func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, err error) {
+func decodeOrgsGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25474,7 +25474,7 @@ func decodeOrgsGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
+func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsGetMembershipForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25585,7 +25585,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMembershipForUserRes, err error) {
+func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMembershipForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25696,7 +25696,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, err error) {
+func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25772,7 +25772,7 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25813,7 +25813,7 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res *Webhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebhookDeliveryRes, err error) {
+func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25924,7 +25924,7 @@ func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
+func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26016,7 +26016,7 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlockedUsersRes, err error) {
+func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlockedUsersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26092,7 +26092,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListFailedInvitationsRes, err error) {
+func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListFailedInvitationsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26216,7 +26216,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsListForAuthenticatedUserRes, err error) {
+func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsListForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26378,7 +26378,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKHeaders, err error) {
+func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26467,7 +26467,7 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKH
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInvitationTeamsRes, err error) {
+func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInvitationTeamsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26591,7 +26591,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes, err error) {
+func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26757,7 +26757,7 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
+func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) (res OrgsListMembershipsForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26954,7 +26954,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsListOutsideCollaboratorsOKHeaders, err error) {
+func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsListOutsideCollaboratorsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27043,7 +27043,7 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsListPendingInvitationsRes, err error) {
+func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsListPendingInvitationsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27167,7 +27167,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPublicMembersOKHeaders, err error) {
+func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPublicMembersOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27256,7 +27256,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPubl
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []CredentialAuthorization, err error) {
+func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []CredentialAuthorization, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27305,7 +27305,7 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []Cre
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListWebhookDeliveriesRes, err error) {
+func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListWebhookDeliveriesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27416,7 +27416,7 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRes, err error) {
+func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -27540,7 +27540,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes, err error) {
+func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27584,7 +27584,7 @@ func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRedeliverWebhookDeliveryRes, err error) {
+func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRedeliverWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -27695,7 +27695,7 @@ func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRes, err error) {
+func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27739,7 +27739,7 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRemoveMembershipForUserRes, err error) {
+func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRemoveMembershipForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27818,7 +27818,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsRemoveOutsideCollaboratorRes, err error) {
+func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsRemoveOutsideCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27862,7 +27862,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27871,7 +27871,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
+func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res OrgsRemoveSamlSSOAuthorizationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -27915,7 +27915,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res Orgs
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMembershipForUserRes, err error) {
+func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMembershipForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -28026,7 +28026,7 @@ func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
+func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsSetPublicMembershipForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28070,7 +28070,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUnblockUserResponse(resp *http.Response) (res *OrgsUnblockUserNoContent, err error) {
+func decodeOrgsUnblockUserResponse(resp *http.Response) (res *OrgsUnblockUserNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28079,7 +28079,7 @@ func decodeOrgsUnblockUserResponse(resp *http.Response) (res *OrgsUnblockUserNoC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
+func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsUpdateMembershipForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -28225,7 +28225,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhookRes, err error) {
+func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -28336,7 +28336,7 @@ func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -28377,7 +28377,7 @@ func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res *Webh
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
+func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response) (res PackagesDeletePackageForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28491,7 +28491,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res PackagesDeletePackageForOrgRes, err error) {
+func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res PackagesDeletePackageForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28605,7 +28605,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res PackagesDeletePackageForUserRes, err error) {
+func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res PackagesDeletePackageForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28719,7 +28719,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.Response) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
+func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.Response) (res PackagesDeletePackageVersionForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28833,7 +28833,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res PackagesDeletePackageVersionForOrgRes, err error) {
+func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res PackagesDeletePackageVersionForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -28947,7 +28947,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res PackagesDeletePackageVersionForUserRes, err error) {
+func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res PackagesDeletePackageVersionForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -29061,7 +29061,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29207,7 +29207,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29353,7 +29353,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http.Response) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29499,7 +29499,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (res *Package, err error) {
+func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (res *Package, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29540,7 +29540,7 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res *Package, err error) {
+func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res *Package, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29581,7 +29581,7 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForUserResponse(resp *http.Response) (res *Package, err error) {
+func decodePackagesGetPackageForUserResponse(resp *http.Response) (res *Package, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29622,7 +29622,7 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response) (res *Package,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Response) (res *PackageVersion, err error) {
+func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Response) (res *PackageVersion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29663,7 +29663,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response) (res *PackageVersion, err error) {
+func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response) (res *PackageVersion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29704,7 +29704,7 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res *PackageVersion, err error) {
+func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res *PackageVersion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29745,7 +29745,7 @@ func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res *P
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response) (res []Package, err error) {
+func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response) (res []Package, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29794,7 +29794,7 @@ func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res PackagesListPackagesForOrganizationRes, err error) {
+func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res PackagesListPackagesForOrganizationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29905,7 +29905,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesListPackagesForUserResponse(resp *http.Response) (res PackagesListPackagesForUserRes, err error) {
+func decodePackagesListPackagesForUserResponse(resp *http.Response) (res PackagesListPackagesForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -30016,7 +30016,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Response) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
+func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Response) (res PackagesRestorePackageForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30130,7 +30130,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res PackagesRestorePackageForOrgRes, err error) {
+func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res PackagesRestorePackageForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30244,7 +30244,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res PackagesRestorePackageForUserRes, err error) {
+func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res PackagesRestorePackageForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30358,7 +30358,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.Response) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
+func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.Response) (res PackagesRestorePackageVersionForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30472,7 +30472,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res PackagesRestorePackageVersionForOrgRes, err error) {
+func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res PackagesRestorePackageVersionForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30586,7 +30586,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (res PackagesRestorePackageVersionForUserRes, err error) {
+func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (res PackagesRestorePackageVersionForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30700,7 +30700,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAddCollaboratorRes, err error) {
+func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAddCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -30852,7 +30852,7 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreateColumnRes, err error) {
+func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreateColumnRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -31001,7 +31001,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res ProjectsCreateForAuthenticatedUserRes, err error) {
+func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res ProjectsCreateForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -31185,7 +31185,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreateForOrgRes, err error) {
+func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreateForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -31401,7 +31401,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreateForRepoRes, err error) {
+func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreateForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -31617,7 +31617,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, err error) {
+func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -31769,7 +31769,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCardRes, err error) {
+func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCardRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -31886,7 +31886,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDeleteColumnRes, err error) {
+func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDeleteColumnRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -31968,7 +31968,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err error) {
+func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32082,7 +32082,7 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes, err error) {
+func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32231,7 +32231,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumnRes, err error) {
+func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumnRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32380,7 +32380,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res ProjectsGetPermissionForUserRes, err error) {
+func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res ProjectsGetPermissionForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32564,7 +32564,7 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCardsRes, err error) {
+func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCardsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32726,7 +32726,7 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsListCollaboratorsRes, err error) {
+func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsListCollaboratorsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32958,7 +32958,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListColumnsRes, err error) {
+func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListColumnsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -33120,7 +33120,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForOrgRes, err error) {
+func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -33244,7 +33244,7 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListForRepoRes, err error) {
+func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -33508,7 +33508,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListForUserRes, err error) {
+func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -33632,7 +33632,7 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRes, err error) {
+func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -33816,7 +33816,7 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColumnRes, err error) {
+func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColumnRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -33965,7 +33965,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res ProjectsRemoveCollaboratorRes, err error) {
+func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res ProjectsRemoveCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -34117,7 +34117,7 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, err error) {
+func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34304,7 +34304,7 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCardRes, err error) {
+func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCardRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34488,7 +34488,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdateColumnRes, err error) {
+func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdateColumnRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34602,7 +34602,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMergedRes, err error) {
+func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMergedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -34614,7 +34614,7 @@ func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMerg
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err error) {
+func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -34765,7 +34765,7 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res PullsCreateReplyForReviewCommentRes, err error) {
+func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res PullsCreateReplyForReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -34881,7 +34881,7 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReviewRes, err error) {
+func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34992,7 +34992,7 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreateReviewCommentRes, err error) {
+func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreateReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -35143,7 +35143,7 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDeletePendingReviewRes, err error) {
+func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDeletePendingReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35254,7 +35254,7 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDeleteReviewCommentRes, err error) {
+func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDeleteReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -35298,7 +35298,7 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDelet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissReviewRes, err error) {
+func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35409,7 +35409,7 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
+func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35523,7 +35523,7 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, err error) {
+func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35599,7 +35599,7 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetReviewCommentRes, err error) {
+func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35675,7 +35675,7 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) {
+func decodePullsListResponse(resp *http.Response) (res PullsListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35802,7 +35802,7 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsListCommentsForReviewRes, err error) {
+func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsListCommentsForReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35926,7 +35926,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsOKHeaders, err error) {
+func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36015,7 +36015,7 @@ func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, err error) {
+func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36174,7 +36174,7 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRequestReviewRequestHeaders, err error) {
+func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRequestReviewRequestHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36255,7 +36255,7 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListReviewCommentsOKHeaders, err error) {
+func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListReviewCommentsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36344,7 +36344,7 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *PullsListReviewCommentsForRepoOKHeaders, err error) {
+func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *PullsListReviewCommentsForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36433,7 +36433,7 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *Pul
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsOKHeaders, err error) {
+func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36522,7 +36522,7 @@ func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error) {
+func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36738,7 +36738,7 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (res PullsRemoveRequestedReviewersRes, err error) {
+func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (res PullsRemoveRequestedReviewersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36814,7 +36814,7 @@ func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (res Pulls
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReviewRes, err error) {
+func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -36960,7 +36960,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, err error) {
+func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37071,7 +37071,7 @@ func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranchRes, err error) {
+func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -37182,7 +37182,7 @@ func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReviewRes, err error) {
+func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReviewRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37258,7 +37258,7 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res *PullRequestReviewComment, err error) {
+func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res *PullRequestReviewComment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37299,7 +37299,7 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res *PullReque
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err error) {
+func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37492,7 +37492,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res ReactionsCreateForCommitCommentRes, err error) {
+func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res ReactionsCreateForCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37638,7 +37638,7 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCreateForIssueRes, err error) {
+func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCreateForIssueRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37784,7 +37784,7 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res ReactionsCreateForIssueCommentRes, err error) {
+func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res ReactionsCreateForIssueCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -37930,7 +37930,7 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Response) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
+func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Response) (res ReactionsCreateForPullRequestReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38076,7 +38076,7 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res ReactionsCreateForReleaseRes, err error) {
+func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res ReactionsCreateForReleaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38222,7 +38222,7 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
+func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38298,7 +38298,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *Reaction, err error) {
+func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *Reaction, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -38339,7 +38339,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
+func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38415,7 +38415,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (res *Reaction, err error) {
+func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (res *Reaction, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -38456,7 +38456,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res *ReactionsDeleteForCommitCommentNoContent, err error) {
+func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res *ReactionsDeleteForCommitCommentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38465,7 +38465,7 @@ func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res *Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res *ReactionsDeleteForIssueNoContent, err error) {
+func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res *ReactionsDeleteForIssueNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38474,7 +38474,7 @@ func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res *ReactionsD
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res *ReactionsDeleteForIssueCommentNoContent, err error) {
+func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res *ReactionsDeleteForIssueCommentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38483,7 +38483,7 @@ func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res *Rea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (res *ReactionsDeleteForPullRequestCommentNoContent, err error) {
+func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (res *ReactionsDeleteForPullRequestCommentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38492,7 +38492,7 @@ func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38501,7 +38501,7 @@ func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res *R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38510,7 +38510,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDeleteLegacyRes, err error) {
+func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDeleteLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -38662,7 +38662,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res ReactionsListForCommitCommentRes, err error) {
+func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res ReactionsListForCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38821,7 +38821,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsListForIssueRes, err error) {
+func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsListForIssueRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39015,7 +39015,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res ReactionsListForIssueCommentRes, err error) {
+func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res ReactionsListForIssueCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39174,7 +39174,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response) (res ReactionsListForPullRequestReviewCommentRes, err error) {
+func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response) (res ReactionsListForPullRequestReviewCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39333,7 +39333,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39422,7 +39422,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39511,7 +39511,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39600,7 +39600,7 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39689,7 +39689,7 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptInvitationRes, err error) {
+func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptInvitationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -39806,7 +39806,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (res ReposAddAppAccessRestrictionsRes, err error) {
+func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (res ReposAddAppAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39882,7 +39882,7 @@ func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollaboratorRes, err error) {
+func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -39996,7 +39996,7 @@ func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollab
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAddStatusCheckContextsRes, err error) {
+func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAddStatusCheckContextsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40142,7 +40142,7 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (res ReposAddTeamAccessRestrictionsRes, err error) {
+func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (res ReposAddTeamAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40218,7 +40218,7 @@ func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (res ReposAddUserAccessRestrictionsRes, err error) {
+func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (res ReposAddUserAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40294,7 +40294,7 @@ func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCollaboratorRes, err error) {
+func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCollaboratorRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -40306,7 +40306,7 @@ func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res ReposCheckVulnerabilityAlertsRes, err error) {
+func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res ReposCheckVulnerabilityAlertsRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -40318,7 +40318,7 @@ func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCommitsRes, err error) {
+func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCommitsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40429,7 +40429,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAutolinkRes, err error) {
+func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAutolinkRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -40545,7 +40545,7 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreateCommitCommentRes, err error) {
+func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreateCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -40696,7 +40696,7 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (res ReposCreateCommitSignatureProtectionRes, err error) {
+func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (res ReposCreateCommitSignatureProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40772,7 +40772,7 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHeaders, err error) {
+func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHeaders, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -40853,7 +40853,7 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHead
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDeployKeyRes, err error) {
+func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDeployKeyRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -40969,7 +40969,7 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDeploymentRes, err error) {
+func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -41083,7 +41083,7 @@ func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCreateDeploymentStatusRes, err error) {
+func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCreateDeploymentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -41199,7 +41199,7 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateDispatchEventResponse(resp *http.Response) (res ReposCreateDispatchEventRes, err error) {
+func decodeReposCreateDispatchEventResponse(resp *http.Response) (res ReposCreateDispatchEventRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -41243,7 +41243,7 @@ func decodeReposCreateDispatchEventResponse(resp *http.Response) (res ReposCreat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res ReposCreateForAuthenticatedUserRes, err error) {
+func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res ReposCreateForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -41502,7 +41502,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes, err error) {
+func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -41683,7 +41683,7 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRes, err error) {
+func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -41834,7 +41834,7 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res ReposCreateOrUpdateFileContentsRes, err error) {
+func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res ReposCreateOrUpdateFileContentsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42015,7 +42015,7 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePagesSiteRes, err error) {
+func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePagesSiteRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -42161,7 +42161,7 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePag
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateReleaseRes, err error) {
+func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateReleaseRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -42312,7 +42312,7 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *RepositoryHeaders, err error) {
+func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *RepositoryHeaders, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -42393,7 +42393,7 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *Repositor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebhookRes, err error) {
+func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -42579,7 +42579,7 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDeclineInvitationRes, err error) {
+func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDeclineInvitationRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42696,7 +42696,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err error) {
+func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42810,7 +42810,7 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res *ReposDeleteAccessRestrictionsNoContent, err error) {
+func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res *ReposDeleteAccessRestrictionsNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42819,7 +42819,7 @@ func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res *Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res ReposDeleteAdminBranchProtectionRes, err error) {
+func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res ReposDeleteAdminBranchProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42863,7 +42863,7 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res *ReposDeleteAnEnvironmentNoContent, err error) {
+func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res *ReposDeleteAnEnvironmentNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42872,7 +42872,7 @@ func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res *ReposDele
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAutolinkRes, err error) {
+func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAutolinkRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42916,7 +42916,7 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAuto
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDeleteBranchProtectionRes, err error) {
+func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDeleteBranchProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -42960,7 +42960,7 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDeleteCommitCommentRes, err error) {
+func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDeleteCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43004,7 +43004,7 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDelet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (res ReposDeleteCommitSignatureProtectionRes, err error) {
+func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (res ReposDeleteCommitSignatureProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43048,7 +43048,7 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res *ReposDeleteDeployKeyNoContent, err error) {
+func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res *ReposDeleteDeployKeyNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43057,7 +43057,7 @@ func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res *ReposDeleteDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDeploymentRes, err error) {
+func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43136,7 +43136,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes, err error) {
+func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43317,7 +43317,7 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteInvitationResponse(resp *http.Response) (res *ReposDeleteInvitationNoContent, err error) {
+func decodeReposDeleteInvitationResponse(resp *http.Response) (res *ReposDeleteInvitationNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43326,7 +43326,7 @@ func decodeReposDeleteInvitationResponse(resp *http.Response) (res *ReposDeleteI
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePagesSiteRes, err error) {
+func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePagesSiteRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43440,7 +43440,7 @@ func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePag
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (res ReposDeletePullRequestReviewProtectionRes, err error) {
+func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (res ReposDeletePullRequestReviewProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43484,7 +43484,7 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteReleaseResponse(resp *http.Response) (res *ReposDeleteReleaseNoContent, err error) {
+func decodeReposDeleteReleaseResponse(resp *http.Response) (res *ReposDeleteReleaseNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43493,7 +43493,7 @@ func decodeReposDeleteReleaseResponse(resp *http.Response) (res *ReposDeleteRele
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res *ReposDeleteReleaseAssetNoContent, err error) {
+func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res *ReposDeleteReleaseAssetNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43502,7 +43502,7 @@ func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res *ReposDelet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebhookRes, err error) {
+func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43546,7 +43546,7 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposDisableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposDisableAutomatedSecurityFixesNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43555,7 +43555,7 @@ func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res *ReposDisableLfsForRepoNoContent, err error) {
+func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res *ReposDisableLfsForRepoNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43564,7 +43564,7 @@ func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res *ReposDisabl
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposDisableVulnerabilityAlertsNoContent, err error) {
+func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposDisableVulnerabilityAlertsNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43573,7 +43573,7 @@ func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res *Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposDownloadTarballArchiveFound, err error) {
+func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposDownloadTarballArchiveFound, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -43621,7 +43621,7 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposD
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposDownloadZipballArchiveFound, err error) {
+func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposDownloadZipballArchiveFound, _ error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -43669,7 +43669,7 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposD
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposEnableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposEnableAutomatedSecurityFixesNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43678,7 +43678,7 @@ func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLfsForRepoRes, err error) {
+func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLfsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -43722,7 +43722,7 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLf
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposEnableVulnerabilityAlertsNoContent, err error) {
+func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposEnableVulnerabilityAlertsNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -43731,7 +43731,7 @@ func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res *Rep
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
+func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43877,7 +43877,7 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGetAccessRestrictionsRes, err error) {
+func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGetAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43953,7 +43953,7 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, err error) {
+func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43994,7 +43994,7 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res *Prot
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res ReposGetAllStatusCheckContextsRes, err error) {
+func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res ReposGetAllStatusCheckContextsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44070,7 +44070,7 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopicsRes, err error) {
+func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopicsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44181,7 +44181,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
+func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetAppsWithAccessToProtectedBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44257,7 +44257,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRes, err error) {
+func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44333,7 +44333,7 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, err error) {
+func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44479,7 +44479,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBranchProtectionRes, err error) {
+func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBranchProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44555,7 +44555,7 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetClonesResponse(resp *http.Response) (res ReposGetClonesRes, err error) {
+func decodeReposGetClonesResponse(resp *http.Response) (res ReposGetClonesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44631,7 +44631,7 @@ func decodeReposGetClonesResponse(resp *http.Response) (res ReposGetClonesRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGetCodeFrequencyStatsRes, err error) {
+func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGetCodeFrequencyStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44710,7 +44710,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res ReposGetCollaboratorPermissionLevelRes, err error) {
+func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res ReposGetCollaboratorPermissionLevelRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44786,7 +44786,7 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposGetCombinedStatusForRefRes, err error) {
+func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposGetCombinedStatusForRefRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44862,7 +44862,7 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, err error) {
+func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45008,7 +45008,7 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGetCommitActivityStatsRes, err error) {
+func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGetCommitActivityStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45087,7 +45087,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommitCommentRes, err error) {
+func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45163,7 +45163,7 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res ReposGetCommitSignatureProtectionRes, err error) {
+func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res ReposGetCommitSignatureProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45239,7 +45239,7 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res *CommunityProfile, err error) {
+func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res *CommunityProfile, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45280,7 +45280,7 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res *Co
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetContributorsStatsRes, err error) {
+func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetContributorsStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45359,7 +45359,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKeyRes, err error) {
+func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKeyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45435,7 +45435,7 @@ func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKey
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetDeploymentResponse(resp *http.Response) (res ReposGetDeploymentRes, err error) {
+func decodeReposGetDeploymentResponse(resp *http.Response) (res ReposGetDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45511,7 +45511,7 @@ func decodeReposGetDeploymentResponse(resp *http.Response) (res ReposGetDeployme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDeploymentStatusRes, err error) {
+func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDeploymentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45622,7 +45622,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res *PageBuild, err error) {
+func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res *PageBuild, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45663,7 +45663,7 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res *PageBuild
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetLatestReleaseResponse(resp *http.Response) (res *Release, err error) {
+func decodeReposGetLatestReleaseResponse(resp *http.Response) (res *Release, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45704,7 +45704,7 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response) (res *Release, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err error) {
+func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45780,7 +45780,7 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPagesBuildResponse(resp *http.Response) (res *PageBuild, err error) {
+func decodeReposGetPagesBuildResponse(resp *http.Response) (res *PageBuild, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45821,7 +45821,7 @@ func decodeReposGetPagesBuildResponse(resp *http.Response) (res *PageBuild, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPagesHealthCheckRes, err error) {
+func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPagesHealthCheckRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45938,7 +45938,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGetParticipationStatsRes, err error) {
+func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGetParticipationStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46014,7 +46014,7 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res *ProtectedBranchPullRequestReview, err error) {
+func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res *ProtectedBranchPullRequestReview, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46055,7 +46055,7 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunchCardStatsRes, err error) {
+func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunchCardStatsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46099,7 +46099,7 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, err error) {
+func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46210,7 +46210,7 @@ func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetReadmeInDirectoryRes, err error) {
+func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetReadmeInDirectoryRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46321,7 +46321,7 @@ func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes, err error) {
+func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46397,7 +46397,7 @@ func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleaseAssetRes, err error) {
+func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleaseAssetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46511,7 +46511,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleaseByTagRes, err error) {
+func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleaseByTagRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46587,7 +46587,7 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res ReposGetStatusChecksProtectionRes, err error) {
+func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res ReposGetStatusChecksProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46663,7 +46663,7 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
+func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetTeamsWithAccessToProtectedBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46739,7 +46739,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRes, err error) {
+func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46815,7 +46815,7 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopReferrersRes, err error) {
+func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopReferrersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46891,7 +46891,7 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopRef
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
+func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetUsersWithAccessToProtectedBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46967,7 +46967,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetViewsResponse(resp *http.Response) (res ReposGetViewsRes, err error) {
+func decodeReposGetViewsResponse(resp *http.Response) (res ReposGetViewsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47043,7 +47043,7 @@ func decodeReposGetViewsResponse(resp *http.Response) (res ReposGetViewsRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes, err error) {
+func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47119,7 +47119,7 @@ func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47160,7 +47160,7 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res *Webho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWebhookDeliveryRes, err error) {
+func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47271,7 +47271,7 @@ func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWeb
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err error) {
+func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47320,7 +47320,7 @@ func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranchesRes, err error) {
+func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranchesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47444,7 +47444,7 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (res ReposListBranchesForHeadCommitRes, err error) {
+func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (res ReposListBranchesForHeadCommitRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47520,7 +47520,7 @@ func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCollaboratorsRes, err error) {
+func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCollaboratorsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47644,7 +47644,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposListCommentsForCommitOKHeaders, err error) {
+func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposListCommentsForCommitOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47733,7 +47733,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *ReposListCommitCommentsForRepoOKHeaders, err error) {
+func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *ReposListCommitCommentsForRepoOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47822,7 +47822,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *Rep
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res ReposListCommitStatusesForRefRes, err error) {
+func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res ReposListCommitStatusesForRefRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47946,7 +47946,7 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRes, err error) {
+func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48175,7 +48175,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListContributorsResponse(resp *http.Response) (res ReposListContributorsRes, err error) {
+func decodeReposListContributorsResponse(resp *http.Response) (res ReposListContributorsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48337,7 +48337,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeployKeysOKHeaders, err error) {
+func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeployKeysOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48426,7 +48426,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeplo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposListDeploymentStatusesRes, err error) {
+func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposListDeploymentStatusesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48550,7 +48550,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDeploymentsOKHeaders, err error) {
+func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDeploymentsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48639,7 +48639,7 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDepl
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res ReposListForAuthenticatedUserRes, err error) {
+func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res ReposListForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48788,7 +48788,7 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKHeaders, err error) {
+func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48877,7 +48877,7 @@ func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKH
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserOKHeaders, err error) {
+func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48966,7 +48966,7 @@ func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, err error) {
+func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49090,7 +49090,7 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvitationsOKHeaders, err error) {
+func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvitationsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49179,7 +49179,7 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
+func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response) (res ReposListInvitationsForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49376,7 +49376,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err error) {
+func decodeReposListLanguagesResponse(resp *http.Response) (res Language, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49417,7 +49417,7 @@ func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPagesBuildsOKHeaders, err error) {
+func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPagesBuildsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49506,7 +49506,7 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPage
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes, err error) {
+func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49633,7 +49633,7 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
+func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49722,7 +49722,7 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListReleaseAssetsOKHeaders, err error) {
+func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListReleaseAssetsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49811,7 +49811,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleasesRes, err error) {
+func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleasesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49935,7 +49935,7 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeaders, err error) {
+func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50024,7 +50024,7 @@ func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeade
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHeaders, err error) {
+func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50113,7 +50113,7 @@ func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposListWebhookDeliveriesRes, err error) {
+func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposListWebhookDeliveriesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50224,7 +50224,7 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooksRes, err error) {
+func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooksRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50348,7 +50348,7 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, err error) {
+func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -50468,7 +50468,7 @@ func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstreamRes, err error) {
+func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstreamRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50515,7 +50515,7 @@ func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstre
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRes, err error) {
+func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -50559,7 +50559,7 @@ func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res ReposRedeliverWebhookDeliveryRes, err error) {
+func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res ReposRedeliverWebhookDeliveryRes, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -50670,7 +50670,7 @@ func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveAppAccessRestrictionsRes, err error) {
+func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveAppAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50746,7 +50746,7 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res *ReposRemoveCollaboratorNoContent, err error) {
+func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res *ReposRemoveCollaboratorNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -50755,7 +50755,7 @@ func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res *ReposRemov
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res ReposRemoveStatusCheckContextsRes, err error) {
+func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res ReposRemoveStatusCheckContextsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50866,7 +50866,7 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res *ReposRemoveStatusCheckProtectionNoContent, err error) {
+func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res *ReposRemoveStatusCheckProtectionNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -50875,7 +50875,7 @@ func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res *R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
+func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveTeamAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50951,7 +50951,7 @@ func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveUserAccessRestrictionsRes, err error) {
+func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (res ReposRemoveUserAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51027,7 +51027,7 @@ func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranchRes, err error) {
+func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranchRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -51173,7 +51173,7 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceAllTopicsRes, err error) {
+func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceAllTopicsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51319,7 +51319,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRequestPagesBuildResponse(resp *http.Response) (res *PageBuildStatus, err error) {
+func decodeReposRequestPagesBuildResponse(resp *http.Response) (res *PageBuildStatus, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -51360,7 +51360,7 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response) (res *PageBuildSt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, err error) {
+func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51401,7 +51401,7 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res *Prot
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (res ReposSetAppAccessRestrictionsRes, err error) {
+func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (res ReposSetAppAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51477,7 +51477,7 @@ func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSetStatusCheckContextsRes, err error) {
+func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSetStatusCheckContextsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51588,7 +51588,7 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (res ReposSetTeamAccessRestrictionsRes, err error) {
+func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (res ReposSetTeamAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51664,7 +51664,7 @@ func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (res ReposSetUserAccessRestrictionsRes, err error) {
+func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (res ReposSetUserAccessRestrictionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -51740,7 +51740,7 @@ func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushWebhookRes, err error) {
+func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -51784,7 +51784,7 @@ func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposTransferResponse(resp *http.Response) (res *MinimalRepository, err error) {
+func decodeReposTransferResponse(resp *http.Response) (res *MinimalRepository, _ error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -51825,7 +51825,7 @@ func decodeReposTransferResponse(resp *http.Response) (res *MinimalRepository, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err error) {
+func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52006,7 +52006,7 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUpdateBranchProtectionRes, err error) {
+func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUpdateBranchProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52152,7 +52152,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdateCommitCommentRes, err error) {
+func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdateCommitCommentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52228,7 +52228,7 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateInvitationResponse(resp *http.Response) (res *RepositoryInvitation, err error) {
+func decodeReposUpdateInvitationResponse(resp *http.Response) (res *RepositoryInvitation, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52269,7 +52269,7 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (res *RepositoryIn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
+func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (res ReposUpdatePullRequestReviewProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52345,7 +52345,7 @@ func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateReleaseRes, err error) {
+func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateReleaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52421,7 +52421,7 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, err error) {
+func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52462,7 +52462,7 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res *ReleaseAss
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res ReposUpdateStatusCheckProtectionRes, err error) {
+func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res ReposUpdateStatusCheckProtectionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52573,7 +52573,7 @@ func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebhookRes, err error) {
+func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebhookRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52684,7 +52684,7 @@ func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, err error) {
+func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52725,7 +52725,7 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res *We
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, err error) {
+func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -52766,7 +52766,7 @@ func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res *ReleaseAss
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUserFromOrgRes, err error) {
+func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUserFromOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -52848,7 +52848,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error) {
+func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52997,7 +52997,7 @@ func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchCommitsResponse(resp *http.Response) (res SearchCommitsRes, err error) {
+func decodeSearchCommitsResponse(resp *http.Response) (res SearchCommitsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53076,7 +53076,7 @@ func decodeSearchCommitsResponse(resp *http.Response) (res SearchCommitsRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchIssuesAndPullRequestsRes, err error) {
+func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchIssuesAndPullRequestsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53225,7 +53225,7 @@ func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchI
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err error) {
+func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53374,7 +53374,7 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, err error) {
+func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53488,7 +53488,7 @@ func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsRes, err error) {
+func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53567,7 +53567,7 @@ func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, err error) {
+func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53681,7 +53681,7 @@ func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanningGetAlertRes, err error) {
+func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanningGetAlertRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53760,7 +53760,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res SecretScanningListAlertsForOrgRes, err error) {
+func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res SecretScanningListAlertsForOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53919,7 +53919,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (res SecretScanningListAlertsForRepoRes, err error) {
+func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (res SecretScanningListAlertsForRepoRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53998,7 +53998,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (res Sec
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretScanningUpdateAlertRes, err error) {
+func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretScanningUpdateAlertRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54080,7 +54080,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMemberLegacyRes, err error) {
+func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMemberLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -54130,7 +54130,7 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMember
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54177,7 +54177,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54259,7 +54259,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -54303,7 +54303,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
+func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -54417,7 +54417,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -54426,7 +54426,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -54505,7 +54505,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
+func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54549,7 +54549,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
+func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54593,7 +54593,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
+func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54640,7 +54640,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
+func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -54687,7 +54687,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err error) {
+func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -54798,7 +54798,7 @@ func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -54839,7 +54839,7 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -54880,7 +54880,7 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -54921,7 +54921,7 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res *TeamDis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -54962,7 +54962,7 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res *TeamDi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Response) (res *GroupMapping, err error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Response) (res *GroupMapping, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55003,7 +55003,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Response) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Response) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55114,7 +55114,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55123,7 +55123,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentLegacyNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55132,7 +55132,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55141,7 +55141,7 @@ func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res *TeamsDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionLegacyNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55150,7 +55150,7 @@ func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res *TeamsD
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res *TeamsDeleteInOrgNoContent, err error) {
+func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res *TeamsDeleteInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55159,7 +55159,7 @@ func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res *TeamsDeleteInOrgN
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteLegacyResponse(resp *http.Response) (res TeamsDeleteLegacyRes, err error) {
+func decodeTeamsDeleteLegacyResponse(resp *http.Response) (res TeamsDeleteLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55238,7 +55238,7 @@ func decodeTeamsDeleteLegacyResponse(resp *http.Response) (res TeamsDeleteLegacy
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, err error) {
+func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55314,7 +55314,7 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55355,7 +55355,7 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res *Tea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55396,7 +55396,7 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res *Te
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55437,7 +55437,7 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscus
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55478,7 +55478,7 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, err error) {
+func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55554,7 +55554,7 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMemberLegacyRes, err error) {
+func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMemberLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -55566,7 +55566,7 @@ func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMember
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res TeamsGetMembershipForUserInOrgRes, err error) {
+func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res TeamsGetMembershipForUserInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55610,7 +55610,7 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res Team
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res TeamsGetMembershipForUserLegacyRes, err error) {
+func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res TeamsGetMembershipForUserLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55686,7 +55686,7 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) {
+func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55810,7 +55810,7 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChildInOrgOKHeaders, err error) {
+func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChildInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55899,7 +55899,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChild
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChildLegacyRes, err error) {
+func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChildLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56093,7 +56093,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
+func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionCommentsInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56182,7 +56182,7 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
+func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionCommentsLegacyOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56271,7 +56271,7 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionsInOrgOKHeaders, err error) {
+func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionsInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56360,7 +56360,7 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionsLegacyOKHeaders, err error) {
+func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionsLegacyOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56449,7 +56449,7 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res TeamsListForAuthenticatedUserRes, err error) {
+func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res TeamsListForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56611,7 +56611,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsListIdpGroupsForLegacyRes, err error) {
+func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsListIdpGroupsForLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56722,7 +56722,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMappingHeaders, err error) {
+func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMappingHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56803,7 +56803,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMapp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res *GroupMapping, err error) {
+func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res *GroupMapping, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56844,7 +56844,7 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res *GroupMappi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMembersInOrgOKHeaders, err error) {
+func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMembersInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -56933,7 +56933,7 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMembersLegacyRes, err error) {
+func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMembersLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57057,7 +57057,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *TeamsListPendingInvitationsInOrgOKHeaders, err error) {
+func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *TeamsListPendingInvitationsInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57146,7 +57146,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *TeamsListPendingInvitationsLegacyOKHeaders, err error) {
+func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *TeamsListPendingInvitationsLegacyOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57235,7 +57235,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListProjectsInOrgOKHeaders, err error) {
+func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListProjectsInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57324,7 +57324,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListPr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListProjectsLegacyRes, err error) {
+func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListProjectsLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57448,7 +57448,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListReposInOrgOKHeaders, err error) {
+func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListReposInOrgOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57537,7 +57537,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListRepos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListReposLegacyRes, err error) {
+func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListReposLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57661,7 +57661,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemoveMemberLegacyRes, err error) {
+func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemoveMemberLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57673,7 +57673,7 @@ func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemove
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
+func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res TeamsRemoveMembershipForUserInOrgRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57685,7 +57685,7 @@ func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
+func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res TeamsRemoveMembershipForUserLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57697,7 +57697,7 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res *TeamsRemoveProjectInOrgNoContent, err error) {
+func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res *TeamsRemoveProjectInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57706,7 +57706,7 @@ func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res *TeamsRemov
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemoveProjectLegacyRes, err error) {
+func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemoveProjectLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57820,7 +57820,7 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemov
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res *TeamsRemoveRepoInOrgNoContent, err error) {
+func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res *TeamsRemoveRepoInOrgNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57829,7 +57829,7 @@ func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res *TeamsRemoveRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res *TeamsRemoveRepoLegacyNoContent, err error) {
+func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res *TeamsRemoveRepoLegacyNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -57838,7 +57838,7 @@ func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res *TeamsRemoveR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57879,7 +57879,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
+func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57920,7 +57920,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57961,7 +57961,7 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res *TeamDis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
+func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -58002,7 +58002,7 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res *TeamDi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res *TeamFull, err error) {
+func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res *TeamFull, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -58043,7 +58043,7 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res *TeamFull, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacyRes, err error) {
+func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -58224,7 +58224,7 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res UsersAddEmailForAuthenticatedRes, err error) {
+func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res UsersAddEmailForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -58408,7 +58408,7 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error) {
+func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -58560,7 +58560,7 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlockedRes, err error) {
+func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlockedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -58677,7 +58677,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersCheckFollowingForUserRes, err error) {
+func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersCheckFollowingForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -58689,7 +58689,7 @@ func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersChe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
+func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response) (res UsersCheckPersonIsFollowedByAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -58806,7 +58806,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
+func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersCreateGpgKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -58990,7 +58990,7 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
+func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersCreatePublicSSHKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -59174,7 +59174,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res UsersDeleteEmailForAuthenticatedRes, err error) {
+func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res UsersDeleteEmailForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -59326,7 +59326,7 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
+func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeleteGpgKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -59478,7 +59478,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
+func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeletePublicSSHKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -59595,7 +59595,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err error) {
+func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -59712,7 +59712,7 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthenticatedRes, err error) {
+func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -59826,7 +59826,7 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUsernameRes, err error) {
+func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUsernameRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -59937,7 +59937,7 @@ func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUserna
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetContextForUserRes, err error) {
+func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetContextForUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60048,7 +60048,7 @@ func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetCont
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
+func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetGpgKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60197,7 +60197,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
+func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetPublicSSHKeyForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60346,7 +60346,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) {
+func decodeUsersListResponse(resp *http.Response) (res UsersListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60438,7 +60438,7 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res UsersListBlockedByAuthenticatedRes, err error) {
+func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res UsersListBlockedByAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60622,7 +60622,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListEmailsForAuthenticatedRes, err error) {
+func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListEmailsForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60819,7 +60819,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res UsersListFollowedByAuthenticatedRes, err error) {
+func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res UsersListFollowedByAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -60981,7 +60981,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (res UsersListFollowersForAuthenticatedUserRes, err error) {
+func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (res UsersListFollowersForAuthenticatedUserRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61143,7 +61143,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersListFollowersForUserOKHeaders, err error) {
+func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersListFollowersForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61232,7 +61232,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersListFollowingForUserOKHeaders, err error) {
+func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersListFollowingForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61321,7 +61321,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res UsersListGpgKeysForAuthenticatedRes, err error) {
+func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res UsersListGpgKeysForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61518,7 +61518,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListGpgKeysForUserOKHeaders, err error) {
+func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListGpgKeysForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61607,7 +61607,7 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListG
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
+func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListPublicEmailsForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61804,7 +61804,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersListPublicKeysForUserOKHeaders, err error) {
+func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersListPublicKeysForUserOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -61893,7 +61893,7 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
+func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (res UsersListPublicSSHKeysForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -62090,7 +62090,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Response) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
+func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Response) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -62274,7 +62274,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err error) {
+func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -62391,7 +62391,7 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err error) {
+func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -62508,7 +62508,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdateAuthenticatedRes, err error) {
+func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdateAuthenticatedRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
+func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -55,7 +55,7 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICaptcha2chcaptchaShowGetRes, err error) {
+func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICaptcha2chcaptchaShowGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -67,7 +67,7 @@ func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICapt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captcha, err error) {
+func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captcha, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -108,7 +108,7 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
+func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -149,7 +149,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -158,7 +158,7 @@ func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
+func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -199,7 +199,7 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaRecaptchaMobileGetOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -208,7 +208,7 @@ func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, err error) {
+func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -249,7 +249,7 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPILikeGetResponse(resp *http.Response) (res *Like, err error) {
+func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -290,7 +290,7 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *MobileThreadPostsAfter, err error) {
+func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *MobileThreadPostsAfter, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -331,7 +331,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, err error) {
+func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -372,7 +372,7 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *MobileThreadLastInfo, err error) {
+func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *MobileThreadLastInfo, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -413,7 +413,7 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobilePost, err error) {
+func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobilePost, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -454,7 +454,7 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, err error) {
+func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -495,7 +495,7 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, err error) {
+func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -536,7 +536,7 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserReportPostResponse(resp *http.Response) (res *Report, err error) {
+func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

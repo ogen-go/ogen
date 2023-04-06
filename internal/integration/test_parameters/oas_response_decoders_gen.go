@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *ComplicatedParameterNameGetOK, err error) {
+func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *ComplicatedParameterNameGetOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23,7 +23,7 @@ func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *Compli
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeContentParametersResponse(resp *http.Response) (res *ContentParameters, err error) {
+func decodeContentParametersResponse(resp *http.Response) (res *ContentParameters, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -64,7 +64,7 @@ func decodeContentParametersResponse(resp *http.Response) (res *ContentParameter
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeCookieParameterResponse(resp *http.Response) (res *Value, err error) {
+func decodeCookieParameterResponse(resp *http.Response) (res *Value, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -105,7 +105,7 @@ func decodeCookieParameterResponse(resp *http.Response) (res *Value, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeHeaderParameterResponse(resp *http.Response) (res *Value, err error) {
+func decodeHeaderParameterResponse(resp *http.Response) (res *Value, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -146,7 +146,7 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Value, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObject, err error) {
+func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObject, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -187,7 +187,7 @@ func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObje
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryParameterOK, err error) {
+func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryParameterOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -228,7 +228,7 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePathParameterResponse(resp *http.Response) (res *Value, err error) {
+func decodePathParameterResponse(resp *http.Response) (res *Value, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -269,7 +269,7 @@ func decodePathParameterResponse(resp *http.Response) (res *Value, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, err error) {
+func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

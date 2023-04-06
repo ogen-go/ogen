@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44,7 +44,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -72,7 +72,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -100,7 +100,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -128,7 +128,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNodeProxyRes, err error) {
+func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res ConnectCoreV1DeleteNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -156,7 +156,7 @@ func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res Connec
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1DeleteNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -184,7 +184,7 @@ func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodAttachRes, err error) {
+func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodAttachRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -212,7 +212,7 @@ func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodExecRes, err error) {
+func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodExecRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -240,7 +240,7 @@ func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodPortforwardRes, err error) {
+func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodPortforwardRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -268,7 +268,7 @@ func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -296,7 +296,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -324,7 +324,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -352,7 +352,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -380,7 +380,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCoreV1GetNodeProxyRes, err error) {
+func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCoreV1GetNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -408,7 +408,7 @@ func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1GetNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -436,7 +436,7 @@ func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -464,7 +464,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -492,7 +492,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -520,7 +520,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -548,7 +548,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNodeProxyRes, err error) {
+func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectCoreV1HeadNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -576,7 +576,7 @@ func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1HeadNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -604,7 +604,7 @@ func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -632,7 +632,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -660,7 +660,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -688,7 +688,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -716,7 +716,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNodeProxyRes, err error) {
+func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res ConnectCoreV1OptionsNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -744,7 +744,7 @@ func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res Conne
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1OptionsNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -772,7 +772,7 @@ func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -800,7 +800,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -828,7 +828,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -856,7 +856,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -884,7 +884,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNodeProxyRes, err error) {
+func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PatchNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -912,7 +912,7 @@ func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res Connect
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PatchNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -940,7 +940,7 @@ func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodAttachRes, err error) {
+func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodAttachRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -968,7 +968,7 @@ func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodExecRes, err error) {
+func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodExecRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -996,7 +996,7 @@ func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodPortforwardRes, err error) {
+func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodPortforwardRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1024,7 +1024,7 @@ func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1052,7 +1052,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1080,7 +1080,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1108,7 +1108,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1136,7 +1136,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PostNodeProxyRes, err error) {
+func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PostNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1164,7 +1164,7 @@ func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PostNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1192,7 +1192,7 @@ func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedPodProxyRes, err error) {
+func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedPodProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1220,7 +1220,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedPodProxyWithPathRes, err error) {
+func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedPodProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1248,7 +1248,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedServiceProxyRes, err error) {
+func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedServiceProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1276,7 +1276,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedServiceProxyWithPathRes, err error) {
+func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNamespacedServiceProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1304,7 +1304,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PutNodeProxyRes, err error) {
+func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCoreV1PutNodeProxyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1332,7 +1332,7 @@ func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNodeProxyWithPathRes, err error) {
+func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res ConnectCoreV1PutNodeProxyWithPathRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1360,7 +1360,7 @@ func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, err error) {
+func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1404,7 +1404,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res GetAdmissionregistrationAPIGroupRes, err error) {
+func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res GetAdmissionregistrationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1448,7 +1448,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
+func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (res GetAdmissionregistrationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1492,7 +1492,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiextensionsAPIGroupRes, err error) {
+func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiextensionsAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1536,7 +1536,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetApiextensionsV1APIResourcesRes, err error) {
+func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetApiextensionsV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1580,7 +1580,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApiregistrationAPIGroupRes, err error) {
+func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApiregistrationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1624,7 +1624,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res GetApiregistrationV1APIResourcesRes, err error) {
+func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res GetApiregistrationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1668,7 +1668,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes, err error) {
+func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1712,7 +1712,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIResourcesRes, err error) {
+func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1756,7 +1756,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthenticationAPIGroupRes, err error) {
+func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthenticationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1800,7 +1800,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res GetAuthenticationV1APIResourcesRes, err error) {
+func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res GetAuthenticationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1844,7 +1844,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthorizationAPIGroupRes, err error) {
+func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthorizationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1888,7 +1888,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetAuthorizationV1APIResourcesRes, err error) {
+func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetAuthorizationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1932,7 +1932,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscalingAPIGroupRes, err error) {
+func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscalingAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1976,7 +1976,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV1APIResourcesRes, err error) {
+func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2020,7 +2020,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
+func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2064,7 +2064,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
+func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta2APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2108,7 +2108,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRes, err error) {
+func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2152,7 +2152,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1APIResourcesRes, err error) {
+func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2196,7 +2196,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatchV1beta1APIResourcesRes, err error) {
+func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatchV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2240,7 +2240,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertificatesAPIGroupRes, err error) {
+func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertificatesAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2284,7 +2284,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCertificatesV1APIResourcesRes, err error) {
+func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCertificatesV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2328,7 +2328,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, err error) {
+func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2372,7 +2372,7 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordinationAPIGroupRes, err error) {
+func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordinationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2416,7 +2416,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCoordinationV1APIResourcesRes, err error) {
+func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCoordinationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2460,7 +2460,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsRes, err error) {
+func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2504,7 +2504,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIResourcesRes, err error) {
+func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2548,7 +2548,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAPIGroupRes, err error) {
+func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2592,7 +2592,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1APIResourcesRes, err error) {
+func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2636,7 +2636,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
+func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2680,7 +2680,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroupRes, err error) {
+func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2724,7 +2724,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1APIResourcesRes, err error) {
+func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2768,7 +2768,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEventsV1beta1APIResourcesRes, err error) {
+func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEventsV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2812,7 +2812,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
+func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res GetFlowcontrolApiserverAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2856,7 +2856,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
+func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2900,7 +2900,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
+func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2944,7 +2944,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInternalApiserverAPIGroupRes, err error) {
+func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInternalApiserverAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2988,7 +2988,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
+func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response) (res GetInternalApiserverV1alpha1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3032,7 +3032,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworkingAPIGroupRes, err error) {
+func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworkingAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3076,7 +3076,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetworkingV1APIResourcesRes, err error) {
+func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetworkingV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3120,7 +3120,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes, err error) {
+func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3164,7 +3164,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIResourcesRes, err error) {
+func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3208,7 +3208,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNodeV1alpha1APIResourcesRes, err error) {
+func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNodeV1alpha1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3252,7 +3252,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV1beta1APIResourcesRes, err error) {
+func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3296,7 +3296,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroupRes, err error) {
+func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3340,7 +3340,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1APIResourcesRes, err error) {
+func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3384,7 +3384,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPolicyV1beta1APIResourcesRes, err error) {
+func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPolicyV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3428,7 +3428,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRbacAuthorizationAPIGroupRes, err error) {
+func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRbacAuthorizationAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3472,7 +3472,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
+func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetRbacAuthorizationV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3516,7 +3516,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetSchedulingAPIGroupRes, err error) {
+func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetSchedulingAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3560,7 +3560,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSchedulingV1APIResourcesRes, err error) {
+func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSchedulingV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3604,7 +3604,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
+func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3648,7 +3648,7 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
+func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDKeysetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3676,7 +3676,7 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGroupRes, err error) {
+func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGroupRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3720,7 +3720,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorageV1APIResourcesRes, err error) {
+func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorageV1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3764,7 +3764,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetStorageV1alpha1APIResourcesRes, err error) {
+func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetStorageV1alpha1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3808,7 +3808,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetStorageV1beta1APIResourcesRes, err error) {
+func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetStorageV1beta1APIResourcesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3852,7 +3852,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3896,7 +3896,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3940,7 +3940,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
+func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ListApiextensionsV1CustomResourceDefinitionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3984,7 +3984,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res ListApiregistrationV1APIServiceRes, err error) {
+func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res ListApiregistrationV1APIServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4028,7 +4028,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
+func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ControllerRevisionForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4072,7 +4072,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
+func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DaemonSetForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4116,7 +4116,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
+func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DeploymentForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4160,7 +4160,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
+func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res ListAppsV1NamespacedControllerRevisionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4204,7 +4204,7 @@ func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListAppsV1NamespacedDaemonSetRes, err error) {
+func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListAppsV1NamespacedDaemonSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4248,7 +4248,7 @@ func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res ListAppsV1NamespacedDeploymentRes, err error) {
+func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res ListAppsV1NamespacedDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4292,7 +4292,7 @@ func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res List
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res ListAppsV1NamespacedReplicaSetRes, err error) {
+func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res ListAppsV1NamespacedReplicaSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4336,7 +4336,7 @@ func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res List
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res ListAppsV1NamespacedStatefulSetRes, err error) {
+func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res ListAppsV1NamespacedStatefulSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4380,7 +4380,7 @@ func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Lis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
+func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ReplicaSetForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4424,7 +4424,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
+func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1StatefulSetForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4468,7 +4468,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4512,7 +4512,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4556,7 +4556,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4600,7 +4600,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4644,7 +4644,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4688,7 +4688,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4732,7 +4732,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
+func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1CronJobForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4776,7 +4776,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1JobForAllNamespacesRes, err error) {
+func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1JobForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4820,7 +4820,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBatchV1NamespacedCronJobRes, err error) {
+func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBatchV1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4864,7 +4864,7 @@ func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV1NamespacedJobRes, err error) {
+func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV1NamespacedJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4908,7 +4908,7 @@ func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
+func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1beta1CronJobForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4952,7 +4952,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
+func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res ListBatchV1beta1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4996,7 +4996,7 @@ func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
+func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ListCertificatesV1CertificateSigningRequestRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5040,7 +5040,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
+func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) (res ListCoordinationV1LeaseForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5084,7 +5084,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res ListCoordinationV1NamespacedLeaseRes, err error) {
+func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res ListCoordinationV1NamespacedLeaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5128,7 +5128,7 @@ func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV1ComponentStatusRes, err error) {
+func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV1ComponentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5172,7 +5172,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
+func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ConfigMapForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5216,7 +5216,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
+func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EndpointsForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5260,7 +5260,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EventForAllNamespacesRes, err error) {
+func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EventForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5304,7 +5304,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
+func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (res ListCoreV1LimitRangeForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5348,7 +5348,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1NamespaceRes, err error) {
+func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1NamespaceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5392,7 +5392,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListCoreV1NamespacedConfigMapRes, err error) {
+func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListCoreV1NamespacedConfigMapRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5436,7 +5436,7 @@ func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListCoreV1NamespacedEndpointsRes, err error) {
+func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListCoreV1NamespacedEndpointsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5480,7 +5480,7 @@ func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV1NamespacedEventRes, err error) {
+func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5524,7 +5524,7 @@ func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res ListCoreV1NamespacedLimitRangeRes, err error) {
+func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res ListCoreV1NamespacedLimitRangeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5568,7 +5568,7 @@ func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res List
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
+func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res ListCoreV1NamespacedPersistentVolumeClaimRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5612,7 +5612,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1NamespacedPodRes, err error) {
+func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1NamespacedPodRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5656,7 +5656,7 @@ func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1N
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res ListCoreV1NamespacedPodTemplateRes, err error) {
+func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res ListCoreV1NamespacedPodTemplateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5700,7 +5700,7 @@ func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Lis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
+func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res ListCoreV1NamespacedReplicationControllerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5744,7 +5744,7 @@ func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
+func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res ListCoreV1NamespacedResourceQuotaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5788,7 +5788,7 @@ func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCoreV1NamespacedSecretRes, err error) {
+func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCoreV1NamespacedSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5832,7 +5832,7 @@ func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCore
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCoreV1NamespacedServiceRes, err error) {
+func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCoreV1NamespacedServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5876,7 +5876,7 @@ func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res ListCoreV1NamespacedServiceAccountRes, err error) {
+func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res ListCoreV1NamespacedServiceAccountRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5920,7 +5920,7 @@ func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, err error) {
+func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5964,7 +5964,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCoreV1PersistentVolumeRes, err error) {
+func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCoreV1PersistentVolumeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6008,7 +6008,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
+func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6052,7 +6052,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodForAllNamespacesRes, err error) {
+func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6096,7 +6096,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
+func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodTemplateForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6140,7 +6140,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
+func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ReplicationControllerForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6184,7 +6184,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
+func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ResourceQuotaForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6228,7 +6228,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res ListCoreV1SecretForAllNamespacesRes, err error) {
+func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res ListCoreV1SecretForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6272,7 +6272,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
+func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceAccountForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6316,7 +6316,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
+func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6360,7 +6360,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
+func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6404,7 +6404,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
+func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res ListDiscoveryV1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6448,7 +6448,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
+func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6492,7 +6492,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
+func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6536,7 +6536,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1EventForAllNamespacesRes, err error) {
+func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1EventForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6580,7 +6580,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEventsV1NamespacedEventRes, err error) {
+func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEventsV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6624,7 +6624,7 @@ func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEve
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
+func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1beta1EventForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6668,7 +6668,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res ListEventsV1beta1NamespacedEventRes, err error) {
+func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res ListEventsV1beta1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6712,7 +6712,7 @@ func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Li
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6756,7 +6756,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6800,7 +6800,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6844,7 +6844,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6888,7 +6888,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
+func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ListInternalApiserverV1alpha1StorageVersionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6932,7 +6932,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNetworkingV1IngressClassRes, err error) {
+func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNetworkingV1IngressClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6976,7 +6976,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
+func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1IngressForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7020,7 +7020,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res ListNetworkingV1NamespacedIngressRes, err error) {
+func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res ListNetworkingV1NamespacedIngressRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7064,7 +7064,7 @@ func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res L
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
+func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res ListNetworkingV1NamespacedNetworkPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7108,7 +7108,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
+func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7152,7 +7152,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1RuntimeClassRes, err error) {
+func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7196,7 +7196,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNodeV1alpha1RuntimeClassRes, err error) {
+func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNodeV1alpha1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7240,7 +7240,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNodeV1beta1RuntimeClassRes, err error) {
+func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNodeV1beta1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7284,7 +7284,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7328,7 +7328,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
+func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7372,7 +7372,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7416,7 +7416,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
+func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7460,7 +7460,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
+func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ListPolicyV1beta1PodSecurityPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7504,7 +7504,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7548,7 +7548,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7592,7 +7592,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
+func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1NamespacedRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7636,7 +7636,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
+func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7680,7 +7680,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
+func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7724,7 +7724,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
+func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7768,7 +7768,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListSchedulingV1PriorityClassRes, err error) {
+func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListSchedulingV1PriorityClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7812,7 +7812,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV1CSIDriverRes, err error) {
+func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV1CSIDriverRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7856,7 +7856,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1CSINodeRes, err error) {
+func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1CSINodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7900,7 +7900,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStorageV1StorageClassRes, err error) {
+func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStorageV1StorageClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7944,7 +7944,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListStorageV1VolumeAttachmentRes, err error) {
+func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListStorageV1VolumeAttachmentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7988,7 +7988,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
+func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8032,7 +8032,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
+func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8076,7 +8076,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
+func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8120,7 +8120,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
+func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8164,7 +8164,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLogFileHandlerResponse(resp *http.Response) (res *LogFileHandlerUnauthorized, err error) {
+func decodeLogFileHandlerResponse(resp *http.Response) (res *LogFileHandlerUnauthorized, _ error) {
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
@@ -8173,7 +8173,7 @@ func decodeLogFileHandlerResponse(resp *http.Response) (res *LogFileHandlerUnaut
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLogFileListHandlerResponse(resp *http.Response) (res *LogFileListHandlerUnauthorized, err error) {
+func decodeLogFileListHandlerResponse(resp *http.Response) (res *LogFileListHandlerUnauthorized, _ error) {
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
@@ -8182,7 +8182,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response) (res *LogFileListHand
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8226,7 +8226,7 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8270,7 +8270,7 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
+func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ReadApiextensionsV1CustomResourceDefinitionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8314,7 +8314,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.Response) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
+func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.Response) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8358,7 +8358,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res ReadApiregistrationV1APIServiceRes, err error) {
+func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res ReadApiregistrationV1APIServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8402,7 +8402,7 @@ func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res Rea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
+func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (res ReadApiregistrationV1APIServiceStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8446,7 +8446,7 @@ func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
+func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res ReadAppsV1NamespacedControllerRevisionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8490,7 +8490,7 @@ func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
+func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadAppsV1NamespacedDaemonSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8534,7 +8534,7 @@ func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
+func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedDaemonSetStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8578,7 +8578,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentRes, err error) {
+func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8622,7 +8622,7 @@ func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Read
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
+func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentScaleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8666,7 +8666,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
+func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedDeploymentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8710,7 +8710,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
+func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8754,7 +8754,7 @@ func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Read
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
+func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetScaleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8798,7 +8798,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
+func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedReplicaSetStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8842,7 +8842,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
+func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8886,7 +8886,7 @@ func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Rea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
+func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetScaleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8930,7 +8930,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
+func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (res ReadAppsV1NamespacedStatefulSetStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8974,7 +8974,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9018,7 +9018,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
+func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9062,7 +9062,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9106,7 +9106,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
+func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9150,7 +9150,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9194,7 +9194,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
+func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(resp *http.Response) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9238,7 +9238,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBatchV1NamespacedCronJobRes, err error) {
+func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBatchV1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9282,7 +9282,7 @@ func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
+func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res ReadBatchV1NamespacedCronJobStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9326,7 +9326,7 @@ func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV1NamespacedJobRes, err error) {
+func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV1NamespacedJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9370,7 +9370,7 @@ func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res ReadBatchV1NamespacedJobStatusRes, err error) {
+func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res ReadBatchV1NamespacedJobStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9414,7 +9414,7 @@ func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res Read
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
+func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res ReadBatchV1beta1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9458,7 +9458,7 @@ func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
+func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) (res ReadBatchV1beta1NamespacedCronJobStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9502,7 +9502,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
+func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9546,7 +9546,7 @@ func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
+func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9590,7 +9590,7 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
+func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.Response) (res ReadCertificatesV1CertificateSigningRequestStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9634,7 +9634,7 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
+func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res ReadCoordinationV1NamespacedLeaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9678,7 +9678,7 @@ func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV1ComponentStatusRes, err error) {
+func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV1ComponentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9722,7 +9722,7 @@ func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1NamespaceRes, err error) {
+func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1NamespaceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9766,7 +9766,7 @@ func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1Names
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV1NamespaceStatusRes, err error) {
+func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV1NamespaceStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9810,7 +9810,7 @@ func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadCoreV1NamespacedConfigMapRes, err error) {
+func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadCoreV1NamespacedConfigMapRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9854,7 +9854,7 @@ func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadCoreV1NamespacedEndpointsRes, err error) {
+func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadCoreV1NamespacedEndpointsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9898,7 +9898,7 @@ func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV1NamespacedEventRes, err error) {
+func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9942,7 +9942,7 @@ func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
+func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res ReadCoreV1NamespacedLimitRangeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9986,7 +9986,7 @@ func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Read
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
+func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10030,7 +10030,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
+func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10074,7 +10074,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1NamespacedPodRes, err error) {
+func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1NamespacedPodRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10118,7 +10118,7 @@ func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1N
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Response) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
+func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Response) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10162,7 +10162,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCoreV1NamespacedPodLogRes, err error) {
+func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCoreV1NamespacedPodLogRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10233,7 +10233,7 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedPodStatusRes, err error) {
+func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedPodStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10277,7 +10277,7 @@ func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
+func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res ReadCoreV1NamespacedPodTemplateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10321,7 +10321,7 @@ func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Rea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
+func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10365,7 +10365,7 @@ func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
+func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerScaleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10409,7 +10409,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
+func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedReplicationControllerStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10453,7 +10453,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
+func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res ReadCoreV1NamespacedResourceQuotaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10497,7 +10497,7 @@ func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
+func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedResourceQuotaStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10541,7 +10541,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCoreV1NamespacedSecretRes, err error) {
+func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCoreV1NamespacedSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10585,7 +10585,7 @@ func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCore
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceRes, err error) {
+func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10629,7 +10629,7 @@ func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
+func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceAccountRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10673,7 +10673,7 @@ func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
+func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res ReadCoreV1NamespacedServiceStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10717,7 +10717,7 @@ func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, err error) {
+func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10761,7 +10761,7 @@ func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1NodeStatusRes, err error) {
+func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1NodeStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10805,7 +10805,7 @@ func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1Node
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCoreV1PersistentVolumeRes, err error) {
+func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCoreV1PersistentVolumeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10849,7 +10849,7 @@ func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCore
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
+func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res ReadCoreV1PersistentVolumeStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10893,7 +10893,7 @@ func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
+func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res ReadDiscoveryV1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10937,7 +10937,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
+func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10981,7 +10981,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEventsV1NamespacedEventRes, err error) {
+func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEventsV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11025,7 +11025,7 @@ func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEve
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res ReadEventsV1beta1NamespacedEventRes, err error) {
+func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res ReadEventsV1beta1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11069,7 +11069,7 @@ func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11113,7 +11113,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11157,7 +11157,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11201,7 +11201,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11245,7 +11245,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11289,7 +11289,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11333,7 +11333,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11377,7 +11377,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
+func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(resp *http.Response) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11421,7 +11421,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
+func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ReadInternalApiserverV1alpha1StorageVersionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11465,7 +11465,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.Response) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
+func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.Response) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11509,7 +11509,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNetworkingV1IngressClassRes, err error) {
+func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNetworkingV1IngressClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11553,7 +11553,7 @@ func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res ReadNetworkingV1NamespacedIngressRes, err error) {
+func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res ReadNetworkingV1NamespacedIngressRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11597,7 +11597,7 @@ func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
+func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) (res ReadNetworkingV1NamespacedIngressStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11641,7 +11641,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
+func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res ReadNetworkingV1NamespacedNetworkPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11685,7 +11685,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1RuntimeClassRes, err error) {
+func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11729,7 +11729,7 @@ func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1Ru
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
+func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1alpha1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11773,7 +11773,7 @@ func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1beta1RuntimeClassRes, err error) {
+func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1beta1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11817,7 +11817,7 @@ func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNod
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11861,7 +11861,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Response) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
+func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Response) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11905,7 +11905,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11949,7 +11949,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Response) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
+func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Response) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11993,7 +11993,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
+func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ReadPolicyV1beta1PodSecurityPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12037,7 +12037,7 @@ func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
+func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ReadRbacAuthorizationV1ClusterRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12081,7 +12081,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12125,7 +12125,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
+func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res ReadRbacAuthorizationV1NamespacedRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12169,7 +12169,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
+func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12213,7 +12213,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadSchedulingV1PriorityClassRes, err error) {
+func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadSchedulingV1PriorityClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12257,7 +12257,7 @@ func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV1CSIDriverRes, err error) {
+func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV1CSIDriverRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12301,7 +12301,7 @@ func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1CSINodeRes, err error) {
+func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1CSINodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12345,7 +12345,7 @@ func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStorageV1StorageClassRes, err error) {
+func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStorageV1StorageClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12389,7 +12389,7 @@ func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStora
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadStorageV1VolumeAttachmentRes, err error) {
+func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadStorageV1VolumeAttachmentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12433,7 +12433,7 @@ func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadS
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
+func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res ReadStorageV1VolumeAttachmentStatusRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12477,7 +12477,7 @@ func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
+func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12521,7 +12521,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
+func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12565,7 +12565,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12609,7 +12609,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12653,7 +12653,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12697,7 +12697,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12741,7 +12741,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12785,7 +12785,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12829,7 +12829,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceRes, err error) {
+func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12873,7 +12873,7 @@ func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceListRes, err error) {
+func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12917,7 +12917,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12961,7 +12961,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DaemonSetListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13005,7 +13005,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DeploymentListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13049,7 +13049,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
+func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (res WatchAppsV1NamespacedControllerRevisionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13093,7 +13093,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Response) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
+func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Response) (res WatchAppsV1NamespacedControllerRevisionListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13137,7 +13137,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
+func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res WatchAppsV1NamespacedDaemonSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13181,7 +13181,7 @@ func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
+func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedDaemonSetListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13225,7 +13225,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res WatchAppsV1NamespacedDeploymentRes, err error) {
+func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res WatchAppsV1NamespacedDeploymentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13269,7 +13269,7 @@ func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Wat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
+func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res WatchAppsV1NamespacedDeploymentListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13313,7 +13313,7 @@ func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
+func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res WatchAppsV1NamespacedReplicaSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13357,7 +13357,7 @@ func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Wat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
+func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedReplicaSetListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13401,7 +13401,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
+func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res WatchAppsV1NamespacedStatefulSetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13445,7 +13445,7 @@ func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
+func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (res WatchAppsV1NamespacedStatefulSetListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13489,7 +13489,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13533,7 +13533,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1StatefulSetListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13577,7 +13577,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13621,7 +13621,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13665,7 +13665,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
+func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13709,7 +13709,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13753,7 +13753,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13797,7 +13797,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
+func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13841,7 +13841,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13885,7 +13885,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
+func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp *http.Response) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13929,7 +13929,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
+func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(resp *http.Response) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13973,7 +13973,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1CronJobListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14017,7 +14017,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1JobListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14061,7 +14061,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res WatchBatchV1NamespacedCronJobRes, err error) {
+func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res WatchBatchV1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14105,7 +14105,7 @@ func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res Watch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res WatchBatchV1NamespacedCronJobListRes, err error) {
+func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res WatchBatchV1NamespacedCronJobListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14149,7 +14149,7 @@ func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res W
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatchV1NamespacedJobRes, err error) {
+func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatchV1NamespacedJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14193,7 +14193,7 @@ func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res WatchBatchV1NamespacedJobListRes, err error) {
+func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res WatchBatchV1NamespacedJobListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14237,7 +14237,7 @@ func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res Watch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14281,7 +14281,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
+func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res WatchBatchV1beta1NamespacedCronJobRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14325,7 +14325,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
+func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (res WatchBatchV1beta1NamespacedCronJobListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14369,7 +14369,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
+func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14413,7 +14413,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
+func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14457,7 +14457,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
+func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response) (res WatchCoordinationV1LeaseListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14501,7 +14501,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
+func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res WatchCoordinationV1NamespacedLeaseRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14545,7 +14545,7 @@ func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
+func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (res WatchCoordinationV1NamespacedLeaseListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14589,7 +14589,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ConfigMapListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14633,7 +14633,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EndpointsListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14677,7 +14677,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EventListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14721,7 +14721,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1LimitRangeListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14765,7 +14765,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1NamespaceRes, err error) {
+func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1NamespaceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14809,7 +14809,7 @@ func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1Nam
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV1NamespaceListRes, err error) {
+func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV1NamespaceListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14853,7 +14853,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res WatchCoreV1NamespacedConfigMapRes, err error) {
+func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res WatchCoreV1NamespacedConfigMapRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14897,7 +14897,7 @@ func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
+func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res WatchCoreV1NamespacedConfigMapListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14941,7 +14941,7 @@ func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res WatchCoreV1NamespacedEndpointsRes, err error) {
+func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res WatchCoreV1NamespacedEndpointsRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14985,7 +14985,7 @@ func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
+func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res WatchCoreV1NamespacedEndpointsListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15029,7 +15029,7 @@ func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCoreV1NamespacedEventRes, err error) {
+func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCoreV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15073,7 +15073,7 @@ func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res WatchCoreV1NamespacedEventListRes, err error) {
+func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res WatchCoreV1NamespacedEventListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15117,7 +15117,7 @@ func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
+func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res WatchCoreV1NamespacedLimitRangeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15161,7 +15161,7 @@ func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Wat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
+func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res WatchCoreV1NamespacedLimitRangeListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15205,7 +15205,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
+func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15249,7 +15249,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Response) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
+func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Response) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15293,7 +15293,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV1NamespacedPodRes, err error) {
+func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV1NamespacedPodRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15337,7 +15337,7 @@ func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchCoreV1NamespacedPodListRes, err error) {
+func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchCoreV1NamespacedPodListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15381,7 +15381,7 @@ func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
+func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res WatchCoreV1NamespacedPodTemplateRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15425,7 +15425,7 @@ func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
+func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (res WatchCoreV1NamespacedPodTemplateListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15469,7 +15469,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
+func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Response) (res WatchCoreV1NamespacedReplicationControllerRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15513,7 +15513,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Response) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
+func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Response) (res WatchCoreV1NamespacedReplicationControllerListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15557,7 +15557,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
+func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res WatchCoreV1NamespacedResourceQuotaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15601,7 +15601,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
+func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (res WatchCoreV1NamespacedResourceQuotaListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15645,7 +15645,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCoreV1NamespacedSecretRes, err error) {
+func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCoreV1NamespacedSecretRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15689,7 +15689,7 @@ func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res WatchCoreV1NamespacedSecretListRes, err error) {
+func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res WatchCoreV1NamespacedSecretListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15733,7 +15733,7 @@ func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res Wat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceRes, err error) {
+func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15777,7 +15777,7 @@ func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchC
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
+func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceAccountRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15821,7 +15821,7 @@ func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
+func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceAccountListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15865,7 +15865,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceListRes, err error) {
+func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res WatchCoreV1NamespacedServiceListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15909,7 +15909,7 @@ func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes, err error) {
+func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15953,7 +15953,7 @@ func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1NodeListRes, err error) {
+func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1NodeListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15997,7 +15997,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeRes, err error) {
+func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16041,7 +16041,7 @@ func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16085,7 +16085,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeListRes, err error) {
+func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16129,7 +16129,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16173,7 +16173,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodTemplateListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16217,7 +16217,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16261,7 +16261,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16305,7 +16305,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1SecretListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16349,7 +16349,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16393,7 +16393,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16437,7 +16437,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
+func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16481,7 +16481,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
+func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (res WatchDiscoveryV1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16525,7 +16525,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Response) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
+func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Response) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16569,7 +16569,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
+func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16613,7 +16613,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
+func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Response) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16657,7 +16657,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.Response) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
+func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.Response) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16701,7 +16701,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
+func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1EventListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16745,7 +16745,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchEventsV1NamespacedEventRes, err error) {
+func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchEventsV1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16789,7 +16789,7 @@ func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchE
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res WatchEventsV1NamespacedEventListRes, err error) {
+func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res WatchEventsV1NamespacedEventListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16833,7 +16833,7 @@ func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
+func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1beta1EventListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16877,7 +16877,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res WatchEventsV1beta1NamespacedEventRes, err error) {
+func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res WatchEventsV1beta1NamespacedEventRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16921,7 +16921,7 @@ func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res W
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
+func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (res WatchEventsV1beta1NamespacedEventListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16965,7 +16965,7 @@ func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17009,7 +17009,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17053,7 +17053,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17097,7 +17097,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17141,7 +17141,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17185,7 +17185,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17229,7 +17229,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17273,7 +17273,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17317,7 +17317,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17361,7 +17361,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17405,7 +17405,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res WatchNetworkingV1IngressClassRes, err error) {
+func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res WatchNetworkingV1IngressClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17449,7 +17449,7 @@ func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res Watch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res WatchNetworkingV1IngressClassListRes, err error) {
+func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res WatchNetworkingV1IngressClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17493,7 +17493,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
+func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1IngressListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17537,7 +17537,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res WatchNetworkingV1NamespacedIngressRes, err error) {
+func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res WatchNetworkingV1NamespacedIngressRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17581,7 +17581,7 @@ func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
+func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (res WatchNetworkingV1NamespacedIngressListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17625,7 +17625,7 @@ func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
+func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) (res WatchNetworkingV1NamespacedNetworkPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17669,7 +17669,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Response) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
+func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Response) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17713,7 +17713,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
+func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17757,7 +17757,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1RuntimeClassRes, err error) {
+func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17801,7 +17801,7 @@ func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1RuntimeClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17845,7 +17845,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
+func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17889,7 +17889,7 @@ func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Watch
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17933,7 +17933,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassRes, err error) {
+func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17977,7 +17977,7 @@ func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchN
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18021,7 +18021,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18065,7 +18065,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Response) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
+func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Response) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18109,7 +18109,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18153,7 +18153,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
+func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Response) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18197,7 +18197,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *http.Response) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
+func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *http.Response) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18241,7 +18241,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18285,7 +18285,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18329,7 +18329,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18373,7 +18373,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18417,7 +18417,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18461,7 +18461,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18505,7 +18505,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18549,7 +18549,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18593,7 +18593,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18637,7 +18637,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18681,7 +18681,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1NamespacedRoleListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18725,7 +18725,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
+func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18769,7 +18769,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
+func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18813,7 +18813,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassRes, err error) {
+func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18857,7 +18857,7 @@ func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassListRes, err error) {
+func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18901,7 +18901,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorageV1CSIDriverRes, err error) {
+func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorageV1CSIDriverRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18945,7 +18945,7 @@ func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorag
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchStorageV1CSIDriverListRes, err error) {
+func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchStorageV1CSIDriverListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18989,7 +18989,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV1CSINodeRes, err error) {
+func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV1CSINodeRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19033,7 +19033,7 @@ func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStorageV1CSINodeListRes, err error) {
+func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStorageV1CSINodeListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19077,7 +19077,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchStorageV1StorageClassRes, err error) {
+func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchStorageV1StorageClassRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19121,7 +19121,7 @@ func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchSto
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res WatchStorageV1StorageClassListRes, err error) {
+func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res WatchStorageV1StorageClassListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19165,7 +19165,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentRes, err error) {
+func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19209,7 +19209,7 @@ func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res Watc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentListRes, err error) {
+func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19253,7 +19253,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
+func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19297,7 +19297,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
+func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19341,7 +19341,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *http.Response) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
+func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *http.Response) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19385,7 +19385,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
+func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19429,7 +19429,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
+func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Response) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19473,7 +19473,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *http.Response) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {
+func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *http.Response) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

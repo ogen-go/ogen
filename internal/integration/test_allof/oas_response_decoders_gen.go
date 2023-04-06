@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeNullableStringsResponse(resp *http.Response) (res *NullableStringsOK, err error) {
+func decodeNullableStringsResponse(resp *http.Response) (res *NullableStringsOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17,7 +17,7 @@ func decodeNullableStringsResponse(resp *http.Response) (res *NullableStringsOK,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res *ObjectsWithConflictingArrayPropertyOK, err error) {
+func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res *ObjectsWithConflictingArrayPropertyOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26,7 +26,7 @@ func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *ObjectsWithConflictingPropertiesOK, err error) {
+func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *ObjectsWithConflictingPropertiesOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35,7 +35,7 @@ func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *O
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK, err error) {
+func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44,7 +44,7 @@ func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *ReferencedAllofOptionalOK, err error) {
+func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *ReferencedAllofOptionalOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53,7 +53,7 @@ func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *Referenced
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, err error) {
+func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -62,7 +62,7 @@ func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, err error) {
+func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -71,7 +71,7 @@ func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, err error) {
+func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, err error) {
+func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -90,7 +90,7 @@ func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRes, err error) {
+func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -166,7 +166,7 @@ func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrenciesGetRes, err error) {
+func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrenciesGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -242,7 +242,7 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrencie
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, err error) {
+func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -318,7 +318,7 @@ func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookGetRes, err error) {
+func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -394,7 +394,7 @@ func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookG
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchByFigiGetRes, err error) {
+func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchByFigiGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -470,7 +470,7 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchB
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearchByTickerGetRes, err error) {
+func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearchByTickerGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -546,7 +546,7 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes, err error) {
+func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -622,7 +622,7 @@ func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, err error) {
+func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -698,7 +698,7 @@ func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRes, err error) {
+func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -774,7 +774,7 @@ func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, err error) {
+func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -850,7 +850,7 @@ func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrderPostRes, err error) {
+func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrderPostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -926,7 +926,7 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrd
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketOrderPostRes, err error) {
+func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketOrderPostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1002,7 +1002,7 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCurrenciesGetRes, err error) {
+func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCurrenciesGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1078,7 +1078,7 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCur
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, err error) {
+func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1154,7 +1154,7 @@ func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRes, err error) {
+func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1230,7 +1230,7 @@ func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res SandboxCurrenciesBalancePostRes, err error) {
+func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res SandboxCurrenciesBalancePostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1306,7 +1306,7 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res Sandbo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res SandboxPositionsBalancePostRes, err error) {
+func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res SandboxPositionsBalancePostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1382,7 +1382,7 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res Sandbox
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegisterPostRes, err error) {
+func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegisterPostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1458,7 +1458,7 @@ func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegister
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePostRes, err error) {
+func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePostRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1534,7 +1534,7 @@ func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePost
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes, err error) {
+func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

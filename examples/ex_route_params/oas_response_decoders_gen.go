@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataGetResponse(resp *http.Response) (res string, err error) {
+func decodeDataGetResponse(resp *http.Response) (res string, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -57,7 +57,7 @@ func decodeDataGetResponse(resp *http.Response) (res string, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDataGetAnyResponse(resp *http.Response) (res string, err error) {
+func decodeDataGetAnyResponse(resp *http.Response) (res string, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -100,7 +100,7 @@ func decodeDataGetAnyResponse(resp *http.Response) (res string, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDataGetIDResponse(resp *http.Response) (res string, err error) {
+func decodeDataGetIDResponse(resp *http.Response) (res string, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -15,6 +15,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/test_http_responses"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type testHTTPResponses struct {
@@ -527,4 +528,38 @@ func TestResponseJSONStreaming(t *testing.T) {
 	a.IsType(new(api.QueryData), r)
 	data := r.(*api.QueryData)
 	a.Len(*data, 10)
+}
+
+func TestResponseErrorStatusCode(t *testing.T) {
+	for _, tt := range []struct {
+		code        int
+		errContains string
+	}{
+		{201, "pattern 2XX (code 201)"},
+		{501, "pattern 5XX (code 501)"},
+		{400, "default (code 400)"},
+		{401, "default (code 401)"},
+	} {
+		tt := tt
+		t.Run(fmt.Sprintf("Code%d", tt.code), func(t *testing.T) {
+			a := require.New(t)
+			ctx := context.Background()
+
+			h := func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "text/html")
+				w.WriteHeader(tt.code)
+			}
+			s := httptest.NewServer(http.HandlerFunc(h))
+			t.Cleanup(func() {
+				s.Close()
+			})
+
+			client, err := api.NewClient(s.URL)
+			a.NoError(err)
+
+			_, err = client.Combined(ctx, api.CombinedParams{})
+			a.ErrorContains(err, tt.errContains)
+			a.ErrorAs(err, new(*validate.InvalidContentTypeError))
+		})
+	}
 }

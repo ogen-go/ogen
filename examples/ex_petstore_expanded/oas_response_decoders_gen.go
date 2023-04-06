@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAddPetResponse(resp *http.Response) (res *Pet, err error) {
+func decodeAddPetResponse(resp *http.Response) (res *Pet, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -92,12 +92,12 @@ func decodeAddPetResponse(resp *http.Response) (res *Pet, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeDeletePetResponse(resp *http.Response) (res *DeletePetNoContent, err error) {
+func decodeDeletePetResponse(resp *http.Response) (res *DeletePetNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -143,12 +143,12 @@ func decodeDeletePetResponse(resp *http.Response) (res *DeletePetNoContent, err 
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeFindPetByIDResponse(resp *http.Response) (res *Pet, err error) {
+func decodeFindPetByIDResponse(resp *http.Response) (res *Pet, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -226,12 +226,12 @@ func decodeFindPetByIDResponse(resp *http.Response) (res *Pet, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeFindPetsResponse(resp *http.Response) (res []Pet, err error) {
+func decodeFindPetsResponse(resp *http.Response) (res []Pet, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -317,7 +317,7 @@ func decodeFindPetsResponse(resp *http.Response) (res []Pet, err error) {
 		}
 	}()
 	if err != nil {
-		return res, errors.Wrap(err, "default")
+		return res, errors.Wrapf(err, "default (code %d)", resp.StatusCode)
 	}
 	return res, errors.Wrap(defRes, "error")
 }
