@@ -17,28 +17,26 @@ type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Reque
 // ErrorCode returns HTTP code for given error.
 //
 // The default code is http.StatusInternalServerError.
-func ErrorCode(err error) (code int) {
-	code = http.StatusInternalServerError
-
+func ErrorCode(err error) int {
 	var (
 		ctError *validate.InvalidContentTypeError
 		ogenErr Error
 	)
 	switch {
 	case errors.Is(err, ht.ErrNotImplemented):
-		code = http.StatusNotImplemented
+		return http.StatusNotImplemented
 	case errors.As(err, &ctError):
 		// Takes precedence over Error.
-		code = http.StatusUnsupportedMediaType
+		return http.StatusUnsupportedMediaType
 	case errors.As(err, &ogenErr):
-		code = ogenErr.Code()
+		return ogenErr.Code()
+	default:
+		return http.StatusInternalServerError
 	}
-
-	return code
 }
 
 // DefaultErrorHandler is the default error handler.
-func DefaultErrorHandler(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+func DefaultErrorHandler(_ context.Context, w http.ResponseWriter, _ *http.Request, err error) {
 	code := ErrorCode(err)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
@@ -49,5 +47,7 @@ func DefaultErrorHandler(ctx context.Context, w http.ResponseWriter, r *http.Req
 	e.StrEscape(err.Error())
 	e.ObjEnd()
 
-	_, _ = w.Write(e.Bytes())
+	if _, writeErr := w.Write(e.Bytes()); writeErr != nil {
+		http.Error(w, writeErr.Error(), http.StatusInternalServerError)
+	}
 }
