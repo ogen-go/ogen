@@ -111,6 +111,10 @@ issues:
     - linters: [revive, golint]
       text: "(unused-parameter|if-return)"
 
+    - linters: [gocritic]
+      text: ptrToRefParam
+      source: handleSchemaDepth
+
     # Intended in commands:
     # G307: Deferring unsafe method "Close" on type "*os.File"
     # G304: Potential file inclusion via variable
