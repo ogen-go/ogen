@@ -12,6 +12,7 @@ import (
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -92,22 +93,32 @@ func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
 			}
 			if ref := s.Ref; !ref.IsZero() {
 				if _, ok := ctx[ref]; ok {
-					return errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
+					err := errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
+
+					pos, ok := s.Pointer.Position()
+					if !ok {
+						return err
+					}
+					return &location.Error{
+						File: s.File(),
+						Pos:  pos,
+						Err:  err,
+					}
 				}
 				ctx[ref] = struct{}{}
 			}
 			switch {
 			case len(s.OneOf) > 0:
 				if err := do(ctx, s.OneOf); err != nil {
-					return errors.Wrapf(err, "oneOf %q [%d]", s.Ref, i)
+					return err
 				}
 			case len(s.AllOf) > 0:
 				if err := do(ctx, s.AllOf); err != nil {
-					return errors.Wrapf(err, "allOf %q [%d]", s.Ref, i)
+					return err
 				}
 			case len(s.AnyOf) > 0:
 				if err := do(ctx, s.AnyOf); err != nil {
-					return errors.Wrapf(err, "anyOf %q [%d]", s.Ref, i)
+					return err
 				}
 			}
 			delete(ctx, s.Ref)

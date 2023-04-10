@@ -53,10 +53,49 @@ func variantFieldName(t *ir.Type) string {
 	return naming.Capitalize(t.NamePostfix())
 }
 
+type schemaDepthError struct {
+	limit int
+}
+
+func (e *schemaDepthError) Error() string {
+	return fmt.Sprintf("schema depth limit (%d) exceeded", e.limit)
+}
+
+func handleSchemaDepth(s *jsonschema.Schema, rerr *error) {
+	r := recover()
+	if r == nil {
+		return
+	}
+
+	e, ok := r.(*schemaDepthError)
+	if !ok {
+		panic(r)
+	}
+	*rerr = e
+
+	// Ensure that schema is not nil.
+	if s == nil {
+		return
+	}
+	ptr := s.Pointer
+
+	// Try to use location.Error.
+	pos, ok := ptr.Position()
+	if !ok {
+		return
+	}
+	*rerr = &location.Error{
+		File: ptr.File(),
+		Pos:  pos,
+		Err:  e,
+	}
+}
+
 func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
 	g.depthCount++
 	if g.depthCount > g.depthLimit {
-		return nil, errors.Errorf("schema depth limit (%d) exceeded", g.depthLimit)
+		// Panicing is not cool, but is better rather than wrap the error N = depthLimit times.
+		panic(&schemaDepthError{limit: g.depthLimit})
 	}
 	defer func() {
 		g.depthCount--

@@ -37,7 +37,9 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	return nil
 }
 
-func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
+func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema, optional bool) (_ *ir.Type, rerr error) {
+	defer handleSchemaDepth(schema, &rerr)
+
 	gen := newSchemaGen(ctx.lookupRef)
 	gen.log = g.log.Named("schemagen")
 	gen.fail = g.fail
@@ -92,7 +94,9 @@ func (o *GenerateSchemaOptions) setDefaults() {
 }
 
 // GenerateSchema generates type, validation and JSON encoding for given schema.
-func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchemaOptions) error {
+func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchemaOptions) (rerr error) {
+	defer handleSchemaDepth(schema, &rerr)
+
 	opts.setDefaults()
 
 	ctx := &genctx{
