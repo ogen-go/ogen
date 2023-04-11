@@ -61,36 +61,37 @@ func (e *Error) Error() string {
 	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.Pos, e.Err)
 }
 
-// PrettyPrint prints the error in a pretty way and returns true if it was printed successfully.
-func (e *Error) PrettyPrint(w io.Writer, color bool) bool {
-	// TODO(tdakkota): make it configurable?
-	const (
-		printLimit   = 5
-		contextLines = 5
-	)
+// prettyPrint prints the error in a pretty way and returns true if it was printed successfully.
+func (e *Error) prettyPrint(w io.Writer, opts PrintListingOptions) (handled bool, writeErr error) {
 	var (
-		err      = e.Err
-		filename = firstNonEmpty(e.File.Name, e.File.Source)
-		lines    = e.File.Lines
-
-		write = func(msg string, loc Position, context int) {
-			opts := PrintListingOptions{
-				Filename: filename,
-				Context:  context,
-			}
-			if !color {
-				opts = opts.WithoutColor()
-			}
-			_ = lines.PrintListing(w, msg, loc, opts)
-		}
+		iterErr = e.Err
+		locErr  = e
 	)
+	for {
+		e, ok := errors.Into[*Error](iterErr)
+		if !ok || e.Pos.Line == 0 {
+			break
+		}
+		locErr = e
+		iterErr = e.Err
+	}
+	if locErr.Pos.Line != 0 {
+		writeErr = e.File.PrintListing(w, locErr.Err.Error(), locErr.Pos, opts)
+		return true, writeErr
+	}
+
+	return false, nil
+}
+
+func printYAMLError(w io.Writer, err error, f File, opts PrintListingOptions) (handled bool, writeErr error) {
+	const printLimit = 5
 
 	if e, ok := errors.Into[*yaml.SyntaxError](err); ok {
 		loc := Position{
 			Line: e.Line,
 		}
-		write(e.Msg, loc, contextLines)
-		return true
+		writeErr = f.PrintListing(w, e.Msg, loc, opts)
+		return true, writeErr
 	}
 
 	if e, ok := errors.Into[*yaml.TypeError](err); ok {
@@ -105,39 +106,36 @@ func (e *Error) PrettyPrint(w io.Writer, color bool) bool {
 					Column: e.Node.Column,
 					Node:   e.Node,
 				}
-				write(e.Err.Error(), loc, contextLines)
+				multierr.AppendInto(&writeErr, f.PrintListing(w, e.Err.Error(), loc, opts))
 				printed++
 			}
 		}
 		// Consider the error as handled if it is printed at least once.
-		return printed > 0
+		return printed > 0, writeErr
 	}
 
-	var (
-		iterErr = e.Err
-		locErr  = e
-	)
-	for {
-		e, ok := errors.Into[*Error](iterErr)
-		if !ok || e.Pos.Line == 0 {
-			break
-		}
-		locErr = e
-		iterErr = e.Err
-	}
-	if locErr.Pos.Line != 0 {
-		write(locErr.Err.Error(), locErr.Pos, contextLines)
-		return true
-	}
-
-	return false
+	return false, nil
 }
 
 // PrintPrettyError prints the error in a pretty way and returns true if it was printed successfully.
 func PrintPrettyError(w io.Writer, color bool, err error) bool {
+	opts := PrintListingOptions{
+		Context: 5,
+	}
+	if !color {
+		opts = opts.WithoutColor()
+	}
+
 	v, ok := errors.Into[*Error](err)
 	if !ok {
 		return false
 	}
-	return v.PrettyPrint(w, color)
+
+	// TODO(tdakkota): handle errors?
+	if handled, _ := printYAMLError(w, v.Err, v.File, opts); handled {
+		return true
+	}
+
+	handled, _ := v.prettyPrint(w, opts)
+	return handled
 }

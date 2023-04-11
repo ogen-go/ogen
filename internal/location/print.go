@@ -38,8 +38,6 @@ type ColorFunc func(w io.Writer, s string, args ...any) (int, error)
 
 // PrintListingOptions is a set of options for PrintListing.
 type PrintListingOptions struct {
-	// Filename is a name of the file to print with location.
-	Filename string
 	// Context is the number of lines to print before and after the error line.
 	//
 	// If is zero, the default value 5 is used.
@@ -92,8 +90,9 @@ const BugLine = `Cannot render line properly, please fill a bug report`
 // PrintListing prints given message with line number and file listing to the writer.
 //
 // The context parameter defines the number of lines to print before and after.
-func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintListingOptions) error {
+func (f File) PrintListing(w io.Writer, msg string, loc Position, opts PrintListingOptions) error {
 	opts.setDefaults()
+	l := f.Lines
 
 	// Line starts from 1, but index starts from 0.
 	errLine := loc.Line - 1
@@ -108,9 +107,10 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintLis
 		horizontalPointer = "\u2192"
 	)
 	var (
+		filename = f.humanName()
+
 		plainColor          = opts.PlainColor
 		errColor            = opts.ErrColor
-		filename            = opts.Filename
 		padNum, top, bottom = opts.contextLines(loc.Line)
 	)
 
