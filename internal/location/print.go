@@ -114,10 +114,15 @@ func (f File) PrintListing(w io.Writer, msg string, loc Position, opts PrintList
 		padNum, top, bottom = opts.contextLines(loc.Line)
 	)
 
-	if _, err := errColor(w, "%s- %s -> %s\n",
+	var formattedMsg string
+	if msg != "" {
+		formattedMsg = " -> " + msg
+	}
+
+	if _, err := errColor(w, "%s- %s%s\n",
 		leftPad,
 		loc.WithFilename(filename),
-		msg,
+		formattedMsg,
 	); err != nil {
 		return err
 	}
