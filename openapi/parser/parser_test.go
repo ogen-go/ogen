@@ -52,7 +52,7 @@ func TestNegative(t *testing.T) {
 		pretty := buf.String()
 		a.NotEmpty(pretty)
 		a.NotContains(pretty, location.BugLine)
-		t.Log(pretty)
+		t.Logf("\n%s", pretty)
 	})
 }
 
