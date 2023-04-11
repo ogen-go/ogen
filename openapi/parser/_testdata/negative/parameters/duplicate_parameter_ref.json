@@ -9,26 +9,28 @@
       "get": {
         "parameters": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "name": "foo",
-            "in": "query",
-            "style": "form"
+            "$ref": "#/components/parameters/Parameter"
           },
           {
-            "schema": {
-              "type": "integer"
-            },
-            "name": "foo",
-            "in": "query",
-            "style": "form"
+            "$ref": "#/components/parameters/Parameter"
           }
         ],
         "responses": {
           "200": {
             "description": "User info"
           }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter": {
+        "name": "foo",
+        "in": "query",
+        "style": "form",
+        "schema": {
+          "type": "string"
         }
       }
     }

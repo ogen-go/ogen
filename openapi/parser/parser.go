@@ -2,6 +2,7 @@
 package parser
 
 import (
+	"fmt"
 	"net/url"
 
 	"github.com/go-faster/errors"
@@ -47,7 +48,7 @@ type parser struct {
 	// 	The id MUST be unique among all operations described in the API.
 	//
 	// Used to detect duplicates.
-	operationIDs map[string]struct{}
+	operationIDs map[string]location.Pointer
 
 	external   jsonschema.ExternalResolver
 	rootURL    *url.URL
@@ -86,7 +87,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 			pathItems:       map[refKey]pathItem{},
 		},
 		securitySchemes: maps.Clone(spec.Components.SecuritySchemes),
-		operationIDs:    map[string]struct{}{},
+		operationIDs:    map[string]location.Pointer{},
 		external:        s.External,
 		rootURL:         s.RootURL,
 		schemas: map[string]resolver{
@@ -156,8 +157,9 @@ func (p *parser) parsePathItems() error {
 		// 	Templated paths with the same hierarchy but different templated
 		//	names MUST NOT exist as they are identical.
 		//
-		paths = make(map[string]struct{}, len(p.spec.Paths))
+		paths = make(map[string]location.Pointer, len(p.spec.Paths))
 
+		file     = p.rootFile
 		pathsLoc = p.rootLoc.Field("paths")
 	)
 
@@ -174,28 +176,34 @@ func (p *parser) parsePathItems() error {
 				return err
 			}
 
-			if _, ok := paths[id]; ok {
+			ptr := pathsLoc.Field(path).Pointer(file)
+			if existing, ok := paths[id]; ok {
+				msg := fmt.Sprintf("duplicate path: %q", path)
 				if normalized != path {
-					return errors.Errorf("duplicate path: %q (normalized: %q)", path, normalized)
+					msg += fmt.Sprintf(" (normalized: %q)", normalized)
 				}
-				return errors.Errorf("duplicate path: %q", path)
+
+				me := new(location.MultiError)
+				me.ReportPtr(existing, msg)
+				me.ReportPtr(ptr, "")
+				return me
 			}
-			paths[id] = struct{}{}
+			paths[id] = ptr
 
 			return nil
 		}(); err != nil {
-			return p.wrapLocation(p.rootFile, pathsLoc.Key(path), err)
+			return p.wrapLocation(file, pathsLoc.Key(path), err)
 		}
 
 		up := unparsedPath{
 			path: path,
 			loc:  pathsLoc.Key(path),
-			file: p.rootFile,
+			file: file,
 		}
 		ops, err := p.parsePathItem(up, item, p.resolveCtx())
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
-			return p.wrapLocation(p.rootFile, pathsLoc.Field(path), err)
+			return p.wrapLocation(file, pathsLoc.Field(path), err)
 		}
 		p.operations = append(p.operations, ops...)
 	}

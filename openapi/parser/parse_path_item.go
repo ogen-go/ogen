@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -56,11 +58,14 @@ func (p *parser) parsePathItem(
 		}()
 
 		if id := op.OperationID; id != "" {
-			if _, ok := p.operationIDs[id]; ok {
-				err := errors.Errorf("duplicate operationId: %q", id)
-				return p.wrapField("operationId", p.file(ctx), locator, err)
+			ptr := locator.Field("operationId").Pointer(p.file(ctx))
+			if existingPtr, ok := p.operationIDs[id]; ok {
+				me := new(location.MultiError)
+				me.ReportPtr(existingPtr, fmt.Sprintf("duplicate operationId: %q", id))
+				me.ReportPtr(ptr, "")
+				return me
 			}
-			p.operationIDs[id] = struct{}{}
+			p.operationIDs[id] = ptr
 		}
 
 		parsedOp, err := p.parseOp(up, method, op, itemParams, ctx)
