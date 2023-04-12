@@ -7,7 +7,9 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"go.uber.org/multierr"
+	"golang.org/x/exp/slices"
 )
 
 var _ interface {
@@ -125,17 +127,92 @@ func (e *MultiError) Error() string {
 
 const printLimit = 5
 
+type reportChunk struct {
+	Msg        string
+	File       File
+	Highlights []Highlight
+}
+
+func chunkReports(reports []Report, context int, hcolor ColorFunc) []reportChunk {
+	// Group Reports by Source (different files).
+	files := map[string][]Report{}
+	for _, r := range reports {
+		files[r.File.Source] = append(files[r.File.Source], r)
+	}
+
+	var chunks []reportChunk
+	for _, src := range xmaps.SortedKeys(files) {
+		perFile := files[src]
+
+		slices.SortStableFunc(perFile, func(a, b Report) bool {
+			// report with a non-empty message takes precedence.
+			switch {
+			case a.Msg != "" && b.Msg == "":
+				return true
+			case b.Msg != "" && a.Msg == "":
+				return false
+			}
+
+			return a.Pos.Line < b.Pos.Line
+		})
+
+		if len(perFile) == 0 {
+			continue
+		}
+
+		var (
+			first    = perFile[0]
+			highLine = first.Pos.Line
+
+			nextChunk = func(r Report) *reportChunk {
+				chunks = append(chunks, reportChunk{
+					Msg:  r.Msg,
+					File: r.File,
+					Highlights: []Highlight{
+						{Pos: r.Pos, Color: hcolor},
+					},
+				})
+				return &chunks[len(chunks)-1]
+			}
+		)
+		chunk := nextChunk(first)
+
+		for _, r := range perFile[1:] {
+			// Line of previous position + its context + line in-between + second line context
+			if highLine+(context+1)+1+context < r.Pos.Line {
+				chunk = nextChunk(r)
+				highLine = r.Pos.Line
+				continue
+			}
+
+			chunk.Highlights = append(chunk.Highlights, Highlight{
+				Pos:   r.Pos,
+				Color: hcolor,
+			})
+			highLine = r.Pos.Line
+		}
+	}
+
+	slices.SortStableFunc(chunks, func(a, b reportChunk) bool {
+		// chunk with a non-empty message takes precedence.
+		return a.Msg > b.Msg
+	})
+
+	return chunks
+}
+
 // prettyPrint prints the error in a pretty way and returns true if it was printed successfully.
 func (e *MultiError) prettyPrint(w io.Writer, opts PrintListingOptions) (handled bool, writeErr error) {
 	printed := 0
-	for _, r := range e.Reports {
+
+	chunks := chunkReports(e.Reports, opts.Context, opts.MsgColor)
+	for _, c := range chunks {
 		if printed >= printLimit {
 			break
 		}
 
-		// TODO(tdakkota): print close location together
-		f := r.File
-		multierr.AppendInto(&writeErr, f.PrintListing(w, r.Msg, r.Pos, opts))
+		f := c.File
+		multierr.AppendInto(&writeErr, f.PrintHighlights(w, c.Msg, c.Highlights, opts))
 		printed++
 	}
 
@@ -176,12 +253,12 @@ func printYAMLError(w io.Writer, err error, f File, opts PrintListingOptions) (h
 
 // PrintPrettyError prints the error in a pretty way and returns true if it was printed successfully.
 func PrintPrettyError(w io.Writer, color bool, err error) bool {
-	opts := PrintListingOptions{
-		Context: 5,
-	}
+	opts := PrintListingOptions{}
 	if !color {
 		opts = opts.WithoutColor()
 	}
+	// Set ColorFuncs to non-nil.
+	opts.setDefaults()
 
 	// TODO(tdakkota): handle write errors?
 	me, ok := errors.Into[*MultiError](err)

@@ -4,34 +4,15 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"math"
 	"strconv"
-	"strings"
 
 	"github.com/fatih/color"
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/constraints"
+
+	"github.com/ogen-go/ogen/internal/xslices"
 )
-
-type padLine struct {
-	pad, line int
-}
-
-func log10(val int) (r int) {
-	for val >= 10 {
-		r++
-		val /= 10
-	}
-	return r
-}
-
-func (p padLine) Format(f fmt.State, verb rune) {
-	padding := p.pad - log10(p.line)
-	var buf [32]byte
-	for i := 0; i < padding; i++ {
-		buf[i] = ' '
-	}
-	b := strconv.AppendInt(buf[:padding], int64(p.line), 10)
-	_, _ = f.Write(b)
-}
 
 // ColorFunc defines a simple printer callback.
 type ColorFunc func(w io.Writer, s string, args ...any) (int, error)
@@ -42,86 +23,137 @@ type PrintListingOptions struct {
 	//
 	// If is zero, the default value 5 is used.
 	Context int
-	// If is nil, the default value color.New(color.FgRed) is used.
-	ErrColor ColorFunc
-	// If is nil, the default value color.New(color.Reset) is used.
+	// MsgColor sets message color.
+	MsgColor ColorFunc
+	// TextColor sets text color.
 	PlainColor ColorFunc
 }
 
 // WithoutColor creates a copy of the options with disabled color.
 func (o PrintListingOptions) WithoutColor() PrintListingOptions {
-	o.ErrColor = fmt.Fprintf
+	o.MsgColor = fmt.Fprintf
 	o.PlainColor = fmt.Fprintf
 	return o
 }
 
-func (o PrintListingOptions) contextLines(errLine int) (padNum, top, bottom int) {
-	context := o.Context
-
-	// Round up to the nearest odd number.
-	if context%2 == 0 {
-		context++
-	}
-	top, bottom = errLine-context/2, errLine+context/2
-
-	padNum = 2
-	if l := log10(bottom); l > 2 {
-		padNum = l
-	}
-
-	return padNum, top, bottom
-}
+const defaultContext = 3
 
 func (o *PrintListingOptions) setDefaults() {
 	if o.Context == 0 {
-		o.Context = 5
+		o.Context = defaultContext
 	}
-	if o.ErrColor == nil {
-		o.ErrColor = color.New(color.FgRed).Fprintf
+	if o.MsgColor == nil {
+		o.MsgColor = color.New(color.FgRed).Fprintf
 	}
 	if o.PlainColor == nil {
 		o.PlainColor = color.New(color.Reset).Fprintf
 	}
 }
 
-// BugLine is a fallback line when the line is not available.
-const BugLine = `Cannot render line properly, please fill a bug report`
+const (
+	// BugLine is a fallback line when the line is not available.
+	BugLine = `Cannot render line properly, please fill a bug report`
+
+	leftPad           = "  "
+	verticalBorder    = "|"
+	horizontalPointer = "\u2192"
+)
 
 // PrintListing prints given message with line number and file listing to the writer.
 //
 // The context parameter defines the number of lines to print before and after.
-func (f File) PrintListing(w io.Writer, msg string, loc Position, opts PrintListingOptions) error {
+func (f File) PrintListing(w io.Writer, msg string, pos Position, opts PrintListingOptions) error {
 	opts.setDefaults()
-	l := f.Lines
+	return f.PrintHighlights(w, msg, []Highlight{
+		{Pos: pos, Color: opts.MsgColor},
+	}, opts)
+}
 
-	// Line starts from 1, but index starts from 0.
-	errLine := loc.Line - 1
-	if len(l.data) == 0 || errLine < 0 || errLine >= len(l.lines) {
-		return errors.New("line number is out of range")
+// Highlight is a highlighted position.
+type Highlight struct {
+	Pos   Position
+	Color ColorFunc
+}
+
+// clamp keeps val in given boundaries.
+func clamp[T constraints.Integer](val, lo, hi T) T {
+	switch {
+	case val < lo:
+		return lo
+	case val > hi:
+		return hi
+	default:
+		return val
+	}
+}
+
+func log10(val int) (r int) {
+	for val >= 10 {
+		r++
+		val /= 10
+	}
+	return r
+}
+
+type lineNumberPad struct {
+	pad, line int
+}
+
+func (p lineNumberPad) Format(f fmt.State, verb rune) {
+	padding := p.pad - log10(p.line)
+	var buf [32]byte
+	for i := 0; i < padding; i++ {
+		buf[i] = ' '
+	}
+	b := strconv.AppendInt(buf[:padding], int64(p.line), 10)
+	_, _ = f.Write(b)
+}
+
+// PrintHighlights prints all given highlights.
+func (f File) PrintHighlights(w io.Writer, msg string, highlights []Highlight, opts PrintListingOptions) error {
+	opts.setDefaults()
+
+	if len(highlights) < 1 {
+		return errors.New("empty highlights")
 	}
 
-	const (
-		leftPad           = "  "
-		verticalBorder    = "|"
-		verticalPointer   = "\u2191"
-		horizontalPointer = "\u2192"
-	)
 	var (
-		filename = f.humanName()
+		l = f.Lines
 
-		plainColor          = opts.PlainColor
-		errColor            = opts.ErrColor
-		padNum, top, bottom = opts.contextLines(loc.Line)
+		first      = highlights[0]
+		lowestIdx  = first.Pos.Line - 1
+		highestIdx = lowestIdx
 	)
+	for idx, h := range highlights {
+		// Line starts from 1, but index starts from 0.
+		hlightIdx := h.Pos.Line - 1
+		if len(l.data) == 0 || hlightIdx < 0 || hlightIdx > len(l.lines) {
+			return errors.Errorf("highlight %d: line number %d is out of range [0, %d)", idx, hlightIdx, len(l.lines))
+		}
 
-	var formattedMsg string
+		switch {
+		case hlightIdx < lowestIdx:
+			lowestIdx = hlightIdx
+		case hlightIdx > highestIdx:
+			highestIdx = hlightIdx
+		}
+	}
+
+	lowestIdx = clamp(lowestIdx-opts.Context, 0, len(l.lines))
+	highestIdx = clamp(highestIdx+opts.Context+1, 0, len(l.lines))
+	padNum := clamp(log10(highestIdx), 2, math.MaxInt)
+
+	var (
+		filename     = f.humanName()
+		formattedMsg string
+	)
 	if msg != "" {
 		formattedMsg = " -> " + msg
 	}
 
-	if _, err := errColor(w, "%s- %s%s\n",
+	if _, err := opts.MsgColor(w, "%s- %s%s\n",
 		leftPad,
-		loc.WithFilename(filename),
+		first.Pos.WithFilename(filename),
 		formattedMsg,
 	); err != nil {
 		return err
@@ -135,7 +167,7 @@ func (f File) PrintListing(w io.Writer, msg string, loc Position, opts PrintList
 		return bytes.Trim(l.data[start:end], "\r\n")
 	}
 	printLine := func(leftPad string, n int, colored ColorFunc) error {
-		lineNumber := padLine{
+		lineNumber := lineNumberPad{
 			pad: padNum,
 			// Line number is 1-based.
 			line: n + 1,
@@ -146,43 +178,26 @@ func (f File) PrintListing(w io.Writer, msg string, loc Position, opts PrintList
 		return err
 	}
 
-	// Print top context.
-	for contextLine := top; contextLine < errLine; contextLine++ {
-		if contextLine < 0 || contextLine >= len(l.lines) {
-			continue
+	// Print lines.
+	for idx := lowestIdx; idx <= highestIdx; idx++ {
+		var (
+			lineColor = opts.PlainColor
+			pad       = leftPad
+		)
+
+		highlight, ok := xslices.FindFunc(highlights, func(h Highlight) bool {
+			return h.Pos.Line-1 == idx
+		})
+		if ok {
+			lineColor = highlight.Color
+			pad = horizontalPointer + " "
 		}
-		if err := printLine(leftPad, contextLine, plainColor); err != nil {
+
+		if err := printLine(pad, idx, lineColor); err != nil {
 			return err
 		}
-	}
 
-	// Print error line.
-	if err := printLine(horizontalPointer+" ", errLine, errColor); err != nil {
-		return err
-	}
-
-	// Print column pointer.
-	if loc.Column > 0 {
-		if _, err := errColor(w,
-			"\t%s%s %s %s%s\t\n",
-			leftPad,
-			strings.Repeat(" ", padNum+1),
-			verticalBorder,
-			strings.Repeat(" ", loc.Column-1),
-			verticalPointer,
-		); err != nil {
-			return err
-		}
-	}
-
-	// Print bottom context.
-	for contextLine := errLine + 1; contextLine <= bottom; contextLine++ {
-		if contextLine < 0 || contextLine >= len(l.lines) {
-			continue
-		}
-		if err := printLine(leftPad, contextLine, plainColor); err != nil {
-			return err
-		}
+		// TODO(tdakkota): column pointer?
 	}
 
 	return nil
