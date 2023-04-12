@@ -48,6 +48,27 @@ func (UnimplementedHandler) MaskContentTypeOptional(ctx context.Context, req *Ma
 	return r, ht.ErrNotImplemented
 }
 
+// OnlyForm implements onlyForm operation.
+//
+// POST /onlyForm
+func (UnimplementedHandler) OnlyForm(ctx context.Context, req *OnlyFormReq) error {
+	return ht.ErrNotImplemented
+}
+
+// OnlyMultipartFile implements onlyMultipartFile operation.
+//
+// POST /onlyMultipartFile
+func (UnimplementedHandler) OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReqForm) error {
+	return ht.ErrNotImplemented
+}
+
+// OnlyMultipartForm implements onlyMultipartForm operation.
+//
+// POST /onlyMultipartForm
+func (UnimplementedHandler) OnlyMultipartForm(ctx context.Context, req *OnlyMultipartFormReq) error {
+	return ht.ErrNotImplemented
+}
+
 // StreamJSON implements streamJSON operation.
 //
 // POST /streamJSON

@@ -4,6 +4,8 @@ package api
 
 import (
 	"io"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 type AllRequestBodiesApplicationJSON SimpleObject
@@ -228,6 +230,71 @@ func (s *MaskResponse) SetContentType(val string) {
 // SetContent sets the value of Content.
 func (s *MaskResponse) SetContent(val string) {
 	s.Content = val
+}
+
+// OnlyFormOK is response for OnlyForm operation.
+type OnlyFormOK struct{}
+
+type OnlyFormReq struct {
+	Field int `json:"field"`
+}
+
+// GetField returns the value of Field.
+func (s *OnlyFormReq) GetField() int {
+	return s.Field
+}
+
+// SetField sets the value of Field.
+func (s *OnlyFormReq) SetField(val int) {
+	s.Field = val
+}
+
+// OnlyMultipartFileOK is response for OnlyMultipartFile operation.
+type OnlyMultipartFileOK struct{}
+
+type OnlyMultipartFileReq struct {
+	File string `json:"file"`
+}
+
+// GetFile returns the value of File.
+func (s *OnlyMultipartFileReq) GetFile() string {
+	return s.File
+}
+
+// SetFile sets the value of File.
+func (s *OnlyMultipartFileReq) SetFile(val string) {
+	s.File = val
+}
+
+type OnlyMultipartFileReqForm struct {
+	File ht.MultipartFile `json:"file"`
+}
+
+// GetFile returns the value of File.
+func (s *OnlyMultipartFileReqForm) GetFile() ht.MultipartFile {
+	return s.File
+}
+
+// SetFile sets the value of File.
+func (s *OnlyMultipartFileReqForm) SetFile(val ht.MultipartFile) {
+	s.File = val
+}
+
+// OnlyMultipartFormOK is response for OnlyMultipartForm operation.
+type OnlyMultipartFormOK struct{}
+
+type OnlyMultipartFormReq struct {
+	Field int `json:"field"`
+}
+
+// GetField returns the value of Field.
+func (s *OnlyMultipartFormReq) GetField() int {
+	return s.Field
+}
+
+// SetField sets the value of Field.
+func (s *OnlyMultipartFormReq) SetField(val int) {
+	s.Field = val
 }
 
 // NewOptInt returns new OptInt with value set to v.
