@@ -9,7 +9,7 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v1.0.0
-	github.com/go-faster/yaml v0.4.4
+	github.com/go-faster/yaml v0.4.5
 	github.com/google/uuid v1.3.0
 	github.com/mattn/go-isatty v0.0.18
 	github.com/stretchr/testify v1.8.2
