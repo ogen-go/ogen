@@ -268,7 +268,9 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 		// Notice that the closers are called in reverse order, to match defer behavior, so
 		// any opened file will be closed before RemoveAll call.
 		closers = append(closers, r.MultipartForm.RemoveAll)
+		// Form values may be unused.
 		form := url.Values(r.MultipartForm.Value)
+		_ = form
 
 		var request TestForm
 		q := uri.NewQueryDecoder(form)
@@ -484,7 +486,9 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 		// Notice that the closers are called in reverse order, to match defer behavior, so
 		// any opened file will be closed before RemoveAll call.
 		closers = append(closers, r.MultipartForm.RemoveAll)
+		// Form values may be unused.
 		form := url.Values(r.MultipartForm.Value)
+		_ = form
 
 		var request TestMultipartUploadReqForm
 		q := uri.NewQueryDecoder(form)
@@ -710,7 +714,9 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 		// Notice that the closers are called in reverse order, to match defer behavior, so
 		// any opened file will be closed before RemoveAll call.
 		closers = append(closers, r.MultipartForm.RemoveAll)
+		// Form values may be unused.
 		form := url.Values(r.MultipartForm.Value)
+		_ = form
 
 		var request SharedRequestForm
 		q := uri.NewQueryDecoder(form)

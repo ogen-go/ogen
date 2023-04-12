@@ -28,6 +28,18 @@ type Handler interface {
 	//
 	// POST /maskContentTypeOptional
 	MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
+	// OnlyForm implements onlyForm operation.
+	//
+	// POST /onlyForm
+	OnlyForm(ctx context.Context, req *OnlyFormReq) error
+	// OnlyMultipartFile implements onlyMultipartFile operation.
+	//
+	// POST /onlyMultipartFile
+	OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReqForm) error
+	// OnlyMultipartForm implements onlyMultipartForm operation.
+	//
+	// POST /onlyMultipartForm
+	OnlyMultipartForm(ctx context.Context, req *OnlyMultipartFormReq) error
 	// StreamJSON implements streamJSON operation.
 	//
 	// POST /streamJSON

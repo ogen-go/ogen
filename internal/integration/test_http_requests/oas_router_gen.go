@@ -146,6 +146,84 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'o': // Prefix: "only"
+				if l := len("only"); len(elem) >= l && elem[0:l] == "only" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'F': // Prefix: "Form"
+					if l := len("Form"); len(elem) >= l && elem[0:l] == "Form" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleOnlyFormRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
+				case 'M': // Prefix: "MultipartF"
+					if l := len("MultipartF"); len(elem) >= l && elem[0:l] == "MultipartF" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'i': // Prefix: "ile"
+						if l := len("ile"); len(elem) >= l && elem[0:l] == "ile" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleOnlyMultipartFileRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+					case 'o': // Prefix: "orm"
+						if l := len("orm"); len(elem) >= l && elem[0:l] == "orm" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleOnlyMultipartFormRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+					}
+				}
 			case 's': // Prefix: "streamJSON"
 				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
 					elem = elem[l:]
@@ -349,6 +427,93 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						default:
 							return
+						}
+					}
+				}
+			case 'o': // Prefix: "only"
+				if l := len("only"); len(elem) >= l && elem[0:l] == "only" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'F': // Prefix: "Form"
+					if l := len("Form"); len(elem) >= l && elem[0:l] == "Form" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							// Leaf: OnlyForm
+							r.name = "OnlyForm"
+							r.operationID = "onlyForm"
+							r.pathPattern = "/onlyForm"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'M': // Prefix: "MultipartF"
+					if l := len("MultipartF"); len(elem) >= l && elem[0:l] == "MultipartF" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'i': // Prefix: "ile"
+						if l := len("ile"); len(elem) >= l && elem[0:l] == "ile" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: OnlyMultipartFile
+								r.name = "OnlyMultipartFile"
+								r.operationID = "onlyMultipartFile"
+								r.pathPattern = "/onlyMultipartFile"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					case 'o': // Prefix: "orm"
+						if l := len("orm"); len(elem) >= l && elem[0:l] == "orm" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: OnlyMultipartForm
+								r.name = "OnlyMultipartForm"
+								r.operationID = "onlyMultipartForm"
+								r.pathPattern = "/onlyMultipartForm"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
