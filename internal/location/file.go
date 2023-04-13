@@ -10,6 +10,13 @@ type File struct {
 	Lines Lines
 }
 
+func (f File) humanName() string {
+	if n := f.Name; n != "" {
+		return n
+	}
+	return f.Source
+}
+
 // IsZero returns true if file has zero value.
 func (f File) IsZero() bool {
 	s := struct {

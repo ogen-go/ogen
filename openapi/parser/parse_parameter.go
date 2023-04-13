@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -49,7 +50,7 @@ func (p *parser) parseParams(
 
 	var (
 		result = make([]*openapi.Parameter, 0, len(params))
-		unique = make(map[pnameLoc]struct{}, len(params))
+		unique = make(map[pnameLoc]int, len(params))
 	)
 
 	for idx, spec := range params {
@@ -68,12 +69,16 @@ func (p *parser) parseParams(
 			name:     param.Name,
 			location: param.In,
 		}
-		if _, ok := unique[ploc]; ok {
-			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(p.file(ctx), spec.Common.Locator, err)
+
+		if existingIdx, ok := unique[ploc]; ok {
+			file := p.file(ctx)
+			me := new(location.MultiError)
+			me.Report(file, locator.Index(existingIdx), fmt.Sprintf("duplicate parameter: %q in %q", param.Name, param.In))
+			me.Report(file, locator.Index(idx), "")
+			return nil, me
 		}
 
-		unique[ploc] = struct{}{}
+		unique[ploc] = idx
 		result = append(result, param)
 	}
 
@@ -89,8 +94,10 @@ func (p *parser) validateParameter(
 	locator := param.Common.Locator
 	switch {
 	case param.Schema != nil && param.Content != nil:
-		err := errors.New("parameter MUST contain either a schema property, or a content property, but not both")
-		return p.wrapField("schema", file, locator, err)
+		me := new(location.MultiError)
+		me.Report(file, locator.Key("schema"), "parameter MUST contain either a schema property, or a content property, but not both")
+		me.Report(file, locator.Key("content"), "")
+		return me
 	case param.Schema == nil && param.Content == nil:
 		return errors.New("parameter MUST contain either a schema property, or a content property")
 	case param.Content != nil && len(param.Content) < 1:

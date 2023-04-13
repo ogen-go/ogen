@@ -3,20 +3,14 @@ package location
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"go.uber.org/multierr"
+	"golang.org/x/exp/slices"
 )
-
-func firstNonEmpty(strs ...string) string {
-	for _, s := range strs {
-		if s != "" {
-			return s
-		}
-	}
-	return ""
-}
 
 var _ interface {
 	errors.Wrapper
@@ -37,17 +31,9 @@ func (e *Error) Unwrap() error {
 	return e.Err
 }
 
-func (e *Error) fileName() string {
-	filename := firstNonEmpty(e.File.Name, e.File.Source)
-	if filename == "" || e.Pos.Line == 0 {
-		return ""
-	}
-	return filename + ":"
-}
-
 // FormatError implements errors.Formatter.
 func (e *Error) FormatError(p errors.Printer) error {
-	p.Printf("at %s%s", e.fileName(), e.Pos)
+	p.Printf("at %s", e.Pos.WithFilename(e.File.humanName()))
 	return e.Err
 }
 
@@ -58,39 +44,203 @@ func (e *Error) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (e *Error) Error() string {
-	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.Pos, e.Err)
+	return fmt.Sprintf("at %s: %s", e.Pos.WithFilename(e.File.humanName()), e.Err)
 }
 
-// PrettyPrint prints the error in a pretty way and returns true if it was printed successfully.
-func (e *Error) PrettyPrint(w io.Writer, color bool) bool {
-	// TODO(tdakkota): make it configurable?
-	const (
-		printLimit   = 5
-		contextLines = 5
-	)
+// prettyPrint prints the error in a pretty way and returns true if it was printed successfully.
+func (e *Error) prettyPrint(w io.Writer, opts PrintListingOptions) (handled bool, writeErr error) {
 	var (
-		err      = e.Err
-		filename = firstNonEmpty(e.File.Name, e.File.Source)
-		lines    = e.File.Lines
-
-		write = func(msg string, loc Position, context int) {
-			opts := PrintListingOptions{
-				Filename: filename,
-				Context:  context,
-			}
-			if !color {
-				opts = opts.WithoutColor()
-			}
-			_ = lines.PrintListing(w, msg, loc, opts)
-		}
+		iterErr = e.Err
+		locErr  = e
 	)
+	for {
+		e, ok := errors.Into[*Error](iterErr)
+		if !ok || e.Pos.Line == 0 {
+			break
+		}
+		locErr = e
+		iterErr = e.Err
+	}
+	if locErr.Pos.Line != 0 {
+		writeErr = e.File.PrintListing(w, locErr.Err.Error(), locErr.Pos, opts)
+		return true, writeErr
+	}
 
+	return false, nil
+}
+
+// Report is element of MultiError container.
+type Report struct {
+	File File
+	Pos  Position
+	Msg  string
+}
+
+// String returns textual represntation of Report.
+func (r Report) String() string {
+	return fmt.Sprintf("at %s: %s", r.Pos.WithFilename(r.File.humanName()), r.Msg)
+}
+
+var _ interface {
+	errors.Formatter
+	fmt.Formatter
+	error
+} = (*MultiError)(nil)
+
+// MultiError contains multiple Reports.
+type MultiError struct {
+	reports []Report
+}
+
+// Report adds report to the list.
+func (e *MultiError) Report(file File, l Locator, msg string) {
+	pos, _ := l.Position()
+	e.reports = append(e.reports, Report{
+		File: file,
+		Pos:  pos,
+		Msg:  msg,
+	})
+}
+
+// ReportPtr adds report to the list at given pointer.
+func (e *MultiError) ReportPtr(ptr Pointer, msg string) {
+	e.Report(ptr.Source, ptr.Locator, msg)
+}
+
+func (e *MultiError) printSingle(printf func(format string, args ...any)) {
+	switch len(e.reports) {
+	case 0:
+		printf("empty error")
+	case 1:
+		printf("%s", e.reports[0].String())
+	default:
+		for _, r := range e.reports {
+			printf("- %s\n", r.String())
+		}
+	}
+}
+
+// FormatError implements errors.Formatter.
+func (e *MultiError) FormatError(p errors.Printer) error {
+	e.printSingle(p.Printf)
+	return nil
+}
+
+// Format implements fmt.Formatter.
+func (e *MultiError) Format(s fmt.State, verb rune) {
+	errors.FormatError(e, s, verb)
+}
+
+// Error implements error.
+func (e *MultiError) Error() string {
+	var sb strings.Builder
+	e.printSingle(func(format string, args ...any) {
+		fmt.Fprintf(&sb, format, args...)
+	})
+	return sb.String()
+}
+
+const printLimit = 5
+
+type reportChunk struct {
+	Msg        string
+	File       File
+	Highlights []Highlight
+}
+
+func chunkReports(reports []Report, context int, hcolor ColorFunc) []reportChunk {
+	// Group Reports by Source (different files).
+	files := map[string][]Report{}
+	for _, r := range reports {
+		files[r.File.Source] = append(files[r.File.Source], r)
+	}
+
+	var chunks []reportChunk
+	for _, src := range xmaps.SortedKeys(files) {
+		perFile := files[src]
+
+		slices.SortStableFunc(perFile, func(a, b Report) bool {
+			// report with a non-empty message takes precedence.
+			switch {
+			case a.Msg != "" && b.Msg == "":
+				return true
+			case b.Msg != "" && a.Msg == "":
+				return false
+			}
+
+			return a.Pos.Line < b.Pos.Line
+		})
+
+		if len(perFile) == 0 {
+			continue
+		}
+
+		var (
+			first    = perFile[0]
+			highLine = first.Pos.Line
+
+			nextChunk = func(r Report) *reportChunk {
+				chunks = append(chunks, reportChunk{
+					Msg:  r.Msg,
+					File: r.File,
+					Highlights: []Highlight{
+						{Pos: r.Pos, Color: hcolor},
+					},
+				})
+				return &chunks[len(chunks)-1]
+			}
+		)
+		chunk := nextChunk(first)
+
+		for _, r := range perFile[1:] {
+			// Line of previous position + its context + line in-between + second line context
+			if highLine+(context+1)+1+context < r.Pos.Line {
+				chunk = nextChunk(r)
+				highLine = r.Pos.Line
+				continue
+			}
+
+			chunk.Highlights = append(chunk.Highlights, Highlight{
+				Pos:   r.Pos,
+				Color: hcolor,
+			})
+			highLine = r.Pos.Line
+		}
+	}
+
+	slices.SortStableFunc(chunks, func(a, b reportChunk) bool {
+		// chunk with a non-empty message takes precedence.
+		return a.Msg > b.Msg
+	})
+
+	return chunks
+}
+
+// prettyPrint prints the error in a pretty way and returns true if it was printed successfully.
+func (e *MultiError) prettyPrint(w io.Writer, opts PrintListingOptions) (handled bool, writeErr error) {
+	printed := 0
+
+	chunks := chunkReports(e.reports, opts.Context, opts.MsgColor)
+	for _, c := range chunks {
+		if printed >= printLimit {
+			break
+		}
+
+		f := c.File
+		multierr.AppendInto(&writeErr, f.PrintHighlights(w, c.Msg, c.Highlights, opts))
+		printed++
+	}
+
+	return printed > 0, writeErr
+}
+
+func printYAMLError(w io.Writer, err error, f File, opts PrintListingOptions) (handled bool, writeErr error) {
 	if e, ok := errors.Into[*yaml.SyntaxError](err); ok {
 		loc := Position{
 			Line: e.Line,
 		}
-		write(e.Msg, loc, contextLines)
-		return true
+		writeErr = f.PrintListing(w, e.Msg, loc, opts)
+		return true, writeErr
 	}
 
 	if e, ok := errors.Into[*yaml.TypeError](err); ok {
@@ -105,39 +255,43 @@ func (e *Error) PrettyPrint(w io.Writer, color bool) bool {
 					Column: e.Node.Column,
 					Node:   e.Node,
 				}
-				write(e.Err.Error(), loc, contextLines)
+				multierr.AppendInto(&writeErr, f.PrintListing(w, e.Err.Error(), loc, opts))
 				printed++
 			}
 		}
 		// Consider the error as handled if it is printed at least once.
-		return printed > 0
+		return printed > 0, writeErr
 	}
 
-	var (
-		iterErr = e.Err
-		locErr  = e
-	)
-	for {
-		e, ok := errors.Into[*Error](iterErr)
-		if !ok || e.Pos.Line == 0 {
-			break
-		}
-		locErr = e
-		iterErr = e.Err
-	}
-	if locErr.Pos.Line != 0 {
-		write(locErr.Err.Error(), locErr.Pos, contextLines)
-		return true
-	}
-
-	return false
+	return false, nil
 }
 
 // PrintPrettyError prints the error in a pretty way and returns true if it was printed successfully.
 func PrintPrettyError(w io.Writer, color bool, err error) bool {
-	v, ok := errors.Into[*Error](err)
+	opts := PrintListingOptions{}
+	if !color {
+		opts = opts.WithoutColor()
+	}
+	// Set ColorFuncs to non-nil.
+	opts.setDefaults()
+
+	// TODO(tdakkota): handle write errors?
+	me, ok := errors.Into[*MultiError](err)
+	if ok {
+		if handled, _ := me.prettyPrint(w, opts); handled {
+			return true
+		}
+	}
+
+	e, ok := errors.Into[*Error](err)
 	if !ok {
 		return false
 	}
-	return v.PrettyPrint(w, color)
+
+	if handled, _ := printYAMLError(w, e.Err, e.File, opts); handled {
+		return true
+	}
+
+	handled, _ := e.prettyPrint(w, opts)
+	return handled
 }

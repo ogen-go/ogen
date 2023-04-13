@@ -48,13 +48,24 @@ func (p *parser) parseParameterContent(
 		return nil, nil
 	}
 	if len(content) != 1 {
+		me := new(location.MultiError)
+		n := 0
 		for key := range content {
-			locator = locator.Key(key)
-			break
-		}
+			// Report only 2 entries.
+			if n >= 2 {
+				break
+			}
 
-		err := errors.New(`"content" map MUST only contain one entry`)
-		return nil, p.wrapLocation(p.file(ctx), locator, err)
+			// Set message for the first position.
+			var msg string
+			if n == 0 {
+				msg = `"content" map MUST only contain one entry`
+			}
+
+			me.Report(p.file(ctx), locator.Key(key), msg)
+			n++
+		}
+		return nil, me
 	}
 
 	for name, m := range content {

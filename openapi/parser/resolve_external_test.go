@@ -411,7 +411,7 @@ func TestExternalErrors(t *testing.T) {
 	var locErr *location.Error
 	a.ErrorAs(err, &locErr)
 	a.Equal("/pathItem.json", locErr.File.Name)
-	a.True(locErr.PrettyPrint(io.Discard, false))
+	a.True(location.PrintPrettyError(io.Discard, false, locErr))
 }
 
 //go:embed _testdata/remotes
