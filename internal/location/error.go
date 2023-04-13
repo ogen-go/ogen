@@ -89,18 +89,33 @@ var _ interface {
 
 // MultiError contains multiple Reports.
 type MultiError struct {
-	Reports []Report
+	reports []Report
+}
+
+// Report adds report to the list.
+func (e *MultiError) Report(file File, l Locator, msg string) {
+	pos, _ := l.Position()
+	e.reports = append(e.reports, Report{
+		File: file,
+		Pos:  pos,
+		Msg:  msg,
+	})
+}
+
+// ReportPtr adds report to the list at given pointer.
+func (e *MultiError) ReportPtr(ptr Pointer, msg string) {
+	e.Report(ptr.Source, ptr.Locator, msg)
 }
 
 func (e *MultiError) printSingle(printf func(format string, args ...any)) {
-	switch len(e.Reports) {
+	switch len(e.reports) {
 	case 0:
 		printf("empty error")
 	case 1:
-		printf("%s", e.Reports[0].String())
+		printf("%s", e.reports[0].String())
 	default:
-		for _, r := range e.Reports {
-			printf("- at %s\n", r.String())
+		for _, r := range e.reports {
+			printf("- %s\n", r.String())
 		}
 	}
 }
@@ -205,7 +220,7 @@ func chunkReports(reports []Report, context int, hcolor ColorFunc) []reportChunk
 func (e *MultiError) prettyPrint(w io.Writer, opts PrintListingOptions) (handled bool, writeErr error) {
 	printed := 0
 
-	chunks := chunkReports(e.Reports, opts.Context, opts.MsgColor)
+	chunks := chunkReports(e.reports, opts.Context, opts.MsgColor)
 	for _, c := range chunks {
 		if printed >= printLimit {
 			break

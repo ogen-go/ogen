@@ -7,6 +7,17 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+var (
+	file1 = File{
+		Name:   "spec.json",
+		Source: "spec.json",
+	}
+	file2 = File{
+		Name:   "user.json",
+		Source: "user.json",
+	}
+)
+
 func Test_chunkReports(t *testing.T) {
 	highlight := func(l int) Highlight {
 		return Highlight{
@@ -15,15 +26,6 @@ func Test_chunkReports(t *testing.T) {
 			},
 			Color: nil,
 		}
-	}
-
-	file1 := File{
-		Name:   "spec.json",
-		Source: "spec.json",
-	}
-	file2 := File{
-		Name:   "user.json",
-		Source: "user.json",
 	}
 
 	tests := []struct {
@@ -77,6 +79,42 @@ func Test_chunkReports(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			r := chunkReports(tt.reports, tt.context, nil)
 			require.Equal(t, tt.want, r)
+		})
+	}
+}
+
+func TestMultiError_Error(t *testing.T) {
+	tests := []struct {
+		reports []Report
+		expect  string
+	}{
+		{
+			reports: []Report{},
+			expect:  "empty error",
+		},
+		{
+			reports: []Report{
+				{file1, Position{Line: 10}, "bad line"},
+			},
+			expect: "at spec.json:10: bad line",
+		},
+		{
+			reports: []Report{
+				{file1, Position{Line: 10}, "bad line"},
+				{file2, Position{Line: 100}, "second bad line"},
+			},
+			expect: "- at spec.json:10: bad line\n" +
+				"- at user.json:100: second bad line\n",
+		},
+	}
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			me := &MultiError{
+				reports: tt.reports,
+			}
+			require.Equal(t, me.Error(), tt.expect)
+			require.EqualError(t, me, tt.expect)
 		})
 	}
 }
