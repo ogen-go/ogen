@@ -124,10 +124,10 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketBondsGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketBondsGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -284,10 +284,10 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -384,10 +384,10 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -484,10 +484,10 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -616,10 +616,10 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -734,10 +734,10 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -852,10 +852,10 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -952,10 +952,10 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketStocksGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "MarketStocksGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1118,10 +1118,10 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OperationsGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "OperationsGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1253,10 +1253,10 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1374,10 +1374,10 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "OrdersGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1521,10 +1521,10 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1668,10 +1668,10 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1789,10 +1789,10 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -1910,10 +1910,10 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "PortfolioGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "PortfolioGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2031,10 +2031,10 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxClearPost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "SandboxClearPost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2164,10 +2164,10 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2297,10 +2297,10 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2416,10 +2416,10 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2537,10 +2537,10 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")
@@ -2637,10 +2637,10 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "UserAccountsGet", r); err {
-			case nil:
+			switch err := c.securitySSOAuth(ctx, "UserAccountsGet", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"SSOAuth\"")

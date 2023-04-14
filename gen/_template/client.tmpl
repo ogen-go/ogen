@@ -243,10 +243,10 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{
 			{{- $securityName := $s.Type.Name }}
 			stage = {{ printf "Security:%s" $securityName | quote }}
-			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err {
-			case nil:
+			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); {
+			case err == nil: // if NO error
 				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
