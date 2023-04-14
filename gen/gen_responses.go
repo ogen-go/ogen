@@ -190,7 +190,7 @@ func (g *Generator) responseToIR(
 			continue
 		}
 		delete(contents, ct)
-		unsupported = append(unsupported, string(ct))
+		unsupported = append(unsupported, ct.String())
 	}
 	if len(contents) == 0 && len(unsupported) > 0 {
 		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}

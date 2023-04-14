@@ -31,6 +31,9 @@ func (l ParameterLocation) Path() bool { return l == LocationPath }
 // Cookie whether parameter location is cookie.
 func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 
+// String implements fmt.Stringer.
+func (l ParameterLocation) String() string { return string(l) }
+
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
 	Ref Ref

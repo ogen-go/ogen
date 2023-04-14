@@ -73,7 +73,7 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
 			return xslices.FindFunc(params, func(p *openapi.Parameter) bool {
-				return p.Name == name && p.In == openapi.LocationPath
+				return p.Name == name && p.In.Path()
 			})
 		},
 	}).Parse()

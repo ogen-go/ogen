@@ -88,7 +88,7 @@ func vetPathParametersUsed(log *zap.Logger, parts openapi.Path, params []*openap
 func convertPathParts(parts openapi.Path, params []*ir.Parameter) []*ir.PathPart {
 	find := func(pname string) (*ir.Parameter, bool) {
 		return xslices.FindFunc(params, func(p *ir.Parameter) bool {
-			return p.Spec.Name == pname && p.Spec.In == openapi.LocationPath
+			return p.Spec.Name == pname && p.Spec.In.Path()
 		})
 	}
 

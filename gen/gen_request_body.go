@@ -45,7 +45,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 		switch {
 		case len(contents) > 1:
 			if !t.CanHaveMethods() {
-				requestName, err := pascal(name, string(contentType))
+				requestName, err := pascal(name, contentType.String())
 				if err != nil {
 					return nil, errors.Wrapf(err, "request name: %q", contentType)
 				}
