@@ -123,7 +123,7 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -142,7 +142,7 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Key))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -300,7 +300,7 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {

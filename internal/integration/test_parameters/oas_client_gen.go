@@ -265,7 +265,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 			}(enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -773,7 +773,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Value))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -861,7 +861,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {

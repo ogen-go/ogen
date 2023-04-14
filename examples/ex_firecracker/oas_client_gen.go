@@ -1152,7 +1152,7 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.DriveID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1252,7 +1252,7 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.IfaceID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1673,7 +1673,7 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.DriveID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1773,7 +1773,7 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.IfaceID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {

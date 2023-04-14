@@ -123,7 +123,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -142,7 +142,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Foo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -161,7 +161,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Bar))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -180,7 +180,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Baz))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -199,7 +199,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Kek))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1084,7 +1084,7 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1405,7 +1405,7 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1494,7 +1494,7 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1582,7 +1582,7 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {

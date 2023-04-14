@@ -288,7 +288,7 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.PetId))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {

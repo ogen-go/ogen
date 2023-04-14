@@ -126,7 +126,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -145,7 +145,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -288,7 +288,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -307,7 +307,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -326,7 +326,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -468,7 +468,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -487,7 +487,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -630,7 +630,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -649,7 +649,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -668,7 +668,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -810,7 +810,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -953,7 +953,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -972,7 +972,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1114,7 +1114,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1133,7 +1133,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1344,7 +1344,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1363,7 +1363,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1591,7 +1591,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1610,7 +1610,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1753,7 +1753,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1772,7 +1772,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1915,7 +1915,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1934,7 +1934,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1953,7 +1953,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2095,7 +2095,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2114,7 +2114,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2257,7 +2257,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2276,7 +2276,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2295,7 +2295,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2437,7 +2437,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2580,7 +2580,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2599,7 +2599,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2741,7 +2741,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2760,7 +2760,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2903,7 +2903,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2922,7 +2922,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2941,7 +2941,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3083,7 +3083,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3102,7 +3102,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3245,7 +3245,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3264,7 +3264,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3283,7 +3283,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3425,7 +3425,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3568,7 +3568,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3587,7 +3587,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3729,7 +3729,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3748,7 +3748,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3891,7 +3891,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3910,7 +3910,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -3929,7 +3929,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4071,7 +4071,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4090,7 +4090,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4233,7 +4233,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4252,7 +4252,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4271,7 +4271,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4413,7 +4413,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4556,7 +4556,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4575,7 +4575,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4717,7 +4717,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4736,7 +4736,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4879,7 +4879,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4898,7 +4898,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -4917,7 +4917,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5059,7 +5059,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5078,7 +5078,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5221,7 +5221,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5240,7 +5240,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5259,7 +5259,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5401,7 +5401,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5544,7 +5544,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5563,7 +5563,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5705,7 +5705,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5724,7 +5724,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5935,7 +5935,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -5954,7 +5954,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6182,7 +6182,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6201,7 +6201,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6344,7 +6344,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6363,7 +6363,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6506,7 +6506,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6525,7 +6525,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6544,7 +6544,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6686,7 +6686,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6705,7 +6705,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6848,7 +6848,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6867,7 +6867,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -6886,7 +6886,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7028,7 +7028,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7171,7 +7171,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7190,7 +7190,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7332,7 +7332,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7351,7 +7351,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7494,7 +7494,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7513,7 +7513,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7532,7 +7532,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7674,7 +7674,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7693,7 +7693,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7836,7 +7836,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7855,7 +7855,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -7874,7 +7874,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -8016,7 +8016,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -8159,7 +8159,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -8178,7 +8178,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.pathPath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -16130,7 +16130,7 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -16426,7 +16426,7 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -16722,7 +16722,7 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -17018,7 +17018,7 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -17314,7 +17314,7 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -18441,7 +18441,7 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -19014,7 +19014,7 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -19587,7 +19587,7 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -20437,7 +20437,7 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -20733,7 +20733,7 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -21306,7 +21306,7 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -22156,7 +22156,7 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -24114,7 +24114,7 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -24410,7 +24410,7 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -24706,7 +24706,7 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -25002,7 +25002,7 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -25298,7 +25298,7 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -25594,7 +25594,7 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -25890,7 +25890,7 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -26186,7 +26186,7 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -26482,7 +26482,7 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -26778,7 +26778,7 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -27074,7 +27074,7 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -27370,7 +27370,7 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -30713,7 +30713,7 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -31286,7 +31286,7 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -31859,7 +31859,7 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -32432,7 +32432,7 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -34667,7 +34667,7 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -34963,7 +34963,7 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -36367,7 +36367,7 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -36940,7 +36940,7 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -38344,7 +38344,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -38640,7 +38640,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -41152,7 +41152,7 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -41725,7 +41725,7 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42019,7 +42019,7 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Logpath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42241,7 +42241,7 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42383,7 +42383,7 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42525,7 +42525,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42667,7 +42667,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42810,7 +42810,7 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -42952,7 +42952,7 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43095,7 +43095,7 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43114,7 +43114,7 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43256,7 +43256,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43275,7 +43275,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43417,7 +43417,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43436,7 +43436,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43579,7 +43579,7 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43598,7 +43598,7 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43740,7 +43740,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43759,7 +43759,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43902,7 +43902,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -43921,7 +43921,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44064,7 +44064,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44083,7 +44083,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44225,7 +44225,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44244,7 +44244,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44387,7 +44387,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44406,7 +44406,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44549,7 +44549,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44568,7 +44568,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44710,7 +44710,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44729,7 +44729,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44872,7 +44872,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -44891,7 +44891,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45034,7 +45034,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45053,7 +45053,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45195,7 +45195,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45214,7 +45214,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45357,7 +45357,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45376,7 +45376,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45518,7 +45518,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45537,7 +45537,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45680,7 +45680,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45699,7 +45699,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45841,7 +45841,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -45860,7 +45860,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46003,7 +46003,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46022,7 +46022,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46164,7 +46164,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46183,7 +46183,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46326,7 +46326,7 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46345,7 +46345,7 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46487,7 +46487,7 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46506,7 +46506,7 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46649,7 +46649,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46668,7 +46668,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46810,7 +46810,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46829,7 +46829,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -46972,7 +46972,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47114,7 +47114,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47257,7 +47257,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47400,7 +47400,7 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47419,7 +47419,7 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47561,7 +47561,7 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47703,7 +47703,7 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47845,7 +47845,7 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -47988,7 +47988,7 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48007,7 +48007,7 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48149,7 +48149,7 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48168,7 +48168,7 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48310,7 +48310,7 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48329,7 +48329,7 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48471,7 +48471,7 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48490,7 +48490,7 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48632,7 +48632,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48651,7 +48651,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48793,7 +48793,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48812,7 +48812,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48955,7 +48955,7 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -48974,7 +48974,7 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49116,7 +49116,7 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49135,7 +49135,7 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49278,7 +49278,7 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49297,7 +49297,7 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49576,7 +49576,7 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49595,7 +49595,7 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49738,7 +49738,7 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49757,7 +49757,7 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49899,7 +49899,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -49918,7 +49918,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50060,7 +50060,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50079,7 +50079,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50222,7 +50222,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50241,7 +50241,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50384,7 +50384,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50403,7 +50403,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50545,7 +50545,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50564,7 +50564,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50707,7 +50707,7 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50726,7 +50726,7 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50868,7 +50868,7 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -50887,7 +50887,7 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51029,7 +51029,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51048,7 +51048,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51190,7 +51190,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51209,7 +51209,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51352,7 +51352,7 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51494,7 +51494,7 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51637,7 +51637,7 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51779,7 +51779,7 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51922,7 +51922,7 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -51941,7 +51941,7 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52083,7 +52083,7 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52102,7 +52102,7 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52244,7 +52244,7 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52263,7 +52263,7 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52405,7 +52405,7 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52424,7 +52424,7 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52566,7 +52566,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52708,7 +52708,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52851,7 +52851,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -52993,7 +52993,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53136,7 +53136,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53278,7 +53278,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53421,7 +53421,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53563,7 +53563,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53706,7 +53706,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53848,7 +53848,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -53991,7 +53991,7 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54133,7 +54133,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54152,7 +54152,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54294,7 +54294,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54313,7 +54313,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54456,7 +54456,7 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54475,7 +54475,7 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54617,7 +54617,7 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54759,7 +54759,7 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -54901,7 +54901,7 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55043,7 +55043,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55062,7 +55062,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55204,7 +55204,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55223,7 +55223,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55366,7 +55366,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55385,7 +55385,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55527,7 +55527,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55546,7 +55546,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55689,7 +55689,7 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55831,7 +55831,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -55973,7 +55973,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56115,7 +56115,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56134,7 +56134,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56276,7 +56276,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56295,7 +56295,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56437,7 +56437,7 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56579,7 +56579,7 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56721,7 +56721,7 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -56863,7 +56863,7 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57005,7 +57005,7 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57147,7 +57147,7 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57290,7 +57290,7 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57309,7 +57309,7 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57451,7 +57451,7 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57470,7 +57470,7 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -57614,7 +57614,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -58189,7 +58189,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -58763,7 +58763,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -59337,7 +59337,7 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -60745,7 +60745,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -60764,7 +60764,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61060,7 +61060,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61357,7 +61357,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61376,7 +61376,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61672,7 +61672,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61969,7 +61969,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -61988,7 +61988,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -62284,7 +62284,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -62581,7 +62581,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -62600,7 +62600,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -62896,7 +62896,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -63193,7 +63193,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -63212,7 +63212,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -63508,7 +63508,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -64639,7 +64639,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -64658,7 +64658,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -64954,7 +64954,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -65529,7 +65529,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -65548,7 +65548,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -65844,7 +65844,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -66419,7 +66419,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -66438,7 +66438,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -66734,7 +66734,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -67587,7 +67587,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -67606,7 +67606,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -67902,7 +67902,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -68199,7 +68199,7 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -68218,7 +68218,7 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -68514,7 +68514,7 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -69089,7 +69089,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -69108,7 +69108,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -69404,7 +69404,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -69702,7 +69702,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -70554,7 +70554,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -70573,7 +70573,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -70869,7 +70869,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -72278,7 +72278,7 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -72852,7 +72852,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -72871,7 +72871,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -73167,7 +73167,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -73464,7 +73464,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -73483,7 +73483,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -73779,7 +73779,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -74076,7 +74076,7 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -74095,7 +74095,7 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -74391,7 +74391,7 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -74688,7 +74688,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -74707,7 +74707,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75003,7 +75003,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75300,7 +75300,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75319,7 +75319,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75615,7 +75615,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75912,7 +75912,7 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -75931,7 +75931,7 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -76227,7 +76227,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -76524,7 +76524,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -76543,7 +76543,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -76839,7 +76839,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -77136,7 +77136,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -77155,7 +77155,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -77451,7 +77451,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -77748,7 +77748,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -77767,7 +77767,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78063,7 +78063,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78360,7 +78360,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78379,7 +78379,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78675,7 +78675,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78972,7 +78972,7 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -78991,7 +78991,7 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -79287,7 +79287,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -79306,7 +79306,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -79602,7 +79602,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -79899,7 +79899,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -80196,7 +80196,7 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -80770,7 +80770,7 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -83846,7 +83846,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -83865,7 +83865,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -84161,7 +84161,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -84736,7 +84736,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -84755,7 +84755,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -85051,7 +85051,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -85626,7 +85626,7 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -85645,7 +85645,7 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -85941,7 +85941,7 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -86516,7 +86516,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -86535,7 +86535,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -86831,7 +86831,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -87128,7 +87128,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -87703,7 +87703,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -88277,7 +88277,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -88852,7 +88852,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -89426,7 +89426,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -90000,7 +90000,7 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -90852,7 +90852,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -90871,7 +90871,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -91167,7 +91167,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -91464,7 +91464,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -91483,7 +91483,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -91779,7 +91779,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -92354,7 +92354,7 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -92928,7 +92928,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -93502,7 +93502,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -94076,7 +94076,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -94095,7 +94095,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -94391,7 +94391,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -94966,7 +94966,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -94985,7 +94985,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -95281,7 +95281,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -95856,7 +95856,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -96430,7 +96430,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -96726,7 +96726,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -97578,7 +97578,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -97597,7 +97597,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -97893,7 +97893,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -97912,7 +97912,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -98208,7 +98208,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -98505,7 +98505,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -99358,7 +99358,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -99932,7 +99932,7 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -100506,7 +100506,7 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -101080,7 +101080,7 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -101654,7 +101654,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -102506,7 +102506,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -102525,7 +102525,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -102821,7 +102821,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -103396,7 +103396,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -103415,7 +103415,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -103711,7 +103711,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Namespace))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return res, errors.Wrap(err, "encode param")
 		}
 		encoded, err := e.Result()
 		if err != nil {
