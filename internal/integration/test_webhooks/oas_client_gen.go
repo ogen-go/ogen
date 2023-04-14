@@ -118,7 +118,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -205,7 +205,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -272,7 +272,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -358,7 +358,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

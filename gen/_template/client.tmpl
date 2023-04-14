@@ -215,7 +215,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
+	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

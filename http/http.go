@@ -19,8 +19,8 @@ type Client interface {
 }
 
 // NewRequest creates a new http.Request.
-func NewRequest(ctx context.Context, method string, u *url.URL, body io.Reader) (*http.Request, error) {
-	return http.NewRequestWithContext(ctx, method, u.String(), body)
+func NewRequest(ctx context.Context, method string, u *url.URL) (*http.Request, error) {
+	return http.NewRequestWithContext(ctx, method, u.String(), http.NoBody)
 }
 
 func initRequest(req *http.Request, contentType string) {
