@@ -28,7 +28,7 @@ func sortResponseInfos(result []ResponseInfo) {
 		if l.StatusCode != r.StatusCode {
 			return l.StatusCode < r.StatusCode
 		}
-		return string(l.ContentType) < string(r.ContentType)
+		return l.ContentType.String() < r.ContentType.String()
 	})
 }
 

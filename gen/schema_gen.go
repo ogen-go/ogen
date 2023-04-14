@@ -403,7 +403,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 		fields := []zap.Field{
 			zapPosition(schema),
-			zap.String("type", string(schema.Type)),
+			zap.String("type", schema.Type.String()),
 			zap.String("format", schema.Format),
 			zap.String("go_type", t.Go()),
 		}

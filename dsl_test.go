@@ -137,7 +137,7 @@ func TestBuilder(t *testing.T) {
 						"ok": {
 							Description: "Success",
 							Content: map[string]ogen.Media{
-								string(ir.EncodingJSON): {Schema: &ogen.Schema{
+								ir.EncodingJSON.String(): {Schema: &ogen.Schema{
 									Type:        "object",
 									Description: "Success",
 									Properties: []ogen.Property{
@@ -177,7 +177,7 @@ func TestBuilder(t *testing.T) {
 				"error": {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
-						string(ir.EncodingJSON): {Schema: &ogen.Schema{
+						ir.EncodingJSON.String(): {Schema: &ogen.Schema{
 							Type:        "object",
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
@@ -209,7 +209,7 @@ func TestBuilder(t *testing.T) {
 				pathWithBody: {
 					Description: "Referenced RequestBody",
 					Content: map[string]ogen.Media{
-						string(ir.EncodingJSON): {
+						ir.EncodingJSON.String(): {
 							Schema: &ogen.Schema{Ref: "#/components/schemas/" + _toySchema.Name},
 						},
 					},
@@ -240,7 +240,7 @@ func TestBuilder(t *testing.T) {
 				ogen.NewResponse().
 					SetDescription(ex.Paths[pathWithID].Get.Responses["ok"].Description).
 					SetJSONContent(ogen.NewSchema().
-						SetDescription(ex.Paths[pathWithID].Get.Responses["ok"].Content[string(ir.EncodingJSON)].Schema.Description).
+						SetDescription(ex.Paths[pathWithID].Get.Responses["ok"].Content[ir.EncodingJSON.String()].Schema.Description).
 						AddOptionalProperties(
 							ogen.Int32().ToProperty("prop1"),
 							ogen.String().ToProperty("prop2"),
@@ -295,7 +295,7 @@ func TestBuilder(t *testing.T) {
 			ogen.NewResponse().
 				SetDescription(ex.Components.Responses["error"].Description).
 				SetJSONContent(ogen.NewSchema().
-					SetDescription(ex.Components.Responses["error"].Content[string(ir.EncodingJSON)].Schema.Description).
+					SetDescription(ex.Components.Responses["error"].Content[ir.EncodingJSON.String()].Schema.Description).
 					AddOptionalProperties(
 						ogen.Int32().ToProperty("code"),
 						ogen.String().ToProperty("status"),

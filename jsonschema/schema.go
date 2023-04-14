@@ -28,6 +28,9 @@ const (
 	Null SchemaType = "null"
 )
 
+// String implements fmt.Stringer.
+func (t SchemaType) String() string { return string(t) }
+
 // Ref is a JSON Schema reference.
 type Ref = jsonpointer.RefKey
 

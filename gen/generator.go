@@ -186,7 +186,7 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 				if p.In.Path() {
 					log.Warn("Webhooks can't have path parameters",
 						zap.String("name", p.Name),
-						zap.String("in", string(p.In)),
+						zap.String("in", p.In.String()),
 					)
 					return false
 				}

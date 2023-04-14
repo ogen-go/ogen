@@ -597,22 +597,22 @@ func (p *Parameter) SetIn(i string) *Parameter {
 
 // InPath sets the In of the Parameter to "path".
 func (p *Parameter) InPath() *Parameter {
-	return p.SetIn(string(openapi.LocationPath))
+	return p.SetIn(openapi.LocationPath.String())
 }
 
 // InQuery sets the In of the Parameter to "query".
 func (p *Parameter) InQuery() *Parameter {
-	return p.SetIn(string(openapi.LocationQuery))
+	return p.SetIn(openapi.LocationQuery.String())
 }
 
 // InHeader sets the In of the Parameter to "header".
 func (p *Parameter) InHeader() *Parameter {
-	return p.SetIn(string(openapi.LocationHeader))
+	return p.SetIn(openapi.LocationHeader.String())
 }
 
 // InCookie sets the In of the Parameter to "cookie".
 func (p *Parameter) InCookie() *Parameter {
-	return p.SetIn(string(openapi.LocationCookie))
+	return p.SetIn(openapi.LocationCookie.String())
 }
 
 // SetDescription sets the Description of the Parameter.
@@ -1022,7 +1022,7 @@ func schema(t, f string) *Schema {
 // AsArray returns a new "array" Schema wrapping the receiver.
 func (s *Schema) AsArray() *Schema {
 	return &Schema{
-		Type:  string(jsonschema.Array),
+		Type:  jsonschema.Array.String(),
 		Items: s,
 	}
 }

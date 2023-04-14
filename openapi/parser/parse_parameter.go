@@ -214,7 +214,7 @@ func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool 
 
 	// When style is form, the default value is true.
 	// For all other styles, the default value is false.
-	if locatedIn == openapi.LocationQuery || locatedIn == openapi.LocationCookie {
+	if locatedIn.Query() || locatedIn.Cookie() {
 		return true
 	}
 

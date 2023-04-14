@@ -38,7 +38,7 @@ func vetHeaderParameterName(log *zap.Logger, name string, loc position, ignore .
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for _, p := range params {
-		if p.In == openapi.LocationHeader {
+		if p.In.Header() {
 			if vetHeaderParameterName(g.log, p.Name, p, "Content-Type", "Accept", "Authorization") {
 				continue
 			}
@@ -50,7 +50,7 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 				return nil, err
 			}
 			// Path parameters are required.
-			if p.In == openapi.LocationPath {
+			if p.In.Path() {
 				return nil, err
 			}
 			continue
@@ -84,8 +84,8 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 						return nil, errors.Wrap(err, "parameter name")
 					}
 				case specNameEqual:
-					p.Name = string(p.Spec.In) + p.Name
-					pp.Name = string(pp.Spec.In) + pp.Name
+					p.Name = p.Spec.In.String() + p.Name
+					pp.Name = pp.Spec.In.String() + pp.Name
 				}
 			}
 		}
