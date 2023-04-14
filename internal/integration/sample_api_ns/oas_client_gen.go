@@ -2068,10 +2068,10 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		var satisfied bitset
 		{
 			stage = "Security:APIKey"
-			switch err := c.securityAPIKey(ctx, "SecurityTest", r); err {
-			case nil:
+			switch err := c.securityAPIKey(ctx, "SecurityTest", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"APIKey\"")

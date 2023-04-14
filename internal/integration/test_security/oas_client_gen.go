@@ -126,10 +126,10 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		var satisfied bitset
 		{
 			stage = "Security:BasicAuth"
-			switch err := c.securityBasicAuth(ctx, "DisjointSecurity", r); err {
-			case nil:
+			switch err := c.securityBasicAuth(ctx, "DisjointSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"BasicAuth\"")
@@ -137,10 +137,10 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		}
 		{
 			stage = "Security:QueryKey"
-			switch err := c.securityQueryKey(ctx, "DisjointSecurity", r); err {
-			case nil:
+			switch err := c.securityQueryKey(ctx, "DisjointSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 1
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"QueryKey\"")
@@ -148,10 +148,10 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		}
 		{
 			stage = "Security:CookieKey"
-			switch err := c.securityCookieKey(ctx, "DisjointSecurity", r); err {
-			case nil:
+			switch err := c.securityCookieKey(ctx, "DisjointSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 2
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"CookieKey\"")
@@ -159,10 +159,10 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		}
 		{
 			stage = "Security:HeaderKey"
-			switch err := c.securityHeaderKey(ctx, "DisjointSecurity", r); err {
-			case nil:
+			switch err := c.securityHeaderKey(ctx, "DisjointSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 3
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"HeaderKey\"")
@@ -261,10 +261,10 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 		var satisfied bitset
 		{
 			stage = "Security:BasicAuth"
-			switch err := c.securityBasicAuth(ctx, "IntersectSecurity", r); err {
-			case nil:
+			switch err := c.securityBasicAuth(ctx, "IntersectSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"BasicAuth\"")
@@ -272,10 +272,10 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 		}
 		{
 			stage = "Security:HeaderKey"
-			switch err := c.securityHeaderKey(ctx, "IntersectSecurity", r); err {
-			case nil:
+			switch err := c.securityHeaderKey(ctx, "IntersectSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 1
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"HeaderKey\"")
@@ -283,10 +283,10 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 		}
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "IntersectSecurity", r); err {
-			case nil:
+			switch err := c.securityBearerToken(ctx, "IntersectSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 2
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"BearerToken\"")
@@ -385,10 +385,10 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 		var satisfied bitset
 		{
 			stage = "Security:QueryKey"
-			switch err := c.securityQueryKey(ctx, "OptionalSecurity", r); err {
-			case nil:
+			switch err := c.securityQueryKey(ctx, "OptionalSecurity", r); {
+			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
-			case ogenerrors.ErrSkipClientSecurity:
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
 				// Skip this security.
 			default:
 				return res, errors.Wrap(err, "security \"QueryKey\"")
