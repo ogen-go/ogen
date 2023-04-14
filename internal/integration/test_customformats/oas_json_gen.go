@@ -129,12 +129,10 @@ func (s *User) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *User) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("phone")
 		formatPhone().EncodeJSON(e, s.Phone)
 	}
@@ -145,7 +143,6 @@ func (s *User) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("profile_color")
 		formatRgba().EncodeJSON(e, s.ProfileColor)
 	}

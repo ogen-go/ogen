@@ -22,12 +22,10 @@ func (s *Balloon) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Balloon) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("amount_mib")
 		e.Int(s.AmountMib)
 	}
 	{
-
 		e.FieldStart("deflate_on_oom")
 		e.Bool(s.DeflateOnOom)
 	}
@@ -154,22 +152,18 @@ func (s *BalloonStats) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BalloonStats) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("target_pages")
 		e.Int(s.TargetPages)
 	}
 	{
-
 		e.FieldStart("actual_pages")
 		e.Int(s.ActualPages)
 	}
 	{
-
 		e.FieldStart("target_mib")
 		e.Int(s.TargetMib)
 	}
 	{
-
 		e.FieldStart("actual_mib")
 		e.Int(s.ActualMib)
 	}
@@ -476,7 +470,6 @@ func (s *BalloonStatsUpdate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BalloonStatsUpdate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("stats_polling_interval_s")
 		e.Int(s.StatsPollingIntervalS)
 	}
@@ -573,7 +566,6 @@ func (s *BalloonUpdate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BalloonUpdate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("amount_mib")
 		e.Int(s.AmountMib)
 	}
@@ -682,7 +674,6 @@ func (s *BootSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kernel_image_path")
 		e.Str(s.KernelImagePath)
 	}
@@ -841,7 +832,6 @@ func (s *Drive) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Drive) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("drive_id")
 		e.Str(s.DriveID)
 	}
@@ -852,12 +842,10 @@ func (s *Drive) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("is_read_only")
 		e.Bool(s.IsReadOnly)
 	}
 	{
-
 		e.FieldStart("is_root_device")
 		e.Bool(s.IsRootDevice)
 	}
@@ -868,7 +856,6 @@ func (s *Drive) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("path_on_host")
 		e.Str(s.PathOnHost)
 	}
@@ -1328,7 +1315,6 @@ func (s *InstanceActionInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InstanceActionInfo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("action_type")
 		s.ActionType.Encode(e)
 	}
@@ -1465,22 +1451,18 @@ func (s *InstanceInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InstanceInfo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("app_name")
 		e.Str(s.AppName)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("vmm_version")
 		e.Str(s.VmmVersion)
 	}
@@ -1662,7 +1644,6 @@ func (s *Logger) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("log_path")
 		e.Str(s.LogPath)
 	}
@@ -1855,12 +1836,10 @@ func (s *MachineConfiguration) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ht_enabled")
 		e.Bool(s.HtEnabled)
 	}
 	{
-
 		e.FieldStart("mem_size_mib")
 		e.Int(s.MemSizeMib)
 	}
@@ -1871,7 +1850,6 @@ func (s *MachineConfiguration) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("vcpu_count")
 		e.Int(s.VcpuCount)
 	}
@@ -2016,7 +1994,6 @@ func (s *Metrics) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Metrics) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("metrics_path")
 		e.Str(s.MetricsPath)
 	}
@@ -2324,12 +2301,10 @@ func (s *NetworkInterface) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("host_dev_name")
 		e.Str(s.HostDevName)
 	}
 	{
-
 		e.FieldStart("iface_id")
 		e.Str(s.IfaceID)
 	}
@@ -3031,7 +3006,6 @@ func (s *PartialDrive) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PartialDrive) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("drive_id")
 		e.Str(s.DriveID)
 	}
@@ -3162,7 +3136,6 @@ func (s *PartialNetworkInterface) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PartialNetworkInterface) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("iface_id")
 		e.Str(s.IfaceID)
 	}
@@ -3373,12 +3346,10 @@ func (s *SnapshotCreateParams) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SnapshotCreateParams) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("mem_file_path")
 		e.Str(s.MemFilePath)
 	}
 	{
-
 		e.FieldStart("snapshot_path")
 		e.Str(s.SnapshotPath)
 	}
@@ -3568,12 +3539,10 @@ func (s *SnapshotLoadParams) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("mem_file_path")
 		e.Str(s.MemFilePath)
 	}
 	{
-
 		e.FieldStart("snapshot_path")
 		e.Str(s.SnapshotPath)
 	}
@@ -3717,12 +3686,10 @@ func (s *TokenBucket) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("refill_time")
 		e.Int64(s.RefillTime)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int64(s.Size)
 	}
@@ -3843,7 +3810,6 @@ func (s *VM) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *VM) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -3978,17 +3944,14 @@ func (s *Vsock) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Vsock) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("guest_cid")
 		e.Int(s.GuestCid)
 	}
 	{
-
 		e.FieldStart("uds_path")
 		e.Str(s.UdsPath)
 	}
 	{
-
 		e.FieldStart("vsock_id")
 		e.Str(s.VsockID)
 	}

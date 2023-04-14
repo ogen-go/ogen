@@ -63,42 +63,34 @@ func (s *Candle) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Candle) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("interval")
 		s.Interval.Encode(e)
 	}
 	{
-
 		e.FieldStart("o")
 		e.Float64(s.O)
 	}
 	{
-
 		e.FieldStart("c")
 		e.Float64(s.C)
 	}
 	{
-
 		e.FieldStart("h")
 		e.Float64(s.H)
 	}
 	{
-
 		e.FieldStart("l")
 		e.Float64(s.L)
 	}
 	{
-
 		e.FieldStart("v")
 		e.Int32(s.V)
 	}
 	{
-
 		e.FieldStart("time")
 		json.EncodeDateTime(e, s.Time)
 	}
@@ -342,17 +334,14 @@ func (s *Candles) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Candles) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("interval")
 		s.Interval.Encode(e)
 	}
 	{
-
 		e.FieldStart("candles")
 		e.ArrStart()
 		for _, elem := range s.Candles {
@@ -483,17 +472,14 @@ func (s *CandlesResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CandlesResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -615,7 +601,6 @@ func (s *Currencies) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Currencies) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currencies")
 		e.ArrStart()
 		for _, elem := range s.Currencies {
@@ -776,12 +761,10 @@ func (s *CurrencyPosition) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CurrencyPosition) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currency")
 		s.Currency.Encode(e)
 	}
 	{
-
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
@@ -906,17 +889,14 @@ func (s *Empty) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Empty) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -1083,17 +1063,14 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -1339,17 +1316,14 @@ func (s *LimitOrderRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LimitOrderRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("lots")
 		e.Int32(s.Lots)
 	}
 	{
-
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
 	{
-
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
@@ -1470,17 +1444,14 @@ func (s *LimitOrderResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LimitOrderResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -1602,12 +1573,10 @@ func (s *MarketInstrument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketInstrument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("ticker")
 		e.Str(s.Ticker)
 	}
@@ -1624,7 +1593,6 @@ func (s *MarketInstrument) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("lot")
 		e.Int32(s.Lot)
 	}
@@ -1641,12 +1609,10 @@ func (s *MarketInstrument) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
@@ -1838,12 +1804,10 @@ func (s *MarketInstrumentList) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketInstrumentList) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total")
 		e.Int32(s.Total)
 	}
 	{
-
 		e.FieldStart("instruments")
 		e.ArrStart()
 		for _, elem := range s.Instruments {
@@ -1963,17 +1927,14 @@ func (s *MarketInstrumentListResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketInstrumentListResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -2095,12 +2056,10 @@ func (s *MarketOrderRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketOrderRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("lots")
 		e.Int32(s.Lots)
 	}
 	{
-
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
@@ -2208,17 +2167,14 @@ func (s *MarketOrderResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketOrderResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -2340,12 +2296,10 @@ func (s *MoneyAmount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MoneyAmount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currency")
 		s.Currency.Encode(e)
 	}
 	{
-
 		e.FieldStart("value")
 		e.Float64(s.Value)
 	}
@@ -2453,12 +2407,10 @@ func (s *Operation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Operation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
@@ -2479,12 +2431,10 @@ func (s *Operation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("currency")
 		s.Currency.Encode(e)
 	}
 	{
-
 		e.FieldStart("payment")
 		e.Float64(s.Payment)
 	}
@@ -2519,12 +2469,10 @@ func (s *Operation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("isMarginCall")
 		e.Bool(s.IsMarginCall)
 	}
 	{
-
 		e.FieldStart("date")
 		json.EncodeDateTime(e, s.Date)
 	}
@@ -2826,22 +2774,18 @@ func (s *OperationTrade) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OperationTrade) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("tradeId")
 		e.Str(s.TradeId)
 	}
 	{
-
 		e.FieldStart("date")
 		json.EncodeDateTime(e, s.Date)
 	}
 	{
-
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
 	{
-
 		e.FieldStart("quantity")
 		e.Int32(s.Quantity)
 	}
@@ -3095,7 +3039,6 @@ func (s *Operations) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Operations) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("operations")
 		e.ArrStart()
 		for _, elem := range s.Operations {
@@ -3202,17 +3145,14 @@ func (s *OperationsResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OperationsResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -3637,42 +3577,34 @@ func (s *Order) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Order) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("orderId")
 		e.Str(s.OrderId)
 	}
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("requestedLots")
 		e.Int32(s.RequestedLots)
 	}
 	{
-
 		e.FieldStart("executedLots")
 		e.Int32(s.ExecutedLots)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
 	{
-
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
@@ -3854,12 +3786,10 @@ func (s *OrderResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrderResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
 	{
-
 		e.FieldStart("quantity")
 		e.Int32(s.Quantity)
 	}
@@ -4063,17 +3993,14 @@ func (s *Orderbook) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Orderbook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("depth")
 		e.Int32(s.Depth)
 	}
 	{
-
 		e.FieldStart("bids")
 		e.ArrStart()
 		for _, elem := range s.Bids {
@@ -4082,7 +4009,6 @@ func (s *Orderbook) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("asks")
 		e.ArrStart()
 		for _, elem := range s.Asks {
@@ -4091,12 +4017,10 @@ func (s *Orderbook) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("tradeStatus")
 		s.TradeStatus.Encode(e)
 	}
 	{
-
 		e.FieldStart("minPriceIncrement")
 		e.Float64(s.MinPriceIncrement)
 	}
@@ -4354,17 +4278,14 @@ func (s *OrderbookResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrderbookResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -4486,17 +4407,14 @@ func (s *OrdersResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrdersResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		e.ArrStart()
 		for _, elem := range s.Payload {
@@ -4630,17 +4548,14 @@ func (s *PlacedLimitOrder) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PlacedLimitOrder) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("orderId")
 		e.Str(s.OrderId)
 	}
 	{
-
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
@@ -4657,12 +4572,10 @@ func (s *PlacedLimitOrder) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("requestedLots")
 		e.Int(s.RequestedLots)
 	}
 	{
-
 		e.FieldStart("executedLots")
 		e.Int(s.ExecutedLots)
 	}
@@ -4846,17 +4759,14 @@ func (s *PlacedMarketOrder) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PlacedMarketOrder) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("orderId")
 		e.Str(s.OrderId)
 	}
 	{
-
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
@@ -4873,12 +4783,10 @@ func (s *PlacedMarketOrder) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("requestedLots")
 		e.Int(s.RequestedLots)
 	}
 	{
-
 		e.FieldStart("executedLots")
 		e.Int(s.ExecutedLots)
 	}
@@ -5062,7 +4970,6 @@ func (s *Portfolio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Portfolio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("positions")
 		e.ArrStart()
 		for _, elem := range s.Positions {
@@ -5169,17 +5076,14 @@ func (s *PortfolioCurrenciesResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PortfolioCurrenciesResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -5301,7 +5205,6 @@ func (s *PortfolioPosition) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PortfolioPosition) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
@@ -5318,12 +5221,10 @@ func (s *PortfolioPosition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("instrumentType")
 		s.InstrumentType.Encode(e)
 	}
 	{
-
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
@@ -5340,7 +5241,6 @@ func (s *PortfolioPosition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("lots")
 		e.Int32(s.Lots)
 	}
@@ -5357,7 +5257,6 @@ func (s *PortfolioPosition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -5571,17 +5470,14 @@ func (s *PortfolioResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PortfolioResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -5703,12 +5599,10 @@ func (s *SandboxAccount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SandboxAccount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("brokerAccountType")
 		s.BrokerAccountType.Encode(e)
 	}
 	{
-
 		e.FieldStart("brokerAccountId")
 		e.Str(s.BrokerAccountId)
 	}
@@ -5933,17 +5827,14 @@ func (s *SandboxRegisterResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SandboxRegisterResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -6065,12 +5956,10 @@ func (s *SandboxSetCurrencyBalanceRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SandboxSetCurrencyBalanceRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currency")
 		s.Currency.Encode(e)
 	}
 	{
-
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
@@ -6184,7 +6073,6 @@ func (s *SandboxSetPositionBalanceRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
@@ -6292,12 +6180,10 @@ func (s *SearchMarketInstrument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchMarketInstrument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("figi")
 		e.Str(s.Figi)
 	}
 	{
-
 		e.FieldStart("ticker")
 		e.Str(s.Ticker)
 	}
@@ -6314,7 +6200,6 @@ func (s *SearchMarketInstrument) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("lot")
 		e.Int32(s.Lot)
 	}
@@ -6325,12 +6210,10 @@ func (s *SearchMarketInstrument) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
@@ -6510,17 +6393,14 @@ func (s *SearchMarketInstrumentResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchMarketInstrumentResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -6682,12 +6562,10 @@ func (s *UserAccount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserAccount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("brokerAccountType")
 		s.BrokerAccountType.Encode(e)
 	}
 	{
-
 		e.FieldStart("brokerAccountId")
 		e.Str(s.BrokerAccountId)
 	}
@@ -6795,7 +6673,6 @@ func (s *UserAccounts) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserAccounts) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("accounts")
 		e.ArrStart()
 		for _, elem := range s.Accounts {
@@ -6902,17 +6779,14 @@ func (s *UserAccountsResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserAccountsResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("trackingId")
 		e.Str(s.TrackingId)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}

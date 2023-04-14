@@ -142,22 +142,18 @@ func (s *ProbeLivenessOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProbeLivenessOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("VeryBadEnum")
 		s.VeryBadEnum.Encode(e)
 	}
 	{
-
 		e.FieldStart("PascalStrat")
 		s.PascalStrat.Encode(e)
 	}
 	{
-
 		e.FieldStart("PascalSpecialStrat")
 		s.PascalSpecialStrat.Encode(e)
 	}
 	{
-
 		e.FieldStart("PascalExceptionStrat")
 		s.PascalExceptionStrat.Encode(e)
 	}

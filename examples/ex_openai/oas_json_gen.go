@@ -22,12 +22,10 @@ func (s *ChatCompletionRequestMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatCompletionRequestMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -194,12 +192,10 @@ func (s *ChatCompletionResponseMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatCompletionResponseMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -349,17 +345,14 @@ func (s *CreateAnswerRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateAnswerRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("question")
 		e.Str(s.Question)
 	}
 	{
-
 		e.FieldStart("examples")
 		e.ArrStart()
 		for _, elem := range s.Examples {
@@ -372,7 +365,6 @@ func (s *CreateAnswerRequest) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("examples_context")
 		e.Str(s.ExamplesContext)
 	}
@@ -1124,12 +1116,10 @@ func (s *CreateChatCompletionRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateChatCompletionRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("messages")
 		e.ArrStart()
 		for _, elem := range s.Messages {
@@ -1528,27 +1518,22 @@ func (s *CreateChatCompletionResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateChatCompletionResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("created")
 		e.Int(s.Created)
 	}
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("choices")
 		e.ArrStart()
 		for _, elem := range s.Choices {
@@ -1821,17 +1806,14 @@ func (s *CreateChatCompletionResponseUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateChatCompletionResponseUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("prompt_tokens")
 		e.Int(s.PromptTokens)
 	}
 	{
-
 		e.FieldStart("completion_tokens")
 		e.Int(s.CompletionTokens)
 	}
 	{
-
 		e.FieldStart("total_tokens")
 		e.Int(s.TotalTokens)
 	}
@@ -1954,12 +1936,10 @@ func (s *CreateClassificationRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateClassificationRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("query")
 		e.Str(s.Query)
 	}
@@ -2576,7 +2556,6 @@ func (s *CreateCompletionRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateCompletionRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
@@ -3107,27 +3086,22 @@ func (s *CreateCompletionResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateCompletionResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("created")
 		e.Int(s.Created)
 	}
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("choices")
 		e.ArrStart()
 		for _, elem := range s.Choices {
@@ -3626,17 +3600,14 @@ func (s *CreateCompletionResponseUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateCompletionResponseUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("prompt_tokens")
 		e.Int(s.PromptTokens)
 	}
 	{
-
 		e.FieldStart("completion_tokens")
 		e.Int(s.CompletionTokens)
 	}
 	{
-
 		e.FieldStart("total_tokens")
 		e.Int(s.TotalTokens)
 	}
@@ -3759,7 +3730,6 @@ func (s *CreateEditRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEditRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
@@ -3770,7 +3740,6 @@ func (s *CreateEditRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("instruction")
 		e.Str(s.Instruction)
 	}
@@ -3943,17 +3912,14 @@ func (s *CreateEditResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEditResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("created")
 		e.Int(s.Created)
 	}
 	{
-
 		e.FieldStart("choices")
 		e.ArrStart()
 		for _, elem := range s.Choices {
@@ -3962,7 +3928,6 @@ func (s *CreateEditResponse) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("usage")
 		s.Usage.Encode(e)
 	}
@@ -4425,17 +4390,14 @@ func (s *CreateEditResponseUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEditResponseUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("prompt_tokens")
 		e.Int(s.PromptTokens)
 	}
 	{
-
 		e.FieldStart("completion_tokens")
 		e.Int(s.CompletionTokens)
 	}
 	{
-
 		e.FieldStart("total_tokens")
 		e.Int(s.TotalTokens)
 	}
@@ -4558,12 +4520,10 @@ func (s *CreateEmbeddingRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEmbeddingRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("input")
 		s.Input.Encode(e)
 	}
@@ -4750,17 +4710,14 @@ func (s *CreateEmbeddingResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEmbeddingResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -4769,7 +4726,6 @@ func (s *CreateEmbeddingResponse) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("usage")
 		s.Usage.Encode(e)
 	}
@@ -4909,17 +4865,14 @@ func (s *CreateEmbeddingResponseDataItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEmbeddingResponseDataItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("index")
 		e.Int(s.Index)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("embedding")
 		e.ArrStart()
 		for _, elem := range s.Embedding {
@@ -5054,12 +5007,10 @@ func (s *CreateEmbeddingResponseUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateEmbeddingResponseUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("prompt_tokens")
 		e.Int(s.PromptTokens)
 	}
 	{
-
 		e.FieldStart("total_tokens")
 		e.Int(s.TotalTokens)
 	}
@@ -5169,7 +5120,6 @@ func (s *CreateFineTuneRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateFineTuneRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("training_file")
 		e.Str(s.TrainingFile)
 	}
@@ -5455,7 +5405,6 @@ func (s *CreateImageRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateImageRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("prompt")
 		e.Str(s.Prompt)
 	}
@@ -5703,7 +5652,6 @@ func (s *CreateModerationRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateModerationRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("input")
 		s.Input.Encode(e)
 	}
@@ -5878,17 +5826,14 @@ func (s *CreateModerationResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateModerationResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("model")
 		e.Str(s.Model)
 	}
 	{
-
 		e.FieldStart("results")
 		e.ArrStart()
 		for _, elem := range s.Results {
@@ -6021,17 +5966,14 @@ func (s *CreateModerationResponseResultsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateModerationResponseResultsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("flagged")
 		e.Bool(s.Flagged)
 	}
 	{
-
 		e.FieldStart("categories")
 		s.Categories.Encode(e)
 	}
 	{
-
 		e.FieldStart("category_scores")
 		s.CategoryScores.Encode(e)
 	}
@@ -6150,37 +6092,30 @@ func (s *CreateModerationResponseResultsItemCategories) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateModerationResponseResultsItemCategories) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("hate")
 		e.Bool(s.Hate)
 	}
 	{
-
 		e.FieldStart("hate/threatening")
 		e.Bool(s.HateSlashThreatening)
 	}
 	{
-
 		e.FieldStart("self-harm")
 		e.Bool(s.SelfMinusHarm)
 	}
 	{
-
 		e.FieldStart("sexual")
 		e.Bool(s.Sexual)
 	}
 	{
-
 		e.FieldStart("sexual/minors")
 		e.Bool(s.SexualSlashMinors)
 	}
 	{
-
 		e.FieldStart("violence")
 		e.Bool(s.Violence)
 	}
 	{
-
 		e.FieldStart("violence/graphic")
 		e.Bool(s.ViolenceSlashGraphic)
 	}
@@ -6355,37 +6290,30 @@ func (s *CreateModerationResponseResultsItemCategoryScores) Encode(e *jx.Encoder
 // encodeFields encodes fields.
 func (s *CreateModerationResponseResultsItemCategoryScores) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("hate")
 		e.Float64(s.Hate)
 	}
 	{
-
 		e.FieldStart("hate/threatening")
 		e.Float64(s.HateSlashThreatening)
 	}
 	{
-
 		e.FieldStart("self-harm")
 		e.Float64(s.SelfMinusHarm)
 	}
 	{
-
 		e.FieldStart("sexual")
 		e.Float64(s.Sexual)
 	}
 	{
-
 		e.FieldStart("sexual/minors")
 		e.Float64(s.SexualSlashMinors)
 	}
 	{
-
 		e.FieldStart("violence")
 		e.Float64(s.Violence)
 	}
 	{
-
 		e.FieldStart("violence/graphic")
 		e.Float64(s.ViolenceSlashGraphic)
 	}
@@ -6560,7 +6488,6 @@ func (s *CreateSearchRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateSearchRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("query")
 		e.Str(s.Query)
 	}
@@ -6948,7 +6875,6 @@ func (s *CreateTranscriptionResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateTranscriptionResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -7045,7 +6971,6 @@ func (s *CreateTranslationResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateTranslationResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -7142,17 +7067,14 @@ func (s *DeleteFileResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteFileResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("deleted")
 		e.Bool(s.Deleted)
 	}
@@ -7275,17 +7197,14 @@ func (s *DeleteModelResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteModelResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("deleted")
 		e.Bool(s.Deleted)
 	}
@@ -7576,12 +7495,10 @@ func (s *ListEnginesResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ListEnginesResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -7701,12 +7618,10 @@ func (s *ListFilesResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ListFilesResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -7826,12 +7741,10 @@ func (s *ListFineTuneEventsResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ListFineTuneEventsResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -7951,12 +7864,10 @@ func (s *ListFineTunesResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ListFineTunesResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -8076,12 +7987,10 @@ func (s *ListModelsResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ListModelsResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {

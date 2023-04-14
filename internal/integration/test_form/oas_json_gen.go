@@ -137,7 +137,6 @@ func (s *TestMultipartUploadOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TestMultipartUploadOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file")
 		e.Str(s.File)
 	}
@@ -148,7 +147,6 @@ func (s *TestMultipartUploadOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("files")
 		e.ArrStart()
 		for _, elem := range s.Files {

@@ -25,7 +25,6 @@ func (s *APIOverview) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *APIOverview) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("verifiable_password_authentication")
 		e.Bool(s.VerifiablePasswordAuthentication)
 	}
@@ -645,22 +644,18 @@ func (s *ActionsBillingUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsBillingUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_minutes_used")
 		e.Int(s.TotalMinutesUsed)
 	}
 	{
-
 		e.FieldStart("total_paid_minutes_used")
 		e.Int(s.TotalPaidMinutesUsed)
 	}
 	{
-
 		e.FieldStart("included_minutes")
 		e.Int(s.IncludedMinutes)
 	}
 	{
-
 		e.FieldStart("minutes_used_breakdown")
 		s.MinutesUsedBreakdown.Encode(e)
 	}
@@ -936,12 +931,10 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsCreateOrUpdateEnvironmentSecretReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("encrypted_value")
 		e.Str(s.EncryptedValue)
 	}
 	{
-
 		e.FieldStart("key_id")
 		e.Str(s.KeyID)
 	}
@@ -1063,7 +1056,6 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("visibility")
 		s.Visibility.Encode(e)
 	}
@@ -1377,7 +1369,6 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1634,7 +1625,6 @@ func (s *ActionsEnterprisePermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsEnterprisePermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled_organizations")
 		s.EnabledOrganizations.Encode(e)
 	}
@@ -1780,12 +1770,10 @@ func (s *ActionsListArtifactsForRepoOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListArtifactsForRepoOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("artifacts")
 		e.ArrStart()
 		for _, elem := range s.Artifacts {
@@ -1905,12 +1893,10 @@ func (s *ActionsListEnvironmentSecretsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListEnvironmentSecretsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("secrets")
 		e.ArrStart()
 		for _, elem := range s.Secrets {
@@ -2030,12 +2016,10 @@ func (s *ActionsListJobsForWorkflowRunOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListJobsForWorkflowRunOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("jobs")
 		e.ArrStart()
 		for _, elem := range s.Jobs {
@@ -2155,12 +2139,10 @@ func (s *ActionsListOrgSecretsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListOrgSecretsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("secrets")
 		e.ArrStart()
 		for _, elem := range s.Secrets {
@@ -2280,12 +2262,10 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Encode(e *jx.Encod
 // encodeFields encodes fields.
 func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -2405,12 +2385,10 @@ func (s *ActionsListRepoSecretsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListRepoSecretsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("secrets")
 		e.ArrStart()
 		for _, elem := range s.Secrets {
@@ -2530,12 +2508,10 @@ func (s *ActionsListRepoWorkflowsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListRepoWorkflowsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("workflows")
 		e.ArrStart()
 		for _, elem := range s.Workflows {
@@ -2655,12 +2631,10 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListSelectedReposForOrgSecretOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -2780,12 +2754,10 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Enco
 // encodeFields encodes fields.
 func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -2905,12 +2877,10 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runner_groups")
 		e.ArrStart()
 		for _, elem := range s.RunnerGroups {
@@ -3030,12 +3000,10 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListSelfHostedRunnersForOrgOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -3155,12 +3123,10 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListSelfHostedRunnersForRepoOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -3280,12 +3246,10 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -3405,12 +3369,10 @@ func (s *ActionsListWorkflowRunArtifactsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListWorkflowRunArtifactsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("artifacts")
 		e.ArrStart()
 		for _, elem := range s.Artifacts {
@@ -3530,12 +3492,10 @@ func (s *ActionsListWorkflowRunsForRepoOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsListWorkflowRunsForRepoOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("workflow_runs")
 		e.ArrStart()
 		for _, elem := range s.WorkflowRuns {
@@ -3655,7 +3615,6 @@ func (s *ActionsOrganizationPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsOrganizationPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled_repositories")
 		s.EnabledRepositories.Encode(e)
 	}
@@ -3801,12 +3760,10 @@ func (s *ActionsPublicKey) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsPublicKey) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key_id")
 		e.Str(s.KeyID)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -4029,7 +3986,6 @@ func (s *ActionsRepositoryPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled")
 		s.Enabled.Encode(e)
 	}
@@ -4203,7 +4159,6 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsReviewPendingDeploymentsForRunReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("environment_ids")
 		e.ArrStart()
 		for _, elem := range s.EnvironmentIds {
@@ -4212,12 +4167,10 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("comment")
 		e.Str(s.Comment)
 	}
@@ -4386,17 +4339,14 @@ func (s *ActionsSecret) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsSecret) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -4519,7 +4469,6 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Encode(e *jx.Encoder
 // encodeFields encodes fields.
 func (s *ActionsSetGithubActionsPermissionsOrganizationReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled_repositories")
 		s.EnabledRepositories.Encode(e)
 	}
@@ -4631,7 +4580,6 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *ActionsSetGithubActionsPermissionsRepositoryReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled")
 		s.Enabled.Encode(e)
 	}
@@ -4743,7 +4691,6 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Encode(e *jx.Encod
 // encodeFields encodes fields.
 func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("selected_repository_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedRepositoryIds {
@@ -4852,7 +4799,6 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsSetSelectedReposForOrgSecretReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("selected_repository_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedRepositoryIds {
@@ -4961,7 +4907,6 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Enco
 // encodeFields encodes fields.
 func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("selected_repository_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedRepositoryIds {
@@ -5070,7 +5015,6 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -5179,7 +5123,6 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -6929,12 +6872,10 @@ func (s *Actor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Actor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
@@ -6945,17 +6886,14 @@ func (s *Actor) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
@@ -9166,32 +9104,26 @@ func (s *ApplicationGrant) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ApplicationGrant) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("app")
 		s.App.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("scopes")
 		e.ArrStart()
 		for _, elem := range s.Scopes {
@@ -9380,17 +9312,14 @@ func (s *ApplicationGrantApp) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ApplicationGrantApp) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("client_id")
 		e.Str(s.ClientID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -9589,7 +9518,6 @@ func (s *AppsCheckTokenReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsCheckTokenReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("access_token")
 		e.Str(s.AccessToken)
 	}
@@ -9800,12 +9728,10 @@ func (s *AppsCreateContentAttachmentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsCreateContentAttachmentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -9915,7 +9841,6 @@ func (s *AppsCreateFromManifestCreated) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -9926,52 +9851,42 @@ func (s *AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("external_url")
 		json.EncodeURI(e, s.ExternalURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
 	{
-
 		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
@@ -9986,22 +9901,18 @@ func (s *AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("client_id")
 		e.Str(s.ClientID)
 	}
 	{
-
 		e.FieldStart("client_secret")
 		e.Str(s.ClientSecret)
 	}
 	{
-
 		e.FieldStart("webhook_secret")
 		s.WebhookSecret.Encode(e)
 	}
 	{
-
 		e.FieldStart("pem")
 		e.Str(s.Pem)
 	}
@@ -10867,7 +10778,6 @@ func (s *AppsDeleteAuthorizationReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsDeleteAuthorizationReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("access_token")
 		e.Str(s.AccessToken)
 	}
@@ -10964,7 +10874,6 @@ func (s *AppsDeleteTokenReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsDeleteTokenReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("access_token")
 		e.Str(s.AccessToken)
 	}
@@ -11365,7 +11274,6 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *AppsListInstallationReposForAuthenticatedUserOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
@@ -11376,7 +11284,6 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) encodeFields(e *jx.Enc
 		}
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -11621,12 +11528,10 @@ func (s *AppsListReposAccessibleToInstallationOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsListReposAccessibleToInstallationOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -12003,7 +11908,6 @@ func (s *AppsResetTokenReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsResetTokenReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("access_token")
 		e.Str(s.AccessToken)
 	}
@@ -12176,7 +12080,6 @@ func (s *AppsScopeTokenReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AppsScopeTokenReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("access_token")
 		e.Str(s.AccessToken)
 	}
@@ -12536,52 +12439,42 @@ func (s *Artifact) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Artifact) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("size_in_bytes")
 		e.Int(s.SizeInBytes)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("archive_download_url")
 		e.Str(s.ArchiveDownloadURL)
 	}
 	{
-
 		e.FieldStart("expired")
 		e.Bool(s.Expired)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("expires_at")
 		s.ExpiresAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -13697,12 +13590,10 @@ func (s *AuthenticationToken) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AuthenticationToken) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("token")
 		e.Str(s.Token)
 	}
 	{
-
 		e.FieldStart("expires_at")
 		json.EncodeDateTime(e, s.ExpiresAt)
 	}
@@ -14030,17 +13921,14 @@ func (s *Authorization) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Authorization) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("scopes")
 		if s.Scopes == nil {
 			e.Null()
@@ -14053,47 +13941,38 @@ func (s *Authorization) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("token")
 		e.Str(s.Token)
 	}
 	{
-
 		e.FieldStart("token_last_eight")
 		s.TokenLastEight.Encode(e)
 	}
 	{
-
 		e.FieldStart("hashed_token")
 		s.HashedToken.Encode(e)
 	}
 	{
-
 		e.FieldStart("app")
 		s.App.Encode(e)
 	}
 	{
-
 		e.FieldStart("note")
 		s.Note.Encode(e)
 	}
 	{
-
 		e.FieldStart("note_url")
 		s.NoteURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("fingerprint")
 		s.Fingerprint.Encode(e)
 	}
@@ -14110,7 +13989,6 @@ func (s *Authorization) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("expires_at")
 		s.ExpiresAt.Encode(e, json.EncodeDateTime)
 	}
@@ -14387,17 +14265,14 @@ func (s *AuthorizationApp) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AuthorizationApp) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("client_id")
 		e.Str(s.ClientID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -14520,22 +14395,18 @@ func (s *AutoMerge) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AutoMerge) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled_by")
 		s.EnabledBy.Encode(e)
 	}
 	{
-
 		e.FieldStart("merge_method")
 		s.MergeMethod.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit_title")
 		e.Str(s.CommitTitle)
 	}
 	{
-
 		e.FieldStart("commit_message")
 		e.Str(s.CommitMessage)
 	}
@@ -14709,17 +14580,14 @@ func (s *Autolink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Autolink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("key_prefix")
 		e.Str(s.KeyPrefix)
 	}
 	{
-
 		e.FieldStart("url_template")
 		e.Str(s.URLTemplate)
 	}
@@ -14842,82 +14710,66 @@ func (s *BaseGist) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BaseGist) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		json.EncodeURI(e, s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("git_pull_url")
 		json.EncodeURI(e, s.GitPullURL)
 	}
 	{
-
 		e.FieldStart("git_push_url")
 		json.EncodeURI(e, s.GitPushURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("files")
 		s.Files.Encode(e)
 	}
 	{
-
 		e.FieldStart("public")
 		e.Bool(s.Public)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
@@ -15602,32 +15454,26 @@ func (s *Blob) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Blob) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
 	{
-
 		e.FieldStart("encoding")
 		e.Str(s.Encoding)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("size")
 		s.Size.Encode(e)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -16323,12 +16169,10 @@ func (s *BranchProtectionRequiredSignatures) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchProtectionRequiredSignatures) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -16450,7 +16294,6 @@ func (s *BranchProtectionRequiredStatusChecks) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -16615,27 +16458,22 @@ func (s *BranchRestrictionPolicy) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchRestrictionPolicy) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("users_url")
 		json.EncodeURI(e, s.UsersURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("apps_url")
 		json.EncodeURI(e, s.AppsURL)
 	}
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -16644,7 +16482,6 @@ func (s *BranchRestrictionPolicy) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -16653,7 +16490,6 @@ func (s *BranchRestrictionPolicy) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("apps")
 		e.ArrStart()
 		for _, elem := range s.Apps {
@@ -18266,17 +18102,14 @@ func (s *BranchShort) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchShort) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("protected")
 		e.Bool(s.Protected)
 	}
@@ -18397,12 +18230,10 @@ func (s *BranchShortCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchShortCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
@@ -18512,32 +18343,26 @@ func (s *BranchWithProtection) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchWithProtection) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
 	{
-
 		e.FieldStart("protected")
 		e.Bool(s.Protected)
 	}
 	{
-
 		e.FieldStart("protection")
 		s.Protection.Encode(e)
 	}
 	{
-
 		e.FieldStart("protection_url")
 		json.EncodeURI(e, s.ProtectionURL)
 	}
@@ -18727,12 +18552,10 @@ func (s *BranchWithProtectionLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BranchWithProtectionLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("html")
 		e.Str(s.HTML)
 	}
 	{
-
 		e.FieldStart("self")
 		json.EncodeURI(e, s.Self)
 	}
@@ -18842,52 +18665,42 @@ func (s *CheckAnnotation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckAnnotation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("start_line")
 		e.Int(s.StartLine)
 	}
 	{
-
 		e.FieldStart("end_line")
 		e.Int(s.EndLine)
 	}
 	{
-
 		e.FieldStart("start_column")
 		s.StartColumn.Encode(e)
 	}
 	{
-
 		e.FieldStart("end_column")
 		s.EndColumn.Encode(e)
 	}
 	{
-
 		e.FieldStart("annotation_level")
 		s.AnnotationLevel.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		s.Title.Encode(e)
 	}
 	{
-
 		e.FieldStart("message")
 		s.Message.Encode(e)
 	}
 	{
-
 		e.FieldStart("raw_details")
 		s.RawDetails.Encode(e)
 	}
 	{
-
 		e.FieldStart("blob_href")
 		e.Str(s.BlobHref)
 	}
@@ -19090,82 +18903,66 @@ func (s *CheckRun) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckRun) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("head_sha")
 		e.Str(s.HeadSha)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("external_id")
 		s.ExternalID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("details_url")
 		s.DetailsURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("conclusion")
 		s.Conclusion.Encode(e)
 	}
 	{
-
 		e.FieldStart("started_at")
 		s.StartedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("completed_at")
 		s.CompletedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("output")
 		s.Output.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("check_suite")
 		s.CheckSuite.Encode(e)
 	}
 	{
-
 		e.FieldStart("app")
 		s.App.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_requests")
 		e.ArrStart()
 		for _, elem := range s.PullRequests {
@@ -19466,7 +19263,6 @@ func (s *CheckRunCheckSuite) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckRunCheckSuite) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -19613,27 +19409,22 @@ func (s *CheckRunOutput) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckRunOutput) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		s.Title.Encode(e)
 	}
 	{
-
 		e.FieldStart("summary")
 		s.Summary.Encode(e)
 	}
 	{
-
 		e.FieldStart("text")
 		s.Text.Encode(e)
 	}
 	{
-
 		e.FieldStart("annotations_count")
 		e.Int(s.AnnotationsCount)
 	}
 	{
-
 		e.FieldStart("annotations_url")
 		json.EncodeURI(e, s.AnnotationsURL)
 	}
@@ -19818,52 +19609,42 @@ func (s *CheckSuite) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckSuite) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("head_branch")
 		s.HeadBranch.Encode(e)
 	}
 	{
-
 		e.FieldStart("head_sha")
 		e.Str(s.HeadSha)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("conclusion")
 		s.Conclusion.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("before")
 		s.Before.Encode(e)
 	}
 	{
-
 		e.FieldStart("after")
 		s.After.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_requests")
 		if s.PullRequests == nil {
 			e.Null()
@@ -19876,37 +19657,30 @@ func (s *CheckSuite) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("app")
 		s.App.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("head_commit")
 		s.HeadCommit.Encode(e)
 	}
 	{
-
 		e.FieldStart("latest_check_runs_count")
 		e.Int(s.LatestCheckRunsCount)
 	}
 	{
-
 		e.FieldStart("check_runs_url")
 		e.Str(s.CheckRunsURL)
 	}
@@ -20254,12 +20028,10 @@ func (s *CheckSuitePreference) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CheckSuitePreference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("preferences")
 		s.Preferences.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
@@ -20439,12 +20211,10 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) Encode(e *jx.Enco
 // encodeFields encodes fields.
 func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("app_id")
 		e.Int(s.AppID)
 	}
 	{
-
 		e.FieldStart("setting")
 		e.Bool(s.Setting)
 	}
@@ -20672,7 +20442,6 @@ func (s *ChecksCreateSuiteReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChecksCreateSuiteReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("head_sha")
 		e.Str(s.HeadSha)
 	}
@@ -20769,12 +20538,10 @@ func (s *ChecksListForRefOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChecksListForRefOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("check_runs")
 		e.ArrStart()
 		for _, elem := range s.CheckRuns {
@@ -20894,12 +20661,10 @@ func (s *ChecksListForSuiteOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChecksListForSuiteOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("check_runs")
 		e.ArrStart()
 		for _, elem := range s.CheckRuns {
@@ -21019,12 +20784,10 @@ func (s *ChecksListSuitesForRefOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChecksListSuitesForRefOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("check_suites")
 		e.ArrStart()
 		for _, elem := range s.CheckSuites {
@@ -21263,12 +21026,10 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Encode(e *jx.Encode
 // encodeFields encodes fields.
 func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("app_id")
 		e.Int(s.AppID)
 	}
 	{
-
 		e.FieldStart("setting")
 		e.Bool(s.Setting)
 	}
@@ -21379,17 +21140,14 @@ func (s *CloneTraffic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CloneTraffic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
 	{
-
 		e.FieldStart("uniques")
 		e.Int(s.Uniques)
 	}
 	{
-
 		e.FieldStart("clones")
 		e.ArrStart()
 		for _, elem := range s.Clones {
@@ -21574,17 +21332,14 @@ func (s *CodeOfConduct) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeOfConduct) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -21595,7 +21350,6 @@ func (s *CodeOfConduct) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
@@ -21740,22 +21494,18 @@ func (s *CodeOfConductSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeOfConductSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
@@ -21889,69 +21639,56 @@ func (s *CodeScanningAlert) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningAlert) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("number")
 		s.Number.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		if len(s.Instances) != 0 {
 			e.FieldStart("instances")
 			e.Raw(s.Instances)
 		}
 	}
 	{
-
 		e.FieldStart("instances_url")
 		s.InstancesURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_by")
 		s.DismissedBy.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_at")
 		s.DismissedAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_reason")
 		s.DismissedReason.Encode(e)
 	}
 	{
-
 		e.FieldStart("rule")
 		s.Rule.Encode(e)
 	}
 	{
-
 		e.FieldStart("tool")
 		s.Tool.Encode(e)
 	}
 	{
-
 		e.FieldStart("most_recent_instance")
 		s.MostRecentInstance.Encode(e)
 	}
@@ -22636,62 +22373,50 @@ func (s *CodeScanningAlertItems) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningAlertItems) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("number")
 		s.Number.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("instances_url")
 		s.InstancesURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_by")
 		s.DismissedBy.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_at")
 		s.DismissedAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("dismissed_reason")
 		s.DismissedReason.Encode(e)
 	}
 	{
-
 		e.FieldStart("rule")
 		s.Rule.Encode(e)
 	}
 	{
-
 		e.FieldStart("tool")
 		s.Tool.Encode(e)
 	}
 	{
-
 		e.FieldStart("most_recent_instance")
 		s.MostRecentInstance.Encode(e)
 	}
@@ -23551,22 +23276,18 @@ func (s *CodeScanningAnalysis) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningAnalysis) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		s.Ref.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit_sha")
 		s.CommitSha.Encode(e)
 	}
 	{
-
 		e.FieldStart("analysis_key")
 		s.AnalysisKey.Encode(e)
 	}
 	{
-
 		e.FieldStart("environment")
 		s.Environment.Encode(e)
 	}
@@ -23577,52 +23298,42 @@ func (s *CodeScanningAnalysis) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("error")
 		e.Str(s.Error)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("results_count")
 		e.Int(s.ResultsCount)
 	}
 	{
-
 		e.FieldStart("rules_count")
 		e.Int(s.RulesCount)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("sarif_id")
 		s.SarifID.Encode(e)
 	}
 	{
-
 		e.FieldStart("tool")
 		s.Tool.Encode(e)
 	}
 	{
-
 		e.FieldStart("deletable")
 		e.Bool(s.Deletable)
 	}
 	{
-
 		e.FieldStart("warning")
 		e.Str(s.Warning)
 	}
@@ -24061,12 +23772,10 @@ func (s *CodeScanningAnalysisDeletion) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningAnalysisDeletion) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("next_analysis_url")
 		s.NextAnalysisURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("confirm_delete_url")
 		s.ConfirmDeleteURL.Encode(e)
 	}
@@ -25509,7 +25218,6 @@ func (s *CodeScanningUpdateAlertReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -25697,17 +25405,14 @@ func (s *CodeScanningUploadSarifReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeScanningUploadSarifReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("commit_sha")
 		s.CommitSha.Encode(e)
 	}
 	{
-
 		e.FieldStart("ref")
 		s.Ref.Encode(e)
 	}
 	{
-
 		e.FieldStart("sarif")
 		s.Sarif.Encode(e)
 	}
@@ -25875,42 +25580,34 @@ func (s *CodeSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CodeSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		json.EncodeURI(e, s.GitURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
@@ -26247,12 +25944,10 @@ func (s *Collaborator) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Collaborator) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -26269,82 +25964,66 @@ func (s *Collaborator) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
@@ -26701,7 +26380,6 @@ func (s *CollaboratorPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CollaboratorPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -26712,7 +26390,6 @@ func (s *CollaboratorPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -26723,7 +26400,6 @@ func (s *CollaboratorPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -26868,17 +26544,14 @@ func (s *CombinedBillingUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CombinedBillingUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("days_left_in_billing_cycle")
 		e.Int(s.DaysLeftInBillingCycle)
 	}
 	{
-
 		e.FieldStart("estimated_paid_storage_for_month")
 		e.Int(s.EstimatedPaidStorageForMonth)
 	}
 	{
-
 		e.FieldStart("estimated_storage_for_month")
 		e.Int(s.EstimatedStorageForMonth)
 	}
@@ -27001,12 +26674,10 @@ func (s *CombinedCommitStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CombinedCommitStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("statuses")
 		e.ArrStart()
 		for _, elem := range s.Statuses {
@@ -27015,27 +26686,22 @@ func (s *CombinedCommitStatus) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit_url")
 		json.EncodeURI(e, s.CommitURL)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -27214,47 +26880,38 @@ func (s *Commit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Commit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
 	{
-
 		e.FieldStart("parents")
 		e.ArrStart()
 		for _, elem := range s.Parents {
@@ -27505,7 +27162,6 @@ func (s *CommitActivity) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitActivity) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("days")
 		e.ArrStart()
 		for _, elem := range s.Days {
@@ -27514,12 +27170,10 @@ func (s *CommitActivity) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("total")
 		e.Int(s.Total)
 	}
 	{
-
 		e.FieldStart("week")
 		e.Int(s.Week)
 	}
@@ -27650,67 +27304,54 @@ func (s *CommitComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("path")
 		s.Path.Encode(e)
 	}
 	{
-
 		e.FieldStart("position")
 		s.Position.Encode(e)
 	}
 	{
-
 		e.FieldStart("line")
 		s.Line.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit_id")
 		e.Str(s.CommitID)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -27971,32 +27612,26 @@ func (s *CommitCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("comment_count")
 		e.Int(s.CommentCount)
 	}
 	{
-
 		e.FieldStart("tree")
 		s.Tree.Encode(e)
 	}
@@ -28169,12 +27804,10 @@ func (s *CommitCommitTree) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitCommitTree) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -28284,62 +27917,50 @@ func (s *CommitComparison) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitComparison) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("permalink_url")
 		json.EncodeURI(e, s.PermalinkURL)
 	}
 	{
-
 		e.FieldStart("diff_url")
 		json.EncodeURI(e, s.DiffURL)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		json.EncodeURI(e, s.PatchURL)
 	}
 	{
-
 		e.FieldStart("base_commit")
 		s.BaseCommit.Encode(e)
 	}
 	{
-
 		e.FieldStart("merge_base_commit")
 		s.MergeBaseCommit.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("ahead_by")
 		e.Int(s.AheadBy)
 	}
 	{
-
 		e.FieldStart("behind_by")
 		e.Int(s.BehindBy)
 	}
 	{
-
 		e.FieldStart("total_commits")
 		e.Int(s.TotalCommits)
 	}
 	{
-
 		e.FieldStart("commits")
 		e.ArrStart()
 		for _, elem := range s.Commits {
@@ -28889,12 +28510,10 @@ func (s *CommitParentsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitParentsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -29021,42 +28640,34 @@ func (s *CommitSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
 	{
-
 		e.FieldStart("parents")
 		e.ArrStart()
 		for _, elem := range s.Parents {
@@ -29065,17 +28676,14 @@ func (s *CommitSearchResultItem) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -29320,32 +28928,26 @@ func (s *CommitSearchResultItemCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitSearchResultItemCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
 	{
-
 		e.FieldStart("comment_count")
 		e.Int(s.CommentCount)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("tree")
 		s.Tree.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -29518,17 +29120,14 @@ func (s *CommitSearchResultItemCommitAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitSearchResultItemCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("date")
 		json.EncodeDateTime(e, s.Date)
 	}
@@ -29651,12 +29250,10 @@ func (s *CommitSearchResultItemCommitTree) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommitSearchResultItemCommitTree) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -29960,27 +29557,22 @@ func (s *CommunityProfile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommunityProfile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("health_percentage")
 		e.Int(s.HealthPercentage)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("documentation")
 		s.Documentation.Encode(e)
 	}
 	{
-
 		e.FieldStart("files")
 		s.Files.Encode(e)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -30138,37 +29730,30 @@ func (s *CommunityProfileFiles) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CommunityProfileFiles) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code_of_conduct")
 		s.CodeOfConduct.Encode(e)
 	}
 	{
-
 		e.FieldStart("code_of_conduct_file")
 		s.CodeOfConductFile.Encode(e)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
 	{
-
 		e.FieldStart("contributing")
 		s.Contributing.Encode(e)
 	}
 	{
-
 		e.FieldStart("readme")
 		s.Readme.Encode(e)
 	}
 	{
-
 		e.FieldStart("issue_template")
 		s.IssueTemplate.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_request_template")
 		s.PullRequestTemplate.Encode(e)
 	}
@@ -30329,62 +29914,50 @@ func (s *ContentFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContentFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("encoding")
 		e.Str(s.Encoding)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		s.GitURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("download_url")
 		s.DownloadURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
@@ -30651,17 +30224,14 @@ func (s *ContentFileLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContentFileLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("git")
 		s.Git.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("self")
 		json.EncodeURI(e, s.Self)
 	}
@@ -30780,17 +30350,14 @@ func (s *ContentReferenceAttachment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContentReferenceAttachment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -30930,22 +30497,18 @@ func (s *ContentTraffic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContentTraffic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
 	{
-
 		e.FieldStart("uniques")
 		e.Int(s.Uniques)
 	}
@@ -31177,7 +30740,6 @@ func (s *Contributor) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -31188,7 +30750,6 @@ func (s *Contributor) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("contributions")
 		e.Int(s.Contributions)
 	}
@@ -31521,17 +31082,14 @@ func (s *ContributorActivity) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContributorActivity) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("total")
 		e.Int(s.Total)
 	}
 	{
-
 		e.FieldStart("weeks")
 		e.ArrStart()
 		for _, elem := range s.Weeks {
@@ -31776,17 +31334,14 @@ func (s *CredentialAuthorization) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CredentialAuthorization) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("credential_id")
 		e.Int(s.CredentialID)
 	}
 	{
-
 		e.FieldStart("credential_type")
 		e.Str(s.CredentialType)
 	}
@@ -31797,7 +31352,6 @@ func (s *CredentialAuthorization) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("credential_authorized_at")
 		json.EncodeDateTime(e, s.CredentialAuthorizedAt)
 	}
@@ -32060,37 +31614,30 @@ func (s *DeployKey) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeployKey) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("verified")
 		e.Bool(s.Verified)
 	}
 	{
-
 		e.FieldStart("created_at")
 		e.Str(s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("read_only")
 		e.Bool(s.ReadOnly)
 	}
@@ -32265,37 +31812,30 @@ func (s *Deployment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Deployment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("task")
 		e.Str(s.Task)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -32306,37 +31846,30 @@ func (s *Deployment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("environment")
 		e.Str(s.Environment)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		json.EncodeURI(e, s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
@@ -32766,22 +32299,18 @@ func (s *DeploymentSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeploymentSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("task")
 		e.Str(s.Task)
 	}
@@ -32792,32 +32321,26 @@ func (s *DeploymentSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("environment")
 		e.Str(s.Environment)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		json.EncodeURI(e, s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
@@ -33092,32 +32615,26 @@ func (s *DeploymentStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeploymentStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
@@ -33128,27 +32645,22 @@ func (s *DeploymentStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("target_url")
 		json.EncodeURI(e, s.TargetURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("deployment_url")
 		json.EncodeURI(e, s.DeploymentURL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
@@ -33485,47 +32997,38 @@ func (s *DiffEntry) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DiffEntry) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("filename")
 		e.Str(s.Filename)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("additions")
 		e.Int(s.Additions)
 	}
 	{
-
 		e.FieldStart("deletions")
 		e.Int(s.Deletions)
 	}
 	{
-
 		e.FieldStart("changes")
 		e.Int(s.Changes)
 	}
 	{
-
 		e.FieldStart("blob_url")
 		json.EncodeURI(e, s.BlobURL)
 	}
 	{
-
 		e.FieldStart("raw_url")
 		json.EncodeURI(e, s.RawURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		json.EncodeURI(e, s.ContentsURL)
 	}
@@ -33809,22 +33312,18 @@ func (s *Email) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Email) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("primary")
 		e.Bool(s.Primary)
 	}
 	{
-
 		e.FieldStart("verified")
 		e.Bool(s.Verified)
 	}
 	{
-
 		e.FieldStart("visibility")
 		s.Visibility.Encode(e)
 	}
@@ -34143,7 +33642,6 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *j
 // encodeFields encodes fields.
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -34357,12 +33855,10 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Enco
 // encodeFields encodes fields.
 func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("organizations")
 		e.ArrStart()
 		for _, elem := range s.Organizations {
@@ -34482,12 +33978,10 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 // encodeFields encodes fields.
 func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("organizations")
 		e.ArrStart()
 		for _, elem := range s.Organizations {
@@ -34607,12 +34101,10 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Encode(e *jx.
 // encodeFields encodes fields.
 func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runner_groups")
 		e.ArrStart()
 		for _, elem := range s.RunnerGroups {
@@ -34823,12 +34315,10 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Encode(e *j
 // encodeFields encodes fields.
 func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Float64(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -34948,7 +34438,6 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Encod
 // encodeFields encodes fields.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -34957,7 +34446,6 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) encodeFields(e *jx
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("displayName")
 		e.Str(s.DisplayName)
 	}
@@ -35103,7 +34591,6 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Encode(
 // encodeFields encodes fields.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
@@ -35200,7 +34687,6 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Encode
 // encodeFields encodes fields.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -35209,17 +34695,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) encodeFields(e *jx.
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("userName")
 		e.Str(s.UserName)
 	}
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
 	{
-
 		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
@@ -35399,17 +34882,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Encode(e 
 // encodeFields encodes fields.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("primary")
 		e.Bool(s.Primary)
 	}
@@ -35595,12 +35075,10 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Encode(e *jx.En
 // encodeFields encodes fields.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("givenName")
 		e.Str(s.GivenName)
 	}
 	{
-
 		e.FieldStart("familyName")
 		e.Str(s.FamilyName)
 	}
@@ -35710,7 +35188,6 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled_organizations")
 		s.EnabledOrganizations.Encode(e)
 	}
@@ -35822,7 +35299,6 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -35831,7 +35307,6 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) encodeFi
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("displayName")
 		e.Str(s.DisplayName)
 	}
@@ -35977,7 +35452,6 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
@@ -36074,7 +35548,6 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e 
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -36083,17 +35556,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) encodeFie
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("userName")
 		e.Str(s.UserName)
 	}
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
 	{
-
 		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
@@ -36273,17 +35743,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("primary")
 		e.Bool(s.Primary)
 	}
@@ -36469,12 +35936,10 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Encod
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("givenName")
 		e.Str(s.GivenName)
 	}
 	{
-
 		e.FieldStart("familyName")
 		e.Str(s.FamilyName)
 	}
@@ -36584,7 +36049,6 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Enco
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("selected_organization_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedOrganizationIds {
@@ -36693,7 +36157,6 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("selected_organization_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedOrganizationIds {
@@ -36802,7 +36265,6 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Encode(e *j
 // encodeFields encodes fields.
 func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
@@ -36911,7 +36373,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Encod
 // encodeFields encodes fields.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -36920,7 +36381,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) encodeFields(e *jx
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("Operations")
 		e.ArrStart()
 		for _, elem := range s.Operations {
@@ -37048,7 +36508,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Enco
 // encodeFields encodes fields.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("op")
 		s.Op.Encode(e)
 	}
@@ -37341,7 +36800,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Encode(e *jx.Encode
 // encodeFields encodes fields.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -37350,7 +36808,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) encodeFields(e *jx.
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("Operations")
 		e.ArrStart()
 		for _, elem := range s.Operations {
@@ -37644,7 +37101,6 @@ func (s *EnvironmentApprovals) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *EnvironmentApprovals) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("environments")
 		e.ArrStart()
 		for _, elem := range s.Environments {
@@ -37653,17 +37109,14 @@ func (s *EnvironmentApprovals) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("comment")
 		e.Str(s.Comment)
 	}
@@ -38006,22 +37459,18 @@ func (s *Event) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Event) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
 	{
-
 		e.FieldStart("actor")
 		s.Actor.Encode(e)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
@@ -38032,17 +37481,14 @@ func (s *Event) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
 	{
-
 		e.FieldStart("public")
 		e.Bool(s.Public)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -38491,17 +37937,14 @@ func (s *EventRepo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *EventRepo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -38624,12 +38067,10 @@ func (s *Feed) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Feed) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("timeline_url")
 		e.Str(s.TimelineURL)
 	}
 	{
-
 		e.FieldStart("user_url")
 		e.Str(s.UserURL)
 	}
@@ -38674,7 +38115,6 @@ func (s *Feed) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
@@ -38871,12 +38311,10 @@ func (s *FeedLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *FeedLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("timeline")
 		s.Timeline.Encode(e)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -39095,12 +38533,10 @@ func (s *FileCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *FileCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
@@ -40425,297 +39861,238 @@ func (s *FullRepository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *FullRepository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -40736,37 +40113,30 @@ func (s *FullRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
@@ -40777,17 +40147,14 @@ func (s *FullRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		json.EncodeDateTime(e, s.PushedAt)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -40846,17 +40213,14 @@ func (s *FullRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("subscribers_count")
 		e.Int(s.SubscribersCount)
 	}
 	{
-
 		e.FieldStart("network_count")
 		e.Int(s.NetworkCount)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
@@ -40879,7 +40243,6 @@ func (s *FullRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
@@ -40890,12 +40253,10 @@ func (s *FullRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
@@ -42190,7 +41551,6 @@ func (s *FullRepositoryPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *FullRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -42201,7 +41561,6 @@ func (s *FullRepositoryPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -42212,7 +41571,6 @@ func (s *FullRepositoryPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -42643,42 +42001,34 @@ func (s *GistComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -42862,27 +42212,22 @@ func (s *GistCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("version")
 		e.Str(s.Version)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("change_status")
 		s.ChangeStatus.Encode(e)
 	}
 	{
-
 		e.FieldStart("committed_at")
 		json.EncodeDateTime(e, s.CommittedAt)
 	}
@@ -43974,82 +43319,66 @@ func (s *GistSimpleForkOf) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistSimpleForkOf) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		json.EncodeURI(e, s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("git_pull_url")
 		json.EncodeURI(e, s.GitPullURL)
 	}
 	{
-
 		e.FieldStart("git_push_url")
 		json.EncodeURI(e, s.GitPushURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("files")
 		s.Files.Encode(e)
 	}
 	{
-
 		e.FieldStart("public")
 		e.Bool(s.Public)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
@@ -44872,7 +44201,6 @@ func (s *GistsCreateCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistsCreateCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -45051,7 +44379,6 @@ func (s *GistsCreateReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("files")
 		s.Files.Encode(e)
 	}
@@ -45228,7 +44555,6 @@ func (s *GistsCreateReqFilesItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistsCreateReqFilesItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -46173,7 +45499,6 @@ func (s *GistsUpdateCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GistsUpdateCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -46270,42 +45595,34 @@ func (s *GitCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("tree")
 		s.Tree.Encode(e)
 	}
 	{
-
 		e.FieldStart("parents")
 		e.ArrStart()
 		for _, elem := range s.Parents {
@@ -46314,12 +45631,10 @@ func (s *GitCommit) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("verification")
 		s.Verification.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
@@ -46532,17 +45847,14 @@ func (s *GitCommitAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("date")
 		json.EncodeDateTime(e, s.Date)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -46665,17 +45977,14 @@ func (s *GitCommitCommitter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("date")
 		json.EncodeDateTime(e, s.Date)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -46798,17 +46107,14 @@ func (s *GitCommitParentsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommitParentsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
@@ -46931,12 +46237,10 @@ func (s *GitCommitTree) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommitTree) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -47046,22 +46350,18 @@ func (s *GitCommitVerification) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCommitVerification) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("verified")
 		e.Bool(s.Verified)
 	}
 	{
-
 		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-
 		e.FieldStart("signature")
 		s.Signature.Encode(e)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -47307,7 +46607,6 @@ func (s *GitCreateBlobReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateBlobReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -47422,12 +46721,10 @@ func (s *GitCreateCommitReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateCommitReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("tree")
 		e.Str(s.Tree)
 	}
@@ -47618,12 +46915,10 @@ func (s *GitCreateCommitReqAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateCommitReqAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -47847,12 +47142,10 @@ func (s *GitCreateRefReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateRefReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
@@ -47979,22 +47272,18 @@ func (s *GitCreateTagReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateTagReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("tag")
 		e.Str(s.Tag)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("object")
 		e.Str(s.Object)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
@@ -48145,12 +47434,10 @@ func (s *GitCreateTagReqTagger) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateTagReqTagger) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -48395,7 +47682,6 @@ func (s *GitCreateTreeReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitCreateTreeReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("tree")
 		e.ArrStart()
 		for _, elem := range s.Tree {
@@ -48814,22 +48100,18 @@ func (s *GitRef) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitRef) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("object")
 		s.Object.Encode(e)
 	}
@@ -48963,17 +48245,14 @@ func (s *GitRefObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitRefObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -49096,37 +48375,30 @@ func (s *GitTag) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitTag) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("tag")
 		e.Str(s.Tag)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("tagger")
 		s.Tagger.Encode(e)
 	}
 	{
-
 		e.FieldStart("object")
 		s.Object.Encode(e)
 	}
@@ -49314,17 +48586,14 @@ func (s *GitTagObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitTagObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -49447,17 +48716,14 @@ func (s *GitTagTagger) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitTagTagger) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("date")
 		e.Str(s.Date)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -49580,22 +48846,18 @@ func (s *GitTree) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitTree) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("truncated")
 		e.Bool(s.Truncated)
 	}
 	{
-
 		e.FieldStart("tree")
 		e.ArrStart()
 		for _, elem := range s.Tree {
@@ -49889,7 +49151,6 @@ func (s *GitUpdateRefReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitUpdateRefReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
@@ -50056,12 +49317,10 @@ func (s *GitignoreTemplate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GitignoreTemplate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
@@ -50171,27 +49430,22 @@ func (s *GpgKey) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GpgKey) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("primary_key_id")
 		s.PrimaryKeyID.Encode(e)
 	}
 	{
-
 		e.FieldStart("key_id")
 		e.Str(s.KeyID)
 	}
 	{
-
 		e.FieldStart("public_key")
 		e.Str(s.PublicKey)
 	}
 	{
-
 		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
@@ -50200,7 +49454,6 @@ func (s *GpgKey) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("subkeys")
 		e.ArrStart()
 		for _, elem := range s.Subkeys {
@@ -50209,37 +49462,30 @@ func (s *GpgKey) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("can_sign")
 		e.Bool(s.CanSign)
 	}
 	{
-
 		e.FieldStart("can_encrypt_comms")
 		e.Bool(s.CanEncryptComms)
 	}
 	{
-
 		e.FieldStart("can_encrypt_storage")
 		e.Bool(s.CanEncryptStorage)
 	}
 	{
-
 		e.FieldStart("can_certify")
 		e.Bool(s.CanCertify)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("expires_at")
 		s.ExpiresAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("raw_key")
 		s.RawKey.Encode(e)
 	}
@@ -50950,17 +50196,14 @@ func (s *GroupMappingGroupsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GroupMappingGroupsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("group_id")
 		e.Str(s.GroupID)
 	}
 	{
-
 		e.FieldStart("group_name")
 		e.Str(s.GroupName)
 	}
 	{
-
 		e.FieldStart("group_description")
 		e.Str(s.GroupDescription)
 	}
@@ -51117,27 +50360,22 @@ func (s *Hook) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Hook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("active")
 		e.Bool(s.Active)
 	}
 	{
-
 		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
@@ -51146,32 +50384,26 @@ func (s *Hook) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("config")
 		s.Config.Encode(e)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("test_url")
 		json.EncodeURI(e, s.TestURL)
 	}
 	{
-
 		e.FieldStart("ping_url")
 		json.EncodeURI(e, s.PingURL)
 	}
@@ -51182,7 +50414,6 @@ func (s *Hook) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("last_response")
 		s.LastResponse.Encode(e)
 	}
@@ -51654,57 +50885,46 @@ func (s *HookDelivery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HookDelivery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("guid")
 		e.Str(s.GUID)
 	}
 	{
-
 		e.FieldStart("delivered_at")
 		json.EncodeDateTime(e, s.DeliveredAt)
 	}
 	{
-
 		e.FieldStart("redelivery")
 		e.Bool(s.Redelivery)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Float64(s.Duration)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("status_code")
 		e.Int(s.StatusCode)
 	}
 	{
-
 		e.FieldStart("event")
 		e.Str(s.Event)
 	}
 	{
-
 		e.FieldStart("action")
 		s.Action.Encode(e)
 	}
 	{
-
 		e.FieldStart("installation_id")
 		s.InstallationID.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository_id")
 		s.RepositoryID.Encode(e)
 	}
@@ -51715,12 +50935,10 @@ func (s *HookDelivery) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("request")
 		s.Request.Encode(e)
 	}
 	{
-
 		e.FieldStart("response")
 		s.Response.Encode(e)
 	}
@@ -51975,57 +51193,46 @@ func (s *HookDeliveryItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HookDeliveryItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("guid")
 		e.Str(s.GUID)
 	}
 	{
-
 		e.FieldStart("delivered_at")
 		json.EncodeDateTime(e, s.DeliveredAt)
 	}
 	{
-
 		e.FieldStart("redelivery")
 		e.Bool(s.Redelivery)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Float64(s.Duration)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("status_code")
 		e.Int(s.StatusCode)
 	}
 	{
-
 		e.FieldStart("event")
 		e.Str(s.Event)
 	}
 	{
-
 		e.FieldStart("action")
 		s.Action.Encode(e)
 	}
 	{
-
 		e.FieldStart("installation_id")
 		s.InstallationID.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository_id")
 		s.RepositoryID.Encode(e)
 	}
@@ -52247,12 +51454,10 @@ func (s *HookDeliveryRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HookDeliveryRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("headers")
 		s.Headers.Encode(e)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -52474,12 +51679,10 @@ func (s *HookDeliveryResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HookDeliveryResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("headers")
 		s.Headers.Encode(e)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -52643,17 +51846,14 @@ func (s *HookResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HookResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		s.Code.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("message")
 		s.Message.Encode(e)
 	}
@@ -52770,7 +51970,6 @@ func (s *Hovercard) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Hovercard) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -52877,12 +52076,10 @@ func (s *HovercardContextsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HovercardContextsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("octicon")
 		e.Str(s.Octicon)
 	}
@@ -52992,7 +52189,6 @@ func (s *Import) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Import) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("vcs")
 		s.Vcs.Encode(e)
 	}
@@ -53003,7 +52199,6 @@ func (s *Import) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("vcs_url")
 		e.Str(s.VcsURL)
 	}
@@ -53020,7 +52215,6 @@ func (s *Import) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
@@ -53101,22 +52295,18 @@ func (s *Import) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("authors_url")
 		json.EncodeURI(e, s.AuthorsURL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
@@ -53643,12 +52833,10 @@ func (s *InstallationToken) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InstallationToken) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("token")
 		e.Str(s.Token)
 	}
 	{
-
 		e.FieldStart("expires_at")
 		e.Str(s.ExpiresAt)
 	}
@@ -53924,7 +53112,6 @@ func (s *Integration) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Integration) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -53935,52 +53122,42 @@ func (s *Integration) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("external_url")
 		json.EncodeURI(e, s.ExternalURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
 	{
-
 		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
@@ -54603,7 +53780,6 @@ func (s *InteractionLimit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InteractionLimit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("limit")
 		s.Limit.Encode(e)
 	}
@@ -54715,17 +53891,14 @@ func (s *InteractionLimitResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InteractionLimitResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("limit")
 		s.Limit.Encode(e)
 	}
 	{
-
 		e.FieldStart("origin")
 		e.Str(s.Origin)
 	}
 	{
-
 		e.FieldStart("expires_at")
 		json.EncodeDateTime(e, s.ExpiresAt)
 	}
@@ -54846,57 +54019,46 @@ func (s *Issue) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -54907,12 +54069,10 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -54921,7 +54081,6 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("assignee")
 		s.Assignee.Encode(e)
 	}
@@ -54932,12 +54091,10 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("milestone")
 		s.Milestone.Encode(e)
 	}
 	{
-
 		e.FieldStart("locked")
 		e.Bool(s.Locked)
 	}
@@ -54948,7 +54105,6 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
@@ -54959,17 +54115,14 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -55010,7 +54163,6 @@ func (s *Issue) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -55493,17 +54645,14 @@ func (s *IssueComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -55526,32 +54675,26 @@ func (s *IssueComment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("issue_url")
 		json.EncodeURI(e, s.IssueURL)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -55816,42 +54959,34 @@ func (s *IssueEvent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEvent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("actor")
 		s.Actor.Encode(e)
 	}
 	{
-
 		e.FieldStart("event")
 		e.Str(s.Event)
 	}
 	{
-
 		e.FieldStart("commit_id")
 		s.CommitID.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit_url")
 		s.CommitURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
@@ -56273,17 +55408,14 @@ func (s *IssueEventDismissedReview) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEventDismissedReview) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("review_id")
 		e.Int(s.ReviewID)
 	}
 	{
-
 		e.FieldStart("dismissal_message")
 		s.DismissalMessage.Encode(e)
 	}
@@ -56421,12 +55553,10 @@ func (s *IssueEventLabel) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEventLabel) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
 	{
-
 		e.FieldStart("color")
 		s.Color.Encode(e)
 	}
@@ -56532,7 +55662,6 @@ func (s *IssueEventMilestone) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEventMilestone) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -56629,27 +55758,22 @@ func (s *IssueEventProjectCard) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEventProjectCard) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("project_url")
 		json.EncodeURI(e, s.ProjectURL)
 	}
 	{
-
 		e.FieldStart("project_id")
 		e.Int(s.ProjectID)
 	}
 	{
-
 		e.FieldStart("column_name")
 		e.Str(s.ColumnName)
 	}
@@ -56815,12 +55939,10 @@ func (s *IssueEventRename) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueEventRename) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("from")
 		e.Str(s.From)
 	}
 	{
-
 		e.FieldStart("to")
 		e.Str(s.To)
 	}
@@ -57149,22 +56271,18 @@ func (s *IssuePullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("diff_url")
 		s.DiffURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		s.PatchURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -57303,57 +56421,46 @@ func (s *IssueSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("locked")
 		e.Bool(s.Locked)
 	}
@@ -57370,12 +56477,10 @@ func (s *IssueSearchResultItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -57384,37 +56489,30 @@ func (s *IssueSearchResultItem) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("assignee")
 		s.Assignee.Encode(e)
 	}
 	{
-
 		e.FieldStart("milestone")
 		s.Milestone.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -57437,12 +56535,10 @@ func (s *IssueSearchResultItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -58142,22 +57238,18 @@ func (s *IssueSearchResultItemPullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("diff_url")
 		s.DiffURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		s.PatchURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -58296,57 +57388,46 @@ func (s *IssueSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -58357,12 +57438,10 @@ func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -58371,7 +57450,6 @@ func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("assignee")
 		s.Assignee.Encode(e)
 	}
@@ -58382,12 +57460,10 @@ func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("milestone")
 		s.Milestone.Encode(e)
 	}
 	{
-
 		e.FieldStart("locked")
 		e.Bool(s.Locked)
 	}
@@ -58398,7 +57474,6 @@ func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
@@ -58409,22 +57484,18 @@ func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -58915,22 +57986,18 @@ func (s *IssueSimplePullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("diff_url")
 		s.DiffURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		s.PatchURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -59259,7 +58326,6 @@ func (s *IssuesCreateCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssuesCreateCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -59432,7 +58498,6 @@ func (s *IssuesCreateLabelReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssuesCreateLabelReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -59563,7 +58628,6 @@ func (s *IssuesCreateMilestoneReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssuesCreateMilestoneReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -59790,7 +58854,6 @@ func (s *IssuesCreateReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssuesCreateReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		s.Title.Encode(e)
 	}
@@ -61135,7 +60198,6 @@ func (s *IssuesUpdateCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IssuesUpdateCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -62127,62 +61189,50 @@ func (s *Job) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Job) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("run_id")
 		e.Int(s.RunID)
 	}
 	{
-
 		e.FieldStart("run_url")
 		e.Str(s.RunURL)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("head_sha")
 		e.Str(s.HeadSha)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("conclusion")
 		s.Conclusion.Encode(e)
 	}
 	{
-
 		e.FieldStart("started_at")
 		json.EncodeDateTime(e, s.StartedAt)
 	}
 	{
-
 		e.FieldStart("completed_at")
 		s.CompletedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -62197,7 +61247,6 @@ func (s *Job) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("check_run_url")
 		e.Str(s.CheckRunURL)
 	}
@@ -62503,22 +61552,18 @@ func (s *JobStepsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *JobStepsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("conclusion")
 		s.Conclusion.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
@@ -62726,37 +61771,30 @@ func (s *Key) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Key) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("verified")
 		e.Bool(s.Verified)
 	}
 	{
-
 		e.FieldStart("read_only")
 		e.Bool(s.ReadOnly)
 	}
@@ -62931,12 +61969,10 @@ func (s *KeySimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *KeySimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -63046,37 +62082,30 @@ func (s *Label) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Label) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("color")
 		e.Str(s.Color)
 	}
 	{
-
 		e.FieldStart("default")
 		e.Bool(s.Default)
 	}
@@ -63249,42 +62278,34 @@ func (s *LabelSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LabelSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("color")
 		e.Str(s.Color)
 	}
 	{
-
 		e.FieldStart("default")
 		e.Bool(s.Default)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
@@ -63546,47 +62567,38 @@ func (s *License) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *License) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("spdx_id")
 		s.SpdxID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("implementation")
 		e.Str(s.Implementation)
 	}
 	{
-
 		e.FieldStart("permissions")
 		e.ArrStart()
 		for _, elem := range s.Permissions {
@@ -63595,7 +62607,6 @@ func (s *License) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
@@ -63604,7 +62615,6 @@ func (s *License) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("limitations")
 		e.ArrStart()
 		for _, elem := range s.Limitations {
@@ -63613,12 +62623,10 @@ func (s *License) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("featured")
 		e.Bool(s.Featured)
 	}
@@ -63892,67 +62900,54 @@ func (s *LicenseContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LicenseContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("git_url")
 		s.GitURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("download_url")
 		s.DownloadURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
 	{
-
 		e.FieldStart("encoding")
 		e.Str(s.Encoding)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
@@ -64196,17 +63191,14 @@ func (s *LicenseContentLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LicenseContentLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("git")
 		s.Git.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("self")
 		json.EncodeURI(e, s.Self)
 	}
@@ -64325,27 +63317,22 @@ func (s *LicenseSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LicenseSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("spdx_id")
 		s.SpdxID.Encode(e)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -64633,7 +63620,6 @@ func (s *Link) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Link) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		e.Str(s.Href)
 	}
@@ -64730,12 +63716,10 @@ func (s *LinkWithType) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LinkWithType) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		e.Str(s.Href)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -64845,7 +63829,6 @@ func (s *MarkdownRenderReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarkdownRenderReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -65017,17 +64000,14 @@ func (s *MarketplaceAccount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketplaceAccount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -65038,7 +64018,6 @@ func (s *MarketplaceAccount) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
@@ -65219,67 +64198,54 @@ func (s *MarketplaceListingPlan) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketplaceListingPlan) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("accounts_url")
 		json.EncodeURI(e, s.AccountsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("monthly_price_in_cents")
 		e.Int(s.MonthlyPriceInCents)
 	}
 	{
-
 		e.FieldStart("yearly_price_in_cents")
 		e.Int(s.YearlyPriceInCents)
 	}
 	{
-
 		e.FieldStart("price_model")
 		e.Str(s.PriceModel)
 	}
 	{
-
 		e.FieldStart("has_free_trial")
 		e.Bool(s.HasFreeTrial)
 	}
 	{
-
 		e.FieldStart("unit_name")
 		s.UnitName.Encode(e)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("bullets")
 		e.ArrStart()
 		for _, elem := range s.Bullets {
@@ -65543,22 +64509,18 @@ func (s *MarketplacePurchase) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MarketplacePurchase) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
@@ -65581,7 +64543,6 @@ func (s *MarketplacePurchase) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("marketplace_purchase")
 		s.MarketplacePurchase.Encode(e)
 	}
@@ -66213,142 +65174,114 @@ func (s *MetaRootOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MetaRootOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("current_user_url")
 		e.Str(s.CurrentUserURL)
 	}
 	{
-
 		e.FieldStart("current_user_authorizations_html_url")
 		e.Str(s.CurrentUserAuthorizationsHTMLURL)
 	}
 	{
-
 		e.FieldStart("authorizations_url")
 		e.Str(s.AuthorizationsURL)
 	}
 	{
-
 		e.FieldStart("code_search_url")
 		e.Str(s.CodeSearchURL)
 	}
 	{
-
 		e.FieldStart("commit_search_url")
 		e.Str(s.CommitSearchURL)
 	}
 	{
-
 		e.FieldStart("emails_url")
 		e.Str(s.EmailsURL)
 	}
 	{
-
 		e.FieldStart("emojis_url")
 		e.Str(s.EmojisURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("feeds_url")
 		e.Str(s.FeedsURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		e.Str(s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("hub_url")
 		e.Str(s.HubURL)
 	}
 	{
-
 		e.FieldStart("issue_search_url")
 		e.Str(s.IssueSearchURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("label_search_url")
 		e.Str(s.LabelSearchURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("organization_url")
 		e.Str(s.OrganizationURL)
 	}
 	{
-
 		e.FieldStart("organization_repositories_url")
 		e.Str(s.OrganizationRepositoriesURL)
 	}
 	{
-
 		e.FieldStart("organization_teams_url")
 		e.Str(s.OrganizationTeamsURL)
 	}
 	{
-
 		e.FieldStart("public_gists_url")
 		e.Str(s.PublicGistsURL)
 	}
 	{
-
 		e.FieldStart("rate_limit_url")
 		e.Str(s.RateLimitURL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		e.Str(s.RepositoryURL)
 	}
 	{
-
 		e.FieldStart("repository_search_url")
 		e.Str(s.RepositorySearchURL)
 	}
 	{
-
 		e.FieldStart("current_user_repositories_url")
 		e.Str(s.CurrentUserRepositoriesURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("starred_gists_url")
 		e.Str(s.StarredGistsURL)
 	}
@@ -66359,22 +65292,18 @@ func (s *MetaRootOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user_url")
 		e.Str(s.UserURL)
 	}
 	{
-
 		e.FieldStart("user_organizations_url")
 		e.Str(s.UserOrganizationsURL)
 	}
 	{
-
 		e.FieldStart("user_repositories_url")
 		e.Str(s.UserRepositoriesURL)
 	}
 	{
-
 		e.FieldStart("user_search_url")
 		e.Str(s.UserSearchURL)
 	}
@@ -66889,57 +65818,46 @@ func (s *Migration) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Migration) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("guid")
 		e.Str(s.GUID)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("lock_repositories")
 		e.Bool(s.LockRepositories)
 	}
 	{
-
 		e.FieldStart("exclude_metadata")
 		e.Bool(s.ExcludeMetadata)
 	}
 	{
-
 		e.FieldStart("exclude_git_data")
 		e.Bool(s.ExcludeGitData)
 	}
 	{
-
 		e.FieldStart("exclude_attachments")
 		e.Bool(s.ExcludeAttachments)
 	}
 	{
-
 		e.FieldStart("exclude_releases")
 		e.Bool(s.ExcludeReleases)
 	}
 	{
-
 		e.FieldStart("exclude_owner_projects")
 		e.Bool(s.ExcludeOwnerProjects)
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -66948,22 +65866,18 @@ func (s *Migration) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -67807,7 +66721,6 @@ func (s *MigrationsSetLfsPreferenceReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MigrationsSetLfsPreferenceReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("use_lfs")
 		s.UseLfs.Encode(e)
 	}
@@ -68014,7 +66927,6 @@ func (s *MigrationsStartForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -68261,7 +67173,6 @@ func (s *MigrationsStartForOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MigrationsStartForOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
@@ -68505,7 +67416,6 @@ func (s *MigrationsStartImportReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MigrationsStartImportReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("vcs_url")
 		e.Str(s.VcsURL)
 	}
@@ -68942,82 +67852,66 @@ func (s *Milestone) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Milestone) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		json.EncodeURI(e, s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("closed_issues")
 		e.Int(s.ClosedIssues)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("due_on")
 		s.DueOn.Encode(e, json.EncodeDateTime)
 	}
@@ -69341,137 +68235,110 @@ func (s *MinimalRepository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MinimalRepository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
@@ -69482,57 +68349,46 @@ func (s *MinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
@@ -69543,37 +68399,30 @@ func (s *MinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
@@ -69590,7 +68439,6 @@ func (s *MinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
@@ -72860,22 +71708,18 @@ func (s *NullableCodeOfConductSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableCodeOfConductSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("html_url")
 		s.HTMLURL.Encode(e)
 	}
@@ -73009,12 +71853,10 @@ func (s *NullableCommunityHealthFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableCommunityHealthFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
@@ -73221,7 +72063,6 @@ func (s *NullableIntegration) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableIntegration) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -73232,52 +72073,42 @@ func (s *NullableIntegration) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("external_url")
 		json.EncodeURI(e, s.ExternalURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
 	{
-
 		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
@@ -73812,27 +72643,22 @@ func (s *NullableLicenseSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableLicenseSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("spdx_id")
 		s.SpdxID.Encode(e)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -73994,82 +72820,66 @@ func (s *NullableMilestone) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableMilestone) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		json.EncodeURI(e, s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("closed_issues")
 		e.Int(s.ClosedIssues)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("due_on")
 		s.DueOn.Encode(e, json.EncodeDateTime)
 	}
@@ -74393,137 +73203,110 @@ func (s *NullableMinimalRepository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableMinimalRepository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
@@ -74534,57 +73317,46 @@ func (s *NullableMinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
@@ -74595,37 +73367,30 @@ func (s *NullableMinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
@@ -74642,7 +73407,6 @@ func (s *NullableMinimalRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
@@ -76227,27 +74991,22 @@ func (s *NullableRepository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
@@ -76258,7 +75017,6 @@ func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
@@ -76269,277 +75027,222 @@ func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -76560,37 +75263,30 @@ func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
@@ -76601,17 +75297,14 @@ func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		s.PushedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -76676,12 +75369,10 @@ func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
@@ -77916,12 +76607,10 @@ func (s *NullableRepositoryPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -77932,7 +76621,6 @@ func (s *NullableRepositoryPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -80002,17 +78690,14 @@ func (s *NullableScopedInstallation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableScopedInstallation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository_selection")
 		s.RepositorySelection.Encode(e)
 	}
 	{
-
 		e.FieldStart("single_file_name")
 		s.SingleFileName.Encode(e)
 	}
@@ -80033,12 +78718,10 @@ func (s *NullableScopedInstallation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("repositories_url")
 		json.EncodeURI(e, s.RepositoriesURL)
 	}
 	{
-
 		e.FieldStart("account")
 		s.Account.Encode(e)
 	}
@@ -80250,32 +78933,26 @@ func (s *NullableSimpleCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableSimpleCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("tree_id")
 		e.Str(s.TreeID)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("timestamp")
 		json.EncodeDateTime(e, s.Timestamp)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
@@ -80433,12 +79110,10 @@ func (s *NullableSimpleCommitAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableSimpleCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -80548,12 +79223,10 @@ func (s *NullableSimpleCommitCommitter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableSimpleCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -80675,92 +79348,74 @@ func (s *NullableSimpleUser) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
@@ -81117,37 +79772,30 @@ func (s *NullableTeamSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableTeamSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("permission")
 		e.Str(s.Permission)
 	}
@@ -81158,17 +79806,14 @@ func (s *NullableTeamSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("repositories_url")
 		json.EncodeURI(e, s.RepositoriesURL)
 	}
 	{
-
 		e.FieldStart("slug")
 		e.Str(s.Slug)
 	}
@@ -81975,7 +80620,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Enc
 // encodeFields encodes fields.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("client_secret")
 		e.Str(s.ClientSecret)
 	}
@@ -82161,7 +80805,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Encode(e *jx.Enco
 // encodeFields encodes fields.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("client_secret")
 		e.Str(s.ClientSecret)
 	}
@@ -94666,17 +93309,14 @@ func (s *OrgHook) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgHook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("ping_url")
 		json.EncodeURI(e, s.PingURL)
 	}
@@ -94687,12 +93327,10 @@ func (s *OrgHook) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
@@ -94701,27 +93339,22 @@ func (s *OrgHook) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("active")
 		e.Bool(s.Active)
 	}
 	{
-
 		e.FieldStart("config")
 		s.Config.Encode(e)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -95067,32 +93700,26 @@ func (s *OrgMembership) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgMembership) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}
 	{
-
 		e.FieldStart("organization_url")
 		json.EncodeURI(e, s.OrganizationURL)
 	}
 	{
-
 		e.FieldStart("organization")
 		s.Organization.Encode(e)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -95263,7 +93890,6 @@ func (s *OrgMembershipPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgMembershipPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("can_create_repository")
 		e.Bool(s.CanCreateRepository)
 	}
@@ -95442,22 +94068,18 @@ func (s *OrganizationActionsSecret) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrganizationActionsSecret) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("visibility")
 		s.Visibility.Encode(e)
 	}
@@ -95650,62 +94272,50 @@ func (s *OrganizationFull) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrganizationFull) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		e.Str(s.HooksURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("public_members_url")
 		e.Str(s.PublicMembersURL)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		e.Str(s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
@@ -95752,47 +94362,38 @@ func (s *OrganizationFull) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("has_organization_projects")
 		e.Bool(s.HasOrganizationProjects)
 	}
 	{
-
 		e.FieldStart("has_repository_projects")
 		e.Bool(s.HasRepositoryProjects)
 	}
 	{
-
 		e.FieldStart("public_repos")
 		e.Int(s.PublicRepos)
 	}
 	{
-
 		e.FieldStart("public_gists")
 		e.Int(s.PublicGists)
 	}
 	{
-
 		e.FieldStart("followers")
 		e.Int(s.Followers)
 	}
 	{
-
 		e.FieldStart("following")
 		e.Int(s.Following)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -95899,7 +94500,6 @@ func (s *OrganizationFull) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -96536,17 +95136,14 @@ func (s *OrganizationFullPlan) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrganizationFullPlan) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("space")
 		e.Int(s.Space)
 	}
 	{
-
 		e.FieldStart("private_repos")
 		e.Int(s.PrivateRepos)
 	}
@@ -96703,27 +95300,22 @@ func (s *OrganizationInvitation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrganizationInvitation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("login")
 		s.Login.Encode(e)
 	}
 	{
-
 		e.FieldStart("email")
 		s.Email.Encode(e)
 	}
 	{
-
 		e.FieldStart("role")
 		e.Str(s.Role)
 	}
 	{
-
 		e.FieldStart("created_at")
 		e.Str(s.CreatedAt)
 	}
@@ -96740,22 +95332,18 @@ func (s *OrganizationInvitation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("inviter")
 		s.Inviter.Encode(e)
 	}
 	{
-
 		e.FieldStart("team_count")
 		e.Int(s.TeamCount)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("invitation_teams_url")
 		e.Str(s.InvitationTeamsURL)
 	}
@@ -97223,62 +95811,50 @@ func (s *OrganizationSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrganizationSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		e.Str(s.HooksURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("public_members_url")
 		e.Str(s.PublicMembersURL)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		e.Str(s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
@@ -97732,12 +96308,10 @@ func (s *OrgsCreateWebhookReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgsCreateWebhookReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("config")
 		s.Config.Encode(e)
 	}
@@ -97893,7 +96467,6 @@ func (s *OrgsCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgsCreateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -98813,7 +97386,6 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgsUpdateMembershipForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -99188,7 +97760,6 @@ func (s *OrgsUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OrgsUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -99334,37 +97905,30 @@ func (s *Package) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Package) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("package_type")
 		s.PackageType.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		e.Str(s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("version_count")
 		e.Int(s.VersionCount)
 	}
 	{
-
 		e.FieldStart("visibility")
 		s.Visibility.Encode(e)
 	}
@@ -99381,12 +97945,10 @@ func (s *Package) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -99654,22 +98216,18 @@ func (s *PackageVersion) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PackageVersion) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("package_html_url")
 		e.Str(s.PackageHTMLURL)
 	}
@@ -99692,12 +98250,10 @@ func (s *PackageVersion) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -99927,7 +98483,6 @@ func (s *PackageVersionMetadata) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PackageVersionMetadata) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("package_type")
 		s.PackageType.Encode(e)
 	}
@@ -100056,7 +98611,6 @@ func (s *PackageVersionMetadataContainer) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PackageVersionMetadataContainer) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("tags")
 		e.ArrStart()
 		for _, elem := range s.Tags {
@@ -100333,17 +98887,14 @@ func (s *PackagesBillingUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PackagesBillingUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_gigabytes_bandwidth_used")
 		e.Int(s.TotalGigabytesBandwidthUsed)
 	}
 	{
-
 		e.FieldStart("total_paid_gigabytes_bandwidth_used")
 		e.Int(s.TotalPaidGigabytesBandwidthUsed)
 	}
 	{
-
 		e.FieldStart("included_gigabytes_bandwidth")
 		e.Int(s.IncludedGigabytesBandwidth)
 	}
@@ -102578,17 +101129,14 @@ func (s *Page) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Page) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("cname")
 		s.Cname.Encode(e)
 	}
@@ -102605,7 +101153,6 @@ func (s *Page) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("custom_404")
 		e.Bool(s.Custom404)
 	}
@@ -102622,7 +101169,6 @@ func (s *Page) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("public")
 		e.Bool(s.Public)
 	}
@@ -102847,42 +101393,34 @@ func (s *PageBuild) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PageBuild) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("error")
 		s.Error.Encode(e)
 	}
 	{
-
 		e.FieldStart("pusher")
 		s.Pusher.Encode(e)
 	}
 	{
-
 		e.FieldStart("commit")
 		e.Str(s.Commit)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -103066,7 +101604,6 @@ func (s *PageBuildError) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PageBuildError) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		s.Message.Encode(e)
 	}
@@ -103161,12 +101698,10 @@ func (s *PageBuildStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PageBuildStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -103360,17 +101895,14 @@ func (s *PagesHTTPSCertificate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PagesHTTPSCertificate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("domains")
 		e.ArrStart()
 		for _, elem := range s.Domains {
@@ -104706,12 +103238,10 @@ func (s *PagesSourceHash) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PagesSourceHash) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("branch")
 		e.Str(s.Branch)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -104821,7 +103351,6 @@ func (s *ParticipationStats) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ParticipationStats) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("all")
 		e.ArrStart()
 		for _, elem := range s.All {
@@ -104830,7 +103359,6 @@ func (s *ParticipationStats) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("owner")
 		e.ArrStart()
 		for _, elem := range s.Owner {
@@ -104960,37 +103488,30 @@ func (s *PorterAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PorterAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("remote_id")
 		e.Str(s.RemoteID)
 	}
 	{
-
 		e.FieldStart("remote_name")
 		e.Str(s.RemoteName)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("import_url")
 		json.EncodeURI(e, s.ImportURL)
 	}
@@ -105165,22 +103686,18 @@ func (s *PorterLargeFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PorterLargeFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref_name")
 		e.Str(s.RefName)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("oid")
 		e.Str(s.Oid)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
@@ -105316,12 +103833,10 @@ func (s *PreviewHeaderMissing) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PreviewHeaderMissing) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("documentation_url")
 		e.Str(s.DocumentationURL)
 	}
@@ -105431,127 +103946,102 @@ func (s *PrivateUser) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PrivateUser) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
 	{
-
 		e.FieldStart("company")
 		s.Company.Encode(e)
 	}
 	{
-
 		e.FieldStart("blog")
 		s.Blog.Encode(e)
 	}
 	{
-
 		e.FieldStart("location")
 		s.Location.Encode(e)
 	}
 	{
-
 		e.FieldStart("email")
 		s.Email.Encode(e)
 	}
 	{
-
 		e.FieldStart("hireable")
 		s.Hireable.Encode(e)
 	}
 	{
-
 		e.FieldStart("bio")
 		s.Bio.Encode(e)
 	}
@@ -105562,62 +104052,50 @@ func (s *PrivateUser) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("public_repos")
 		e.Int(s.PublicRepos)
 	}
 	{
-
 		e.FieldStart("public_gists")
 		e.Int(s.PublicGists)
 	}
 	{
-
 		e.FieldStart("followers")
 		e.Int(s.Followers)
 	}
 	{
-
 		e.FieldStart("following")
 		e.Int(s.Following)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("private_gists")
 		e.Int(s.PrivateGists)
 	}
 	{
-
 		e.FieldStart("total_private_repos")
 		e.Int(s.TotalPrivateRepos)
 	}
 	{
-
 		e.FieldStart("owned_private_repos")
 		e.Int(s.OwnedPrivateRepos)
 	}
 	{
-
 		e.FieldStart("disk_usage")
 		e.Int(s.DiskUsage)
 	}
 	{
-
 		e.FieldStart("collaborators")
 		e.Int(s.Collaborators)
 	}
 	{
-
 		e.FieldStart("two_factor_authentication")
 		e.Bool(s.TwoFactorAuthentication)
 	}
@@ -106250,22 +104728,18 @@ func (s *PrivateUserPlan) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PrivateUserPlan) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("collaborators")
 		e.Int(s.Collaborators)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("space")
 		e.Int(s.Space)
 	}
 	{
-
 		e.FieldStart("private_repos")
 		e.Int(s.PrivateRepos)
 	}
@@ -106401,67 +104875,54 @@ func (s *Project) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Project) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("owner_url")
 		json.EncodeURI(e, s.OwnerURL)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("columns_url")
 		json.EncodeURI(e, s.ColumnsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("body")
 		s.Body.Encode(e)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -106745,37 +105206,30 @@ func (s *ProjectCard) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectCard) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("note")
 		s.Note.Encode(e)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -106798,7 +105252,6 @@ func (s *ProjectCard) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("column_url")
 		json.EncodeURI(e, s.ColumnURL)
 	}
@@ -106809,7 +105262,6 @@ func (s *ProjectCard) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("project_url")
 		json.EncodeURI(e, s.ProjectURL)
 	}
@@ -107051,42 +105503,34 @@ func (s *ProjectColumn) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectColumn) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("project_url")
 		json.EncodeURI(e, s.ProjectURL)
 	}
 	{
-
 		e.FieldStart("cards_url")
 		json.EncodeURI(e, s.CardsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -107576,7 +106020,6 @@ func (s *ProjectsCreateColumnReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsCreateColumnReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -107749,7 +106192,6 @@ func (s *ProjectsCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -108015,7 +106457,6 @@ func (s *ProjectsCreateForOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsCreateForOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -108281,7 +106722,6 @@ func (s *ProjectsCreateForRepoReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsCreateForRepoReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -110022,7 +108462,6 @@ func (s *ProjectsMoveCardReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsMoveCardReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("position")
 		e.Str(s.Position)
 	}
@@ -110424,7 +108863,6 @@ func (s *ProjectsMoveColumnReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsMoveColumnReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("position")
 		e.Str(s.Position)
 	}
@@ -110905,7 +109343,6 @@ func (s *ProjectsUpdateColumnReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProjectsUpdateColumnReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -111401,7 +109838,6 @@ func (s *ProtectedBranch) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranch) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -111652,12 +110088,10 @@ func (s *ProtectedBranchAdminEnforced) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchAdminEnforced) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -111767,7 +110201,6 @@ func (s *ProtectedBranchAllowDeletions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchAllowDeletions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -111864,7 +110297,6 @@ func (s *ProtectedBranchAllowForcePushes) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchAllowForcePushes) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -111961,12 +110393,10 @@ func (s *ProtectedBranchEnforceAdmins) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchEnforceAdmins) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -112088,12 +110518,10 @@ func (s *ProtectedBranchPullRequestReview) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("dismiss_stale_reviews")
 		e.Bool(s.DismissStaleReviews)
 	}
 	{
-
 		e.FieldStart("require_code_owner_reviews")
 		e.Bool(s.RequireCodeOwnerReviews)
 	}
@@ -112458,7 +110886,6 @@ func (s *ProtectedBranchRequiredLinearHistory) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchRequiredLinearHistory) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -112555,7 +110982,6 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchRequiredPullRequestReviews) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -112720,22 +111146,18 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(
 // encodeFields encodes fields.
 func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("users_url")
 		json.EncodeURI(e, s.UsersURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -112744,7 +111166,6 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) encodeF
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -112909,12 +111330,10 @@ func (s *ProtectedBranchRequiredSignatures) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProtectedBranchRequiredSignatures) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("enabled")
 		e.Bool(s.Enabled)
 	}
@@ -113024,127 +111443,102 @@ func (s *PublicUser) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PublicUser) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
 	{
-
 		e.FieldStart("company")
 		s.Company.Encode(e)
 	}
 	{
-
 		e.FieldStart("blog")
 		s.Blog.Encode(e)
 	}
 	{
-
 		e.FieldStart("location")
 		s.Location.Encode(e)
 	}
 	{
-
 		e.FieldStart("email")
 		s.Email.Encode(e)
 	}
 	{
-
 		e.FieldStart("hireable")
 		s.Hireable.Encode(e)
 	}
 	{
-
 		e.FieldStart("bio")
 		s.Bio.Encode(e)
 	}
@@ -113155,32 +111549,26 @@ func (s *PublicUser) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("public_repos")
 		e.Int(s.PublicRepos)
 	}
 	{
-
 		e.FieldStart("public_gists")
 		e.Int(s.PublicGists)
 	}
 	{
-
 		e.FieldStart("followers")
 		e.Int(s.Followers)
 	}
 	{
-
 		e.FieldStart("following")
 		e.Int(s.Following)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -113785,22 +112173,18 @@ func (s *PublicUserPlan) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PublicUserPlan) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("collaborators")
 		e.Int(s.Collaborators)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("space")
 		e.Int(s.Space)
 	}
 	{
-
 		e.FieldStart("private_repos")
 		e.Int(s.PrivateRepos)
 	}
@@ -113936,97 +112320,78 @@ func (s *PullRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("diff_url")
 		json.EncodeURI(e, s.DiffURL)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		json.EncodeURI(e, s.PatchURL)
 	}
 	{
-
 		e.FieldStart("issue_url")
 		json.EncodeURI(e, s.IssueURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		json.EncodeURI(e, s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("review_comments_url")
 		json.EncodeURI(e, s.ReviewCommentsURL)
 	}
 	{
-
 		e.FieldStart("review_comment_url")
 		e.Str(s.ReviewCommentURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		json.EncodeURI(e, s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("locked")
 		e.Bool(s.Locked)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		s.Body.Encode(e)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -114035,7 +112400,6 @@ func (s *PullRequest) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("milestone")
 		s.Milestone.Encode(e)
 	}
@@ -114046,32 +112410,26 @@ func (s *PullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("merged_at")
 		s.MergedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("merge_commit_sha")
 		s.MergeCommitSha.Encode(e)
 	}
 	{
-
 		e.FieldStart("assignee")
 		s.Assignee.Encode(e)
 	}
@@ -114094,27 +112452,22 @@ func (s *PullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("head")
 		s.Head.Encode(e)
 	}
 	{
-
 		e.FieldStart("base")
 		s.Base.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
 	{
-
 		e.FieldStart("auto_merge")
 		s.AutoMerge.Encode(e)
 	}
@@ -114125,12 +112478,10 @@ func (s *PullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("merged")
 		e.Bool(s.Merged)
 	}
 	{
-
 		e.FieldStart("mergeable")
 		s.Mergeable.Encode(e)
 	}
@@ -114141,47 +112492,38 @@ func (s *PullRequest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("mergeable_state")
 		e.Str(s.MergeableState)
 	}
 	{
-
 		e.FieldStart("merged_by")
 		s.MergedBy.Encode(e)
 	}
 	{
-
 		e.FieldStart("comments")
 		e.Int(s.Comments)
 	}
 	{
-
 		e.FieldStart("review_comments")
 		e.Int(s.ReviewComments)
 	}
 	{
-
 		e.FieldStart("maintainer_can_modify")
 		e.Bool(s.MaintainerCanModify)
 	}
 	{
-
 		e.FieldStart("commits")
 		e.Int(s.Commits)
 	}
 	{
-
 		e.FieldStart("additions")
 		e.Int(s.Additions)
 	}
 	{
-
 		e.FieldStart("deletions")
 		e.Int(s.Deletions)
 	}
 	{
-
 		e.FieldStart("changed_files")
 		e.Int(s.ChangedFiles)
 	}
@@ -114858,27 +113200,22 @@ func (s *PullRequestBase) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestBase) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("label")
 		e.Str(s.Label)
 	}
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -115023,292 +113360,234 @@ func (s *PullRequestBaseRepo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
@@ -115319,27 +113598,22 @@ func (s *PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -115374,32 +113648,26 @@ func (s *PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		json.EncodeDateTime(e, s.PushedAt)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
@@ -115414,22 +113682,18 @@ func (s *PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -116563,92 +114827,74 @@ func (s *PullRequestBaseRepoOwner) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestBaseRepoOwner) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -116966,7 +115212,6 @@ func (s *PullRequestBaseRepoPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestBaseRepoPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -116977,7 +115222,6 @@ func (s *PullRequestBaseRepoPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -116988,7 +115232,6 @@ func (s *PullRequestBaseRepoPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -117133,92 +115376,74 @@ func (s *PullRequestBaseUser) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestBaseUser) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -117536,27 +115761,22 @@ func (s *PullRequestHead) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHead) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("label")
 		e.Str(s.Label)
 	}
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -117701,292 +115921,234 @@ func (s *PullRequestHeadRepo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
@@ -117997,27 +116159,22 @@ func (s *PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -118052,32 +116209,26 @@ func (s *PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		json.EncodeDateTime(e, s.PushedAt)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
@@ -118092,22 +116243,18 @@ func (s *PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -119241,27 +117388,22 @@ func (s *PullRequestHeadRepoLicense) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHeadRepoLicense) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
 	{
-
 		e.FieldStart("spdx_id")
 		s.SpdxID.Encode(e)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -119406,92 +117548,74 @@ func (s *PullRequestHeadRepoOwner) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHeadRepoOwner) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -119809,7 +117933,6 @@ func (s *PullRequestHeadRepoPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHeadRepoPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -119820,7 +117943,6 @@ func (s *PullRequestHeadRepoPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -119831,7 +117953,6 @@ func (s *PullRequestHeadRepoPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -119976,92 +118097,74 @@ func (s *PullRequestHeadUser) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestHeadUser) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -120544,42 +118647,34 @@ func (s *PullRequestLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("comments")
 		s.Comments.Encode(e)
 	}
 	{
-
 		e.FieldStart("commits")
 		s.Commits.Encode(e)
 	}
 	{
-
 		e.FieldStart("statuses")
 		s.Statuses.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("issue")
 		s.Issue.Encode(e)
 	}
 	{
-
 		e.FieldStart("review_comments")
 		s.ReviewComments.Encode(e)
 	}
 	{
-
 		e.FieldStart("review_comment")
 		s.ReviewComment.Encode(e)
 	}
 	{
-
 		e.FieldStart("self")
 		s.Self.Encode(e)
 	}
@@ -120751,17 +118846,14 @@ func (s *PullRequestMergeResult) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMergeResult) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("merged")
 		e.Bool(s.Merged)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -120884,27 +118976,22 @@ func (s *PullRequestMinimal) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMinimal) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("head")
 		s.Head.Encode(e)
 	}
 	{
-
 		e.FieldStart("base")
 		s.Base.Encode(e)
 	}
@@ -121049,17 +119136,14 @@ func (s *PullRequestMinimalBase) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMinimalBase) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
@@ -121180,17 +119264,14 @@ func (s *PullRequestMinimalBaseRepo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMinimalBaseRepo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -121313,17 +119394,14 @@ func (s *PullRequestMinimalHead) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMinimalHead) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
@@ -121444,17 +119522,14 @@ func (s *PullRequestMinimalHeadRepo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestMinimalHeadRepo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -121577,42 +119652,34 @@ func (s *PullRequestReview) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReview) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("pull_request_url")
 		json.EncodeURI(e, s.PullRequestURL)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
@@ -121623,7 +119690,6 @@ func (s *PullRequestReview) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("commit_id")
 		e.Str(s.CommitID)
 	}
@@ -121640,7 +119706,6 @@ func (s *PullRequestReview) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
@@ -121882,52 +119947,42 @@ func (s *PullRequestReviewComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("pull_request_review_id")
 		s.PullRequestReviewID.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("diff_hunk")
 		e.Str(s.DiffHunk)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("position")
 		e.Int(s.Position)
 	}
 	{
-
 		e.FieldStart("original_position")
 		e.Int(s.OriginalPosition)
 	}
 	{
-
 		e.FieldStart("commit_id")
 		e.Str(s.CommitID)
 	}
 	{
-
 		e.FieldStart("original_commit_id")
 		e.Str(s.OriginalCommitID)
 	}
@@ -121938,42 +119993,34 @@ func (s *PullRequestReviewComment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("pull_request_url")
 		json.EncodeURI(e, s.PullRequestURL)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
@@ -122451,17 +120498,14 @@ func (s *PullRequestReviewCommentLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewCommentLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("self")
 		s.Self.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_request")
 		s.PullRequest.Encode(e)
 	}
@@ -122578,7 +120622,6 @@ func (s *PullRequestReviewCommentLinksHTML) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewCommentLinksHTML) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		json.EncodeURI(e, s.Href)
 	}
@@ -122675,7 +120718,6 @@ func (s *PullRequestReviewCommentLinksPullRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewCommentLinksPullRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		json.EncodeURI(e, s.Href)
 	}
@@ -122772,7 +120814,6 @@ func (s *PullRequestReviewCommentLinksSelf) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewCommentLinksSelf) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		json.EncodeURI(e, s.Href)
 	}
@@ -122949,12 +120990,10 @@ func (s *PullRequestReviewLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_request")
 		s.PullRequest.Encode(e)
 	}
@@ -123060,7 +121099,6 @@ func (s *PullRequestReviewLinksHTML) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewLinksHTML) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		e.Str(s.Href)
 	}
@@ -123157,7 +121195,6 @@ func (s *PullRequestReviewLinksPullRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewLinksPullRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("href")
 		e.Str(s.Href)
 	}
@@ -123254,7 +121291,6 @@ func (s *PullRequestReviewRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestReviewRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -123263,7 +121299,6 @@ func (s *PullRequestReviewRequest) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -123389,97 +121424,78 @@ func (s *PullRequestSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("diff_url")
 		json.EncodeURI(e, s.DiffURL)
 	}
 	{
-
 		e.FieldStart("patch_url")
 		json.EncodeURI(e, s.PatchURL)
 	}
 	{
-
 		e.FieldStart("issue_url")
 		json.EncodeURI(e, s.IssueURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		json.EncodeURI(e, s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("review_comments_url")
 		json.EncodeURI(e, s.ReviewCommentsURL)
 	}
 	{
-
 		e.FieldStart("review_comment_url")
 		e.Str(s.ReviewCommentURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		json.EncodeURI(e, s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("locked")
 		e.Bool(s.Locked)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		s.Body.Encode(e)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -123488,7 +121504,6 @@ func (s *PullRequestSimple) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("milestone")
 		s.Milestone.Encode(e)
 	}
@@ -123499,32 +121514,26 @@ func (s *PullRequestSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("closed_at")
 		s.ClosedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("merged_at")
 		s.MergedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("merge_commit_sha")
 		s.MergeCommitSha.Encode(e)
 	}
 	{
-
 		e.FieldStart("assignee")
 		s.Assignee.Encode(e)
 	}
@@ -123547,27 +121556,22 @@ func (s *PullRequestSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("head")
 		s.Head.Encode(e)
 	}
 	{
-
 		e.FieldStart("base")
 		s.Base.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
 	{
-
 		e.FieldStart("auto_merge")
 		s.AutoMerge.Encode(e)
 	}
@@ -124101,27 +122105,22 @@ func (s *PullRequestSimpleBase) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestSimpleBase) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("label")
 		e.Str(s.Label)
 	}
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -124266,27 +122265,22 @@ func (s *PullRequestSimpleHead) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestSimpleHead) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("label")
 		e.Str(s.Label)
 	}
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
 	{
-
 		e.FieldStart("repo")
 		s.Repo.Encode(e)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -124596,42 +122590,34 @@ func (s *PullRequestSimpleLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullRequestSimpleLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("comments")
 		s.Comments.Encode(e)
 	}
 	{
-
 		e.FieldStart("commits")
 		s.Commits.Encode(e)
 	}
 	{
-
 		e.FieldStart("statuses")
 		s.Statuses.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("issue")
 		s.Issue.Encode(e)
 	}
 	{
-
 		e.FieldStart("review_comments")
 		s.ReviewComments.Encode(e)
 	}
 	{
-
 		e.FieldStart("review_comment")
 		s.ReviewComment.Encode(e)
 	}
 	{
-
 		e.FieldStart("self")
 		s.Self.Encode(e)
 	}
@@ -124843,7 +122829,6 @@ func (s *PullsCreateReplyForReviewCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsCreateReplyForReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -124946,12 +122931,10 @@ func (s *PullsCreateReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("head")
 		e.Str(s.Head)
 	}
 	{
-
 		e.FieldStart("base")
 		e.Str(s.Base)
 	}
@@ -125140,7 +123123,6 @@ func (s *PullsCreateReviewCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsCreateReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -125581,7 +123563,6 @@ func (s *PullsCreateReviewReqCommentsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsCreateReviewReqCommentsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -125592,7 +123573,6 @@ func (s *PullsCreateReviewReqCommentsItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -125823,7 +123803,6 @@ func (s *PullsDismissReviewReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsDismissReviewReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -126405,7 +124384,6 @@ func (s *PullsRemoveRequestedReviewersReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsRemoveRequestedReviewersReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("reviewers")
 		e.ArrStart()
 		for _, elem := range s.Reviewers {
@@ -126626,7 +124604,6 @@ func (s *PullsSubmitReviewReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("event")
 		s.Event.Encode(e)
 	}
@@ -127088,7 +125065,6 @@ func (s *PullsUpdateReviewCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsUpdateReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -127185,7 +125161,6 @@ func (s *PullsUpdateReviewReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PullsUpdateReviewReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -127282,22 +125257,18 @@ func (s *RateLimit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RateLimit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("limit")
 		e.Int(s.Limit)
 	}
 	{
-
 		e.FieldStart("remaining")
 		e.Int(s.Remaining)
 	}
 	{
-
 		e.FieldStart("reset")
 		e.Int(s.Reset)
 	}
 	{
-
 		e.FieldStart("used")
 		e.Int(s.Used)
 	}
@@ -127433,12 +125404,10 @@ func (s *RateLimitOverview) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RateLimitOverview) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("resources")
 		s.Resources.Encode(e)
 	}
 	{
-
 		e.FieldStart("rate")
 		s.Rate.Encode(e)
 	}
@@ -127544,7 +125513,6 @@ func (s *RateLimitOverviewResources) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RateLimitOverviewResources) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("core")
 		s.Core.Encode(e)
 	}
@@ -127555,7 +125523,6 @@ func (s *RateLimitOverviewResources) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("search")
 		s.Search.Encode(e)
 	}
@@ -127740,27 +125707,22 @@ func (s *Reaction) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Reaction) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
@@ -127957,52 +125919,42 @@ func (s *ReactionRollup) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionRollup) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("+1")
 		e.Int(s.Plus1)
 	}
 	{
-
 		e.FieldStart("-1")
 		e.Int(s.Minus1)
 	}
 	{
-
 		e.FieldStart("laugh")
 		e.Int(s.Laugh)
 	}
 	{
-
 		e.FieldStart("confused")
 		e.Int(s.Confused)
 	}
 	{
-
 		e.FieldStart("heart")
 		e.Int(s.Heart)
 	}
 	{
-
 		e.FieldStart("hooray")
 		e.Int(s.Hooray)
 	}
 	{
-
 		e.FieldStart("eyes")
 		e.Int(s.Eyes)
 	}
 	{
-
 		e.FieldStart("rocket")
 		e.Int(s.Rocket)
 	}
@@ -128293,7 +126245,6 @@ func (s *ReactionsCreateForCommitCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -128516,7 +126467,6 @@ func (s *ReactionsCreateForIssueCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForIssueCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -128739,7 +126689,6 @@ func (s *ReactionsCreateForIssueReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForIssueReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -128962,7 +126911,6 @@ func (s *ReactionsCreateForPullRequestReviewCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForPullRequestReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -129185,7 +127133,6 @@ func (s *ReactionsCreateForReleaseReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForReleaseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -129404,7 +127351,6 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -129551,7 +127497,6 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Encode(e *jx.Encoder)
 // encodeFields encodes fields.
 func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -129774,7 +127719,6 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForTeamDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -129921,7 +127865,6 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReactionsCreateForTeamDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -130258,17 +128201,14 @@ func (s *ReferrerTraffic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReferrerTraffic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("referrer")
 		e.Str(s.Referrer)
 	}
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
 	{
-
 		e.FieldStart("uniques")
 		e.Int(s.Uniques)
 	}
@@ -130391,57 +128331,46 @@ func (s *Release) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Release) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("assets_url")
 		json.EncodeURI(e, s.AssetsURL)
 	}
 	{
-
 		e.FieldStart("upload_url")
 		e.Str(s.UploadURL)
 	}
 	{
-
 		e.FieldStart("tarball_url")
 		s.TarballURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("zipball_url")
 		s.ZipballURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("tag_name")
 		e.Str(s.TagName)
 	}
 	{
-
 		e.FieldStart("target_commitish")
 		e.Str(s.TargetCommitish)
 	}
 	{
-
 		e.FieldStart("name")
 		s.Name.Encode(e)
 	}
@@ -130452,32 +128381,26 @@ func (s *Release) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("draft")
 		e.Bool(s.Draft)
 	}
 	{
-
 		e.FieldStart("prerelease")
 		e.Bool(s.Prerelease)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("published_at")
 		s.PublishedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("assets")
 		e.ArrStart()
 		for _, elem := range s.Assets {
@@ -130880,67 +128803,54 @@ func (s *ReleaseAsset) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReleaseAsset) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("browser_download_url")
 		json.EncodeURI(e, s.BrowserDownloadURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("label")
 		s.Label.Encode(e)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("content_type")
 		e.Str(s.ContentType)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("download_count")
 		e.Int(s.DownloadCount)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("uploader")
 		s.Uploader.Encode(e)
 	}
@@ -131228,102 +129138,82 @@ func (s *RepoSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepoSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		json.EncodeDateTime(e, s.PushedAt)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -131334,227 +129224,182 @@ func (s *RepoSearchResultItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
@@ -131569,47 +129414,38 @@ func (s *RepoSearchResultItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
@@ -132839,7 +130675,6 @@ func (s *RepoSearchResultItemPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepoSearchResultItemPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -132850,7 +130685,6 @@ func (s *RepoSearchResultItemPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -132861,7 +130695,6 @@ func (s *RepoSearchResultItemPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -133230,7 +131063,6 @@ func (s *ReposAddAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposAddAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apps")
 		e.ArrStart()
 		for _, elem := range s.Apps {
@@ -133654,7 +131486,6 @@ func (s *ReposAddStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposAddStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -133873,7 +131704,6 @@ func (s *ReposAddTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposAddTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -134092,7 +131922,6 @@ func (s *ReposAddUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposAddUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -134277,12 +132106,10 @@ func (s *ReposCreateAutolinkReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateAutolinkReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key_prefix")
 		e.Str(s.KeyPrefix)
 	}
 	{
-
 		e.FieldStart("url_template")
 		e.Str(s.URLTemplate)
 	}
@@ -134392,7 +132219,6 @@ func (s *ReposCreateCommitCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -134540,7 +132366,6 @@ func (s *ReposCreateCommitStatusReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateCommitStatusReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -134737,7 +132562,6 @@ func (s *ReposCreateDeployKeyReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -134925,7 +132749,6 @@ func (s *ReposCreateDeploymentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateDeploymentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ref")
 		e.Str(s.Ref)
 	}
@@ -135279,7 +133102,6 @@ func (s *ReposCreateDeploymentStatusReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateDeploymentStatusReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -135569,7 +133391,6 @@ func (s *ReposCreateDispatchEventReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateDispatchEventReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("event_type")
 		e.Str(s.EventType)
 	}
@@ -135866,7 +133687,6 @@ func (s *ReposCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -136470,7 +134290,6 @@ func (s *ReposCreateInOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -137055,12 +134874,10 @@ func (s *ReposCreateOrUpdateFileContentsReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateOrUpdateFileContentsReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -137238,12 +135055,10 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateOrUpdateFileContentsReqAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -137370,12 +135185,10 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateOrUpdateFileContentsReqCommitter) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -137502,7 +135315,6 @@ func (s *ReposCreatePagesSiteReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreatePagesSiteReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		s.Source.Encode(e)
 	}
@@ -137597,7 +135409,6 @@ func (s *ReposCreatePagesSiteReqSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreatePagesSiteReqSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("branch")
 		e.Str(s.Branch)
 	}
@@ -137752,7 +135563,6 @@ func (s *ReposCreateReleaseReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposCreateReleaseReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("tag_name")
 		e.Str(s.TagName)
 	}
@@ -137958,7 +135768,6 @@ func (s *ReposCreateUsingTemplateReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -138660,12 +136469,10 @@ func (s *ReposDeleteFileReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposDeleteFileReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
@@ -140478,12 +138285,10 @@ func (s *ReposMergeReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposMergeReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("base")
 		e.Str(s.Base)
 	}
 	{
-
 		e.FieldStart("head")
 		e.Str(s.Head)
 	}
@@ -140610,7 +138415,6 @@ func (s *ReposMergeUpstreamReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposMergeUpstreamReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("branch")
 		e.Str(s.Branch)
 	}
@@ -140817,7 +138621,6 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposRemoveAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apps")
 		e.ArrStart()
 		for _, elem := range s.Apps {
@@ -141038,7 +138841,6 @@ func (s *ReposRemoveStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposRemoveStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -141257,7 +139059,6 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposRemoveTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -141476,7 +139277,6 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposRemoveUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -141661,7 +139461,6 @@ func (s *ReposRenameBranchReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposRenameBranchReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("new_name")
 		e.Str(s.NewName)
 	}
@@ -141758,7 +139557,6 @@ func (s *ReposReplaceAllTopicsReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposReplaceAllTopicsReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("names")
 		e.ArrStart()
 		for _, elem := range s.Names {
@@ -141977,7 +139775,6 @@ func (s *ReposSetAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposSetAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apps")
 		e.ArrStart()
 		for _, elem := range s.Apps {
@@ -142198,7 +139995,6 @@ func (s *ReposSetStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposSetStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -142417,7 +140213,6 @@ func (s *ReposSetTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposSetTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -142636,7 +140431,6 @@ func (s *ReposSetUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposSetUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -142745,7 +140539,6 @@ func (s *ReposTransferReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposTransferReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("new_owner")
 		e.Str(s.NewOwner)
 	}
@@ -142948,22 +140741,18 @@ func (s *ReposUpdateBranchProtectionReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposUpdateBranchProtectionReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("required_status_checks")
 		s.RequiredStatusChecks.Encode(e)
 	}
 	{
-
 		e.FieldStart("enforce_admins")
 		s.EnforceAdmins.Encode(e)
 	}
 	{
-
 		e.FieldStart("required_pull_request_reviews")
 		s.RequiredPullRequestReviews.Encode(e)
 	}
 	{
-
 		e.FieldStart("restrictions")
 		s.Restrictions.Encode(e)
 	}
@@ -143379,12 +141168,10 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Encode(e *jx.Encode
 // encodeFields encodes fields.
 func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("strict")
 		e.Bool(s.Strict)
 	}
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -143506,7 +141293,6 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposUpdateBranchProtectionReqRestrictions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
@@ -143515,7 +141301,6 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) encodeFields(e *jx.Encoder)
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
@@ -143675,7 +141460,6 @@ func (s *ReposUpdateCommitCommentReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposUpdateCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -145458,7 +143242,6 @@ func (s *ReposUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReposUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
@@ -145638,27 +143421,22 @@ func (s *Repository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Repository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
@@ -145669,7 +143447,6 @@ func (s *Repository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
@@ -145680,277 +143457,222 @@ func (s *Repository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -145971,37 +143693,30 @@ func (s *Repository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
@@ -146012,17 +143727,14 @@ func (s *Repository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		s.PushedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -146087,12 +143799,10 @@ func (s *Repository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
@@ -147327,12 +145037,10 @@ func (s *RepositoryCollaboratorPermission) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepositoryCollaboratorPermission) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("permission")
 		e.Str(s.Permission)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -147440,32 +145148,26 @@ func (s *RepositoryInvitation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepositoryInvitation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("invitee")
 		s.Invitee.Encode(e)
 	}
 	{
-
 		e.FieldStart("inviter")
 		s.Inviter.Encode(e)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
@@ -147476,17 +145178,14 @@ func (s *RepositoryInvitation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		e.Str(s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -147737,12 +145436,10 @@ func (s *RepositoryPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -147753,7 +145450,6 @@ func (s *RepositoryPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -147904,32 +145600,26 @@ func (s *RepositorySubscription) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RepositorySubscription) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("subscribed")
 		e.Bool(s.Subscribed)
 	}
 	{
-
 		e.FieldStart("ignored")
 		e.Bool(s.Ignored)
 	}
 	{
-
 		e.FieldStart("reason")
 		s.Reason.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("repository_url")
 		json.EncodeURI(e, s.RepositoryURL)
 	}
@@ -150008,52 +147698,42 @@ func (s *ReviewComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReviewComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("pull_request_review_id")
 		s.PullRequestReviewID.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("diff_hunk")
 		e.Str(s.DiffHunk)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("position")
 		s.Position.Encode(e)
 	}
 	{
-
 		e.FieldStart("original_position")
 		e.Int(s.OriginalPosition)
 	}
 	{
-
 		e.FieldStart("commit_id")
 		e.Str(s.CommitID)
 	}
 	{
-
 		e.FieldStart("original_commit_id")
 		e.Str(s.OriginalCommitID)
 	}
@@ -150064,42 +147744,34 @@ func (s *ReviewComment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("pull_request_url")
 		json.EncodeURI(e, s.PullRequestURL)
 	}
 	{
-
 		e.FieldStart("author_association")
 		s.AuthorAssociation.Encode(e)
 	}
 	{
-
 		e.FieldStart("_links")
 		s.Links.Encode(e)
 	}
@@ -150575,17 +148247,14 @@ func (s *ReviewCommentLinks) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReviewCommentLinks) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("self")
 		s.Self.Encode(e)
 	}
 	{
-
 		e.FieldStart("html")
 		s.HTML.Encode(e)
 	}
 	{
-
 		e.FieldStart("pull_request")
 		s.PullRequest.Encode(e)
 	}
@@ -150782,32 +148451,26 @@ func (s *Runner) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Runner) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("os")
 		e.Str(s.Os)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("busy")
 		e.Bool(s.Busy)
 	}
 	{
-
 		e.FieldStart("labels")
 		e.ArrStart()
 		for _, elem := range s.Labels {
@@ -150979,22 +148642,18 @@ func (s *RunnerApplication) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RunnerApplication) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("os")
 		e.Str(s.Os)
 	}
 	{
-
 		e.FieldStart("architecture")
 		e.Str(s.Architecture)
 	}
 	{
-
 		e.FieldStart("download_url")
 		e.Str(s.DownloadURL)
 	}
 	{
-
 		e.FieldStart("filename")
 		e.Str(s.Filename)
 	}
@@ -151164,22 +148823,18 @@ func (s *RunnerGroupsEnterprise) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RunnerGroupsEnterprise) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Float64(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("visibility")
 		e.Str(s.Visibility)
 	}
 	{
-
 		e.FieldStart("default")
 		e.Bool(s.Default)
 	}
@@ -151190,12 +148845,10 @@ func (s *RunnerGroupsEnterprise) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("runners_url")
 		e.Str(s.RunnersURL)
 	}
 	{
-
 		e.FieldStart("allows_public_repositories")
 		e.Bool(s.AllowsPublicRepositories)
 	}
@@ -151368,22 +149021,18 @@ func (s *RunnerGroupsOrg) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RunnerGroupsOrg) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Float64(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("visibility")
 		e.Str(s.Visibility)
 	}
 	{
-
 		e.FieldStart("default")
 		e.Bool(s.Default)
 	}
@@ -151394,12 +149043,10 @@ func (s *RunnerGroupsOrg) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("runners_url")
 		e.Str(s.RunnersURL)
 	}
 	{
-
 		e.FieldStart("inherited")
 		e.Bool(s.Inherited)
 	}
@@ -151410,7 +149057,6 @@ func (s *RunnerGroupsOrg) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("allows_public_repositories")
 		e.Bool(s.AllowsPublicRepositories)
 	}
@@ -151821,7 +149467,6 @@ func (s *ScimEnterpriseGroup) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimEnterpriseGroup) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -151830,7 +149475,6 @@ func (s *ScimEnterpriseGroup) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -152238,7 +149882,6 @@ func (s *ScimEnterpriseUser) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimEnterpriseUser) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -152247,7 +149890,6 @@ func (s *ScimEnterpriseUser) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -153022,7 +150664,6 @@ func (s *ScimGroupListEnterprise) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimGroupListEnterprise) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -153031,22 +150672,18 @@ func (s *ScimGroupListEnterprise) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("totalResults")
 		e.Float64(s.TotalResults)
 	}
 	{
-
 		e.FieldStart("itemsPerPage")
 		e.Float64(s.ItemsPerPage)
 	}
 	{
-
 		e.FieldStart("startIndex")
 		e.Float64(s.StartIndex)
 	}
 	{
-
 		e.FieldStart("Resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
@@ -153213,7 +150850,6 @@ func (s *ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimGroupListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -153222,7 +150858,6 @@ func (s *ScimGroupListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -153630,7 +151265,6 @@ func (s *ScimUserListEnterprise) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimUserListEnterprise) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -153639,22 +151273,18 @@ func (s *ScimUserListEnterprise) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("totalResults")
 		e.Float64(s.TotalResults)
 	}
 	{
-
 		e.FieldStart("itemsPerPage")
 		e.Float64(s.ItemsPerPage)
 	}
 	{
-
 		e.FieldStart("startIndex")
 		e.Float64(s.StartIndex)
 	}
 	{
-
 		e.FieldStart("Resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
@@ -153821,7 +151451,6 @@ func (s *ScimUserListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ScimUserListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
@@ -153830,7 +151459,6 @@ func (s *ScimUserListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -154444,17 +152072,14 @@ func (s *SearchCodeOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchCodeOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -154587,17 +152212,14 @@ func (s *SearchCommitsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchCommitsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -154730,17 +152352,14 @@ func (s *SearchIssuesAndPullRequestsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchIssuesAndPullRequestsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -154949,17 +152568,14 @@ func (s *SearchLabelsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchLabelsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -155092,17 +152708,14 @@ func (s *SearchReposOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchReposOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -155520,17 +153133,14 @@ func (s *SearchTopicsOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchTopicsOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -155663,17 +153273,14 @@ func (s *SearchUsersOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SearchUsersOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("incomplete_results")
 		e.Bool(s.IncompleteResults)
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -156173,7 +153780,6 @@ func (s *SecretScanningUpdateAlertReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SecretScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -156532,12 +154138,10 @@ func (s *ShortBlob) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShortBlob) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
@@ -156647,17 +154251,14 @@ func (s *ShortBranch) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShortBranch) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("protected")
 		e.Bool(s.Protected)
 	}
@@ -156812,12 +154413,10 @@ func (s *ShortBranchCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShortBranchCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -156927,32 +154526,26 @@ func (s *SimpleCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SimpleCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("tree_id")
 		e.Str(s.TreeID)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("timestamp")
 		json.EncodeDateTime(e, s.Timestamp)
 	}
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("committer")
 		s.Committer.Encode(e)
 	}
@@ -157110,12 +154703,10 @@ func (s *SimpleCommitAuthor) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SimpleCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -157225,12 +154816,10 @@ func (s *SimpleCommitCommitter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SimpleCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
@@ -157340,32 +154929,26 @@ func (s *SimpleCommitStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SimpleCommitStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("context")
 		e.Str(s.Context)
 	}
 	{
-
 		e.FieldStart("target_url")
 		json.EncodeURI(e, s.TargetURL)
 	}
@@ -157376,22 +154959,18 @@ func (s *SimpleCommitStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		s.AvatarURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
@@ -157625,92 +155204,74 @@ func (s *SimpleUser) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
@@ -158067,57 +155628,46 @@ func (s *Status) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Status) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		s.AvatarURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("target_url")
 		e.Str(s.TargetURL)
 	}
 	{
-
 		e.FieldStart("context")
 		e.Str(s.Context)
 	}
 	{
-
 		e.FieldStart("created_at")
 		e.Str(s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		e.Str(s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
@@ -158341,17 +155891,14 @@ func (s *StatusCheckPolicy) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *StatusCheckPolicy) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("strict")
 		e.Bool(s.Strict)
 	}
 	{
-
 		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
@@ -158360,7 +155907,6 @@ func (s *StatusCheckPolicy) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("contexts_url")
 		json.EncodeURI(e, s.ContextsURL)
 	}
@@ -158504,27 +156050,22 @@ func (s *Tag) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Tag) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("commit")
 		s.Commit.Encode(e)
 	}
 	{
-
 		e.FieldStart("zipball_url")
 		json.EncodeURI(e, s.ZipballURL)
 	}
 	{
-
 		e.FieldStart("tarball_url")
 		json.EncodeURI(e, s.TarballURL)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -158671,12 +156212,10 @@ func (s *TagCommit) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TagCommit) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sha")
 		e.Str(s.Sha)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -158786,27 +156325,22 @@ func (s *Team) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Team) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("slug")
 		e.Str(s.Slug)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
@@ -158817,7 +156351,6 @@ func (s *Team) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("permission")
 		e.Str(s.Permission)
 	}
@@ -158828,27 +156361,22 @@ func (s *Team) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("repositories_url")
 		json.EncodeURI(e, s.RepositoriesURL)
 	}
 	{
-
 		e.FieldStart("parent")
 		s.Parent.Encode(e)
 	}
@@ -159094,87 +156622,70 @@ func (s *TeamDiscussion) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamDiscussion) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("body_html")
 		e.Str(s.BodyHTML)
 	}
 	{
-
 		e.FieldStart("body_version")
 		e.Str(s.BodyVersion)
 	}
 	{
-
 		e.FieldStart("comments_count")
 		e.Int(s.CommentsCount)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		json.EncodeURI(e, s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("last_edited_at")
 		s.LastEditedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("pinned")
 		e.Bool(s.Pinned)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("team_url")
 		json.EncodeURI(e, s.TeamURL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -159494,62 +157005,50 @@ func (s *TeamDiscussionComment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamDiscussionComment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("author")
 		s.Author.Encode(e)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
 	{
-
 		e.FieldStart("body_html")
 		e.Str(s.BodyHTML)
 	}
 	{
-
 		e.FieldStart("body_version")
 		e.Str(s.BodyVersion)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("last_edited_at")
 		s.LastEditedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("discussion_url")
 		json.EncodeURI(e, s.DiscussionURL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -159803,37 +157302,30 @@ func (s *TeamFull) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamFull) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("slug")
 		e.Str(s.Slug)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
@@ -159844,17 +157336,14 @@ func (s *TeamFull) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("permission")
 		e.Str(s.Permission)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("repositories_url")
 		json.EncodeURI(e, s.RepositoriesURL)
 	}
@@ -159865,27 +157354,22 @@ func (s *TeamFull) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("members_count")
 		e.Int(s.MembersCount)
 	}
 	{
-
 		e.FieldStart("repos_count")
 		e.Int(s.ReposCount)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("organization")
 		s.Organization.Encode(e)
 	}
@@ -160241,17 +157725,14 @@ func (s *TeamMembership) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamMembership) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
@@ -160451,27 +157932,22 @@ func (s *TeamPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
 	{
-
 		e.FieldStart("triage")
 		e.Bool(s.Triage)
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
 	{
-
 		e.FieldStart("maintain")
 		e.Bool(s.Maintain)
 	}
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -160620,67 +158096,54 @@ func (s *TeamProject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamProject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("owner_url")
 		e.Str(s.OwnerURL)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		e.Str(s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("columns_url")
 		e.Str(s.ColumnsURL)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("body")
 		s.Body.Encode(e)
 	}
 	{
-
 		e.FieldStart("number")
 		e.Int(s.Number)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		e.Str(s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		e.Str(s.UpdatedAt)
 	}
@@ -160697,7 +158160,6 @@ func (s *TeamProject) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
@@ -160980,17 +158442,14 @@ func (s *TeamProjectPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamProjectPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("read")
 		e.Bool(s.Read)
 	}
 	{
-
 		e.FieldStart("write")
 		e.Bool(s.Write)
 	}
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
@@ -161113,32 +158572,26 @@ func (s *TeamRepository) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("full_name")
 		e.Str(s.FullName)
 	}
 	{
-
 		e.FieldStart("license")
 		s.License.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks")
 		e.Int(s.Forks)
 	}
@@ -161149,277 +158602,222 @@ func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
 	{
-
 		e.FieldStart("private")
 		e.Bool(s.Private)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("fork")
 		e.Bool(s.Fork)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("archive_url")
 		e.Str(s.ArchiveURL)
 	}
 	{
-
 		e.FieldStart("assignees_url")
 		e.Str(s.AssigneesURL)
 	}
 	{
-
 		e.FieldStart("blobs_url")
 		e.Str(s.BlobsURL)
 	}
 	{
-
 		e.FieldStart("branches_url")
 		e.Str(s.BranchesURL)
 	}
 	{
-
 		e.FieldStart("collaborators_url")
 		e.Str(s.CollaboratorsURL)
 	}
 	{
-
 		e.FieldStart("comments_url")
 		e.Str(s.CommentsURL)
 	}
 	{
-
 		e.FieldStart("commits_url")
 		e.Str(s.CommitsURL)
 	}
 	{
-
 		e.FieldStart("compare_url")
 		e.Str(s.CompareURL)
 	}
 	{
-
 		e.FieldStart("contents_url")
 		e.Str(s.ContentsURL)
 	}
 	{
-
 		e.FieldStart("contributors_url")
 		json.EncodeURI(e, s.ContributorsURL)
 	}
 	{
-
 		e.FieldStart("deployments_url")
 		json.EncodeURI(e, s.DeploymentsURL)
 	}
 	{
-
 		e.FieldStart("downloads_url")
 		json.EncodeURI(e, s.DownloadsURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		json.EncodeURI(e, s.EventsURL)
 	}
 	{
-
 		e.FieldStart("forks_url")
 		json.EncodeURI(e, s.ForksURL)
 	}
 	{
-
 		e.FieldStart("git_commits_url")
 		e.Str(s.GitCommitsURL)
 	}
 	{
-
 		e.FieldStart("git_refs_url")
 		e.Str(s.GitRefsURL)
 	}
 	{
-
 		e.FieldStart("git_tags_url")
 		e.Str(s.GitTagsURL)
 	}
 	{
-
 		e.FieldStart("git_url")
 		e.Str(s.GitURL)
 	}
 	{
-
 		e.FieldStart("issue_comment_url")
 		e.Str(s.IssueCommentURL)
 	}
 	{
-
 		e.FieldStart("issue_events_url")
 		e.Str(s.IssueEventsURL)
 	}
 	{
-
 		e.FieldStart("issues_url")
 		e.Str(s.IssuesURL)
 	}
 	{
-
 		e.FieldStart("keys_url")
 		e.Str(s.KeysURL)
 	}
 	{
-
 		e.FieldStart("labels_url")
 		e.Str(s.LabelsURL)
 	}
 	{
-
 		e.FieldStart("languages_url")
 		json.EncodeURI(e, s.LanguagesURL)
 	}
 	{
-
 		e.FieldStart("merges_url")
 		json.EncodeURI(e, s.MergesURL)
 	}
 	{
-
 		e.FieldStart("milestones_url")
 		e.Str(s.MilestonesURL)
 	}
 	{
-
 		e.FieldStart("notifications_url")
 		e.Str(s.NotificationsURL)
 	}
 	{
-
 		e.FieldStart("pulls_url")
 		e.Str(s.PullsURL)
 	}
 	{
-
 		e.FieldStart("releases_url")
 		e.Str(s.ReleasesURL)
 	}
 	{
-
 		e.FieldStart("ssh_url")
 		e.Str(s.SSHURL)
 	}
 	{
-
 		e.FieldStart("stargazers_url")
 		json.EncodeURI(e, s.StargazersURL)
 	}
 	{
-
 		e.FieldStart("statuses_url")
 		e.Str(s.StatusesURL)
 	}
 	{
-
 		e.FieldStart("subscribers_url")
 		json.EncodeURI(e, s.SubscribersURL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		json.EncodeURI(e, s.SubscriptionURL)
 	}
 	{
-
 		e.FieldStart("tags_url")
 		json.EncodeURI(e, s.TagsURL)
 	}
 	{
-
 		e.FieldStart("teams_url")
 		json.EncodeURI(e, s.TeamsURL)
 	}
 	{
-
 		e.FieldStart("trees_url")
 		e.Str(s.TreesURL)
 	}
 	{
-
 		e.FieldStart("clone_url")
 		e.Str(s.CloneURL)
 	}
 	{
-
 		e.FieldStart("mirror_url")
 		s.MirrorURL.Encode(e)
 	}
 	{
-
 		e.FieldStart("hooks_url")
 		json.EncodeURI(e, s.HooksURL)
 	}
 	{
-
 		e.FieldStart("svn_url")
 		json.EncodeURI(e, s.SvnURL)
 	}
 	{
-
 		e.FieldStart("homepage")
 		s.Homepage.Encode(e)
 	}
 	{
-
 		e.FieldStart("language")
 		s.Language.Encode(e)
 	}
 	{
-
 		e.FieldStart("forks_count")
 		e.Int(s.ForksCount)
 	}
 	{
-
 		e.FieldStart("stargazers_count")
 		e.Int(s.StargazersCount)
 	}
 	{
-
 		e.FieldStart("watchers_count")
 		e.Int(s.WatchersCount)
 	}
 	{
-
 		e.FieldStart("size")
 		e.Int(s.Size)
 	}
 	{
-
 		e.FieldStart("default_branch")
 		e.Str(s.DefaultBranch)
 	}
 	{
-
 		e.FieldStart("open_issues_count")
 		e.Int(s.OpenIssuesCount)
 	}
@@ -161440,37 +158838,30 @@ func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("has_issues")
 		e.Bool(s.HasIssues)
 	}
 	{
-
 		e.FieldStart("has_projects")
 		e.Bool(s.HasProjects)
 	}
 	{
-
 		e.FieldStart("has_wiki")
 		e.Bool(s.HasWiki)
 	}
 	{
-
 		e.FieldStart("has_pages")
 		e.Bool(s.HasPages)
 	}
 	{
-
 		e.FieldStart("has_downloads")
 		e.Bool(s.HasDownloads)
 	}
 	{
-
 		e.FieldStart("archived")
 		e.Bool(s.Archived)
 	}
 	{
-
 		e.FieldStart("disabled")
 		e.Bool(s.Disabled)
 	}
@@ -161481,17 +158872,14 @@ func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pushed_at")
 		s.PushedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
@@ -161556,12 +158944,10 @@ func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("open_issues")
 		e.Int(s.OpenIssues)
 	}
 	{
-
 		e.FieldStart("watchers")
 		e.Int(s.Watchers)
 	}
@@ -162767,12 +160153,10 @@ func (s *TeamRepositoryPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admin")
 		e.Bool(s.Admin)
 	}
 	{
-
 		e.FieldStart("pull")
 		e.Bool(s.Pull)
 	}
@@ -162783,7 +160167,6 @@ func (s *TeamRepositoryPermissions) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("push")
 		e.Bool(s.Push)
 	}
@@ -162934,37 +160317,30 @@ func (s *TeamSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("members_url")
 		e.Str(s.MembersURL)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("permission")
 		e.Str(s.Permission)
 	}
@@ -162975,17 +160351,14 @@ func (s *TeamSimple) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("repositories_url")
 		json.EncodeURI(e, s.RepositoriesURL)
 	}
 	{
-
 		e.FieldStart("slug")
 		e.Str(s.Slug)
 	}
@@ -164018,7 +161391,6 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsCreateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -164115,7 +161487,6 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsCreateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -164212,12 +161583,10 @@ func (s *TeamsCreateDiscussionInOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsCreateDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -164345,12 +161714,10 @@ func (s *TeamsCreateDiscussionLegacyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsCreateDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -164552,17 +161919,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Encode(e *jx.
 // encodeFields encodes fields.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("group_id")
 		e.Str(s.GroupID)
 	}
 	{
-
 		e.FieldStart("group_name")
 		e.Str(s.GroupName)
 	}
 	{
-
 		e.FieldStart("group_description")
 		e.Str(s.GroupDescription)
 	}
@@ -164685,7 +162049,6 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
@@ -164809,17 +162172,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Encode(e *jx
 // encodeFields encodes fields.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("group_id")
 		e.Str(s.GroupID)
 	}
 	{
-
 		e.FieldStart("group_name")
 		e.Str(s.GroupName)
 	}
 	{
-
 		e.FieldStart("group_description")
 		e.Str(s.GroupDescription)
 	}
@@ -164993,7 +162353,6 @@ func (s *TeamsCreateReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsCreateReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -165529,7 +162888,6 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsUpdateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -165626,7 +162984,6 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsUpdateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("body")
 		e.Str(s.Body)
 	}
@@ -166249,7 +163606,6 @@ func (s *TeamsUpdateLegacyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TeamsUpdateLegacyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -166497,47 +163853,38 @@ func (s *Thread) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Thread) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("subject")
 		s.Subject.Encode(e)
 	}
 	{
-
 		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-
 		e.FieldStart("unread")
 		e.Bool(s.Unread)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		e.Str(s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("last_read_at")
 		s.LastReadAt.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("subscription_url")
 		e.Str(s.SubscriptionURL)
 	}
@@ -166733,22 +164080,18 @@ func (s *ThreadSubject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ThreadSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("latest_comment_url")
 		e.Str(s.LatestCommentURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -166884,27 +164227,22 @@ func (s *ThreadSubscription) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ThreadSubscription) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("subscribed")
 		e.Bool(s.Subscribed)
 	}
 	{
-
 		e.FieldStart("ignored")
 		e.Bool(s.Ignored)
 	}
 	{
-
 		e.FieldStart("reason")
 		s.Reason.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -167083,7 +164421,6 @@ func (s *Topic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Topic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("names")
 		e.ArrStart()
 		for _, elem := range s.Names {
@@ -167192,57 +164529,46 @@ func (s *TopicSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TopicSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("display_name")
 		s.DisplayName.Encode(e)
 	}
 	{
-
 		e.FieldStart("short_description")
 		s.ShortDescription.Encode(e)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_by")
 		s.CreatedBy.Encode(e)
 	}
 	{
-
 		e.FieldStart("released")
 		s.Released.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("featured")
 		e.Bool(s.Featured)
 	}
 	{
-
 		e.FieldStart("curated")
 		e.Bool(s.Curated)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
@@ -167901,17 +165227,14 @@ func (s *Traffic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Traffic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("timestamp")
 		json.EncodeDateTime(e, s.Timestamp)
 	}
 	{
-
 		e.FieldStart("uniques")
 		e.Int(s.Uniques)
 	}
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
@@ -168034,42 +165357,34 @@ func (s *UserMarketplacePurchase) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserMarketplacePurchase) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("billing_cycle")
 		e.Str(s.BillingCycle)
 	}
 	{
-
 		e.FieldStart("next_billing_date")
 		s.NextBillingDate.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("unit_count")
 		s.UnitCount.Encode(e)
 	}
 	{
-
 		e.FieldStart("on_free_trial")
 		e.Bool(s.OnFreeTrial)
 	}
 	{
-
 		e.FieldStart("free_trial_ends_on")
 		s.FreeTrialEndsOn.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
 	{
-
 		e.FieldStart("account")
 		s.Account.Encode(e)
 	}
 	{
-
 		e.FieldStart("plan")
 		s.Plan.Encode(e)
 	}
@@ -168245,92 +165560,74 @@ func (s *UserSearchResultItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("login")
 		e.Str(s.Login)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("avatar_url")
 		json.EncodeURI(e, s.AvatarURL)
 	}
 	{
-
 		e.FieldStart("gravatar_id")
 		s.GravatarID.Encode(e)
 	}
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		json.EncodeURI(e, s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("followers_url")
 		json.EncodeURI(e, s.FollowersURL)
 	}
 	{
-
 		e.FieldStart("subscriptions_url")
 		json.EncodeURI(e, s.SubscriptionsURL)
 	}
 	{
-
 		e.FieldStart("organizations_url")
 		json.EncodeURI(e, s.OrganizationsURL)
 	}
 	{
-
 		e.FieldStart("repos_url")
 		json.EncodeURI(e, s.ReposURL)
 	}
 	{
-
 		e.FieldStart("received_events_url")
 		json.EncodeURI(e, s.ReceivedEventsURL)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Float64(s.Score)
 	}
 	{
-
 		e.FieldStart("following_url")
 		e.Str(s.FollowingURL)
 	}
 	{
-
 		e.FieldStart("gists_url")
 		e.Str(s.GistsURL)
 	}
 	{
-
 		e.FieldStart("starred_url")
 		e.Str(s.StarredURL)
 	}
 	{
-
 		e.FieldStart("events_url")
 		e.Str(s.EventsURL)
 	}
@@ -168395,7 +165692,6 @@ func (s *UserSearchResultItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("site_admin")
 		e.Bool(s.SiteAdmin)
 	}
@@ -169120,7 +166416,6 @@ func (s *UsersAddEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UsersAddEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
@@ -169685,7 +166980,6 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UsersCreateGpgKeyForAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("armored_public_key")
 		e.Str(s.ArmoredPublicKey)
 	}
@@ -169902,7 +167196,6 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -170193,7 +167486,6 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UsersDeleteEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
@@ -172054,7 +169346,6 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Encode(e *jx.Encoder
 // encodeFields encodes fields.
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("visibility")
 		s.Visibility.Encode(e)
 	}
@@ -172751,12 +170042,10 @@ func (s *ValidationError) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ValidationError) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("documentation_url")
 		e.Str(s.DocumentationURL)
 	}
@@ -172912,7 +170201,6 @@ func (s *ValidationErrorErrorsItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("code")
 		e.Str(s.Code)
 	}
@@ -173155,12 +170443,10 @@ func (s *ValidationErrorSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ValidationErrorSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
-
 		e.FieldStart("documentation_url")
 		e.Str(s.DocumentationURL)
 	}
@@ -173300,22 +170586,18 @@ func (s *Verification) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Verification) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("verified")
 		e.Bool(s.Verified)
 	}
 	{
-
 		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
 	{
-
 		e.FieldStart("signature")
 		s.Signature.Encode(e)
 	}
@@ -173447,17 +170729,14 @@ func (s *ViewTraffic) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ViewTraffic) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
 	{
-
 		e.FieldStart("uniques")
 		e.Int(s.Uniques)
 	}
 	{
-
 		e.FieldStart("views")
 		e.ArrStart()
 		for _, elem := range s.Views {
@@ -173874,52 +171153,42 @@ func (s *Workflow) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Workflow) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		e.Str(s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("badge_url")
 		e.Str(s.BadgeURL)
 	}
@@ -174149,7 +171418,6 @@ func (s *WorkflowRun) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
@@ -174160,7 +171428,6 @@ func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("node_id")
 		e.Str(s.NodeID)
 	}
@@ -174177,17 +171444,14 @@ func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("head_branch")
 		s.HeadBranch.Encode(e)
 	}
 	{
-
 		e.FieldStart("head_sha")
 		e.Str(s.HeadSha)
 	}
 	{
-
 		e.FieldStart("run_number")
 		e.Int(s.RunNumber)
 	}
@@ -174198,37 +171462,30 @@ func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("event")
 		e.Str(s.Event)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	{
-
 		e.FieldStart("conclusion")
 		s.Conclusion.Encode(e)
 	}
 	{
-
 		e.FieldStart("workflow_id")
 		e.Int(s.WorkflowID)
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
 	{
-
 		e.FieldStart("html_url")
 		e.Str(s.HTMLURL)
 	}
 	{
-
 		e.FieldStart("pull_requests")
 		if s.PullRequests == nil {
 			e.Null()
@@ -174241,42 +171498,34 @@ func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("created_at")
 		json.EncodeDateTime(e, s.CreatedAt)
 	}
 	{
-
 		e.FieldStart("updated_at")
 		json.EncodeDateTime(e, s.UpdatedAt)
 	}
 	{
-
 		e.FieldStart("jobs_url")
 		e.Str(s.JobsURL)
 	}
 	{
-
 		e.FieldStart("logs_url")
 		e.Str(s.LogsURL)
 	}
 	{
-
 		e.FieldStart("check_suite_url")
 		e.Str(s.CheckSuiteURL)
 	}
 	{
-
 		e.FieldStart("artifacts_url")
 		e.Str(s.ArtifactsURL)
 	}
 	{
-
 		e.FieldStart("cancel_url")
 		e.Str(s.CancelURL)
 	}
 	{
-
 		e.FieldStart("rerun_url")
 		e.Str(s.RerunURL)
 	}
@@ -174287,22 +171536,18 @@ func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("workflow_url")
 		e.Str(s.WorkflowURL)
 	}
 	{
-
 		e.FieldStart("head_commit")
 		s.HeadCommit.Encode(e)
 	}
 	{
-
 		e.FieldStart("repository")
 		s.Repository.Encode(e)
 	}
 	{
-
 		e.FieldStart("head_repository")
 		s.HeadRepository.Encode(e)
 	}
@@ -174774,7 +172019,6 @@ func (s *WorkflowRunUsage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorkflowRunUsage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("billable")
 		s.Billable.Encode(e)
 	}
@@ -174983,12 +172227,10 @@ func (s *WorkflowRunUsageBillableMACOS) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorkflowRunUsageBillableMACOS) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_ms")
 		e.Int(s.TotalMs)
 	}
 	{
-
 		e.FieldStart("jobs")
 		e.Int(s.Jobs)
 	}
@@ -175098,12 +172340,10 @@ func (s *WorkflowRunUsageBillableUBUNTU) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorkflowRunUsageBillableUBUNTU) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_ms")
 		e.Int(s.TotalMs)
 	}
 	{
-
 		e.FieldStart("jobs")
 		e.Int(s.Jobs)
 	}
@@ -175213,12 +172453,10 @@ func (s *WorkflowRunUsageBillableWINDOWS) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorkflowRunUsageBillableWINDOWS) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_ms")
 		e.Int(s.TotalMs)
 	}
 	{
-
 		e.FieldStart("jobs")
 		e.Int(s.Jobs)
 	}

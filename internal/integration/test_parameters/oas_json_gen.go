@@ -22,22 +22,18 @@ func (s *ContentParameters) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ContentParameters) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("query")
 		s.Query.Encode(e)
 	}
 	{
-
 		e.FieldStart("path")
 		s.Path.Encode(e)
 	}
 	{
-
 		e.FieldStart("header")
 		s.Header.Encode(e)
 	}
 	{
-
 		e.FieldStart("cookie")
 		s.Cookie.Encode(e)
 	}
@@ -165,12 +161,10 @@ func (s *ObjectQueryParameterOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ObjectQueryParameterOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("style")
 		e.Str(s.Style)
 	}
 	{
-
 		e.FieldStart("value")
 		s.Value.Encode(e)
 	}
@@ -278,17 +272,14 @@ func (s *OneLevelObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneLevelObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("min")
 		e.Int(s.Min)
 	}
 	{
-
 		e.FieldStart("max")
 		e.Int(s.Max)
 	}
 	{
-
 		e.FieldStart("filter")
 		e.Str(s.Filter)
 	}
@@ -444,17 +435,14 @@ func (s *User) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *User) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("username")
 		e.Str(s.Username)
 	}
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}
@@ -645,7 +633,6 @@ func (s *Value) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Value) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}

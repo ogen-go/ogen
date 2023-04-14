@@ -22,7 +22,6 @@ func (s *Person) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Person) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("RenameField")
 		e.Str(s.Field)
 	}

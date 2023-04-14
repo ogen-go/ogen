@@ -22,12 +22,10 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int32(s.Code)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -172,12 +170,10 @@ func (s *Pet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Pet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}

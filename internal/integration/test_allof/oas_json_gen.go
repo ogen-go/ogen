@@ -23,12 +23,10 @@ func (s *Location) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Location) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("lat")
 		e.Float64(s.Lat)
 	}
 	{
-
 		e.FieldStart("lon")
 		e.Float64(s.Lon)
 	}
@@ -184,7 +182,6 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("foo")
 		e.ArrStart()
 		for _, elem := range s.Foo {
@@ -193,7 +190,6 @@ func (s *ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("bar")
 		e.Int(s.Bar)
 	}
@@ -311,7 +307,6 @@ func (s *ObjectsWithConflictingPropertiesReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ObjectsWithConflictingPropertiesReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("foo")
 		e.Str(s.Foo)
 	}
@@ -682,17 +677,14 @@ func (s *Robot) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Robot) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
 	{
-
 		e.FieldStart("id")
 		json.EncodeUUID(e, s.ID)
 	}
 	{
-
 		e.FieldStart("location")
 		s.Location.Encode(e)
 	}

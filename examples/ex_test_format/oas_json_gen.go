@@ -4097,14 +4097,12 @@ func (s *TestRequestFormatTestReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
-
 		if len(s.RequiredAny) != 0 {
 			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-
 		e.FieldStart("required_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayAny {
@@ -4115,7 +4113,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayBoolean {
@@ -4124,7 +4121,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayInteger {
@@ -4133,7 +4129,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt32 {
@@ -4142,7 +4137,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt64 {
@@ -4151,7 +4145,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint {
@@ -4160,7 +4153,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint32 {
@@ -4169,7 +4161,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint64 {
@@ -4178,7 +4169,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnix {
@@ -4187,7 +4177,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMicro {
@@ -4196,7 +4185,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMilli {
@@ -4205,7 +4193,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusNano {
@@ -4214,7 +4201,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusSeconds {
@@ -4223,7 +4209,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNull {
@@ -4233,7 +4218,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumber {
@@ -4242,7 +4226,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberDouble {
@@ -4251,7 +4234,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberFloat {
@@ -4260,7 +4242,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt32 {
@@ -4269,7 +4250,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt64 {
@@ -4278,7 +4258,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayString {
@@ -4287,7 +4266,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBase64 {
@@ -4296,7 +4274,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBinary {
@@ -4305,7 +4282,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringByte {
@@ -4314,7 +4290,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDate {
@@ -4323,7 +4298,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDateMinusTime {
@@ -4332,7 +4306,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDuration {
@@ -4341,7 +4314,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringEmail {
@@ -4350,7 +4322,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringHostname {
@@ -4359,7 +4330,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt32 {
@@ -4368,7 +4338,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt64 {
@@ -4377,7 +4346,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -4386,7 +4354,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
@@ -4395,7 +4362,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
@@ -4404,7 +4370,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringPassword {
@@ -4413,7 +4378,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringTime {
@@ -4422,7 +4386,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnix {
@@ -4431,7 +4394,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
@@ -4440,7 +4402,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
@@ -4449,7 +4410,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusNano {
@@ -4458,7 +4418,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
@@ -4467,7 +4426,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringURI {
@@ -4476,7 +4434,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUUID {
@@ -4485,12 +4442,10 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-
 		e.FieldStart("required_double_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayAny {
@@ -4505,7 +4460,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayBoolean {
@@ -4518,7 +4472,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayInteger {
@@ -4531,7 +4484,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
@@ -4544,7 +4496,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
@@ -4557,7 +4508,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint {
@@ -4570,7 +4520,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint32 {
@@ -4583,7 +4532,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint64 {
@@ -4596,7 +4544,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnix {
@@ -4609,7 +4556,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMicro {
@@ -4622,7 +4568,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMilli {
@@ -4635,7 +4580,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusNano {
@@ -4648,7 +4592,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusSeconds {
@@ -4661,7 +4604,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNull {
@@ -4675,7 +4617,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumber {
@@ -4688,7 +4629,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberDouble {
@@ -4701,7 +4641,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberFloat {
@@ -4714,7 +4653,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
@@ -4727,7 +4665,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
@@ -4740,7 +4677,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayString {
@@ -4753,7 +4689,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBase64 {
@@ -4766,7 +4701,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBinary {
@@ -4779,7 +4713,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringByte {
@@ -4792,7 +4725,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDate {
@@ -4805,7 +4737,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
@@ -4818,7 +4749,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDuration {
@@ -4831,7 +4761,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringEmail {
@@ -4844,7 +4773,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringHostname {
@@ -4857,7 +4785,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt32 {
@@ -4870,7 +4797,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt64 {
@@ -4883,7 +4809,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -4896,7 +4821,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
@@ -4909,7 +4833,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
@@ -4922,7 +4845,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringPassword {
@@ -4935,7 +4857,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringTime {
@@ -4948,7 +4869,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnix {
@@ -4961,7 +4881,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
@@ -4974,7 +4893,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
@@ -4987,7 +4905,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
@@ -5000,7 +4917,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
@@ -5013,7 +4929,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringURI {
@@ -5026,7 +4941,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUUID {
@@ -5039,208 +4953,167 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-
 		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-
 		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-
 		e.FieldStart("required_integer_uint")
 		e.UInt(s.RequiredIntegerUint)
 	}
 	{
-
 		e.FieldStart("required_integer_uint32")
 		e.UInt32(s.RequiredIntegerUint32)
 	}
 	{
-
 		e.FieldStart("required_integer_uint64")
 		e.UInt64(s.RequiredIntegerUint64)
 	}
 	{
-
 		e.FieldStart("required_integer_unix")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnix)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-micro")
 		json.EncodeUnixMicro(e, s.RequiredIntegerUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-milli")
 		json.EncodeUnixMilli(e, s.RequiredIntegerUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-nano")
 		json.EncodeUnixNano(e, s.RequiredIntegerUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-seconds")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnixMinusSeconds)
 	}
 	{
-
 		_ = s.RequiredNull
 		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
-
 		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-
 		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-
 		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-
 		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-
 		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-
 		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-
 		e.FieldStart("required_string_base64")
 		e.Base64(s.RequiredStringBase64)
 	}
 	{
-
 		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-
 		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-
 		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-
 		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-
 		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-
 		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-
 		e.FieldStart("required_string_int32")
 		json.EncodeStringInt32(e, s.RequiredStringInt32)
 	}
 	{
-
 		e.FieldStart("required_string_int64")
 		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
-
 		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-
 		e.FieldStart("required_string_ipv4")
 		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
-
 		e.FieldStart("required_string_ipv6")
 		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
-
 		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-
 		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-
 		e.FieldStart("required_string_unix")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnix)
 	}
 	{
-
 		e.FieldStart("required_string_unix-micro")
 		json.EncodeStringUnixMicro(e, s.RequiredStringUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_string_unix-milli")
 		json.EncodeStringUnixMilli(e, s.RequiredStringUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_string_unix-nano")
 		json.EncodeStringUnixNano(e, s.RequiredStringUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_string_unix-seconds")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
 	}
 	{
-
 		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-
 		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -6375,7 +6248,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_base64")
 		e.Base64(s.OptionalStringBase64)
 	}
@@ -6386,7 +6258,6 @@ func (s *TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}
@@ -11777,14 +11648,12 @@ func (s *TestRequestRequiredFormatTestReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
-
 		if len(s.RequiredAny) != 0 {
 			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-
 		e.FieldStart("required_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayAny {
@@ -11795,7 +11664,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayBoolean {
@@ -11804,7 +11672,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayInteger {
@@ -11813,7 +11680,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt32 {
@@ -11822,7 +11688,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt64 {
@@ -11831,7 +11696,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint {
@@ -11840,7 +11704,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint32 {
@@ -11849,7 +11712,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint64 {
@@ -11858,7 +11720,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnix {
@@ -11867,7 +11728,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMicro {
@@ -11876,7 +11736,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMilli {
@@ -11885,7 +11744,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusNano {
@@ -11894,7 +11752,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusSeconds {
@@ -11903,7 +11760,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNull {
@@ -11913,7 +11769,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumber {
@@ -11922,7 +11777,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberDouble {
@@ -11931,7 +11785,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberFloat {
@@ -11940,7 +11793,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt32 {
@@ -11949,7 +11801,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt64 {
@@ -11958,7 +11809,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayString {
@@ -11967,7 +11817,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBase64 {
@@ -11976,7 +11825,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBinary {
@@ -11985,7 +11833,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringByte {
@@ -11994,7 +11841,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDate {
@@ -12003,7 +11849,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDateMinusTime {
@@ -12012,7 +11857,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDuration {
@@ -12021,7 +11865,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringEmail {
@@ -12030,7 +11873,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringHostname {
@@ -12039,7 +11881,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt32 {
@@ -12048,7 +11889,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt64 {
@@ -12057,7 +11897,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -12066,7 +11905,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
@@ -12075,7 +11913,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
@@ -12084,7 +11921,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringPassword {
@@ -12093,7 +11929,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringTime {
@@ -12102,7 +11937,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnix {
@@ -12111,7 +11945,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
@@ -12120,7 +11953,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
@@ -12129,7 +11961,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusNano {
@@ -12138,7 +11969,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
@@ -12147,7 +11977,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringURI {
@@ -12156,7 +11985,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUUID {
@@ -12165,12 +11993,10 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-
 		e.FieldStart("required_double_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayAny {
@@ -12185,7 +12011,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayBoolean {
@@ -12198,7 +12023,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayInteger {
@@ -12211,7 +12035,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
@@ -12224,7 +12047,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
@@ -12237,7 +12059,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint {
@@ -12250,7 +12071,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint32 {
@@ -12263,7 +12083,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint64 {
@@ -12276,7 +12095,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnix {
@@ -12289,7 +12107,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMicro {
@@ -12302,7 +12119,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMilli {
@@ -12315,7 +12131,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusNano {
@@ -12328,7 +12143,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusSeconds {
@@ -12341,7 +12155,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNull {
@@ -12355,7 +12168,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumber {
@@ -12368,7 +12180,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberDouble {
@@ -12381,7 +12192,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberFloat {
@@ -12394,7 +12204,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
@@ -12407,7 +12216,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
@@ -12420,7 +12228,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayString {
@@ -12433,7 +12240,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBase64 {
@@ -12446,7 +12252,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBinary {
@@ -12459,7 +12264,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringByte {
@@ -12472,7 +12276,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDate {
@@ -12485,7 +12288,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
@@ -12498,7 +12300,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDuration {
@@ -12511,7 +12312,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringEmail {
@@ -12524,7 +12324,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringHostname {
@@ -12537,7 +12336,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt32 {
@@ -12550,7 +12348,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt64 {
@@ -12563,7 +12360,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -12576,7 +12372,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
@@ -12589,7 +12384,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
@@ -12602,7 +12396,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringPassword {
@@ -12615,7 +12408,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringTime {
@@ -12628,7 +12420,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnix {
@@ -12641,7 +12432,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
@@ -12654,7 +12444,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
@@ -12667,7 +12456,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
@@ -12680,7 +12468,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
@@ -12693,7 +12480,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringURI {
@@ -12706,7 +12492,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUUID {
@@ -12719,208 +12504,167 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-
 		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-
 		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-
 		e.FieldStart("required_integer_uint")
 		e.UInt(s.RequiredIntegerUint)
 	}
 	{
-
 		e.FieldStart("required_integer_uint32")
 		e.UInt32(s.RequiredIntegerUint32)
 	}
 	{
-
 		e.FieldStart("required_integer_uint64")
 		e.UInt64(s.RequiredIntegerUint64)
 	}
 	{
-
 		e.FieldStart("required_integer_unix")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnix)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-micro")
 		json.EncodeUnixMicro(e, s.RequiredIntegerUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-milli")
 		json.EncodeUnixMilli(e, s.RequiredIntegerUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-nano")
 		json.EncodeUnixNano(e, s.RequiredIntegerUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-seconds")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnixMinusSeconds)
 	}
 	{
-
 		_ = s.RequiredNull
 		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
-
 		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-
 		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-
 		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-
 		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-
 		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-
 		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-
 		e.FieldStart("required_string_base64")
 		e.Base64(s.RequiredStringBase64)
 	}
 	{
-
 		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-
 		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-
 		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-
 		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-
 		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-
 		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-
 		e.FieldStart("required_string_int32")
 		json.EncodeStringInt32(e, s.RequiredStringInt32)
 	}
 	{
-
 		e.FieldStart("required_string_int64")
 		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
-
 		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-
 		e.FieldStart("required_string_ipv4")
 		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
-
 		e.FieldStart("required_string_ipv6")
 		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
-
 		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-
 		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-
 		e.FieldStart("required_string_unix")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnix)
 	}
 	{
-
 		e.FieldStart("required_string_unix-micro")
 		json.EncodeStringUnixMicro(e, s.RequiredStringUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_string_unix-milli")
 		json.EncodeStringUnixMilli(e, s.RequiredStringUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_string_unix-nano")
 		json.EncodeStringUnixNano(e, s.RequiredStringUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_string_unix-seconds")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
 	}
 	{
-
 		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-
 		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -14055,7 +13799,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_base64")
 		e.Base64(s.OptionalStringBase64)
 	}
@@ -14066,7 +13809,6 @@ func (s *TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}
@@ -19457,14 +19199,12 @@ func (s *TestResponseFormatTestOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	{
-
 		if len(s.RequiredAny) != 0 {
 			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-
 		e.FieldStart("required_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayAny {
@@ -19475,7 +19215,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayBoolean {
@@ -19484,7 +19223,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayInteger {
@@ -19493,7 +19231,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt32 {
@@ -19502,7 +19239,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerInt64 {
@@ -19511,7 +19247,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint {
@@ -19520,7 +19255,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint32 {
@@ -19529,7 +19263,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUint64 {
@@ -19538,7 +19271,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnix {
@@ -19547,7 +19279,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMicro {
@@ -19556,7 +19287,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusMilli {
@@ -19565,7 +19295,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusNano {
@@ -19574,7 +19303,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayIntegerUnixMinusSeconds {
@@ -19583,7 +19311,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNull {
@@ -19593,7 +19320,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumber {
@@ -19602,7 +19328,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberDouble {
@@ -19611,7 +19336,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberFloat {
@@ -19620,7 +19344,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt32 {
@@ -19629,7 +19352,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayNumberInt64 {
@@ -19638,7 +19360,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayString {
@@ -19647,7 +19368,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBase64 {
@@ -19656,7 +19376,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringBinary {
@@ -19665,7 +19384,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringByte {
@@ -19674,7 +19392,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDate {
@@ -19683,7 +19400,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDateMinusTime {
@@ -19692,7 +19408,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringDuration {
@@ -19701,7 +19416,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringEmail {
@@ -19710,7 +19424,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringHostname {
@@ -19719,7 +19432,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt32 {
@@ -19728,7 +19440,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringInt64 {
@@ -19737,7 +19448,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -19746,7 +19456,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
@@ -19755,7 +19464,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
@@ -19764,7 +19472,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringPassword {
@@ -19773,7 +19480,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringTime {
@@ -19782,7 +19488,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnix {
@@ -19791,7 +19496,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
@@ -19800,7 +19504,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
@@ -19809,7 +19512,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusNano {
@@ -19818,7 +19520,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
@@ -19827,7 +19528,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringURI {
@@ -19836,7 +19536,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringUUID {
@@ -19845,12 +19544,10 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-
 		e.FieldStart("required_double_array_any")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayAny {
@@ -19865,7 +19562,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayBoolean {
@@ -19878,7 +19574,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayInteger {
@@ -19891,7 +19586,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
@@ -19904,7 +19598,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
@@ -19917,7 +19610,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint {
@@ -19930,7 +19622,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint32 {
@@ -19943,7 +19634,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_uint64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUint64 {
@@ -19956,7 +19646,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnix {
@@ -19969,7 +19658,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMicro {
@@ -19982,7 +19670,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusMilli {
@@ -19995,7 +19682,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusNano {
@@ -20008,7 +19694,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_integer_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayIntegerUnixMinusSeconds {
@@ -20021,7 +19706,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_null")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNull {
@@ -20035,7 +19719,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumber {
@@ -20048,7 +19731,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberDouble {
@@ -20061,7 +19743,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberFloat {
@@ -20074,7 +19755,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
@@ -20087,7 +19767,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
@@ -20100,7 +19779,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayString {
@@ -20113,7 +19791,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_base64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBase64 {
@@ -20126,7 +19803,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringBinary {
@@ -20139,7 +19815,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringByte {
@@ -20152,7 +19827,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDate {
@@ -20165,7 +19839,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
@@ -20178,7 +19851,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringDuration {
@@ -20191,7 +19863,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringEmail {
@@ -20204,7 +19875,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringHostname {
@@ -20217,7 +19887,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int32")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt32 {
@@ -20230,7 +19899,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_int64")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringInt64 {
@@ -20243,7 +19911,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -20256,7 +19923,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
@@ -20269,7 +19935,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
@@ -20282,7 +19947,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringPassword {
@@ -20295,7 +19959,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringTime {
@@ -20308,7 +19971,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnix {
@@ -20321,7 +19983,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-micro")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
@@ -20334,7 +19995,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-milli")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
@@ -20347,7 +20007,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-nano")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
@@ -20360,7 +20019,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_unix-seconds")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
@@ -20373,7 +20031,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringURI {
@@ -20386,7 +20043,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringUUID {
@@ -20399,208 +20055,167 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-
 		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-
 		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-
 		e.FieldStart("required_integer_uint")
 		e.UInt(s.RequiredIntegerUint)
 	}
 	{
-
 		e.FieldStart("required_integer_uint32")
 		e.UInt32(s.RequiredIntegerUint32)
 	}
 	{
-
 		e.FieldStart("required_integer_uint64")
 		e.UInt64(s.RequiredIntegerUint64)
 	}
 	{
-
 		e.FieldStart("required_integer_unix")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnix)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-micro")
 		json.EncodeUnixMicro(e, s.RequiredIntegerUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-milli")
 		json.EncodeUnixMilli(e, s.RequiredIntegerUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-nano")
 		json.EncodeUnixNano(e, s.RequiredIntegerUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_integer_unix-seconds")
 		json.EncodeUnixSeconds(e, s.RequiredIntegerUnixMinusSeconds)
 	}
 	{
-
 		_ = s.RequiredNull
 		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
-
 		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-
 		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-
 		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-
 		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-
 		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-
 		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-
 		e.FieldStart("required_string_base64")
 		e.Base64(s.RequiredStringBase64)
 	}
 	{
-
 		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-
 		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-
 		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-
 		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-
 		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-
 		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-
 		e.FieldStart("required_string_int32")
 		json.EncodeStringInt32(e, s.RequiredStringInt32)
 	}
 	{
-
 		e.FieldStart("required_string_int64")
 		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
-
 		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-
 		e.FieldStart("required_string_ipv4")
 		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
-
 		e.FieldStart("required_string_ipv6")
 		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
-
 		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-
 		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-
 		e.FieldStart("required_string_unix")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnix)
 	}
 	{
-
 		e.FieldStart("required_string_unix-micro")
 		json.EncodeStringUnixMicro(e, s.RequiredStringUnixMinusMicro)
 	}
 	{
-
 		e.FieldStart("required_string_unix-milli")
 		json.EncodeStringUnixMilli(e, s.RequiredStringUnixMinusMilli)
 	}
 	{
-
 		e.FieldStart("required_string_unix-nano")
 		json.EncodeStringUnixNano(e, s.RequiredStringUnixMinusNano)
 	}
 	{
-
 		e.FieldStart("required_string_unix-seconds")
 		json.EncodeStringUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
 	}
 	{
-
 		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-
 		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -21735,7 +21350,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_base64")
 		e.Base64(s.OptionalStringBase64)
 	}
@@ -21746,7 +21360,6 @@ func (s *TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}

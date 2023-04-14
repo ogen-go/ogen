@@ -22,7 +22,6 @@ func (s *HelloWorld) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *HelloWorld) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -120,12 +119,10 @@ func (s *WorldObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WorldObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("randomNumber")
 		e.Int64(s.RandomNumber)
 	}

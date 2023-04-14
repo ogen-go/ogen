@@ -89,7 +89,6 @@ func (s *IntegerNumber) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IntegerNumber) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("plain")
 		s.Plain.Encode(e)
 	}
@@ -184,12 +183,10 @@ func (s *JaegerAnyOf) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *JaegerAnyOf) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("medium")
 		e.Str(s.Medium)
 	}
 	{
-
 		e.FieldStart("sizeLimit")
 		s.SizeLimit.Encode(e)
 	}
@@ -347,17 +344,14 @@ func (s *OneUUID) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneUUID) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("owner")
 		e.Str(s.Owner)
 	}
 	{
-
 		e.FieldStart("version")
 		e.Int32(s.Version)
 	}
 	{
-
 		e.FieldStart("subscription_id")
 		s.SubscriptionID.Encode(e)
 	}
