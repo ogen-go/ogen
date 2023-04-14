@@ -6823,7 +6823,6 @@ func (s *Discriminator) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Discriminator) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("propertyName")
 		e.Str(s.PropertyName)
 	}
@@ -7707,7 +7706,6 @@ func (s *ExternalDocs) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
@@ -8435,7 +8433,6 @@ func (s *Info) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Info) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -8464,7 +8461,6 @@ func (s *Info) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("version")
 		e.Str(s.Version)
 	}
@@ -8705,7 +8701,6 @@ func (s *License) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *License) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -10143,7 +10138,6 @@ func (s *Operation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("responses")
 		s.Responses.Encode(e)
 	}
@@ -11947,12 +11941,10 @@ func (s *Parameter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Parameter) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("in")
 		s.In.Encode(e)
 	}
@@ -13329,7 +13321,6 @@ func (s *Reference) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Reference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("$ref")
 		e.Str(s.Ref)
 	}
@@ -13486,7 +13477,6 @@ func (s *RequestBody) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("content")
 		s.Content.Encode(e)
 	}
@@ -13789,7 +13779,6 @@ func (s *Response) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Response) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
@@ -15818,7 +15807,6 @@ func (s *SecurityScheme) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SecurityScheme) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -16308,7 +16296,6 @@ func (s *Server) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Server) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
@@ -16536,7 +16523,6 @@ func (s *ServerVariable) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("default")
 		e.Str(s.Default)
 	}
@@ -16811,12 +16797,10 @@ func (s *Spec) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Spec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("openapi")
 		e.Str(s.Openapi)
 	}
 	{
-
 		e.FieldStart("info")
 		s.Info.Encode(e)
 	}
@@ -16831,7 +16815,6 @@ func (s *Spec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("paths")
 		s.Paths.Encode(e)
 	}
@@ -17295,7 +17278,6 @@ func (s *Tag) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Tag) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}

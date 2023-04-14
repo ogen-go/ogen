@@ -24,7 +24,6 @@ func (s *AnyTest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AnyTest) encodeFields(e *jx.Encoder) {
 	{
-
 		if len(s.Empty) != 0 {
 			e.FieldStart("empty")
 			e.Raw(s.Empty)
@@ -196,7 +195,6 @@ func (s *ArrayTest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ArrayTest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("required")
 		e.ArrStart()
 		for _, elem := range s.Required {
@@ -215,7 +213,6 @@ func (s *ArrayTest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("nullable_required")
 		if s.NullableRequired == nil {
 			e.Null()
@@ -393,32 +390,26 @@ func (s *Data) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Data) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		s.ID.Encode(e)
 	}
 	{
-
 		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-
 		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-
 		e.FieldStart("hostname")
 		e.Str(s.Hostname)
 	}
 	{
-
 		e.FieldStart("format")
 		e.Str(s.Format)
 	}
 	{
-
 		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
@@ -685,7 +676,6 @@ func (s *DefaultTest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DefaultTest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("required")
 		e.Str(s.Required)
 	}
@@ -768,7 +758,6 @@ func (s *DefaultTest) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
@@ -1062,12 +1051,10 @@ func (s *DescriptionDetailed) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DescriptionDetailed) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("count")
 		e.Int(s.Count)
 	}
@@ -1194,7 +1181,6 @@ func (s *DescriptionSimple) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DescriptionSimple) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
@@ -1291,12 +1277,10 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int64(s.Code)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -1561,17 +1545,14 @@ func (s *Issue1430) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue1430) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-
 		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
 	{
-
 		e.FieldStart("unique-1")
 		e.Str(s.UniqueMinus1)
 	}
@@ -1694,17 +1675,14 @@ func (s *Issue1431) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue1431) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-
 		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
 	{
-
 		e.FieldStart("unique-2")
 		e.Str(s.UniqueMinus2)
 	}
@@ -1827,12 +1805,10 @@ func (s *Issue1432) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue1432) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-
 		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
@@ -1843,7 +1819,6 @@ func (s *Issue1432) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("unique-3")
 		e.Str(s.UniqueMinus3)
 	}
@@ -1983,7 +1958,6 @@ func (s *Issue1433) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("unique-4")
 		e.Str(s.UniqueMinus4)
 	}
@@ -2091,7 +2065,6 @@ func (s *MapWithProperties) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MapWithProperties) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("required")
 		e.Int(s.Required)
 	}
@@ -2396,7 +2369,6 @@ func (s *MaxPropertiesTest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MaxPropertiesTest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("required")
 		e.Int(s.Required)
 	}
@@ -2917,17 +2889,14 @@ func (s *NullableEnums) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *NullableEnums) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("only_nullable")
 		s.OnlyNullable.Encode(e)
 	}
 	{
-
 		e.FieldStart("only_null_value")
 		s.OnlyNullValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("both")
 		s.Both.Encode(e)
 	}
@@ -3212,12 +3181,10 @@ func (s *OneOfBugs) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneOfBugs) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("issue143")
 		s.Issue143.Encode(e)
 	}
 	{
-
 		e.FieldStart("additional-fields")
 		s.AdditionalMinusFields.Encode(e)
 	}
@@ -3890,7 +3857,6 @@ func (s *OnePropertyObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OnePropertyObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("foo")
 		e.Str(s.Foo)
 	}
@@ -4056,7 +4022,6 @@ func (s *OneVariantHasNoUniqueFields0) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneVariantHasNoUniqueFields0) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("a")
 		e.Str(s.A)
 	}
@@ -4067,7 +4032,6 @@ func (s *OneVariantHasNoUniqueFields0) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("c")
 		e.Str(s.C)
 	}
@@ -4188,7 +4152,6 @@ func (s *OneVariantHasNoUniqueFields1) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneVariantHasNoUniqueFields1) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("a")
 		e.Str(s.A)
 	}
@@ -4199,7 +4162,6 @@ func (s *OneVariantHasNoUniqueFields1) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("c")
 		e.Str(s.C)
 	}
@@ -5780,17 +5742,14 @@ func (s *Pet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("unique_id")
 		json.EncodeUUID(e, s.UniqueID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -5801,7 +5760,6 @@ func (s *Pet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		s.Kind.Encode(e)
 	}
@@ -5812,37 +5770,30 @@ func (s *Pet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ip")
 		json.EncodeIP(e, s.IP)
 	}
 	{
-
 		e.FieldStart("ip_v4")
 		json.EncodeIPv4(e, s.IPV4)
 	}
 	{
-
 		e.FieldStart("ip_v6")
 		json.EncodeIPv6(e, s.IPV6)
 	}
 	{
-
 		e.FieldStart("uri")
 		json.EncodeURI(e, s.URI)
 	}
 	{
-
 		e.FieldStart("birthday")
 		json.EncodeDate(e, s.Birthday)
 	}
 	{
-
 		e.FieldStart("rate")
 		json.EncodeDuration(e, s.Rate)
 	}
 	{
-
 		e.FieldStart("nickname")
 		s.Nickname.Encode(e)
 	}
@@ -6428,7 +6379,6 @@ func (s *PetGetDef) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetGetDef) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -7148,12 +7098,10 @@ func (s *TestFloatValidation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *TestFloatValidation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("minmax")
 		e.Float64(s.Minmax)
 	}
 	{
-
 		e.FieldStart("multipleOf")
 		e.Float64(s.MultipleOf)
 	}

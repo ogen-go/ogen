@@ -22,7 +22,6 @@ func (s *CombinedOK) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CombinedOK) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ok")
 		e.Str(s.Ok)
 	}
@@ -119,7 +118,6 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("error")
 		e.Str(s.Error)
 	}
@@ -400,17 +398,14 @@ func (s *User) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *User) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("username")
 		e.Str(s.Username)
 	}
 	{
-
 		e.FieldStart("role")
 		s.Role.Encode(e)
 	}

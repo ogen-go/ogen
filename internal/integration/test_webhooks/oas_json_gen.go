@@ -23,7 +23,6 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("error")
 		e.Str(s.Error)
 	}
@@ -120,12 +119,10 @@ func (s *Event) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Event) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		json.EncodeUUID(e, s.ID)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -366,7 +363,6 @@ func (s *WebhookResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WebhookResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		json.EncodeUUID(e, s.ID)
 	}

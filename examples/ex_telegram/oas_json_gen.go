@@ -23,12 +23,10 @@ func (s *AddStickerToSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AddStickerToSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -45,7 +43,6 @@ func (s *AddStickerToSet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("emojis")
 		e.Str(s.Emojis)
 	}
@@ -207,27 +204,22 @@ func (s *Animation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Animation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("width")
 		e.Int(s.Width)
 	}
 	{
-
 		e.FieldStart("height")
 		e.Int(s.Height)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -445,7 +437,6 @@ func (s *AnswerCallbackQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AnswerCallbackQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("callback_query_id")
 		e.Str(s.CallbackQueryID)
 	}
@@ -610,12 +601,10 @@ func (s *AnswerInlineQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AnswerInlineQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("inline_query_id")
 		e.Str(s.InlineQueryID)
 	}
 	{
-
 		e.FieldStart("results")
 		e.ArrStart()
 		for _, elem := range s.Results {
@@ -820,12 +809,10 @@ func (s *AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AnswerPreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("pre_checkout_query_id")
 		e.Str(s.PreCheckoutQueryID)
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -952,12 +939,10 @@ func (s *AnswerShippingQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *AnswerShippingQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("shipping_query_id")
 		e.Str(s.ShippingQueryID)
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -1112,12 +1097,10 @@ func (s *ApproveChatJoinRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ApproveChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -1225,17 +1208,14 @@ func (s *Audio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Audio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -1461,12 +1441,10 @@ func (s *BanChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BanChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -1608,12 +1586,10 @@ func (s *BanChatSenderChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("sender_chat_id")
 		e.Int64(s.SenderChatID)
 	}
@@ -1721,12 +1697,10 @@ func (s *BotCommand) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommand) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("command")
 		e.Str(s.Command)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
@@ -2124,7 +2098,6 @@ func (s *BotCommandScopeChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2219,7 +2192,6 @@ func (s *BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2314,12 +2286,10 @@ func (s *BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -2517,12 +2487,10 @@ func (s *CallbackQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CallbackQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
@@ -2539,7 +2507,6 @@ func (s *CallbackQuery) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("chat_instance")
 		e.Str(s.ChatInstance)
 	}
@@ -2716,12 +2683,10 @@ func (s *Chat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Chat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
@@ -3139,27 +3104,22 @@ func (s *ChatInviteLink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("invite_link")
 		e.Str(s.InviteLink)
 	}
 	{
-
 		e.FieldStart("creator")
 		s.Creator.Encode(e)
 	}
 	{
-
 		e.FieldStart("creates_join_request")
 		e.Bool(s.CreatesJoinRequest)
 	}
 	{
-
 		e.FieldStart("is_primary")
 		e.Bool(s.IsPrimary)
 	}
 	{
-
 		e.FieldStart("is_revoked")
 		e.Bool(s.IsRevoked)
 	}
@@ -3375,17 +3335,14 @@ func (s *ChatJoinRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat")
 		s.Chat.Encode(e)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
 	{
-
 		e.FieldStart("date")
 		e.Int(s.Date)
 	}
@@ -3538,12 +3495,10 @@ func (s *ChatLocation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatLocation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("location")
 		s.Location.Encode(e)
 	}
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
@@ -3791,57 +3746,46 @@ func (s *ChatMemberAdministrator) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberAdministrator) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("can_be_edited")
 		e.Bool(s.CanBeEdited)
 	}
 	{
-
 		e.FieldStart("is_anonymous")
 		e.Bool(s.IsAnonymous)
 	}
 	{
-
 		e.FieldStart("can_manage_chat")
 		e.Bool(s.CanManageChat)
 	}
 	{
-
 		e.FieldStart("can_delete_messages")
 		e.Bool(s.CanDeleteMessages)
 	}
 	{
-
 		e.FieldStart("can_manage_voice_chats")
 		e.Bool(s.CanManageVoiceChats)
 	}
 	{
-
 		e.FieldStart("can_restrict_members")
 		e.Bool(s.CanRestrictMembers)
 	}
 	{
-
 		e.FieldStart("can_promote_members")
 		e.Bool(s.CanPromoteMembers)
 	}
 	{
-
 		e.FieldStart("can_change_info")
 		e.Bool(s.CanChangeInfo)
 	}
 	{
-
 		e.FieldStart("can_invite_users")
 		e.Bool(s.CanInviteUsers)
 	}
@@ -4135,17 +4079,14 @@ func (s *ChatMemberBanned) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberBanned) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("until_date")
 		e.Int(s.UntilDate)
 	}
@@ -4266,12 +4207,10 @@ func (s *ChatMemberLeft) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberLeft) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -4379,12 +4318,10 @@ func (s *ChatMemberMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
@@ -4492,17 +4429,14 @@ func (s *ChatMemberOwner) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberOwner) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("is_anonymous")
 		e.Bool(s.IsAnonymous)
 	}
@@ -4640,62 +4574,50 @@ func (s *ChatMemberRestricted) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberRestricted) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("is_member")
 		e.Bool(s.IsMember)
 	}
 	{
-
 		e.FieldStart("can_change_info")
 		e.Bool(s.CanChangeInfo)
 	}
 	{
-
 		e.FieldStart("can_invite_users")
 		e.Bool(s.CanInviteUsers)
 	}
 	{
-
 		e.FieldStart("can_pin_messages")
 		e.Bool(s.CanPinMessages)
 	}
 	{
-
 		e.FieldStart("can_send_messages")
 		e.Bool(s.CanSendMessages)
 	}
 	{
-
 		e.FieldStart("can_send_media_messages")
 		e.Bool(s.CanSendMediaMessages)
 	}
 	{
-
 		e.FieldStart("can_send_polls")
 		e.Bool(s.CanSendPolls)
 	}
 	{
-
 		e.FieldStart("can_send_other_messages")
 		e.Bool(s.CanSendOtherMessages)
 	}
 	{
-
 		e.FieldStart("can_add_web_page_previews")
 		e.Bool(s.CanAddWebPagePreviews)
 	}
 	{
-
 		e.FieldStart("until_date")
 		e.Int(s.UntilDate)
 	}
@@ -4934,27 +4856,22 @@ func (s *ChatMemberUpdated) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatMemberUpdated) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat")
 		s.Chat.Encode(e)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
 	{
-
 		e.FieldStart("date")
 		e.Int(s.Date)
 	}
 	{
-
 		e.FieldStart("old_chat_member")
 		s.OldChatMember.Encode(e)
 	}
 	{
-
 		e.FieldStart("new_chat_member")
 		s.NewChatMember.Encode(e)
 	}
@@ -5294,22 +5211,18 @@ func (s *ChatPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChatPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("small_file_id")
 		e.Str(s.SmallFileID)
 	}
 	{
-
 		e.FieldStart("small_file_unique_id")
 		e.Str(s.SmallFileUniqueID)
 	}
 	{
-
 		e.FieldStart("big_file_id")
 		e.Str(s.BigFileID)
 	}
 	{
-
 		e.FieldStart("big_file_unique_id")
 		e.Str(s.BigFileUniqueID)
 	}
@@ -5489,12 +5402,10 @@ func (s *ChosenInlineResult) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ChosenInlineResult) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("result_id")
 		e.Str(s.ResultID)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
@@ -5511,7 +5422,6 @@ func (s *ChosenInlineResult) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("query")
 		e.Str(s.Query)
 	}
@@ -5654,12 +5564,10 @@ func (s *Contact) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Contact) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("phone_number")
 		e.Str(s.PhoneNumber)
 	}
 	{
-
 		e.FieldStart("first_name")
 		e.Str(s.FirstName)
 	}
@@ -5820,17 +5728,14 @@ func (s *CopyMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CopyMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("from_chat_id")
 		s.FromChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -6201,7 +6106,6 @@ func (s *CreateChatInviteLink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -6364,17 +6268,14 @@ func (s *CreateNewStickerSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateNewStickerSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -6391,7 +6292,6 @@ func (s *CreateNewStickerSet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("emojis")
 		e.Str(s.Emojis)
 	}
@@ -6583,12 +6483,10 @@ func (s *DeclineChatJoinRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeclineChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -6696,7 +6594,6 @@ func (s *DeleteChatPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteChatPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -6791,7 +6688,6 @@ func (s *DeleteChatStickerSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -6886,12 +6782,10 @@ func (s *DeleteMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -7079,7 +6973,6 @@ func (s *DeleteStickerFromSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *DeleteStickerFromSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sticker")
 		e.Str(s.Sticker)
 	}
@@ -7239,12 +7132,10 @@ func (s *Dice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Dice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("emoji")
 		e.Str(s.Emoji)
 	}
 	{
-
 		e.FieldStart("value")
 		e.Int(s.Value)
 	}
@@ -7354,12 +7245,10 @@ func (s *Document) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Document) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
@@ -7537,12 +7426,10 @@ func (s *EditChatInviteLink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *EditChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("invite_link")
 		e.Str(s.InviteLink)
 	}
@@ -7912,12 +7799,10 @@ func (s *EditMessageLiveLocation) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
@@ -8147,7 +8032,6 @@ func (s *EditMessageMedia) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("media")
 		s.Media.Encode(e)
 	}
@@ -8424,7 +8308,6 @@ func (s *EditMessageText) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -8633,17 +8516,14 @@ func (s *EncryptedCredentials) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *EncryptedCredentials) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("data")
 		e.Str(s.Data)
 	}
 	{
-
 		e.FieldStart("hash")
 		e.Str(s.Hash)
 	}
 	{
-
 		e.FieldStart("secret")
 		e.Str(s.Secret)
 	}
@@ -8766,7 +8646,6 @@ func (s *EncryptedPassportElement) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *EncryptedPassportElement) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
@@ -8827,7 +8706,6 @@ func (s *EncryptedPassportElement) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("hash")
 		e.Str(s.Hash)
 	}
@@ -9100,17 +8978,14 @@ func (s *Error) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Error) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
 	{
-
 		e.FieldStart("error_code")
 		e.Int(s.ErrorCode)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
@@ -9251,7 +9126,6 @@ func (s *ExportChatInviteLink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ExportChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -9346,12 +9220,10 @@ func (s *File) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *File) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
@@ -9495,7 +9367,6 @@ func (s *ForceReply) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ForceReply) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("force_reply")
 		e.Bool(s.ForceReply)
 	}
@@ -9626,12 +9497,10 @@ func (s *ForwardMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ForwardMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("from_chat_id")
 		s.FromChatID.Encode(e)
 	}
@@ -9642,7 +9511,6 @@ func (s *ForwardMessage) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -9772,17 +9640,14 @@ func (s *Game) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Game) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("photo")
 		e.ArrStart()
 		for _, elem := range s.Photo {
@@ -9977,17 +9842,14 @@ func (s *GameHighScore) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GameHighScore) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("position")
 		e.Int(s.Position)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Int(s.Score)
 	}
@@ -10108,7 +9970,6 @@ func (s *GetChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetChat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -10203,7 +10064,6 @@ func (s *GetChatAdministrators) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -10298,12 +10158,10 @@ func (s *GetChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -10411,7 +10269,6 @@ func (s *GetChatMemberCount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetChatMemberCount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -10506,7 +10363,6 @@ func (s *GetFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
@@ -10603,7 +10459,6 @@ func (s *GetGameHighScores) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetGameHighScores) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -10831,7 +10686,6 @@ func (s *GetStickerSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetStickerSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -11056,7 +10910,6 @@ func (s *GetUserProfilePhotos) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *GetUserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -11238,7 +11091,6 @@ func (s *InlineKeyboardButton) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineKeyboardButton) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -11456,7 +11308,6 @@ func (s *InlineKeyboardMarkup) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("inline_keyboard")
 		e.ArrStart()
 		for _, elem := range s.InlineKeyboard {
@@ -11575,22 +11426,18 @@ func (s *InlineQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
 	{
-
 		e.FieldStart("query")
 		e.Str(s.Query)
 	}
 	{
-
 		e.FieldStart("offset")
 		e.Str(s.Offset)
 	}
@@ -12063,17 +11910,14 @@ func (s *InlineQueryResultArticle) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultArticle) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("input_message_content")
 		s.InputMessageContent.Encode(e)
 	}
@@ -12314,17 +12158,14 @@ func (s *InlineQueryResultAudio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultAudio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("audio_url")
 		json.EncodeURI(e, s.AudioURL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -12578,17 +12419,14 @@ func (s *InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedAudio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("audio_file_id")
 		e.Str(s.AudioFileID)
 	}
@@ -12808,22 +12646,18 @@ func (s *InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedDocument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("document_file_id")
 		e.Str(s.DocumentFileID)
 	}
@@ -13074,17 +12908,14 @@ func (s *InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedGif) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("gif_file_id")
 		e.Str(s.GIFFileID)
 	}
@@ -13322,17 +13153,14 @@ func (s *InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("mpeg4_file_id")
 		e.Str(s.Mpeg4FileID)
 	}
@@ -13570,17 +13398,14 @@ func (s *InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("photo_file_id")
 		e.Str(s.PhotoFileID)
 	}
@@ -13835,12 +13660,10 @@ func (s *InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedSticker) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("sticker_file_id")
 		e.Str(s.StickerFileID)
 	}
@@ -13984,22 +13807,18 @@ func (s *InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedVideo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("video_file_id")
 		e.Str(s.VideoFileID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -14250,22 +14069,18 @@ func (s *InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedVoice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("voice_file_id")
 		e.Str(s.VoiceFileID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -14499,17 +14314,14 @@ func (s *InlineQueryResultContact) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultContact) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("phone_number")
 		e.Str(s.PhoneNumber)
 	}
 	{
-
 		e.FieldStart("first_name")
 		e.Str(s.FirstName)
 	}
@@ -14752,12 +14564,10 @@ func (s *InlineQueryResultDocument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -14784,12 +14594,10 @@ func (s *InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("document_url")
 		json.EncodeURI(e, s.DocumentURL)
 	}
 	{
-
 		e.FieldStart("mime_type")
 		e.Str(s.MimeType)
 	}
@@ -15068,12 +14876,10 @@ func (s *InlineQueryResultGame) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultGame) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("game_short_name")
 		e.Str(s.GameShortName)
 	}
@@ -15200,12 +15006,10 @@ func (s *InlineQueryResultGif) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultGif) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("gif_url")
 		json.EncodeURI(e, s.GIFURL)
 	}
@@ -15228,7 +15032,6 @@ func (s *InlineQueryResultGif) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("thumb_url")
 		json.EncodeURI(e, s.ThumbURL)
 	}
@@ -15515,22 +15318,18 @@ func (s *InlineQueryResultLocation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultLocation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -15820,12 +15619,10 @@ func (s *InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("mpeg4_url")
 		json.EncodeURI(e, s.Mpeg4URL)
 	}
@@ -15848,7 +15645,6 @@ func (s *InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("thumb_url")
 		json.EncodeURI(e, s.ThumbURL)
 	}
@@ -16135,17 +15931,14 @@ func (s *InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("photo_url")
 		json.EncodeURI(e, s.PhotoURL)
 	}
 	{
-
 		e.FieldStart("thumb_url")
 		json.EncodeURI(e, s.ThumbURL)
 	}
@@ -16433,27 +16226,22 @@ func (s *InlineQueryResultVenue) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultVenue) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
@@ -16756,27 +16544,22 @@ func (s *InlineQueryResultVideo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultVideo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("video_url")
 		json.EncodeURI(e, s.VideoURL)
 	}
 	{
-
 		e.FieldStart("mime_type")
 		e.Str(s.MimeType)
 	}
 	{
-
 		e.FieldStart("thumb_url")
 		json.EncodeURI(e, s.ThumbURL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -17090,17 +16873,14 @@ func (s *InlineQueryResultVoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultVoice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("voice_url")
 		json.EncodeURI(e, s.VoiceURL)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -17337,12 +17117,10 @@ func (s *InputContactMessageContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputContactMessageContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("phone_number")
 		e.Str(s.PhoneNumber)
 	}
 	{
-
 		e.FieldStart("first_name")
 		e.Str(s.FirstName)
 	}
@@ -17486,32 +17264,26 @@ func (s *InputInvoiceMessageContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputInvoiceMessageContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("payload")
 		e.Str(s.Payload)
 	}
 	{
-
 		e.FieldStart("provider_token")
 		e.Str(s.ProviderToken)
 	}
 	{
-
 		e.FieldStart("currency")
 		e.Str(s.Currency)
 	}
 	{
-
 		e.FieldStart("prices")
 		e.ArrStart()
 		for _, elem := range s.Prices {
@@ -17936,12 +17708,10 @@ func (s *InputLocationMessageContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputLocationMessageContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
@@ -18246,7 +18016,6 @@ func (s *InputMediaAnimation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaAnimation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18473,7 +18242,6 @@ func (s *InputMediaAudio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaAudio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18700,7 +18468,6 @@ func (s *InputMediaDocument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaDocument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18893,7 +18660,6 @@ func (s *InputMediaPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -19052,7 +18818,6 @@ func (s *InputMediaVideo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaVideo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -19664,7 +19429,6 @@ func (s *InputTextMessageContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputTextMessageContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message_text")
 		e.Str(s.MessageText)
 	}
@@ -19823,22 +19587,18 @@ func (s *InputVenueMessageContent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputVenueMessageContent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
@@ -20042,27 +19802,22 @@ func (s *Invoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Invoice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("start_parameter")
 		e.Str(s.StartParameter)
 	}
 	{
-
 		e.FieldStart("currency")
 		e.Str(s.Currency)
 	}
 	{
-
 		e.FieldStart("total_amount")
 		e.Int(s.TotalAmount)
 	}
@@ -20259,7 +20014,6 @@ func (s *KeyboardButtonObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *KeyboardButtonObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -20470,12 +20224,10 @@ func (s *LabeledPrice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LabeledPrice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("label")
 		e.Str(s.Label)
 	}
 	{
-
 		e.FieldStart("amount")
 		e.Int(s.Amount)
 	}
@@ -20585,7 +20337,6 @@ func (s *LeaveChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LeaveChat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -20680,12 +20431,10 @@ func (s *Location) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Location) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
@@ -20863,7 +20612,6 @@ func (s *LoginUrl) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *LoginUrl) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -21011,22 +20759,18 @@ func (s *MaskPosition) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MaskPosition) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("point")
 		e.Str(s.Point)
 	}
 	{
-
 		e.FieldStart("x_shift")
 		e.Float64(s.XShift)
 	}
 	{
-
 		e.FieldStart("y_shift")
 		e.Float64(s.YShift)
 	}
 	{
-
 		e.FieldStart("scale")
 		e.Float64(s.Scale)
 	}
@@ -21162,7 +20906,6 @@ func (s *Message) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Message) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -21179,12 +20922,10 @@ func (s *Message) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("date")
 		e.Int(s.Date)
 	}
 	{
-
 		e.FieldStart("chat")
 		s.Chat.Encode(e)
 	}
@@ -22296,7 +22037,6 @@ func (s *MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MessageAutoDeleteTimerChanged) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message_auto_delete_time")
 		e.Int(s.MessageAutoDeleteTime)
 	}
@@ -22393,17 +22133,14 @@ func (s *MessageEntity) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MessageEntity) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
 	{
-
 		e.FieldStart("offset")
 		e.Int(s.Offset)
 	}
 	{
-
 		e.FieldStart("length")
 		e.Int(s.Length)
 	}
@@ -22642,7 +22379,6 @@ func (s *MessageId) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MessageId) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -25472,7 +25208,6 @@ func (s *PassportData) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportData) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("data")
 		e.ArrStart()
 		for _, elem := range s.Data {
@@ -25481,7 +25216,6 @@ func (s *PassportData) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("credentials")
 		s.Credentials.Encode(e)
 	}
@@ -25774,22 +25508,18 @@ func (s *PassportElementErrorDataField) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorDataField) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("field_name")
 		e.Str(s.FieldName)
 	}
 	{
-
 		e.FieldStart("data_hash")
 		e.Str(s.DataHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -25926,17 +25656,14 @@ func (s *PassportElementErrorFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26060,12 +25787,10 @@ func (s *PassportElementErrorFiles) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hashes")
 		e.ArrStart()
 		for _, elem := range s.FileHashes {
@@ -26074,7 +25799,6 @@ func (s *PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26206,17 +25930,14 @@ func (s *PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorFrontSide) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26340,17 +26061,14 @@ func (s *PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorReverseSide) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26474,17 +26192,14 @@ func (s *PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorSelfie) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26608,17 +26323,14 @@ func (s *PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorTranslationFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26742,12 +26454,10 @@ func (s *PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("file_hashes")
 		e.ArrStart()
 		for _, elem := range s.FileHashes {
@@ -26756,7 +26466,6 @@ func (s *PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -26888,17 +26597,14 @@ func (s *PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportElementErrorUnspecified) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("source")
 		e.Str(s.Source)
 	}
 	{
-
 		e.FieldStart("element_hash")
 		e.Str(s.ElementHash)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -27022,22 +26728,18 @@ func (s *PassportFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PassportFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("file_size")
 		e.Int(s.FileSize)
 	}
 	{
-
 		e.FieldStart("file_date")
 		e.Int(s.FileDate)
 	}
@@ -27173,22 +26875,18 @@ func (s *PhotoSize) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PhotoSize) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("width")
 		e.Int(s.Width)
 	}
 	{
-
 		e.FieldStart("height")
 		e.Int(s.Height)
 	}
@@ -27341,12 +27039,10 @@ func (s *PinChatMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PinChatMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -27471,17 +27167,14 @@ func (s *Poll) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Poll) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("question")
 		e.Str(s.Question)
 	}
 	{
-
 		e.FieldStart("options")
 		e.ArrStart()
 		for _, elem := range s.Options {
@@ -27490,27 +27183,22 @@ func (s *Poll) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("total_voter_count")
 		e.Int(s.TotalVoterCount)
 	}
 	{
-
 		e.FieldStart("is_closed")
 		e.Bool(s.IsClosed)
 	}
 	{
-
 		e.FieldStart("is_anonymous")
 		e.Bool(s.IsAnonymous)
 	}
 	{
-
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
 	{
-
 		e.FieldStart("allows_multiple_answers")
 		e.Bool(s.AllowsMultipleAnswers)
 	}
@@ -27799,17 +27487,14 @@ func (s *PollAnswer) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PollAnswer) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("poll_id")
 		e.Str(s.PollID)
 	}
 	{
-
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
 	{
-
 		e.FieldStart("option_ids")
 		e.ArrStart()
 		for _, elem := range s.OptionIds {
@@ -27942,12 +27627,10 @@ func (s *PollOption) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PollOption) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
 	{
-
 		e.FieldStart("voter_count")
 		e.Int(s.VoterCount)
 	}
@@ -28097,27 +27780,22 @@ func (s *PreCheckoutQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
 	{
-
 		e.FieldStart("currency")
 		e.Str(s.Currency)
 	}
 	{
-
 		e.FieldStart("total_amount")
 		e.Int(s.TotalAmount)
 	}
 	{
-
 		e.FieldStart("invoice_payload")
 		e.Str(s.InvoicePayload)
 	}
@@ -28298,12 +27976,10 @@ func (s *PromoteChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PromoteChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -28599,17 +28275,14 @@ func (s *ProximityAlertTriggered) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ProximityAlertTriggered) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("traveler")
 		s.Traveler.Encode(e)
 	}
 	{
-
 		e.FieldStart("watcher")
 		s.Watcher.Encode(e)
 	}
 	{
-
 		e.FieldStart("distance")
 		e.Int(s.Distance)
 	}
@@ -28728,7 +28401,6 @@ func (s *ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReplyKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("keyboard")
 		e.ArrStart()
 		for _, elem := range s.Keyboard {
@@ -28915,7 +28587,6 @@ func (s *ReplyKeyboardRemove) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ReplyKeyboardRemove) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("remove_keyboard")
 		e.Bool(s.RemoveKeyboard)
 	}
@@ -29109,17 +28780,14 @@ func (s *RestrictChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RestrictChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
@@ -29261,7 +28929,6 @@ func (s *Result) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -29380,7 +29047,6 @@ func (s *ResultArrayOfBotCommand) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -29506,7 +29172,6 @@ func (s *ResultArrayOfChatMember) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -29632,7 +29297,6 @@ func (s *ResultArrayOfGameHighScore) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -29758,7 +29422,6 @@ func (s *ResultArrayOfMessage) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -29884,7 +29547,6 @@ func (s *ResultArrayOfUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30006,7 +29668,6 @@ func (s *ResultChat) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30121,7 +29782,6 @@ func (s *ResultChatInviteLink) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30236,7 +29896,6 @@ func (s *ResultChatMember) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30351,7 +30010,6 @@ func (s *ResultFile) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30466,7 +30124,6 @@ func (s *ResultInt) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30581,7 +30238,6 @@ func (s *ResultMessage) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30696,7 +30352,6 @@ func (s *ResultMessageId) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30811,7 +30466,6 @@ func (s *ResultPoll) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -30926,7 +30580,6 @@ func (s *ResultString) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -31041,7 +30694,6 @@ func (s *ResultUser) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -31156,7 +30808,6 @@ func (s *ResultUserProfilePhotos) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -31271,7 +30922,6 @@ func (s *ResultWebhookInfo) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
@@ -31380,12 +31030,10 @@ func (s *RevokeChatInviteLink) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *RevokeChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("invite_link")
 		e.Str(s.InviteLink)
 	}
@@ -31493,12 +31141,10 @@ func (s *SendAnimation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendAnimation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("animation")
 		e.Str(s.Animation)
 	}
@@ -31926,12 +31572,10 @@ func (s *SendAudio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendAudio) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("audio")
 		e.Str(s.Audio)
 	}
@@ -32359,12 +32003,10 @@ func (s *SendChatAction) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendChatAction) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("action")
 		e.Str(s.Action)
 	}
@@ -32472,17 +32114,14 @@ func (s *SendContact) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendContact) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("phone_number")
 		e.Str(s.PhoneNumber)
 	}
 	{
-
 		e.FieldStart("first_name")
 		e.Str(s.FirstName)
 	}
@@ -32827,7 +32466,6 @@ func (s *SendDice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendDice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -33128,12 +32766,10 @@ func (s *SendDocument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendDocument) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("document")
 		e.Str(s.Document)
 	}
@@ -33527,12 +33163,10 @@ func (s *SendGame) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendGame) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		e.Int64(s.ChatID)
 	}
 	{
-
 		e.FieldStart("game_short_name")
 		e.Str(s.GameShortName)
 	}
@@ -33710,37 +33344,30 @@ func (s *SendInvoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendInvoice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	{
-
 		e.FieldStart("payload")
 		e.Str(s.Payload)
 	}
 	{
-
 		e.FieldStart("provider_token")
 		e.Str(s.ProviderToken)
 	}
 	{
-
 		e.FieldStart("currency")
 		e.Str(s.Currency)
 	}
 	{
-
 		e.FieldStart("prices")
 		e.ArrStart()
 		for _, elem := range s.Prices {
@@ -34262,17 +33889,14 @@ func (s *SendLocation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendLocation) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
@@ -34651,12 +34275,10 @@ func (s *SendMediaGroup) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendMediaGroup) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("media")
 		e.ArrStart()
 		for _, elem := range s.Media {
@@ -34939,12 +34561,10 @@ func (s *SendMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -35304,12 +34924,10 @@ func (s *SendPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("photo")
 		e.Str(s.Photo)
 	}
@@ -35669,17 +35287,14 @@ func (s *SendPoll) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendPoll) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("question")
 		e.Str(s.Question)
 	}
 	{
-
 		e.FieldStart("options")
 		e.ArrStart()
 		for _, elem := range s.Options {
@@ -36184,12 +35799,10 @@ func (s *SendSticker) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendSticker) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("sticker")
 		e.Str(s.Sticker)
 	}
@@ -36486,27 +36099,22 @@ func (s *SendVenue) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendVenue) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("latitude")
 		e.Float64(s.Latitude)
 	}
 	{
-
 		e.FieldStart("longitude")
 		e.Float64(s.Longitude)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
@@ -36911,12 +36519,10 @@ func (s *SendVideo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendVideo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("video")
 		e.Str(s.Video)
 	}
@@ -37240,12 +36846,10 @@ func (s *SendVideoNote) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendVideoNote) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("video_note")
 		e.Str(s.VideoNote)
 	}
@@ -37715,12 +37319,10 @@ func (s *SendVoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SendVoice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("voice")
 		e.Str(s.Voice)
 	}
@@ -38097,17 +37699,14 @@ func (s *SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatAdministratorCustomTitle) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("custom_title")
 		e.Str(s.CustomTitle)
 	}
@@ -38228,7 +37827,6 @@ func (s *SetChatDescription) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatDescription) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -38340,12 +37938,10 @@ func (s *SetChatPermissions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatPermissions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
@@ -38451,12 +38047,10 @@ func (s *SetChatPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatPhoto) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("photo")
 		e.Str(s.Photo)
 	}
@@ -38564,12 +38158,10 @@ func (s *SetChatStickerSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("sticker_set_name")
 		e.Str(s.StickerSetName)
 	}
@@ -38677,12 +38269,10 @@ func (s *SetChatTitle) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetChatTitle) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
@@ -38790,12 +38380,10 @@ func (s *SetGameScore) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetGameScore) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("score")
 		e.Int(s.Score)
 	}
@@ -38990,7 +38578,6 @@ func (s *SetMyCommands) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetMyCommands) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("commands")
 		e.ArrStart()
 		for _, elem := range s.Commands {
@@ -39131,12 +38718,10 @@ func (s *SetPassportDataErrors) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetPassportDataErrors) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
@@ -39256,12 +38841,10 @@ func (s *SetStickerPositionInSet) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetStickerPositionInSet) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("sticker")
 		e.Str(s.Sticker)
 	}
 	{
-
 		e.FieldStart("position")
 		e.Int(s.Position)
 	}
@@ -39371,12 +38954,10 @@ func (s *SetStickerSetThumb) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetStickerSetThumb) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -39503,7 +39084,6 @@ func (s *SetWebhook) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SetWebhook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
@@ -39698,32 +39278,26 @@ func (s *ShippingAddress) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShippingAddress) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("country_code")
 		e.Str(s.CountryCode)
 	}
 	{
-
 		e.FieldStart("state")
 		e.Str(s.State)
 	}
 	{
-
 		e.FieldStart("city")
 		e.Str(s.City)
 	}
 	{
-
 		e.FieldStart("street_line1")
 		e.Str(s.StreetLine1)
 	}
 	{
-
 		e.FieldStart("street_line2")
 		e.Str(s.StreetLine2)
 	}
 	{
-
 		e.FieldStart("post_code")
 		e.Str(s.PostCode)
 	}
@@ -39885,17 +39459,14 @@ func (s *ShippingOption) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShippingOption) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("prices")
 		e.ArrStart()
 		for _, elem := range s.Prices {
@@ -40028,22 +39599,18 @@ func (s *ShippingQuery) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ShippingQuery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
 	{
-
 		e.FieldStart("from")
 		s.From.Encode(e)
 	}
 	{
-
 		e.FieldStart("invoice_payload")
 		e.Str(s.InvoicePayload)
 	}
 	{
-
 		e.FieldStart("shipping_address")
 		s.ShippingAddress.Encode(e)
 	}
@@ -40175,27 +39742,22 @@ func (s *Sticker) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Sticker) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("width")
 		e.Int(s.Width)
 	}
 	{
-
 		e.FieldStart("height")
 		e.Int(s.Height)
 	}
 	{
-
 		e.FieldStart("is_animated")
 		e.Bool(s.IsAnimated)
 	}
@@ -40544,12 +40106,10 @@ func (s *StopPoll) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *StopPoll) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
@@ -40674,17 +40234,14 @@ func (s *SuccessfulPayment) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SuccessfulPayment) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currency")
 		e.Str(s.Currency)
 	}
 	{
-
 		e.FieldStart("total_amount")
 		e.Int(s.TotalAmount)
 	}
 	{
-
 		e.FieldStart("invoice_payload")
 		e.Str(s.InvoicePayload)
 	}
@@ -40701,12 +40258,10 @@ func (s *SuccessfulPayment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("telegram_payment_charge_id")
 		e.Str(s.TelegramPaymentChargeID)
 	}
 	{
-
 		e.FieldStart("provider_payment_charge_id")
 		e.Str(s.ProviderPaymentChargeID)
 	}
@@ -40877,12 +40432,10 @@ func (s *UnbanChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UnbanChatMember) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
@@ -41007,12 +40560,10 @@ func (s *UnbanChatSenderChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UnbanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 	{
-
 		e.FieldStart("sender_chat_id")
 		e.Int64(s.SenderChatID)
 	}
@@ -41120,7 +40671,6 @@ func (s *UnpinAllChatMessages) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UnpinAllChatMessages) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -41215,7 +40765,6 @@ func (s *UnpinChatMessage) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UnpinChatMessage) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -41327,7 +40876,6 @@ func (s *Update) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Update) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("update_id")
 		e.Int(s.UpdateID)
 	}
@@ -41663,12 +41211,10 @@ func (s *UploadStickerFile) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UploadStickerFile) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
 	{
-
 		e.FieldStart("png_sticker")
 		e.Str(s.PNGSticker)
 	}
@@ -41779,17 +41325,14 @@ func (s *User) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *User) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-
 		e.FieldStart("is_bot")
 		e.Bool(s.IsBot)
 	}
 	{
-
 		e.FieldStart("first_name")
 		e.Str(s.FirstName)
 	}
@@ -42015,12 +41558,10 @@ func (s *UserProfilePhotos) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("total_count")
 		e.Int(s.TotalCount)
 	}
 	{
-
 		e.FieldStart("photos")
 		e.ArrStart()
 		for _, elem := range s.Photos {
@@ -42152,17 +41693,14 @@ func (s *Venue) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Venue) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("location")
 		s.Location.Encode(e)
 	}
 	{
-
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
@@ -42351,27 +41889,22 @@ func (s *Video) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Video) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("width")
 		e.Int(s.Width)
 	}
 	{
-
 		e.FieldStart("height")
 		e.Int(s.Height)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -42589,22 +42122,18 @@ func (s *VideoNote) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *VideoNote) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("length")
 		e.Int(s.Length)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -42774,17 +42303,14 @@ func (s *Voice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Voice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
 	{
-
 		e.FieldStart("file_unique_id")
 		e.Str(s.FileUniqueID)
 	}
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -42941,7 +42467,6 @@ func (s *VoiceChatEnded) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *VoiceChatEnded) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
@@ -43112,7 +42637,6 @@ func (s *VoiceChatScheduled) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *VoiceChatScheduled) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("start_date")
 		e.Int(s.StartDate)
 	}
@@ -43254,17 +42778,14 @@ func (s *WebhookInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *WebhookInfo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("url")
 		json.EncodeURI(e, s.URL)
 	}
 	{
-
 		e.FieldStart("has_custom_certificate")
 		e.Bool(s.HasCustomCertificate)
 	}
 	{
-
 		e.FieldStart("pending_update_count")
 		e.Int(s.PendingUpdateCount)
 	}

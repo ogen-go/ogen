@@ -64,7 +64,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admissionReviewVersions")
 		e.ArrStart()
 		for _, elem := range s.AdmissionReviewVersions {
@@ -73,7 +72,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Enco
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("clientConfig")
 		s.ClientConfig.Encode(e)
 	}
@@ -90,7 +88,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -123,7 +120,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("sideEffects")
 		e.Str(s.SideEffects)
 	}
@@ -487,7 +483,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) encode
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -822,12 +817,10 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
@@ -971,7 +964,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder)
 // encodeFields encodes fields.
 func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("admissionReviewVersions")
 		e.ArrStart()
 		for _, elem := range s.AdmissionReviewVersions {
@@ -980,7 +972,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.En
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("clientConfig")
 		s.ClientConfig.Encode(e)
 	}
@@ -997,7 +988,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.En
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1024,7 +1014,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.En
 		}
 	}
 	{
-
 		e.FieldStart("sideEffects")
 		e.Str(s.SideEffects)
 	}
@@ -1377,7 +1366,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) enco
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -1529,7 +1517,6 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encode
 // encodeFields encodes fields.
 func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
@@ -1754,12 +1741,10 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) encodeFields(e *jx.Enc
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	{
-
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
@@ -1916,17 +1901,14 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -2088,7 +2070,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) encodeFields(e *jx
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -2428,7 +2409,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("revision")
 		e.Int64(s.Revision)
 	}
@@ -2577,7 +2557,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -2878,12 +2857,10 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -3032,7 +3009,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -3196,12 +3172,10 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
-
 		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
@@ -3362,12 +3336,10 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("currentNumberScheduled")
 		e.Int32(s.CurrentNumberScheduled)
 	}
 	{
-
 		e.FieldStart("desiredNumberScheduled")
 		e.Int32(s.DesiredNumberScheduled)
 	}
@@ -3378,12 +3350,10 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("numberMisscheduled")
 		e.Int32(s.NumberMisscheduled)
 	}
 	{
-
 		e.FieldStart("numberReady")
 		e.Int32(s.NumberReady)
 	}
@@ -3846,12 +3816,10 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -4011,7 +3979,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -4193,7 +4160,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
@@ -4204,7 +4170,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
@@ -4798,12 +4763,10 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -4952,7 +4915,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -5116,7 +5078,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
@@ -5284,7 +5245,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
@@ -5815,12 +5775,10 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -5969,7 +5927,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -6145,17 +6102,14 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
-
 		e.FieldStart("serviceName")
 		e.Str(s.ServiceName)
 	}
 	{
-
 		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
@@ -6364,7 +6318,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAppsV1StatefulSetStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("availableReplicas")
 		e.Int32(s.AvailableReplicas)
 	}
@@ -6409,7 +6362,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
@@ -6713,12 +6665,10 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) encodeFields(e *jx.En
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -6976,7 +6926,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) encodeFields(e *jx.En
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -7128,7 +7077,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder)
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
@@ -7139,7 +7087,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) encodeFields(e *jx.En
 		}
 	}
 	{
-
 		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
@@ -7281,12 +7228,10 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) encodeFields(e *jx.
 		}
 	}
 	{
-
 		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-
 		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
@@ -7635,7 +7580,6 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV1ScaleStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
@@ -7749,12 +7693,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -7898,7 +7840,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("container")
 		e.Str(s.Container)
 	}
@@ -7909,12 +7850,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) encodeFields(e
 		}
 	}
 	{
-
 		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -8052,12 +7991,10 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -8178,7 +8115,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -8332,12 +8268,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("currentValue")
 		s.CurrentValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -8622,12 +8556,10 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) encodeField
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -8776,7 +8708,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -8928,7 +8859,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Enc
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
@@ -8949,7 +8879,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
@@ -9086,7 +9015,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
@@ -9105,12 +9033,10 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) encodeFields(e
 		}
 	}
 	{
-
 		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-
 		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
@@ -9321,7 +9247,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -9503,7 +9428,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -9661,7 +9585,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -9672,12 +9595,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	{
-
 		e.FieldStart("targetValue")
 		s.TargetValue.Encode(e)
 	}
@@ -9824,12 +9745,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("currentValue")
 		s.CurrentValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -9840,7 +9759,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -9981,7 +9899,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -9992,7 +9909,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.Encode(e)
 	}
@@ -10111,12 +10027,10 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
@@ -10241,7 +10155,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -10378,12 +10291,10 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -10502,17 +10413,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -10633,17 +10541,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-
 		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -10770,12 +10675,10 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -10896,12 +10799,10 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -11007,12 +10908,10 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
@@ -11118,17 +11017,14 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("periodSeconds")
 		e.Int32(s.PeriodSeconds)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-
 		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
@@ -11588,12 +11484,10 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) encodeField
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -11742,7 +11636,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -11900,7 +11793,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
@@ -11921,7 +11813,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) encodeFields(e *
 		}
 	}
 	{
-
 		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
@@ -12069,7 +11960,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
@@ -12088,12 +11978,10 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) encodeFields(e
 		}
 	}
 	{
-
 		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-
 		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
@@ -12274,7 +12162,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -12418,7 +12305,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -12600,7 +12486,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -12764,7 +12649,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -12997,17 +12881,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("describedObject")
 		s.DescribedObject.Encode(e)
 	}
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -13124,17 +13005,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-
 		e.FieldStart("describedObject")
 		s.DescribedObject.Encode(e)
 	}
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
@@ -13251,12 +13129,10 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -13362,12 +13238,10 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
@@ -13473,12 +13347,10 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
@@ -13586,12 +13458,10 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -13836,7 +13706,6 @@ func (s *IoK8sAPIBatchV1CronJobList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -14000,12 +13869,10 @@ func (s *IoK8sAPIBatchV1CronJobSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("jobTemplate")
 		s.JobTemplate.Encode(e)
 	}
 	{
-
 		e.FieldStart("schedule")
 		e.Str(s.Schedule)
 	}
@@ -14449,12 +14316,10 @@ func (s *IoK8sAPIBatchV1JobCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -14614,7 +14479,6 @@ func (s *IoK8sAPIBatchV1JobList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -14814,7 +14678,6 @@ func (s *IoK8sAPIBatchV1JobSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
@@ -15531,7 +15394,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -15695,12 +15557,10 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("jobTemplate")
 		s.JobTemplate.Encode(e)
 	}
 	{
-
 		e.FieldStart("schedule")
 		e.Str(s.Schedule)
 	}
@@ -16087,7 +15947,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) encodeFields(e *jx.Enc
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -16256,12 +16115,10 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -16421,7 +16278,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) encodeFields(e *jx
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -16595,12 +16451,10 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) encodeFields(e *jx
 		}
 	}
 	{
-
 		e.FieldStart("request")
 		e.Base64(s.Request)
 	}
 	{
-
 		e.FieldStart("signerName")
 		e.Str(s.SignerName)
 	}
@@ -16884,7 +16738,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Enc
 // encodeFields encodes fields.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("certificate")
 		e.Base64(s.Certificate)
 	}
@@ -17095,7 +16948,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -17396,7 +17248,6 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
@@ -17623,12 +17474,10 @@ func (s *IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1AttachedVolume) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("devicePath")
 		e.Str(s.DevicePath)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -17744,12 +17593,10 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("diskName")
 		e.Str(s.DiskName)
 	}
 	{
-
 		e.FieldStart("diskURI")
 		e.Str(s.DiskURI)
 	}
@@ -17927,7 +17774,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("secretName")
 		e.Str(s.SecretName)
 	}
@@ -17938,7 +17784,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
@@ -18076,12 +17921,10 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("secretName")
 		e.Str(s.SecretName)
 	}
 	{
-
 		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
@@ -18214,7 +18057,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
@@ -18249,7 +18091,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("volumeHandle")
 		e.Str(s.VolumeHandle)
 	}
@@ -18493,7 +18334,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1CSIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
@@ -18820,7 +18660,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("monitors")
 		e.ArrStart()
 		for _, elem := range s.Monitors {
@@ -19014,7 +18853,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1CephFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("monitors")
 		e.ArrStart()
 		for _, elem := range s.Monitors {
@@ -19226,7 +19064,6 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
@@ -19374,7 +19211,6 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
@@ -19579,12 +19415,10 @@ func (s *IoK8sAPICoreV1ComponentCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -19847,7 +19681,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -20339,7 +20172,6 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1ConfigMapKeySelector) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -20476,7 +20308,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -20628,17 +20459,14 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("kubeletConfigKey")
 		e.Str(s.KubeletConfigKey)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
@@ -21092,7 +20920,6 @@ func (s *IoK8sAPICoreV1Container) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -21658,7 +21485,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1ContainerPort) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("containerPort")
 		e.Int32(s.ContainerPort)
 	}
@@ -21989,7 +21815,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("exitCode")
 		e.Int32(s.ExitCode)
 	}
@@ -22268,12 +22093,10 @@ func (s *IoK8sAPICoreV1ContainerStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("image")
 		e.Str(s.Image)
 	}
 	{
-
 		e.FieldStart("imageID")
 		e.Str(s.ImageID)
 	}
@@ -22284,17 +22107,14 @@ func (s *IoK8sAPICoreV1ContainerStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("ready")
 		e.Bool(s.Ready)
 	}
 	{
-
 		e.FieldStart("restartCount")
 		e.Int32(s.RestartCount)
 	}
@@ -22500,7 +22320,6 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1DaemonEndpoint) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("Port")
 		e.Int32(s.Port)
 	}
@@ -22683,7 +22502,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -22996,7 +22814,6 @@ func (s *IoK8sAPICoreV1EndpointAddress) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("ip")
 		e.Str(s.IP)
 	}
@@ -23150,7 +22967,6 @@ func (s *IoK8sAPICoreV1EndpointPort) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
@@ -23547,7 +23363,6 @@ func (s *IoK8sAPICoreV1EndpointsList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -23796,7 +23611,6 @@ func (s *IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1EnvVar) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -24105,7 +23919,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -24688,7 +24501,6 @@ func (s *IoK8sAPICoreV1Event) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("involvedObject")
 		s.InvolvedObject.Encode(e)
 	}
@@ -24711,7 +24523,6 @@ func (s *IoK8sAPICoreV1Event) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("metadata")
 		s.Metadata.Encode(e)
 	}
@@ -25032,7 +24843,6 @@ func (s *IoK8sAPICoreV1EventList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -25577,7 +25387,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
@@ -25798,7 +25607,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1FlexVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
@@ -26111,7 +25919,6 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("pdName")
 		e.Str(s.PdName)
 	}
@@ -26253,7 +26060,6 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("repository")
 		e.Str(s.Repository)
 	}
@@ -26378,7 +26184,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("endpoints")
 		e.Str(s.Endpoints)
 	}
@@ -26389,7 +26194,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -26527,12 +26331,10 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1GlusterfsVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("endpoints")
 		e.Str(s.Endpoints)
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -26681,7 +26483,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("port")
 		s.Port.Encode(e)
 	}
@@ -26833,12 +26634,10 @@ func (s *IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1HTTPHeader) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
@@ -27138,7 +26937,6 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1HostPathVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -27276,7 +27074,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("iqn")
 		e.Str(s.Iqn)
 	}
@@ -27287,7 +27084,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("lun")
 		e.Int32(s.Lun)
 	}
@@ -27314,7 +27110,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
@@ -27559,7 +27354,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("iqn")
 		e.Str(s.Iqn)
 	}
@@ -27570,7 +27364,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("lun")
 		e.Int32(s.Lun)
 	}
@@ -27597,7 +27390,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
@@ -27818,7 +27610,6 @@ func (s *IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1KeyToPath) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -27829,7 +27620,6 @@ func (s *IoK8sAPICoreV1KeyToPath) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -28174,7 +27964,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -28602,7 +28391,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -28754,7 +28542,6 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1LimitRangeSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("limits")
 		e.ArrStart()
 		for _, elem := range s.Limits {
@@ -29112,7 +28899,6 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -29220,7 +29006,6 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1NFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -29231,7 +29016,6 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("server")
 		e.Str(s.Server)
 	}
@@ -29501,12 +29285,10 @@ func (s *IoK8sAPICoreV1NamespaceCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -29655,7 +29437,6 @@ func (s *IoK8sAPICoreV1NamespaceList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -30105,12 +29886,10 @@ func (s *IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1NodeAddress) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -30335,12 +30114,10 @@ func (s *IoK8sAPICoreV1NodeCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -30740,7 +30517,6 @@ func (s *IoK8sAPICoreV1NodeList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -30892,7 +30668,6 @@ func (s *IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1NodeSelector) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("nodeSelectorTerms")
 		e.ArrStart()
 		for _, elem := range s.NodeSelectorTerms {
@@ -30999,12 +30774,10 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1NodeSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
@@ -31833,52 +31606,42 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1NodeSystemInfo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("architecture")
 		e.Str(s.Architecture)
 	}
 	{
-
 		e.FieldStart("bootID")
 		e.Str(s.BootID)
 	}
 	{
-
 		e.FieldStart("containerRuntimeVersion")
 		e.Str(s.ContainerRuntimeVersion)
 	}
 	{
-
 		e.FieldStart("kernelVersion")
 		e.Str(s.KernelVersion)
 	}
 	{
-
 		e.FieldStart("kubeProxyVersion")
 		e.Str(s.KubeProxyVersion)
 	}
 	{
-
 		e.FieldStart("kubeletVersion")
 		e.Str(s.KubeletVersion)
 	}
 	{
-
 		e.FieldStart("machineID")
 		e.Str(s.MachineID)
 	}
 	{
-
 		e.FieldStart("operatingSystem")
 		e.Str(s.OperatingSystem)
 	}
 	{
-
 		e.FieldStart("osImage")
 		e.Str(s.OsImage)
 	}
 	{
-
 		e.FieldStart("systemUUID")
 		e.Str(s.SystemUUID)
 	}
@@ -32099,7 +31862,6 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("fieldPath")
 		e.Str(s.FieldPath)
 	}
@@ -32658,12 +32420,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -32823,7 +32583,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -33368,7 +33127,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -33474,7 +33232,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("claimName")
 		e.Str(s.ClaimName)
 	}
@@ -33594,7 +33351,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -34485,7 +34241,6 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("pdID")
 		e.Str(s.PdID)
 	}
@@ -34848,7 +34603,6 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("topologyKey")
 		e.Str(s.TopologyKey)
 	}
@@ -35113,12 +34867,10 @@ func (s *IoK8sAPICoreV1PodCondition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -35555,7 +35307,6 @@ func (s *IoK8sAPICoreV1PodList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -35707,7 +35458,6 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1PodReadinessGate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("conditionType")
 		e.Str(s.ConditionType)
 	}
@@ -36062,7 +35812,6 @@ func (s *IoK8sAPICoreV1PodSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("containers")
 		e.ArrStart()
 		for _, elem := range s.Containers {
@@ -37373,7 +37122,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -37611,12 +37359,10 @@ func (s *IoK8sAPICoreV1PortStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
 	{
-
 		e.FieldStart("protocol")
 		e.Str(s.Protocol)
 	}
@@ -37749,7 +37495,6 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
@@ -37868,12 +37613,10 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1PreferredSchedulingTerm) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("preference")
 		s.Preference.Encode(e)
 	}
 	{
-
 		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
@@ -38283,7 +38026,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("registry")
 		e.Str(s.Registry)
 	}
@@ -38300,7 +38042,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("volume")
 		e.Str(s.Volume)
 	}
@@ -38460,7 +38201,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("image")
 		e.Str(s.Image)
 	}
@@ -38471,7 +38211,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("monitors")
 		e.ArrStart()
 		for _, elem := range s.Monitors {
@@ -38689,7 +38428,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("image")
 		e.Str(s.Image)
 	}
@@ -38700,7 +38438,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("monitors")
 		e.ArrStart()
 		for _, elem := range s.Monitors {
@@ -39061,12 +38798,10 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -39215,7 +38950,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -39571,7 +39305,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
@@ -39742,7 +39475,6 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("resource")
 		e.Str(s.Resource)
 	}
@@ -39998,7 +39730,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -40810,7 +40541,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("gateway")
 		e.Str(s.Gateway)
 	}
@@ -40827,7 +40557,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("secretRef")
 		s.SecretRef.Encode(e)
 	}
@@ -40850,7 +40579,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("system")
 		e.Str(s.System)
 	}
@@ -41061,7 +40789,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("gateway")
 		e.Str(s.Gateway)
 	}
@@ -41078,7 +40805,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("secretRef")
 		s.SecretRef.Encode(e)
 	}
@@ -41101,7 +40827,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("system")
 		e.Str(s.System)
 	}
@@ -41380,12 +41105,10 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
 	{
-
 		e.FieldStart("scopeName")
 		e.Str(s.ScopeName)
 	}
@@ -41531,7 +41254,6 @@ func (s *IoK8sAPICoreV1SeccompProfile) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -41940,7 +41662,6 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1SecretKeySelector) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -42077,7 +41798,6 @@ func (s *IoK8sAPICoreV1SecretList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -43138,7 +42858,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -43302,7 +43021,6 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) encodeFields(e *jx.Encoder
 		}
 	}
 	{
-
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
@@ -43427,7 +43145,6 @@ func (s *IoK8sAPICoreV1ServiceList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -43597,7 +43314,6 @@ func (s *IoK8sAPICoreV1ServicePort) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
@@ -44665,12 +44381,10 @@ func (s *IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1Sysctl) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
@@ -44786,7 +44500,6 @@ func (s *IoK8sAPICoreV1TCPSocketAction) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("port")
 		s.Port.Encode(e)
 	}
@@ -44892,12 +44605,10 @@ func (s *IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1Taint) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("effect")
 		e.Str(s.Effect)
 	}
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
@@ -45172,12 +44883,10 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("values")
 		e.ArrStart()
 		for _, elem := range s.Values {
@@ -45379,17 +45088,14 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("maxSkew")
 		e.Int32(s.MaxSkew)
 	}
 	{
-
 		e.FieldStart("topologyKey")
 		e.Str(s.TopologyKey)
 	}
 	{
-
 		e.FieldStart("whenUnsatisfiable")
 		e.Str(s.WhenUnsatisfiable)
 	}
@@ -45529,12 +45235,10 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -45763,7 +45467,6 @@ func (s *IoK8sAPICoreV1Volume) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -46248,12 +45951,10 @@ func (s *IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1VolumeDevice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("devicePath")
 		e.Str(s.DevicePath)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -46363,7 +46064,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1VolumeMount) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("mountPath")
 		e.Str(s.MountPath)
 	}
@@ -46374,7 +46074,6 @@ func (s *IoK8sAPICoreV1VolumeMount) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -46741,7 +46440,6 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("volumePath")
 		e.Str(s.VolumePath)
 	}
@@ -46871,12 +46569,10 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("podAffinityTerm")
 		s.PodAffinityTerm.Encode(e)
 	}
 	{
-
 		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
@@ -47098,7 +46794,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1Endpoint) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("addresses")
 		e.ArrStart()
 		for _, elem := range s.Addresses {
@@ -47667,7 +47362,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("addressType")
 		e.Str(s.AddressType)
 	}
@@ -47678,7 +47372,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("endpoints")
 		e.ArrStart()
 		for _, elem := range s.Endpoints {
@@ -47877,7 +47570,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -48029,7 +47721,6 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1ForZone) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -48126,7 +47817,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1beta1Endpoint) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("addresses")
 		e.ArrStart()
 		for _, elem := range s.Addresses {
@@ -48622,7 +48312,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("addressType")
 		e.Str(s.AddressType)
 	}
@@ -48633,7 +48322,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("endpoints")
 		e.ArrStart()
 		for _, elem := range s.Endpoints {
@@ -48832,7 +48520,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -49040,7 +48727,6 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIDiscoveryV1beta1ForZone) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -49173,7 +48859,6 @@ func (s *IoK8sAPIEventsV1Event) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("eventTime")
 		s.EventTime.Encode(e)
 	}
@@ -49512,7 +49197,6 @@ func (s *IoK8sAPIEventsV1EventList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -49664,12 +49348,10 @@ func (s *IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIEventsV1EventSeries) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("count")
 		e.Int32(s.Count)
 	}
 	{
-
 		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
@@ -49813,7 +49495,6 @@ func (s *IoK8sAPIEventsV1beta1Event) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("eventTime")
 		s.EventTime.Encode(e)
 	}
@@ -50152,7 +49833,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -50304,12 +49984,10 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIEventsV1beta1EventSeries) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("count")
 		e.Int32(s.Count)
 	}
 	{
-
 		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
@@ -50417,7 +50095,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -50782,7 +50459,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -50946,7 +50622,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("priorityLevelConfiguration")
 		s.PriorityLevelConfiguration.Encode(e)
 	}
@@ -51165,7 +50840,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -51268,7 +50942,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -51456,7 +51129,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("nonResourceURLs")
 		e.ArrStart()
 		for _, elem := range s.NonResourceURLs {
@@ -51465,7 +51137,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) encodeFields(e *jx.Enc
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -51615,7 +51286,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) encodeFields(e *jx.E
 		}
 	}
 	{
-
 		e.FieldStart("subjects")
 		e.ArrStart()
 		for _, elem := range s.Subjects {
@@ -52026,7 +51696,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -52178,7 +51847,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -52281,7 +51949,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -52560,7 +52227,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apiGroups")
 		e.ArrStart()
 		for _, elem := range s.ApiGroups {
@@ -52585,7 +52251,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
@@ -52594,7 +52259,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) encodeFields(e *jx.Encode
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -52776,12 +52440,10 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
@@ -52897,7 +52559,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
@@ -53039,7 +52700,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -53136,7 +52796,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -53501,7 +53160,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -53665,7 +53323,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("priorityLevelConfiguration")
 		s.PriorityLevelConfiguration.Encode(e)
 	}
@@ -53884,7 +53541,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -53987,7 +53643,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -54175,7 +53830,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("nonResourceURLs")
 		e.ArrStart()
 		for _, elem := range s.NonResourceURLs {
@@ -54184,7 +53838,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) encodeFields(e *jx.Enc
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -54334,7 +53987,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) encodeFields(e *jx.E
 		}
 	}
 	{
-
 		e.FieldStart("subjects")
 		e.ArrStart()
 		for _, elem := range s.Subjects {
@@ -54745,7 +54397,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -54897,7 +54548,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -55000,7 +54650,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) encodeFields(
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -55279,7 +54928,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apiGroups")
 		e.ArrStart()
 		for _, elem := range s.ApiGroups {
@@ -55304,7 +54952,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
@@ -55313,7 +54960,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) encodeFields(e *jx.Encode
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -55495,12 +55141,10 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) 
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
@@ -55616,7 +55260,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
@@ -55758,7 +55401,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -55855,7 +55497,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPINetworkingV1HTTPIngressPath) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("backend")
 		s.Backend.Encode(e)
 	}
@@ -55866,7 +55507,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("pathType")
 		e.Str(s.PathType)
 	}
@@ -55985,7 +55625,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("paths")
 		e.ArrStart()
 		for _, elem := range s.Paths {
@@ -56092,7 +55731,6 @@ func (s *IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPINetworkingV1IPBlock) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("cidr")
 		e.Str(s.Cidr)
 	}
@@ -56550,7 +56188,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -56708,12 +56345,10 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) encodeFields(e *jx
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -56954,7 +56589,6 @@ func (s *IoK8sAPINetworkingV1IngressList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -57186,7 +56820,6 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPINetworkingV1IngressServiceBackend) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -57916,7 +57549,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -58282,7 +57914,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("podSelector")
 		s.PodSelector.Encode(e)
 	}
@@ -58646,7 +58277,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("handler")
 		e.Str(s.Handler)
 	}
@@ -58828,7 +58458,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -59262,7 +58891,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -59396,7 +59024,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -59554,7 +59181,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("runtimeHandler")
 		e.Str(s.RuntimeHandler)
 	}
@@ -59949,7 +59575,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("handler")
 		e.Str(s.Handler)
 	}
@@ -60131,7 +59756,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -60567,7 +60191,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -60826,12 +60449,10 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("currentHealthy")
 		e.Int32(s.CurrentHealthy)
 	}
 	{
-
 		e.FieldStart("desiredHealthy")
 		e.Int32(s.DesiredHealthy)
 	}
@@ -60842,12 +60463,10 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("disruptionsAllowed")
 		e.Int32(s.DisruptionsAllowed)
 	}
 	{
-
 		e.FieldStart("expectedPods")
 		e.Int32(s.ExpectedPods)
 	}
@@ -61083,7 +60702,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -61180,7 +60798,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
@@ -61448,12 +61065,10 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1HostPortRange) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("max")
 		e.Int32(s.Max)
 	}
 	{
-
 		e.FieldStart("min")
 		e.Int32(s.Min)
 	}
@@ -61563,12 +61178,10 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1IDRange) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("max")
 		e.Int64(s.Max)
 	}
 	{
-
 		e.FieldStart("min")
 		e.Int64(s.Min)
 	}
@@ -61815,7 +61428,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -62074,12 +61686,10 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("currentHealthy")
 		e.Int32(s.CurrentHealthy)
 	}
 	{
-
 		e.FieldStart("desiredHealthy")
 		e.Int32(s.DesiredHealthy)
 	}
@@ -62090,12 +61700,10 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("disruptionsAllowed")
 		e.Int32(s.DisruptionsAllowed)
 	}
 	{
-
 		e.FieldStart("expectedPods")
 		e.Int32(s.ExpectedPods)
 	}
@@ -62451,7 +62059,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -62695,7 +62302,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("fsGroup")
 		s.FsGroup.Encode(e)
 	}
@@ -62756,7 +62362,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("runAsUser")
 		s.RunAsUser.Encode(e)
 	}
@@ -62767,12 +62372,10 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("seLinux")
 		s.SeLinux.Encode(e)
 	}
 	{
-
 		e.FieldStart("supplementalGroups")
 		s.SupplementalGroups.Encode(e)
 	}
@@ -63233,7 +62836,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) encodeFields(e *jx.Enco
 		}
 	}
 	{
-
 		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
@@ -63358,7 +62960,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
@@ -63473,7 +63074,6 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder)
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("allowedRuntimeClassNames")
 		e.ArrStart()
 		for _, elem := range s.AllowedRuntimeClassNames {
@@ -63599,7 +63199,6 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
@@ -64038,7 +63637,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("roleRef")
 		s.RoleRef.Encode(e)
 	}
@@ -64200,7 +63798,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -64358,7 +63955,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -64550,7 +64146,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -64882,7 +64477,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("roleRef")
 		s.RoleRef.Encode(e)
 	}
@@ -65044,7 +64638,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -65202,7 +64795,6 @@ func (s *IoK8sAPIRbacV1RoleList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -65354,17 +64946,14 @@ func (s *IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIRbacV1RoleRef) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apiGroup")
 		e.Str(s.ApiGroup)
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -65493,12 +65082,10 @@ func (s *IoK8sAPIRbacV1Subject) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -65672,7 +65259,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
@@ -65841,7 +65427,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -66011,7 +65596,6 @@ func (s *IoK8sAPIStorageV1CSIDriver) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -66145,7 +65729,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -66504,7 +66087,6 @@ func (s *IoK8sAPIStorageV1CSINode) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -66638,12 +66220,10 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("nodeID")
 		e.Str(s.NodeID)
 	}
@@ -66800,7 +66380,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -66952,7 +66531,6 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIStorageV1CSINodeSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("drivers")
 		e.ArrStart()
 		for _, elem := range s.Drivers {
@@ -67109,7 +66687,6 @@ func (s *IoK8sAPIStorageV1StorageClass) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("provisioner")
 		e.Str(s.Provisioner)
 	}
@@ -67340,7 +66917,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -67548,7 +67124,6 @@ func (s *IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIStorageV1TokenRequest) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("audience")
 		e.Str(s.Audience)
 	}
@@ -67680,7 +67255,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -67831,7 +67405,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -68063,17 +67636,14 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("attacher")
 		e.Str(s.Attacher)
 	}
 	{
-
 		e.FieldStart("nodeName")
 		e.Str(s.NodeName)
 	}
 	{
-
 		e.FieldStart("source")
 		s.Source.Encode(e)
 	}
@@ -68200,7 +67770,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("attached")
 		e.Bool(s.Attached)
 	}
@@ -68577,7 +68146,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
@@ -68746,7 +68314,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -68934,7 +68501,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
@@ -69103,7 +68669,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -69267,12 +68832,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 		}
 	}
 	{
-
 		e.FieldStart("jsonPath")
 		e.Str(s.JsonPath)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -69283,7 +68846,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 		}
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -69439,7 +69001,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 // encodeFields encodes fields.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("strategy")
 		e.Str(s.Strategy)
 	}
@@ -69571,7 +69132,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
@@ -69734,12 +69294,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -69888,7 +69446,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -70050,7 +69607,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
@@ -70061,7 +69617,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("plural")
 		e.Str(s.Plural)
 	}
@@ -70255,12 +69810,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("group")
 		e.Str(s.Group)
 	}
 	{
-
 		e.FieldStart("names")
 		s.Names.Encode(e)
 	}
@@ -70271,12 +69824,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("scope")
 		e.Str(s.Scope)
 	}
 	{
-
 		e.FieldStart("versions")
 		e.ArrStart()
 		for _, elem := range s.Versions {
@@ -70585,7 +70136,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -70596,12 +70146,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-
 		e.FieldStart("served")
 		e.Bool(s.Served)
 	}
 	{
-
 		e.FieldStart("storage")
 		e.Bool(s.Storage)
 	}
@@ -70798,12 +70346,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		}
 	}
 	{
-
 		e.FieldStart("specReplicasPath")
 		e.Str(s.SpecReplicasPath)
 	}
 	{
-
 		e.FieldStart("statusReplicasPath")
 		e.Str(s.StatusReplicasPath)
 	}
@@ -72449,12 +71995,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Enco
 // encodeFields encodes fields.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
@@ -72598,7 +72142,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) E
 // encodeFields encodes fields.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
@@ -72701,7 +72244,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) enc
 		}
 	}
 	{
-
 		e.FieldStart("conversionReviewVersions")
 		e.ArrStart()
 		for _, elem := range s.ConversionReviewVersions {
@@ -72873,7 +72415,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -72894,7 +72435,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("versions")
 		e.ArrStart()
 		for _, elem := range s.Versions {
@@ -73071,7 +72611,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) encodeFields(e *jx.Encoder)
 		}
 	}
 	{
-
 		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
@@ -73222,17 +72761,14 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("namespaced")
 		e.Bool(s.Namespaced)
 	}
@@ -73247,7 +72783,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("singularName")
 		e.Str(s.SingularName)
 	}
@@ -73258,7 +72793,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("verbs")
 		e.ArrStart()
 		for _, elem := range s.Verbs {
@@ -73505,7 +73039,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("groupVersion")
 		e.Str(s.GroupVersion)
 	}
@@ -73516,7 +73049,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) encodeFields(e *jx.Encod
 		}
 	}
 	{
-
 		e.FieldStart("resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
@@ -73670,7 +73202,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) encodeFields(e *jx.Encoder) 
 		}
 	}
 	{
-
 		e.FieldStart("serverAddressByClientCIDRs")
 		e.ArrStart()
 		for _, elem := range s.ServerAddressByClientCIDRs {
@@ -73679,7 +73210,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) encodeFields(e *jx.Encoder) 
 		e.ArrEnd()
 	}
 	{
-
 		e.FieldStart("versions")
 		e.ArrStart()
 		for _, elem := range s.Versions {
@@ -73829,12 +73359,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1Condition) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.Encode(e)
 	}
 	{
-
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
@@ -73845,17 +73373,14 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -74058,12 +73583,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.En
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("groupVersion")
 		e.Str(s.GroupVersion)
 	}
 	{
-
 		e.FieldStart("version")
 		e.Str(s.Version)
 	}
@@ -74320,12 +73843,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.En
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-
 		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
@@ -75251,7 +74772,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("apiVersion")
 		e.Str(s.ApiVersion)
 	}
@@ -75268,17 +74788,14 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) encodeFields(e *jx.Encode
 		}
 	}
 	{
-
 		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("uid")
 		e.Str(s.UID)
 	}
@@ -75436,12 +74953,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.E
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("clientCIDR")
 		e.Str(s.ClientCIDR)
 	}
 	{
-
 		e.FieldStart("serverAddress")
 		e.Str(s.ServerAddress)
 	}
@@ -75591,12 +75106,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("object")
 		s.Object.Encode(e)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -75789,47 +75302,38 @@ func (s *IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *IoK8sApimachineryPkgVersionInfo) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("buildDate")
 		e.Str(s.BuildDate)
 	}
 	{
-
 		e.FieldStart("compiler")
 		e.Str(s.Compiler)
 	}
 	{
-
 		e.FieldStart("gitCommit")
 		e.Str(s.GitCommit)
 	}
 	{
-
 		e.FieldStart("gitTreeState")
 		e.Str(s.GitTreeState)
 	}
 	{
-
 		e.FieldStart("gitVersion")
 		e.Str(s.GitVersion)
 	}
 	{
-
 		e.FieldStart("goVersion")
 		e.Str(s.GoVersion)
 	}
 	{
-
 		e.FieldStart("major")
 		e.Str(s.Major)
 	}
 	{
-
 		e.FieldStart("minor")
 		e.Str(s.Minor)
 	}
 	{
-
 		e.FieldStart("platform")
 		e.Str(s.Platform)
 	}
@@ -76180,12 +75684,10 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) encodeF
 		}
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
@@ -76334,7 +75836,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) encodeFields
 		}
 	}
 	{
-
 		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
@@ -76486,7 +75987,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx
 // encodeFields encodes fields.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
@@ -76497,7 +75997,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) encodeFields
 		}
 	}
 	{
-
 		e.FieldStart("groupPriorityMinimum")
 		e.Int32(s.GroupPriorityMinimum)
 	}
@@ -76520,7 +76019,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) encodeFields
 		}
 	}
 	{
-
 		e.FieldStart("versionPriority")
 		e.Int32(s.VersionPriority)
 	}

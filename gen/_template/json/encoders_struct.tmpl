@@ -3,7 +3,7 @@
 	{{- range $i, $f := $ }}
 		{
 		{{- $elem := field_elem $f }}
-		{{ template "json/enc" $elem }}
+		{{- template "json/enc" $elem }}
 		}
 	{{- end }}
 {{- end }}

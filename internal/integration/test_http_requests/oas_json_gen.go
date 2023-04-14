@@ -250,12 +250,10 @@ func (s *MaskResponse) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MaskResponse) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("contentType")
 		e.Str(s.ContentType)
 	}
 	{
-
 		e.FieldStart("content")
 		e.Str(s.Content)
 	}
@@ -400,7 +398,6 @@ func (s *SimpleObject) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *SimpleObject) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}

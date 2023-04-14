@@ -24,7 +24,6 @@ func (s *CreatePetCategoriesReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreatePetCategoriesReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -151,7 +150,6 @@ func (s *CreatePetFriendsReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreatePetFriendsReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -178,7 +176,6 @@ func (s *CreatePetFriendsReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		e.Int(s.Owner)
 	}
@@ -360,12 +357,10 @@ func (s *CreatePetOwnerReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreatePetOwnerReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
@@ -505,7 +500,6 @@ func (s *CreatePetReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreatePetReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -532,7 +526,6 @@ func (s *CreatePetReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		e.Int(s.Owner)
 	}
@@ -934,12 +927,10 @@ func (s *PetCategoriesCreate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetCategoriesCreate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1049,12 +1040,10 @@ func (s *PetCategoriesList) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetCategoriesList) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1164,12 +1153,10 @@ func (s *PetCreate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetCreate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1196,7 +1183,6 @@ func (s *PetCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
@@ -1357,12 +1343,10 @@ func (s *PetCreateCategories) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetCreateCategories) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1472,17 +1456,14 @@ func (s *PetCreateOwner) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetCreateOwner) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
@@ -1605,12 +1586,10 @@ func (s *PetFriendsCreate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetFriendsCreate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1754,12 +1733,10 @@ func (s *PetFriendsList) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetFriendsList) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -1903,12 +1880,10 @@ func (s *PetList) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetList) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -2052,17 +2027,14 @@ func (s *PetOwnerCreate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetOwnerCreate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
@@ -2185,17 +2157,14 @@ func (s *PetOwnerRead) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetOwnerRead) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
@@ -2318,12 +2287,10 @@ func (s *PetRead) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetRead) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -2467,12 +2434,10 @@ func (s *PetUpdate) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *PetUpdate) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("id")
 		e.Int(s.ID)
 	}
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -2616,12 +2581,10 @@ func (s *R400) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *R400) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int(s.Code)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -2731,12 +2694,10 @@ func (s *R404) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *R404) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int(s.Code)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -2846,12 +2807,10 @@ func (s *R409) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *R409) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int(s.Code)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -2961,12 +2920,10 @@ func (s *R500) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *R500) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("code")
 		e.Int(s.Code)
 	}
 	{
-
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
@@ -3076,7 +3033,6 @@ func (s *UpdatePetReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UpdatePetReq) encodeFields(e *jx.Encoder) {
 	{
-
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
@@ -3103,7 +3059,6 @@ func (s *UpdatePetReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
 		e.FieldStart("owner")
 		e.Int(s.Owner)
 	}
