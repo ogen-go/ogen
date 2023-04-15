@@ -312,7 +312,7 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.PublicKey))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -979,7 +979,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Board))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -998,7 +998,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Thread))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1017,7 +1017,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Num))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1169,7 +1169,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Board))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1188,7 +1188,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Thread))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1273,7 +1273,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Board))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1292,7 +1292,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Num))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {

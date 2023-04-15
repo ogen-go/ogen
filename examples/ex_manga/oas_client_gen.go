@@ -123,7 +123,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.BookID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -211,7 +211,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -230,7 +230,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -318,7 +318,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -337,7 +337,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Page))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -356,7 +356,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -444,7 +444,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -463,7 +463,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Page))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -482,7 +482,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {

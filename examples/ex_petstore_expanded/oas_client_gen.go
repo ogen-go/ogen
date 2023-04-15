@@ -200,7 +200,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -288,7 +288,7 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.ID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {

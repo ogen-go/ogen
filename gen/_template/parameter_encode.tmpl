@@ -16,7 +16,7 @@ var pathParts [{{ len $.PathParts }}]string
 		if err := func() error {
     		{{- template "encode_parameter" $p -}}
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {

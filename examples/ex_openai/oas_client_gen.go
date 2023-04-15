@@ -123,7 +123,7 @@ func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTunePa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FineTuneID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1223,7 +1223,7 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.EngineID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1479,7 +1479,7 @@ func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (r
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FileID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1567,7 +1567,7 @@ func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Model))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1655,7 +1655,7 @@ func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FileID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -1887,7 +1887,7 @@ func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTune
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FineTuneID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2141,7 +2141,7 @@ func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEnginePa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.EngineID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2229,7 +2229,7 @@ func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FileID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2318,7 +2318,7 @@ func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTu
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.FineTuneID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
@@ -2407,7 +2407,7 @@ func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Model))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode param")
+			return res, errors.Wrap(err, "encode path parameter")
 		}
 		encoded, err := e.Result()
 		if err != nil {
