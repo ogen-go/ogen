@@ -13,7 +13,6 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/integration/test_http_requests"
 )
 
@@ -99,18 +98,6 @@ func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req *api.
 		ContentType: req.ContentType,
 		Content:     s.String(),
 	}, nil
-}
-
-func (t testHTTPRequests) OnlyForm(ctx context.Context, req *api.OnlyFormReq) error {
-	return ht.ErrNotImplemented
-}
-
-func (t testHTTPRequests) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReqForm) error {
-	return ht.ErrNotImplemented
-}
-
-func (t testHTTPRequests) OnlyMultipartForm(ctx context.Context, req *api.OnlyMultipartFormReq) error {
-	return ht.ErrNotImplemented
 }
 
 func (t testHTTPRequests) StreamJSON(ctx context.Context, req []float64) (v float64, _ error) {
