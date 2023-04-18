@@ -11,6 +11,27 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+func encodeOnlyFormResponse(response *OnlyFormOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
+func encodeOnlyMultipartFileResponse(response *OnlyMultipartFileOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
+func encodeOnlyMultipartFormResponse(response *OnlyMultipartFormOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeTestFormURLEncodedResponse(response *TestFormURLEncodedOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

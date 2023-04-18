@@ -20,6 +20,272 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s *Server) decodeOnlyFormRequest(r *http.Request) (
+	req *OnlyFormReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/x-www-form-urlencoded":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		form, err := ht.ParseForm(r)
+		if err != nil {
+			return req, close, errors.Wrap(err, "parse form")
+		}
+
+		var request OnlyFormReq
+		defined := func(name string) bool {
+			switch name {
+			case "field":
+				// Form parameter.
+				return true
+			default:
+				return false
+			}
+		}
+
+		for k := range form {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		q := uri.NewQueryDecoder(form)
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "field",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					request.Field = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"field\"")
+				}
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeOnlyMultipartFileRequest(r *http.Request) (
+	req *OnlyMultipartFileReqForm,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "multipart/form-data":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, close, errors.Wrap(err, "parse multipart form")
+		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
+		// Form values may be unused.
+		form := url.Values(r.MultipartForm.Value)
+		_ = form
+
+		var request OnlyMultipartFileReqForm
+		defined := func(name string) bool {
+			switch name {
+			case "file":
+				// File parameter.
+				return true
+			default:
+				return false
+			}
+		}
+
+		for k := range form {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		for k := range r.MultipartForm.File {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		{
+			if err := func() error {
+				files, ok := r.MultipartForm.File["file"]
+				if !ok || len(files) < 1 {
+					return validate.ErrFieldRequired
+				}
+				fh := files[0]
+
+				f, err := fh.Open()
+				if err != nil {
+					return errors.Wrap(err, "open")
+				}
+				closers = append(closers, f.Close)
+				request.File = ht.MultipartFile{
+					Name:   fh.Filename,
+					File:   f,
+					Header: fh.Header,
+				}
+				return nil
+			}(); err != nil {
+				return req, close, errors.Wrap(err, "decode \"file\"")
+			}
+		}
+		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeOnlyMultipartFormRequest(r *http.Request) (
+	req *OnlyMultipartFormReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "multipart/form-data":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, close, errors.Wrap(err, "parse multipart form")
+		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
+		// Form values may be unused.
+		form := url.Values(r.MultipartForm.Value)
+		_ = form
+
+		var request OnlyMultipartFormReq
+		defined := func(name string) bool {
+			switch name {
+			case "field":
+				// Form parameter.
+				return true
+			default:
+				return false
+			}
+		}
+
+		for k := range form {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		q := uri.NewQueryDecoder(form)
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "field",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					request.Field = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"field\"")
+				}
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
 func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 	req *TestForm,
 	close func() error,
@@ -491,6 +757,38 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 		_ = form
 
 		var request TestMultipartUploadReqForm
+		defined := func(name string) bool {
+			switch name {
+			case "orderId":
+				// Form parameter.
+				return true
+			case "userId":
+				// Form parameter.
+				return true
+			case "file":
+				// File parameter.
+				return true
+			case "optional_file":
+				// File parameter.
+				return true
+			case "files":
+				// File parameter.
+				return true
+			default:
+				return false
+			}
+		}
+
+		for k := range form {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		for k := range r.MultipartForm.File {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
