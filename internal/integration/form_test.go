@@ -1,9 +1,12 @@
 package integration
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
+	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
 	"net/textproto"
@@ -114,6 +117,18 @@ func (s testFormServer) TestShareFormSchema(ctx context.Context, req api.TestSha
 	return nil
 }
 
+func (s testFormServer) OnlyForm(ctx context.Context, req *api.OnlyFormReq) error {
+	return nil
+}
+
+func (s testFormServer) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReqForm) error {
+	return nil
+}
+
+func (s testFormServer) OnlyMultipartForm(ctx context.Context, req *api.OnlyMultipartFormReq) error {
+	return nil
+}
+
 func TestURIEncodingE2E(t *testing.T) {
 	tests := []struct {
 		name        string
@@ -197,12 +212,11 @@ func TestMultipartEncodingE2E(t *testing.T) {
 }
 
 func TestMultipartUploadE2E(t *testing.T) {
-	a := assert.New(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
 
 	handler := &testFormServer{
-		a: a,
+		a: assert.New(t),
 	}
 	// Set low limit for BigFile test.
 	apiServer, err := api.NewServer(handler,
@@ -273,4 +287,79 @@ func TestMultipartUploadE2E(t *testing.T) {
 			// FIXME(tdakkota): Check metrics. OpenTelemetry removed metrictest package.
 		})
 	}
+}
+
+func TestFormAdditionalProps(t *testing.T) {
+	handler := &testFormServer{
+		a: assert.New(t),
+	}
+	apiServer, err := api.NewServer(handler)
+	require.NoError(t, err)
+
+	s := httptest.NewServer(apiServer)
+	defer s.Close()
+
+	client := s.Client()
+	t.Run("OnlyForm", func(t *testing.T) {
+		resp, err := client.PostForm(s.URL+"/onlyForm", url.Values{
+			"definitely-not-defined": []string{"value"},
+			"field":                  []string{"10"},
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
+
+	sendMultipart := func(url string, cb func(*multipart.Writer)) (*http.Response, error) {
+		req, err := http.NewRequest(http.MethodPost, url, nil)
+		if err != nil {
+			return nil, err
+		}
+
+		var buf bytes.Buffer
+		mw := multipart.NewWriter(&buf)
+		cb(mw)
+		require.NoError(t, mw.Close())
+
+		req.Header.Add("Content-Type", mw.FormDataContentType())
+		req.Body = io.NopCloser(&buf)
+
+		return client.Do(req)
+	}
+	t.Run("OnlyMultipartForm", func(t *testing.T) {
+		resp, err := sendMultipart(s.URL+"/onlyMultipartForm", func(mw *multipart.Writer) {
+			mw.WriteField("definitely-not-defined", "value")
+			mw.WriteField("field", "10")
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
+
+	t.Run("OnlyMultipartFile", func(t *testing.T) {
+		resp, err := sendMultipart(s.URL+"/onlyMultipartFile", func(mw *multipart.Writer) {
+			mw.WriteField("definitely-not-defined", "value")
+			f, err := mw.CreateFormFile("file", "pablo.txt")
+			require.NoError(t, err)
+			io.WriteString(f, "text")
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
 }

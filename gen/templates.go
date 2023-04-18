@@ -219,12 +219,10 @@ func templateFunctions() template.FuncMap {
 //go:embed _template/*
 var templates embed.FS
 
-var (
-	_templates struct {
-		sync.Once
-		val *template.Template
-	}
-)
+var _templates struct {
+	sync.Once
+	val *template.Template
+}
 
 // vendoredTemplates parses and returns vendored code generation templates.
 func vendoredTemplates() *template.Template {

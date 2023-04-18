@@ -100,7 +100,9 @@ func (g *Generator) generateFormContent(
 	optional bool,
 	cb func(f *ir.Field) error,
 ) (*ir.Type, error) {
-	if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
+	if s := media.Schema; s != nil &&
+		((s.AdditionalProperties != nil && s.Item != nil) ||
+			len(s.PatternProperties) > 0) {
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
@@ -302,13 +304,14 @@ func (g *Generator) generateContents(
 				if len(files) > 0 {
 					// TODO(tdakkota): too hacky
 					newt := &ir.Type{
-						Doc:            t.Doc,
-						Kind:           t.Kind,
-						Name:           t.Name + "Form",
-						Schema:         t.Schema,
-						GenericOf:      t.GenericOf,
-						GenericVariant: t.GenericVariant,
-						Validators:     t.Validators,
+						Doc:                 t.Doc,
+						Kind:                t.Kind,
+						Name:                t.Name + "Form",
+						Schema:              t.Schema,
+						GenericOf:           t.GenericOf,
+						GenericVariant:      t.GenericVariant,
+						Validators:          t.Validators,
+						DenyAdditionalProps: t.DenyAdditionalProps,
 					}
 
 					for _, f := range t.Fields {

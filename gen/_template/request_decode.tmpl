@@ -193,6 +193,40 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		}
 	}
 {{- else if $t.IsStruct }}
+	{{- if $t.DenyAdditionalProps }}
+		defined := func(name string) bool {
+			switch name {
+			{{- range $p := $t.FormParameters }}
+			case {{ quote $p.Spec.Name }}:
+				// Form parameter.
+				return true
+			{{- end }}
+
+			{{- range $p := $t.FileParameters }}
+			case {{ quote $p.Spec.Name }}:
+				// File parameter.
+				return true
+			{{- end }}
+			default:
+				return false
+			}
+		}
+
+		for k := range form {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		{{- with $t.FileParameters }}
+		for k := range r.MultipartForm.File {
+			if !defined(k) {
+				return req, close, errors.Errorf("unexpected field %q", k)
+			}
+		}
+		{{- end }}
+
+	{{- end }}
+
 	{{- with $t.FormParameters }}
 	q := uri.NewQueryDecoder(form)
 		{{- range $p := $t.FormParameters }}

@@ -8,6 +8,18 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// OnlyForm implements onlyForm operation.
+	//
+	// POST /onlyForm
+	OnlyForm(ctx context.Context, req *OnlyFormReq) error
+	// OnlyMultipartFile implements onlyMultipartFile operation.
+	//
+	// POST /onlyMultipartFile
+	OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReqForm) error
+	// OnlyMultipartForm implements onlyMultipartForm operation.
+	//
+	// POST /onlyMultipartForm
+	OnlyMultipartForm(ctx context.Context, req *OnlyMultipartFormReq) error
 	// TestFormURLEncoded implements testFormURLEncoded operation.
 	//
 	// POST /testFormURLEncoded
