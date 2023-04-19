@@ -1,7 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "string",
+  "type": "number",
   "enum": [
-    1, 10, 1e1, 2
+    1,
+    10,
+    2,
+    1e1
   ]
 }
