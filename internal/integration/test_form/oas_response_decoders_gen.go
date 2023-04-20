@@ -100,6 +100,24 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
+func decodeTestReuseFormOptionalSchemaResponse(resp *http.Response) (res *TestReuseFormOptionalSchemaOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &TestReuseFormOptionalSchemaOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeTestReuseFormSchemaResponse(resp *http.Response) (res *TestReuseFormSchemaOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &TestReuseFormSchemaOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormSchemaOK, _ error) {
 	switch resp.StatusCode {
 	case 200:

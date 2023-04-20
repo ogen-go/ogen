@@ -194,33 +194,17 @@ func (s *CreateFineTuneRequest) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *CreateImageEditRequest) setDefaults() {
+func (s *CreateImageEditRequestMultipart) setDefaults() {
 	{
 		val := int(1)
 		s.N.SetTo(val)
 	}
 	{
-		val := CreateImageEditRequestSize("1024x1024")
+		val := CreateImageEditRequestMultipartSize("1024x1024")
 		s.Size.SetTo(val)
 	}
 	{
-		val := CreateImageEditRequestResponseFormat("url")
-		s.ResponseFormat.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
-func (s *CreateImageEditRequestForm) setDefaults() {
-	{
-		val := int(1)
-		s.N.SetTo(val)
-	}
-	{
-		val := CreateImageEditRequestSize("1024x1024")
-		s.Size.SetTo(val)
-	}
-	{
-		val := CreateImageEditRequestResponseFormat("url")
+		val := CreateImageEditRequestMultipartResponseFormat("url")
 		s.ResponseFormat.SetTo(val)
 	}
 }
@@ -242,33 +226,17 @@ func (s *CreateImageRequest) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *CreateImageVariationRequest) setDefaults() {
+func (s *CreateImageVariationRequestMultipart) setDefaults() {
 	{
 		val := int(1)
 		s.N.SetTo(val)
 	}
 	{
-		val := CreateImageVariationRequestSize("1024x1024")
+		val := CreateImageVariationRequestMultipartSize("1024x1024")
 		s.Size.SetTo(val)
 	}
 	{
-		val := CreateImageVariationRequestResponseFormat("url")
-		s.ResponseFormat.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
-func (s *CreateImageVariationRequestForm) setDefaults() {
-	{
-		val := int(1)
-		s.N.SetTo(val)
-	}
-	{
-		val := CreateImageVariationRequestSize("1024x1024")
-		s.Size.SetTo(val)
-	}
-	{
-		val := CreateImageVariationRequestResponseFormat("url")
+		val := CreateImageVariationRequestMultipartResponseFormat("url")
 		s.ResponseFormat.SetTo(val)
 	}
 }
@@ -294,7 +262,7 @@ func (s *CreateSearchRequest) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *CreateTranscriptionRequest) setDefaults() {
+func (s *CreateTranscriptionRequestMultipart) setDefaults() {
 	{
 		val := string("json")
 		s.ResponseFormat.SetTo(val)
@@ -306,31 +274,7 @@ func (s *CreateTranscriptionRequest) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *CreateTranscriptionRequestForm) setDefaults() {
-	{
-		val := string("json")
-		s.ResponseFormat.SetTo(val)
-	}
-	{
-		val := float64(0)
-		s.Temperature.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
-func (s *CreateTranslationRequest) setDefaults() {
-	{
-		val := string("json")
-		s.ResponseFormat.SetTo(val)
-	}
-	{
-		val := float64(0)
-		s.Temperature.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
-func (s *CreateTranslationRequestForm) setDefaults() {
+func (s *CreateTranslationRequestMultipart) setDefaults() {
 	{
 		val := string("json")
 		s.ResponseFormat.SetTo(val)

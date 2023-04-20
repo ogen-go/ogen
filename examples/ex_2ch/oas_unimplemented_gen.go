@@ -150,7 +150,7 @@ func (UnimplementedHandler) UserPassloginPost(ctx context.Context, req OptUserPa
 // Создание нового поста или треда.
 //
 // POST /user/posting
-func (UnimplementedHandler) UserPostingPost(ctx context.Context, req OptUserPostingPostReqForm) (r UserPostingPostOK, _ error) {
+func (UnimplementedHandler) UserPostingPost(ctx context.Context, req OptUserPostingPostReq) (r UserPostingPostOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

@@ -158,6 +158,46 @@
         }
       }
     },
+    "/testReuseFormSchema": {
+      "post": {
+        "operationId": "testReuseFormSchema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/testReuseFormOptionalSchema": {
+      "post": {
+        "operationId": "testReuseFormOptionalSchema",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/onlyForm": {
       "post": {
         "operationId": "onlyForm",

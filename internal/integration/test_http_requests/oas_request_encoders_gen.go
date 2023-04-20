@@ -75,7 +75,7 @@ func encodeAllRequestBodiesRequest(
 		encoded := q.Values().Encode()
 		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
-	case *AllRequestBodiesMultipartFormData:
+	case *SimpleObjectMultipart:
 		const contentType = "multipart/form-data"
 		request := req
 
@@ -186,7 +186,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		encoded := q.Values().Encode()
 		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
-	case *AllRequestBodiesOptionalMultipartFormData:
+	case *SimpleObjectMultipart:
 		const contentType = "multipart/form-data"
 		request := req
 

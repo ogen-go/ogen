@@ -15,7 +15,7 @@ type Handler interface {
 	// OnlyMultipartFile implements onlyMultipartFile operation.
 	//
 	// POST /onlyMultipartFile
-	OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReqForm) error
+	OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReq) error
 	// OnlyMultipartForm implements onlyMultipartForm operation.
 	//
 	// POST /onlyMultipartForm
@@ -27,11 +27,19 @@ type Handler interface {
 	// TestMultipart implements testMultipart operation.
 	//
 	// POST /testMultipart
-	TestMultipart(ctx context.Context, req *TestForm) error
+	TestMultipart(ctx context.Context, req *TestFormMultipart) error
 	// TestMultipartUpload implements testMultipartUpload operation.
 	//
 	// POST /testMultipartUpload
-	TestMultipartUpload(ctx context.Context, req *TestMultipartUploadReqForm) (*TestMultipartUploadOK, error)
+	TestMultipartUpload(ctx context.Context, req *TestMultipartUploadReq) (*TestMultipartUploadOK, error)
+	// TestReuseFormOptionalSchema implements testReuseFormOptionalSchema operation.
+	//
+	// POST /testReuseFormOptionalSchema
+	TestReuseFormOptionalSchema(ctx context.Context, req OptSharedRequestMultipart) error
+	// TestReuseFormSchema implements testReuseFormSchema operation.
+	//
+	// POST /testReuseFormSchema
+	TestReuseFormSchema(ctx context.Context, req *SharedRequestMultipart) error
 	// TestShareFormSchema implements testShareFormSchema operation.
 	//
 	// POST /testShareFormSchema

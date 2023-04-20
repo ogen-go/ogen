@@ -184,7 +184,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 		}
 
 		type (
-			Request  = *OnlyMultipartFileReqForm
+			Request  = *OnlyMultipartFileReq
 			Params   = struct{}
 			Response = *OnlyMultipartFileOK
 		)
@@ -484,7 +484,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 		}
 
 		type (
-			Request  = *TestForm
+			Request  = *TestFormMultipart
 			Params   = struct{}
 			Response = *TestMultipartOK
 		)
@@ -584,7 +584,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 		}
 
 		type (
-			Request  = *TestMultipartUploadReqForm
+			Request  = *TestMultipartUploadReq
 			Params   = struct{}
 			Response = *TestMultipartUploadOK
 		)
@@ -611,6 +611,206 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 	}
 
 	if err := encodeTestMultipartUploadResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleTestReuseFormOptionalSchemaRequest handles testReuseFormOptionalSchema operation.
+//
+// POST /testReuseFormOptionalSchema
+func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testReuseFormOptionalSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestReuseFormOptionalSchema",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestReuseFormOptionalSchema",
+			ID:   "testReuseFormOptionalSchema",
+		}
+	)
+	request, close, err := s.decodeTestReuseFormOptionalSchemaRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response *TestReuseFormOptionalSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestReuseFormOptionalSchema",
+			OperationID:   "testReuseFormOptionalSchema",
+			Body:          request,
+			Params:        middleware.Parameters{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptSharedRequestMultipart
+			Params   = struct{}
+			Response = *TestReuseFormOptionalSchemaOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestReuseFormOptionalSchema(ctx, request)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.TestReuseFormOptionalSchema(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestReuseFormOptionalSchemaResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleTestReuseFormSchemaRequest handles testReuseFormSchema operation.
+//
+// POST /testReuseFormSchema
+func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testReuseFormSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestReuseFormSchema",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestReuseFormSchema",
+			ID:   "testReuseFormSchema",
+		}
+	)
+	request, close, err := s.decodeTestReuseFormSchemaRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response *TestReuseFormSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestReuseFormSchema",
+			OperationID:   "testReuseFormSchema",
+			Body:          request,
+			Params:        middleware.Parameters{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = *SharedRequestMultipart
+			Params   = struct{}
+			Response = *TestReuseFormSchemaOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestReuseFormSchema(ctx, request)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.TestReuseFormSchema(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestReuseFormSchemaResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

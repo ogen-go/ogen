@@ -668,13 +668,13 @@ func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddi
 // need to increase the storage limit.
 //
 // POST /files
-func (c *Client) CreateFile(ctx context.Context, request *CreateFileRequestForm) (OpenAIFile, error) {
+func (c *Client) CreateFile(ctx context.Context, request *CreateFileRequestMultipart) (OpenAIFile, error) {
 	res, err := c.sendCreateFile(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestForm) (res OpenAIFile, err error) {
+func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestMultipart) (res OpenAIFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFile"),
 	}
@@ -908,13 +908,13 @@ func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageReques
 // Creates an edited or extended image given an original image and a prompt.
 //
 // POST /images/edits
-func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRequestForm) (ImagesResponse, error) {
+func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (ImagesResponse, error) {
 	res, err := c.sendCreateImageEdit(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEditRequestForm) (res ImagesResponse, err error) {
+func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
 	}
@@ -990,13 +990,13 @@ func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEd
 // Creates a variation of a given image.
 //
 // POST /images/variations
-func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageVariationRequestForm) (ImagesResponse, error) {
+func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (ImagesResponse, error) {
 	res, err := c.sendCreateImageVariation(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateImageVariationRequestForm) (res ImagesResponse, err error) {
+func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
 	}
@@ -1264,13 +1264,13 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 // Transcribes audio into the input language.
 //
 // POST /audio/transcriptions
-func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscriptionRequestForm) (*CreateTranscriptionResponse, error) {
+func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (*CreateTranscriptionResponse, error) {
 	res, err := c.sendCreateTranscription(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTranscriptionRequestForm) (res *CreateTranscriptionResponse, err error) {
+func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (res *CreateTranscriptionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
 	}
@@ -1346,13 +1346,13 @@ func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTra
 // Translates audio into into English.
 //
 // POST /audio/translations
-func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslationRequestForm) (*CreateTranslationResponse, error) {
+func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (*CreateTranslationResponse, error) {
 	res, err := c.sendCreateTranslation(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTranslationRequestForm) (res *CreateTranslationResponse, err error) {
+func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (res *CreateTranslationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
 	}

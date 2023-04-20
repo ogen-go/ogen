@@ -140,13 +140,13 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 // OnlyMultipartFile invokes onlyMultipartFile operation.
 //
 // POST /onlyMultipartFile
-func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReqForm) error {
+func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) error {
 	res, err := c.sendOnlyMultipartFile(ctx, request)
 	_ = res
 	return err
 }
 
-func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReqForm) (res *OnlyMultipartFileOK, err error) {
+func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) (res *OnlyMultipartFileOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartFile"),
 	}
@@ -353,13 +353,13 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 // TestMultipart invokes testMultipart operation.
 //
 // POST /testMultipart
-func (c *Client) TestMultipart(ctx context.Context, request *TestForm) error {
+func (c *Client) TestMultipart(ctx context.Context, request *TestFormMultipart) error {
 	res, err := c.sendTestMultipart(ctx, request)
 	_ = res
 	return err
 }
 
-func (c *Client) sendTestMultipart(ctx context.Context, request *TestForm) (res *TestMultipartOK, err error) {
+func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipart) (res *TestMultipartOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
 	}
@@ -424,13 +424,13 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestForm) (res 
 // TestMultipartUpload invokes testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReqForm) (*TestMultipartUploadOK, error) {
+func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (*TestMultipartUploadOK, error) {
 	res, err := c.sendTestMultipartUpload(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReqForm) (res *TestMultipartUploadOK, err error) {
+func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (res *TestMultipartUploadOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
 	}
@@ -501,6 +501,148 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 	return result, nil
 }
 
+// TestReuseFormOptionalSchema invokes testReuseFormOptionalSchema operation.
+//
+// POST /testReuseFormOptionalSchema
+func (c *Client) TestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) error {
+	res, err := c.sendTestReuseFormOptionalSchema(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) (res *TestReuseFormOptionalSchemaOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testReuseFormOptionalSchema"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestReuseFormOptionalSchema",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testReuseFormOptionalSchema"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestReuseFormOptionalSchemaRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestReuseFormOptionalSchemaResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestReuseFormSchema invokes testReuseFormSchema operation.
+//
+// POST /testReuseFormSchema
+func (c *Client) TestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) error {
+	res, err := c.sendTestReuseFormSchema(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) (res *TestReuseFormSchemaOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testReuseFormSchema"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestReuseFormSchema",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testReuseFormSchema"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestReuseFormSchemaRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestReuseFormSchemaResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestShareFormSchema invokes testShareFormSchema operation.
 //
 // POST /testShareFormSchema
@@ -518,7 +660,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 	switch request := request.(type) {
 	case *SharedRequest:
 		// Validation is not required for this type.
-	case *SharedRequestForm:
+	case *SharedRequestMultipart:
 		// Validation is not required for this type.
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)

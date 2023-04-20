@@ -1574,7 +1574,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 	}
 	return nil
 }
-func (s *CreateImageEditRequest) Validate() error {
+func (s *CreateImageEditRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.N.Set {
@@ -1644,77 +1644,7 @@ func (s *CreateImageEditRequest) Validate() error {
 	}
 	return nil
 }
-func (s *CreateImageEditRequestForm) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.N.Set {
-			if err := func() error {
-				if err := (validate.Int{
-					MinSet:        true,
-					Min:           1,
-					MaxSet:        true,
-					Max:           10,
-					MinExclusive:  false,
-					MaxExclusive:  false,
-					MultipleOfSet: false,
-					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
-					return errors.Wrap(err, "int")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "n",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Size.Set {
-			if err := func() error {
-				if err := s.Size.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "size",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.ResponseFormat.Set {
-			if err := func() error {
-				if err := s.ResponseFormat.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "response_format",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s CreateImageEditRequestResponseFormat) Validate() error {
+func (s CreateImageEditRequestMultipartResponseFormat) Validate() error {
 	switch s {
 	case "url":
 		return nil
@@ -1724,7 +1654,7 @@ func (s CreateImageEditRequestResponseFormat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CreateImageEditRequestSize) Validate() error {
+func (s CreateImageEditRequestMultipartSize) Validate() error {
 	switch s {
 	case "256x256":
 		return nil
@@ -1828,7 +1758,7 @@ func (s CreateImageRequestSize) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *CreateImageVariationRequest) Validate() error {
+func (s *CreateImageVariationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.N.Set {
@@ -1898,77 +1828,7 @@ func (s *CreateImageVariationRequest) Validate() error {
 	}
 	return nil
 }
-func (s *CreateImageVariationRequestForm) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.N.Set {
-			if err := func() error {
-				if err := (validate.Int{
-					MinSet:        true,
-					Min:           1,
-					MaxSet:        true,
-					Max:           10,
-					MinExclusive:  false,
-					MaxExclusive:  false,
-					MultipleOfSet: false,
-					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
-					return errors.Wrap(err, "int")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "n",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Size.Set {
-			if err := func() error {
-				if err := s.Size.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "size",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.ResponseFormat.Set {
-			if err := func() error {
-				if err := s.ResponseFormat.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "response_format",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s CreateImageVariationRequestResponseFormat) Validate() error {
+func (s CreateImageVariationRequestMultipartResponseFormat) Validate() error {
 	switch s {
 	case "url":
 		return nil
@@ -1978,7 +1838,7 @@ func (s CreateImageVariationRequestResponseFormat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CreateImageVariationRequestSize) Validate() error {
+func (s CreateImageVariationRequestMultipartSize) Validate() error {
 	switch s {
 	case "256x256":
 		return nil
@@ -2295,7 +2155,7 @@ func (s *CreateSearchResponseDataItem) Validate() error {
 	}
 	return nil
 }
-func (s *CreateTranscriptionRequest) Validate() error {
+func (s *CreateTranscriptionRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Temperature.Set {
@@ -2320,57 +2180,7 @@ func (s *CreateTranscriptionRequest) Validate() error {
 	}
 	return nil
 }
-func (s *CreateTranscriptionRequestForm) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Temperature.Set {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Temperature.Value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "temperature",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CreateTranslationRequest) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Temperature.Set {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Temperature.Value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "temperature",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CreateTranslationRequestForm) Validate() error {
+func (s *CreateTranslationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Temperature.Set {

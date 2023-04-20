@@ -103,7 +103,7 @@ type Handler interface {
 	// Создание нового поста или треда.
 	//
 	// POST /user/posting
-	UserPostingPost(ctx context.Context, req OptUserPostingPostReqForm) (UserPostingPostOK, error)
+	UserPostingPost(ctx context.Context, req OptUserPostingPostReq) (UserPostingPostOK, error)
 	// UserReportPost implements POST /user/report operation.
 	//
 	// Отправка жалобы.

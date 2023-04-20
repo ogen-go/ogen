@@ -70,7 +70,7 @@ type Handler interface {
 	// need to increase the storage limit.
 	//
 	// POST /files
-	CreateFile(ctx context.Context, req *CreateFileRequestForm) (OpenAIFile, error)
+	CreateFile(ctx context.Context, req *CreateFileRequestMultipart) (OpenAIFile, error)
 	// CreateFineTune implements createFineTune operation.
 	//
 	// Creates a job that fine-tunes a specified model from a given dataset.
@@ -91,13 +91,13 @@ type Handler interface {
 	// Creates an edited or extended image given an original image and a prompt.
 	//
 	// POST /images/edits
-	CreateImageEdit(ctx context.Context, req *CreateImageEditRequestForm) (ImagesResponse, error)
+	CreateImageEdit(ctx context.Context, req *CreateImageEditRequestMultipart) (ImagesResponse, error)
 	// CreateImageVariation implements createImageVariation operation.
 	//
 	// Creates a variation of a given image.
 	//
 	// POST /images/variations
-	CreateImageVariation(ctx context.Context, req *CreateImageVariationRequestForm) (ImagesResponse, error)
+	CreateImageVariation(ctx context.Context, req *CreateImageVariationRequestMultipart) (ImagesResponse, error)
 	// CreateModeration implements createModeration operation.
 	//
 	// Classifies if text violates OpenAI's Content Policy.
@@ -124,13 +124,13 @@ type Handler interface {
 	// Transcribes audio into the input language.
 	//
 	// POST /audio/transcriptions
-	CreateTranscription(ctx context.Context, req *CreateTranscriptionRequestForm) (*CreateTranscriptionResponse, error)
+	CreateTranscription(ctx context.Context, req *CreateTranscriptionRequestMultipart) (*CreateTranscriptionResponse, error)
 	// CreateTranslation implements createTranslation operation.
 	//
 	// Translates audio into into English.
 	//
 	// POST /audio/translations
-	CreateTranslation(ctx context.Context, req *CreateTranslationRequestForm) (*CreateTranslationResponse, error)
+	CreateTranslation(ctx context.Context, req *CreateTranslationRequestMultipart) (*CreateTranslationResponse, error)
 	// DeleteFile implements deleteFile operation.
 	//
 	// Delete a file.

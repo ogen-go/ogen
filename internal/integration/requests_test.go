@@ -37,7 +37,7 @@ func (t testHTTPRequests) AllRequestBodies(
 		r = req
 	case *api.AllRequestBodiesApplicationXWwwFormUrlencoded:
 		r = strings.NewReader(req.Name)
-	case *api.AllRequestBodiesMultipartFormData:
+	case *api.SimpleObjectMultipart:
 		r = strings.NewReader(req.Name)
 	case *api.AllRequestBodiesReqTextPlain:
 		r = req
@@ -63,7 +63,7 @@ func (t testHTTPRequests) AllRequestBodiesOptional(
 		r = req
 	case *api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		r = strings.NewReader(req.Name)
-	case *api.AllRequestBodiesOptionalMultipartFormData:
+	case *api.SimpleObjectMultipart:
 		r = strings.NewReader(req.Name)
 	case *api.AllRequestBodiesOptionalReqTextPlain:
 		r = req
@@ -131,7 +131,7 @@ func TestRequests(t *testing.T) {
 			&api.AllRequestBodiesApplicationXWwwFormUrlencoded{
 				Name: testData,
 			},
-			&api.AllRequestBodiesMultipartFormData{
+			&api.SimpleObjectMultipart{
 				Name: testData,
 			},
 			&api.AllRequestBodiesReqTextPlain{
@@ -160,7 +160,7 @@ func TestRequests(t *testing.T) {
 			&api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded{
 				Name: testData,
 			},
-			&api.AllRequestBodiesOptionalMultipartFormData{
+			&api.SimpleObjectMultipart{
 				Name: testData,
 			},
 			&api.AllRequestBodiesOptionalReqTextPlain{

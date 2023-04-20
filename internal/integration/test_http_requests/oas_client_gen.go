@@ -89,7 +89,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 		// Validation is not required for this type.
 	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
 		// Validation is not required for this type.
-	case *AllRequestBodiesMultipartFormData:
+	case *SimpleObjectMultipart:
 		// Validation is not required for this type.
 	case *AllRequestBodiesReqTextPlain:
 		// Validation is not required for this type.
@@ -177,7 +177,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 		// Validation is not required for this type.
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		// Validation is not required for this type.
-	case *AllRequestBodiesOptionalMultipartFormData:
+	case *SimpleObjectMultipart:
 		// Validation is not required for this type.
 	case *AllRequestBodiesOptionalReqTextPlain:
 		// Validation is not required for this type.
