@@ -4,6 +4,8 @@ package api
 
 import (
 	"github.com/go-faster/errors"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 // APICaptcha2chcaptchaShowGetNotFound is response for APICaptcha2chcaptchaShowGet operation.
@@ -1474,52 +1476,6 @@ func (o OptUserPostingPostReq) Or(d UserPostingPostReq) UserPostingPostReq {
 	return d
 }
 
-// NewOptUserPostingPostReqForm returns new OptUserPostingPostReqForm with value set to v.
-func NewOptUserPostingPostReqForm(v UserPostingPostReq) OptUserPostingPostReqForm {
-	return OptUserPostingPostReqForm{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptUserPostingPostReqForm is optional UserPostingPostReq.
-type OptUserPostingPostReqForm struct {
-	Value UserPostingPostReq
-	Set   bool
-}
-
-// IsSet returns true if OptUserPostingPostReqForm was set.
-func (o OptUserPostingPostReqForm) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptUserPostingPostReqForm) Reset() {
-	var v UserPostingPostReq
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptUserPostingPostReqForm) SetTo(v UserPostingPostReq) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptUserPostingPostReqForm) Get() (v UserPostingPostReq, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptUserPostingPostReqForm) Or(d UserPostingPostReq) UserPostingPostReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptUserReportPostReq returns new OptUserReportPostReq with value set to v.
 func NewOptUserReportPostReq(v UserReportPostReq) OptUserReportPostReq {
 	return OptUserReportPostReq{
@@ -2089,8 +2045,8 @@ type UserPostingPostReq struct {
 	Icon    OptInt    `json:"icon"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	OpMark OptInt   `json:"op_mark"`
-	File   []string `json:"file[]"`
+	OpMark OptInt             `json:"op_mark"`
+	File   []ht.MultipartFile `json:"file[]"`
 }
 
 // GetCaptchaType returns the value of CaptchaType.
@@ -2144,7 +2100,7 @@ func (s *UserPostingPostReq) GetOpMark() OptInt {
 }
 
 // GetFile returns the value of File.
-func (s *UserPostingPostReq) GetFile() []string {
+func (s *UserPostingPostReq) GetFile() []ht.MultipartFile {
 	return s.File
 }
 
@@ -2199,7 +2155,7 @@ func (s *UserPostingPostReq) SetOpMark(val OptInt) {
 }
 
 // SetFile sets the value of File.
-func (s *UserPostingPostReq) SetFile(val []string) {
+func (s *UserPostingPostReq) SetFile(val []ht.MultipartFile) {
 	s.File = val
 }
 

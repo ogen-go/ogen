@@ -1417,13 +1417,13 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 // Создание нового поста или треда.
 //
 // POST /user/posting
-func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPostReqForm) (UserPostingPostOK, error) {
+func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPostReq) (UserPostingPostOK, error) {
 	res, err := c.sendUserPostingPost(ctx, request)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPostingPostReqForm) (res UserPostingPostOK, err error) {
+func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPostingPostReq) (res UserPostingPostOK, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {

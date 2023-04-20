@@ -198,6 +198,54 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
+				case 'R': // Prefix: "ReuseForm"
+					if l := len("ReuseForm"); len(elem) >= l && elem[0:l] == "ReuseForm" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "OptionalSchema"
+						if l := len("OptionalSchema"); len(elem) >= l && elem[0:l] == "OptionalSchema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleTestReuseFormOptionalSchemaRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+					case 'S': // Prefix: "Schema"
+						if l := len("Schema"); len(elem) >= l && elem[0:l] == "Schema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleTestReuseFormSchemaRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+					}
 				case 'S': // Prefix: "ShareFormSchema"
 					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
 						elem = elem[l:]
@@ -452,6 +500,60 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = "TestMultipartUpload"
 								r.operationID = "testMultipartUpload"
 								r.pathPattern = "/testMultipartUpload"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					}
+				case 'R': // Prefix: "ReuseForm"
+					if l := len("ReuseForm"); len(elem) >= l && elem[0:l] == "ReuseForm" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "OptionalSchema"
+						if l := len("OptionalSchema"); len(elem) >= l && elem[0:l] == "OptionalSchema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: TestReuseFormOptionalSchema
+								r.name = "TestReuseFormOptionalSchema"
+								r.operationID = "testReuseFormOptionalSchema"
+								r.pathPattern = "/testReuseFormOptionalSchema"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					case 'S': // Prefix: "Schema"
+						if l := len("Schema"); len(elem) >= l && elem[0:l] == "Schema" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: TestReuseFormSchema
+								r.name = "TestReuseFormSchema"
+								r.operationID = "testReuseFormSchema"
+								r.pathPattern = "/testReuseFormSchema"
 								r.args = args
 								r.count = 0
 								return r, true

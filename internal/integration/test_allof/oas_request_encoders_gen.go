@@ -63,7 +63,7 @@ func encodeReferencedAllofRequest(
 	r *http.Request,
 ) error {
 	switch req := req.(type) {
-	case *ReferencedAllofApplicationJSON:
+	case *Robot:
 		const contentType = "application/json"
 		e := jx.GetEncoder()
 		{
@@ -72,7 +72,7 @@ func encodeReferencedAllofRequest(
 		encoded := e.Bytes()
 		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
-	case *ReferencedAllofMultipartFormData:
+	case *RobotMultipart:
 		const contentType = "multipart/form-data"
 		request := req
 
@@ -137,7 +137,7 @@ func encodeReferencedAllofOptionalRequest(
 	case *ReferencedAllofOptionalReqEmptyBody:
 		// Empty body case.
 		return nil
-	case *ReferencedAllofOptionalApplicationJSON:
+	case *Robot:
 		const contentType = "application/json"
 		e := jx.GetEncoder()
 		{
@@ -146,7 +146,7 @@ func encodeReferencedAllofOptionalRequest(
 		encoded := e.Bytes()
 		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
-	case *ReferencedAllofOptionalMultipartFormData:
+	case *RobotMultipart:
 		const contentType = "multipart/form-data"
 		request := req
 

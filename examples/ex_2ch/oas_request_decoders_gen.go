@@ -11,6 +11,7 @@ import (
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -102,7 +103,7 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request) (
 }
 
 func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
-	req OptUserPostingPostReqForm,
+	req OptUserPostingPostReq,
 	close func() error,
 	rerr error,
 ) {
@@ -145,7 +146,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request OptUserPostingPostReqForm
+		var request OptUserPostingPostReq
 		{
 			var optForm UserPostingPostReq
 			q := uri.NewQueryDecoder(form)
@@ -468,40 +469,29 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 				}
 			}
 			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "file[]",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						return d.DecodeArray(func(d uri.Decoder) error {
-							var optFormDotFileVal string
-							if err := func() error {
-								val, err := d.DecodeValue()
-								if err != nil {
-									return err
-								}
+				if err := func() error {
+					files, ok := r.MultipartForm.File["file[]"]
+					_ = ok
+					optForm.File = make([]ht.MultipartFile, 0, len(files))
+					for _, fh := range files {
+						f, err := fh.Open()
+						if err != nil {
+							return errors.Wrap(err, "open")
+						}
+						closers = append(closers, f.Close)
 
-								c, err := conv.ToString(val)
-								if err != nil {
-									return err
-								}
-
-								optFormDotFileVal = c
-								return nil
-							}(); err != nil {
-								return err
-							}
-							optForm.File = append(optForm.File, optFormDotFileVal)
-							return nil
+						optForm.File = append(optForm.File, ht.MultipartFile{
+							Name:   fh.Filename,
+							File:   f,
+							Header: fh.Header,
 						})
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"file[]\"")
 					}
+					return nil
+				}(); err != nil {
+					return req, close, errors.Wrap(err, "decode \"file[]\"")
 				}
 			}
-			request = OptUserPostingPostReqForm{
+			request = OptUserPostingPostReq{
 				Value: optForm,
 				Set:   true,
 			}

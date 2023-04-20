@@ -14,10 +14,6 @@ type AllRequestBodiesApplicationXWwwFormUrlencoded SimpleObject
 
 func (*AllRequestBodiesApplicationXWwwFormUrlencoded) allRequestBodiesReq() {}
 
-type AllRequestBodiesMultipartFormData SimpleObject
-
-func (*AllRequestBodiesMultipartFormData) allRequestBodiesReq() {}
-
 type AllRequestBodiesOK struct {
 	Data io.Reader
 }
@@ -36,10 +32,6 @@ func (*AllRequestBodiesOptionalApplicationJSON) allRequestBodiesOptionalReq() {}
 type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded SimpleObject
 
 func (*AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) allRequestBodiesOptionalReq() {}
-
-type AllRequestBodiesOptionalMultipartFormData SimpleObject
-
-func (*AllRequestBodiesOptionalMultipartFormData) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesOptionalOK struct {
 	Data io.Reader
@@ -301,3 +293,32 @@ func (s *SimpleObject) SetName(val string) {
 func (s *SimpleObject) SetAge(val OptInt) {
 	s.Age = val
 }
+
+// Ref: #/components/schemas/SimpleObject
+type SimpleObjectMultipart struct {
+	Name string `json:"name"`
+	Age  OptInt `json:"age"`
+}
+
+// GetName returns the value of Name.
+func (s *SimpleObjectMultipart) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s *SimpleObjectMultipart) GetAge() OptInt {
+	return s.Age
+}
+
+// SetName sets the value of Name.
+func (s *SimpleObjectMultipart) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *SimpleObjectMultipart) SetAge(val OptInt) {
+	s.Age = val
+}
+
+func (*SimpleObjectMultipart) allRequestBodiesOptionalReq() {}
+func (*SimpleObjectMultipart) allRequestBodiesReq()         {}

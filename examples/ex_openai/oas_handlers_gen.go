@@ -815,7 +815,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 		}
 
 		type (
-			Request  = *CreateFileRequestForm
+			Request  = *CreateFileRequestMultipart
 			Params   = struct{}
 			Response = OpenAIFile
 		)
@@ -1124,7 +1124,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 		}
 
 		type (
-			Request  = *CreateImageEditRequestForm
+			Request  = *CreateImageEditRequestMultipart
 			Params   = struct{}
 			Response = ImagesResponse
 		)
@@ -1226,7 +1226,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 		}
 
 		type (
-			Request  = *CreateImageVariationRequestForm
+			Request  = *CreateImageVariationRequestMultipart
 			Params   = struct{}
 			Response = ImagesResponse
 		)
@@ -1556,7 +1556,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 		}
 
 		type (
-			Request  = *CreateTranscriptionRequestForm
+			Request  = *CreateTranscriptionRequestMultipart
 			Params   = struct{}
 			Response = *CreateTranscriptionResponse
 		)
@@ -1658,7 +1658,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 		}
 
 		type (
-			Request  = *CreateTranslationRequestForm
+			Request  = *CreateTranslationRequestMultipart
 			Params   = struct{}
 			Response = *CreateTranslationResponse
 		)

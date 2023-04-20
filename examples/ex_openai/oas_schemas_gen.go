@@ -2406,39 +2406,7 @@ func (s *CreateEmbeddingResponseUsage) SetTotalTokens(val int) {
 }
 
 // Ref: #/components/schemas/CreateFileRequest
-type CreateFileRequest struct {
-	// Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.
-	// If the `purpose` is set to "fine-tune", each line is a JSON record with "prompt" and "completion"
-	// fields representing your [training examples](/docs/guides/fine-tuning/prepare-training-data).
-	File string `json:"file"`
-	// The intended purpose of the uploaded documents.
-	// Use "fine-tune" for [Fine-tuning](/docs/api-reference/fine-tunes). This allows us to validate the
-	// format of the uploaded file.
-	Purpose string `json:"purpose"`
-}
-
-// GetFile returns the value of File.
-func (s *CreateFileRequest) GetFile() string {
-	return s.File
-}
-
-// GetPurpose returns the value of Purpose.
-func (s *CreateFileRequest) GetPurpose() string {
-	return s.Purpose
-}
-
-// SetFile sets the value of File.
-func (s *CreateFileRequest) SetFile(val string) {
-	s.File = val
-}
-
-// SetPurpose sets the value of Purpose.
-func (s *CreateFileRequest) SetPurpose(val string) {
-	s.Purpose = val
-}
-
-// Ref: #/components/schemas/CreateFileRequest
-type CreateFileRequestForm struct {
+type CreateFileRequestMultipart struct {
 	// Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.
 	// If the `purpose` is set to "fine-tune", each line is a JSON record with "prompt" and "completion"
 	// fields representing your [training examples](/docs/guides/fine-tuning/prepare-training-data).
@@ -2450,22 +2418,22 @@ type CreateFileRequestForm struct {
 }
 
 // GetFile returns the value of File.
-func (s *CreateFileRequestForm) GetFile() ht.MultipartFile {
+func (s *CreateFileRequestMultipart) GetFile() ht.MultipartFile {
 	return s.File
 }
 
 // GetPurpose returns the value of Purpose.
-func (s *CreateFileRequestForm) GetPurpose() string {
+func (s *CreateFileRequestMultipart) GetPurpose() string {
 	return s.Purpose
 }
 
 // SetFile sets the value of File.
-func (s *CreateFileRequestForm) SetFile(val ht.MultipartFile) {
+func (s *CreateFileRequestMultipart) SetFile(val ht.MultipartFile) {
 	s.File = val
 }
 
 // SetPurpose sets the value of Purpose.
-func (s *CreateFileRequestForm) SetPurpose(val string) {
+func (s *CreateFileRequestMultipart) SetPurpose(val string) {
 	s.Purpose = val
 }
 
@@ -2671,99 +2639,7 @@ func (s *CreateFineTuneRequest) SetSuffix(val OptNilString) {
 }
 
 // Ref: #/components/schemas/CreateImageEditRequest
-type CreateImageEditRequest struct {
-	// The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided,
-	// image must have transparency, which will be used as the mask.
-	Image string `json:"image"`
-	// An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where
-	// `image` should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as
-	// `image`.
-	Mask OptString `json:"mask"`
-	// A text description of the desired image(s). The maximum length is 1000 characters.
-	Prompt string `json:"prompt"`
-	// The number of images to generate. Must be between 1 and 10.
-	N OptNilInt `json:"n"`
-	// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-	Size OptNilCreateImageEditRequestSize `json:"size"`
-	// The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-	ResponseFormat OptNilCreateImageEditRequestResponseFormat `json:"response_format"`
-	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
-	// [Learn more](/docs/guides/safety-best-practices/end-user-ids).
-	User OptString `json:"user"`
-}
-
-// GetImage returns the value of Image.
-func (s *CreateImageEditRequest) GetImage() string {
-	return s.Image
-}
-
-// GetMask returns the value of Mask.
-func (s *CreateImageEditRequest) GetMask() OptString {
-	return s.Mask
-}
-
-// GetPrompt returns the value of Prompt.
-func (s *CreateImageEditRequest) GetPrompt() string {
-	return s.Prompt
-}
-
-// GetN returns the value of N.
-func (s *CreateImageEditRequest) GetN() OptNilInt {
-	return s.N
-}
-
-// GetSize returns the value of Size.
-func (s *CreateImageEditRequest) GetSize() OptNilCreateImageEditRequestSize {
-	return s.Size
-}
-
-// GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateImageEditRequest) GetResponseFormat() OptNilCreateImageEditRequestResponseFormat {
-	return s.ResponseFormat
-}
-
-// GetUser returns the value of User.
-func (s *CreateImageEditRequest) GetUser() OptString {
-	return s.User
-}
-
-// SetImage sets the value of Image.
-func (s *CreateImageEditRequest) SetImage(val string) {
-	s.Image = val
-}
-
-// SetMask sets the value of Mask.
-func (s *CreateImageEditRequest) SetMask(val OptString) {
-	s.Mask = val
-}
-
-// SetPrompt sets the value of Prompt.
-func (s *CreateImageEditRequest) SetPrompt(val string) {
-	s.Prompt = val
-}
-
-// SetN sets the value of N.
-func (s *CreateImageEditRequest) SetN(val OptNilInt) {
-	s.N = val
-}
-
-// SetSize sets the value of Size.
-func (s *CreateImageEditRequest) SetSize(val OptNilCreateImageEditRequestSize) {
-	s.Size = val
-}
-
-// SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateImageEditRequest) SetResponseFormat(val OptNilCreateImageEditRequestResponseFormat) {
-	s.ResponseFormat = val
-}
-
-// SetUser sets the value of User.
-func (s *CreateImageEditRequest) SetUser(val OptString) {
-	s.User = val
-}
-
-// Ref: #/components/schemas/CreateImageEditRequest
-type CreateImageEditRequestForm struct {
+type CreateImageEditRequestMultipart struct {
 	// The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided,
 	// image must have transparency, which will be used as the mask.
 	Image ht.MultipartFile `json:"image"`
@@ -2776,98 +2652,98 @@ type CreateImageEditRequestForm struct {
 	// The number of images to generate. Must be between 1 and 10.
 	N OptNilInt `json:"n"`
 	// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-	Size OptNilCreateImageEditRequestSize `json:"size"`
+	Size OptNilCreateImageEditRequestMultipartSize `json:"size"`
 	// The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-	ResponseFormat OptNilCreateImageEditRequestResponseFormat `json:"response_format"`
+	ResponseFormat OptNilCreateImageEditRequestMultipartResponseFormat `json:"response_format"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more](/docs/guides/safety-best-practices/end-user-ids).
 	User OptString `json:"user"`
 }
 
 // GetImage returns the value of Image.
-func (s *CreateImageEditRequestForm) GetImage() ht.MultipartFile {
+func (s *CreateImageEditRequestMultipart) GetImage() ht.MultipartFile {
 	return s.Image
 }
 
 // GetMask returns the value of Mask.
-func (s *CreateImageEditRequestForm) GetMask() OptMultipartFile {
+func (s *CreateImageEditRequestMultipart) GetMask() OptMultipartFile {
 	return s.Mask
 }
 
 // GetPrompt returns the value of Prompt.
-func (s *CreateImageEditRequestForm) GetPrompt() string {
+func (s *CreateImageEditRequestMultipart) GetPrompt() string {
 	return s.Prompt
 }
 
 // GetN returns the value of N.
-func (s *CreateImageEditRequestForm) GetN() OptNilInt {
+func (s *CreateImageEditRequestMultipart) GetN() OptNilInt {
 	return s.N
 }
 
 // GetSize returns the value of Size.
-func (s *CreateImageEditRequestForm) GetSize() OptNilCreateImageEditRequestSize {
+func (s *CreateImageEditRequestMultipart) GetSize() OptNilCreateImageEditRequestMultipartSize {
 	return s.Size
 }
 
 // GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateImageEditRequestForm) GetResponseFormat() OptNilCreateImageEditRequestResponseFormat {
+func (s *CreateImageEditRequestMultipart) GetResponseFormat() OptNilCreateImageEditRequestMultipartResponseFormat {
 	return s.ResponseFormat
 }
 
 // GetUser returns the value of User.
-func (s *CreateImageEditRequestForm) GetUser() OptString {
+func (s *CreateImageEditRequestMultipart) GetUser() OptString {
 	return s.User
 }
 
 // SetImage sets the value of Image.
-func (s *CreateImageEditRequestForm) SetImage(val ht.MultipartFile) {
+func (s *CreateImageEditRequestMultipart) SetImage(val ht.MultipartFile) {
 	s.Image = val
 }
 
 // SetMask sets the value of Mask.
-func (s *CreateImageEditRequestForm) SetMask(val OptMultipartFile) {
+func (s *CreateImageEditRequestMultipart) SetMask(val OptMultipartFile) {
 	s.Mask = val
 }
 
 // SetPrompt sets the value of Prompt.
-func (s *CreateImageEditRequestForm) SetPrompt(val string) {
+func (s *CreateImageEditRequestMultipart) SetPrompt(val string) {
 	s.Prompt = val
 }
 
 // SetN sets the value of N.
-func (s *CreateImageEditRequestForm) SetN(val OptNilInt) {
+func (s *CreateImageEditRequestMultipart) SetN(val OptNilInt) {
 	s.N = val
 }
 
 // SetSize sets the value of Size.
-func (s *CreateImageEditRequestForm) SetSize(val OptNilCreateImageEditRequestSize) {
+func (s *CreateImageEditRequestMultipart) SetSize(val OptNilCreateImageEditRequestMultipartSize) {
 	s.Size = val
 }
 
 // SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateImageEditRequestForm) SetResponseFormat(val OptNilCreateImageEditRequestResponseFormat) {
+func (s *CreateImageEditRequestMultipart) SetResponseFormat(val OptNilCreateImageEditRequestMultipartResponseFormat) {
 	s.ResponseFormat = val
 }
 
 // SetUser sets the value of User.
-func (s *CreateImageEditRequestForm) SetUser(val OptString) {
+func (s *CreateImageEditRequestMultipart) SetUser(val OptString) {
 	s.User = val
 }
 
 // The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-type CreateImageEditRequestResponseFormat string
+type CreateImageEditRequestMultipartResponseFormat string
 
 const (
-	CreateImageEditRequestResponseFormatURL     CreateImageEditRequestResponseFormat = "url"
-	CreateImageEditRequestResponseFormatB64JSON CreateImageEditRequestResponseFormat = "b64_json"
+	CreateImageEditRequestMultipartResponseFormatURL     CreateImageEditRequestMultipartResponseFormat = "url"
+	CreateImageEditRequestMultipartResponseFormatB64JSON CreateImageEditRequestMultipartResponseFormat = "b64_json"
 )
 
 // MarshalText implements encoding.TextMarshaler.
-func (s CreateImageEditRequestResponseFormat) MarshalText() ([]byte, error) {
+func (s CreateImageEditRequestMultipartResponseFormat) MarshalText() ([]byte, error) {
 	switch s {
-	case CreateImageEditRequestResponseFormatURL:
+	case CreateImageEditRequestMultipartResponseFormatURL:
 		return []byte(s), nil
-	case CreateImageEditRequestResponseFormatB64JSON:
+	case CreateImageEditRequestMultipartResponseFormatB64JSON:
 		return []byte(s), nil
 	default:
 		return nil, errors.Errorf("invalid value: %q", s)
@@ -2875,13 +2751,13 @@ func (s CreateImageEditRequestResponseFormat) MarshalText() ([]byte, error) {
 }
 
 // UnmarshalText implements encoding.TextUnmarshaler.
-func (s *CreateImageEditRequestResponseFormat) UnmarshalText(data []byte) error {
-	switch CreateImageEditRequestResponseFormat(data) {
-	case CreateImageEditRequestResponseFormatURL:
-		*s = CreateImageEditRequestResponseFormatURL
+func (s *CreateImageEditRequestMultipartResponseFormat) UnmarshalText(data []byte) error {
+	switch CreateImageEditRequestMultipartResponseFormat(data) {
+	case CreateImageEditRequestMultipartResponseFormatURL:
+		*s = CreateImageEditRequestMultipartResponseFormatURL
 		return nil
-	case CreateImageEditRequestResponseFormatB64JSON:
-		*s = CreateImageEditRequestResponseFormatB64JSON
+	case CreateImageEditRequestMultipartResponseFormatB64JSON:
+		*s = CreateImageEditRequestMultipartResponseFormatB64JSON
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -2889,22 +2765,22 @@ func (s *CreateImageEditRequestResponseFormat) UnmarshalText(data []byte) error 
 }
 
 // The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-type CreateImageEditRequestSize string
+type CreateImageEditRequestMultipartSize string
 
 const (
-	CreateImageEditRequestSize256x256   CreateImageEditRequestSize = "256x256"
-	CreateImageEditRequestSize512x512   CreateImageEditRequestSize = "512x512"
-	CreateImageEditRequestSize1024x1024 CreateImageEditRequestSize = "1024x1024"
+	CreateImageEditRequestMultipartSize256x256   CreateImageEditRequestMultipartSize = "256x256"
+	CreateImageEditRequestMultipartSize512x512   CreateImageEditRequestMultipartSize = "512x512"
+	CreateImageEditRequestMultipartSize1024x1024 CreateImageEditRequestMultipartSize = "1024x1024"
 )
 
 // MarshalText implements encoding.TextMarshaler.
-func (s CreateImageEditRequestSize) MarshalText() ([]byte, error) {
+func (s CreateImageEditRequestMultipartSize) MarshalText() ([]byte, error) {
 	switch s {
-	case CreateImageEditRequestSize256x256:
+	case CreateImageEditRequestMultipartSize256x256:
 		return []byte(s), nil
-	case CreateImageEditRequestSize512x512:
+	case CreateImageEditRequestMultipartSize512x512:
 		return []byte(s), nil
-	case CreateImageEditRequestSize1024x1024:
+	case CreateImageEditRequestMultipartSize1024x1024:
 		return []byte(s), nil
 	default:
 		return nil, errors.Errorf("invalid value: %q", s)
@@ -2912,16 +2788,16 @@ func (s CreateImageEditRequestSize) MarshalText() ([]byte, error) {
 }
 
 // UnmarshalText implements encoding.TextUnmarshaler.
-func (s *CreateImageEditRequestSize) UnmarshalText(data []byte) error {
-	switch CreateImageEditRequestSize(data) {
-	case CreateImageEditRequestSize256x256:
-		*s = CreateImageEditRequestSize256x256
+func (s *CreateImageEditRequestMultipartSize) UnmarshalText(data []byte) error {
+	switch CreateImageEditRequestMultipartSize(data) {
+	case CreateImageEditRequestMultipartSize256x256:
+		*s = CreateImageEditRequestMultipartSize256x256
 		return nil
-	case CreateImageEditRequestSize512x512:
-		*s = CreateImageEditRequestSize512x512
+	case CreateImageEditRequestMultipartSize512x512:
+		*s = CreateImageEditRequestMultipartSize512x512
 		return nil
-	case CreateImageEditRequestSize1024x1024:
-		*s = CreateImageEditRequestSize1024x1024
+	case CreateImageEditRequestMultipartSize1024x1024:
+		*s = CreateImageEditRequestMultipartSize1024x1024
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -3068,151 +2944,85 @@ func (s *CreateImageRequestSize) UnmarshalText(data []byte) error {
 }
 
 // Ref: #/components/schemas/CreateImageVariationRequest
-type CreateImageVariationRequest struct {
-	// The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and
-	// square.
-	Image string `json:"image"`
-	// The number of images to generate. Must be between 1 and 10.
-	N OptNilInt `json:"n"`
-	// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-	Size OptNilCreateImageVariationRequestSize `json:"size"`
-	// The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-	ResponseFormat OptNilCreateImageVariationRequestResponseFormat `json:"response_format"`
-	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
-	// [Learn more](/docs/guides/safety-best-practices/end-user-ids).
-	User OptString `json:"user"`
-}
-
-// GetImage returns the value of Image.
-func (s *CreateImageVariationRequest) GetImage() string {
-	return s.Image
-}
-
-// GetN returns the value of N.
-func (s *CreateImageVariationRequest) GetN() OptNilInt {
-	return s.N
-}
-
-// GetSize returns the value of Size.
-func (s *CreateImageVariationRequest) GetSize() OptNilCreateImageVariationRequestSize {
-	return s.Size
-}
-
-// GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateImageVariationRequest) GetResponseFormat() OptNilCreateImageVariationRequestResponseFormat {
-	return s.ResponseFormat
-}
-
-// GetUser returns the value of User.
-func (s *CreateImageVariationRequest) GetUser() OptString {
-	return s.User
-}
-
-// SetImage sets the value of Image.
-func (s *CreateImageVariationRequest) SetImage(val string) {
-	s.Image = val
-}
-
-// SetN sets the value of N.
-func (s *CreateImageVariationRequest) SetN(val OptNilInt) {
-	s.N = val
-}
-
-// SetSize sets the value of Size.
-func (s *CreateImageVariationRequest) SetSize(val OptNilCreateImageVariationRequestSize) {
-	s.Size = val
-}
-
-// SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateImageVariationRequest) SetResponseFormat(val OptNilCreateImageVariationRequestResponseFormat) {
-	s.ResponseFormat = val
-}
-
-// SetUser sets the value of User.
-func (s *CreateImageVariationRequest) SetUser(val OptString) {
-	s.User = val
-}
-
-// Ref: #/components/schemas/CreateImageVariationRequest
-type CreateImageVariationRequestForm struct {
+type CreateImageVariationRequestMultipart struct {
 	// The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and
 	// square.
 	Image ht.MultipartFile `json:"image"`
 	// The number of images to generate. Must be between 1 and 10.
 	N OptNilInt `json:"n"`
 	// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-	Size OptNilCreateImageVariationRequestSize `json:"size"`
+	Size OptNilCreateImageVariationRequestMultipartSize `json:"size"`
 	// The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-	ResponseFormat OptNilCreateImageVariationRequestResponseFormat `json:"response_format"`
+	ResponseFormat OptNilCreateImageVariationRequestMultipartResponseFormat `json:"response_format"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more](/docs/guides/safety-best-practices/end-user-ids).
 	User OptString `json:"user"`
 }
 
 // GetImage returns the value of Image.
-func (s *CreateImageVariationRequestForm) GetImage() ht.MultipartFile {
+func (s *CreateImageVariationRequestMultipart) GetImage() ht.MultipartFile {
 	return s.Image
 }
 
 // GetN returns the value of N.
-func (s *CreateImageVariationRequestForm) GetN() OptNilInt {
+func (s *CreateImageVariationRequestMultipart) GetN() OptNilInt {
 	return s.N
 }
 
 // GetSize returns the value of Size.
-func (s *CreateImageVariationRequestForm) GetSize() OptNilCreateImageVariationRequestSize {
+func (s *CreateImageVariationRequestMultipart) GetSize() OptNilCreateImageVariationRequestMultipartSize {
 	return s.Size
 }
 
 // GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateImageVariationRequestForm) GetResponseFormat() OptNilCreateImageVariationRequestResponseFormat {
+func (s *CreateImageVariationRequestMultipart) GetResponseFormat() OptNilCreateImageVariationRequestMultipartResponseFormat {
 	return s.ResponseFormat
 }
 
 // GetUser returns the value of User.
-func (s *CreateImageVariationRequestForm) GetUser() OptString {
+func (s *CreateImageVariationRequestMultipart) GetUser() OptString {
 	return s.User
 }
 
 // SetImage sets the value of Image.
-func (s *CreateImageVariationRequestForm) SetImage(val ht.MultipartFile) {
+func (s *CreateImageVariationRequestMultipart) SetImage(val ht.MultipartFile) {
 	s.Image = val
 }
 
 // SetN sets the value of N.
-func (s *CreateImageVariationRequestForm) SetN(val OptNilInt) {
+func (s *CreateImageVariationRequestMultipart) SetN(val OptNilInt) {
 	s.N = val
 }
 
 // SetSize sets the value of Size.
-func (s *CreateImageVariationRequestForm) SetSize(val OptNilCreateImageVariationRequestSize) {
+func (s *CreateImageVariationRequestMultipart) SetSize(val OptNilCreateImageVariationRequestMultipartSize) {
 	s.Size = val
 }
 
 // SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateImageVariationRequestForm) SetResponseFormat(val OptNilCreateImageVariationRequestResponseFormat) {
+func (s *CreateImageVariationRequestMultipart) SetResponseFormat(val OptNilCreateImageVariationRequestMultipartResponseFormat) {
 	s.ResponseFormat = val
 }
 
 // SetUser sets the value of User.
-func (s *CreateImageVariationRequestForm) SetUser(val OptString) {
+func (s *CreateImageVariationRequestMultipart) SetUser(val OptString) {
 	s.User = val
 }
 
 // The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-type CreateImageVariationRequestResponseFormat string
+type CreateImageVariationRequestMultipartResponseFormat string
 
 const (
-	CreateImageVariationRequestResponseFormatURL     CreateImageVariationRequestResponseFormat = "url"
-	CreateImageVariationRequestResponseFormatB64JSON CreateImageVariationRequestResponseFormat = "b64_json"
+	CreateImageVariationRequestMultipartResponseFormatURL     CreateImageVariationRequestMultipartResponseFormat = "url"
+	CreateImageVariationRequestMultipartResponseFormatB64JSON CreateImageVariationRequestMultipartResponseFormat = "b64_json"
 )
 
 // MarshalText implements encoding.TextMarshaler.
-func (s CreateImageVariationRequestResponseFormat) MarshalText() ([]byte, error) {
+func (s CreateImageVariationRequestMultipartResponseFormat) MarshalText() ([]byte, error) {
 	switch s {
-	case CreateImageVariationRequestResponseFormatURL:
+	case CreateImageVariationRequestMultipartResponseFormatURL:
 		return []byte(s), nil
-	case CreateImageVariationRequestResponseFormatB64JSON:
+	case CreateImageVariationRequestMultipartResponseFormatB64JSON:
 		return []byte(s), nil
 	default:
 		return nil, errors.Errorf("invalid value: %q", s)
@@ -3220,13 +3030,13 @@ func (s CreateImageVariationRequestResponseFormat) MarshalText() ([]byte, error)
 }
 
 // UnmarshalText implements encoding.TextUnmarshaler.
-func (s *CreateImageVariationRequestResponseFormat) UnmarshalText(data []byte) error {
-	switch CreateImageVariationRequestResponseFormat(data) {
-	case CreateImageVariationRequestResponseFormatURL:
-		*s = CreateImageVariationRequestResponseFormatURL
+func (s *CreateImageVariationRequestMultipartResponseFormat) UnmarshalText(data []byte) error {
+	switch CreateImageVariationRequestMultipartResponseFormat(data) {
+	case CreateImageVariationRequestMultipartResponseFormatURL:
+		*s = CreateImageVariationRequestMultipartResponseFormatURL
 		return nil
-	case CreateImageVariationRequestResponseFormatB64JSON:
-		*s = CreateImageVariationRequestResponseFormatB64JSON
+	case CreateImageVariationRequestMultipartResponseFormatB64JSON:
+		*s = CreateImageVariationRequestMultipartResponseFormatB64JSON
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -3234,22 +3044,22 @@ func (s *CreateImageVariationRequestResponseFormat) UnmarshalText(data []byte) e
 }
 
 // The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
-type CreateImageVariationRequestSize string
+type CreateImageVariationRequestMultipartSize string
 
 const (
-	CreateImageVariationRequestSize256x256   CreateImageVariationRequestSize = "256x256"
-	CreateImageVariationRequestSize512x512   CreateImageVariationRequestSize = "512x512"
-	CreateImageVariationRequestSize1024x1024 CreateImageVariationRequestSize = "1024x1024"
+	CreateImageVariationRequestMultipartSize256x256   CreateImageVariationRequestMultipartSize = "256x256"
+	CreateImageVariationRequestMultipartSize512x512   CreateImageVariationRequestMultipartSize = "512x512"
+	CreateImageVariationRequestMultipartSize1024x1024 CreateImageVariationRequestMultipartSize = "1024x1024"
 )
 
 // MarshalText implements encoding.TextMarshaler.
-func (s CreateImageVariationRequestSize) MarshalText() ([]byte, error) {
+func (s CreateImageVariationRequestMultipartSize) MarshalText() ([]byte, error) {
 	switch s {
-	case CreateImageVariationRequestSize256x256:
+	case CreateImageVariationRequestMultipartSize256x256:
 		return []byte(s), nil
-	case CreateImageVariationRequestSize512x512:
+	case CreateImageVariationRequestMultipartSize512x512:
 		return []byte(s), nil
-	case CreateImageVariationRequestSize1024x1024:
+	case CreateImageVariationRequestMultipartSize1024x1024:
 		return []byte(s), nil
 	default:
 		return nil, errors.Errorf("invalid value: %q", s)
@@ -3257,16 +3067,16 @@ func (s CreateImageVariationRequestSize) MarshalText() ([]byte, error) {
 }
 
 // UnmarshalText implements encoding.TextUnmarshaler.
-func (s *CreateImageVariationRequestSize) UnmarshalText(data []byte) error {
-	switch CreateImageVariationRequestSize(data) {
-	case CreateImageVariationRequestSize256x256:
-		*s = CreateImageVariationRequestSize256x256
+func (s *CreateImageVariationRequestMultipartSize) UnmarshalText(data []byte) error {
+	switch CreateImageVariationRequestMultipartSize(data) {
+	case CreateImageVariationRequestMultipartSize256x256:
+		*s = CreateImageVariationRequestMultipartSize256x256
 		return nil
-	case CreateImageVariationRequestSize512x512:
-		*s = CreateImageVariationRequestSize512x512
+	case CreateImageVariationRequestMultipartSize512x512:
+		*s = CreateImageVariationRequestMultipartSize512x512
 		return nil
-	case CreateImageVariationRequestSize1024x1024:
-		*s = CreateImageVariationRequestSize1024x1024
+	case CreateImageVariationRequestMultipartSize1024x1024:
+		*s = CreateImageVariationRequestMultipartSize1024x1024
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -3765,89 +3575,7 @@ func (s *CreateSearchResponseDataItem) SetScore(val OptFloat64) {
 }
 
 // Ref: #/components/schemas/CreateTranscriptionRequest
-type CreateTranscriptionRequest struct {
-	// The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
-	File string `json:"file"`
-	// ID of the model to use. Only `whisper-1` is currently available.
-	Model string `json:"model"`
-	// An optional text to guide the model's style or continue a previous audio segment. The
-	// [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
-	Prompt OptString `json:"prompt"`
-	// The format of the transcript output, in one of these options: json, text, srt, verbose_json, or
-	// vtt.
-	ResponseFormat OptString `json:"response_format"`
-	// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random,
-	//  while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model
-	// will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically
-	// increase the temperature until certain thresholds are hit.
-	Temperature OptFloat64 `json:"temperature"`
-	// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.
-	// org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
-	Language OptString `json:"language"`
-}
-
-// GetFile returns the value of File.
-func (s *CreateTranscriptionRequest) GetFile() string {
-	return s.File
-}
-
-// GetModel returns the value of Model.
-func (s *CreateTranscriptionRequest) GetModel() string {
-	return s.Model
-}
-
-// GetPrompt returns the value of Prompt.
-func (s *CreateTranscriptionRequest) GetPrompt() OptString {
-	return s.Prompt
-}
-
-// GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateTranscriptionRequest) GetResponseFormat() OptString {
-	return s.ResponseFormat
-}
-
-// GetTemperature returns the value of Temperature.
-func (s *CreateTranscriptionRequest) GetTemperature() OptFloat64 {
-	return s.Temperature
-}
-
-// GetLanguage returns the value of Language.
-func (s *CreateTranscriptionRequest) GetLanguage() OptString {
-	return s.Language
-}
-
-// SetFile sets the value of File.
-func (s *CreateTranscriptionRequest) SetFile(val string) {
-	s.File = val
-}
-
-// SetModel sets the value of Model.
-func (s *CreateTranscriptionRequest) SetModel(val string) {
-	s.Model = val
-}
-
-// SetPrompt sets the value of Prompt.
-func (s *CreateTranscriptionRequest) SetPrompt(val OptString) {
-	s.Prompt = val
-}
-
-// SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateTranscriptionRequest) SetResponseFormat(val OptString) {
-	s.ResponseFormat = val
-}
-
-// SetTemperature sets the value of Temperature.
-func (s *CreateTranscriptionRequest) SetTemperature(val OptFloat64) {
-	s.Temperature = val
-}
-
-// SetLanguage sets the value of Language.
-func (s *CreateTranscriptionRequest) SetLanguage(val OptString) {
-	s.Language = val
-}
-
-// Ref: #/components/schemas/CreateTranscriptionRequest
-type CreateTranscriptionRequestForm struct {
+type CreateTranscriptionRequestMultipart struct {
 	// The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
 	File ht.MultipartFile `json:"file"`
 	// ID of the model to use. Only `whisper-1` is currently available.
@@ -3869,62 +3597,62 @@ type CreateTranscriptionRequestForm struct {
 }
 
 // GetFile returns the value of File.
-func (s *CreateTranscriptionRequestForm) GetFile() ht.MultipartFile {
+func (s *CreateTranscriptionRequestMultipart) GetFile() ht.MultipartFile {
 	return s.File
 }
 
 // GetModel returns the value of Model.
-func (s *CreateTranscriptionRequestForm) GetModel() string {
+func (s *CreateTranscriptionRequestMultipart) GetModel() string {
 	return s.Model
 }
 
 // GetPrompt returns the value of Prompt.
-func (s *CreateTranscriptionRequestForm) GetPrompt() OptString {
+func (s *CreateTranscriptionRequestMultipart) GetPrompt() OptString {
 	return s.Prompt
 }
 
 // GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateTranscriptionRequestForm) GetResponseFormat() OptString {
+func (s *CreateTranscriptionRequestMultipart) GetResponseFormat() OptString {
 	return s.ResponseFormat
 }
 
 // GetTemperature returns the value of Temperature.
-func (s *CreateTranscriptionRequestForm) GetTemperature() OptFloat64 {
+func (s *CreateTranscriptionRequestMultipart) GetTemperature() OptFloat64 {
 	return s.Temperature
 }
 
 // GetLanguage returns the value of Language.
-func (s *CreateTranscriptionRequestForm) GetLanguage() OptString {
+func (s *CreateTranscriptionRequestMultipart) GetLanguage() OptString {
 	return s.Language
 }
 
 // SetFile sets the value of File.
-func (s *CreateTranscriptionRequestForm) SetFile(val ht.MultipartFile) {
+func (s *CreateTranscriptionRequestMultipart) SetFile(val ht.MultipartFile) {
 	s.File = val
 }
 
 // SetModel sets the value of Model.
-func (s *CreateTranscriptionRequestForm) SetModel(val string) {
+func (s *CreateTranscriptionRequestMultipart) SetModel(val string) {
 	s.Model = val
 }
 
 // SetPrompt sets the value of Prompt.
-func (s *CreateTranscriptionRequestForm) SetPrompt(val OptString) {
+func (s *CreateTranscriptionRequestMultipart) SetPrompt(val OptString) {
 	s.Prompt = val
 }
 
 // SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateTranscriptionRequestForm) SetResponseFormat(val OptString) {
+func (s *CreateTranscriptionRequestMultipart) SetResponseFormat(val OptString) {
 	s.ResponseFormat = val
 }
 
 // SetTemperature sets the value of Temperature.
-func (s *CreateTranscriptionRequestForm) SetTemperature(val OptFloat64) {
+func (s *CreateTranscriptionRequestMultipart) SetTemperature(val OptFloat64) {
 	s.Temperature = val
 }
 
 // SetLanguage sets the value of Language.
-func (s *CreateTranscriptionRequestForm) SetLanguage(val OptString) {
+func (s *CreateTranscriptionRequestMultipart) SetLanguage(val OptString) {
 	s.Language = val
 }
 
@@ -3944,76 +3672,7 @@ func (s *CreateTranscriptionResponse) SetText(val string) {
 }
 
 // Ref: #/components/schemas/CreateTranslationRequest
-type CreateTranslationRequest struct {
-	// The audio file to translate, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
-	File string `json:"file"`
-	// ID of the model to use. Only `whisper-1` is currently available.
-	Model string `json:"model"`
-	// An optional text to guide the model's style or continue a previous audio segment. The
-	// [prompt](/docs/guides/speech-to-text/prompting) should be in English.
-	Prompt OptString `json:"prompt"`
-	// The format of the transcript output, in one of these options: json, text, srt, verbose_json, or
-	// vtt.
-	ResponseFormat OptString `json:"response_format"`
-	// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random,
-	//  while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model
-	// will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically
-	// increase the temperature until certain thresholds are hit.
-	Temperature OptFloat64 `json:"temperature"`
-}
-
-// GetFile returns the value of File.
-func (s *CreateTranslationRequest) GetFile() string {
-	return s.File
-}
-
-// GetModel returns the value of Model.
-func (s *CreateTranslationRequest) GetModel() string {
-	return s.Model
-}
-
-// GetPrompt returns the value of Prompt.
-func (s *CreateTranslationRequest) GetPrompt() OptString {
-	return s.Prompt
-}
-
-// GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateTranslationRequest) GetResponseFormat() OptString {
-	return s.ResponseFormat
-}
-
-// GetTemperature returns the value of Temperature.
-func (s *CreateTranslationRequest) GetTemperature() OptFloat64 {
-	return s.Temperature
-}
-
-// SetFile sets the value of File.
-func (s *CreateTranslationRequest) SetFile(val string) {
-	s.File = val
-}
-
-// SetModel sets the value of Model.
-func (s *CreateTranslationRequest) SetModel(val string) {
-	s.Model = val
-}
-
-// SetPrompt sets the value of Prompt.
-func (s *CreateTranslationRequest) SetPrompt(val OptString) {
-	s.Prompt = val
-}
-
-// SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateTranslationRequest) SetResponseFormat(val OptString) {
-	s.ResponseFormat = val
-}
-
-// SetTemperature sets the value of Temperature.
-func (s *CreateTranslationRequest) SetTemperature(val OptFloat64) {
-	s.Temperature = val
-}
-
-// Ref: #/components/schemas/CreateTranslationRequest
-type CreateTranslationRequestForm struct {
+type CreateTranslationRequestMultipart struct {
 	// The audio file to translate, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
 	File ht.MultipartFile `json:"file"`
 	// ID of the model to use. Only `whisper-1` is currently available.
@@ -4032,52 +3691,52 @@ type CreateTranslationRequestForm struct {
 }
 
 // GetFile returns the value of File.
-func (s *CreateTranslationRequestForm) GetFile() ht.MultipartFile {
+func (s *CreateTranslationRequestMultipart) GetFile() ht.MultipartFile {
 	return s.File
 }
 
 // GetModel returns the value of Model.
-func (s *CreateTranslationRequestForm) GetModel() string {
+func (s *CreateTranslationRequestMultipart) GetModel() string {
 	return s.Model
 }
 
 // GetPrompt returns the value of Prompt.
-func (s *CreateTranslationRequestForm) GetPrompt() OptString {
+func (s *CreateTranslationRequestMultipart) GetPrompt() OptString {
 	return s.Prompt
 }
 
 // GetResponseFormat returns the value of ResponseFormat.
-func (s *CreateTranslationRequestForm) GetResponseFormat() OptString {
+func (s *CreateTranslationRequestMultipart) GetResponseFormat() OptString {
 	return s.ResponseFormat
 }
 
 // GetTemperature returns the value of Temperature.
-func (s *CreateTranslationRequestForm) GetTemperature() OptFloat64 {
+func (s *CreateTranslationRequestMultipart) GetTemperature() OptFloat64 {
 	return s.Temperature
 }
 
 // SetFile sets the value of File.
-func (s *CreateTranslationRequestForm) SetFile(val ht.MultipartFile) {
+func (s *CreateTranslationRequestMultipart) SetFile(val ht.MultipartFile) {
 	s.File = val
 }
 
 // SetModel sets the value of Model.
-func (s *CreateTranslationRequestForm) SetModel(val string) {
+func (s *CreateTranslationRequestMultipart) SetModel(val string) {
 	s.Model = val
 }
 
 // SetPrompt sets the value of Prompt.
-func (s *CreateTranslationRequestForm) SetPrompt(val OptString) {
+func (s *CreateTranslationRequestMultipart) SetPrompt(val OptString) {
 	s.Prompt = val
 }
 
 // SetResponseFormat sets the value of ResponseFormat.
-func (s *CreateTranslationRequestForm) SetResponseFormat(val OptString) {
+func (s *CreateTranslationRequestMultipart) SetResponseFormat(val OptString) {
 	s.ResponseFormat = val
 }
 
 // SetTemperature sets the value of Temperature.
-func (s *CreateTranslationRequestForm) SetTemperature(val OptFloat64) {
+func (s *CreateTranslationRequestMultipart) SetTemperature(val OptFloat64) {
 	s.Temperature = val
 }
 
@@ -5322,52 +4981,52 @@ func (o OptNilCreateEditResponseChoicesItemLogprobs) Or(d CreateEditResponseChoi
 	return d
 }
 
-// NewOptNilCreateImageEditRequestResponseFormat returns new OptNilCreateImageEditRequestResponseFormat with value set to v.
-func NewOptNilCreateImageEditRequestResponseFormat(v CreateImageEditRequestResponseFormat) OptNilCreateImageEditRequestResponseFormat {
-	return OptNilCreateImageEditRequestResponseFormat{
+// NewOptNilCreateImageEditRequestMultipartResponseFormat returns new OptNilCreateImageEditRequestMultipartResponseFormat with value set to v.
+func NewOptNilCreateImageEditRequestMultipartResponseFormat(v CreateImageEditRequestMultipartResponseFormat) OptNilCreateImageEditRequestMultipartResponseFormat {
+	return OptNilCreateImageEditRequestMultipartResponseFormat{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilCreateImageEditRequestResponseFormat is optional nullable CreateImageEditRequestResponseFormat.
-type OptNilCreateImageEditRequestResponseFormat struct {
-	Value CreateImageEditRequestResponseFormat
+// OptNilCreateImageEditRequestMultipartResponseFormat is optional nullable CreateImageEditRequestMultipartResponseFormat.
+type OptNilCreateImageEditRequestMultipartResponseFormat struct {
+	Value CreateImageEditRequestMultipartResponseFormat
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilCreateImageEditRequestResponseFormat was set.
-func (o OptNilCreateImageEditRequestResponseFormat) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilCreateImageEditRequestMultipartResponseFormat was set.
+func (o OptNilCreateImageEditRequestMultipartResponseFormat) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilCreateImageEditRequestResponseFormat) Reset() {
-	var v CreateImageEditRequestResponseFormat
+func (o *OptNilCreateImageEditRequestMultipartResponseFormat) Reset() {
+	var v CreateImageEditRequestMultipartResponseFormat
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilCreateImageEditRequestResponseFormat) SetTo(v CreateImageEditRequestResponseFormat) {
+func (o *OptNilCreateImageEditRequestMultipartResponseFormat) SetTo(v CreateImageEditRequestMultipartResponseFormat) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilCreateImageEditRequestResponseFormat) IsNull() bool { return o.Null }
+func (o OptNilCreateImageEditRequestMultipartResponseFormat) IsNull() bool { return o.Null }
 
 // SetNull sets value to null.
-func (o *OptNilCreateImageEditRequestResponseFormat) SetToNull() {
+func (o *OptNilCreateImageEditRequestMultipartResponseFormat) SetToNull() {
 	o.Set = true
 	o.Null = true
-	var v CreateImageEditRequestResponseFormat
+	var v CreateImageEditRequestMultipartResponseFormat
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilCreateImageEditRequestResponseFormat) Get() (v CreateImageEditRequestResponseFormat, ok bool) {
+func (o OptNilCreateImageEditRequestMultipartResponseFormat) Get() (v CreateImageEditRequestMultipartResponseFormat, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -5378,59 +5037,59 @@ func (o OptNilCreateImageEditRequestResponseFormat) Get() (v CreateImageEditRequ
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilCreateImageEditRequestResponseFormat) Or(d CreateImageEditRequestResponseFormat) CreateImageEditRequestResponseFormat {
+func (o OptNilCreateImageEditRequestMultipartResponseFormat) Or(d CreateImageEditRequestMultipartResponseFormat) CreateImageEditRequestMultipartResponseFormat {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptNilCreateImageEditRequestSize returns new OptNilCreateImageEditRequestSize with value set to v.
-func NewOptNilCreateImageEditRequestSize(v CreateImageEditRequestSize) OptNilCreateImageEditRequestSize {
-	return OptNilCreateImageEditRequestSize{
+// NewOptNilCreateImageEditRequestMultipartSize returns new OptNilCreateImageEditRequestMultipartSize with value set to v.
+func NewOptNilCreateImageEditRequestMultipartSize(v CreateImageEditRequestMultipartSize) OptNilCreateImageEditRequestMultipartSize {
+	return OptNilCreateImageEditRequestMultipartSize{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilCreateImageEditRequestSize is optional nullable CreateImageEditRequestSize.
-type OptNilCreateImageEditRequestSize struct {
-	Value CreateImageEditRequestSize
+// OptNilCreateImageEditRequestMultipartSize is optional nullable CreateImageEditRequestMultipartSize.
+type OptNilCreateImageEditRequestMultipartSize struct {
+	Value CreateImageEditRequestMultipartSize
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilCreateImageEditRequestSize was set.
-func (o OptNilCreateImageEditRequestSize) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilCreateImageEditRequestMultipartSize was set.
+func (o OptNilCreateImageEditRequestMultipartSize) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilCreateImageEditRequestSize) Reset() {
-	var v CreateImageEditRequestSize
+func (o *OptNilCreateImageEditRequestMultipartSize) Reset() {
+	var v CreateImageEditRequestMultipartSize
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilCreateImageEditRequestSize) SetTo(v CreateImageEditRequestSize) {
+func (o *OptNilCreateImageEditRequestMultipartSize) SetTo(v CreateImageEditRequestMultipartSize) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilCreateImageEditRequestSize) IsNull() bool { return o.Null }
+func (o OptNilCreateImageEditRequestMultipartSize) IsNull() bool { return o.Null }
 
 // SetNull sets value to null.
-func (o *OptNilCreateImageEditRequestSize) SetToNull() {
+func (o *OptNilCreateImageEditRequestMultipartSize) SetToNull() {
 	o.Set = true
 	o.Null = true
-	var v CreateImageEditRequestSize
+	var v CreateImageEditRequestMultipartSize
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilCreateImageEditRequestSize) Get() (v CreateImageEditRequestSize, ok bool) {
+func (o OptNilCreateImageEditRequestMultipartSize) Get() (v CreateImageEditRequestMultipartSize, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -5441,7 +5100,7 @@ func (o OptNilCreateImageEditRequestSize) Get() (v CreateImageEditRequestSize, o
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilCreateImageEditRequestSize) Or(d CreateImageEditRequestSize) CreateImageEditRequestSize {
+func (o OptNilCreateImageEditRequestMultipartSize) Or(d CreateImageEditRequestMultipartSize) CreateImageEditRequestMultipartSize {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -5574,52 +5233,52 @@ func (o OptNilCreateImageRequestSize) Or(d CreateImageRequestSize) CreateImageRe
 	return d
 }
 
-// NewOptNilCreateImageVariationRequestResponseFormat returns new OptNilCreateImageVariationRequestResponseFormat with value set to v.
-func NewOptNilCreateImageVariationRequestResponseFormat(v CreateImageVariationRequestResponseFormat) OptNilCreateImageVariationRequestResponseFormat {
-	return OptNilCreateImageVariationRequestResponseFormat{
+// NewOptNilCreateImageVariationRequestMultipartResponseFormat returns new OptNilCreateImageVariationRequestMultipartResponseFormat with value set to v.
+func NewOptNilCreateImageVariationRequestMultipartResponseFormat(v CreateImageVariationRequestMultipartResponseFormat) OptNilCreateImageVariationRequestMultipartResponseFormat {
+	return OptNilCreateImageVariationRequestMultipartResponseFormat{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilCreateImageVariationRequestResponseFormat is optional nullable CreateImageVariationRequestResponseFormat.
-type OptNilCreateImageVariationRequestResponseFormat struct {
-	Value CreateImageVariationRequestResponseFormat
+// OptNilCreateImageVariationRequestMultipartResponseFormat is optional nullable CreateImageVariationRequestMultipartResponseFormat.
+type OptNilCreateImageVariationRequestMultipartResponseFormat struct {
+	Value CreateImageVariationRequestMultipartResponseFormat
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilCreateImageVariationRequestResponseFormat was set.
-func (o OptNilCreateImageVariationRequestResponseFormat) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilCreateImageVariationRequestMultipartResponseFormat was set.
+func (o OptNilCreateImageVariationRequestMultipartResponseFormat) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilCreateImageVariationRequestResponseFormat) Reset() {
-	var v CreateImageVariationRequestResponseFormat
+func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) Reset() {
+	var v CreateImageVariationRequestMultipartResponseFormat
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilCreateImageVariationRequestResponseFormat) SetTo(v CreateImageVariationRequestResponseFormat) {
+func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) SetTo(v CreateImageVariationRequestMultipartResponseFormat) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilCreateImageVariationRequestResponseFormat) IsNull() bool { return o.Null }
+func (o OptNilCreateImageVariationRequestMultipartResponseFormat) IsNull() bool { return o.Null }
 
 // SetNull sets value to null.
-func (o *OptNilCreateImageVariationRequestResponseFormat) SetToNull() {
+func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) SetToNull() {
 	o.Set = true
 	o.Null = true
-	var v CreateImageVariationRequestResponseFormat
+	var v CreateImageVariationRequestMultipartResponseFormat
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilCreateImageVariationRequestResponseFormat) Get() (v CreateImageVariationRequestResponseFormat, ok bool) {
+func (o OptNilCreateImageVariationRequestMultipartResponseFormat) Get() (v CreateImageVariationRequestMultipartResponseFormat, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -5630,59 +5289,59 @@ func (o OptNilCreateImageVariationRequestResponseFormat) Get() (v CreateImageVar
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilCreateImageVariationRequestResponseFormat) Or(d CreateImageVariationRequestResponseFormat) CreateImageVariationRequestResponseFormat {
+func (o OptNilCreateImageVariationRequestMultipartResponseFormat) Or(d CreateImageVariationRequestMultipartResponseFormat) CreateImageVariationRequestMultipartResponseFormat {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptNilCreateImageVariationRequestSize returns new OptNilCreateImageVariationRequestSize with value set to v.
-func NewOptNilCreateImageVariationRequestSize(v CreateImageVariationRequestSize) OptNilCreateImageVariationRequestSize {
-	return OptNilCreateImageVariationRequestSize{
+// NewOptNilCreateImageVariationRequestMultipartSize returns new OptNilCreateImageVariationRequestMultipartSize with value set to v.
+func NewOptNilCreateImageVariationRequestMultipartSize(v CreateImageVariationRequestMultipartSize) OptNilCreateImageVariationRequestMultipartSize {
+	return OptNilCreateImageVariationRequestMultipartSize{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilCreateImageVariationRequestSize is optional nullable CreateImageVariationRequestSize.
-type OptNilCreateImageVariationRequestSize struct {
-	Value CreateImageVariationRequestSize
+// OptNilCreateImageVariationRequestMultipartSize is optional nullable CreateImageVariationRequestMultipartSize.
+type OptNilCreateImageVariationRequestMultipartSize struct {
+	Value CreateImageVariationRequestMultipartSize
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilCreateImageVariationRequestSize was set.
-func (o OptNilCreateImageVariationRequestSize) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilCreateImageVariationRequestMultipartSize was set.
+func (o OptNilCreateImageVariationRequestMultipartSize) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilCreateImageVariationRequestSize) Reset() {
-	var v CreateImageVariationRequestSize
+func (o *OptNilCreateImageVariationRequestMultipartSize) Reset() {
+	var v CreateImageVariationRequestMultipartSize
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilCreateImageVariationRequestSize) SetTo(v CreateImageVariationRequestSize) {
+func (o *OptNilCreateImageVariationRequestMultipartSize) SetTo(v CreateImageVariationRequestMultipartSize) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilCreateImageVariationRequestSize) IsNull() bool { return o.Null }
+func (o OptNilCreateImageVariationRequestMultipartSize) IsNull() bool { return o.Null }
 
 // SetNull sets value to null.
-func (o *OptNilCreateImageVariationRequestSize) SetToNull() {
+func (o *OptNilCreateImageVariationRequestMultipartSize) SetToNull() {
 	o.Set = true
 	o.Null = true
-	var v CreateImageVariationRequestSize
+	var v CreateImageVariationRequestMultipartSize
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilCreateImageVariationRequestSize) Get() (v CreateImageVariationRequestSize, ok bool) {
+func (o OptNilCreateImageVariationRequestMultipartSize) Get() (v CreateImageVariationRequestMultipartSize, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -5693,7 +5352,7 @@ func (o OptNilCreateImageVariationRequestSize) Get() (v CreateImageVariationRequ
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilCreateImageVariationRequestSize) Or(d CreateImageVariationRequestSize) CreateImageVariationRequestSize {
+func (o OptNilCreateImageVariationRequestMultipartSize) Or(d CreateImageVariationRequestMultipartSize) CreateImageVariationRequestMultipartSize {
 	if v, ok := o.Get(); ok {
 		return v
 	}

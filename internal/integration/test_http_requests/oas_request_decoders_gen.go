@@ -174,70 +174,66 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request AllRequestBodiesMultipartFormData
+		var request SimpleObjectMultipart
+		q := uri.NewQueryDecoder(form)
 		{
-			var unwrapped SimpleObject
-			q := uri.NewQueryDecoder(form)
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "name",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "name",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					request.Name = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "age",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var requestDotAgeVal int
+					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
 
-						c, err := conv.ToString(val)
+						c, err := conv.ToInt(val)
 						if err != nil {
 							return err
 						}
 
-						unwrapped.Name = c
+						requestDotAgeVal = c
 						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+					}(); err != nil {
+						return err
 					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
+					request.Age.SetTo(requestDotAgeVal)
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "age",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						var unwrappedDotAgeVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							unwrappedDotAgeVal = c
-							return nil
-						}(); err != nil {
-							return err
-						}
-						unwrapped.Age.SetTo(unwrappedDotAgeVal)
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
-					}
-				}
-			}
-			request = AllRequestBodiesMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
 	case ct == "text/plain":
@@ -406,70 +402,66 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request AllRequestBodiesOptionalMultipartFormData
+		var request SimpleObjectMultipart
+		q := uri.NewQueryDecoder(form)
 		{
-			var unwrapped SimpleObject
-			q := uri.NewQueryDecoder(form)
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "name",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "name",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					request.Name = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "age",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var requestDotAgeVal int
+					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
 
-						c, err := conv.ToString(val)
+						c, err := conv.ToInt(val)
 						if err != nil {
 							return err
 						}
 
-						unwrapped.Name = c
+						requestDotAgeVal = c
 						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+					}(); err != nil {
+						return err
 					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
+					request.Age.SetTo(requestDotAgeVal)
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "age",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						var unwrappedDotAgeVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							unwrappedDotAgeVal = c
-							return nil
-						}(); err != nil {
-							return err
-						}
-						unwrapped.Age.SetTo(unwrappedDotAgeVal)
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
-					}
-				}
-			}
-			request = AllRequestBodiesOptionalMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
 	case ct == "text/plain":

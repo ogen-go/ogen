@@ -96,7 +96,7 @@ func (UnimplementedHandler) CreateEmbedding(ctx context.Context, req *CreateEmbe
 // need to increase the storage limit.
 //
 // POST /files
-func (UnimplementedHandler) CreateFile(ctx context.Context, req *CreateFileRequestForm) (r OpenAIFile, _ error) {
+func (UnimplementedHandler) CreateFile(ctx context.Context, req *CreateFileRequestMultipart) (r OpenAIFile, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -126,7 +126,7 @@ func (UnimplementedHandler) CreateImage(ctx context.Context, req *CreateImageReq
 // Creates an edited or extended image given an original image and a prompt.
 //
 // POST /images/edits
-func (UnimplementedHandler) CreateImageEdit(ctx context.Context, req *CreateImageEditRequestForm) (r ImagesResponse, _ error) {
+func (UnimplementedHandler) CreateImageEdit(ctx context.Context, req *CreateImageEditRequestMultipart) (r ImagesResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -135,7 +135,7 @@ func (UnimplementedHandler) CreateImageEdit(ctx context.Context, req *CreateImag
 // Creates a variation of a given image.
 //
 // POST /images/variations
-func (UnimplementedHandler) CreateImageVariation(ctx context.Context, req *CreateImageVariationRequestForm) (r ImagesResponse, _ error) {
+func (UnimplementedHandler) CreateImageVariation(ctx context.Context, req *CreateImageVariationRequestMultipart) (r ImagesResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -171,7 +171,7 @@ func (UnimplementedHandler) CreateSearch(ctx context.Context, req *CreateSearchR
 // Transcribes audio into the input language.
 //
 // POST /audio/transcriptions
-func (UnimplementedHandler) CreateTranscription(ctx context.Context, req *CreateTranscriptionRequestForm) (r *CreateTranscriptionResponse, _ error) {
+func (UnimplementedHandler) CreateTranscription(ctx context.Context, req *CreateTranscriptionRequestMultipart) (r *CreateTranscriptionResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -180,7 +180,7 @@ func (UnimplementedHandler) CreateTranscription(ctx context.Context, req *Create
 // Translates audio into into English.
 //
 // POST /audio/translations
-func (UnimplementedHandler) CreateTranslation(ctx context.Context, req *CreateTranslationRequestForm) (r *CreateTranslationResponse, _ error) {
+func (UnimplementedHandler) CreateTranslation(ctx context.Context, req *CreateTranslationRequestMultipart) (r *CreateTranslationResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

@@ -1444,7 +1444,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 		}
 
 		type (
-			Request  = OptUserPostingPostReqForm
+			Request  = OptUserPostingPostReq
 			Params   = struct{}
 			Response = UserPostingPostOK
 		)

@@ -44,7 +44,7 @@ func encodeOnlyFormRequest(
 }
 
 func encodeOnlyMultipartFileRequest(
-	req *OnlyMultipartFileReqForm,
+	req *OnlyMultipartFileReq,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -208,7 +208,7 @@ func encodeTestFormURLEncodedRequest(
 }
 
 func encodeTestMultipartRequest(
-	req *TestForm,
+	req *TestFormMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -325,7 +325,7 @@ func encodeTestMultipartRequest(
 }
 
 func encodeTestMultipartUploadRequest(
-	req *TestMultipartUploadReqForm,
+	req *TestMultipartUploadReq,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -392,6 +392,88 @@ func encodeTestMultipartUploadRequest(
 	return nil
 }
 
+func encodeTestReuseFormOptionalSchemaRequest(
+	req OptSharedRequestMultipart,
+	r *http.Request,
+) error {
+	const contentType = "multipart/form-data"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	request := req.Value
+
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "filename" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "filename",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := request.Filename.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if val, ok := request.File.Get(); ok {
+			if err := val.WriteMultipart("file", w); err != nil {
+				return errors.Wrap(err, "write \"file\"")
+			}
+		}
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
+		}
+		return nil
+	})
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	return nil
+}
+
+func encodeTestReuseFormSchemaRequest(
+	req *SharedRequestMultipart,
+	r *http.Request,
+) error {
+	const contentType = "multipart/form-data"
+	request := req
+
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "filename" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "filename",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := request.Filename.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if val, ok := request.File.Get(); ok {
+			if err := val.WriteMultipart("file", w); err != nil {
+				return errors.Wrap(err, "write \"file\"")
+			}
+		}
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
+		}
+		return nil
+	})
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	return nil
+}
+
 func encodeTestShareFormSchemaRequest(
 	req TestShareFormSchemaReq,
 	r *http.Request,
@@ -406,7 +488,7 @@ func encodeTestShareFormSchemaRequest(
 		encoded := e.Bytes()
 		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
-	case *SharedRequestForm:
+	case *SharedRequestMultipart:
 		const contentType = "multipart/form-data"
 		request := req
 
