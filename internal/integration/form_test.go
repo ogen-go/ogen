@@ -42,6 +42,23 @@ func testForm() *api.TestForm {
 	}
 }
 
+func testFormMultipart() *api.TestFormMultipart {
+	return &api.TestFormMultipart{
+		ID:          api.NewOptInt(10),
+		UUID:        api.NewOptUUID(uuid.MustParse("00000000-0000-0000-0000-000000000000")),
+		Description: "foobar",
+		Array:       []string{"foo", "bar"},
+		Object: api.NewOptTestFormMultipartObject(api.TestFormMultipartObject{
+			Min: api.NewOptInt(10),
+			Max: 10,
+		}),
+		DeepObject: api.NewOptTestFormMultipartDeepObject(api.TestFormMultipartDeepObject{
+			Min: api.NewOptInt(10),
+			Max: 10,
+		}),
+	}
+}
+
 func checkTestFormValues(a *assert.Assertions, form url.Values) {
 	a.Equal("10", form.Get("id"))
 	a.Equal("00000000-0000-0000-0000-000000000000", form.Get("uuid"))
@@ -64,12 +81,12 @@ func (s testFormServer) TestFormURLEncoded(ctx context.Context, req *api.TestFor
 	return nil
 }
 
-func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestForm) error {
-	s.a.Equal(testForm(), req)
+func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestFormMultipart) error {
+	s.a.Equal(testFormMultipart(), req)
 	return nil
 }
 
-func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReqForm) (
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReq) (
 	*api.TestMultipartUploadOK,
 	error,
 ) {
@@ -113,6 +130,14 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMu
 	return r, nil
 }
 
+func (s testFormServer) TestReuseFormOptionalSchema(ctx context.Context, req api.OptSharedRequestMultipart) error {
+	return nil
+}
+
+func (s testFormServer) TestReuseFormSchema(ctx context.Context, req *api.SharedRequestMultipart) error {
+	return nil
+}
+
 func (s testFormServer) TestShareFormSchema(ctx context.Context, req api.TestShareFormSchemaReq) error {
 	return nil
 }
@@ -121,7 +146,7 @@ func (s testFormServer) OnlyForm(ctx context.Context, req *api.OnlyFormReq) erro
 	return nil
 }
 
-func (s testFormServer) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReqForm) error {
+func (s testFormServer) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReq) error {
 	return nil
 }
 
@@ -207,7 +232,7 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	client, err := api.NewClient(s.URL)
 	require.NoError(t, err)
 
-	err = client.TestMultipart(ctx, testForm())
+	err = client.TestMultipart(ctx, testFormMultipart())
 	a.NoError(err)
 }
 
@@ -252,7 +277,7 @@ func TestMultipartUploadE2E(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := require.New(t)
 
-			req := &api.TestMultipartUploadReqForm{
+			req := &api.TestMultipartUploadReq{
 				File: ht.MultipartFile{
 					Name: "pablo.jpg",
 					File: strings.NewReader(tt.file),
