@@ -298,7 +298,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			{{- end }}
 			{{- else if $t.IsArray }}
 			_ = ok
-			request.Files = make({{ $t.Go }}, 0, len(files))
+			{{ $recv }} = make({{ $t.Go }}, 0, len(files))
 			for _, fh := range files {
 				f, err := fh.Open()
 				if err != nil {
