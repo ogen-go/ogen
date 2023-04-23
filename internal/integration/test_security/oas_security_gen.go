@@ -8,8 +8,6 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
-	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -137,9 +135,6 @@ type SecuritySource interface {
 func (s *Client) securityBasicAuth(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.BasicAuth(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"BasicAuth\"")
 	}
 	req.SetBasicAuth(t.Username, t.Password)
@@ -148,9 +143,6 @@ func (s *Client) securityBasicAuth(ctx context.Context, operationName string, re
 func (s *Client) securityBearerToken(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"BearerToken\"")
 	}
 	req.Header.Set("Authorization", "Bearer "+t.Token)
@@ -159,9 +151,6 @@ func (s *Client) securityBearerToken(ctx context.Context, operationName string, 
 func (s *Client) securityCookieKey(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.CookieKey(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"CookieKey\"")
 	}
 	req.AddCookie(&http.Cookie{
@@ -173,9 +162,6 @@ func (s *Client) securityCookieKey(ctx context.Context, operationName string, re
 func (s *Client) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.HeaderKey(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"HeaderKey\"")
 	}
 	req.Header.Set("X-Api-Key", t.APIKey)
@@ -184,9 +170,6 @@ func (s *Client) securityHeaderKey(ctx context.Context, operationName string, re
 func (s *Client) securityQueryKey(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.QueryKey(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"QueryKey\"")
 	}
 	q := req.URL.Query()
