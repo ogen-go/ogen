@@ -10,6 +10,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -98,13 +99,51 @@ func (g *Generator) generateFormContent(
 	typeName string,
 	media *openapi.MediaType,
 	optional bool,
-	cb func(f *ir.Field) error,
+	encoding ir.Encoding,
 ) (*ir.Type, error) {
-	if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
+	if s := media.Schema; s != nil &&
+		((s.AdditionalProperties != nil && s.Item != nil) ||
+			len(s.PatternProperties) > 0) {
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
-	t, err := g.generateSchema(ctx, typeName, media.Schema, optional)
+	var override generateSchemaOverride
+	switch encoding {
+	case ir.EncodingFormURLEncoded:
+		override.fieldMut = func(f *ir.Field) error {
+			f.Type.AddFeature("uri")
+			return nil
+		}
+	case ir.EncodingMultipart:
+		// A funny moment when you have a spec that shares schema between multipart form and JSON request and
+		// at some point you made ingenious decision to keep all types in one package at the same time.
+		if s := media.Schema; s != nil && !s.Ref.IsZero() {
+			override.refEncoding = map[jsonschema.Ref]ir.Encoding{
+				s.Ref: encoding,
+			}
+			override.nameRef = func(ref jsonschema.Ref, def refNamer) (string, error) {
+				n, err := def(ref)
+				if err == nil && ref == s.Ref {
+					n += "Multipart"
+				}
+				return n, err
+			}
+		}
+		override.fieldMut = func(f *ir.Field) error {
+			t, err := isMultipartFile(ctx, f.Type, f.Spec)
+			if err != nil {
+				return err
+			}
+			if t != nil {
+				f.Type = t
+				t.AddFeature("multipart-file")
+				return nil
+			}
+			f.Type.AddFeature("uri")
+			return nil
+		}
+	}
+	t, err := g.generateSchema(ctx, typeName, media.Schema, optional, &override)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
@@ -151,10 +190,6 @@ func (g *Generator) generateFormContent(
 				if e.ContentType != "" {
 					return &ErrNotImplemented{"parameter content-type"}
 				}
-			}
-
-			if err := cb(f); err != nil {
-				return err
 			}
 
 			if err := isSupportedParamStyle(spec); err != nil {
@@ -230,7 +265,7 @@ func (g *Generator) generateContents(
 
 			switch encoding {
 			case ir.EncodingJSON:
-				t, err := g.generateSchema(ctx, typeName, media.Schema, optional)
+				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
@@ -244,10 +279,7 @@ func (g *Generator) generateContents(
 				return nil
 
 			case ir.EncodingFormURLEncoded:
-				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
-					f.Type.AddFeature("uri")
-					return nil
-				})
+				t, err := g.generateFormContent(ctx, typeName, media, optional, encoding)
 				if err != nil {
 					return err
 				}
@@ -259,76 +291,9 @@ func (g *Generator) generateContents(
 				return nil
 
 			case ir.EncodingMultipart:
-				files := map[string]*ir.Type{}
-				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
-					t, err := isMultipartFile(ctx, f.Type, f.Spec)
-					if err != nil {
-						return err
-					}
-					if t != nil {
-						t.AddFeature("multipart-file")
-						files[f.Name] = t
-						return nil
-					}
-					f.Type.AddFeature("uri")
-					return nil
-				})
+				t, err := g.generateFormContent(ctx, typeName, media, optional, encoding)
 				if err != nil {
 					return err
-				}
-				// Create special type for multipart type if form includes file parameters.
-				//
-				// We need to do it in case when same media definition shared by different content types.
-				// For example:
-				//
-				//	content:
-				//    application/json:
-				//      schema:
-				//        $ref: '#/components/schemas/Form'
-				//
-				//    multipart/form-data:
-				//      schema:
-				//        $ref: '#/components/schemas/Form'
-				// ...
-				//  components:
-				//    schemas:
-				//      Form:
-				//        type: object
-				//        properties:
-				//          file:
-				//            type: string
-				//            format: binary
-				//
-				if len(files) > 0 {
-					// TODO(tdakkota): too hacky
-					newt := &ir.Type{
-						Doc:            t.Doc,
-						Kind:           t.Kind,
-						Name:           t.Name + "Form",
-						Schema:         t.Schema,
-						GenericOf:      t.GenericOf,
-						GenericVariant: t.GenericVariant,
-						Validators:     t.Validators,
-					}
-
-					for _, f := range t.Fields {
-						fieldType := f.Type
-						if file, ok := files[f.Name]; ok {
-							fieldType = file
-						}
-						newt.Fields = append(newt.Fields, &ir.Field{
-							Name:   f.Name,
-							Type:   fieldType,
-							Tag:    f.Tag,
-							Inline: f.Inline,
-							Spec:   f.Spec,
-						})
-					}
-
-					if err := ctx.saveType(newt); err != nil {
-						return errors.Wrapf(err, "override form %q", t.Name)
-					}
-					t = newt
 				}
 
 				result[ir.ContentType(parsedContentType)] = ir.Media{

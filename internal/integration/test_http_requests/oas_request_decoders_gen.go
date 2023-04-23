@@ -174,70 +174,66 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request AllRequestBodiesMultipartFormData
+		var request SimpleObjectMultipart
+		q := uri.NewQueryDecoder(form)
 		{
-			var unwrapped SimpleObject
-			q := uri.NewQueryDecoder(form)
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "name",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "name",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					request.Name = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "age",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var requestDotAgeVal int
+					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
 
-						c, err := conv.ToString(val)
+						c, err := conv.ToInt(val)
 						if err != nil {
 							return err
 						}
 
-						unwrapped.Name = c
+						requestDotAgeVal = c
 						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+					}(); err != nil {
+						return err
 					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
+					request.Age.SetTo(requestDotAgeVal)
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "age",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						var unwrappedDotAgeVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							unwrappedDotAgeVal = c
-							return nil
-						}(); err != nil {
-							return err
-						}
-						unwrapped.Age.SetTo(unwrappedDotAgeVal)
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
-					}
-				}
-			}
-			request = AllRequestBodiesMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
 	case ct == "text/plain":
@@ -406,70 +402,66 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request AllRequestBodiesOptionalMultipartFormData
+		var request SimpleObjectMultipart
+		q := uri.NewQueryDecoder(form)
 		{
-			var unwrapped SimpleObject
-			q := uri.NewQueryDecoder(form)
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "name",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "name",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					request.Name = c
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+			} else {
+				return req, close, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "age",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var requestDotAgeVal int
+					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
 
-						c, err := conv.ToString(val)
+						c, err := conv.ToInt(val)
 						if err != nil {
 							return err
 						}
 
-						unwrapped.Name = c
+						requestDotAgeVal = c
 						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+					}(); err != nil {
+						return err
 					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
+					request.Age.SetTo(requestDotAgeVal)
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "age",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						var unwrappedDotAgeVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							unwrappedDotAgeVal = c
-							return nil
-						}(); err != nil {
-							return err
-						}
-						unwrapped.Age.SetTo(unwrappedDotAgeVal)
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
-					}
-				}
-			}
-			request = AllRequestBodiesOptionalMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
 	case ct == "text/plain":
@@ -589,222 +581,6 @@ func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 			Content:     request,
 		}
 		return &wrapped, close, nil
-	default:
-		return req, close, validate.InvalidContentType(ct)
-	}
-}
-
-func (s *Server) decodeOnlyFormRequest(r *http.Request) (
-	req *OnlyFormReq,
-	close func() error,
-	rerr error,
-) {
-	var closers []func() error
-	close = func() error {
-		var merr error
-		// Close in reverse order, to match defer behavior.
-		for i := len(closers) - 1; i >= 0; i-- {
-			c := closers[i]
-			merr = multierr.Append(merr, c())
-		}
-		return merr
-	}
-	defer func() {
-		if rerr != nil {
-			rerr = multierr.Append(rerr, close())
-		}
-	}()
-	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
-	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
-	}
-	switch {
-	case ct == "application/x-www-form-urlencoded":
-		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
-		}
-		form, err := ht.ParseForm(r)
-		if err != nil {
-			return req, close, errors.Wrap(err, "parse form")
-		}
-
-		var request OnlyFormReq
-		q := uri.NewQueryDecoder(form)
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "field",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(val)
-					if err != nil {
-						return err
-					}
-
-					request.Field = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"field\"")
-				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		return &request, close, nil
-	default:
-		return req, close, validate.InvalidContentType(ct)
-	}
-}
-
-func (s *Server) decodeOnlyMultipartFileRequest(r *http.Request) (
-	req *OnlyMultipartFileReqForm,
-	close func() error,
-	rerr error,
-) {
-	var closers []func() error
-	close = func() error {
-		var merr error
-		// Close in reverse order, to match defer behavior.
-		for i := len(closers) - 1; i >= 0; i-- {
-			c := closers[i]
-			merr = multierr.Append(merr, c())
-		}
-		return merr
-	}
-	defer func() {
-		if rerr != nil {
-			rerr = multierr.Append(rerr, close())
-		}
-	}()
-	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
-	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
-	}
-	switch {
-	case ct == "multipart/form-data":
-		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
-		}
-		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
-		}
-		// Remove all temporary files created by ParseMultipartForm when the request is done.
-		//
-		// Notice that the closers are called in reverse order, to match defer behavior, so
-		// any opened file will be closed before RemoveAll call.
-		closers = append(closers, r.MultipartForm.RemoveAll)
-		// Form values may be unused.
-		form := url.Values(r.MultipartForm.Value)
-		_ = form
-
-		var request OnlyMultipartFileReqForm
-		{
-			if err := func() error {
-				files, ok := r.MultipartForm.File["file"]
-				if !ok || len(files) < 1 {
-					return validate.ErrFieldRequired
-				}
-				fh := files[0]
-
-				f, err := fh.Open()
-				if err != nil {
-					return errors.Wrap(err, "open")
-				}
-				closers = append(closers, f.Close)
-				request.File = ht.MultipartFile{
-					Name:   fh.Filename,
-					File:   f,
-					Header: fh.Header,
-				}
-				return nil
-			}(); err != nil {
-				return req, close, errors.Wrap(err, "decode \"file\"")
-			}
-		}
-		return &request, close, nil
-	default:
-		return req, close, validate.InvalidContentType(ct)
-	}
-}
-
-func (s *Server) decodeOnlyMultipartFormRequest(r *http.Request) (
-	req *OnlyMultipartFormReq,
-	close func() error,
-	rerr error,
-) {
-	var closers []func() error
-	close = func() error {
-		var merr error
-		// Close in reverse order, to match defer behavior.
-		for i := len(closers) - 1; i >= 0; i-- {
-			c := closers[i]
-			merr = multierr.Append(merr, c())
-		}
-		return merr
-	}
-	defer func() {
-		if rerr != nil {
-			rerr = multierr.Append(rerr, close())
-		}
-	}()
-	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
-	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
-	}
-	switch {
-	case ct == "multipart/form-data":
-		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
-		}
-		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
-		}
-		// Remove all temporary files created by ParseMultipartForm when the request is done.
-		//
-		// Notice that the closers are called in reverse order, to match defer behavior, so
-		// any opened file will be closed before RemoveAll call.
-		closers = append(closers, r.MultipartForm.RemoveAll)
-		// Form values may be unused.
-		form := url.Values(r.MultipartForm.Value)
-		_ = form
-
-		var request OnlyMultipartFormReq
-		q := uri.NewQueryDecoder(form)
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "field",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(val)
-					if err != nil {
-						return err
-					}
-
-					request.Field = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"field\"")
-				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

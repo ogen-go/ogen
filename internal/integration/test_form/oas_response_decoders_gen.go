@@ -14,6 +14,33 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func decodeOnlyFormResponse(resp *http.Response) (res *OnlyFormOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &OnlyFormOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeOnlyMultipartFileResponse(resp *http.Response) (res *OnlyMultipartFileOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &OnlyMultipartFileOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeOnlyMultipartFormResponse(resp *http.Response) (res *OnlyMultipartFormOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &OnlyMultipartFormOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEncodedOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
@@ -69,6 +96,24 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeTestReuseFormOptionalSchemaResponse(resp *http.Response) (res *TestReuseFormOptionalSchemaOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &TestReuseFormOptionalSchemaOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeTestReuseFormSchemaResponse(resp *http.Response) (res *TestReuseFormSchemaOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &TestReuseFormSchemaOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

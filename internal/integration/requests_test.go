@@ -13,7 +13,6 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/integration/test_http_requests"
 )
 
@@ -38,7 +37,7 @@ func (t testHTTPRequests) AllRequestBodies(
 		r = req
 	case *api.AllRequestBodiesApplicationXWwwFormUrlencoded:
 		r = strings.NewReader(req.Name)
-	case *api.AllRequestBodiesMultipartFormData:
+	case *api.SimpleObjectMultipart:
 		r = strings.NewReader(req.Name)
 	case *api.AllRequestBodiesReqTextPlain:
 		r = req
@@ -64,7 +63,7 @@ func (t testHTTPRequests) AllRequestBodiesOptional(
 		r = req
 	case *api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		r = strings.NewReader(req.Name)
-	case *api.AllRequestBodiesOptionalMultipartFormData:
+	case *api.SimpleObjectMultipart:
 		r = strings.NewReader(req.Name)
 	case *api.AllRequestBodiesOptionalReqTextPlain:
 		r = req
@@ -101,18 +100,6 @@ func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req *api.
 	}, nil
 }
 
-func (t testHTTPRequests) OnlyForm(ctx context.Context, req *api.OnlyFormReq) error {
-	return ht.ErrNotImplemented
-}
-
-func (t testHTTPRequests) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReqForm) error {
-	return ht.ErrNotImplemented
-}
-
-func (t testHTTPRequests) OnlyMultipartForm(ctx context.Context, req *api.OnlyMultipartFormReq) error {
-	return ht.ErrNotImplemented
-}
-
 func (t testHTTPRequests) StreamJSON(ctx context.Context, req []float64) (v float64, _ error) {
 	for _, f := range req {
 		v += f
@@ -144,7 +131,7 @@ func TestRequests(t *testing.T) {
 			&api.AllRequestBodiesApplicationXWwwFormUrlencoded{
 				Name: testData,
 			},
-			&api.AllRequestBodiesMultipartFormData{
+			&api.SimpleObjectMultipart{
 				Name: testData,
 			},
 			&api.AllRequestBodiesReqTextPlain{
@@ -173,7 +160,7 @@ func TestRequests(t *testing.T) {
 			&api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded{
 				Name: testData,
 			},
-			&api.AllRequestBodiesOptionalMultipartFormData{
+			&api.SimpleObjectMultipart{
 				Name: testData,
 			},
 			&api.AllRequestBodiesOptionalReqTextPlain{

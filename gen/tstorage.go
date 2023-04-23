@@ -7,9 +7,14 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+type schemaKey struct {
+	jsonschema.Ref
+	ir.Encoding
+}
+
 // tstorage is a type storage.
 type tstorage struct {
-	refs map[jsonschema.Ref]*ir.Type // Key: ref
+	refs map[schemaKey]*ir.Type // Key: ref
 
 	// types map contains public types.
 	// Public type is any type that has a name:
@@ -41,7 +46,7 @@ type tstorage struct {
 
 func newTStorage() *tstorage {
 	return &tstorage{
-		refs:      map[jsonschema.Ref]*ir.Type{},
+		refs:      map[schemaKey]*ir.Type{},
 		types:     map[string]*ir.Type{},
 		responses: map[jsonschema.Ref]*ir.Response{},
 		wtypes:    map[jsonschema.Ref]*ir.Type{},
@@ -79,15 +84,16 @@ func (s *tstorage) saveType(t *ir.Type) error {
 	return nil
 }
 
-func (s *tstorage) saveRef(ref jsonschema.Ref, t *ir.Type) error {
-	if _, ok := s.refs[ref]; ok {
-		return errors.Errorf("reference conflict: %q", ref)
+func (s *tstorage) saveRef(ref jsonschema.Ref, e ir.Encoding, t *ir.Type) error {
+	key := schemaKey{ref, e}
+	if _, ok := s.refs[key]; ok {
+		return errors.Errorf("reference conflict: %q", key)
 	}
 	if _, ok := s.types[t.Name]; ok {
-		return errors.Errorf("reference %q type name conflict: %q", ref, t.Name)
+		return errors.Errorf("reference %q type name conflict: %q", key, t.Name)
 	}
 
-	s.refs[ref] = t
+	s.refs[key] = t
 	s.types[t.Name] = t
 	return nil
 }

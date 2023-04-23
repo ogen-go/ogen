@@ -338,7 +338,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
-	case *ReferencedAllofApplicationJSON:
+	case *Robot:
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -347,7 +347,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 		}(); err != nil {
 			return res, errors.Wrap(err, "validate")
 		}
-	case *ReferencedAllofMultipartFormData:
+	case *RobotMultipart:
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -436,7 +436,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	switch request := request.(type) {
 	case *ReferencedAllofOptionalReqEmptyBody:
 		// Validation is not needed for the empty body type.
-	case *ReferencedAllofOptionalApplicationJSON:
+	case *Robot:
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -445,7 +445,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 		}(); err != nil {
 			return res, errors.Wrap(err, "validate")
 		}
-	case *ReferencedAllofOptionalMultipartFormData:
+	case *RobotMultipart:
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err

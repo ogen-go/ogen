@@ -13,6 +13,8 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+type refNamer func(ref jsonschema.Ref) (string, error)
+
 const defaultSchemaDepthLimit = 1000
 
 type schemaGen struct {
@@ -20,6 +22,7 @@ type schemaGen struct {
 	localRefs map[jsonschema.Ref]*ir.Type
 	lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)
 	nameRef   func(ref jsonschema.Ref) (string, error)
+	fieldMut  func(*ir.Field) error
 	fail      func(err error) error
 
 	customFormats map[jsonschema.SchemaType]map[string]ir.CustomFormat
@@ -220,6 +223,11 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		fieldNames := map[string]fieldSlot{}
 
 		addField := func(f *ir.Field, adding fieldSlot) error {
+			if m := g.fieldMut; m != nil {
+				if err := m(f); err != nil {
+					return err
+				}
+			}
 			existing, ok := fieldNames[f.Name]
 			if !ok {
 				s.Fields = append(s.Fields, f)

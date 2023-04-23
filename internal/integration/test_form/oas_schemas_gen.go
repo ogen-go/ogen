@@ -8,6 +8,57 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
+// OnlyFormOK is response for OnlyForm operation.
+type OnlyFormOK struct{}
+
+type OnlyFormReq struct {
+	Field int `json:"field"`
+}
+
+// GetField returns the value of Field.
+func (s *OnlyFormReq) GetField() int {
+	return s.Field
+}
+
+// SetField sets the value of Field.
+func (s *OnlyFormReq) SetField(val int) {
+	s.Field = val
+}
+
+// OnlyMultipartFileOK is response for OnlyMultipartFile operation.
+type OnlyMultipartFileOK struct{}
+
+type OnlyMultipartFileReq struct {
+	File ht.MultipartFile `json:"file"`
+}
+
+// GetFile returns the value of File.
+func (s *OnlyMultipartFileReq) GetFile() ht.MultipartFile {
+	return s.File
+}
+
+// SetFile sets the value of File.
+func (s *OnlyMultipartFileReq) SetFile(val ht.MultipartFile) {
+	s.File = val
+}
+
+// OnlyMultipartFormOK is response for OnlyMultipartForm operation.
+type OnlyMultipartFormOK struct{}
+
+type OnlyMultipartFormReq struct {
+	Field int `json:"field"`
+}
+
+// GetField returns the value of Field.
+func (s *OnlyMultipartFormReq) GetField() int {
+	return s.Field
+}
+
+// SetField sets the value of Field.
+func (s *OnlyMultipartFormReq) SetField(val int) {
+	s.Field = val
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -100,6 +151,52 @@ func (o OptMultipartFile) Or(d ht.MultipartFile) ht.MultipartFile {
 	return d
 }
 
+// NewOptSharedRequestMultipart returns new OptSharedRequestMultipart with value set to v.
+func NewOptSharedRequestMultipart(v SharedRequestMultipart) OptSharedRequestMultipart {
+	return OptSharedRequestMultipart{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSharedRequestMultipart is optional SharedRequestMultipart.
+type OptSharedRequestMultipart struct {
+	Value SharedRequestMultipart
+	Set   bool
+}
+
+// IsSet returns true if OptSharedRequestMultipart was set.
+func (o OptSharedRequestMultipart) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSharedRequestMultipart) Reset() {
+	var v SharedRequestMultipart
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSharedRequestMultipart) SetTo(v SharedRequestMultipart) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSharedRequestMultipart) Get() (v SharedRequestMultipart, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSharedRequestMultipart) Or(d SharedRequestMultipart) SharedRequestMultipart {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -186,6 +283,98 @@ func (o OptTestFormDeepObject) Get() (v TestFormDeepObject, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptTestFormDeepObject) Or(d TestFormDeepObject) TestFormDeepObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptTestFormMultipartDeepObject returns new OptTestFormMultipartDeepObject with value set to v.
+func NewOptTestFormMultipartDeepObject(v TestFormMultipartDeepObject) OptTestFormMultipartDeepObject {
+	return OptTestFormMultipartDeepObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestFormMultipartDeepObject is optional TestFormMultipartDeepObject.
+type OptTestFormMultipartDeepObject struct {
+	Value TestFormMultipartDeepObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestFormMultipartDeepObject was set.
+func (o OptTestFormMultipartDeepObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestFormMultipartDeepObject) Reset() {
+	var v TestFormMultipartDeepObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestFormMultipartDeepObject) SetTo(v TestFormMultipartDeepObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestFormMultipartDeepObject) Get() (v TestFormMultipartDeepObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestFormMultipartDeepObject) Or(d TestFormMultipartDeepObject) TestFormMultipartDeepObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptTestFormMultipartObject returns new OptTestFormMultipartObject with value set to v.
+func NewOptTestFormMultipartObject(v TestFormMultipartObject) OptTestFormMultipartObject {
+	return OptTestFormMultipartObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestFormMultipartObject is optional TestFormMultipartObject.
+type OptTestFormMultipartObject struct {
+	Value TestFormMultipartObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestFormMultipartObject was set.
+func (o OptTestFormMultipartObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestFormMultipartObject) Reset() {
+	var v TestFormMultipartObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestFormMultipartObject) SetTo(v TestFormMultipartObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestFormMultipartObject) Get() (v TestFormMultipartObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestFormMultipartObject) Or(d TestFormMultipartObject) TestFormMultipartObject {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -313,32 +502,32 @@ func (s *SharedRequest) SetFile(val OptString) {
 func (*SharedRequest) testShareFormSchemaReq() {}
 
 // Ref: #/components/schemas/SharedRequest
-type SharedRequestForm struct {
+type SharedRequestMultipart struct {
 	Filename OptString        `json:"filename"`
 	File     OptMultipartFile `json:"file"`
 }
 
 // GetFilename returns the value of Filename.
-func (s *SharedRequestForm) GetFilename() OptString {
+func (s *SharedRequestMultipart) GetFilename() OptString {
 	return s.Filename
 }
 
 // GetFile returns the value of File.
-func (s *SharedRequestForm) GetFile() OptMultipartFile {
+func (s *SharedRequestMultipart) GetFile() OptMultipartFile {
 	return s.File
 }
 
 // SetFilename sets the value of Filename.
-func (s *SharedRequestForm) SetFilename(val OptString) {
+func (s *SharedRequestMultipart) SetFilename(val OptString) {
 	s.Filename = val
 }
 
 // SetFile sets the value of File.
-func (s *SharedRequestForm) SetFile(val OptMultipartFile) {
+func (s *SharedRequestMultipart) SetFile(val OptMultipartFile) {
 	s.File = val
 }
 
-func (*SharedRequestForm) testShareFormSchemaReq() {}
+func (*SharedRequestMultipart) testShareFormSchemaReq() {}
 
 // Ref: #/components/schemas/TestForm
 type TestForm struct {
@@ -435,6 +624,126 @@ func (s *TestFormDeepObject) SetMax(val int) {
 	s.Max = val
 }
 
+// Ref: #/components/schemas/TestForm
+type TestFormMultipart struct {
+	ID          OptInt                         `json:"id"`
+	UUID        OptUUID                        `json:"uuid"`
+	Description string                         `json:"description"`
+	Array       []string                       `json:"array"`
+	Object      OptTestFormMultipartObject     `json:"object"`
+	DeepObject  OptTestFormMultipartDeepObject `json:"deepObject"`
+}
+
+// GetID returns the value of ID.
+func (s *TestFormMultipart) GetID() OptInt {
+	return s.ID
+}
+
+// GetUUID returns the value of UUID.
+func (s *TestFormMultipart) GetUUID() OptUUID {
+	return s.UUID
+}
+
+// GetDescription returns the value of Description.
+func (s *TestFormMultipart) GetDescription() string {
+	return s.Description
+}
+
+// GetArray returns the value of Array.
+func (s *TestFormMultipart) GetArray() []string {
+	return s.Array
+}
+
+// GetObject returns the value of Object.
+func (s *TestFormMultipart) GetObject() OptTestFormMultipartObject {
+	return s.Object
+}
+
+// GetDeepObject returns the value of DeepObject.
+func (s *TestFormMultipart) GetDeepObject() OptTestFormMultipartDeepObject {
+	return s.DeepObject
+}
+
+// SetID sets the value of ID.
+func (s *TestFormMultipart) SetID(val OptInt) {
+	s.ID = val
+}
+
+// SetUUID sets the value of UUID.
+func (s *TestFormMultipart) SetUUID(val OptUUID) {
+	s.UUID = val
+}
+
+// SetDescription sets the value of Description.
+func (s *TestFormMultipart) SetDescription(val string) {
+	s.Description = val
+}
+
+// SetArray sets the value of Array.
+func (s *TestFormMultipart) SetArray(val []string) {
+	s.Array = val
+}
+
+// SetObject sets the value of Object.
+func (s *TestFormMultipart) SetObject(val OptTestFormMultipartObject) {
+	s.Object = val
+}
+
+// SetDeepObject sets the value of DeepObject.
+func (s *TestFormMultipart) SetDeepObject(val OptTestFormMultipartDeepObject) {
+	s.DeepObject = val
+}
+
+type TestFormMultipartDeepObject struct {
+	Min OptInt `json:"min"`
+	Max int    `json:"max"`
+}
+
+// GetMin returns the value of Min.
+func (s *TestFormMultipartDeepObject) GetMin() OptInt {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s *TestFormMultipartDeepObject) GetMax() int {
+	return s.Max
+}
+
+// SetMin sets the value of Min.
+func (s *TestFormMultipartDeepObject) SetMin(val OptInt) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestFormMultipartDeepObject) SetMax(val int) {
+	s.Max = val
+}
+
+type TestFormMultipartObject struct {
+	Min OptInt `json:"min"`
+	Max int    `json:"max"`
+}
+
+// GetMin returns the value of Min.
+func (s *TestFormMultipartObject) GetMin() OptInt {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s *TestFormMultipartObject) GetMax() int {
+	return s.Max
+}
+
+// SetMin sets the value of Min.
+func (s *TestFormMultipartObject) SetMin(val OptInt) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestFormMultipartObject) SetMax(val int) {
+	s.Max = val
+}
+
 type TestFormObject struct {
 	Min OptInt `json:"min"`
 	Max int    `json:"max"`
@@ -503,11 +812,11 @@ func (s *TestMultipartUploadOK) SetFiles(val []string) {
 }
 
 type TestMultipartUploadReq struct {
-	OrderId      OptInt    `json:"orderId"`
-	UserId       OptInt    `json:"userId"`
-	File         string    `json:"file"`
-	OptionalFile OptString `json:"optional_file"`
-	Files        []string  `json:"files"`
+	OrderId      OptInt             `json:"orderId"`
+	UserId       OptInt             `json:"userId"`
+	File         ht.MultipartFile   `json:"file"`
+	OptionalFile OptMultipartFile   `json:"optional_file"`
+	Files        []ht.MultipartFile `json:"files"`
 }
 
 // GetOrderId returns the value of OrderId.
@@ -521,17 +830,17 @@ func (s *TestMultipartUploadReq) GetUserId() OptInt {
 }
 
 // GetFile returns the value of File.
-func (s *TestMultipartUploadReq) GetFile() string {
+func (s *TestMultipartUploadReq) GetFile() ht.MultipartFile {
 	return s.File
 }
 
 // GetOptionalFile returns the value of OptionalFile.
-func (s *TestMultipartUploadReq) GetOptionalFile() OptString {
+func (s *TestMultipartUploadReq) GetOptionalFile() OptMultipartFile {
 	return s.OptionalFile
 }
 
 // GetFiles returns the value of Files.
-func (s *TestMultipartUploadReq) GetFiles() []string {
+func (s *TestMultipartUploadReq) GetFiles() []ht.MultipartFile {
 	return s.Files
 }
 
@@ -546,77 +855,25 @@ func (s *TestMultipartUploadReq) SetUserId(val OptInt) {
 }
 
 // SetFile sets the value of File.
-func (s *TestMultipartUploadReq) SetFile(val string) {
+func (s *TestMultipartUploadReq) SetFile(val ht.MultipartFile) {
 	s.File = val
 }
 
 // SetOptionalFile sets the value of OptionalFile.
-func (s *TestMultipartUploadReq) SetOptionalFile(val OptString) {
+func (s *TestMultipartUploadReq) SetOptionalFile(val OptMultipartFile) {
 	s.OptionalFile = val
 }
 
 // SetFiles sets the value of Files.
-func (s *TestMultipartUploadReq) SetFiles(val []string) {
+func (s *TestMultipartUploadReq) SetFiles(val []ht.MultipartFile) {
 	s.Files = val
 }
 
-type TestMultipartUploadReqForm struct {
-	OrderId      OptInt             `json:"orderId"`
-	UserId       OptInt             `json:"userId"`
-	File         ht.MultipartFile   `json:"file"`
-	OptionalFile OptMultipartFile   `json:"optional_file"`
-	Files        []ht.MultipartFile `json:"files"`
-}
+// TestReuseFormOptionalSchemaOK is response for TestReuseFormOptionalSchema operation.
+type TestReuseFormOptionalSchemaOK struct{}
 
-// GetOrderId returns the value of OrderId.
-func (s *TestMultipartUploadReqForm) GetOrderId() OptInt {
-	return s.OrderId
-}
-
-// GetUserId returns the value of UserId.
-func (s *TestMultipartUploadReqForm) GetUserId() OptInt {
-	return s.UserId
-}
-
-// GetFile returns the value of File.
-func (s *TestMultipartUploadReqForm) GetFile() ht.MultipartFile {
-	return s.File
-}
-
-// GetOptionalFile returns the value of OptionalFile.
-func (s *TestMultipartUploadReqForm) GetOptionalFile() OptMultipartFile {
-	return s.OptionalFile
-}
-
-// GetFiles returns the value of Files.
-func (s *TestMultipartUploadReqForm) GetFiles() []ht.MultipartFile {
-	return s.Files
-}
-
-// SetOrderId sets the value of OrderId.
-func (s *TestMultipartUploadReqForm) SetOrderId(val OptInt) {
-	s.OrderId = val
-}
-
-// SetUserId sets the value of UserId.
-func (s *TestMultipartUploadReqForm) SetUserId(val OptInt) {
-	s.UserId = val
-}
-
-// SetFile sets the value of File.
-func (s *TestMultipartUploadReqForm) SetFile(val ht.MultipartFile) {
-	s.File = val
-}
-
-// SetOptionalFile sets the value of OptionalFile.
-func (s *TestMultipartUploadReqForm) SetOptionalFile(val OptMultipartFile) {
-	s.OptionalFile = val
-}
-
-// SetFiles sets the value of Files.
-func (s *TestMultipartUploadReqForm) SetFiles(val []ht.MultipartFile) {
-	s.Files = val
-}
+// TestReuseFormSchemaOK is response for TestReuseFormSchema operation.
+type TestReuseFormSchemaOK struct{}
 
 // TestShareFormSchemaOK is response for TestShareFormSchema operation.
 type TestShareFormSchemaOK struct{}

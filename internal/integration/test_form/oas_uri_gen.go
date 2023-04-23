@@ -130,6 +130,240 @@ func (s *TestFormDeepObject) DecodeURI(d uri.Decoder) error {
 	return nil
 }
 
+// EncodeURI encodes TestFormMultipartDeepObject as URI form.
+func (s *TestFormMultipartDeepObject) EncodeURI(e uri.Encoder) error {
+	if err := e.EncodeField("min", func(e uri.Encoder) error {
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"min\"")
+	}
+	if err := e.EncodeField("max", func(e uri.Encoder) error {
+		return e.EncodeValue(conv.IntToString(s.Max))
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"max\"")
+	}
+	return nil
+}
+
+var uriFieldsNameOfTestFormMultipartDeepObject = [2]string{
+	0: "min",
+	1: "max",
+}
+
+// DecodeURI decodes TestFormMultipartDeepObject from URI form.
+func (s *TestFormMultipartDeepObject) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TestFormMultipartDeepObject to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		switch k {
+		case "min":
+			if err := func() error {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				s.Min.SetTo(sDotMinVal)
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"min\"")
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				s.Max = c
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"max\"")
+			}
+		default:
+			return nil
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TestFormMultipartDeepObject")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000010,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(uriFieldsNameOfTestFormMultipartDeepObject) {
+					name = uriFieldsNameOfTestFormMultipartDeepObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// EncodeURI encodes TestFormMultipartObject as URI form.
+func (s *TestFormMultipartObject) EncodeURI(e uri.Encoder) error {
+	if err := e.EncodeField("min", func(e uri.Encoder) error {
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"min\"")
+	}
+	if err := e.EncodeField("max", func(e uri.Encoder) error {
+		return e.EncodeValue(conv.IntToString(s.Max))
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"max\"")
+	}
+	return nil
+}
+
+var uriFieldsNameOfTestFormMultipartObject = [2]string{
+	0: "min",
+	1: "max",
+}
+
+// DecodeURI decodes TestFormMultipartObject from URI form.
+func (s *TestFormMultipartObject) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TestFormMultipartObject to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		switch k {
+		case "min":
+			if err := func() error {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				s.Min.SetTo(sDotMinVal)
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"min\"")
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				s.Max = c
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"max\"")
+			}
+		default:
+			return nil
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TestFormMultipartObject")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000010,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(uriFieldsNameOfTestFormMultipartObject) {
+					name = uriFieldsNameOfTestFormMultipartObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
 // EncodeURI encodes TestFormObject as URI form.
 func (s *TestFormObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {

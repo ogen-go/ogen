@@ -101,7 +101,7 @@ func encodeCreateEmbeddingRequest(
 }
 
 func encodeCreateFileRequest(
-	req *CreateFileRequestForm,
+	req *CreateFileRequestMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -163,7 +163,7 @@ func encodeCreateImageRequest(
 }
 
 func encodeCreateImageEditRequest(
-	req *CreateImageEditRequestForm,
+	req *CreateImageEditRequestMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -266,7 +266,7 @@ func encodeCreateImageEditRequest(
 }
 
 func encodeCreateImageVariationRequest(
-	req *CreateImageVariationRequestForm,
+	req *CreateImageVariationRequestMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -379,7 +379,7 @@ func encodeCreateSearchRequest(
 }
 
 func encodeCreateTranscriptionRequest(
-	req *CreateTranscriptionRequestForm,
+	req *CreateTranscriptionRequestMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -477,7 +477,7 @@ func encodeCreateTranscriptionRequest(
 }
 
 func encodeCreateTranslationRequest(
-	req *CreateTranslationRequestForm,
+	req *CreateTranslationRequestMultipart,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"

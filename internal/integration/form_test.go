@@ -1,9 +1,12 @@
 package integration
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
+	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
 	"net/textproto"
@@ -39,6 +42,23 @@ func testForm() *api.TestForm {
 	}
 }
 
+func testFormMultipart() *api.TestFormMultipart {
+	return &api.TestFormMultipart{
+		ID:          api.NewOptInt(10),
+		UUID:        api.NewOptUUID(uuid.MustParse("00000000-0000-0000-0000-000000000000")),
+		Description: "foobar",
+		Array:       []string{"foo", "bar"},
+		Object: api.NewOptTestFormMultipartObject(api.TestFormMultipartObject{
+			Min: api.NewOptInt(10),
+			Max: 10,
+		}),
+		DeepObject: api.NewOptTestFormMultipartDeepObject(api.TestFormMultipartDeepObject{
+			Min: api.NewOptInt(10),
+			Max: 10,
+		}),
+	}
+}
+
 func checkTestFormValues(a *assert.Assertions, form url.Values) {
 	a.Equal("10", form.Get("id"))
 	a.Equal("00000000-0000-0000-0000-000000000000", form.Get("uuid"))
@@ -61,12 +81,12 @@ func (s testFormServer) TestFormURLEncoded(ctx context.Context, req *api.TestFor
 	return nil
 }
 
-func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestForm) error {
-	s.a.Equal(testForm(), req)
+func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestFormMultipart) error {
+	s.a.Equal(testFormMultipart(), req)
 	return nil
 }
 
-func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReqForm) (
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReq) (
 	*api.TestMultipartUploadOK,
 	error,
 ) {
@@ -110,7 +130,27 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMu
 	return r, nil
 }
 
+func (s testFormServer) TestReuseFormOptionalSchema(ctx context.Context, req api.OptSharedRequestMultipart) error {
+	return nil
+}
+
+func (s testFormServer) TestReuseFormSchema(ctx context.Context, req *api.SharedRequestMultipart) error {
+	return nil
+}
+
 func (s testFormServer) TestShareFormSchema(ctx context.Context, req api.TestShareFormSchemaReq) error {
+	return nil
+}
+
+func (s testFormServer) OnlyForm(ctx context.Context, req *api.OnlyFormReq) error {
+	return nil
+}
+
+func (s testFormServer) OnlyMultipartFile(ctx context.Context, req *api.OnlyMultipartFileReq) error {
+	return nil
+}
+
+func (s testFormServer) OnlyMultipartForm(ctx context.Context, req *api.OnlyMultipartFormReq) error {
 	return nil
 }
 
@@ -192,17 +232,16 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	client, err := api.NewClient(s.URL)
 	require.NoError(t, err)
 
-	err = client.TestMultipart(ctx, testForm())
+	err = client.TestMultipart(ctx, testFormMultipart())
 	a.NoError(err)
 }
 
 func TestMultipartUploadE2E(t *testing.T) {
-	a := assert.New(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
 
 	handler := &testFormServer{
-		a: a,
+		a: assert.New(t),
 	}
 	// Set low limit for BigFile test.
 	apiServer, err := api.NewServer(handler,
@@ -238,7 +277,7 @@ func TestMultipartUploadE2E(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := require.New(t)
 
-			req := &api.TestMultipartUploadReqForm{
+			req := &api.TestMultipartUploadReq{
 				File: ht.MultipartFile{
 					Name: "pablo.jpg",
 					File: strings.NewReader(tt.file),
@@ -273,4 +312,79 @@ func TestMultipartUploadE2E(t *testing.T) {
 			// FIXME(tdakkota): Check metrics. OpenTelemetry removed metrictest package.
 		})
 	}
+}
+
+func TestFormAdditionalProps(t *testing.T) {
+	handler := &testFormServer{
+		a: assert.New(t),
+	}
+	apiServer, err := api.NewServer(handler)
+	require.NoError(t, err)
+
+	s := httptest.NewServer(apiServer)
+	defer s.Close()
+
+	client := s.Client()
+	t.Run("OnlyForm", func(t *testing.T) {
+		resp, err := client.PostForm(s.URL+"/onlyForm", url.Values{
+			"definitely-not-defined": []string{"value"},
+			"field":                  []string{"10"},
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
+
+	sendMultipart := func(url string, cb func(*multipart.Writer)) (*http.Response, error) {
+		req, err := http.NewRequest(http.MethodPost, url, nil)
+		if err != nil {
+			return nil, err
+		}
+
+		var buf bytes.Buffer
+		mw := multipart.NewWriter(&buf)
+		cb(mw)
+		require.NoError(t, mw.Close())
+
+		req.Header.Add("Content-Type", mw.FormDataContentType())
+		req.Body = io.NopCloser(&buf)
+
+		return client.Do(req)
+	}
+	t.Run("OnlyMultipartForm", func(t *testing.T) {
+		resp, err := sendMultipart(s.URL+"/onlyMultipartForm", func(mw *multipart.Writer) {
+			mw.WriteField("definitely-not-defined", "value")
+			mw.WriteField("field", "10")
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
+
+	t.Run("OnlyMultipartFile", func(t *testing.T) {
+		resp, err := sendMultipart(s.URL+"/onlyMultipartFile", func(mw *multipart.Writer) {
+			mw.WriteField("definitely-not-defined", "value")
+			f, err := mw.CreateFormFile("file", "pablo.txt")
+			require.NoError(t, err)
+			io.WriteString(f, "text")
+		})
+		require.NoError(t, err)
+		defer resp.Body.Close()
+
+		var jsonErr struct {
+			Message string `json:"error_message"`
+		}
+		require.NoError(t, json.NewDecoder(resp.Body).Decode(&jsonErr))
+		require.Contains(t, jsonErr.Message, `unexpected field "definitely-not-defined"`)
+	})
 }

@@ -279,24 +279,8 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
-type ReferencedAllofApplicationJSON Robot
-
-func (*ReferencedAllofApplicationJSON) referencedAllofReq() {}
-
-type ReferencedAllofMultipartFormData Robot
-
-func (*ReferencedAllofMultipartFormData) referencedAllofReq() {}
-
 // ReferencedAllofOK is response for ReferencedAllof operation.
 type ReferencedAllofOK struct{}
-
-type ReferencedAllofOptionalApplicationJSON Robot
-
-func (*ReferencedAllofOptionalApplicationJSON) referencedAllofOptionalReq() {}
-
-type ReferencedAllofOptionalMultipartFormData Robot
-
-func (*ReferencedAllofOptionalMultipartFormData) referencedAllofOptionalReq() {}
 
 // ReferencedAllofOptionalOK is response for ReferencedAllofOptional operation.
 type ReferencedAllofOptionalOK struct{}
@@ -341,6 +325,83 @@ func (s *Robot) SetID(val uuid.UUID) {
 // SetLocation sets the value of Location.
 func (s *Robot) SetLocation(val Location) {
 	s.Location = val
+}
+
+func (*Robot) referencedAllofOptionalReq() {}
+func (*Robot) referencedAllofReq()         {}
+
+// Merged schema.
+// Ref: #/components/schemas/Robot
+type RobotMultipart struct {
+	State    RobotMultipartState `json:"state"`
+	ID       uuid.UUID           `json:"id"`
+	Location Location            `json:"location"`
+}
+
+// GetState returns the value of State.
+func (s *RobotMultipart) GetState() RobotMultipartState {
+	return s.State
+}
+
+// GetID returns the value of ID.
+func (s *RobotMultipart) GetID() uuid.UUID {
+	return s.ID
+}
+
+// GetLocation returns the value of Location.
+func (s *RobotMultipart) GetLocation() Location {
+	return s.Location
+}
+
+// SetState sets the value of State.
+func (s *RobotMultipart) SetState(val RobotMultipartState) {
+	s.State = val
+}
+
+// SetID sets the value of ID.
+func (s *RobotMultipart) SetID(val uuid.UUID) {
+	s.ID = val
+}
+
+// SetLocation sets the value of Location.
+func (s *RobotMultipart) SetLocation(val Location) {
+	s.Location = val
+}
+
+func (*RobotMultipart) referencedAllofOptionalReq() {}
+func (*RobotMultipart) referencedAllofReq()         {}
+
+type RobotMultipartState string
+
+const (
+	RobotMultipartStateOn  RobotMultipartState = "on"
+	RobotMultipartStateOff RobotMultipartState = "off"
+)
+
+// MarshalText implements encoding.TextMarshaler.
+func (s RobotMultipartState) MarshalText() ([]byte, error) {
+	switch s {
+	case RobotMultipartStateOn:
+		return []byte(s), nil
+	case RobotMultipartStateOff:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *RobotMultipartState) UnmarshalText(data []byte) error {
+	switch RobotMultipartState(data) {
+	case RobotMultipartStateOn:
+		*s = RobotMultipartStateOn
+		return nil
+	case RobotMultipartStateOff:
+		*s = RobotMultipartStateOff
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }
 
 type RobotState string

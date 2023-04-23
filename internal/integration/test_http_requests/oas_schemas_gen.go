@@ -4,8 +4,6 @@ package api
 
 import (
 	"io"
-
-	ht "github.com/ogen-go/ogen/http"
 )
 
 type AllRequestBodiesApplicationJSON SimpleObject
@@ -15,10 +13,6 @@ func (*AllRequestBodiesApplicationJSON) allRequestBodiesReq() {}
 type AllRequestBodiesApplicationXWwwFormUrlencoded SimpleObject
 
 func (*AllRequestBodiesApplicationXWwwFormUrlencoded) allRequestBodiesReq() {}
-
-type AllRequestBodiesMultipartFormData SimpleObject
-
-func (*AllRequestBodiesMultipartFormData) allRequestBodiesReq() {}
 
 type AllRequestBodiesOK struct {
 	Data io.Reader
@@ -38,10 +32,6 @@ func (*AllRequestBodiesOptionalApplicationJSON) allRequestBodiesOptionalReq() {}
 type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded SimpleObject
 
 func (*AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) allRequestBodiesOptionalReq() {}
-
-type AllRequestBodiesOptionalMultipartFormData SimpleObject
-
-func (*AllRequestBodiesOptionalMultipartFormData) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesOptionalOK struct {
 	Data io.Reader
@@ -232,71 +222,6 @@ func (s *MaskResponse) SetContent(val string) {
 	s.Content = val
 }
 
-// OnlyFormOK is response for OnlyForm operation.
-type OnlyFormOK struct{}
-
-type OnlyFormReq struct {
-	Field int `json:"field"`
-}
-
-// GetField returns the value of Field.
-func (s *OnlyFormReq) GetField() int {
-	return s.Field
-}
-
-// SetField sets the value of Field.
-func (s *OnlyFormReq) SetField(val int) {
-	s.Field = val
-}
-
-// OnlyMultipartFileOK is response for OnlyMultipartFile operation.
-type OnlyMultipartFileOK struct{}
-
-type OnlyMultipartFileReq struct {
-	File string `json:"file"`
-}
-
-// GetFile returns the value of File.
-func (s *OnlyMultipartFileReq) GetFile() string {
-	return s.File
-}
-
-// SetFile sets the value of File.
-func (s *OnlyMultipartFileReq) SetFile(val string) {
-	s.File = val
-}
-
-type OnlyMultipartFileReqForm struct {
-	File ht.MultipartFile `json:"file"`
-}
-
-// GetFile returns the value of File.
-func (s *OnlyMultipartFileReqForm) GetFile() ht.MultipartFile {
-	return s.File
-}
-
-// SetFile sets the value of File.
-func (s *OnlyMultipartFileReqForm) SetFile(val ht.MultipartFile) {
-	s.File = val
-}
-
-// OnlyMultipartFormOK is response for OnlyMultipartForm operation.
-type OnlyMultipartFormOK struct{}
-
-type OnlyMultipartFormReq struct {
-	Field int `json:"field"`
-}
-
-// GetField returns the value of Field.
-func (s *OnlyMultipartFormReq) GetField() int {
-	return s.Field
-}
-
-// SetField sets the value of Field.
-func (s *OnlyMultipartFormReq) SetField(val int) {
-	s.Field = val
-}
-
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -368,3 +293,32 @@ func (s *SimpleObject) SetName(val string) {
 func (s *SimpleObject) SetAge(val OptInt) {
 	s.Age = val
 }
+
+// Ref: #/components/schemas/SimpleObject
+type SimpleObjectMultipart struct {
+	Name string `json:"name"`
+	Age  OptInt `json:"age"`
+}
+
+// GetName returns the value of Name.
+func (s *SimpleObjectMultipart) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s *SimpleObjectMultipart) GetAge() OptInt {
+	return s.Age
+}
+
+// SetName sets the value of Name.
+func (s *SimpleObjectMultipart) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *SimpleObjectMultipart) SetAge(val OptInt) {
+	s.Age = val
+}
+
+func (*SimpleObjectMultipart) allRequestBodiesOptionalReq() {}
+func (*SimpleObjectMultipart) allRequestBodiesReq()         {}

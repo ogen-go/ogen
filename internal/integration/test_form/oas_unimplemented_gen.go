@@ -13,6 +13,27 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// OnlyForm implements onlyForm operation.
+//
+// POST /onlyForm
+func (UnimplementedHandler) OnlyForm(ctx context.Context, req *OnlyFormReq) error {
+	return ht.ErrNotImplemented
+}
+
+// OnlyMultipartFile implements onlyMultipartFile operation.
+//
+// POST /onlyMultipartFile
+func (UnimplementedHandler) OnlyMultipartFile(ctx context.Context, req *OnlyMultipartFileReq) error {
+	return ht.ErrNotImplemented
+}
+
+// OnlyMultipartForm implements onlyMultipartForm operation.
+//
+// POST /onlyMultipartForm
+func (UnimplementedHandler) OnlyMultipartForm(ctx context.Context, req *OnlyMultipartFormReq) error {
+	return ht.ErrNotImplemented
+}
+
 // TestFormURLEncoded implements testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
@@ -23,15 +44,29 @@ func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req *TestFor
 // TestMultipart implements testMultipart operation.
 //
 // POST /testMultipart
-func (UnimplementedHandler) TestMultipart(ctx context.Context, req *TestForm) error {
+func (UnimplementedHandler) TestMultipart(ctx context.Context, req *TestFormMultipart) error {
 	return ht.ErrNotImplemented
 }
 
 // TestMultipartUpload implements testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req *TestMultipartUploadReqForm) (r *TestMultipartUploadOK, _ error) {
+func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req *TestMultipartUploadReq) (r *TestMultipartUploadOK, _ error) {
 	return r, ht.ErrNotImplemented
+}
+
+// TestReuseFormOptionalSchema implements testReuseFormOptionalSchema operation.
+//
+// POST /testReuseFormOptionalSchema
+func (UnimplementedHandler) TestReuseFormOptionalSchema(ctx context.Context, req OptSharedRequestMultipart) error {
+	return ht.ErrNotImplemented
+}
+
+// TestReuseFormSchema implements testReuseFormSchema operation.
+//
+// POST /testReuseFormSchema
+func (UnimplementedHandler) TestReuseFormSchema(ctx context.Context, req *SharedRequestMultipart) error {
+	return ht.ErrNotImplemented
 }
 
 // TestShareFormSchema implements testShareFormSchema operation.

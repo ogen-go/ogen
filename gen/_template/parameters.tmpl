@@ -1,7 +1,6 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
 {{ define "parameters" }}
-{{ $pkg := $.Package }}
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}{{ if $op.Params }}

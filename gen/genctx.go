@@ -15,15 +15,16 @@ func (g *genctx) saveType(t *ir.Type) error {
 	return g.local.saveType(t)
 }
 
-func (g *genctx) saveRef(ref jsonschema.Ref, t *ir.Type) error {
-	return g.local.saveRef(ref, t)
+func (g *genctx) saveRef(ref jsonschema.Ref, e ir.Encoding, t *ir.Type) error {
+	return g.local.saveRef(ref, e, t)
 }
 
-func (g *genctx) lookupRef(ref jsonschema.Ref) (*ir.Type, bool) {
-	if t, ok := g.global.refs[ref]; ok {
+func (g *genctx) lookupRef(ref jsonschema.Ref, e ir.Encoding) (*ir.Type, bool) {
+	key := schemaKey{ref, e}
+	if t, ok := g.global.refs[key]; ok {
 		return t, true
 	}
-	if t, ok := g.local.refs[ref]; ok {
+	if t, ok := g.local.refs[key]; ok {
 		return t, true
 	}
 	return nil, false

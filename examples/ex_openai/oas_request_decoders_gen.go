@@ -446,7 +446,7 @@ func (s *Server) decodeCreateEmbeddingRequest(r *http.Request) (
 }
 
 func (s *Server) decodeCreateFileRequest(r *http.Request) (
-	req *CreateFileRequestForm,
+	req *CreateFileRequestMultipart,
 	close func() error,
 	rerr error,
 ) {
@@ -486,7 +486,7 @@ func (s *Server) decodeCreateFileRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request CreateFileRequestForm
+		var request CreateFileRequestMultipart
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -687,7 +687,7 @@ func (s *Server) decodeCreateImageRequest(r *http.Request) (
 }
 
 func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
-	req *CreateImageEditRequestForm,
+	req *CreateImageEditRequestMultipart,
 	close func() error,
 	rerr error,
 ) {
@@ -727,7 +727,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request CreateImageEditRequestForm
+		var request CreateImageEditRequestMultipart
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -820,7 +820,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotSizeVal CreateImageEditRequestSize
+					var requestDotSizeVal CreateImageEditRequestMultipartSize
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -832,7 +832,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 							return err
 						}
 
-						requestDotSizeVal = CreateImageEditRequestSize(c)
+						requestDotSizeVal = CreateImageEditRequestMultipartSize(c)
 						return nil
 					}(); err != nil {
 						return err
@@ -867,7 +867,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotResponseFormatVal CreateImageEditRequestResponseFormat
+					var requestDotResponseFormatVal CreateImageEditRequestMultipartResponseFormat
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -879,7 +879,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 							return err
 						}
 
-						requestDotResponseFormatVal = CreateImageEditRequestResponseFormat(c)
+						requestDotResponseFormatVal = CreateImageEditRequestMultipartResponseFormat(c)
 						return nil
 					}(); err != nil {
 						return err
@@ -991,7 +991,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 }
 
 func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
-	req *CreateImageVariationRequestForm,
+	req *CreateImageVariationRequestMultipart,
 	close func() error,
 	rerr error,
 ) {
@@ -1031,7 +1031,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request CreateImageVariationRequestForm
+		var request CreateImageVariationRequestMultipart
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1097,7 +1097,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotSizeVal CreateImageVariationRequestSize
+					var requestDotSizeVal CreateImageVariationRequestMultipartSize
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -1109,7 +1109,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 							return err
 						}
 
-						requestDotSizeVal = CreateImageVariationRequestSize(c)
+						requestDotSizeVal = CreateImageVariationRequestMultipartSize(c)
 						return nil
 					}(); err != nil {
 						return err
@@ -1144,7 +1144,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotResponseFormatVal CreateImageVariationRequestResponseFormat
+					var requestDotResponseFormatVal CreateImageVariationRequestMultipartResponseFormat
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -1156,7 +1156,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 							return err
 						}
 
-						requestDotResponseFormatVal = CreateImageVariationRequestResponseFormat(c)
+						requestDotResponseFormatVal = CreateImageVariationRequestMultipartResponseFormat(c)
 						return nil
 					}(); err != nil {
 						return err
@@ -1387,7 +1387,7 @@ func (s *Server) decodeCreateSearchRequest(r *http.Request) (
 }
 
 func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
-	req *CreateTranscriptionRequestForm,
+	req *CreateTranscriptionRequestMultipart,
 	close func() error,
 	rerr error,
 ) {
@@ -1427,7 +1427,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request CreateTranscriptionRequestForm
+		var request CreateTranscriptionRequestMultipart
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1629,7 +1629,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 }
 
 func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
-	req *CreateTranslationRequestForm,
+	req *CreateTranslationRequestMultipart,
 	close func() error,
 	rerr error,
 ) {
@@ -1669,7 +1669,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 		form := url.Values(r.MultipartForm.Value)
 		_ = form
 
-		var request CreateTranslationRequestForm
+		var request CreateTranslationRequestMultipart
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{

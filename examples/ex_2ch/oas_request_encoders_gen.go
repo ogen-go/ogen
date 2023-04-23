@@ -50,7 +50,7 @@ func encodeUserPassloginPostRequest(
 }
 
 func encodeUserPostingPostRequest(
-	req OptUserPostingPostReqForm,
+	req OptUserPostingPostReq,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -215,29 +215,17 @@ func encodeUserPostingPostRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	{
-		// Encode "file[]" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "file[]",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range request.File {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(item))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
-					}
-				}
-				return nil
-			})
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
 	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := func() error {
+			for idx, val := range request.File {
+				if err := val.WriteMultipart("file[]", w); err != nil {
+					return errors.Wrapf(err, "file [%d]", idx)
+				}
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "write \"file[]\"")
+		}
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
