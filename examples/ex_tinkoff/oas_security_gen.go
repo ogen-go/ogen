@@ -8,8 +8,6 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
-	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -56,9 +54,6 @@ type SecuritySource interface {
 func (s *Client) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.SSOAuth(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"SSOAuth\"")
 	}
 	req.Header.Set("Authorization", "Bearer "+t.Token)

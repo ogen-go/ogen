@@ -8,8 +8,6 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
-	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -57,9 +55,6 @@ type SecuritySource interface {
 func (s *Client) securityAPIKey(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.APIKey(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, "security source \"APIKey\"")
 	}
 	req.Header.Set("Api_key", t.APIKey)

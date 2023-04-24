@@ -100,9 +100,6 @@ type SecuritySource interface {
 func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
 	if err != nil {
-		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
-			return ogenerrors.ErrSkipClientSecurity
-		}
 		return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 	}
 	{{- if $s.Format.IsAPIKeySecurity }}
