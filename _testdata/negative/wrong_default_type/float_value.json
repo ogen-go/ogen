@@ -14,13 +14,10 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "not_nullable"
-                  ],
                   "properties": {
                     "not_nullable": {
                       "type": "integer",
-                      "default": null
+                      "default": 3.14
                     }
                   }
                 }
