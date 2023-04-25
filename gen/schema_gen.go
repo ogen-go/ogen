@@ -147,15 +147,24 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 	if schema.DefaultSet {
 		var implErr error
-		switch schema.Type {
-		case jsonschema.Object:
+		switch {
+		case schema.Type == jsonschema.Object:
 			implErr = &ErrNotImplemented{Name: "object defaults"}
-		case jsonschema.Array:
+		case schema.Type == jsonschema.Array:
 			implErr = &ErrNotImplemented{Name: "array defaults"}
+		case schema.Type == jsonschema.Empty ||
+			len(schema.AnyOf)+len(schema.OneOf) > 0:
+			implErr = &ErrNotImplemented{Name: "complex defaults"}
 		}
 		// Do not fail schema generation if we cannot handle defaults.
 		if err := g.fail(implErr); err != nil {
 			return nil, err
+		}
+
+		if implErr == nil {
+			if err := g.checkDefaultType(schema, schema.Default); err != nil {
+				return nil, errors.Wrap(err, "check default type")
+			}
 		}
 		schema.DefaultSet = implErr == nil
 	}
@@ -493,4 +502,53 @@ func (g *schemaGen) regtype(name string, t *ir.Type) *ir.Type {
 	}
 
 	return t
+}
+
+func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
+	if s == nil {
+		// Schema has no validators.
+		return nil
+	}
+	if val == nil && s.Nullable {
+		return nil
+	}
+
+	var ok bool
+	switch s.Type {
+	case jsonschema.Object:
+		_, ok = val.(map[string]any)
+	case jsonschema.Array:
+		_, ok = val.([]any)
+	case jsonschema.Integer:
+		_, ok = val.(int64)
+	case jsonschema.Number:
+		_, ok = val.(int64)
+		if !ok {
+			_, ok = val.(float64)
+		}
+	case jsonschema.String:
+		_, ok = val.(string)
+	case jsonschema.Boolean:
+		_, ok = val.(bool)
+	case jsonschema.Null:
+		ok = val == nil
+	}
+
+	if !ok {
+		err := errors.Errorf("expected schema type is %q, default value is %T", s.Type, val)
+		p := s.Pointer.Field("default")
+
+		pos, ok := p.Position()
+		if !ok {
+			return err
+		}
+
+		return &location.Error{
+			File: p.File(),
+			Pos:  pos,
+			Err:  err,
+		}
+	}
+
+	return nil
 }
