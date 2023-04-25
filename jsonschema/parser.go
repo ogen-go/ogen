@@ -116,13 +116,9 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 	}
 	if d := schema.Default; len(d) > 0 {
 		if err := func() error {
-			v, err := parseJSONValue(s, json.RawMessage(d))
+			v, err := parseJSONValue(nil, json.RawMessage(d))
 			if err != nil {
 				return err
-			}
-
-			if v == nil && !s.Nullable {
-				return errors.New("unexpected default \"null\" value")
 			}
 
 			s.Default = v

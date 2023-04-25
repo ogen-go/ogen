@@ -41,56 +41,32 @@ func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]any, error) {
 func parseJSONValue(root *Schema, v json.RawMessage) (any, error) {
 	var parse func(s *Schema, d *jx.Decoder) (any, error)
 	parse = func(s *Schema, d *jx.Decoder) (any, error) {
-		next := d.Next()
-		if next == jx.Null {
-			// We do not check nullability here because enum with null value is completely valid
-			// even if it is not nullable.
-			return nil, nil
-		}
-		switch typ := s.Type; typ {
-		case String:
-			if next != jx.String {
-				return nil, errors.Errorf("expected type %q, got %q", typ, next)
-			}
+		switch next := d.Next(); next {
+		case jx.Null:
+			return nil, d.Null()
+		case jx.String:
 			return d.Str()
-		case Integer:
-			if next != jx.Number {
-				return nil, errors.Errorf("expected type %q, got %q", typ, next)
-			}
+		case jx.Number:
 			n, err := d.Num()
 			if err != nil {
 				return nil, err
 			}
-			if !n.IsInt() {
-				return nil, errors.New("expected integer, got float")
-			}
-			return n.Int64()
-		case Number:
-			if next != jx.Number {
-				return nil, errors.Errorf("expected type %q, got %q", typ, next)
-			}
-			n, err := d.Num()
-			if err != nil {
-				return nil, err
+			if n.IsInt() {
+				return n.Int64()
 			}
 			return n.Float64()
-		case Boolean:
-			if next != jx.Bool {
-				return nil, errors.Errorf("expected type %q, got %q", typ, next)
-			}
+		case jx.Bool:
 			return d.Bool()
-		case Array:
-			if next != jx.Array {
-				return nil, errors.Errorf("expected type %q, got %q", typ, next)
-			}
-			if s.Item == nil {
-				return nil, errors.New("can't validate untyped array item")
-			}
+		case jx.Array:
 			var arr []any
 			if err := d.Arr(func(d *jx.Decoder) error {
-				v, err := parse(s.Item, d)
+				var item *Schema
+				if s != nil {
+					item = s.Item
+				}
+				v, err := parse(item, d)
 				if err != nil {
-					return errors.Wrap(err, "validate item")
+					return errors.Wrap(err, "array item")
 				}
 				arr = append(arr, v)
 				return nil
@@ -98,8 +74,21 @@ func parseJSONValue(root *Schema, v json.RawMessage) (any, error) {
 				return nil, err
 			}
 			return arr, nil
+		case jx.Object:
+			obj := map[string]any{}
+			if err := d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+				v, err := parse(nil, d)
+				if err != nil {
+					return errors.Wrapf(err, "property %q", key)
+				}
+				obj[string(key)] = v
+				return nil
+			}); err != nil {
+				return nil, err
+			}
+			return obj, nil
 		default:
-			return nil, errors.Errorf("unexpected type: %q", typ)
+			return nil, errors.Errorf("unexpected type: %q", next)
 		}
 	}
 
