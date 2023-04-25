@@ -17,6 +17,9 @@ type AnyContentTypeBinaryStringSchemaDefaultDef struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s AnyContentTypeBinaryStringSchemaDefaultDef) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -54,6 +57,9 @@ type AnyContentTypeBinaryStringSchemaOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -558,6 +564,9 @@ type OctetStreamBinaryStringSchemaOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s OctetStreamBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -569,6 +578,9 @@ type OctetStreamEmptySchemaOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -656,6 +668,9 @@ type TextPlainBinaryStringSchemaOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s TextPlainBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 

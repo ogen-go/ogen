@@ -29,6 +29,9 @@ type ConnectCoreV1DeleteNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -48,6 +51,9 @@ type ConnectCoreV1DeleteNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -68,6 +74,9 @@ type ConnectCoreV1DeleteNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -87,6 +96,9 @@ type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -107,6 +119,9 @@ type ConnectCoreV1DeleteNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -125,6 +140,9 @@ type ConnectCoreV1DeleteNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1DeleteNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -143,6 +161,9 @@ type ConnectCoreV1GetNamespacedPodAttachOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -161,6 +182,9 @@ type ConnectCoreV1GetNamespacedPodExecOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedPodExecOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -179,6 +203,9 @@ type ConnectCoreV1GetNamespacedPodPortforwardOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -198,6 +225,9 @@ type ConnectCoreV1GetNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -216,6 +246,9 @@ type ConnectCoreV1GetNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -236,6 +269,9 @@ type ConnectCoreV1GetNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -255,6 +291,9 @@ type ConnectCoreV1GetNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -275,6 +314,9 @@ type ConnectCoreV1GetNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -293,6 +335,9 @@ type ConnectCoreV1GetNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1GetNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -311,6 +356,9 @@ type ConnectCoreV1HeadNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -329,6 +377,9 @@ type ConnectCoreV1HeadNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -349,6 +400,9 @@ type ConnectCoreV1HeadNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -368,6 +422,9 @@ type ConnectCoreV1HeadNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -388,6 +445,9 @@ type ConnectCoreV1HeadNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -406,6 +466,9 @@ type ConnectCoreV1HeadNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1HeadNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -424,6 +487,9 @@ type ConnectCoreV1OptionsNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -443,6 +509,9 @@ type ConnectCoreV1OptionsNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -463,6 +532,9 @@ type ConnectCoreV1OptionsNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -483,6 +555,9 @@ type ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -503,6 +578,9 @@ type ConnectCoreV1OptionsNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -521,6 +599,9 @@ type ConnectCoreV1OptionsNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1OptionsNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -540,6 +621,9 @@ type ConnectCoreV1PatchNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -558,6 +642,9 @@ type ConnectCoreV1PatchNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -578,6 +665,9 @@ type ConnectCoreV1PatchNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -597,6 +687,9 @@ type ConnectCoreV1PatchNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -617,6 +710,9 @@ type ConnectCoreV1PatchNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -635,6 +731,9 @@ type ConnectCoreV1PatchNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PatchNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -653,6 +752,9 @@ type ConnectCoreV1PostNamespacedPodAttachOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -671,6 +773,9 @@ type ConnectCoreV1PostNamespacedPodExecOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedPodExecOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -689,6 +794,9 @@ type ConnectCoreV1PostNamespacedPodPortforwardOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -708,6 +816,9 @@ type ConnectCoreV1PostNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -726,6 +837,9 @@ type ConnectCoreV1PostNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -746,6 +860,9 @@ type ConnectCoreV1PostNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -765,6 +882,9 @@ type ConnectCoreV1PostNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -785,6 +905,9 @@ type ConnectCoreV1PostNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -803,6 +926,9 @@ type ConnectCoreV1PostNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PostNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -821,6 +947,9 @@ type ConnectCoreV1PutNamespacedPodProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -839,6 +968,9 @@ type ConnectCoreV1PutNamespacedPodProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -859,6 +991,9 @@ type ConnectCoreV1PutNamespacedServiceProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -878,6 +1013,9 @@ type ConnectCoreV1PutNamespacedServiceProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -898,6 +1036,9 @@ type ConnectCoreV1PutNodeProxyOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNodeProxyOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -916,6 +1057,9 @@ type ConnectCoreV1PutNodeProxyWithPathOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ConnectCoreV1PutNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -1204,6 +1348,9 @@ type GetServiceAccountIssuerOpenIDKeysetOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s GetServiceAccountIssuerOpenIDKeysetOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -47610,6 +47757,9 @@ type ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -47624,6 +47774,9 @@ type ReadCoreV1NamespacedPodLogOKApplicationYaml struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ReadCoreV1NamespacedPodLogOKApplicationYaml) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -47637,6 +47790,9 @@ type ReadCoreV1NamespacedPodLogOKTextPlain struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s ReadCoreV1NamespacedPodLogOKTextPlain) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
