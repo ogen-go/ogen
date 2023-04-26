@@ -36,11 +36,22 @@ func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
 	spec.Init()
 	e.components = spec.Components
 
+	spec.OpenAPI = api.Version.String()
 	// FIXME(tdakkota): store actual information
-	spec.OpenAPI = "3.1.0"
 	spec.Info = ogen.Info{
 		Title:   "Expanded spec",
 		Version: "v0.1.0",
+	}
+
+	if servers := api.Servers; len(servers) > 0 {
+		expanded := make([]ogen.Server, len(servers))
+		for i, s := range servers {
+			expanded[i], err = e.Server(s)
+			if err != nil {
+				return nil, errors.Wrapf(err, "expand server [%d]", i)
+			}
+		}
+		spec.Servers = expanded
 	}
 
 	setOperation := func(pi *ogen.PathItem, method string, op *ogen.Operation) error {
@@ -124,6 +135,129 @@ func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
 	return spec, nil
 }
 
+func (e *expander) Server(s openapi.Server) (expanded ogen.Server, err error) {
+	expanded.Description = s.Description
+
+	var (
+		template strings.Builder
+		vars     = map[string]ogen.ServerVariable{}
+	)
+	for _, part := range s.Template {
+		if !part.IsParam() {
+			template.WriteString(part.Raw)
+			continue
+		}
+		param := part.Param
+
+		template.WriteByte('{')
+		template.WriteString(param.Name)
+		template.WriteByte('}')
+
+		vars[param.Name] = ogen.ServerVariable{
+			Enum:        param.Enum,
+			Default:     param.Default,
+			Description: param.Description,
+		}
+	}
+	if len(vars) > 0 {
+		expanded.Variables = vars
+	}
+	return expanded, nil
+}
+
+func (e *expander) SecurityRequirements(reqs openapi.SecurityRequirements) (expanded ogen.SecurityRequirements, err error) {
+	if reqs == nil {
+		return nil, nil
+	}
+
+	expanded = make(ogen.SecurityRequirements, len(reqs))
+	for i, req := range reqs {
+		expanded[i], err = e.SecurityRequirement(req)
+		if err != nil {
+			return nil, errors.Wrapf(err, "expand security requirement [%d]", i)
+		}
+	}
+	return expanded, nil
+}
+
+func (e *expander) SecurityRequirement(req openapi.SecurityRequirement) (expanded ogen.SecurityRequirement, err error) {
+	schemes := req.Schemes
+	expanded = make(ogen.SecurityRequirement, len(schemes))
+	for _, ss := range schemes {
+		expanded[ss.Name] = ss.Scopes
+
+		m := e.components.SecuritySchemes
+		if _, ok := m[ss.Name]; !ok {
+			m[ss.Name], err = e.SecurityScheme(ss.Security)
+			if err != nil {
+				return expanded, errors.Wrapf(err, "expand security scheme %q", ss.Name)
+			}
+		}
+	}
+	return expanded, nil
+}
+
+func (e *expander) SecurityScheme(s openapi.Security) (expanded *ogen.SecurityScheme, err error) {
+	expanded = new(ogen.SecurityScheme)
+
+	expanded.Type = s.Type
+	expanded.Description = s.Description
+	expanded.Name = s.Name
+	expanded.In = s.In
+	expanded.Scheme = s.Scheme
+	expanded.BearerFormat = s.BearerFormat
+	expanded.OpenIDConnectURL = s.OpenIDConnectURL
+
+	expanded.Flows, err = e.OAuthFlows(&s.Flows)
+	if err != nil {
+		return nil, errors.Wrap(err, "expande oauth flows")
+	}
+
+	return expanded, nil
+}
+
+func (e *expander) OAuthFlows(flows *openapi.OAuthFlows) (expanded *ogen.OAuthFlows, err error) {
+	if flows == nil {
+		return nil, nil
+	}
+	expanded = new(ogen.OAuthFlows)
+
+	expanded.Implicit, err = e.OAuthFlow(flows.Implicit)
+	if err != nil {
+		return nil, errors.Wrap(err, "expand implicit")
+	}
+
+	expanded.Password, err = e.OAuthFlow(flows.Password)
+	if err != nil {
+		return nil, errors.Wrap(err, "expand password")
+	}
+
+	expanded.ClientCredentials, err = e.OAuthFlow(flows.ClientCredentials)
+	if err != nil {
+		return nil, errors.Wrap(err, "expand clientCredentials")
+	}
+
+	expanded.AuthorizationCode, err = e.OAuthFlow(flows.AuthorizationCode)
+	if err != nil {
+		return nil, errors.Wrap(err, "expand authorizationCode")
+	}
+
+	return expanded, nil
+}
+
+func (e *expander) OAuthFlow(flow *openapi.OAuthFlow) (expanded *ogen.OAuthFlow, err error) {
+	if flow == nil {
+		return nil, nil
+	}
+	expanded = new(ogen.OAuthFlow)
+
+	expanded.AuthorizationURL = flow.AuthorizationURL
+	expanded.TokenURL = flow.TokenURL
+	expanded.RefreshURL = flow.RefreshURL
+	expanded.Scopes = flow.Scopes
+	return expanded, nil
+}
+
 func (e *expander) Operation(op *openapi.Operation) (expanded *ogen.Operation, err error) {
 	expanded = new(ogen.Operation)
 
@@ -131,6 +265,11 @@ func (e *expander) Operation(op *openapi.Operation) (expanded *ogen.Operation, e
 	expanded.Summary = op.Summary
 	expanded.Description = op.Description
 	expanded.Deprecated = op.Deprecated
+
+	expanded.Security, err = e.SecurityRequirements(op.Security)
+	if err != nil {
+		return nil, errors.Wrap(err, "expand security")
+	}
 
 	expanded.Parameters, err = e.Parameters(op.Parameters)
 	if err != nil {
