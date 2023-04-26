@@ -79,6 +79,9 @@ type Options struct {
 	// ContentTypeAliases contains content type aliases.
 	ContentTypeAliases ContentTypeAliases
 
+	// ExpandSpec is a path to expanded spec.
+	ExpandSpec string
+
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.
