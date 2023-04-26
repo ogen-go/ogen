@@ -33,13 +33,13 @@ type SecurityScheme struct {
 // See https://spec.openapis.org/oas/v3.1.0#oauth-flows-object.
 type OAuthFlows struct {
 	// Configuration for the OAuth Implicit flow.
-	Implicit *OAuthFlow `json:"implicit" yaml:"implicit"`
+	Implicit *OAuthFlow `json:"implicit,omitempty" yaml:"implicit,omitempty"`
 	// Configuration for the OAuth Resource Owner Password flow.
-	Password *OAuthFlow `json:"password" yaml:"password"`
+	Password *OAuthFlow `json:"password,omitempty" yaml:"password,omitempty"`
 	// Configuration for the OAuth Client Credentials flow. Previously called application in OpenAPI 2.0.
-	ClientCredentials *OAuthFlow `json:"clientCredentials" yaml:"clientCredentials"`
+	ClientCredentials *OAuthFlow `json:"clientCredentials,omitempty" yaml:"clientCredentials,omitempty"`
 	// Configuration for the OAuth Authorization Code flow. Previously called accessCode in OpenAPI 2.0.
-	AuthorizationCode *OAuthFlow `json:"authorizationCode" yaml:"authorizationCode"`
+	AuthorizationCode *OAuthFlow `json:"authorizationCode,omitempty" yaml:"authorizationCode,omitempty"`
 
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
@@ -50,10 +50,10 @@ type OAuthFlows struct {
 type OAuthFlow struct {
 	// The authorization URL to be used for this flow.
 	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
-	AuthorizationURL string `json:"authorizationUrl" yaml:"authorizationUrl"`
+	AuthorizationURL string `json:"authorizationUrl,omitempty" yaml:"authorizationUrl,omitempty"`
 	// The token URL to be used for this flow.
 	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
-	TokenURL string `json:"tokenUrl" yaml:"tokenUrl"`
+	TokenURL string `json:"tokenUrl,omitempty" yaml:"tokenUrl,omitempty"`
 	// The URL to be used for obtaining refresh tokens.
 	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
 	RefreshURL string `json:"refreshUrl,omitempty" yaml:"refreshUrl,omitempty"`

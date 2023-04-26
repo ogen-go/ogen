@@ -400,9 +400,9 @@ type Parameter struct {
 	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
 
 	// REQUIRED. The name of the parameter. Parameter names are case sensitive.
-	Name string `json:"name" yaml:"name"`
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// REQUIRED. The location of the parameter. Possible values are "query", "header", "path" or "cookie".
-	In string `json:"in" yaml:"in"`
+	In string `json:"in,omitempty" yaml:"in,omitempty"`
 	// A brief description of the parameter. This could contain examples of use.
 	// CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
