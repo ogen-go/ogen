@@ -4298,6 +4298,9 @@ type PetGetAvatarByIDOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s PetGetAvatarByIDOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -4311,6 +4314,9 @@ type PetGetAvatarByNameOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s PetGetAvatarByNameOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -4469,6 +4475,9 @@ type PetUploadAvatarByIDReq struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s PetUploadAvatarByIDReq) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 

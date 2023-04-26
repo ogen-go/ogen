@@ -131,6 +131,9 @@ type GetPageCoverImageOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s GetPageCoverImageOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -149,6 +152,9 @@ type GetPageImageOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s GetPageImageOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
@@ -167,6 +173,9 @@ type GetPageThumbnailImageOK struct {
 //
 // Kept to satisfy the io.Reader interface.
 func (s GetPageThumbnailImageOK) Read(p []byte) (n int, err error) {
+	if s.Data == nil {
+		return 0, nil
+	}
 	return s.Data.Read(p)
 }
 
