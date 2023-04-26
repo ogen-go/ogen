@@ -273,6 +273,11 @@ func TestExternalReference(t *testing.T) {
 	)
 
 	compareJSON(t, &openapi.API{
+		Version: openapi.Version{
+			Major: 3,
+			Minor: 1,
+			Patch: 0,
+		},
 		Operations: []*openapi.Operation{
 			{
 				OperationID: "testGet",

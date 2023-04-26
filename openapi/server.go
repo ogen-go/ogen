@@ -9,9 +9,10 @@ type Server struct {
 
 // ServerVariable represents parsed OpenAPI Server Variable Object.
 type ServerVariable struct {
-	Name    string
-	Default string
-	Enum    []string
+	Name        string
+	Description string
+	Default     string
+	Enum        []string
 }
 
 // ServerURL is URL template with variables.

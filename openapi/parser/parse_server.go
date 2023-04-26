@@ -75,9 +75,10 @@ func (p *parser) parseServer(
 			}
 
 			return openapi.ServerVariable{
-				Name:    name,
-				Default: v.Default,
-				Enum:    slices.Clone(v.Enum),
+				Name:        name,
+				Description: v.Description,
+				Default:     v.Default,
+				Enum:        slices.Clone(v.Enum),
 			}, true
 		})
 	}()

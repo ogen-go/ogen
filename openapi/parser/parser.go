@@ -141,6 +141,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 	}
 
 	return &openapi.API{
+		Version:    p.version,
 		Servers:    servers,
 		Operations: p.operations,
 		Webhooks:   webhooks,
