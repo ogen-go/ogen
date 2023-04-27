@@ -153,6 +153,7 @@ func run() error {
 		noServer          = set.Bool("no-server", false, "Disables server generation")
 		noWebhookClient   = set.Bool("no-webhook-client", false, "Disables webhook client generation")
 		noWebhookServer   = set.Bool("no-webhook-server", false, "Disables webhook server generation")
+		expandSpec        = set.String("expand-spec", "", "Path to file to generate expanded spec")
 		// Debug options.
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented")
@@ -271,6 +272,7 @@ func run() error {
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		ConvenientErrors:     convenientErrors,
 		ContentTypeAliases:   ctAliases,
+		ExpandSpec:           *expandSpec,
 		Logger:               logger,
 	}
 

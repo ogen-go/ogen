@@ -247,6 +247,11 @@ func TestComplicatedReference(t *testing.T) {
 		return a.OperationID < b.OperationID
 	})
 	compareJSON(t, &openapi.API{
+		Version: openapi.Version{
+			Major: 3,
+			Minor: 0,
+			Patch: 3,
+		},
 		Operations: []*openapi.Operation{
 			testGet,
 			testPost,

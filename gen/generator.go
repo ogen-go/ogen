@@ -1,9 +1,12 @@
 package gen
 
 import (
+	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/yaml"
 	"go.uber.org/zap"
 	"golang.org/x/exp/slices"
 
@@ -34,6 +37,34 @@ type Generator struct {
 	log *zap.Logger
 }
 
+func expandSpec(api *openapi.API, p string) (err error) {
+	p, err = filepath.Abs(filepath.Clean(p))
+	if err != nil {
+		return err
+	}
+
+	dir, _ := filepath.Split(p)
+	if err := os.MkdirAll(dir, 0o750); err != nil {
+		return err
+	}
+
+	spec, err := parser.Expand(api)
+	if err != nil {
+		return errors.Wrap(err, "expand")
+	}
+
+	data, err := yaml.Marshal(spec)
+	if err != nil {
+		return errors.Wrap(err, "marshal")
+	}
+
+	if err := os.WriteFile(p, data, 0o600); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 // NewGenerator creates new Generator.
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	opts.setDefaults()
@@ -50,6 +81,12 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
+	}
+
+	if p := opts.ExpandSpec; p != "" {
+		if err := expandSpec(api, p); err != nil {
+			return nil, errors.Wrap(err, "expand spec")
+		}
 	}
 
 	g := &Generator{
@@ -171,7 +208,7 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 			continue
 		}
 
-		var whinfo = &ir.WebhookInfo{
+		whinfo := &ir.WebhookInfo{
 			Name: w.Name,
 		}
 		for _, spec := range w.Operations {
