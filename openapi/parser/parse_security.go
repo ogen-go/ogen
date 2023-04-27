@@ -182,13 +182,42 @@ func cloneOAuthFlows(flows ogen.OAuthFlows, file location.File) (r openapi.OAuth
 	}
 }
 
+func (p *parser) parseSecurityRequirementScheme(name string, scheme *ogen.SecurityScheme) (openapi.Security, error) {
+	// Note that we use root context/file.
+	ctx := p.resolveCtx()
+	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
+
+	spec, err := p.parseSecurityScheme(scheme, ctx)
+	if err != nil {
+		loc := securitySchemesLoc.Field(name)
+		err := errors.Wrapf(err, "parse security scheme %q", name)
+		return openapi.Security{}, p.wrapLocation(p.file(ctx), loc, err)
+	}
+
+	var flows ogen.OAuthFlows
+	if f := spec.Flows; f != nil {
+		flows = *f
+	}
+	security := openapi.Security{
+		Type:             spec.Type,
+		Description:      spec.Description,
+		Name:             spec.Name,
+		In:               spec.In,
+		Scheme:           spec.Scheme,
+		BearerFormat:     spec.BearerFormat,
+		Flows:            cloneOAuthFlows(flows, p.file(ctx)),
+		OpenIDConnectURL: spec.OpenIDConnectURL,
+		Pointer:          spec.Common.Locator.Pointer(p.file(ctx)),
+	}
+	return security, nil
+}
+
 func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
 	locator location.Locator,
 	ctx *jsonpointer.ResolveCtx,
 ) (openapi.SecurityRequirements, error) {
 	result := make(openapi.SecurityRequirements, 0, len(requirements))
-	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
 
 	for idx, req := range requirements {
 		locator := locator.Index(idx)
@@ -203,53 +232,15 @@ func (p *parser) parseSecurityRequirements(
 				return nil, p.wrapLocation(p.file(ctx), locator.Key(name), err)
 			}
 
-			spec, err := p.parseSecurityScheme(v, ctx)
+			security, err := p.parseSecurityRequirementScheme(name, v)
 			if err != nil {
-				loc := securitySchemesLoc.Field(name)
-				err := errors.Wrapf(err, "parse security scheme %q", name)
-				return nil, p.wrapLocation(p.file(ctx), loc, err)
-			}
-
-			if len(scopes) > 0 {
-				switch spec.Type {
-				case "openIdConnect", "oauth2":
-					// Do not check scopes for other securityScheme.
-					locator := locator.Field(name)
-
-					if err := forEachFlow(spec.Flows, func(flow *ogen.OAuthFlow, _, _ bool) error {
-						for idx, scope := range scopes {
-							if _, ok := flow.Scopes[scope]; !ok {
-								locator := locator.Index(idx)
-								err := errors.Errorf(`unknown scope %q`, spec.Type)
-								return p.wrapLocation(p.file(ctx), locator, err)
-							}
-						}
-						return nil
-					}); err != nil {
-						return nil, err
-					}
-				}
-			}
-
-			var flows ogen.OAuthFlows
-			if spec.Flows != nil {
-				flows = *spec.Flows
+				return nil, err
 			}
 
 			schemes = append(schemes, openapi.SecurityScheme{
-				Scopes: scopes,
-				Name:   name,
-				Security: openapi.Security{
-					Type:             spec.Type,
-					Description:      spec.Description,
-					Name:             spec.Name,
-					In:               spec.In,
-					Scheme:           spec.Scheme,
-					BearerFormat:     spec.BearerFormat,
-					Flows:            cloneOAuthFlows(flows, p.file(ctx)),
-					OpenIDConnectURL: spec.OpenIDConnectURL,
-					Pointer:          spec.Common.Locator.Pointer(p.file(ctx)),
-				},
+				Scopes:   scopes,
+				Name:     name,
+				Security: security,
 			})
 		}
 		result = append(result, openapi.SecurityRequirement{
