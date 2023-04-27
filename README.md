@@ -2,7 +2,7 @@
 <img width="256" height="256" src="_logo/logo.svg" alt="ogen svg logo">
 </p>
 
-# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![alpha](https://img.shields.io/badge/-alpha-orange)](https://go-faster.org/docs/projects/status#alpha)
+# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![beta](https://img.shields.io/badge/-beta-yellow)](https://go-faster.org/docs/projects/status#beta)
 
 Opinionated OpenAPI v3 Code Generator for Go.
 
@@ -12,7 +12,7 @@ Opinionated OpenAPI v3 Code Generator for Go.
 - [Telegram group `@ogen_dev`](https://t.me/ogen_dev)
 - [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
 
-Work is still in progress, so currently no backward compatibility is provided. However, we are close to alpha.
+API should be pretty stable, but some rare changes can occur until v1.0.0.
 
 # Install
 
