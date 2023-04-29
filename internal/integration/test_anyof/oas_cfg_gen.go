@@ -7,6 +7,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/global"
 	"go.opentelemetry.io/otel/metric/instrument"
 	"go.opentelemetry.io/otel/trace"
 
@@ -44,7 +45,7 @@ func (cfg *otelConfig) initOTEL() {
 		cfg.TracerProvider = otel.GetTracerProvider()
 	}
 	if cfg.MeterProvider == nil {
-		cfg.MeterProvider = metric.NewNoopMeterProvider()
+		cfg.MeterProvider = global.MeterProvider()
 	}
 	cfg.Tracer = cfg.TracerProvider.Tracer(otelogen.Name,
 		trace.WithInstrumentationVersion(otelogen.SemVersion()),
@@ -204,7 +205,7 @@ func WithTracerProvider(provider trace.TracerProvider) Option {
 
 // WithMeterProvider specifies a meter provider to use for creating a meter.
 //
-// If none is specified, the metric.NewNoopMeterProvider is used.
+// If none is specified, the global.MeterProvider() is used.
 func WithMeterProvider(provider metric.MeterProvider) Option {
 	return otelOptionFunc(func(cfg *otelConfig) {
 		if provider != nil {
