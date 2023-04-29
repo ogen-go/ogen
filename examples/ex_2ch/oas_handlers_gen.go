@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -32,17 +33,17 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -133,17 +134,17 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -234,17 +235,17 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -339,17 +340,17 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -440,17 +441,17 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -518,17 +519,17 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -619,17 +620,17 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -697,17 +698,17 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -798,17 +799,17 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -901,17 +902,17 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1006,17 +1007,17 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -1084,17 +1085,17 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1185,17 +1186,17 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1286,17 +1287,17 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1398,17 +1399,17 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1495,17 +1496,17 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{

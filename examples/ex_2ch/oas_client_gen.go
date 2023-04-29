@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -83,11 +84,11 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaIDGet",
@@ -99,7 +100,7 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -188,11 +189,11 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaShowGet",
@@ -204,7 +205,7 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -277,11 +278,11 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaAppIDPublicKeyGet",
@@ -293,7 +294,7 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -400,11 +401,11 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaIDGet",
@@ -416,7 +417,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -505,11 +506,11 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
@@ -521,7 +522,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -572,11 +573,11 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaIDGet",
@@ -588,7 +589,7 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -677,11 +678,11 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
@@ -693,7 +694,7 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -744,11 +745,11 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIDislikeGet",
@@ -760,7 +761,7 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -843,11 +844,11 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APILikeGet",
@@ -859,7 +860,7 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -944,11 +945,11 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2AfterBoardThreadNumGet",
@@ -960,7 +961,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1067,11 +1068,11 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2BoardsGet",
@@ -1083,7 +1084,7 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1134,11 +1135,11 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2InfoBoardThreadGet",
@@ -1150,7 +1151,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1238,11 +1239,11 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2PostBoardNumGet",
@@ -1254,7 +1255,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1342,11 +1343,11 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPassloginPost",
@@ -1358,7 +1359,7 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1446,11 +1447,11 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPostingPost",
@@ -1462,7 +1463,7 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1516,11 +1517,11 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserReportPost",
@@ -1532,7 +1533,7 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()

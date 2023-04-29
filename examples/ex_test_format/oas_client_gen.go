@@ -15,6 +15,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -90,11 +91,11 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestQueryParameter",
@@ -107,7 +108,7 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1645,11 +1646,11 @@ func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *E
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestAny",
@@ -1662,7 +1663,7 @@ func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *E
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1716,11 +1717,11 @@ func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBoolean",
@@ -1733,7 +1734,7 @@ func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1787,11 +1788,11 @@ func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArray",
@@ -1804,7 +1805,7 @@ func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1881,11 +1882,11 @@ func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArrayArray",
@@ -1898,7 +1899,7 @@ func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -1952,11 +1953,11 @@ func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request Opt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullable",
@@ -1969,7 +1970,7 @@ func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request Opt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2023,11 +2024,11 @@ func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArray",
@@ -2040,7 +2041,7 @@ func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2117,11 +2118,11 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArrayArray",
@@ -2134,7 +2135,7 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2188,11 +2189,11 @@ func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRe
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestEmptyStruct",
@@ -2205,7 +2206,7 @@ func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRe
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2275,11 +2276,11 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestFormatTest",
@@ -2292,7 +2293,7 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2346,11 +2347,11 @@ func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestInteger",
@@ -2363,7 +2364,7 @@ func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2417,11 +2418,11 @@ func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArray",
@@ -2434,7 +2435,7 @@ func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2511,11 +2512,11 @@ func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArrayArray",
@@ -2528,7 +2529,7 @@ func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2582,11 +2583,11 @@ func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32",
@@ -2599,7 +2600,7 @@ func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2653,11 +2654,11 @@ func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Array",
@@ -2670,7 +2671,7 @@ func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2747,11 +2748,11 @@ func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32ArrayArray",
@@ -2764,7 +2765,7 @@ func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2818,11 +2819,11 @@ func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Nullable",
@@ -2835,7 +2836,7 @@ func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2889,11 +2890,11 @@ func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArray",
@@ -2906,7 +2907,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -2983,11 +2984,11 @@ func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArrayArray",
@@ -3000,7 +3001,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3054,11 +3055,11 @@ func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64",
@@ -3071,7 +3072,7 @@ func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3125,11 +3126,11 @@ func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Array",
@@ -3142,7 +3143,7 @@ func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3219,11 +3220,11 @@ func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64ArrayArray",
@@ -3236,7 +3237,7 @@ func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3290,11 +3291,11 @@ func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Nullable",
@@ -3307,7 +3308,7 @@ func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3361,11 +3362,11 @@ func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArray",
@@ -3378,7 +3379,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3455,11 +3456,11 @@ func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArrayArray",
@@ -3472,7 +3473,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3526,11 +3527,11 @@ func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request Opt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullable",
@@ -3543,7 +3544,7 @@ func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request Opt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3597,11 +3598,11 @@ func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArray",
@@ -3614,7 +3615,7 @@ func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3691,11 +3692,11 @@ func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArrayArray",
@@ -3708,7 +3709,7 @@ func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3762,11 +3763,11 @@ func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint",
@@ -3779,7 +3780,7 @@ func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3833,11 +3834,11 @@ func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUi
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32",
@@ -3850,7 +3851,7 @@ func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUi
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3904,11 +3905,11 @@ func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Array",
@@ -3921,7 +3922,7 @@ func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -3998,11 +3999,11 @@ func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32ArrayArray",
@@ -4015,7 +4016,7 @@ func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4069,11 +4070,11 @@ func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Nullable",
@@ -4086,7 +4087,7 @@ func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4140,11 +4141,11 @@ func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArray",
@@ -4157,7 +4158,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4234,11 +4235,11 @@ func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArrayArray",
@@ -4251,7 +4252,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4305,11 +4306,11 @@ func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUi
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64",
@@ -4322,7 +4323,7 @@ func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUi
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4376,11 +4377,11 @@ func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Array",
@@ -4393,7 +4394,7 @@ func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4470,11 +4471,11 @@ func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64ArrayArray",
@@ -4487,7 +4488,7 @@ func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4541,11 +4542,11 @@ func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Nullable",
@@ -4558,7 +4559,7 @@ func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4612,11 +4613,11 @@ func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArray",
@@ -4629,7 +4630,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4706,11 +4707,11 @@ func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArrayArray",
@@ -4723,7 +4724,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4777,11 +4778,11 @@ func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArray",
@@ -4794,7 +4795,7 @@ func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4871,11 +4872,11 @@ func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArrayArray",
@@ -4888,7 +4889,7 @@ func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -4942,11 +4943,11 @@ func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullable",
@@ -4959,7 +4960,7 @@ func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5013,11 +5014,11 @@ func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArray",
@@ -5030,7 +5031,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5107,11 +5108,11 @@ func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArrayArray",
@@ -5124,7 +5125,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5178,11 +5179,11 @@ func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnix
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnix",
@@ -5195,7 +5196,7 @@ func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnix
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5249,11 +5250,11 @@ func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArray",
@@ -5266,7 +5267,7 @@ func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5343,11 +5344,11 @@ func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArrayArray",
@@ -5360,7 +5361,7 @@ func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5414,11 +5415,11 @@ func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request Op
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicro",
@@ -5431,7 +5432,7 @@ func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request Op
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5485,11 +5486,11 @@ func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArray",
@@ -5502,7 +5503,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5579,11 +5580,11 @@ func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArrayArray",
@@ -5596,7 +5597,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5650,11 +5651,11 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullable",
@@ -5667,7 +5668,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5721,11 +5722,11 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArray",
@@ -5738,7 +5739,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5815,11 +5816,11 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArrayArray",
@@ -5832,7 +5833,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5886,11 +5887,11 @@ func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request Op
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilli",
@@ -5903,7 +5904,7 @@ func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request Op
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -5957,11 +5958,11 @@ func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArray",
@@ -5974,7 +5975,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6051,11 +6052,11 @@ func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArrayArray",
@@ -6068,7 +6069,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6122,11 +6123,11 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullable",
@@ -6139,7 +6140,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6193,11 +6194,11 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArray",
@@ -6210,7 +6211,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6287,11 +6288,11 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArrayArray",
@@ -6304,7 +6305,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6358,11 +6359,11 @@ func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request Opt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNano",
@@ -6375,7 +6376,7 @@ func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request Opt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6429,11 +6430,11 @@ func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArray",
@@ -6446,7 +6447,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6523,11 +6524,11 @@ func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArrayArray",
@@ -6540,7 +6541,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6594,11 +6595,11 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullable",
@@ -6611,7 +6612,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6665,11 +6666,11 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArray",
@@ -6682,7 +6683,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6759,11 +6760,11 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArrayArray",
@@ -6776,7 +6777,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6830,11 +6831,11 @@ func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullable",
@@ -6847,7 +6848,7 @@ func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6901,11 +6902,11 @@ func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArray",
@@ -6918,7 +6919,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -6995,11 +6996,11 @@ func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArrayArray",
@@ -7012,7 +7013,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7066,11 +7067,11 @@ func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSeconds",
@@ -7083,7 +7084,7 @@ func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7137,11 +7138,11 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArray",
@@ -7154,7 +7155,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7231,11 +7232,11 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArrayArray",
@@ -7248,7 +7249,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7302,11 +7303,11 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullable",
@@ -7319,7 +7320,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7373,11 +7374,11 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArray",
@@ -7390,7 +7391,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7467,11 +7468,11 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArrayArray",
@@ -7484,7 +7485,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7538,11 +7539,11 @@ func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNull",
@@ -7555,7 +7556,7 @@ func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7609,11 +7610,11 @@ func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArray",
@@ -7626,7 +7627,7 @@ func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7703,11 +7704,11 @@ func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArrayArray",
@@ -7720,7 +7721,7 @@ func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7774,11 +7775,11 @@ func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNul
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullable",
@@ -7791,7 +7792,7 @@ func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNul
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7845,11 +7846,11 @@ func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArray",
@@ -7862,7 +7863,7 @@ func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -7939,11 +7940,11 @@ func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArrayArray",
@@ -7956,7 +7957,7 @@ func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8026,11 +8027,11 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumber",
@@ -8043,7 +8044,7 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8120,11 +8121,11 @@ func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArray",
@@ -8137,7 +8138,7 @@ func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8231,11 +8232,11 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArrayArray",
@@ -8248,7 +8249,7 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8318,11 +8319,11 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDouble",
@@ -8335,7 +8336,7 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8412,11 +8413,11 @@ func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArray",
@@ -8429,7 +8430,7 @@ func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8523,11 +8524,11 @@ func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArrayArray",
@@ -8540,7 +8541,7 @@ func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8610,11 +8611,11 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullable",
@@ -8627,7 +8628,7 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8704,11 +8705,11 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArray",
@@ -8721,7 +8722,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8815,11 +8816,11 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArrayArray",
@@ -8832,7 +8833,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8902,11 +8903,11 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloat",
@@ -8919,7 +8920,7 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -8996,11 +8997,11 @@ func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArray",
@@ -9013,7 +9014,7 @@ func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9107,11 +9108,11 @@ func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArrayArray",
@@ -9124,7 +9125,7 @@ func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9194,11 +9195,11 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullable",
@@ -9211,7 +9212,7 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9288,11 +9289,11 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArray",
@@ -9305,7 +9306,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9399,11 +9400,11 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArrayArray",
@@ -9416,7 +9417,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9470,11 +9471,11 @@ func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt3
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32",
@@ -9487,7 +9488,7 @@ func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt3
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9541,11 +9542,11 @@ func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Array",
@@ -9558,7 +9559,7 @@ func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9635,11 +9636,11 @@ func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32ArrayArray",
@@ -9652,7 +9653,7 @@ func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9706,11 +9707,11 @@ func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Nullable",
@@ -9723,7 +9724,7 @@ func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9777,11 +9778,11 @@ func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArray",
@@ -9794,7 +9795,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9871,11 +9872,11 @@ func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArrayArray",
@@ -9888,7 +9889,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -9942,11 +9943,11 @@ func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt6
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64",
@@ -9959,7 +9960,7 @@ func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt6
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10013,11 +10014,11 @@ func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Array",
@@ -10030,7 +10031,7 @@ func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10107,11 +10108,11 @@ func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64ArrayArray",
@@ -10124,7 +10125,7 @@ func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10178,11 +10179,11 @@ func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Nullable",
@@ -10195,7 +10196,7 @@ func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10249,11 +10250,11 @@ func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArray",
@@ -10266,7 +10267,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10343,11 +10344,11 @@ func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArrayArray",
@@ -10360,7 +10361,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10430,11 +10431,11 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullable",
@@ -10447,7 +10448,7 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10524,11 +10525,11 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArray",
@@ -10541,7 +10542,7 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10635,11 +10636,11 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArrayArray",
@@ -10652,7 +10653,7 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10706,11 +10707,11 @@ func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredAny",
@@ -10723,7 +10724,7 @@ func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10777,11 +10778,11 @@ func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request boo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBoolean",
@@ -10794,7 +10795,7 @@ func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request boo
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10857,11 +10858,11 @@ func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArray",
@@ -10874,7 +10875,7 @@ func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -10954,11 +10955,11 @@ func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArrayArray",
@@ -10971,7 +10972,7 @@ func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11025,11 +11026,11 @@ func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullable",
@@ -11042,7 +11043,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11105,11 +11106,11 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArray",
@@ -11122,7 +11123,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11202,11 +11203,11 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArrayArray",
@@ -11219,7 +11220,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11273,11 +11274,11 @@ func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredEmptyStruct",
@@ -11290,7 +11291,7 @@ func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11353,11 +11354,11 @@ func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredFormatTest",
@@ -11370,7 +11371,7 @@ func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11424,11 +11425,11 @@ func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredInteger",
@@ -11441,7 +11442,7 @@ func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11504,11 +11505,11 @@ func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArray",
@@ -11521,7 +11522,7 @@ func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11601,11 +11602,11 @@ func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArrayArray",
@@ -11618,7 +11619,7 @@ func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11672,11 +11673,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32",
@@ -11689,7 +11690,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11752,11 +11753,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Array",
@@ -11769,7 +11770,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11849,11 +11850,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32ArrayArray",
@@ -11866,7 +11867,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -11920,11 +11921,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Nullable",
@@ -11937,7 +11938,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12000,11 +12001,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArray",
@@ -12017,7 +12018,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12097,11 +12098,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArrayArray",
@@ -12114,7 +12115,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12168,11 +12169,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64",
@@ -12185,7 +12186,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12248,11 +12249,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Array",
@@ -12265,7 +12266,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12345,11 +12346,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64ArrayArray",
@@ -12362,7 +12363,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12416,11 +12417,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Nullable",
@@ -12433,7 +12434,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12496,11 +12497,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArray",
@@ -12513,7 +12514,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12593,11 +12594,11 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArrayArray",
@@ -12610,7 +12611,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12664,11 +12665,11 @@ func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullable",
@@ -12681,7 +12682,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12744,11 +12745,11 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArray",
@@ -12761,7 +12762,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12841,11 +12842,11 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArrayArray",
@@ -12858,7 +12859,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12912,11 +12913,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint",
@@ -12929,7 +12930,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -12983,11 +12984,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32",
@@ -13000,7 +13001,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13063,11 +13064,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Array",
@@ -13080,7 +13081,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13160,11 +13161,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32ArrayArray",
@@ -13177,7 +13178,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13231,11 +13232,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Nullable",
@@ -13248,7 +13249,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13311,11 +13312,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArray",
@@ -13328,7 +13329,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13408,11 +13409,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArrayArray",
@@ -13425,7 +13426,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13479,11 +13480,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64",
@@ -13496,7 +13497,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13559,11 +13560,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Array",
@@ -13576,7 +13577,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13656,11 +13657,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64ArrayArray",
@@ -13673,7 +13674,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13727,11 +13728,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Nullable",
@@ -13744,7 +13745,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13807,11 +13808,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArray",
@@ -13824,7 +13825,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13904,11 +13905,11 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArrayArray",
@@ -13921,7 +13922,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -13984,11 +13985,11 @@ func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArray",
@@ -14001,7 +14002,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14081,11 +14082,11 @@ func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArrayArray",
@@ -14098,7 +14099,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14152,11 +14153,11 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullable",
@@ -14169,7 +14170,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14232,11 +14233,11 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArray",
@@ -14249,7 +14250,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14329,11 +14330,11 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArrayArray",
@@ -14346,7 +14347,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14400,11 +14401,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnix",
@@ -14417,7 +14418,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14480,11 +14481,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArray",
@@ -14497,7 +14498,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14577,11 +14578,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArrayArray",
@@ -14594,7 +14595,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14648,11 +14649,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicro",
@@ -14665,7 +14666,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14728,11 +14729,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArray",
@@ -14745,7 +14746,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14825,11 +14826,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArrayArray",
@@ -14842,7 +14843,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14896,11 +14897,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullable",
@@ -14913,7 +14914,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -14976,11 +14977,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArray",
@@ -14993,7 +14994,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15073,11 +15074,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx c
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
@@ -15090,7 +15091,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx c
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15144,11 +15145,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilli",
@@ -15161,7 +15162,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15224,11 +15225,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArray",
@@ -15241,7 +15242,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15321,11 +15322,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArrayArray",
@@ -15338,7 +15339,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15392,11 +15393,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullable",
@@ -15409,7 +15410,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15472,11 +15473,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArray",
@@ -15489,7 +15490,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15569,11 +15570,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx c
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
@@ -15586,7 +15587,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx c
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15640,11 +15641,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNano",
@@ -15657,7 +15658,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15720,11 +15721,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArray",
@@ -15737,7 +15738,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15817,11 +15818,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArrayArray",
@@ -15834,7 +15835,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15888,11 +15889,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullable",
@@ -15905,7 +15906,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -15968,11 +15969,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArray",
@@ -15985,7 +15986,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16065,11 +16066,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
@@ -16082,7 +16083,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16136,11 +16137,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullable",
@@ -16153,7 +16154,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16216,11 +16217,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArray",
@@ -16233,7 +16234,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16313,11 +16314,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArrayArray",
@@ -16330,7 +16331,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16384,11 +16385,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSeconds",
@@ -16401,7 +16402,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16464,11 +16465,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArray",
@@ -16481,7 +16482,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16561,11 +16562,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArrayArray",
@@ -16578,7 +16579,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16632,11 +16633,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullable",
@@ -16649,7 +16650,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16712,11 +16713,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArray",
@@ -16729,7 +16730,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16809,11 +16810,11 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
@@ -16826,7 +16827,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16880,11 +16881,11 @@ func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNull",
@@ -16897,7 +16898,7 @@ func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -16960,11 +16961,11 @@ func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArray",
@@ -16977,7 +16978,7 @@ func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17057,11 +17058,11 @@ func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArrayArray",
@@ -17074,7 +17075,7 @@ func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17128,11 +17129,11 @@ func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullable",
@@ -17145,7 +17146,7 @@ func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17208,11 +17209,11 @@ func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArray",
@@ -17225,7 +17226,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17305,11 +17306,11 @@ func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArrayArray",
@@ -17322,7 +17323,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17385,11 +17386,11 @@ func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request floa
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumber",
@@ -17402,7 +17403,7 @@ func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request floa
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17482,11 +17483,11 @@ func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArray",
@@ -17499,7 +17500,7 @@ func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17596,11 +17597,11 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArrayArray",
@@ -17613,7 +17614,7 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17676,11 +17677,11 @@ func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDouble",
@@ -17693,7 +17694,7 @@ func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17773,11 +17774,11 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArray",
@@ -17790,7 +17791,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17887,11 +17888,11 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArrayArray",
@@ -17904,7 +17905,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -17967,11 +17968,11 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullable",
@@ -17984,7 +17985,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18064,11 +18065,11 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArray",
@@ -18081,7 +18082,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18178,11 +18179,11 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArrayArray",
@@ -18195,7 +18196,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18258,11 +18259,11 @@ func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloat",
@@ -18275,7 +18276,7 @@ func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18355,11 +18356,11 @@ func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArray",
@@ -18372,7 +18373,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18469,11 +18470,11 @@ func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArrayArray",
@@ -18486,7 +18487,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18549,11 +18550,11 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullable",
@@ -18566,7 +18567,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18646,11 +18647,11 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArray",
@@ -18663,7 +18664,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18760,11 +18761,11 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArrayArray",
@@ -18777,7 +18778,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18831,11 +18832,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32",
@@ -18848,7 +18849,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -18911,11 +18912,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Array",
@@ -18928,7 +18929,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19008,11 +19009,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32ArrayArray",
@@ -19025,7 +19026,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19079,11 +19080,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Nullable",
@@ -19096,7 +19097,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19159,11 +19160,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArray",
@@ -19176,7 +19177,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19256,11 +19257,11 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArrayArray",
@@ -19273,7 +19274,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19327,11 +19328,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64",
@@ -19344,7 +19345,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19407,11 +19408,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Array",
@@ -19424,7 +19425,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19504,11 +19505,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64ArrayArray",
@@ -19521,7 +19522,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19575,11 +19576,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Nullable",
@@ -19592,7 +19593,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19655,11 +19656,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArray",
@@ -19672,7 +19673,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19752,11 +19753,11 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArrayArray",
@@ -19769,7 +19770,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19832,11 +19833,11 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullable",
@@ -19849,7 +19850,7 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -19929,11 +19930,11 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArray",
@@ -19946,7 +19947,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20043,11 +20044,11 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArrayArray",
@@ -20060,7 +20061,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20114,11 +20115,11 @@ func (c *Client) sendTestRequestRequiredString(ctx context.Context, request stri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredString",
@@ -20131,7 +20132,7 @@ func (c *Client) sendTestRequestRequiredString(ctx context.Context, request stri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20194,11 +20195,11 @@ func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArray",
@@ -20211,7 +20212,7 @@ func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20291,11 +20292,11 @@ func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArrayArray",
@@ -20308,7 +20309,7 @@ func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20362,11 +20363,11 @@ func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64",
@@ -20379,7 +20380,7 @@ func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20442,11 +20443,11 @@ func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64Array",
@@ -20459,7 +20460,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20539,11 +20540,11 @@ func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64ArrayArray",
@@ -20556,7 +20557,7 @@ func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20610,11 +20611,11 @@ func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64Nullable",
@@ -20627,7 +20628,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20690,11 +20691,11 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64NullableArray",
@@ -20707,7 +20708,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20787,11 +20788,11 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64NullableArrayArray",
@@ -20804,7 +20805,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20858,11 +20859,11 @@ func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinary",
@@ -20875,7 +20876,7 @@ func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -20938,11 +20939,11 @@ func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArray",
@@ -20955,7 +20956,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21035,11 +21036,11 @@ func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArrayArray",
@@ -21052,7 +21053,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21106,11 +21107,11 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullable",
@@ -21123,7 +21124,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21186,11 +21187,11 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArray",
@@ -21203,7 +21204,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21283,11 +21284,11 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArrayArray",
@@ -21300,7 +21301,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21354,11 +21355,11 @@ func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByte",
@@ -21371,7 +21372,7 @@ func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21434,11 +21435,11 @@ func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArray",
@@ -21451,7 +21452,7 @@ func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21531,11 +21532,11 @@ func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArrayArray",
@@ -21548,7 +21549,7 @@ func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21602,11 +21603,11 @@ func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullable",
@@ -21619,7 +21620,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21682,11 +21683,11 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArray",
@@ -21699,7 +21700,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21779,11 +21780,11 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArrayArray",
@@ -21796,7 +21797,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21850,11 +21851,11 @@ func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDate",
@@ -21867,7 +21868,7 @@ func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -21930,11 +21931,11 @@ func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArray",
@@ -21947,7 +21948,7 @@ func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22027,11 +22028,11 @@ func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArrayArray",
@@ -22044,7 +22045,7 @@ func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22098,11 +22099,11 @@ func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullable",
@@ -22115,7 +22116,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22178,11 +22179,11 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArray",
@@ -22195,7 +22196,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22275,11 +22276,11 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArrayArray",
@@ -22292,7 +22293,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22346,11 +22347,11 @@ func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTime",
@@ -22363,7 +22364,7 @@ func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22426,11 +22427,11 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArray",
@@ -22443,7 +22444,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22523,11 +22524,11 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArrayArray",
@@ -22540,7 +22541,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22594,11 +22595,11 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullable",
@@ -22611,7 +22612,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22674,11 +22675,11 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArray",
@@ -22691,7 +22692,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22771,11 +22772,11 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArrayArray",
@@ -22788,7 +22789,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22842,11 +22843,11 @@ func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDuration",
@@ -22859,7 +22860,7 @@ func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -22922,11 +22923,11 @@ func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArray",
@@ -22939,7 +22940,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23019,11 +23020,11 @@ func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArrayArray",
@@ -23036,7 +23037,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23090,11 +23091,11 @@ func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullable",
@@ -23107,7 +23108,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23170,11 +23171,11 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArray",
@@ -23187,7 +23188,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23267,11 +23268,11 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArrayArray",
@@ -23284,7 +23285,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23355,11 +23356,11 @@ func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmail",
@@ -23372,7 +23373,7 @@ func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23460,11 +23461,11 @@ func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArray",
@@ -23477,7 +23478,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23582,11 +23583,11 @@ func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArrayArray",
@@ -23599,7 +23600,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23670,11 +23671,11 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullable",
@@ -23687,7 +23688,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23775,11 +23776,11 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArray",
@@ -23792,7 +23793,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23897,11 +23898,11 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArrayArray",
@@ -23914,7 +23915,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -23985,11 +23986,11 @@ func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostname",
@@ -24002,7 +24003,7 @@ func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24090,11 +24091,11 @@ func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArray",
@@ -24107,7 +24108,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24212,11 +24213,11 @@ func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArrayArray",
@@ -24229,7 +24230,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24300,11 +24301,11 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullable",
@@ -24317,7 +24318,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24405,11 +24406,11 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArray",
@@ -24422,7 +24423,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24527,11 +24528,11 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArrayArray",
@@ -24544,7 +24545,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24598,11 +24599,11 @@ func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request ne
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIP",
@@ -24615,7 +24616,7 @@ func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request ne
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24678,11 +24679,11 @@ func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArray",
@@ -24695,7 +24696,7 @@ func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24775,11 +24776,11 @@ func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArrayArray",
@@ -24792,7 +24793,7 @@ func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24846,11 +24847,11 @@ func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullable",
@@ -24863,7 +24864,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -24926,11 +24927,11 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArray",
@@ -24943,7 +24944,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25023,11 +25024,11 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArrayArray",
@@ -25040,7 +25041,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25094,11 +25095,11 @@ func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32",
@@ -25111,7 +25112,7 @@ func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25174,11 +25175,11 @@ func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Array",
@@ -25191,7 +25192,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25271,11 +25272,11 @@ func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32ArrayArray",
@@ -25288,7 +25289,7 @@ func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25342,11 +25343,11 @@ func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Nullable",
@@ -25359,7 +25360,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25422,11 +25423,11 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArray",
@@ -25439,7 +25440,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25519,11 +25520,11 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArrayArray",
@@ -25536,7 +25537,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25590,11 +25591,11 @@ func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64",
@@ -25607,7 +25608,7 @@ func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25670,11 +25671,11 @@ func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Array",
@@ -25687,7 +25688,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25767,11 +25768,11 @@ func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64ArrayArray",
@@ -25784,7 +25785,7 @@ func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25838,11 +25839,11 @@ func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Nullable",
@@ -25855,7 +25856,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -25918,11 +25919,11 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArray",
@@ -25935,7 +25936,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26015,11 +26016,11 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArrayArray",
@@ -26032,7 +26033,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26086,11 +26087,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4",
@@ -26103,7 +26104,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26166,11 +26167,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Array",
@@ -26183,7 +26184,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26263,11 +26264,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4ArrayArray",
@@ -26280,7 +26281,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26334,11 +26335,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Nullable",
@@ -26351,7 +26352,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26414,11 +26415,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArray",
@@ -26431,7 +26432,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26511,11 +26512,11 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArrayArray",
@@ -26528,7 +26529,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26582,11 +26583,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6",
@@ -26599,7 +26600,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26662,11 +26663,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Array",
@@ -26679,7 +26680,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26759,11 +26760,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6ArrayArray",
@@ -26776,7 +26777,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26830,11 +26831,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Nullable",
@@ -26847,7 +26848,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -26910,11 +26911,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArray",
@@ -26927,7 +26928,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27007,11 +27008,11 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArrayArray",
@@ -27024,7 +27025,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27078,11 +27079,11 @@ func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullable",
@@ -27095,7 +27096,7 @@ func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27158,11 +27159,11 @@ func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArray",
@@ -27175,7 +27176,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27255,11 +27256,11 @@ func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArrayArray",
@@ -27272,7 +27273,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27326,11 +27327,11 @@ func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPassword",
@@ -27343,7 +27344,7 @@ func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27406,11 +27407,11 @@ func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArray",
@@ -27423,7 +27424,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27503,11 +27504,11 @@ func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArrayArray",
@@ -27520,7 +27521,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27574,11 +27575,11 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullable",
@@ -27591,7 +27592,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27654,11 +27655,11 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArray",
@@ -27671,7 +27672,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27751,11 +27752,11 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArrayArray",
@@ -27768,7 +27769,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27822,11 +27823,11 @@ func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTime",
@@ -27839,7 +27840,7 @@ func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27902,11 +27903,11 @@ func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArray",
@@ -27919,7 +27920,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -27999,11 +28000,11 @@ func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArrayArray",
@@ -28016,7 +28017,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28070,11 +28071,11 @@ func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullable",
@@ -28087,7 +28088,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28150,11 +28151,11 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArray",
@@ -28167,7 +28168,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28247,11 +28248,11 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArrayArray",
@@ -28264,7 +28265,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28318,11 +28319,11 @@ func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request u
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURI",
@@ -28335,7 +28336,7 @@ func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request u
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28398,11 +28399,11 @@ func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArray",
@@ -28415,7 +28416,7 @@ func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28495,11 +28496,11 @@ func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArrayArray",
@@ -28512,7 +28513,7 @@ func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28566,11 +28567,11 @@ func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullable",
@@ -28583,7 +28584,7 @@ func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28646,11 +28647,11 @@ func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArray",
@@ -28663,7 +28664,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28743,11 +28744,11 @@ func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArrayArray",
@@ -28760,7 +28761,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28814,11 +28815,11 @@ func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUID",
@@ -28831,7 +28832,7 @@ func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28894,11 +28895,11 @@ func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArray",
@@ -28911,7 +28912,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -28991,11 +28992,11 @@ func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArrayArray",
@@ -29008,7 +29009,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29062,11 +29063,11 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullable",
@@ -29079,7 +29080,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29142,11 +29143,11 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArray",
@@ -29159,7 +29160,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29239,11 +29240,11 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArrayArray",
@@ -29256,7 +29257,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29310,11 +29311,11 @@ func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnix",
@@ -29327,7 +29328,7 @@ func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29390,11 +29391,11 @@ func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArray",
@@ -29407,7 +29408,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29487,11 +29488,11 @@ func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArrayArray",
@@ -29504,7 +29505,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29558,11 +29559,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicro",
@@ -29575,7 +29576,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29638,11 +29639,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArray",
@@ -29655,7 +29656,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29735,11 +29736,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArrayArray",
@@ -29752,7 +29753,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29806,11 +29807,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullable",
@@ -29823,7 +29824,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29886,11 +29887,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArray",
@@ -29903,7 +29904,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -29983,11 +29984,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArrayArray",
@@ -30000,7 +30001,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30054,11 +30055,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilli",
@@ -30071,7 +30072,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30134,11 +30135,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArray",
@@ -30151,7 +30152,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30231,11 +30232,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArrayArray",
@@ -30248,7 +30249,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30302,11 +30303,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullable",
@@ -30319,7 +30320,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30382,11 +30383,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArray",
@@ -30399,7 +30400,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30479,11 +30480,11 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArrayArray",
@@ -30496,7 +30497,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30550,11 +30551,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNano",
@@ -30567,7 +30568,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30630,11 +30631,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArray",
@@ -30647,7 +30648,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30727,11 +30728,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArrayArray",
@@ -30744,7 +30745,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30798,11 +30799,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullable",
@@ -30815,7 +30816,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30878,11 +30879,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArray",
@@ -30895,7 +30896,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -30975,11 +30976,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArrayArray",
@@ -30992,7 +30993,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31046,11 +31047,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullable",
@@ -31063,7 +31064,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31126,11 +31127,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArray",
@@ -31143,7 +31144,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31223,11 +31224,11 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArrayArray",
@@ -31240,7 +31241,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31294,11 +31295,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSeconds",
@@ -31311,7 +31312,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31374,11 +31375,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArray",
@@ -31391,7 +31392,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31471,11 +31472,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArrayArray",
@@ -31488,7 +31489,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31542,11 +31543,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullable",
@@ -31559,7 +31560,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31622,11 +31623,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArray",
@@ -31639,7 +31640,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31719,11 +31720,11 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArrayArray",
@@ -31736,7 +31737,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31790,11 +31791,11 @@ func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestString",
@@ -31807,7 +31808,7 @@ func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31861,11 +31862,11 @@ func (c *Client) sendTestRequestStringArray(ctx context.Context, request []strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArray",
@@ -31878,7 +31879,7 @@ func (c *Client) sendTestRequestStringArray(ctx context.Context, request []strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -31955,11 +31956,11 @@ func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArrayArray",
@@ -31972,7 +31973,7 @@ func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32026,11 +32027,11 @@ func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64",
@@ -32043,7 +32044,7 @@ func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32097,11 +32098,11 @@ func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64Array",
@@ -32114,7 +32115,7 @@ func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32191,11 +32192,11 @@ func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64ArrayArray",
@@ -32208,7 +32209,7 @@ func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32262,11 +32263,11 @@ func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64Nullable",
@@ -32279,7 +32280,7 @@ func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32333,11 +32334,11 @@ func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64NullableArray",
@@ -32350,7 +32351,7 @@ func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32427,11 +32428,11 @@ func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64NullableArrayArray",
@@ -32444,7 +32445,7 @@ func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32498,11 +32499,11 @@ func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptStr
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinary",
@@ -32515,7 +32516,7 @@ func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptStr
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32569,11 +32570,11 @@ func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request [
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArray",
@@ -32586,7 +32587,7 @@ func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request [
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32663,11 +32664,11 @@ func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArrayArray",
@@ -32680,7 +32681,7 @@ func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32734,11 +32735,11 @@ func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullable",
@@ -32751,7 +32752,7 @@ func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32805,11 +32806,11 @@ func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArray",
@@ -32822,7 +32823,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32899,11 +32900,11 @@ func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArrayArray",
@@ -32916,7 +32917,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -32970,11 +32971,11 @@ func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByte",
@@ -32987,7 +32988,7 @@ func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33041,11 +33042,11 @@ func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArray",
@@ -33058,7 +33059,7 @@ func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33135,11 +33136,11 @@ func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArrayArray",
@@ -33152,7 +33153,7 @@ func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33206,11 +33207,11 @@ func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullable",
@@ -33223,7 +33224,7 @@ func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33277,11 +33278,11 @@ func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArray",
@@ -33294,7 +33295,7 @@ func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33371,11 +33372,11 @@ func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArrayArray",
@@ -33388,7 +33389,7 @@ func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33442,11 +33443,11 @@ func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDate",
@@ -33459,7 +33460,7 @@ func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33513,11 +33514,11 @@ func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []t
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArray",
@@ -33530,7 +33531,7 @@ func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []t
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33607,11 +33608,11 @@ func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArrayArray",
@@ -33624,7 +33625,7 @@ func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33678,11 +33679,11 @@ func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullable",
@@ -33695,7 +33696,7 @@ func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33749,11 +33750,11 @@ func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArray",
@@ -33766,7 +33767,7 @@ func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33843,11 +33844,11 @@ func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArrayArray",
@@ -33860,7 +33861,7 @@ func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33914,11 +33915,11 @@ func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptD
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTime",
@@ -33931,7 +33932,7 @@ func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptD
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -33985,11 +33986,11 @@ func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArray",
@@ -34002,7 +34003,7 @@ func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34079,11 +34080,11 @@ func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArrayArray",
@@ -34096,7 +34097,7 @@ func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34150,11 +34151,11 @@ func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullable",
@@ -34167,7 +34168,7 @@ func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34221,11 +34222,11 @@ func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArray",
@@ -34238,7 +34239,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34315,11 +34316,11 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArrayArray",
@@ -34332,7 +34333,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34386,11 +34387,11 @@ func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptD
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDuration",
@@ -34403,7 +34404,7 @@ func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptD
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34457,11 +34458,11 @@ func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArray",
@@ -34474,7 +34475,7 @@ func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34551,11 +34552,11 @@ func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArrayArray",
@@ -34568,7 +34569,7 @@ func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34622,11 +34623,11 @@ func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullable",
@@ -34639,7 +34640,7 @@ func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34693,11 +34694,11 @@ func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArray",
@@ -34710,7 +34711,7 @@ func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34787,11 +34788,11 @@ func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArrayArray",
@@ -34804,7 +34805,7 @@ func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34882,11 +34883,11 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmail",
@@ -34899,7 +34900,7 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -34984,11 +34985,11 @@ func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArray",
@@ -35001,7 +35002,7 @@ func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35103,11 +35104,11 @@ func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArrayArray",
@@ -35120,7 +35121,7 @@ func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35198,11 +35199,11 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullable",
@@ -35215,7 +35216,7 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35300,11 +35301,11 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArray",
@@ -35317,7 +35318,7 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35419,11 +35420,11 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArrayArray",
@@ -35436,7 +35437,7 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35514,11 +35515,11 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostname",
@@ -35531,7 +35532,7 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35616,11 +35617,11 @@ func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArray",
@@ -35633,7 +35634,7 @@ func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35735,11 +35736,11 @@ func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArrayArray",
@@ -35752,7 +35753,7 @@ func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35830,11 +35831,11 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullable",
@@ -35847,7 +35848,7 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -35932,11 +35933,11 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArray",
@@ -35949,7 +35950,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36051,11 +36052,11 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArrayArray",
@@ -36068,7 +36069,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36122,11 +36123,11 @@ func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIP",
@@ -36139,7 +36140,7 @@ func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36193,11 +36194,11 @@ func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []net
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArray",
@@ -36210,7 +36211,7 @@ func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []net
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36287,11 +36288,11 @@ func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArrayArray",
@@ -36304,7 +36305,7 @@ func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36358,11 +36359,11 @@ func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request Op
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullable",
@@ -36375,7 +36376,7 @@ func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request Op
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36429,11 +36430,11 @@ func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArray",
@@ -36446,7 +36447,7 @@ func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36523,11 +36524,11 @@ func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArrayArray",
@@ -36540,7 +36541,7 @@ func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36594,11 +36595,11 @@ func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32",
@@ -36611,7 +36612,7 @@ func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36665,11 +36666,11 @@ func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Array",
@@ -36682,7 +36683,7 @@ func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36759,11 +36760,11 @@ func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32ArrayArray",
@@ -36776,7 +36777,7 @@ func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36830,11 +36831,11 @@ func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Nullable",
@@ -36847,7 +36848,7 @@ func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36901,11 +36902,11 @@ func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArray",
@@ -36918,7 +36919,7 @@ func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -36995,11 +36996,11 @@ func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArrayArray",
@@ -37012,7 +37013,7 @@ func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37066,11 +37067,11 @@ func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64",
@@ -37083,7 +37084,7 @@ func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37137,11 +37138,11 @@ func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Array",
@@ -37154,7 +37155,7 @@ func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37231,11 +37232,11 @@ func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64ArrayArray",
@@ -37248,7 +37249,7 @@ func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37302,11 +37303,11 @@ func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Nullable",
@@ -37319,7 +37320,7 @@ func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37373,11 +37374,11 @@ func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArray",
@@ -37390,7 +37391,7 @@ func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37467,11 +37468,11 @@ func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArrayArray",
@@ -37484,7 +37485,7 @@ func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37538,11 +37539,11 @@ func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4",
@@ -37555,7 +37556,7 @@ func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37609,11 +37610,11 @@ func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []n
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Array",
@@ -37626,7 +37627,7 @@ func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []n
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37703,11 +37704,11 @@ func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4ArrayArray",
@@ -37720,7 +37721,7 @@ func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37774,11 +37775,11 @@ func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Nullable",
@@ -37791,7 +37792,7 @@ func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37845,11 +37846,11 @@ func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArray",
@@ -37862,7 +37863,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -37939,11 +37940,11 @@ func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArrayArray",
@@ -37956,7 +37957,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38010,11 +38011,11 @@ func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6",
@@ -38027,7 +38028,7 @@ func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38081,11 +38082,11 @@ func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []n
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Array",
@@ -38098,7 +38099,7 @@ func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []n
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38175,11 +38176,11 @@ func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6ArrayArray",
@@ -38192,7 +38193,7 @@ func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38246,11 +38247,11 @@ func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Nullable",
@@ -38263,7 +38264,7 @@ func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38317,11 +38318,11 @@ func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArray",
@@ -38334,7 +38335,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38411,11 +38412,11 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArrayArray",
@@ -38428,7 +38429,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38482,11 +38483,11 @@ func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptN
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullable",
@@ -38499,7 +38500,7 @@ func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptN
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38553,11 +38554,11 @@ func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArray",
@@ -38570,7 +38571,7 @@ func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38647,11 +38648,11 @@ func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArrayArray",
@@ -38664,7 +38665,7 @@ func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38718,11 +38719,11 @@ func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptS
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPassword",
@@ -38735,7 +38736,7 @@ func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptS
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38789,11 +38790,11 @@ func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArray",
@@ -38806,7 +38807,7 @@ func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38883,11 +38884,11 @@ func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArrayArray",
@@ -38900,7 +38901,7 @@ func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -38954,11 +38955,11 @@ func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullable",
@@ -38971,7 +38972,7 @@ func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39025,11 +39026,11 @@ func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArray",
@@ -39042,7 +39043,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39119,11 +39120,11 @@ func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArrayArray",
@@ -39136,7 +39137,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39190,11 +39191,11 @@ func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTime",
@@ -39207,7 +39208,7 @@ func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39261,11 +39262,11 @@ func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []t
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArray",
@@ -39278,7 +39279,7 @@ func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []t
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39355,11 +39356,11 @@ func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArrayArray",
@@ -39372,7 +39373,7 @@ func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39426,11 +39427,11 @@ func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullable",
@@ -39443,7 +39444,7 @@ func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39497,11 +39498,11 @@ func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArray",
@@ -39514,7 +39515,7 @@ func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39591,11 +39592,11 @@ func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArrayArray",
@@ -39608,7 +39609,7 @@ func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39662,11 +39663,11 @@ func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURI",
@@ -39679,7 +39680,7 @@ func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39733,11 +39734,11 @@ func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []ur
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArray",
@@ -39750,7 +39751,7 @@ func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []ur
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39827,11 +39828,11 @@ func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArrayArray",
@@ -39844,7 +39845,7 @@ func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39898,11 +39899,11 @@ func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request O
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullable",
@@ -39915,7 +39916,7 @@ func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request O
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -39969,11 +39970,11 @@ func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArray",
@@ -39986,7 +39987,7 @@ func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40063,11 +40064,11 @@ func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArrayArray",
@@ -40080,7 +40081,7 @@ func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40134,11 +40135,11 @@ func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUID",
@@ -40151,7 +40152,7 @@ func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40205,11 +40206,11 @@ func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []u
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArray",
@@ -40222,7 +40223,7 @@ func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []u
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40299,11 +40300,11 @@ func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArrayArray",
@@ -40316,7 +40317,7 @@ func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40370,11 +40371,11 @@ func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullable",
@@ -40387,7 +40388,7 @@ func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40441,11 +40442,11 @@ func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArray",
@@ -40458,7 +40459,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40535,11 +40536,11 @@ func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArrayArray",
@@ -40552,7 +40553,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40606,11 +40607,11 @@ func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStrin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnix",
@@ -40623,7 +40624,7 @@ func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStrin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40677,11 +40678,11 @@ func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []t
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArray",
@@ -40694,7 +40695,7 @@ func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []t
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40771,11 +40772,11 @@ func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArrayArray",
@@ -40788,7 +40789,7 @@ func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40842,11 +40843,11 @@ func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request Opt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicro",
@@ -40859,7 +40860,7 @@ func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request Opt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -40913,11 +40914,11 @@ func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArray",
@@ -40930,7 +40931,7 @@ func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41007,11 +41008,11 @@ func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArrayArray",
@@ -41024,7 +41025,7 @@ func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41078,11 +41079,11 @@ func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullable",
@@ -41095,7 +41096,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41149,11 +41150,11 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArray",
@@ -41166,7 +41167,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41243,11 +41244,11 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArrayArray",
@@ -41260,7 +41261,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41314,11 +41315,11 @@ func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request Opt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilli",
@@ -41331,7 +41332,7 @@ func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request Opt
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41385,11 +41386,11 @@ func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArray",
@@ -41402,7 +41403,7 @@ func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41479,11 +41480,11 @@ func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArrayArray",
@@ -41496,7 +41497,7 @@ func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41550,11 +41551,11 @@ func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullable",
@@ -41567,7 +41568,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41621,11 +41622,11 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArray",
@@ -41638,7 +41639,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41715,11 +41716,11 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArrayArray",
@@ -41732,7 +41733,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41786,11 +41787,11 @@ func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptS
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNano",
@@ -41803,7 +41804,7 @@ func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptS
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41857,11 +41858,11 @@ func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArray",
@@ -41874,7 +41875,7 @@ func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -41951,11 +41952,11 @@ func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArrayArray",
@@ -41968,7 +41969,7 @@ func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42022,11 +42023,11 @@ func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullable",
@@ -42039,7 +42040,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42093,11 +42094,11 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArray",
@@ -42110,7 +42111,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42187,11 +42188,11 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArrayArray",
@@ -42204,7 +42205,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42258,11 +42259,11 @@ func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullable",
@@ -42275,7 +42276,7 @@ func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42329,11 +42330,11 @@ func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArray",
@@ -42346,7 +42347,7 @@ func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42423,11 +42424,11 @@ func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArrayArray",
@@ -42440,7 +42441,7 @@ func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42494,11 +42495,11 @@ func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request O
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSeconds",
@@ -42511,7 +42512,7 @@ func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request O
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42565,11 +42566,11 @@ func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArray",
@@ -42582,7 +42583,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42659,11 +42660,11 @@ func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArrayArray",
@@ -42676,7 +42677,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42730,11 +42731,11 @@ func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullable",
@@ -42747,7 +42748,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42801,11 +42802,11 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArray",
@@ -42818,7 +42819,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42895,11 +42896,11 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArrayArray",
@@ -42912,7 +42913,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -42966,11 +42967,11 @@ func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res j
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseAny",
@@ -42983,7 +42984,7 @@ func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res j
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43037,11 +43038,11 @@ func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBoolean",
@@ -43054,7 +43055,7 @@ func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43108,11 +43109,11 @@ func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArray",
@@ -43125,7 +43126,7 @@ func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43179,11 +43180,11 @@ func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArrayArray",
@@ -43196,7 +43197,7 @@ func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43250,11 +43251,11 @@ func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullable",
@@ -43267,7 +43268,7 @@ func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43321,11 +43322,11 @@ func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArray",
@@ -43338,7 +43339,7 @@ func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43392,11 +43393,11 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArrayArray",
@@ -43409,7 +43410,7 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43463,11 +43464,11 @@ func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseEmptyStruct",
@@ -43480,7 +43481,7 @@ func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43534,11 +43535,11 @@ func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseFormatTest",
@@ -43551,7 +43552,7 @@ func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43605,11 +43606,11 @@ func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseInteger",
@@ -43622,7 +43623,7 @@ func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43676,11 +43677,11 @@ func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArray",
@@ -43693,7 +43694,7 @@ func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43747,11 +43748,11 @@ func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArrayArray",
@@ -43764,7 +43765,7 @@ func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43818,11 +43819,11 @@ func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32",
@@ -43835,7 +43836,7 @@ func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43889,11 +43890,11 @@ func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Array",
@@ -43906,7 +43907,7 @@ func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -43960,11 +43961,11 @@ func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32ArrayArray",
@@ -43977,7 +43978,7 @@ func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44031,11 +44032,11 @@ func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Nullable",
@@ -44048,7 +44049,7 @@ func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44102,11 +44103,11 @@ func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArray",
@@ -44119,7 +44120,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44173,11 +44174,11 @@ func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArrayArray",
@@ -44190,7 +44191,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44244,11 +44245,11 @@ func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64",
@@ -44261,7 +44262,7 @@ func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44315,11 +44316,11 @@ func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Array",
@@ -44332,7 +44333,7 @@ func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44386,11 +44387,11 @@ func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64ArrayArray",
@@ -44403,7 +44404,7 @@ func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44457,11 +44458,11 @@ func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Nullable",
@@ -44474,7 +44475,7 @@ func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44528,11 +44529,11 @@ func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArray",
@@ -44545,7 +44546,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44599,11 +44600,11 @@ func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArrayArray",
@@ -44616,7 +44617,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44670,11 +44671,11 @@ func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullable",
@@ -44687,7 +44688,7 @@ func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44741,11 +44742,11 @@ func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArray",
@@ -44758,7 +44759,7 @@ func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44812,11 +44813,11 @@ func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArrayArray",
@@ -44829,7 +44830,7 @@ func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44883,11 +44884,11 @@ func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint",
@@ -44900,7 +44901,7 @@ func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -44954,11 +44955,11 @@ func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request stri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32",
@@ -44971,7 +44972,7 @@ func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request stri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45025,11 +45026,11 @@ func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Array",
@@ -45042,7 +45043,7 @@ func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45096,11 +45097,11 @@ func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32ArrayArray",
@@ -45113,7 +45114,7 @@ func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45167,11 +45168,11 @@ func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Nullable",
@@ -45184,7 +45185,7 @@ func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45238,11 +45239,11 @@ func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArray",
@@ -45255,7 +45256,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45309,11 +45310,11 @@ func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArrayArray",
@@ -45326,7 +45327,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45380,11 +45381,11 @@ func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request stri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64",
@@ -45397,7 +45398,7 @@ func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request stri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45451,11 +45452,11 @@ func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Array",
@@ -45468,7 +45469,7 @@ func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45522,11 +45523,11 @@ func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64ArrayArray",
@@ -45539,7 +45540,7 @@ func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45593,11 +45594,11 @@ func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Nullable",
@@ -45610,7 +45611,7 @@ func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45664,11 +45665,11 @@ func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArray",
@@ -45681,7 +45682,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45735,11 +45736,11 @@ func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArrayArray",
@@ -45752,7 +45753,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45806,11 +45807,11 @@ func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArray",
@@ -45823,7 +45824,7 @@ func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45877,11 +45878,11 @@ func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArrayArray",
@@ -45894,7 +45895,7 @@ func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -45948,11 +45949,11 @@ func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullable",
@@ -45965,7 +45966,7 @@ func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46019,11 +46020,11 @@ func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArray",
@@ -46036,7 +46037,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46090,11 +46091,11 @@ func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArrayArray",
@@ -46107,7 +46108,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46161,11 +46162,11 @@ func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnix",
@@ -46178,7 +46179,7 @@ func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46232,11 +46233,11 @@ func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArray",
@@ -46249,7 +46250,7 @@ func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46303,11 +46304,11 @@ func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArrayArray",
@@ -46320,7 +46321,7 @@ func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46374,11 +46375,11 @@ func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicro",
@@ -46391,7 +46392,7 @@ func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46445,11 +46446,11 @@ func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArray",
@@ -46462,7 +46463,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46516,11 +46517,11 @@ func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArrayArray",
@@ -46533,7 +46534,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46587,11 +46588,11 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullable",
@@ -46604,7 +46605,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46658,11 +46659,11 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArray",
@@ -46675,7 +46676,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46729,11 +46730,11 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArrayArray",
@@ -46746,7 +46747,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46800,11 +46801,11 @@ func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilli",
@@ -46817,7 +46818,7 @@ func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46871,11 +46872,11 @@ func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArray",
@@ -46888,7 +46889,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -46942,11 +46943,11 @@ func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArrayArray",
@@ -46959,7 +46960,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47013,11 +47014,11 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullable",
@@ -47030,7 +47031,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47084,11 +47085,11 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArray",
@@ -47101,7 +47102,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47155,11 +47156,11 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArrayArray",
@@ -47172,7 +47173,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47226,11 +47227,11 @@ func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNano",
@@ -47243,7 +47244,7 @@ func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47297,11 +47298,11 @@ func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArray",
@@ -47314,7 +47315,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47368,11 +47369,11 @@ func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArrayArray",
@@ -47385,7 +47386,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47439,11 +47440,11 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullable",
@@ -47456,7 +47457,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47510,11 +47511,11 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArray",
@@ -47527,7 +47528,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47581,11 +47582,11 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArrayArray",
@@ -47598,7 +47599,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47652,11 +47653,11 @@ func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullable",
@@ -47669,7 +47670,7 @@ func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47723,11 +47724,11 @@ func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArray",
@@ -47740,7 +47741,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47794,11 +47795,11 @@ func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArrayArray",
@@ -47811,7 +47812,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47865,11 +47866,11 @@ func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSeconds",
@@ -47882,7 +47883,7 @@ func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -47936,11 +47937,11 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArray",
@@ -47953,7 +47954,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48007,11 +48008,11 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArrayArray",
@@ -48024,7 +48025,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48078,11 +48079,11 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullable",
@@ -48095,7 +48096,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48149,11 +48150,11 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Con
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArray",
@@ -48166,7 +48167,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48220,11 +48221,11 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArrayArray",
@@ -48237,7 +48238,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48291,11 +48292,11 @@ func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNull",
@@ -48308,7 +48309,7 @@ func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48362,11 +48363,11 @@ func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArray",
@@ -48379,7 +48380,7 @@ func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48433,11 +48434,11 @@ func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArrayArray",
@@ -48450,7 +48451,7 @@ func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48504,11 +48505,11 @@ func (c *Client) sendTestResponseNullNullable(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullable",
@@ -48521,7 +48522,7 @@ func (c *Client) sendTestResponseNullNullable(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48575,11 +48576,11 @@ func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArray",
@@ -48592,7 +48593,7 @@ func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48646,11 +48647,11 @@ func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArrayArray",
@@ -48663,7 +48664,7 @@ func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48717,11 +48718,11 @@ func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumber",
@@ -48734,7 +48735,7 @@ func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48788,11 +48789,11 @@ func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArray",
@@ -48805,7 +48806,7 @@ func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48859,11 +48860,11 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArrayArray",
@@ -48876,7 +48877,7 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -48930,11 +48931,11 @@ func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDouble",
@@ -48947,7 +48948,7 @@ func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49001,11 +49002,11 @@ func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArray",
@@ -49018,7 +49019,7 @@ func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49072,11 +49073,11 @@ func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArrayArray",
@@ -49089,7 +49090,7 @@ func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49143,11 +49144,11 @@ func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullable",
@@ -49160,7 +49161,7 @@ func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49214,11 +49215,11 @@ func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArray",
@@ -49231,7 +49232,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49285,11 +49286,11 @@ func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArrayArray",
@@ -49302,7 +49303,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49356,11 +49357,11 @@ func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloat",
@@ -49373,7 +49374,7 @@ func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49427,11 +49428,11 @@ func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArray",
@@ -49444,7 +49445,7 @@ func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49498,11 +49499,11 @@ func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArrayArray",
@@ -49515,7 +49516,7 @@ func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49569,11 +49570,11 @@ func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullable",
@@ -49586,7 +49587,7 @@ func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49640,11 +49641,11 @@ func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArray",
@@ -49657,7 +49658,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49711,11 +49712,11 @@ func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArrayArray",
@@ -49728,7 +49729,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49782,11 +49783,11 @@ func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32",
@@ -49799,7 +49800,7 @@ func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49853,11 +49854,11 @@ func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Array",
@@ -49870,7 +49871,7 @@ func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49924,11 +49925,11 @@ func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32ArrayArray",
@@ -49941,7 +49942,7 @@ func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -49995,11 +49996,11 @@ func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Nullable",
@@ -50012,7 +50013,7 @@ func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50066,11 +50067,11 @@ func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArray",
@@ -50083,7 +50084,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50137,11 +50138,11 @@ func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArrayArray",
@@ -50154,7 +50155,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50208,11 +50209,11 @@ func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64",
@@ -50225,7 +50226,7 @@ func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50279,11 +50280,11 @@ func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Array",
@@ -50296,7 +50297,7 @@ func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50350,11 +50351,11 @@ func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64ArrayArray",
@@ -50367,7 +50368,7 @@ func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50421,11 +50422,11 @@ func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Nullable",
@@ -50438,7 +50439,7 @@ func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50492,11 +50493,11 @@ func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArray",
@@ -50509,7 +50510,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50563,11 +50564,11 @@ func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArrayArray",
@@ -50580,7 +50581,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50634,11 +50635,11 @@ func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullable",
@@ -50651,7 +50652,7 @@ func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50705,11 +50706,11 @@ func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArray",
@@ -50722,7 +50723,7 @@ func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50776,11 +50777,11 @@ func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArrayArray",
@@ -50793,7 +50794,7 @@ func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50847,11 +50848,11 @@ func (c *Client) sendTestResponseString(ctx context.Context, request string) (re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseString",
@@ -50864,7 +50865,7 @@ func (c *Client) sendTestResponseString(ctx context.Context, request string) (re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50918,11 +50919,11 @@ func (c *Client) sendTestResponseStringArray(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArray",
@@ -50935,7 +50936,7 @@ func (c *Client) sendTestResponseStringArray(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -50989,11 +50990,11 @@ func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArrayArray",
@@ -51006,7 +51007,7 @@ func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51060,11 +51061,11 @@ func (c *Client) sendTestResponseStringBase64(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64",
@@ -51077,7 +51078,7 @@ func (c *Client) sendTestResponseStringBase64(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51131,11 +51132,11 @@ func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64Array",
@@ -51148,7 +51149,7 @@ func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51202,11 +51203,11 @@ func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64ArrayArray",
@@ -51219,7 +51220,7 @@ func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51273,11 +51274,11 @@ func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64Nullable",
@@ -51290,7 +51291,7 @@ func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51344,11 +51345,11 @@ func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64NullableArray",
@@ -51361,7 +51362,7 @@ func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51415,11 +51416,11 @@ func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64NullableArrayArray",
@@ -51432,7 +51433,7 @@ func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51486,11 +51487,11 @@ func (c *Client) sendTestResponseStringBinary(ctx context.Context, request strin
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinary",
@@ -51503,7 +51504,7 @@ func (c *Client) sendTestResponseStringBinary(ctx context.Context, request strin
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51557,11 +51558,11 @@ func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArray",
@@ -51574,7 +51575,7 @@ func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51628,11 +51629,11 @@ func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArrayArray",
@@ -51645,7 +51646,7 @@ func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51699,11 +51700,11 @@ func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullable",
@@ -51716,7 +51717,7 @@ func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51770,11 +51771,11 @@ func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArray",
@@ -51787,7 +51788,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51841,11 +51842,11 @@ func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArrayArray",
@@ -51858,7 +51859,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51912,11 +51913,11 @@ func (c *Client) sendTestResponseStringByte(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByte",
@@ -51929,7 +51930,7 @@ func (c *Client) sendTestResponseStringByte(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -51983,11 +51984,11 @@ func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArray",
@@ -52000,7 +52001,7 @@ func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52054,11 +52055,11 @@ func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArrayArray",
@@ -52071,7 +52072,7 @@ func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52125,11 +52126,11 @@ func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullable",
@@ -52142,7 +52143,7 @@ func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52196,11 +52197,11 @@ func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArray",
@@ -52213,7 +52214,7 @@ func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52267,11 +52268,11 @@ func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArrayArray",
@@ -52284,7 +52285,7 @@ func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52338,11 +52339,11 @@ func (c *Client) sendTestResponseStringDate(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDate",
@@ -52355,7 +52356,7 @@ func (c *Client) sendTestResponseStringDate(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52409,11 +52410,11 @@ func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArray",
@@ -52426,7 +52427,7 @@ func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52480,11 +52481,11 @@ func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArrayArray",
@@ -52497,7 +52498,7 @@ func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52551,11 +52552,11 @@ func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullable",
@@ -52568,7 +52569,7 @@ func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52622,11 +52623,11 @@ func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArray",
@@ -52639,7 +52640,7 @@ func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52693,11 +52694,11 @@ func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArrayArray",
@@ -52710,7 +52711,7 @@ func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52764,11 +52765,11 @@ func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTime",
@@ -52781,7 +52782,7 @@ func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52835,11 +52836,11 @@ func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArray",
@@ -52852,7 +52853,7 @@ func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52906,11 +52907,11 @@ func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArrayArray",
@@ -52923,7 +52924,7 @@ func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -52977,11 +52978,11 @@ func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullable",
@@ -52994,7 +52995,7 @@ func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53048,11 +53049,11 @@ func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArray",
@@ -53065,7 +53066,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53119,11 +53120,11 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArrayArray",
@@ -53136,7 +53137,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53190,11 +53191,11 @@ func (c *Client) sendTestResponseStringDuration(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDuration",
@@ -53207,7 +53208,7 @@ func (c *Client) sendTestResponseStringDuration(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53261,11 +53262,11 @@ func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArray",
@@ -53278,7 +53279,7 @@ func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53332,11 +53333,11 @@ func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArrayArray",
@@ -53349,7 +53350,7 @@ func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53403,11 +53404,11 @@ func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullable",
@@ -53420,7 +53421,7 @@ func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53474,11 +53475,11 @@ func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArray",
@@ -53491,7 +53492,7 @@ func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53545,11 +53546,11 @@ func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArrayArray",
@@ -53562,7 +53563,7 @@ func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53616,11 +53617,11 @@ func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmail",
@@ -53633,7 +53634,7 @@ func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53687,11 +53688,11 @@ func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArray",
@@ -53704,7 +53705,7 @@ func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53758,11 +53759,11 @@ func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArrayArray",
@@ -53775,7 +53776,7 @@ func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53829,11 +53830,11 @@ func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullable",
@@ -53846,7 +53847,7 @@ func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53900,11 +53901,11 @@ func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArray",
@@ -53917,7 +53918,7 @@ func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -53971,11 +53972,11 @@ func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArrayArray",
@@ -53988,7 +53989,7 @@ func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54042,11 +54043,11 @@ func (c *Client) sendTestResponseStringHostname(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostname",
@@ -54059,7 +54060,7 @@ func (c *Client) sendTestResponseStringHostname(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54113,11 +54114,11 @@ func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArray",
@@ -54130,7 +54131,7 @@ func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54184,11 +54185,11 @@ func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArrayArray",
@@ -54201,7 +54202,7 @@ func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54255,11 +54256,11 @@ func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullable",
@@ -54272,7 +54273,7 @@ func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54326,11 +54327,11 @@ func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArray",
@@ -54343,7 +54344,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54397,11 +54398,11 @@ func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArrayArray",
@@ -54414,7 +54415,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54468,11 +54469,11 @@ func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIP",
@@ -54485,7 +54486,7 @@ func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54539,11 +54540,11 @@ func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request stri
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArray",
@@ -54556,7 +54557,7 @@ func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request stri
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54610,11 +54611,11 @@ func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArrayArray",
@@ -54627,7 +54628,7 @@ func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54681,11 +54682,11 @@ func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullable",
@@ -54698,7 +54699,7 @@ func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54752,11 +54753,11 @@ func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArray",
@@ -54769,7 +54770,7 @@ func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54823,11 +54824,11 @@ func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArrayArray",
@@ -54840,7 +54841,7 @@ func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context,
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54894,11 +54895,11 @@ func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32",
@@ -54911,7 +54912,7 @@ func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -54965,11 +54966,11 @@ func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Array",
@@ -54982,7 +54983,7 @@ func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55036,11 +55037,11 @@ func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32ArrayArray",
@@ -55053,7 +55054,7 @@ func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55107,11 +55108,11 @@ func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Nullable",
@@ -55124,7 +55125,7 @@ func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55178,11 +55179,11 @@ func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArray",
@@ -55195,7 +55196,7 @@ func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55249,11 +55250,11 @@ func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArrayArray",
@@ -55266,7 +55267,7 @@ func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55320,11 +55321,11 @@ func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64",
@@ -55337,7 +55338,7 @@ func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55391,11 +55392,11 @@ func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request s
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Array",
@@ -55408,7 +55409,7 @@ func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request s
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55462,11 +55463,11 @@ func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, requ
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64ArrayArray",
@@ -55479,7 +55480,7 @@ func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, requ
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55533,11 +55534,11 @@ func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Nullable",
@@ -55550,7 +55551,7 @@ func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55604,11 +55605,11 @@ func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArray",
@@ -55621,7 +55622,7 @@ func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55675,11 +55676,11 @@ func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Conte
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArrayArray",
@@ -55692,7 +55693,7 @@ func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55746,11 +55747,11 @@ func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4",
@@ -55763,7 +55764,7 @@ func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55817,11 +55818,11 @@ func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Array",
@@ -55834,7 +55835,7 @@ func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55888,11 +55889,11 @@ func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4ArrayArray",
@@ -55905,7 +55906,7 @@ func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -55959,11 +55960,11 @@ func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Nullable",
@@ -55976,7 +55977,7 @@ func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56030,11 +56031,11 @@ func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArray",
@@ -56047,7 +56048,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56101,11 +56102,11 @@ func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArrayArray",
@@ -56118,7 +56119,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56172,11 +56173,11 @@ func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6",
@@ -56189,7 +56190,7 @@ func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56243,11 +56244,11 @@ func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Array",
@@ -56260,7 +56261,7 @@ func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56314,11 +56315,11 @@ func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6ArrayArray",
@@ -56331,7 +56332,7 @@ func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56385,11 +56386,11 @@ func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Nullable",
@@ -56402,7 +56403,7 @@ func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56456,11 +56457,11 @@ func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArray",
@@ -56473,7 +56474,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56527,11 +56528,11 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArrayArray",
@@ -56544,7 +56545,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56598,11 +56599,11 @@ func (c *Client) sendTestResponseStringNullable(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullable",
@@ -56615,7 +56616,7 @@ func (c *Client) sendTestResponseStringNullable(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56669,11 +56670,11 @@ func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArray",
@@ -56686,7 +56687,7 @@ func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56740,11 +56741,11 @@ func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArrayArray",
@@ -56757,7 +56758,7 @@ func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56811,11 +56812,11 @@ func (c *Client) sendTestResponseStringPassword(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPassword",
@@ -56828,7 +56829,7 @@ func (c *Client) sendTestResponseStringPassword(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56882,11 +56883,11 @@ func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArray",
@@ -56899,7 +56900,7 @@ func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -56953,11 +56954,11 @@ func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArrayArray",
@@ -56970,7 +56971,7 @@ func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57024,11 +57025,11 @@ func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullable",
@@ -57041,7 +57042,7 @@ func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57095,11 +57096,11 @@ func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArray",
@@ -57112,7 +57113,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57166,11 +57167,11 @@ func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArrayArray",
@@ -57183,7 +57184,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57237,11 +57238,11 @@ func (c *Client) sendTestResponseStringTime(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTime",
@@ -57254,7 +57255,7 @@ func (c *Client) sendTestResponseStringTime(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57308,11 +57309,11 @@ func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArray",
@@ -57325,7 +57326,7 @@ func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57379,11 +57380,11 @@ func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArrayArray",
@@ -57396,7 +57397,7 @@ func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57450,11 +57451,11 @@ func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullable",
@@ -57467,7 +57468,7 @@ func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57521,11 +57522,11 @@ func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArray",
@@ -57538,7 +57539,7 @@ func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57592,11 +57593,11 @@ func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArrayArray",
@@ -57609,7 +57610,7 @@ func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57663,11 +57664,11 @@ func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURI",
@@ -57680,7 +57681,7 @@ func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57734,11 +57735,11 @@ func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArray",
@@ -57751,7 +57752,7 @@ func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57805,11 +57806,11 @@ func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArrayArray",
@@ -57822,7 +57823,7 @@ func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57876,11 +57877,11 @@ func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullable",
@@ -57893,7 +57894,7 @@ func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -57947,11 +57948,11 @@ func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArray",
@@ -57964,7 +57965,7 @@ func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58018,11 +58019,11 @@ func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArrayArray",
@@ -58035,7 +58036,7 @@ func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58089,11 +58090,11 @@ func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUID",
@@ -58106,7 +58107,7 @@ func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58160,11 +58161,11 @@ func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArray",
@@ -58177,7 +58178,7 @@ func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58231,11 +58232,11 @@ func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArrayArray",
@@ -58248,7 +58249,7 @@ func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58302,11 +58303,11 @@ func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullable",
@@ -58319,7 +58320,7 @@ func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58373,11 +58374,11 @@ func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArray",
@@ -58390,7 +58391,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58444,11 +58445,11 @@ func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArrayArray",
@@ -58461,7 +58462,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58515,11 +58516,11 @@ func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string)
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnix",
@@ -58532,7 +58533,7 @@ func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string)
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58586,11 +58587,11 @@ func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArray",
@@ -58603,7 +58604,7 @@ func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58657,11 +58658,11 @@ func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArrayArray",
@@ -58674,7 +58675,7 @@ func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58728,11 +58729,11 @@ func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicro",
@@ -58745,7 +58746,7 @@ func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58799,11 +58800,11 @@ func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArray",
@@ -58816,7 +58817,7 @@ func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58870,11 +58871,11 @@ func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArrayArray",
@@ -58887,7 +58888,7 @@ func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -58941,11 +58942,11 @@ func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullable",
@@ -58958,7 +58959,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59012,11 +59013,11 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArray",
@@ -59029,7 +59030,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59083,11 +59084,11 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArrayArray",
@@ -59100,7 +59101,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59154,11 +59155,11 @@ func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request st
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilli",
@@ -59171,7 +59172,7 @@ func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request st
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59225,11 +59226,11 @@ func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, reque
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArray",
@@ -59242,7 +59243,7 @@ func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, reque
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59296,11 +59297,11 @@ func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArrayArray",
@@ -59313,7 +59314,7 @@ func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59367,11 +59368,11 @@ func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullable",
@@ -59384,7 +59385,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59438,11 +59439,11 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArray",
@@ -59455,7 +59456,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59509,11 +59510,11 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.C
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArrayArray",
@@ -59526,7 +59527,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59580,11 +59581,11 @@ func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request str
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNano",
@@ -59597,7 +59598,7 @@ func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request str
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59651,11 +59652,11 @@ func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, reques
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArray",
@@ -59668,7 +59669,7 @@ func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, reques
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59722,11 +59723,11 @@ func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, r
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArrayArray",
@@ -59739,7 +59740,7 @@ func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59793,11 +59794,11 @@ func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullable",
@@ -59810,7 +59811,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59864,11 +59865,11 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArray",
@@ -59881,7 +59882,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -59935,11 +59936,11 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Co
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArrayArray",
@@ -59952,7 +59953,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60006,11 +60007,11 @@ func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullable",
@@ -60023,7 +60024,7 @@ func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60077,11 +60078,11 @@ func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArray",
@@ -60094,7 +60095,7 @@ func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60148,11 +60149,11 @@ func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Contex
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArrayArray",
@@ -60165,7 +60166,7 @@ func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60219,11 +60220,11 @@ func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSeconds",
@@ -60236,7 +60237,7 @@ func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60290,11 +60291,11 @@ func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, req
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArray",
@@ -60307,7 +60308,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60361,11 +60362,11 @@ func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArrayArray",
@@ -60378,7 +60379,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60432,11 +60433,11 @@ func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullable",
@@ -60449,7 +60450,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60503,11 +60504,11 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Cont
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArray",
@@ -60520,7 +60521,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -60574,11 +60575,11 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArrayArray",
@@ -60591,7 +60592,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()

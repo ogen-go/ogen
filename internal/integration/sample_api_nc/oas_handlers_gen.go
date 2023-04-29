@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
@@ -40,17 +41,17 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -156,17 +157,17 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -273,17 +274,17 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -356,17 +357,17 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -462,17 +463,17 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -557,17 +558,17 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -638,17 +639,17 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -719,17 +720,17 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -800,17 +801,17 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -895,17 +896,17 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -978,17 +979,17 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1080,17 +1081,17 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1182,17 +1183,17 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1296,17 +1297,17 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1398,17 +1399,17 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1500,17 +1501,17 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1602,17 +1603,17 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1697,17 +1698,17 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1792,17 +1793,17 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -1894,17 +1895,17 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -2004,17 +2005,17 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -2080,17 +2081,17 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -2161,17 +2162,17 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -2285,17 +2286,17 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)
@@ -2366,17 +2367,17 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
@@ -2466,17 +2467,17 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		err error
 	)

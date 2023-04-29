@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -87,11 +88,11 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DisjointSecurity",
@@ -104,7 +105,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -222,11 +223,11 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IntersectSecurity",
@@ -239,7 +240,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -346,11 +347,11 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OptionalSecurity",
@@ -363,7 +364,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()

@@ -173,11 +173,11 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
@@ -192,7 +192,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()

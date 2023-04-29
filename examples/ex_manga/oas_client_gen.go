@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -87,11 +88,11 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetBook",
@@ -104,7 +105,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -175,11 +176,11 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageCoverImage",
@@ -192,7 +193,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -282,11 +283,11 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageImage",
@@ -299,7 +300,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -408,11 +409,11 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageThumbnailImage",
@@ -425,7 +426,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -534,11 +535,11 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Search",
@@ -551,7 +552,7 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
@@ -639,11 +640,11 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchByTagID",
@@ -656,7 +657,7 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 		if err != nil {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
 		span.End()
 	}()
