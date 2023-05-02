@@ -730,6 +730,23 @@
           }
         }
       }
+    },
+    "/testUniqueItems": {
+      "get": {
+        "operationId": "testUniqueItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UniqueItemsTest"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -995,6 +1012,29 @@
           "nullable_optional": {
             "type": "array",
             "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UniqueItemsTest": {
+        "type": "object",
+        "required": [
+          "required_unique"
+        ],
+        "properties": {
+          "required_unique": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "nullable_optional_unique": {
+            "type": "array",
+            "nullable": true,
+            "uniqueItems": true,
             "items": {
               "type": "string"
             }
