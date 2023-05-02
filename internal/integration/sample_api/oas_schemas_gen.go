@@ -4630,6 +4630,32 @@ type TestNullableOneofsOK OneOfWithNullable
 
 func (*TestNullableOneofsOK) testNullableOneofsRes() {}
 
+// Ref: #/components/schemas/UniqueItemsTest
+type UniqueItemsTest struct {
+	RequiredUnique         []string          `json:"required_unique"`
+	NullableOptionalUnique OptNilStringArray `json:"nullable_optional_unique"`
+}
+
+// GetRequiredUnique returns the value of RequiredUnique.
+func (s *UniqueItemsTest) GetRequiredUnique() []string {
+	return s.RequiredUnique
+}
+
+// GetNullableOptionalUnique returns the value of NullableOptionalUnique.
+func (s *UniqueItemsTest) GetNullableOptionalUnique() OptNilStringArray {
+	return s.NullableOptionalUnique
+}
+
+// SetRequiredUnique sets the value of RequiredUnique.
+func (s *UniqueItemsTest) SetRequiredUnique(val []string) {
+	s.RequiredUnique = val
+}
+
+// SetNullableOptionalUnique sets the value of NullableOptionalUnique.
+func (s *UniqueItemsTest) SetNullableOptionalUnique(val OptNilStringArray) {
+	s.NullableOptionalUnique = val
+}
+
 // Ref: #/components/schemas/ValidationStringMap
 type ValidationStringMap map[string]string
 

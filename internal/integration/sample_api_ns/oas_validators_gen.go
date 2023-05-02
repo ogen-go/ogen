@@ -931,6 +931,64 @@ func (s TestNullableOneofsOK) Validate() error {
 	}
 	return nil
 }
+func (s *UniqueItemsTest) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.RequiredUnique == nil {
+			return errors.New("nil is invalid value")
+		}
+		if err := (validate.Array{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+		}).ValidateLength(len(s.RequiredUnique)); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		if err := validate.UniqueItems(s.RequiredUnique); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_unique",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.NullableOptionalUnique.Set {
+			if err := func() error {
+				if s.NullableOptionalUnique.Value == nil {
+					return errors.New("nil is invalid value")
+				}
+				if err := (validate.Array{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+				}).ValidateLength(len(s.NullableOptionalUnique.Value)); err != nil {
+					return errors.Wrap(err, "array")
+				}
+				if err := validate.UniqueItems(s.NullableOptionalUnique.Value); err != nil {
+					return errors.Wrap(err, "array")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "nullable_optional_unique",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s ValidationStringMap) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {

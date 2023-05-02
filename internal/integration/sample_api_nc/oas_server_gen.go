@@ -136,6 +136,10 @@ type Handler interface {
 	//
 	// GET /testNullableOneofs
 	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
+	// TestUniqueItems implements testUniqueItems operation.
+	//
+	// GET /testUniqueItems
+	TestUniqueItems(ctx context.Context) (*UniqueItemsTest, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
