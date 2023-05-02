@@ -110,6 +110,9 @@ func (v *Validators) SetArray(schema *jsonschema.Schema) {
 	if schema.MinItems != nil {
 		v.Array.SetMinLength(int(*schema.MinItems))
 	}
+	if schema.UniqueItems {
+		v.Array.SetUniqueItems(true)
+	}
 }
 
 func (v *Validators) SetObject(schema *jsonschema.Schema) {
