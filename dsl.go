@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -31,8 +32,7 @@ func (s *Spec) SetInfo(i *Info) *Spec {
 
 // SetServers sets the Servers of the Spec.
 func (s *Spec) SetServers(srvs []Server) *Spec {
-	s.Servers = make([]Server, len(srvs))
-	copy(s.Servers, srvs)
+	s.Servers = slices.Clone(srvs)
 	return s
 }
 
@@ -445,8 +445,7 @@ func (p *PathItem) SetTrace(o *Operation) *PathItem {
 
 // SetServers sets the Servers of the PathItem.
 func (p *PathItem) SetServers(srvs []Server) *PathItem {
-	p.Servers = make([]Server, len(srvs))
-	copy(p.Servers, srvs)
+	p.Servers = slices.Clone(srvs)
 	return p
 }
 
@@ -462,8 +461,7 @@ func (p *PathItem) AddServers(srvs ...*Server) *PathItem {
 
 // SetParameters sets the Parameters of the PathItem.
 func (p *PathItem) SetParameters(ps []*Parameter) *PathItem {
-	p.Parameters = make([]*Parameter, len(ps))
-	copy(p.Parameters, ps)
+	p.Parameters = slices.Clone(ps)
 	return p
 }
 
@@ -501,8 +499,7 @@ func NewOperation() *Operation {
 
 // SetTags sets the Tags of the Operation.
 func (o *Operation) SetTags(ts []string) *Operation {
-	o.Tags = make([]string, len(ts))
-	copy(o.Tags, ts)
+	o.Tags = slices.Clone(ts)
 	return o
 }
 
@@ -532,8 +529,7 @@ func (o *Operation) SetOperationID(id string) *Operation {
 
 // SetParameters sets the Parameters of the Operation.
 func (o *Operation) SetParameters(ps []*Parameter) *Operation {
-	o.Parameters = make([]*Parameter, len(ps))
-	copy(o.Parameters, ps)
+	o.Parameters = slices.Clone(ps)
 	return o
 }
 
@@ -828,8 +824,7 @@ func (s *Schema) AddRequiredProperties(ps ...*Property) *Schema {
 
 // SetRequired sets the Required of the Schema.
 func (s *Schema) SetRequired(r []string) *Schema {
-	s.Required = make([]string, len(r))
-	copy(s.Required, r)
+	s.Required = slices.Clone(r)
 	return s
 }
 
@@ -847,22 +842,19 @@ func (s *Schema) SetNullable(n bool) *Schema {
 
 // SetAllOf sets the AllOf of the Schema.
 func (s *Schema) SetAllOf(a []*Schema) *Schema {
-	s.AllOf = make([]*Schema, len(a))
-	copy(s.AllOf, a)
+	s.AllOf = slices.Clone(a)
 	return s
 }
 
 // SetOneOf sets the OneOf of the Schema.
 func (s *Schema) SetOneOf(o []*Schema) *Schema {
-	s.OneOf = make([]*Schema, len(o))
-	copy(s.OneOf, o)
+	s.OneOf = slices.Clone(o)
 	return s
 }
 
 // SetAnyOf sets the AnyOf of the Schema.
 func (s *Schema) SetAnyOf(a []*Schema) *Schema {
-	s.AllOf = make([]*Schema, len(a))
-	copy(s.AllOf, a)
+	s.AllOf = slices.Clone(a)
 	return s
 }
 
