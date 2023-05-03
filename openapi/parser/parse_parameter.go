@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"net/textproto"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -15,10 +16,17 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+func canonicalParamName(name string, in openapi.ParameterLocation) string {
+	if in.Header() {
+		return textproto.CanonicalMIMEHeaderKey(name)
+	}
+	return name
+}
+
 func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter {
 	lookupOp := func(name string, in openapi.ParameterLocation) bool {
 		for _, param := range opParams {
-			if param.Name == name && param.In == in {
+			if param.In == in && canonicalParamName(param.Name, in) == canonicalParamName(name, in) {
 				return true
 			}
 		}
@@ -66,7 +74,7 @@ func (p *parser) parseParams(
 		}
 
 		ploc := pnameLoc{
-			name:     param.Name,
+			name:     canonicalParamName(param.Name, param.In),
 			location: param.In,
 		}
 

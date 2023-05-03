@@ -1,0 +1,34 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "title",
+        "version": "v0.1.0"
+    },
+    "paths": {
+        "/foo": {
+            "get": {
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "X-Boo",
+                        "in": "header"
+                    },
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-boo",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User info"
+                    }
+                }
+            }
+        }
+    }
+}
