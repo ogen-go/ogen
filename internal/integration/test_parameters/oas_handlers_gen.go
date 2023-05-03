@@ -753,14 +753,14 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 
 // handleSameNameRequest handles sameName operation.
 //
-// Parameter with different location, but the same name.
+// Parameters with different location, but with the same name.
 //
-// GET /same_name/{path}
+// GET /same_name/{param}
 func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 		semconv.HTTPMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/same_name/{path}"),
+		semconv.HTTPRouteKey.String("/same_name/{param}"),
 	}
 
 	// Start a span for this request.
@@ -812,13 +812,13 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
-					Name: "path",
+					Name: "param",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathParam,
 				{
-					Name: "path",
+					Name: "param",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryParam,
 			},
 			Raw: r,
 		}
@@ -851,6 +851,112 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 	}
 
 	if err := encodeSameNameResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleSimilarNamesRequest handles similarNames operation.
+//
+// Parameters with different location, but with similar names.
+//
+// GET /similarNames
+func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("similarNames"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/similarNames"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimilarNames",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SimilarNames",
+			ID:   "similarNames",
+		}
+	)
+	params, err := decodeSimilarNamesParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response *SimilarNamesOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "SimilarNames",
+			OperationID:   "similarNames",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "x-param",
+					In:   "query",
+				}: params.QueryXParam,
+				{
+					Name: "X-Param",
+					In:   "header",
+				}: params.HeaderXParam,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SimilarNamesParams
+			Response = *SimilarNamesOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackSimilarNamesParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.SimilarNames(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.SimilarNames(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeSimilarNamesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

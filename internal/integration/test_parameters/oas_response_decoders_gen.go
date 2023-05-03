@@ -277,3 +277,12 @@ func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, _ error) {
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
+func decodeSimilarNamesResponse(resp *http.Response) (res *SimilarNamesOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &SimilarNamesOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}

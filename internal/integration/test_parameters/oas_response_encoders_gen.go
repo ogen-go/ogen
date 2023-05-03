@@ -102,3 +102,10 @@ func encodeSameNameResponse(response *SameNameOK, w http.ResponseWriter, span tr
 
 	return nil
 }
+
+func encodeSimilarNamesResponse(response *SimilarNamesOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}

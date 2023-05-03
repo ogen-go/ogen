@@ -167,6 +167,9 @@ func (o OptOneLevelObject) Or(d OneLevelObject) OneLevelObject {
 // SameNameOK is response for SameName operation.
 type SameNameOK struct{}
 
+// SimilarNamesOK is response for SimilarNames operation.
+type SimilarNamesOK struct{}
+
 // Ref: #/components/schemas/User
 type User struct {
 	ID       int      `json:"id"`

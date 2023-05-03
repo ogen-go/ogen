@@ -325,7 +325,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -348,7 +348,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -667,7 +667,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -690,7 +690,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -971,7 +971,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -994,7 +994,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -1952,7 +1952,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -1975,7 +1975,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -2294,7 +2294,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -2317,7 +2317,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -2598,7 +2598,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -2621,7 +2621,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -2940,7 +2940,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -2963,7 +2963,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -3282,7 +3282,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -3305,7 +3305,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -3586,7 +3586,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -3609,7 +3609,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -3928,7 +3928,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -3951,7 +3951,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -4270,7 +4270,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -4293,7 +4293,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -4574,7 +4574,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -4597,7 +4597,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -4916,7 +4916,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -4939,7 +4939,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -5258,7 +5258,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -5281,7 +5281,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -5562,7 +5562,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -5585,7 +5585,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -6543,7 +6543,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -6566,7 +6566,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -6885,7 +6885,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -6908,7 +6908,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -7189,7 +7189,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -7212,7 +7212,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -7531,7 +7531,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -7554,7 +7554,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -7873,7 +7873,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -7896,7 +7896,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -8177,7 +8177,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -8200,7 +8200,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.queryPath.Get(); ok {
+			if val, ok := params.QueryPath.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
