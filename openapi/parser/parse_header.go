@@ -1,10 +1,13 @@
 package parser
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -13,12 +16,25 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *jsonpointer.
 		return nil, nil
 	}
 
+	uniq := map[string]location.Pointer{}
 	result := make(map[string]*openapi.Header, len(headers))
 	for name, h := range headers {
-		result[name], err = p.parseHeader(name, h, ctx)
+		parsed, err := p.parseHeader(name, h, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "header %q", name)
 		}
+
+		canonicalName := canonicalParamName(name, openapi.LocationHeader)
+		ptr := parsed.Pointer
+		if existingPtr, ok := uniq[canonicalName]; ok {
+			me := new(location.MultiError)
+			me.ReportPtr(existingPtr, fmt.Sprintf("duplicate header: %q", name))
+			me.ReportPtr(ptr, "")
+			return nil, me
+		}
+		uniq[canonicalName] = ptr
+
+		result[name] = parsed
 	}
 
 	return result, nil
