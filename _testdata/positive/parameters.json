@@ -276,13 +276,13 @@
         }
       }
     },
-    "/same_name/{path}": {
+    "/same_name/{param}": {
       "get": {
         "operationId": "sameName",
-        "summary": "parameter with different location, but the same name",
+        "summary": "parameters with different location, but with the same name",
         "parameters": [
           {
-            "name": "path",
+            "name": "param",
             "in": "path",
             "required": true,
             "schema": {
@@ -290,7 +290,7 @@
             }
           },
           {
-            "name": "path",
+            "name": "param",
             "in": "query",
             "required": true,
             "schema": {
@@ -301,6 +301,35 @@
         "responses": {
           "200": {
             "description": "User info"
+          }
+        }
+      }
+    },
+    "/similarNames": {
+      "get": {
+        "operationId": "similarNames",
+        "summary": "parameters with different location, but with similar names",
+        "parameters": [
+          {
+            "name": "x-param",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Param",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
           }
         }
       }
