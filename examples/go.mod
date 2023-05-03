@@ -9,7 +9,7 @@ require (
 	github.com/ogen-go/ogen v0.0.0
 	github.com/stretchr/testify v1.8.2
 	go.opentelemetry.io/otel v1.15.1
-	go.opentelemetry.io/otel/metric v0.38.0
+	go.opentelemetry.io/otel/metric v0.38.1
 	go.opentelemetry.io/otel/trace v1.15.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.24.0
