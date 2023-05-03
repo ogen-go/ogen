@@ -854,7 +854,7 @@ func (s *Schema) SetOneOf(o []*Schema) *Schema {
 
 // SetAnyOf sets the AnyOf of the Schema.
 func (s *Schema) SetAnyOf(a []*Schema) *Schema {
-	s.AllOf = slices.Clone(a)
+	s.AnyOf = slices.Clone(a)
 	return s
 }
 
