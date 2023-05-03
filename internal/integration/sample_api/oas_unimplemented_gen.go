@@ -218,3 +218,10 @@ func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFl
 func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNullableOneofsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
+
+// TestUniqueItems implements testUniqueItems operation.
+//
+// GET /testUniqueItems
+func (UnimplementedHandler) TestUniqueItems(ctx context.Context) (r *UniqueItemsTest, _ error) {
+	return r, ht.ErrNotImplemented
+}

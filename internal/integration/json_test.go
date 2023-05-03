@@ -811,14 +811,22 @@ func TestJSONSum(t *testing.T) {
 			Expected api.OneVariantHasNoUniqueFieldsType
 			Error    bool
 		}{
-			{`{"a": "a", "c": "c"}`,
-				api.OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields, false},
-			{`{"a": "a", "b": 10, "c": "c"}`,
-				api.OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields, false},
-			{`{"a": "a", "c": "c", "d": 10}`,
-				api.OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields, false},
-			{`{"a": "a", "b": 10, "c": "c", "d": 10}`,
-				api.OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields, false},
+			{
+				`{"a": "a", "c": "c"}`,
+				api.OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields, false,
+			},
+			{
+				`{"a": "a", "b": 10, "c": "c"}`,
+				api.OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields, false,
+			},
+			{
+				`{"a": "a", "c": "c", "d": 10}`,
+				api.OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields, false,
+			},
+			{
+				`{"a": "a", "b": 10, "c": "c", "d": 10}`,
+				api.OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields, false,
+			},
 		} {
 			// Make range value copy to prevent data races.
 			tc := tc

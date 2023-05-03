@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -94,6 +95,32 @@ func TestArray_ValidateLength(t *testing.T) {
 				tc.Validator.MinLength,
 				tc.Value,
 			)
+		})
+	}
+}
+
+func TestUniqueItems(t *testing.T) {
+	for i, tt := range []struct {
+		Elems   []string
+		WantErr bool
+	}{
+		{nil, false},
+		{[]string{}, false},
+		{[]string{"a"}, false},
+		{[]string{"a", "a"}, true},
+		{[]string{"a", "b"}, false},
+		{[]string{"a", "b", "c"}, false},
+		{[]string{"a", "b", "b"}, true},
+		{[]string{"b", "a", "b"}, true},
+	} {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			fmt.Println("Test", i)
+			check := require.NoError
+			if tt.WantErr {
+				check = require.Error
+			}
+			check(t, UniqueItems(tt.Elems))
 		})
 	}
 }

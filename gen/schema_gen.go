@@ -169,6 +169,16 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		schema.DefaultSet = implErr == nil
 	}
 
+	if schema.UniqueItems {
+		item := schema.Item
+		if item == nil ||
+			item.Type == "" ||
+			item.Type == jsonschema.Array ||
+			item.Type == jsonschema.Object {
+			return nil, &ErrNotImplemented{Name: "complex uniqueItems"}
+		}
+	}
+
 	if n := schema.XOgenName; n != "" {
 		name = n
 	} else if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
@@ -401,13 +411,13 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		array.Validators.SetArray(schema)
 
 		ret := g.regtype(name, array)
-		if schema.Item != nil {
-			array.Item, err = g.generate(name+"Item", schema.Item, false)
+		if item := schema.Item; item != nil {
+			array.Item, err = g.generate(name+"Item", item, false)
 			if err != nil {
 				return nil, errors.Wrap(err, "item")
 			}
 		} else {
-			array.Item = ir.Any(schema.Item)
+			array.Item = ir.Any(item)
 		}
 
 		return ret, nil

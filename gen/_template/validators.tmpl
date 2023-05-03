@@ -57,6 +57,11 @@
 		}).ValidateLength(len({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "array")
 		}
+		{{- if $v.UniqueItems }}
+		if err := validate.UniqueItems({{ $.Var }}); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		{{- end }}
 	{{- end }}
 
 	{{- if $t.Item.NeedValidation }}

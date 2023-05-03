@@ -1374,6 +1374,27 @@ func (s *TestNullableOneofsOK) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *UniqueItemsTest) SetFake() {
+	{
+		{
+			s.RequiredUnique = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredUnique = append(s.RequiredUnique, elem)
+			}
+		}
+	}
+	{
+		{
+			s.NullableOptionalUnique.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *ValidationStringMap) SetFake() {
 	var (
 		elem string

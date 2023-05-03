@@ -648,6 +648,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'U': // Prefix: "UniqueItems"
+					if l := len("UniqueItems"); len(elem) >= l && elem[0:l] == "UniqueItems" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestUniqueItemsRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				}
 			}
 		}
@@ -1391,6 +1409,27 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = "TestNullableOneofs"
 							r.operationID = "testNullableOneofs"
 							r.pathPattern = "/testNullableOneofs"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'U': // Prefix: "UniqueItems"
+					if l := len("UniqueItems"); len(elem) >= l && elem[0:l] == "UniqueItems" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: TestUniqueItems
+							r.name = "TestUniqueItems"
+							r.operationID = "testUniqueItems"
+							r.pathPattern = "/testUniqueItems"
 							r.args = args
 							r.count = 0
 							return r, true

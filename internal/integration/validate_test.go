@@ -166,3 +166,39 @@ func TestValidateFloat(t *testing.T) {
 		})
 	}
 }
+
+func TestValidateUniqueItems(t *testing.T) {
+	for i, tc := range []struct {
+		Input string
+		Error bool
+	}{
+		{
+			`{"required_unique": []}`,
+			false,
+		},
+		{
+			`{"required_unique": ["a"]}`,
+			false,
+		},
+		{
+			`{"required_unique": ["a", "b"]}`,
+			false,
+		},
+		{
+			`{"required_unique": ["a", "a"]}`,
+			true,
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			m := api.UniqueItemsTest{}
+			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
+
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			checker(t, m.Validate())
+		})
+	}
+}
