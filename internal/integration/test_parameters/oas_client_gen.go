@@ -808,9 +808,9 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 
 // SameName invokes sameName operation.
 //
-// Parameter with different location, but the same name.
+// Parameters with different location, but with the same name.
 //
-// GET /same_name/{path}
+// GET /same_name/{param}
 func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
 	res, err := c.sendSameName(ctx, params)
 	_ = res
@@ -853,14 +853,14 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	var pathParts [2]string
 	pathParts[0] = "/same_name/"
 	{
-		// Encode "path" parameter.
+		// Encode "param" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "path",
+			Param:   "param",
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.pathPath))
+			return e.EncodeValue(conv.StringToString(params.PathParam))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -875,15 +875,15 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "path" parameter.
+		// Encode "param" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "path",
+			Name:    "param",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(params.queryPath))
+			return e.EncodeValue(conv.StringToString(params.QueryParam))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -905,6 +905,108 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 
 	stage = "DecodeResponse"
 	result, err := decodeSameNameResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SimilarNames invokes similarNames operation.
+//
+// Parameters with different location, but with similar names.
+//
+// GET /similarNames
+func (c *Client) SimilarNames(ctx context.Context, params SimilarNamesParams) error {
+	res, err := c.sendSimilarNames(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams) (res *SimilarNamesOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("similarNames"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "SimilarNames",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/similarNames"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "x-param" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "x-param",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(params.QueryXParam))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "EncodeHeaderParams"
+	h := uri.NewHeaderEncoder(r.Header)
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "X-Param",
+			Explode: false,
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(params.HeaderXParam))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode header")
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeSimilarNamesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

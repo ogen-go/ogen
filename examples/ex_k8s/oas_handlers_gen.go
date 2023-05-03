@@ -287,11 +287,11 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -599,11 +599,11 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -903,11 +903,11 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -1713,11 +1713,11 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -2025,11 +2025,11 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -2329,11 +2329,11 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -2641,11 +2641,11 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -2953,11 +2953,11 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -3257,11 +3257,11 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -3569,11 +3569,11 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -3881,11 +3881,11 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -4185,11 +4185,11 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -4497,11 +4497,11 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -4809,11 +4809,11 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -5113,11 +5113,11 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -5923,11 +5923,11 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -6235,11 +6235,11 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -6539,11 +6539,11 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -6851,11 +6851,11 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -7163,11 +7163,11 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}
@@ -7467,11 +7467,11 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 				{
 					Name: "path",
 					In:   "path",
-				}: params.pathPath,
+				}: params.PathPath,
 				{
 					Name: "path",
 					In:   "query",
-				}: params.queryPath,
+				}: params.QueryPath,
 			},
 			Raw: r,
 		}

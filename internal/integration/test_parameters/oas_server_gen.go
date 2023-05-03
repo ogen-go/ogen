@@ -44,10 +44,16 @@ type Handler interface {
 	PathParameter(ctx context.Context, params PathParameterParams) (*Value, error)
 	// SameName implements sameName operation.
 	//
-	// Parameter with different location, but the same name.
+	// Parameters with different location, but with the same name.
 	//
-	// GET /same_name/{path}
+	// GET /same_name/{param}
 	SameName(ctx context.Context, params SameNameParams) error
+	// SimilarNames implements similarNames operation.
+	//
+	// Parameters with different location, but with similar names.
+	//
+	// GET /similarNames
+	SimilarNames(ctx context.Context, params SimilarNamesParams) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

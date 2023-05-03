@@ -219,30 +219,60 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
-			case 's': // Prefix: "same_name/"
-				if l := len("same_name/"); len(elem) >= l && elem[0:l] == "same_name/" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "path"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
 				if len(elem) == 0 {
-					// Leaf node.
-					switch r.Method {
-					case "GET":
-						s.handleSameNameRequest([1]string{
-							args[0],
-						}, elemIsEscaped, w, r)
-					default:
-						s.notAllowed(w, r, "GET")
+					break
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "ame_name/"
+					if l := len("ame_name/"); len(elem) >= l && elem[0:l] == "ame_name/" {
+						elem = elem[l:]
+					} else {
+						break
 					}
 
-					return
+					// Param: "param"
+					// Leaf parameter
+					args[0] = elem
+					elem = ""
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleSameNameRequest([1]string{
+								args[0],
+							}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+				case 'i': // Prefix: "imilarNames"
+					if l := len("imilarNames"); len(elem) >= l && elem[0:l] == "imilarNames" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleSimilarNamesRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				}
 			}
 		}
@@ -506,30 +536,63 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
-			case 's': // Prefix: "same_name/"
-				if l := len("same_name/"); len(elem) >= l && elem[0:l] == "same_name/" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "path"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
 				if len(elem) == 0 {
-					switch method {
-					case "GET":
-						// Leaf: SameName
-						r.name = "SameName"
-						r.operationID = "sameName"
-						r.pathPattern = "/same_name/{path}"
-						r.args = args
-						r.count = 1
-						return r, true
-					default:
-						return
+					break
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "ame_name/"
+					if l := len("ame_name/"); len(elem) >= l && elem[0:l] == "ame_name/" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					// Param: "param"
+					// Leaf parameter
+					args[0] = elem
+					elem = ""
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: SameName
+							r.name = "SameName"
+							r.operationID = "sameName"
+							r.pathPattern = "/same_name/{param}"
+							r.args = args
+							r.count = 1
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'i': // Prefix: "imilarNames"
+					if l := len("imilarNames"); len(elem) >= l && elem[0:l] == "imilarNames" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: SimilarNames
+							r.name = "SimilarNames"
+							r.operationID = "similarNames"
+							r.pathPattern = "/similarNames"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			}

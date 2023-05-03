@@ -8,6 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -83,9 +84,13 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 					if err != nil {
 						return nil, errors.Wrap(err, "parameter name")
 					}
-				case specNameEqual:
-					p.Name = p.Spec.In.String() + p.Name
-					pp.Name = pp.Spec.In.String() + pp.Name
+
+					if p.Name == pp.Name {
+						return nil, &ErrNotImplemented{"too similar parameter name"}
+					}
+				default:
+					p.Name = naming.Capitalize(p.Spec.In.String()) + p.Name
+					pp.Name = naming.Capitalize(pp.Spec.In.String()) + pp.Name
 				}
 			}
 		}

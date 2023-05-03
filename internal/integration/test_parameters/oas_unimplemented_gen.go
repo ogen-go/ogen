@@ -70,9 +70,18 @@ func (UnimplementedHandler) PathParameter(ctx context.Context, params PathParame
 
 // SameName implements sameName operation.
 //
-// Parameter with different location, but the same name.
+// Parameters with different location, but with the same name.
 //
-// GET /same_name/{path}
+// GET /same_name/{param}
 func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams) error {
+	return ht.ErrNotImplemented
+}
+
+// SimilarNames implements similarNames operation.
+//
+// Parameters with different location, but with similar names.
+//
+// GET /similarNames
+func (UnimplementedHandler) SimilarNames(ctx context.Context, params SimilarNamesParams) error {
 	return ht.ErrNotImplemented
 }

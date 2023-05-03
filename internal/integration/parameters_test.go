@@ -13,8 +13,7 @@ import (
 	api "github.com/ogen-go/ogen/internal/integration/test_parameters"
 )
 
-type testParameters struct {
-}
+type testParameters struct{}
 
 func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.ObjectQueryParameterParams) (*api.ObjectQueryParameterOK, error) {
 	if param, ok := params.FormObject.Get(); ok {
@@ -68,6 +67,10 @@ func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params
 }
 
 func (s *testParameters) SameName(ctx context.Context, params api.SameNameParams) error {
+	panic("implement me")
+}
+
+func (s *testParameters) SimilarNames(ctx context.Context, params api.SimilarNamesParams) error {
 	panic("implement me")
 }
 

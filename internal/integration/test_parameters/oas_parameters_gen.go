@@ -797,31 +797,31 @@ func decodePathParameterParams(args [1]string, argsEscaped bool, r *http.Request
 
 // SameNameParams is parameters of sameName operation.
 type SameNameParams struct {
-	pathPath  string
-	queryPath string
+	PathParam  string
+	QueryParam string
 }
 
 func unpackSameNameParams(packed middleware.Parameters) (params SameNameParams) {
 	{
 		key := middleware.ParameterKey{
-			Name: "path",
+			Name: "param",
 			In:   "path",
 		}
-		params.pathPath = packed[key].(string)
+		params.PathParam = packed[key].(string)
 	}
 	{
 		key := middleware.ParameterKey{
-			Name: "path",
+			Name: "param",
 			In:   "query",
 		}
-		params.queryPath = packed[key].(string)
+		params.QueryParam = packed[key].(string)
 	}
 	return params
 }
 
 func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (params SameNameParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
-	// Decode path: path.
+	// Decode path: param.
 	if err := func() error {
 		param := args[0]
 		if argsEscaped {
@@ -833,7 +833,7 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "path",
+				Param:   "param",
 				Value:   param,
 				Style:   uri.PathStyleSimple,
 				Explode: false,
@@ -850,7 +850,7 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 					return err
 				}
 
-				params.pathPath = c
+				params.PathParam = c
 				return nil
 			}(); err != nil {
 				return err
@@ -861,15 +861,15 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "path",
+			Name: "param",
 			In:   "path",
 			Err:  err,
 		}
 	}
-	// Decode query: path.
+	// Decode query: param.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "path",
+			Name:    "param",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
@@ -886,7 +886,7 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 					return err
 				}
 
-				params.queryPath = c
+				params.QueryParam = c
 				return nil
 			}); err != nil {
 				return err
@@ -897,8 +897,108 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "path",
+			Name: "param",
 			In:   "query",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// SimilarNamesParams is parameters of similarNames operation.
+type SimilarNamesParams struct {
+	QueryXParam  string
+	HeaderXParam string
+}
+
+func unpackSimilarNamesParams(packed middleware.Parameters) (params SimilarNamesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "x-param",
+			In:   "query",
+		}
+		params.QueryXParam = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "X-Param",
+			In:   "header",
+		}
+		params.HeaderXParam = packed[key].(string)
+	}
+	return params
+}
+
+func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request) (params SimilarNamesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	h := uri.NewHeaderDecoder(r.Header)
+	// Decode query: x-param.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "x-param",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.QueryXParam = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "x-param",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode header: X-Param.
+	if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "X-Param",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.HeaderXParam = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "X-Param",
+			In:   "header",
 			Err:  err,
 		}
 	}
