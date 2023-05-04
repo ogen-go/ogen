@@ -3,7 +3,7 @@
 {{ template "header" $ }}
 {{- $router := $.Router }}
 
-{{- if $.PathsServerEnabled }}
+{{- if and $.PathsServerEnabled $.Operations }}
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
