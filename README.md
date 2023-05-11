@@ -4,7 +4,7 @@
 
 # ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![beta](https://img.shields.io/badge/-beta-yellow)](https://go-faster.org/docs/projects/status#beta)
 
-Opinionated OpenAPI v3 Code Generator for Go.
+OpenAPI v3 Code Generator for Go.
 
 - [Getting started](https://ogen.dev/docs/intro)
 - [Sample project](https://github.com/ogen-go/example)
