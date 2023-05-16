@@ -29,8 +29,8 @@ func BoolToString(v bool) string { return strconv.FormatBool(v) }
 func StringToString(v string) string { return v }
 func BytesToString(v []byte) string  { return string(v) }
 
-func TimeToString(v time.Time) string     { return v.Format(timeLayout) }
-func DateToString(v time.Time) string     { return v.Format(dateLayout) }
+func TimeToString(v time.Time) string     { return v.Format(time.TimeOnly) }
+func DateToString(v time.Time) string     { return v.Format(time.DateOnly) }
 func DateTimeToString(v time.Time) string { return v.Format(time.RFC3339) }
 
 func UnixSecondsToString(v time.Time) string { return StringInt64ToString(v.Unix()) }
