@@ -75,7 +75,8 @@ func TestParserDeep(t *testing.T) {
 						Loc: "jsonschema://dummy",
 						Ptr: "#/components/schemas/Pet",
 					},
-					Type: "object",
+					Type:     "object",
+					Required: []string{"id", "name"},
 					Properties: []jsonschema.Property{
 						{
 							Name: "id",
