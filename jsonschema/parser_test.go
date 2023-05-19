@@ -56,7 +56,8 @@ func TestSchemaSimple(t *testing.T) {
 	require.NoError(t, err)
 
 	expect := &Schema{
-		Type: Object,
+		Type:     Object,
+		Required: []string{"id", "name"},
 		Properties: []Property{
 			{
 				Name:     "id",
@@ -102,8 +103,9 @@ func TestSchemaRecursive(t *testing.T) {
 	}
 
 	pet := &Schema{
-		Type: Object,
-		Ref:  Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
+		Type:     Object,
+		Required: []string{"id", "name", "friends"},
+		Ref:      Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
 	}
 	pet.Properties = []Property{
 		{
@@ -128,8 +130,9 @@ func TestSchemaRecursive(t *testing.T) {
 
 	expectRefcache := map[jsonpointer.RefKey]*Schema{
 		{Loc: "/root.json", Ptr: "#/components/schemas/Pet"}: {
-			Type: Object,
-			Ref:  Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
+			Type:     Object,
+			Ref:      Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
+			Required: []string{"id", "name", "friends"},
 			Properties: []Property{
 				{
 					Name:     "id",
@@ -225,7 +228,8 @@ func TestSchemaRefToRef(t *testing.T) {
 func TestSchemaSideEffects(t *testing.T) {
 	expectSide := []*Schema{
 		{
-			Type: Object,
+			Type:     Object,
+			Required: []string{"name", "id", "age"},
 			Properties: []Property{
 				{
 					Name:     "name",
@@ -247,7 +251,8 @@ func TestSchemaSideEffects(t *testing.T) {
 	}
 
 	expect := &Schema{
-		Type: Object,
+		Type:     Object,
+		Required: []string{"id", "name", "owner"},
 		Properties: []Property{
 			{
 				Name:     "name",
@@ -321,7 +326,8 @@ func TestSchemaReferencedArray(t *testing.T) {
 	}
 
 	expect := &Schema{
-		Type: Object,
+		Type:     Object,
+		Required: []string{"pets"},
 		Properties: []Property{
 			{
 				Name:     "pets",

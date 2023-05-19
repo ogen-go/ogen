@@ -374,6 +374,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		Type:     typ,
 		Format:   schema.Format,
 		Nullable: typ == Null,
+		Required: slices.Clone(schema.Required),
 		// Object validators
 		MaxProperties: schema.MaxProperties,
 		MinProperties: schema.MinProperties,

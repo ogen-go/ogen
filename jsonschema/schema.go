@@ -62,6 +62,7 @@ type Schema struct {
 	PatternProperties    []PatternProperty // Only for Object.
 	Enum                 []any             // Only for Enum.
 	Properties           []Property        // Only for Object.
+	Required             []string
 
 	Nullable bool // Whether schema is nullable or not. Any types.
 
