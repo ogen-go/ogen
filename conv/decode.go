@@ -75,11 +75,11 @@ func ToBytes(s string) ([]byte, error) {
 }
 
 func ToTime(s string) (time.Time, error) {
-	return time.Parse(timeLayout, s)
+	return time.Parse(time.TimeOnly, s)
 }
 
 func ToDate(s string) (time.Time, error) {
-	return time.Parse(dateLayout, s)
+	return time.Parse(time.DateOnly, s)
 }
 
 func ToDateTime(s string) (time.Time, error) {
