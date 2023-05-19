@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"golang.org/x/exp/slices"
 )
 
 func ToInt(s string) (int, error) {
@@ -179,8 +180,7 @@ func ToFloat64Array(a []string) ([]float64, error) {
 }
 
 func ToStringArray(a []string) ([]string, error) {
-	// FIXME(tdakkota): this is a no-op, but probably we need to return a copy of the array
-	return a, nil
+	return slices.Clone(a), nil
 }
 
 func ToBytesArray(a []string) ([][]byte, error) {
