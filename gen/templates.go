@@ -189,15 +189,10 @@ func templateFunctions() template.FuncMap {
 		},
 		"backquote": func(v any) string {
 			// Fast path for string.
-			s, ok := v.(string)
-			if !ok {
-				s = fmt.Sprintf("%v", v)
-			}
-			if strconv.CanBackquote(s) {
+			if s, ok := v.(string); ok && strconv.CanBackquote(s) {
 				return "`" + s + "`"
 			}
-			// Fallback to quote.
-			return strconv.Quote(s)
+			return fmt.Sprintf("%#q", v)
 		},
 		"times": func(n int) []struct{} {
 			return make([]struct{}, n)
