@@ -277,6 +277,16 @@ func (g *Generator) Types() map[string]*ir.Type {
 	return g.tstorage.types
 }
 
+// Operations returns generated operations.
+func (g *Generator) Operations() []*ir.Operation {
+	return g.operations
+}
+
+// Webhooks returns generated webhooks.
+func (g *Generator) Webhooks() []*ir.Operation {
+	return g.webhooks
+}
+
 // API returns api schema.
 func (g *Generator) API() *openapi.API {
 	return g.api
