@@ -598,7 +598,8 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		if s.Item != nil ||
 			s.AdditionalProperties != nil ||
 			len(s.PatternProperties) > 0 ||
-			len(s.Properties) > 0 {
+			len(s.Properties) > 0 ||
+			len(s.Required) > 0 {
 			return true
 		}
 		if len(s.OneOf) > 0 || len(s.AnyOf) > 0 || len(s.AllOf) > 0 {
@@ -770,7 +771,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		r.MinProperties = someU64(s1.MinProperties, s2.MinProperties, selectMaxU64)
 		r.MaxProperties = someU64(s1.MaxProperties, s2.MaxProperties, selectMinU64)
-		r.Properties, err = mergeProperties(s1.Properties, s2.Properties)
+		r.Properties, err = mergeProperties(s1, s2)
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
 		}
@@ -781,12 +782,22 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 // mergeProperties finds properties with identical names
 // and tries to merge them into one, avoiding duplicates.
-func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error) {
+func mergeProperties(s1, s2 *jsonschema.Schema) ([]jsonschema.Property, error) {
 	var (
+		p1 = s1.Properties
+		p2 = s2.Properties
+
 		propmap    = make(map[string]jsonschema.Property, len(p1)+len(p2))
 		order      = make(map[string]int, len(p1)+len(p2))
+		required   = make(map[string]struct{}, len(s1.Required)+len(s2.Required))
 		orderIndex = 0
 	)
+	for _, prop := range s1.Required {
+		required[prop] = struct{}{}
+	}
+	for _, prop := range s2.Required {
+		required[prop] = struct{}{}
+	}
 
 	// Fill the map with p1 props.
 	for _, p := range p1 {
@@ -820,6 +831,8 @@ func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error
 
 	result := make([]jsonschema.Property, len(propmap))
 	for name, p := range propmap {
+		_, require := required[p.Name]
+		p.Required = p.Required || require
 		result[order[name]] = p
 	}
 
