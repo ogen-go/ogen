@@ -971,6 +971,12 @@ func (s *Schema) SetDefault(d json.RawMessage) *Schema {
 	return s
 }
 
+// SetDeprecated sets the Deprecated of the Schema.
+func (s *Schema) SetDeprecated(d bool) *Schema {
+	s.Deprecated = d
+	return s
+}
+
 // ToNamed returns a NamedSchema wrapping the receiver.
 func (s *Schema) ToNamed(n string) *NamedSchema {
 	return NewNamedSchema(n, s)
