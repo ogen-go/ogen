@@ -11,7 +11,7 @@ require (
 	github.com/go-faster/jx v1.0.0
 	github.com/go-faster/yaml v0.4.6
 	github.com/google/uuid v1.3.0
-	github.com/mattn/go-isatty v0.0.18
+	github.com/mattn/go-isatty v0.0.19
 	github.com/stretchr/testify v1.8.3
 	github.com/valyala/fasthttp v1.47.0
 	go.opentelemetry.io/otel v1.15.1
