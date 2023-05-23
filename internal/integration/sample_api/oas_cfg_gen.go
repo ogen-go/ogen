@@ -9,8 +9,6 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/global"
-	"go.opentelemetry.io/otel/metric/instrument"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -65,7 +63,7 @@ func (cfg *otelConfig) initOTEL() {
 		cfg.TracerProvider = otel.GetTracerProvider()
 	}
 	if cfg.MeterProvider == nil {
-		cfg.MeterProvider = global.MeterProvider()
+		cfg.MeterProvider = otel.GetMeterProvider()
 	}
 	cfg.Tracer = cfg.TracerProvider.Tracer(otelogen.Name,
 		trace.WithInstrumentationVersion(otelogen.SemVersion()),
@@ -124,9 +122,9 @@ func newServerConfig(opts ...ServerOption) serverConfig {
 
 type baseServer struct {
 	cfg      serverConfig
-	requests instrument.Int64Counter
-	errors   instrument.Int64Counter
-	duration instrument.Int64Histogram
+	requests metric.Int64Counter
+	errors   metric.Int64Counter
+	duration metric.Int64Histogram
 }
 
 func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
@@ -187,9 +185,9 @@ func newClientConfig(opts ...ClientOption) clientConfig {
 
 type baseClient struct {
 	cfg      clientConfig
-	requests instrument.Int64Counter
-	errors   instrument.Int64Counter
-	duration instrument.Int64Histogram
+	requests metric.Int64Counter
+	errors   metric.Int64Counter
+	duration metric.Int64Histogram
 }
 
 func (cfg clientConfig) baseClient() (c baseClient, err error) {
@@ -225,7 +223,7 @@ func WithTracerProvider(provider trace.TracerProvider) Option {
 
 // WithMeterProvider specifies a meter provider to use for creating a meter.
 //
-// If none is specified, the global.MeterProvider() is used.
+// If none is specified, the otel.GetMeterProvider() is used.
 func WithMeterProvider(provider metric.MeterProvider) Option {
 	return otelOptionFunc(func(cfg *otelConfig) {
 		if provider != nil {
