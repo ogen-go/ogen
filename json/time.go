@@ -6,24 +6,29 @@ import (
 	"github.com/go-faster/jx"
 )
 
+const (
+	dateLayout = "2006-01-02"
+	timeLayout = "15:04:05"
+)
+
 // DecodeDate decodes date from json.
 func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
 	}
-	return time.Parse(time.DateOnly, s)
+	return time.Parse(dateLayout, s)
 }
 
 // EncodeDate encodes date to json.
 func EncodeDate(s *jx.Encoder, v time.Time) {
 	const (
 		roundTo  = 8
-		length   = len(time.DateOnly)
+		length   = len(dateLayout)
 		allocate = ((length + roundTo - 1) / roundTo) * roundTo
 	)
 	b := make([]byte, allocate)
-	b = v.AppendFormat(b[:0], time.DateOnly)
+	b = v.AppendFormat(b[:0], dateLayout)
 	s.ByteStr(b)
 }
 
@@ -33,18 +38,18 @@ func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 	if err != nil {
 		return v, err
 	}
-	return time.Parse(time.TimeOnly, s)
+	return time.Parse(timeLayout, s)
 }
 
 // EncodeTime encodes time to json.
 func EncodeTime(s *jx.Encoder, v time.Time) {
 	const (
 		roundTo  = 8
-		length   = len(time.TimeOnly)
+		length   = len(timeLayout)
 		allocate = ((length + roundTo - 1) / roundTo) * roundTo
 	)
 	b := make([]byte, allocate)
-	b = v.AppendFormat(b[:0], time.TimeOnly)
+	b = v.AppendFormat(b[:0], timeLayout)
 	s.ByteStr(b)
 }
 
