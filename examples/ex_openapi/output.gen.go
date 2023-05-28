@@ -18019,7 +18019,8 @@ func (s Encodings) Validate() error {
 	return nil
 }
 func (s Enum) Validate() error {
-	if s == nil {
+	alias := ([]jx.Raw)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	if err := (validate.Array{
@@ -18027,7 +18028,7 @@ func (s Enum) Validate() error {
 		MinLengthSet: true,
 		MaxLength:    0,
 		MaxLengthSet: false,
-	}).ValidateLength(len(s)); err != nil {
+	}).ValidateLength(len(alias)); err != nil {
 		return errors.Wrap(err, "array")
 	}
 	return nil
@@ -18111,7 +18112,8 @@ func (s HeadersOrReferences) Validate() error {
 	return nil
 }
 func (s Maximum) Validate() error {
-	if err := (validate.Float{}).Validate(float64(s)); err != nil {
+	alias := (float64)(s)
+	if err := (validate.Float{}).Validate(float64(alias)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
@@ -18181,12 +18183,14 @@ func (s MediaTypes) Validate() error {
 	return nil
 }
 func (s Minimum) Validate() error {
-	if err := (validate.Float{}).Validate(float64(s)); err != nil {
+	alias := (float64)(s)
+	if err := (validate.Float{}).Validate(float64(alias)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
 }
 func (s MultipleOf) Validate() error {
+	alias := (float64)(s)
 	if err := (validate.Float{
 		MinSet:        true,
 		Min:           0,
@@ -18196,7 +18200,7 @@ func (s MultipleOf) Validate() error {
 		MaxExclusive:  false,
 		MultipleOfSet: false,
 		MultipleOf:    nil,
-	}).Validate(float64(s)); err != nil {
+	}).Validate(float64(alias)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
@@ -18663,6 +18667,7 @@ func (s PathsPattern0) Validate() error {
 	return nil
 }
 func (s PositiveInteger) Validate() error {
+	alias := (int)(s)
 	if err := (validate.Int{
 		MinSet:        true,
 		Min:           0,
@@ -18672,7 +18677,7 @@ func (s PositiveInteger) Validate() error {
 		MaxExclusive:  false,
 		MultipleOfSet: false,
 		MultipleOf:    0,
-	}).Validate(int64(s)); err != nil {
+	}).Validate(int64(alias)); err != nil {
 		return errors.Wrap(err, "int")
 	}
 	return nil
@@ -19437,7 +19442,8 @@ func (s *Spec) Validate() error {
 	return nil
 }
 func (s StringArray) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	if err := (validate.Array{
@@ -19445,7 +19451,7 @@ func (s StringArray) Validate() error {
 		MinLengthSet: true,
 		MaxLength:    0,
 		MaxLengthSet: false,
-	}).ValidateLength(len(s)); err != nil {
+	}).ValidateLength(len(alias)); err != nil {
 		return errors.Wrap(err, "array")
 	}
 	return nil

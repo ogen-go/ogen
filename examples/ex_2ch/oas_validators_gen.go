@@ -29,11 +29,12 @@ func (s *Board) Validate() error {
 	return nil
 }
 func (s Boards) Validate() error {
-	if s == nil {
+	alias := ([]Board)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err

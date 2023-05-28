@@ -7,19 +7,22 @@ import (
 )
 
 func (s ListPetCategoriesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PetCategoriesList)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ListPetFriendsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PetFriendsList)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ListPetOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PetList)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
