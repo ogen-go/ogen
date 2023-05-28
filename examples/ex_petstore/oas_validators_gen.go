@@ -9,7 +9,8 @@ import (
 )
 
 func (s Pets) Validate() error {
-	if s == nil {
+	alias := ([]Pet)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil

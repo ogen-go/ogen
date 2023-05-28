@@ -776,6 +776,7 @@ func (s PetKind) Validate() error {
 	}
 }
 func (s PetName) Validate() error {
+	alias := (string)(s)
 	if err := (validate.String{
 		MinLength:    6,
 		MinLengthSet: true,
@@ -784,7 +785,7 @@ func (s PetName) Validate() error {
 		Email:        false,
 		Hostname:     false,
 		Regex:        nil,
-	}).Validate(string(s)); err != nil {
+	}).Validate(string(alias)); err != nil {
 		return errors.Wrap(err, "string")
 	}
 	return nil
@@ -800,11 +801,12 @@ func (s PetType) Validate() error {
 	}
 }
 func (s RecursiveArray) Validate() error {
-	if s == nil {
+	alias := ([]RecursiveArray)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -920,13 +922,15 @@ func (s *TestFloatValidation) Validate() error {
 	return nil
 }
 func (s TestNullableOneofsCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (OneOfWithNullable)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s TestNullableOneofsOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (OneOfWithNullable)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil

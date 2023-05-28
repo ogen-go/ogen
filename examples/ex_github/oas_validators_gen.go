@@ -1160,11 +1160,12 @@ func (s *ActivityListNotificationsForAuthenticatedUserOKHeaders) Validate() erro
 	return nil
 }
 func (s ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Event)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -1183,11 +1184,12 @@ func (s ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Validate() erro
 	return nil
 }
 func (s ActivityListPublicEventsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Event)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -2629,11 +2631,12 @@ func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) Validate() e
 	return nil
 }
 func (s AppsListWebhookDeliveriesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]HookDeliveryItem)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -3153,13 +3156,15 @@ func (s CheckSuiteStatus) Validate() error {
 	}
 }
 func (s *ChecksCreateSuiteCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*CheckSuite)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ChecksCreateSuiteOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*CheckSuite)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -3404,7 +3409,8 @@ func (s *CloneTraffic) Validate() error {
 	return nil
 }
 func (s CodeFrequencyStat) Validate() error {
-	if s == nil {
+	alias := ([]int)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -3758,6 +3764,7 @@ func (s *CodeScanningAnalysis) Validate() error {
 	return nil
 }
 func (s CodeScanningAnalysisCommitSha) Validate() error {
+	alias := (string)(s)
 	if err := (validate.String{
 		MinLength:    40,
 		MinLengthSet: true,
@@ -3766,17 +3773,18 @@ func (s CodeScanningAnalysisCommitSha) Validate() error {
 		Email:        false,
 		Hostname:     false,
 		Regex:        regexMap["^[0-9a-fA-F]+$"],
-	}).Validate(string(s)); err != nil {
+	}).Validate(string(alias)); err != nil {
 		return errors.Wrap(err, "string")
 	}
 	return nil
 }
 func (s CodeScanningListAlertInstancesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeScanningAlertInstance)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -3795,11 +3803,12 @@ func (s CodeScanningListAlertInstancesOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s CodeScanningListAlertsForRepoOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeScanningAlertItems)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -3818,11 +3827,12 @@ func (s CodeScanningListAlertsForRepoOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s CodeScanningListRecentAnalysesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeScanningAnalysis)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -3967,7 +3977,8 @@ func (s *CodeSearchResultItem) Validate() error {
 	return nil
 }
 func (s CodesOfConductGetAllCodesOfConductOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeOfConduct)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -6139,7 +6150,8 @@ func (s *GitTreeHeaders) Validate() error {
 	return nil
 }
 func (s GitignoreGetAllTemplatesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -7586,7 +7598,8 @@ func (s IssuesLockReqLockReason) Validate() error {
 	}
 }
 func (s IssuesRemoveLabelOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Label)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -7824,7 +7837,8 @@ func (s *License) Validate() error {
 	return nil
 }
 func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]LicenseSimple)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -8083,7 +8097,8 @@ func (s *Migration) Validate() error {
 	return nil
 }
 func (s MigrationsGetCommitAuthorsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PorterAuthor)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -8589,13 +8604,15 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	return nil
 }
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*AuthorizationHeaders)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*AuthorizationHeaders)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -8645,13 +8662,15 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Val
 	return nil
 }
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*AuthorizationHeaders)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*AuthorizationHeaders)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -9118,7 +9137,8 @@ func (s OrgsGetAuditLogOrder) Validate() error {
 	}
 }
 func (s OrgsListBlockedUsersOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -9363,11 +9383,12 @@ func (s *OrgsListPublicMembersOKHeaders) Validate() error {
 	return nil
 }
 func (s OrgsListWebhookDeliveriesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]HookDeliveryItem)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -9819,11 +9840,12 @@ func (s PackagesDeletePackageVersionForUserPackageType) Validate() error {
 	}
 }
 func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PackageVersion)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -9870,11 +9892,12 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Va
 	}
 }
 func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PackageVersion)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -9921,11 +9944,12 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) Validate() error
 	}
 }
 func (s PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]PackageVersion)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -10100,11 +10124,12 @@ func (s PackagesListPackagesForAuthenticatedUserVisibility) Validate() error {
 	}
 }
 func (s PackagesListPackagesForOrganizationOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Package)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -10153,11 +10178,12 @@ func (s PackagesListPackagesForOrganizationVisibility) Validate() error {
 	}
 }
 func (s PackagesListPackagesForUserOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Package)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -12058,13 +12084,15 @@ func (s ReactionContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForCommitCommentCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForCommitCommentOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12110,13 +12138,15 @@ func (s ReactionsCreateForCommitCommentReqContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForIssueCommentCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForIssueCommentOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12162,13 +12192,15 @@ func (s ReactionsCreateForIssueCommentReqContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForIssueCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForIssueOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12214,13 +12246,15 @@ func (s ReactionsCreateForIssueReqContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForPullRequestReviewCommentCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForPullRequestReviewCommentOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12266,13 +12300,15 @@ func (s ReactionsCreateForPullRequestReviewCommentReqContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForReleaseCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForReleaseOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12314,13 +12350,15 @@ func (s ReactionsCreateForReleaseReqContent) Validate() error {
 	}
 }
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -12406,13 +12444,15 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) Validate() erro
 	}
 }
 func (s *ReactionsCreateForTeamDiscussionInOrgCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *ReactionsCreateForTeamDiscussionInOrgOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*Reaction)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -13072,11 +13112,12 @@ func (s *RepoSearchResultItem) Validate() error {
 	return nil
 }
 func (s ReposAddAppAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Integration)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13171,7 +13212,8 @@ func (s ReposAddCollaboratorReqPermission) Validate() error {
 	}
 }
 func (s ReposAddStatusCheckContextsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -13212,7 +13254,8 @@ func (s *ReposAddStatusCheckContextsReq0) Validate() error {
 	return nil
 }
 func (s ReposAddTeamAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Team)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -13253,7 +13296,8 @@ func (s *ReposAddTeamAccessRestrictionsReq0) Validate() error {
 	return nil
 }
 func (s ReposAddUserAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -13588,17 +13632,19 @@ func (s *ReposCreateWebhookReqConfig) Validate() error {
 	return nil
 }
 func (s ReposGetAllStatusCheckContextsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Integration)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13629,11 +13675,12 @@ func (s ReposGetClonesPer) Validate() error {
 	}
 }
 func (s ReposGetCodeFrequencyStatsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeFrequencyStat)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13652,11 +13699,12 @@ func (s ReposGetCodeFrequencyStatsOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s ReposGetCommitActivityStatsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CommitActivity)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13675,11 +13723,12 @@ func (s ReposGetCommitActivityStatsOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s ReposGetContributorsStatsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]ContributorActivity)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13698,11 +13747,12 @@ func (s ReposGetContributorsStatsOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s ReposGetPunchCardStatsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]CodeFrequencyStat)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -13721,25 +13771,29 @@ func (s ReposGetPunchCardStatsOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Team)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ReposGetTopPathsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]ContentTraffic)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ReposGetTopReferrersOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]ReferrerTraffic)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
 }
 func (s ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -13757,7 +13811,8 @@ func (s ReposGetViewsPer) Validate() error {
 	}
 }
 func (s ReposListBranchesForHeadCommitOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]BranchShort)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14067,7 +14122,8 @@ func (s ReposListForAuthenticatedUserDirection) Validate() error {
 	}
 }
 func (s ReposListForAuthenticatedUserOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Repository)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14510,11 +14566,12 @@ func (s *ReposListTeamsOKHeaders) Validate() error {
 	return nil
 }
 func (s ReposListWebhookDeliveriesOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]HookDeliveryItem)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -14568,11 +14625,12 @@ func (s *ReposListWebhooksOKHeaders) Validate() error {
 	return nil
 }
 func (s ReposRemoveAppAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Integration)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -14626,7 +14684,8 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Validate() error {
 	return nil
 }
 func (s ReposRemoveStatusCheckContextsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14667,7 +14726,8 @@ func (s *ReposRemoveStatusCheckContextsReq0) Validate() error {
 	return nil
 }
 func (s ReposRemoveTeamAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Team)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14708,7 +14768,8 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) Validate() error {
 	return nil
 }
 func (s ReposRemoveUserAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14767,11 +14828,12 @@ func (s *ReposReplaceAllTopicsReq) Validate() error {
 	return nil
 }
 func (s ReposSetAppAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Integration)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -14825,7 +14887,8 @@ func (s *ReposSetAppAccessRestrictionsReq0) Validate() error {
 	return nil
 }
 func (s ReposSetStatusCheckContextsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]string)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14866,7 +14929,8 @@ func (s *ReposSetStatusCheckContextsReq0) Validate() error {
 	return nil
 }
 func (s ReposSetTeamAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Team)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -14907,7 +14971,8 @@ func (s *ReposSetTeamAccessRestrictionsReq0) Validate() error {
 	return nil
 }
 func (s ReposSetUserAccessRestrictionsOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -15918,7 +15983,8 @@ func (s SearchReposSort) Validate() error {
 	}
 }
 func (s SearchResultTextMatches) Validate() error {
-	if s == nil {
+	alias := ([]SearchResultTextMatchesItem)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -16128,11 +16194,12 @@ func (s SecretScanningListAlertsForOrgState) Validate() error {
 	}
 }
 func (s SecretScanningListAlertsForRepoOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SecretScanningAlert)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -17074,13 +17141,15 @@ func (s TeamsUpdateInOrgReqPrivacy) Validate() error {
 	}
 }
 func (s *TeamsUpdateLegacyCreated) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*TeamFull)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
 func (s *TeamsUpdateLegacyOK) Validate() error {
-	if err := s.Validate(); err != nil {
+	alias := (*TeamFull)(s)
+	if err := alias.Validate(); err != nil {
 		return err
 	}
 	return nil
@@ -17334,11 +17403,12 @@ func (s *UserSearchResultItem) Validate() error {
 	return nil
 }
 func (s UsersAddEmailForAuthenticatedCreatedApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Email)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -17605,7 +17675,8 @@ func (s UsersGetContextForUserSubjectType) Validate() error {
 	}
 }
 func (s UsersListBlockedByAuthenticatedOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SimpleUser)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
@@ -17877,11 +17948,12 @@ func (s *UsersListPublicSSHKeysForAuthenticatedOKHeaders) Validate() error {
 	return nil
 }
 func (s UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]Email)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err

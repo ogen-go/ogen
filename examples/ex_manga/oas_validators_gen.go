@@ -299,11 +299,12 @@ func (s *Images) Validate() error {
 }
 
 func (s SearchByTagIDOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SearchResponse)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
@@ -322,11 +323,12 @@ func (s SearchByTagIDOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s SearchOKApplicationJSON) Validate() error {
-	if s == nil {
+	alias := ([]SearchResponse)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	var failures []validate.FieldError
-	for i, elem := range s {
+	for i, elem := range alias {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err

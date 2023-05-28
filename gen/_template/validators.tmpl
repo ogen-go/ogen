@@ -199,7 +199,12 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 }
 {{- else if $t.IsAlias }}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
-	{{- template "validate" elem $t.AliasTo "s" }}
+	{{- if $t.DoPassByPointer }}
+	alias := ({{ $t.AliasTo.ReadOnlyReceiver }})(s)
+	{{- else }}
+	alias := ({{ $t.AliasTo.Go }})(s)
+	{{- end }}
+	{{- template "validate" elem $t.AliasTo "alias" }}
 }
 {{- else if $t.IsSum }}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {

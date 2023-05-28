@@ -7,7 +7,8 @@ import (
 )
 
 func (s WorldObjects) Validate() error {
-	if s == nil {
+	alias := ([]WorldObject)(s)
+	if alias == nil {
 		return errors.New("nil is invalid value")
 	}
 	return nil
