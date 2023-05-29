@@ -23,7 +23,7 @@ type AllRequestBodiesOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -45,7 +45,7 @@ type AllRequestBodiesOptionalOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -59,7 +59,7 @@ type AllRequestBodiesOptionalReqApplicationOctetStream struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -79,7 +79,7 @@ type AllRequestBodiesOptionalReqTextPlain struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -95,7 +95,7 @@ type AllRequestBodiesReqApplicationOctetStream struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -111,7 +111,7 @@ type AllRequestBodiesReqTextPlain struct {
 // Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -127,7 +127,7 @@ type Base64RequestOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s Base64RequestOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -141,7 +141,7 @@ type Base64RequestReq struct {
 // Kept to satisfy the io.Reader interface.
 func (s Base64RequestReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -155,7 +155,7 @@ type MaskContentTypeOptionalReq struct {
 // Kept to satisfy the io.Reader interface.
 func (s MaskContentTypeOptionalReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -195,7 +195,7 @@ type MaskContentTypeReq struct {
 // Kept to satisfy the io.Reader interface.
 func (s MaskContentTypeReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
