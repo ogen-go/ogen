@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"sync/atomic"
 	"testing"
+	"time"
 
 	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
@@ -562,4 +563,37 @@ func TestResponseErrorStatusCode(t *testing.T) {
 			a.ErrorAs(err, new(*validate.InvalidContentTypeError))
 		})
 	}
+}
+
+type testNilStreamHTTPResponses struct {
+	testHTTPResponses
+}
+
+func (t testNilStreamHTTPResponses) OctetStreamBinaryStringSchema(ctx context.Context) (api.OctetStreamBinaryStringSchemaOK, error) {
+	return api.OctetStreamBinaryStringSchemaOK{
+		Data: nil,
+	}, nil
+}
+
+func TestNilStreamResponse(t *testing.T) {
+	a := require.New(t)
+	// Ensure that client does not stuck.
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+
+	srv, err := api.NewServer(testNilStreamHTTPResponses{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	resp, err := client.OctetStreamBinaryStringSchema(ctx)
+	a.NoError(err)
+
+	data, err := io.ReadAll(resp.Data)
+	a.NoError(err)
+	a.Len(data, 0)
 }
