@@ -11235,7 +11235,7 @@ type CodeScanningGetAnalysisOKApplicationJSONSarif struct {
 // Kept to satisfy the io.Reader interface.
 func (s CodeScanningGetAnalysisOKApplicationJSONSarif) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -29780,7 +29780,7 @@ type MarkdownRenderOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s MarkdownRenderOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -29833,7 +29833,7 @@ type MarkdownRenderRawOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s MarkdownRenderRawOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -29879,7 +29879,7 @@ type MarkdownRenderRawReqTextPlain struct {
 // Kept to satisfy the io.Reader interface.
 func (s MarkdownRenderRawReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -29895,7 +29895,7 @@ type MarkdownRenderRawReqTextXMarkdown struct {
 // Kept to satisfy the io.Reader interface.
 func (s MarkdownRenderRawReqTextXMarkdown) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -30537,7 +30537,7 @@ type MetaGetOctocatOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s MetaGetOctocatOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -30551,7 +30551,7 @@ type MetaGetZenOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s MetaGetZenOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
@@ -86788,7 +86788,7 @@ type ReposUploadReleaseAssetReq struct {
 // Kept to satisfy the io.Reader interface.
 func (s ReposUploadReleaseAssetReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
-		return 0, nil
+		return 0, io.EOF
 	}
 	return s.Data.Read(p)
 }
