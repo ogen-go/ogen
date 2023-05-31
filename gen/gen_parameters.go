@@ -40,7 +40,7 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 	result := make([]*ir.Parameter, 0, len(params))
 	for _, p := range params {
 		if p.In.Header() {
-			if vetHeaderParameterName(g.log, p.Name, p, "Content-Type", "Accept", "Authorization") {
+			if vetHeaderParameterName(g.log, p.Name, p, "Content-Type", "Authorization") {
 				continue
 			}
 		}
