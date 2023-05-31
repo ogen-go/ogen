@@ -773,6 +773,12 @@ func (s *Schema) SetRef(r string) *Schema {
 	return s
 }
 
+// SetSummary sets the Summary of the Schema.
+func (s *Schema) SetSummary(smry string) *Schema {
+	s.Summary = smry
+	return s
+}
+
 // SetDescription sets the Description of the Schema.
 func (s *Schema) SetDescription(d string) *Schema {
 	s.Description = d
