@@ -30,7 +30,6 @@ linters-settings:
 linters:
   enable:
     - deadcode
-    - depguard
     - dogsled
     - errcheck
     - goconst
