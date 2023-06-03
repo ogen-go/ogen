@@ -29,7 +29,6 @@ linters-settings:
 
 linters:
   enable:
-    - deadcode
     - dogsled
     - errcheck
     - goconst
@@ -41,11 +40,9 @@ linters:
     - lll
     - misspell
     - nakedret
-    - structcheck
     - typecheck
     - unconvert
     - unparam
-    - varcheck
     - whitespace
     - unused
     # Do not enable:
