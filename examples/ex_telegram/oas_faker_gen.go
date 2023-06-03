@@ -331,12 +331,12 @@ func (s *BotCommand) SetFake() {
 
 // SetFake set fake values.
 func (s *BotCommandScope) SetFake() {
-	var elem BotCommandScopeAllChatAdministrators
+	var variant BotCommandScopeAllChatAdministrators
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetBotCommandScopeAllChatAdministrators(elem)
+	s.SetBotCommandScopeAllChatAdministrators(variant)
 }
 
 // SetFake set fake values.
@@ -628,12 +628,12 @@ func (s *ChatLocation) SetFake() {
 
 // SetFake set fake values.
 func (s *ChatMember) SetFake() {
-	var elem ChatMemberAdministrator
+	var variant ChatMemberAdministrator
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetChatMemberAdministrator(elem)
+	s.SetChatMemberAdministrator(variant)
 }
 
 // SetFake set fake values.
@@ -1078,12 +1078,12 @@ func (s *CopyMessage) SetFake() {
 
 // SetFake set fake values.
 func (s *CopyMessageReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -1926,12 +1926,12 @@ func (s *GetUserProfilePhotos) SetFake() {
 
 // SetFake set fake values.
 func (s *ID) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -2042,12 +2042,12 @@ func (s *InlineQueryChatType) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResult) SetFake() {
-	var elem InlineQueryResultArticle
+	var variant InlineQueryResultArticle
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineQueryResultArticle(elem)
+	s.SetInlineQueryResultArticle(variant)
 }
 
 // SetFake set fake values.
@@ -3421,12 +3421,12 @@ func (s *InputLocationMessageContent) SetFake() {
 
 // SetFake set fake values.
 func (s *InputMedia) SetFake() {
-	var elem InputMediaAnimation
+	var variant InputMediaAnimation
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInputMediaAnimation(elem)
+	s.SetInputMediaAnimation(variant)
 }
 
 // SetFake set fake values.
@@ -3661,12 +3661,12 @@ func (s *InputMediaVideo) SetFake() {
 
 // SetFake set fake values.
 func (s *InputMessageContent) SetFake() {
-	var elem InputTextMessageContent
+	var variant InputTextMessageContent
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInputTextMessageContent(elem)
+	s.SetInputTextMessageContent(variant)
 }
 
 // SetFake set fake values.
@@ -3775,12 +3775,12 @@ func (s *Invoice) SetFake() {
 
 // SetFake set fake values.
 func (s *KeyboardButton) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -5065,12 +5065,12 @@ func (s *PassportData) SetFake() {
 
 // SetFake set fake values.
 func (s *PassportElementError) SetFake() {
-	var elem PassportElementErrorDataField
+	var variant PassportElementErrorDataField
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetPassportElementErrorDataField(elem)
+	s.SetPassportElementErrorDataField(variant)
 }
 
 // SetFake set fake values.
@@ -6064,12 +6064,12 @@ func (s *SendAnimation) SetFake() {
 
 // SetFake set fake values.
 func (s *SendAnimationReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6150,12 +6150,12 @@ func (s *SendAudio) SetFake() {
 
 // SetFake set fake values.
 func (s *SendAudioReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6223,12 +6223,12 @@ func (s *SendContact) SetFake() {
 
 // SetFake set fake values.
 func (s *SendContactReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6267,12 +6267,12 @@ func (s *SendDice) SetFake() {
 
 // SetFake set fake values.
 func (s *SendDiceReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6343,12 +6343,12 @@ func (s *SendDocument) SetFake() {
 
 // SetFake set fake values.
 func (s *SendDocumentReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6594,12 +6594,12 @@ func (s *SendLocation) SetFake() {
 
 // SetFake set fake values.
 func (s *SendLocationReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6640,12 +6640,12 @@ func (s *SendMediaGroup) SetFake() {
 
 // SetFake set fake values.
 func (s *SendMediaGroupMediaItem) SetFake() {
-	var elem InputMediaAudio
+	var variant InputMediaAudio
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInputMediaAudio(elem)
+	s.SetInputMediaAudio(variant)
 }
 
 // SetFake set fake values.
@@ -6706,12 +6706,12 @@ func (s *SendMessage) SetFake() {
 
 // SetFake set fake values.
 func (s *SendMessageReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6772,12 +6772,12 @@ func (s *SendPhoto) SetFake() {
 
 // SetFake set fake values.
 func (s *SendPhotoReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6885,12 +6885,12 @@ func (s *SendPoll) SetFake() {
 
 // SetFake set fake values.
 func (s *SendPollReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -6929,12 +6929,12 @@ func (s *SendSticker) SetFake() {
 
 // SetFake set fake values.
 func (s *SendStickerReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -7008,12 +7008,12 @@ func (s *SendVenue) SetFake() {
 
 // SetFake set fake values.
 func (s *SendVenueReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -7148,22 +7148,22 @@ func (s *SendVideoNote) SetFake() {
 
 // SetFake set fake values.
 func (s *SendVideoNoteReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
 func (s *SendVideoReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.
@@ -7229,12 +7229,12 @@ func (s *SendVoice) SetFake() {
 
 // SetFake set fake values.
 func (s *SendVoiceReplyMarkup) SetFake() {
-	var elem InlineKeyboardMarkup
+	var variant InlineKeyboardMarkup
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetInlineKeyboardMarkup(elem)
+	s.SetInlineKeyboardMarkup(variant)
 }
 
 // SetFake set fake values.

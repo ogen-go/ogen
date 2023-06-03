@@ -6655,12 +6655,12 @@ func (s *Deployment) SetFake() {
 
 // SetFake set fake values.
 func (s *DeploymentPayload) SetFake() {
-	var elem DeploymentPayload0
+	var variant DeploymentPayload0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetDeploymentPayload0(elem)
+	s.SetDeploymentPayload0(variant)
 }
 
 // SetFake set fake values.
@@ -7477,12 +7477,12 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) Se
 
 // SetFake set fake values.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -9259,12 +9259,12 @@ func (s *GistsCreateReqFilesItem) SetFake() {
 
 // SetFake set fake values.
 func (s *GistsCreateReqPublic) SetFake() {
-	var elem bool
+	var variant bool
 
 	{
-		elem = true
+		variant = true
 	}
-	s.SetBool(elem)
+	s.SetBool(variant)
 }
 
 // SetFake set fake values.
@@ -11590,12 +11590,12 @@ func (s *IssueEventRename) SetFake() {
 
 // SetFake set fake values.
 func (s *IssueLabelsItem) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -12277,12 +12277,12 @@ func (s *IssuesCreateReq) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesCreateReqLabelsItem) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -12311,22 +12311,22 @@ func (s *IssuesCreateReqLabelsItem1) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesCreateReqMilestone) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
 func (s *IssuesCreateReqTitle) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -12676,12 +12676,12 @@ func (s *IssuesUpdateReq) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesUpdateReqLabelsItem) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -12710,12 +12710,12 @@ func (s *IssuesUpdateReqLabelsItem1) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesUpdateReqMilestone) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -12725,12 +12725,12 @@ func (s *IssuesUpdateReqState) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesUpdateReqTitle) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
@@ -28399,12 +28399,12 @@ func (s *ReposAddAppAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposAddAppAccessRestrictionsReq) SetFake() {
-	var elem ReposAddAppAccessRestrictionsReq0
+	var variant ReposAddAppAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposAddAppAccessRestrictionsReq0(elem)
+	s.SetReposAddAppAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -28478,12 +28478,12 @@ func (s *ReposAddStatusCheckContextsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposAddStatusCheckContextsReq) SetFake() {
-	var elem ReposAddStatusCheckContextsReq0
+	var variant ReposAddStatusCheckContextsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposAddStatusCheckContextsReq0(elem)
+	s.SetReposAddStatusCheckContextsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -28520,12 +28520,12 @@ func (s *ReposAddTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposAddTeamAccessRestrictionsReq) SetFake() {
-	var elem ReposAddTeamAccessRestrictionsReq0
+	var variant ReposAddTeamAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposAddTeamAccessRestrictionsReq0(elem)
+	s.SetReposAddTeamAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -28562,12 +28562,12 @@ func (s *ReposAddUserAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposAddUserAccessRestrictionsReq) SetFake() {
-	var elem ReposAddUserAccessRestrictionsReq0
+	var variant ReposAddUserAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposAddUserAccessRestrictionsReq0(elem)
+	s.SetReposAddUserAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -28757,12 +28757,12 @@ func (s *ReposCreateDeploymentReq) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposCreateDeploymentReqPayload) SetFake() {
-	var elem ReposCreateDeploymentReqPayload0
+	var variant ReposCreateDeploymentReqPayload0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposCreateDeploymentReqPayload0(elem)
+	s.SetReposCreateDeploymentReqPayload0(variant)
 }
 
 // SetFake set fake values.
@@ -29952,12 +29952,12 @@ func (s *ReposRemoveAppAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposRemoveAppAccessRestrictionsReq) SetFake() {
-	var elem ReposRemoveAppAccessRestrictionsReq0
+	var variant ReposRemoveAppAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposRemoveAppAccessRestrictionsReq0(elem)
+	s.SetReposRemoveAppAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -29994,12 +29994,12 @@ func (s *ReposRemoveStatusCheckContextsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposRemoveStatusCheckContextsReq) SetFake() {
-	var elem ReposRemoveStatusCheckContextsReq0
+	var variant ReposRemoveStatusCheckContextsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposRemoveStatusCheckContextsReq0(elem)
+	s.SetReposRemoveStatusCheckContextsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30036,12 +30036,12 @@ func (s *ReposRemoveTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposRemoveTeamAccessRestrictionsReq) SetFake() {
-	var elem ReposRemoveTeamAccessRestrictionsReq0
+	var variant ReposRemoveTeamAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposRemoveTeamAccessRestrictionsReq0(elem)
+	s.SetReposRemoveTeamAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30078,12 +30078,12 @@ func (s *ReposRemoveUserAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposRemoveUserAccessRestrictionsReq) SetFake() {
-	var elem ReposRemoveUserAccessRestrictionsReq0
+	var variant ReposRemoveUserAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposRemoveUserAccessRestrictionsReq0(elem)
+	s.SetReposRemoveUserAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30163,12 +30163,12 @@ func (s *ReposSetAppAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposSetAppAccessRestrictionsReq) SetFake() {
-	var elem ReposSetAppAccessRestrictionsReq0
+	var variant ReposSetAppAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposSetAppAccessRestrictionsReq0(elem)
+	s.SetReposSetAppAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30205,12 +30205,12 @@ func (s *ReposSetStatusCheckContextsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposSetStatusCheckContextsReq) SetFake() {
-	var elem ReposSetStatusCheckContextsReq0
+	var variant ReposSetStatusCheckContextsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposSetStatusCheckContextsReq0(elem)
+	s.SetReposSetStatusCheckContextsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30247,12 +30247,12 @@ func (s *ReposSetTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposSetTeamAccessRestrictionsReq) SetFake() {
-	var elem ReposSetTeamAccessRestrictionsReq0
+	var variant ReposSetTeamAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposSetTeamAccessRestrictionsReq0(elem)
+	s.SetReposSetTeamAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -30289,12 +30289,12 @@ func (s *ReposSetUserAccessRestrictionsOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReposSetUserAccessRestrictionsReq) SetFake() {
-	var elem ReposSetUserAccessRestrictionsReq0
+	var variant ReposSetUserAccessRestrictionsReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetReposSetUserAccessRestrictionsReq0(elem)
+	s.SetReposSetUserAccessRestrictionsReq0(variant)
 }
 
 // SetFake set fake values.
@@ -35992,12 +35992,12 @@ func (s *UsersAddEmailForAuthenticatedNotFound) SetFake() {
 
 // SetFake set fake values.
 func (s *UsersAddEmailForAuthenticatedReq) SetFake() {
-	var elem UsersAddEmailForAuthenticatedReq0
+	var variant UsersAddEmailForAuthenticatedReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetUsersAddEmailForAuthenticatedReq0(elem)
+	s.SetUsersAddEmailForAuthenticatedReq0(variant)
 }
 
 // SetFake set fake values.
@@ -36203,12 +36203,12 @@ func (s *UsersDeleteEmailForAuthenticatedNotFound) SetFake() {
 
 // SetFake set fake values.
 func (s *UsersDeleteEmailForAuthenticatedReq) SetFake() {
-	var elem UsersDeleteEmailForAuthenticatedReq0
+	var variant UsersDeleteEmailForAuthenticatedReq0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetUsersDeleteEmailForAuthenticatedReq0(elem)
+	s.SetUsersDeleteEmailForAuthenticatedReq0(variant)
 }
 
 // SetFake set fake values.
@@ -36328,12 +36328,12 @@ func (s *UsersGetAuthenticatedForbidden) SetFake() {
 
 // SetFake set fake values.
 func (s *UsersGetAuthenticatedOK) SetFake() {
-	var elem PrivateUser
+	var variant PrivateUser
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetPrivateUser(elem)
+	s.SetPrivateUser(variant)
 }
 
 // SetFake set fake values.
@@ -36347,12 +36347,12 @@ func (s *UsersGetAuthenticatedUnauthorized) SetFake() {
 
 // SetFake set fake values.
 func (s *UsersGetByUsernameOK) SetFake() {
-	var elem PrivateUser
+	var variant PrivateUser
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetPrivateUser(elem)
+	s.SetPrivateUser(variant)
 }
 
 // SetFake set fake values.
@@ -36840,12 +36840,12 @@ func (s *ValidationErrorErrorsItem) SetFake() {
 
 // SetFake set fake values.
 func (s *ValidationErrorErrorsItemValue) SetFake() {
-	var elem struct{}
+	var variant struct{}
 
 	{
-		elem = struct{}{}
+		variant = struct{}{}
 	}
-	s.SetNull(elem)
+	s.SetNull(variant)
 }
 
 // SetFake set fake values.
@@ -36959,12 +36959,12 @@ func (s *WebhookConfigContentType) SetFake() {
 
 // SetFake set fake values.
 func (s *WebhookConfigInsecureSsl) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.

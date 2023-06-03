@@ -8,12 +8,12 @@ import (
 
 // SetFake set fake values.
 func (s *AnyOfIntegerNumberString) SetFake() {
-	var elem int
+	var variant int
 
 	{
-		elem = int(0)
+		variant = int(0)
 	}
-	s.SetInt(elem)
+	s.SetInt(variant)
 }
 
 // SetFake set fake values.
@@ -41,12 +41,12 @@ func (s *JaegerAnyOf) SetFake() {
 
 // SetFake set fake values.
 func (s *JaegerAnyOfSizeLimit) SetFake() {
-	var elem int
+	var variant int
 
 	{
-		elem = int(0)
+		variant = int(0)
 	}
-	s.SetInt(elem)
+	s.SetInt(variant)
 }
 
 // SetFake set fake values.
@@ -70,22 +70,22 @@ func (s *OneUUID) SetFake() {
 
 // SetFake set fake values.
 func (s *OneUUIDSubscriptionID) SetFake() {
-	var elem SubscriptionUUID
+	var variant SubscriptionUUID
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetSubscriptionUUID(elem)
+	s.SetSubscriptionUUID(variant)
 }
 
 // SetFake set fake values.
 func (s *SubscriptionUUID) SetFake() {
-	var elem UUIDv4
+	var variant UUIDv4
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetUUIDv4(elem)
+	s.SetUUIDv4(variant)
 }
 
 // SetFake set fake values.
