@@ -135,12 +135,12 @@ func (s *Data) SetFake() {
 
 // SetFake set fake values.
 func (s *DataDescription) SetFake() {
-	var elem DescriptionDetailed
+	var variant DescriptionDetailed
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetDescriptionDetailed(elem)
+	s.SetDescriptionDetailed(variant)
 }
 
 // SetFake set fake values.
@@ -271,22 +271,22 @@ func (s *Error) SetFake() {
 
 // SetFake set fake values.
 func (s *ID) SetFake() {
-	var elem string
+	var variant string
 
 	{
-		elem = "string"
+		variant = "string"
 	}
-	s.SetString(elem)
+	s.SetString(variant)
 }
 
 // SetFake set fake values.
 func (s *Issue143) SetFake() {
-	var elem Issue1430
+	var variant Issue1430
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetIssue1430(elem)
+	s.SetIssue1430(variant)
 }
 
 // SetFake set fake values.
@@ -519,12 +519,12 @@ func (s *NullableEnumsOnlyNullable) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfBooleanSumNullables) SetFake() {
-	var elem bool
+	var variant bool
 
 	{
-		elem = true
+		variant = true
 	}
-	s.SetBool(elem)
+	s.SetBool(variant)
 }
 
 // SetFake set fake values.
@@ -553,12 +553,12 @@ func (s *OneOfBugs) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfMappingReference) SetFake() {
-	var elem OneOfMappingReferenceB
+	var variant OneOfMappingReferenceB
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetOneOfMappingReferenceB(elem)
+	s.SetOneOfMappingReferenceB(variant)
 }
 
 // SetFake set fake values.
@@ -595,22 +595,22 @@ func (s *OneOfMappingReferenceBData) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfNullables) SetFake() {
-	var elem struct{}
+	var variant struct{}
 
 	{
-		elem = struct{}{}
+		variant = struct{}{}
 	}
-	s.SetNull(elem)
+	s.SetNull(variant)
 }
 
 // SetFake set fake values.
 func (s *OneOfUUIDAndIntEnum) SetFake() {
-	var elem uuid.UUID
+	var variant uuid.UUID
 
 	{
-		elem = uuid.New()
+		variant = uuid.New()
 	}
-	s.SetUUID(elem)
+	s.SetUUID(variant)
 }
 
 // SetFake set fake values.
@@ -620,12 +620,12 @@ func (s *OneOfUUIDAndIntEnum1) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfWithNullable) SetFake() {
-	var elem struct{}
+	var variant struct{}
 
 	{
-		elem = struct{}{}
+		variant = struct{}{}
 	}
-	s.SetNull(elem)
+	s.SetNull(variant)
 }
 
 // SetFake set fake values.
@@ -639,12 +639,12 @@ func (s *OnePropertyObject) SetFake() {
 
 // SetFake set fake values.
 func (s *OneVariantHasNoUniqueFields) SetFake() {
-	var elem OneVariantHasNoUniqueFields0
+	var variant OneVariantHasNoUniqueFields0
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetOneVariantHasNoUniqueFields0(elem)
+	s.SetOneVariantHasNoUniqueFields0(variant)
 }
 
 // SetFake set fake values.

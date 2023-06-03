@@ -727,10 +727,10 @@ func (s *Report) SetFake() {
 
 // SetFake set fake values.
 func (s *UserPostingPostOK) SetFake() {
-	var elem PostingNewThread
+	var variant PostingNewThread
 
 	{
-		elem.SetFake()
+		variant.SetFake()
 	}
-	s.SetPostingNewThread(elem)
+	s.SetPostingNewThread(variant)
 }
