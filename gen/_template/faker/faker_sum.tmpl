@@ -3,15 +3,15 @@
 // SetFake set fake values.
 func (s *{{ $.Name }}) SetFake() {
 	{{- if $d.Discriminator -}}
-	{{- $variant := index $.SumSpec.Mapping 0 }}
-	var elem {{ $variant.Type.Go }}
-	{{ template "faker/faker" elem $variant.Type "elem" }}
-	s.Set{{ $variant.Type.Name }}(elem)
+		{{- $variant := index $.SumSpec.Mapping 0 }}
+		var variant {{ $variant.Type.Go }}
+		{{ template "faker/faker" elem $variant.Type "variant" }}
+		s.Set{{ $variant.Type.Name }}(variant)
 	{{- else }}
-	{{- $variant := index $.SumOf 0 }}
-	var elem {{ $variant.Go }}
-	{{ template "faker/faker" elem $variant "elem" }}
-	s.Set{{ $variant.Name }}(elem)
+		{{- $variant := index $.SumOf 0 }}
+		var variant {{ $variant.Go }}
+		{{ template "faker/faker" elem $variant "variant" }}
+		s.Set{{ $variant.Name }}(variant)
 	{{- end }}
 }
 {{- end }}

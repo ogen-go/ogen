@@ -12,9 +12,10 @@
 {{- else if $t.IsArray -}}
     {{ $.Var }} = nil
 	for i := 0; i < {{ $t.Validators.Array.MinLength }}; i++ {
-		var {{ $.NextVar }} {{ $t.Item.Go }}
-		{{- template "faker/faker" sub_array_elem $ $t.Item }}
-    	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+        {{- $elem := sub_array_elem $ $t.Item }}
+		var {{ $elem.Var }} {{ $t.Item.Go }}
+		{{- template "faker/faker" $elem }}
+    	{{ $.Var }} = append({{ $.Var }}, {{ $elem.Var }})
 	}
 {{- else if $t.IsAny -}}
     {{ $.Var }} = []byte("null")
