@@ -591,6 +591,19 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return s2, nil
 	}
 
+	if allOf := s1.AllOf; len(allOf) > 0 {
+		s1, err = mergeNSchemes(allOf)
+		if err != nil {
+			return nil, errors.Wrap(err, "merge subschemas")
+		}
+	}
+	if allOf := s2.AllOf; len(allOf) > 0 {
+		s2, err = mergeNSchemes(allOf)
+		if err != nil {
+			return nil, errors.Wrap(err, "merge subschemas")
+		}
+	}
+
 	containsValidators := func(s *jsonschema.Schema) bool {
 		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet {
 			return true
