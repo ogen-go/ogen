@@ -2,7 +2,6 @@ package gen
 
 import (
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -120,6 +119,30 @@ func (s *tstorage) saveWType(ref jsonschema.Ref, t *ir.Type) error {
 	return nil
 }
 
+func sameBase(t, tt *ir.Type) bool {
+	if t.GenericOf != nil {
+		t = t.GenericOf
+	}
+
+	if tt.GenericOf != nil {
+		tt = tt.GenericOf
+	}
+
+	if t.Kind == ir.KindAlias && tt.Kind == ir.KindAlias && t.Name == tt.Name {
+		return true
+	}
+
+	if t.Kind == ir.KindPrimitive && tt.Kind == ir.KindPrimitive && t.Primitive == tt.Primitive {
+		return true
+	}
+
+	if t.Kind == tt.Kind && t.Schema != nil && tt.Schema != nil && t.Schema.Type == tt.Schema.Type && t.Name == tt.Name {
+		return true
+	}
+
+	return false
+}
+
 func (s *tstorage) merge(other *tstorage) error {
 	// Check for merge conflicts.
 	for ref, t := range other.refs {
@@ -133,7 +156,7 @@ func (s *tstorage) merge(other *tstorage) error {
 
 	for name, t := range other.types {
 		if confT, ok := s.types[name]; ok {
-			if t.IsGeneric() {
+			if t.IsGeneric() && sameBase(t, confT) {
 				for _, feature := range confT.Features {
 					t.AddFeature(feature)
 				}
