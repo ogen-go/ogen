@@ -105,7 +105,7 @@ type baseClient struct {
 	cfg      clientConfig
 	requests metric.Int64Counter
 	errors   metric.Int64Counter
-	duration metric.Int64Histogram
+	duration metric.Float64Histogram
 }
 
 func (cfg clientConfig) baseClient() (c baseClient, err error) {
@@ -116,7 +116,7 @@ func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	if c.errors, err = c.cfg.Meter.Int64Counter(otelogen.ClientErrorsCount); err != nil {
 		return c, err
 	}
-	if c.duration, err = c.cfg.Meter.Int64Histogram(otelogen.ClientDuration); err != nil {
+	if c.duration, err = c.cfg.Meter.Float64Histogram(otelogen.ClientDuration); err != nil {
 		return c, err
 	}
 	return c, nil
