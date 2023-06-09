@@ -91,8 +91,9 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -161,8 +162,9 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -252,8 +254,9 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.

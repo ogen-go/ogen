@@ -85,8 +85,9 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -153,8 +154,9 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -221,8 +223,9 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -307,8 +310,9 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -375,8 +379,9 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -461,8 +466,9 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -529,8 +535,9 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -597,8 +604,9 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -668,8 +676,9 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -754,8 +763,9 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -822,8 +832,9 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -890,8 +901,9 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -960,8 +972,9 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -1028,8 +1041,9 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
@@ -1114,8 +1128,9 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.

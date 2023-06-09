@@ -100,7 +100,7 @@ type baseServer struct {
 	cfg      serverConfig
 	requests metric.Int64Counter
 	errors   metric.Int64Counter
-	duration metric.Int64Histogram
+	duration metric.Float64Histogram
 }
 
 func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
@@ -119,7 +119,7 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	if s.errors, err = s.cfg.Meter.Int64Counter(otelogen.ServerErrorsCount); err != nil {
 		return s, err
 	}
-	if s.duration, err = s.cfg.Meter.Int64Histogram(otelogen.ServerDuration); err != nil {
+	if s.duration, err = s.cfg.Meter.Float64Histogram(otelogen.ServerDuration); err != nil {
 		return s, err
 	}
 	return s, nil
@@ -163,7 +163,7 @@ type baseClient struct {
 	cfg      clientConfig
 	requests metric.Int64Counter
 	errors   metric.Int64Counter
-	duration metric.Int64Histogram
+	duration metric.Float64Histogram
 }
 
 func (cfg clientConfig) baseClient() (c baseClient, err error) {
@@ -174,7 +174,7 @@ func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	if c.errors, err = c.cfg.Meter.Int64Counter(otelogen.ClientErrorsCount); err != nil {
 		return c, err
 	}
-	if c.duration, err = c.cfg.Meter.Int64Histogram(otelogen.ClientDuration); err != nil {
+	if c.duration, err = c.cfg.Meter.Float64Histogram(otelogen.ClientDuration); err != nil {
 		return c, err
 	}
 	return c, nil
