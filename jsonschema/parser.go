@@ -309,14 +309,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				"patternProperties": {},
 				"minProperties":     {},
 				"maxProperties":     {},
-				"xml":               {},
 			},
 			"array": {
 				"items":       {},
 				"maxItems":    {},
 				"minItems":    {},
 				"uniqueItems": {},
-				"xml":         {},
 			},
 			"string": {
 				"maxLength": {},
@@ -347,7 +345,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				"type", "enum", "nullable", "format", "default",
 				"oneOf", "anyOf", "allOf", "discriminator",
 				"description", "example", "examples", "deprecated",
-				"additionalProperties",
+				"additionalProperties", "xml",
 			} {
 				fset[f] = struct{}{}
 			}
