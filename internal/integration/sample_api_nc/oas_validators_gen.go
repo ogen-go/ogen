@@ -24,9 +24,9 @@ func (s *ArrayTest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NullableOptional.Set {
+		if value, ok := s.NullableOptional.Get(); ok {
 			if err := func() error {
-				if s.NullableOptional.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -106,9 +106,9 @@ func (s *Data) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NullableEnum.Set {
+		if value, ok := s.NullableEnum.Get(); ok {
 			if err := func() error {
-				if err := s.NullableEnum.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -131,9 +131,9 @@ func (s *Data) Validate() error {
 func (s *DefaultTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Enum.Set {
+		if value, ok := s.Enum.Get(); ok {
 			if err := func() error {
-				if err := s.Enum.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -149,7 +149,7 @@ func (s *DefaultTest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Email.Set {
+		if value, ok := s.Email.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -159,7 +159,7 @@ func (s *DefaultTest) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Email.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -175,7 +175,7 @@ func (s *DefaultTest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Hostname.Set {
+		if value, ok := s.Hostname.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -185,7 +185,7 @@ func (s *DefaultTest) Validate() error {
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(s.Hostname.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -201,7 +201,7 @@ func (s *DefaultTest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Format.Set {
+		if value, ok := s.Format.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -211,7 +211,7 @@ func (s *DefaultTest) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        regexMap["^\\d-\\d$"],
-				}).Validate(string(s.Format.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -244,9 +244,9 @@ func (s DefaultTestEnum) Validate() error {
 func (s *MapWithProperties) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.SubMap.Set {
+		if value, ok := s.SubMap.Get(); ok {
 			if err := func() error {
-				if err := s.SubMap.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -262,9 +262,9 @@ func (s *MapWithProperties) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MapValidation.Set {
+		if value, ok := s.MapValidation.Get(); ok {
 			if err := func() error {
-				if err := s.MapValidation.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -288,8 +288,15 @@ func (s *MapWithProperties) Validate() error {
 func (s *NullableEnums) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.OnlyNullable.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.OnlyNullable.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -299,8 +306,15 @@ func (s *NullableEnums) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.OnlyNullValue.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.OnlyNullValue.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -310,8 +324,15 @@ func (s *NullableEnums) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Both.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Both.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -372,9 +393,9 @@ func (s OneOfBooleanSumNullables) Validate() error {
 func (s *OneOfBugs) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
+		if value, ok := s.OneOfMinusUUIDMinusIntMinusEnum.Get(); ok {
 			if err := func() error {
-				if err := s.OneOfMinusUUIDMinusIntMinusEnum.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -515,9 +536,9 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Type.Set {
+		if value, ok := s.Type.Get(); ok {
 			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -577,9 +598,9 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Next.Set {
+		if value, ok := s.Next.Get(); ok {
 			if err := func() error {
-				if err := s.Next.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -595,7 +616,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TestInteger1.Set {
+		if value, ok := s.TestInteger1.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        false,
@@ -606,7 +627,7 @@ func (s *Pet) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: true,
 					MultipleOf:    10,
-				}).Validate(int64(s.TestInteger1.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -622,7 +643,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TestFloat1.Set {
+		if value, ok := s.TestFloat1.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -633,7 +654,7 @@ func (s *Pet) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: true,
 					MultipleOf:    ratMap["10"],
-				}).Validate(float64(s.TestFloat1.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -707,9 +728,9 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TestArray2.Set {
+		if value, ok := s.TestArray2.Get(); ok {
 			if err := func() error {
-				if err := s.TestArray2.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -725,9 +746,9 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TestMap.Set {
+		if value, ok := s.TestMap.Get(); ok {
 			if err := func() error {
-				if err := s.TestMap.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -743,9 +764,9 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TestMapWithProps.Set {
+		if value, ok := s.TestMapWithProps.Get(); ok {
 			if err := func() error {
-				if err := s.TestMapWithProps.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -960,9 +981,9 @@ func (s *UniqueItemsTest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NullableOptionalUnique.Set {
+		if value, ok := s.NullableOptionalUnique.Get(); ok {
 			if err := func() error {
-				if s.NullableOptionalUnique.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				if err := (validate.Array{
@@ -970,10 +991,10 @@ func (s *UniqueItemsTest) Validate() error {
 					MinLengthSet: false,
 					MaxLength:    0,
 					MaxLengthSet: false,
-				}).ValidateLength(len(s.NullableOptionalUnique.Value)); err != nil {
+				}).ValidateLength(len(value)); err != nil {
 					return errors.Wrap(err, "array")
 				}
-				if err := validate.UniqueItems(s.NullableOptionalUnique.Value); err != nil {
+				if err := validate.UniqueItems(value); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				return nil

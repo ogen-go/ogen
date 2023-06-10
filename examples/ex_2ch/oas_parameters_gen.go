@@ -121,7 +121,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 				return err
 			}
 			if err := func() error {
-				if params.Thread.Set {
+				if value, ok := params.Thread.Get(); ok {
 					if err := func() error {
 						if err := (validate.Int{
 							MinSet:        true,
@@ -132,7 +132,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
-						}).Validate(int64(params.Thread.Value)); err != nil {
+						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
 						return nil
@@ -376,7 +376,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 				return err
 			}
 			if err := func() error {
-				if params.Thread.Set {
+				if value, ok := params.Thread.Get(); ok {
 					if err := func() error {
 						if err := (validate.Int{
 							MinSet:        true,
@@ -387,7 +387,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
-						}).Validate(int64(params.Thread.Value)); err != nil {
+						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
 						return nil
@@ -517,7 +517,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 				return err
 			}
 			if err := func() error {
-				if params.Thread.Set {
+				if value, ok := params.Thread.Get(); ok {
 					if err := func() error {
 						if err := (validate.Int{
 							MinSet:        true,
@@ -528,7 +528,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
-						}).Validate(int64(params.Thread.Value)); err != nil {
+						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
 						return nil
@@ -658,7 +658,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 				return err
 			}
 			if err := func() error {
-				if params.Thread.Set {
+				if value, ok := params.Thread.Get(); ok {
 					if err := func() error {
 						if err := (validate.Int{
 							MinSet:        true,
@@ -669,7 +669,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
-						}).Validate(int64(params.Thread.Value)); err != nil {
+						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
 						return nil

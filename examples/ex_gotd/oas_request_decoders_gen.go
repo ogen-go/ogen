@@ -2540,9 +2540,9 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil

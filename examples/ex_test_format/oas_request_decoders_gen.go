@@ -779,9 +779,9 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -6785,9 +6785,9 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -7088,9 +7088,9 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -7391,9 +7391,9 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -7483,8 +7483,15 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -7593,8 +7600,15 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -7690,9 +7704,9 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -7993,9 +8007,9 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -8085,8 +8099,15 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -8195,8 +8216,15 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -9280,9 +9308,9 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -9372,8 +9400,15 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -9482,8 +9517,15 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -16830,8 +16872,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 			return req, close, err
 		}
 		if err := func() error {
-			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-				return errors.Wrap(err, "float")
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
+						return errors.Wrap(err, "float")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -16915,8 +16964,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -17025,8 +17081,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -17412,8 +17475,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 			return req, close, err
 		}
 		if err := func() error {
-			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-				return errors.Wrap(err, "float")
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
+						return errors.Wrap(err, "float")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -17497,8 +17567,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -17607,8 +17684,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -18696,8 +18780,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request)
 			return req, close, err
 		}
 		if err := func() error {
-			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-				return errors.Wrap(err, "float")
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := (validate.Float{}).Validate(float64(value)); err != nil {
+						return errors.Wrap(err, "float")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -18781,8 +18872,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-						return errors.Wrap(err, "float")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
+								return errors.Wrap(err, "float")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -18891,8 +18989,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-								return errors.Wrap(err, "float")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.Float{}).Validate(float64(value)); err != nil {
+										return errors.Wrap(err, "float")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -22554,16 +22659,23 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 			return req, close, err
 		}
 		if err := func() error {
-			if err := (validate.String{
-				MinLength:    0,
-				MinLengthSet: false,
-				MaxLength:    0,
-				MaxLengthSet: false,
-				Email:        true,
-				Hostname:     false,
-				Regex:        nil,
-			}).Validate(string(request.Value)); err != nil {
-				return errors.Wrap(err, "string")
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -22647,16 +22759,23 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.String{
-						MinLength:    0,
-						MinLengthSet: false,
-						MaxLength:    0,
-						MaxLengthSet: false,
-						Email:        true,
-						Hostname:     false,
-						Regex:        nil,
-					}).Validate(string(elem.Value)); err != nil {
-						return errors.Wrap(err, "string")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(value)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -22765,16 +22884,23 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.String{
-								MinLength:    0,
-								MinLengthSet: false,
-								MaxLength:    0,
-								MaxLengthSet: false,
-								Email:        true,
-								Hostname:     false,
-								Regex:        nil,
-							}).Validate(string(elem.Value)); err != nil {
-								return errors.Wrap(err, "string")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.String{
+										MinLength:    0,
+										MinLengthSet: false,
+										MaxLength:    0,
+										MaxLengthSet: false,
+										Email:        true,
+										Hostname:     false,
+										Regex:        nil,
+									}).Validate(string(value)); err != nil {
+										return errors.Wrap(err, "string")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -23184,16 +23310,23 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 			return req, close, err
 		}
 		if err := func() error {
-			if err := (validate.String{
-				MinLength:    0,
-				MinLengthSet: false,
-				MaxLength:    0,
-				MaxLengthSet: false,
-				Email:        false,
-				Hostname:     true,
-				Regex:        nil,
-			}).Validate(string(request.Value)); err != nil {
-				return errors.Wrap(err, "string")
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -23277,16 +23410,23 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.String{
-						MinLength:    0,
-						MinLengthSet: false,
-						MaxLength:    0,
-						MaxLengthSet: false,
-						Email:        false,
-						Hostname:     true,
-						Regex:        nil,
-					}).Validate(string(elem.Value)); err != nil {
-						return errors.Wrap(err, "string")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(value)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -23395,16 +23535,23 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.String{
-								MinLength:    0,
-								MinLengthSet: false,
-								MaxLength:    0,
-								MaxLengthSet: false,
-								Email:        false,
-								Hostname:     true,
-								Regex:        nil,
-							}).Validate(string(elem.Value)); err != nil {
-								return errors.Wrap(err, "string")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.String{
+										MinLength:    0,
+										MinLengthSet: false,
+										MaxLength:    0,
+										MaxLengthSet: false,
+										Email:        false,
+										Hostname:     true,
+										Regex:        nil,
+									}).Validate(string(value)); err != nil {
+										return errors.Wrap(err, "string")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -33941,7 +34088,7 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
 					if err := (validate.String{
 						MinLength:    0,
@@ -33951,7 +34098,7 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 						Email:        true,
 						Hostname:     false,
 						Regex:        nil,
-					}).Validate(string(request.Value)); err != nil {
+					}).Validate(string(value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -34268,7 +34415,7 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
 					if err := (validate.String{
 						MinLength:    0,
@@ -34278,7 +34425,7 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 						Email:        true,
 						Hostname:     false,
 						Regex:        nil,
-					}).Validate(string(request.Value)); err != nil {
+					}).Validate(string(value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -34368,16 +34515,23 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.String{
-						MinLength:    0,
-						MinLengthSet: false,
-						MaxLength:    0,
-						MaxLengthSet: false,
-						Email:        true,
-						Hostname:     false,
-						Regex:        nil,
-					}).Validate(string(elem.Value)); err != nil {
-						return errors.Wrap(err, "string")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(value)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -34486,16 +34640,23 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.String{
-								MinLength:    0,
-								MinLengthSet: false,
-								MaxLength:    0,
-								MaxLengthSet: false,
-								Email:        true,
-								Hostname:     false,
-								Regex:        nil,
-							}).Validate(string(elem.Value)); err != nil {
-								return errors.Wrap(err, "string")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.String{
+										MinLength:    0,
+										MinLengthSet: false,
+										MaxLength:    0,
+										MaxLengthSet: false,
+										Email:        true,
+										Hostname:     false,
+										Regex:        nil,
+									}).Validate(string(value)); err != nil {
+										return errors.Wrap(err, "string")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {
@@ -34591,7 +34752,7 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
 					if err := (validate.String{
 						MinLength:    0,
@@ -34601,7 +34762,7 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 						Email:        false,
 						Hostname:     true,
 						Regex:        nil,
-					}).Validate(string(request.Value)); err != nil {
+					}).Validate(string(value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -34918,7 +35079,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
 					if err := (validate.String{
 						MinLength:    0,
@@ -34928,7 +35089,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 						Email:        false,
 						Hostname:     true,
 						Regex:        nil,
-					}).Validate(string(request.Value)); err != nil {
+					}).Validate(string(value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -35018,16 +35179,23 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.String{
-						MinLength:    0,
-						MinLengthSet: false,
-						MaxLength:    0,
-						MaxLengthSet: false,
-						Email:        false,
-						Hostname:     true,
-						Regex:        nil,
-					}).Validate(string(elem.Value)); err != nil {
-						return errors.Wrap(err, "string")
+					if value, ok := elem.Get(); ok {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(value)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							return err
+						}
 					}
 					return nil
 				}(); err != nil {
@@ -35136,16 +35304,23 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.String{
-								MinLength:    0,
-								MinLengthSet: false,
-								MaxLength:    0,
-								MaxLengthSet: false,
-								Email:        false,
-								Hostname:     true,
-								Regex:        nil,
-							}).Validate(string(elem.Value)); err != nil {
-								return errors.Wrap(err, "string")
+							if value, ok := elem.Get(); ok {
+								if err := func() error {
+									if err := (validate.String{
+										MinLength:    0,
+										MinLengthSet: false,
+										MaxLength:    0,
+										MaxLengthSet: false,
+										Email:        false,
+										Hostname:     true,
+										Regex:        nil,
+									}).Validate(string(value)); err != nil {
+										return errors.Wrap(err, "string")
+									}
+									return nil
+								}(); err != nil {
+									return err
+								}
 							}
 							return nil
 						}(); err != nil {

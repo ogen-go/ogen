@@ -14,18 +14,14 @@
 
 {{- if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
 	{{- $validated = true }}
-	{{- if $t.GenericVariant.Optional }}
-		if {{ $.Var }}.Set {
-			if err := func() error {
-				{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
-			}(); err != nil {
-				return err
-			}
+	if value, ok := {{ $.Var }}.Get(); ok {
+		if err := func() error {
+			{{- template "validate" elem $t.GenericOf "value" }}
+		}(); err != nil {
+			return err
 		}
-		return nil
-	{{- else }}
-		{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
-	{{- end }}
+	}
+	return nil
 {{- end }}
 
 {{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}

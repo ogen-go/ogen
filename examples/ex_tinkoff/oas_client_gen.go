@@ -2375,9 +2375,9 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

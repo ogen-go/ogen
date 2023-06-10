@@ -106,7 +106,7 @@ func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Bar.Set {
+		if value, ok := s.Bar.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -117,7 +117,7 @@ func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Bar.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil

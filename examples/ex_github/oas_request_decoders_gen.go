@@ -1535,9 +1535,9 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request)
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -1877,9 +1877,9 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -3071,9 +3071,9 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -4300,9 +4300,9 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -4449,9 +4449,9 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -4661,9 +4661,9 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5274,9 +5274,9 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5498,9 +5498,9 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5580,9 +5580,9 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5733,9 +5733,9 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5886,9 +5886,9 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -5968,9 +5968,9 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -6050,9 +6050,9 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -6526,9 +6526,9 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -6864,9 +6864,9 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -7080,9 +7080,9 @@ func (s *Server) decodePullsMergeRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -7304,9 +7304,9 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -8218,9 +8218,9 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -8300,9 +8300,9 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -8382,9 +8382,9 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -8464,9 +8464,9 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -8546,9 +8546,9 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -9353,8 +9353,15 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if err := request.Value.Validate(); err != nil {
-				return err
+			if value, ok := request.Get(); ok {
+				if err := func() error {
+					if err := value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
 			return nil
 		}(); err != nil {
@@ -9554,9 +9561,9 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -9825,9 +9832,9 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request) 
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -9907,9 +9914,9 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -9989,9 +9996,9 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request)
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10071,9 +10078,9 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request)
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10291,9 +10298,9 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10373,9 +10380,9 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10455,9 +10462,9 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10537,9 +10544,9 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10682,9 +10689,9 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -10898,9 +10905,9 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11248,9 +11255,9 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11330,9 +11337,9 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11524,9 +11531,9 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11606,9 +11613,9 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11688,9 +11695,9 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11770,9 +11777,9 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11852,9 +11859,9 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -11934,9 +11941,9 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -12733,9 +12740,9 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -12886,9 +12893,9 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -13102,9 +13109,9 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request) 
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil

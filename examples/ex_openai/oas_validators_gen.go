@@ -161,9 +161,9 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Documents.Set {
+		if value, ok := s.Documents.Get(); ok {
 			if err := func() error {
-				if s.Documents.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				if err := (validate.Array{
@@ -171,7 +171,7 @@ func (s *CreateAnswerRequest) Validate() error {
 					MinLengthSet: false,
 					MaxLength:    200,
 					MaxLengthSet: true,
-				}).ValidateLength(len(s.Documents.Value)); err != nil {
+				}).ValidateLength(len(value)); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				return nil
@@ -187,9 +187,9 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Temperature.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -205,7 +205,7 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Logprobs.Set {
+		if value, ok := s.Logprobs.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -216,7 +216,7 @@ func (s *CreateAnswerRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Logprobs.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -232,9 +232,9 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Stop.Set {
+		if value, ok := s.Stop.Get(); ok {
 			if err := func() error {
-				if err := s.Stop.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -250,7 +250,7 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -261,7 +261,7 @@ func (s *CreateAnswerRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -277,9 +277,9 @@ func (s *CreateAnswerRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Expand.Set {
+		if value, ok := s.Expand.Get(); ok {
 			if err := func() error {
-				if s.Expand.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -360,7 +360,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -371,7 +371,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.Temperature.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -387,7 +387,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TopP.Set {
+		if value, ok := s.TopP.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -398,7 +398,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.TopP.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -414,7 +414,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -425,7 +425,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -441,9 +441,9 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Stop.Set {
+		if value, ok := s.Stop.Get(); ok {
 			if err := func() error {
-				if err := s.Stop.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -459,7 +459,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PresencePenalty.Set {
+		if value, ok := s.PresencePenalty.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -470,7 +470,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.PresencePenalty.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -486,7 +486,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.FrequencyPenalty.Set {
+		if value, ok := s.FrequencyPenalty.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -497,7 +497,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.FrequencyPenalty.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -577,9 +577,9 @@ func (s *CreateChatCompletionResponse) Validate() error {
 func (s *CreateChatCompletionResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Message.Set {
+		if value, ok := s.Message.Get(); ok {
 			if err := func() error {
-				if err := s.Message.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -621,9 +621,9 @@ func (s *CreateClassificationRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Examples.Set {
+		if value, ok := s.Examples.Get(); ok {
 			if err := func() error {
-				if s.Examples.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				if err := (validate.Array{
@@ -631,11 +631,11 @@ func (s *CreateClassificationRequest) Validate() error {
 					MinLengthSet: true,
 					MaxLength:    200,
 					MaxLengthSet: true,
-				}).ValidateLength(len(s.Examples.Value)); err != nil {
+				}).ValidateLength(len(value)); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				var failures []validate.FieldError
-				for i, elem := range s.Examples.Value {
+				for i, elem := range value {
 					if err := func() error {
 						if elem == nil {
 							return errors.New("nil is invalid value")
@@ -697,9 +697,9 @@ func (s *CreateClassificationRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Labels.Set {
+		if value, ok := s.Labels.Get(); ok {
 			if err := func() error {
-				if s.Labels.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				if err := (validate.Array{
@@ -707,7 +707,7 @@ func (s *CreateClassificationRequest) Validate() error {
 					MinLengthSet: true,
 					MaxLength:    200,
 					MaxLengthSet: true,
-				}).ValidateLength(len(s.Labels.Value)); err != nil {
+				}).ValidateLength(len(value)); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				return nil
@@ -723,7 +723,7 @@ func (s *CreateClassificationRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -734,7 +734,7 @@ func (s *CreateClassificationRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.Temperature.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -750,7 +750,7 @@ func (s *CreateClassificationRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Logprobs.Set {
+		if value, ok := s.Logprobs.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -761,7 +761,7 @@ func (s *CreateClassificationRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Logprobs.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -777,9 +777,9 @@ func (s *CreateClassificationRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Expand.Set {
+		if value, ok := s.Expand.Get(); ok {
 			if err := func() error {
-				if s.Expand.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -802,9 +802,9 @@ func (s *CreateClassificationRequest) Validate() error {
 func (s *CreateCompletionRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Prompt.Set {
+		if value, ok := s.Prompt.Get(); ok {
 			if err := func() error {
-				if err := s.Prompt.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -820,7 +820,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaxTokens.Set {
+		if value, ok := s.MaxTokens.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -831,7 +831,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MaxTokens.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -847,7 +847,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -858,7 +858,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.Temperature.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -874,7 +874,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TopP.Set {
+		if value, ok := s.TopP.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -885,7 +885,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.TopP.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -901,7 +901,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -912,7 +912,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -928,7 +928,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Logprobs.Set {
+		if value, ok := s.Logprobs.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -939,7 +939,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Logprobs.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -955,9 +955,9 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Stop.Set {
+		if value, ok := s.Stop.Get(); ok {
 			if err := func() error {
-				if err := s.Stop.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -973,7 +973,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PresencePenalty.Set {
+		if value, ok := s.PresencePenalty.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -984,7 +984,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.PresencePenalty.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1000,7 +1000,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.FrequencyPenalty.Set {
+		if value, ok := s.FrequencyPenalty.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -1011,7 +1011,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.FrequencyPenalty.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1027,7 +1027,7 @@ func (s *CreateCompletionRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.BestOf.Set {
+		if value, ok := s.BestOf.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1038,7 +1038,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.BestOf.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1134,9 +1134,9 @@ func (s *CreateCompletionResponse) Validate() error {
 func (s *CreateCompletionResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Logprobs.Set {
+		if value, ok := s.Logprobs.Get(); ok {
 			if err := func() error {
-				if err := s.Logprobs.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1191,7 +1191,7 @@ func (s *CreateCompletionResponseChoicesItemLogprobs) Validate() error {
 func (s *CreateEditRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1202,7 +1202,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1218,7 +1218,7 @@ func (s *CreateEditRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -1229,7 +1229,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.Temperature.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1245,7 +1245,7 @@ func (s *CreateEditRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TopP.Set {
+		if value, ok := s.TopP.Get(); ok {
 			if err := func() error {
 				if err := (validate.Float{
 					MinSet:        true,
@@ -1256,7 +1256,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
-				}).Validate(float64(s.TopP.Value)); err != nil {
+				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1314,9 +1314,9 @@ func (s *CreateEditResponse) Validate() error {
 func (s *CreateEditResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Logprobs.Set {
+		if value, ok := s.Logprobs.Get(); ok {
 			if err := func() error {
-				if err := s.Logprobs.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1473,9 +1473,9 @@ func (s *CreateEmbeddingResponseDataItem) Validate() error {
 func (s *CreateFineTuneRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.LearningRateMultiplier.Set {
+		if value, ok := s.LearningRateMultiplier.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.LearningRateMultiplier.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1491,9 +1491,9 @@ func (s *CreateFineTuneRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PromptLossWeight.Set {
+		if value, ok := s.PromptLossWeight.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.PromptLossWeight.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1509,13 +1509,13 @@ func (s *CreateFineTuneRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ClassificationBetas.Set {
+		if value, ok := s.ClassificationBetas.Get(); ok {
 			if err := func() error {
-				if s.ClassificationBetas.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				var failures []validate.FieldError
-				for i, elem := range s.ClassificationBetas.Value {
+				for i, elem := range value {
 					if err := func() error {
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
@@ -1544,7 +1544,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Suffix.Set {
+		if value, ok := s.Suffix.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    1,
@@ -1554,7 +1554,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Suffix.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -1577,7 +1577,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 func (s *CreateImageEditRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1588,7 +1588,7 @@ func (s *CreateImageEditRequestMultipart) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1604,9 +1604,9 @@ func (s *CreateImageEditRequestMultipart) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Size.Set {
+		if value, ok := s.Size.Get(); ok {
 			if err := func() error {
-				if err := s.Size.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1622,9 +1622,9 @@ func (s *CreateImageEditRequestMultipart) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ResponseFormat.Set {
+		if value, ok := s.ResponseFormat.Get(); ok {
 			if err := func() error {
-				if err := s.ResponseFormat.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1669,7 +1669,7 @@ func (s CreateImageEditRequestMultipartSize) Validate() error {
 func (s *CreateImageRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1680,7 +1680,7 @@ func (s *CreateImageRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1696,9 +1696,9 @@ func (s *CreateImageRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Size.Set {
+		if value, ok := s.Size.Get(); ok {
 			if err := func() error {
-				if err := s.Size.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1714,9 +1714,9 @@ func (s *CreateImageRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ResponseFormat.Set {
+		if value, ok := s.ResponseFormat.Get(); ok {
 			if err := func() error {
-				if err := s.ResponseFormat.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1761,7 +1761,7 @@ func (s CreateImageRequestSize) Validate() error {
 func (s *CreateImageVariationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.N.Set {
+		if value, ok := s.N.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1772,7 +1772,7 @@ func (s *CreateImageVariationRequestMultipart) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.N.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1788,9 +1788,9 @@ func (s *CreateImageVariationRequestMultipart) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Size.Set {
+		if value, ok := s.Size.Get(); ok {
 			if err := func() error {
-				if err := s.Size.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1806,9 +1806,9 @@ func (s *CreateImageVariationRequestMultipart) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ResponseFormat.Set {
+		if value, ok := s.ResponseFormat.Get(); ok {
 			if err := func() error {
-				if err := s.ResponseFormat.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2041,9 +2041,9 @@ func (s *CreateSearchRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Documents.Set {
+		if value, ok := s.Documents.Get(); ok {
 			if err := func() error {
-				if s.Documents.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				if err := (validate.Array{
@@ -2051,7 +2051,7 @@ func (s *CreateSearchRequest) Validate() error {
 					MinLengthSet: true,
 					MaxLength:    200,
 					MaxLengthSet: true,
-				}).ValidateLength(len(s.Documents.Value)); err != nil {
+				}).ValidateLength(len(value)); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				return nil
@@ -2067,7 +2067,7 @@ func (s *CreateSearchRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaxRerank.Set {
+		if value, ok := s.MaxRerank.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -2078,7 +2078,7 @@ func (s *CreateSearchRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MaxRerank.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -2133,9 +2133,9 @@ func (s *CreateSearchResponse) Validate() error {
 func (s *CreateSearchResponseDataItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Score.Set {
+		if value, ok := s.Score.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Score.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -2158,9 +2158,9 @@ func (s *CreateSearchResponseDataItem) Validate() error {
 func (s *CreateTranscriptionRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Temperature.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -2183,9 +2183,9 @@ func (s *CreateTranscriptionRequestMultipart) Validate() error {
 func (s *CreateTranslationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Temperature.Set {
+		if value, ok := s.Temperature.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Temperature.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil

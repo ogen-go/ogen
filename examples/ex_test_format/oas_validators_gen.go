@@ -3216,9 +3216,9 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumber.Set {
+		if value, ok := s.OptionalNumber.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3234,9 +3234,9 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberDouble.Set {
+		if value, ok := s.OptionalNumberDouble.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3252,9 +3252,9 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberFloat.Set {
+		if value, ok := s.OptionalNumberFloat.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3270,7 +3270,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringEmail.Set {
+		if value, ok := s.OptionalStringEmail.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -3280,7 +3280,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringEmail.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -3296,7 +3296,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringHostname.Set {
+		if value, ok := s.OptionalStringHostname.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -3306,7 +3306,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringHostname.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6532,9 +6532,9 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumber.Set {
+		if value, ok := s.OptionalNumber.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -6550,9 +6550,9 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberDouble.Set {
+		if value, ok := s.OptionalNumberDouble.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -6568,9 +6568,9 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberFloat.Set {
+		if value, ok := s.OptionalNumberFloat.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -6586,7 +6586,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringEmail.Set {
+		if value, ok := s.OptionalStringEmail.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -6596,7 +6596,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringEmail.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6612,7 +6612,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringHostname.Set {
+		if value, ok := s.OptionalStringHostname.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -6622,7 +6622,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringHostname.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -9848,9 +9848,9 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumber.Set {
+		if value, ok := s.OptionalNumber.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9866,9 +9866,9 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberDouble.Set {
+		if value, ok := s.OptionalNumberDouble.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9884,9 +9884,9 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalNumberFloat.Set {
+		if value, ok := s.OptionalNumberFloat.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9902,7 +9902,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringEmail.Set {
+		if value, ok := s.OptionalStringEmail.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -9912,7 +9912,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringEmail.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -9928,7 +9928,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OptionalStringHostname.Set {
+		if value, ok := s.OptionalStringHostname.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -9938,7 +9938,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(s.OptionalStringHostname.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil

@@ -13,7 +13,7 @@ import (
 func (s *Book) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ID.Set {
+		if value, ok := s.ID.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -24,7 +24,7 @@ func (s *Book) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ID.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -40,7 +40,7 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MediaID.Set {
+		if value, ok := s.MediaID.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -51,7 +51,7 @@ func (s *Book) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MediaID.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -67,9 +67,9 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Images.Set {
+		if value, ok := s.Images.Get(); ok {
 			if err := func() error {
-				if err := s.Images.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -110,7 +110,7 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NumPages.Set {
+		if value, ok := s.NumPages.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -121,7 +121,7 @@ func (s *Book) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.NumPages.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -137,7 +137,7 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NumFavorites.Set {
+		if value, ok := s.NumFavorites.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -148,7 +148,7 @@ func (s *Book) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.NumFavorites.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -171,7 +171,7 @@ func (s *Book) Validate() error {
 func (s *Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.W.Set {
+		if value, ok := s.W.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -182,7 +182,7 @@ func (s *Image) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.W.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -198,7 +198,7 @@ func (s *Image) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.H.Set {
+		if value, ok := s.H.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -209,7 +209,7 @@ func (s *Image) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.H.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -257,9 +257,9 @@ func (s *Images) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Cover.Set {
+		if value, ok := s.Cover.Get(); ok {
 			if err := func() error {
-				if err := s.Cover.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -275,9 +275,9 @@ func (s *Images) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumbnail.Set {
+		if value, ok := s.Thumbnail.Get(); ok {
 			if err := func() error {
-				if err := s.Thumbnail.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -381,7 +381,7 @@ func (s *SearchResponse) Validate() error {
 func (s *Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ID.Set {
+		if value, ok := s.ID.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -392,7 +392,7 @@ func (s *Tag) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ID.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -408,9 +408,9 @@ func (s *Tag) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Type.Set {
+		if value, ok := s.Type.Get(); ok {
 			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

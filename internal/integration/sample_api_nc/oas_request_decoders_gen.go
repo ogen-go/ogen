@@ -148,9 +148,9 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -301,9 +301,9 @@ func (s *Server) decodePetCreateRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -383,9 +383,9 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
+					if err := value.Validate(); err != nil {
 						return err
 					}
 					return nil
@@ -465,7 +465,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 			return req, close, err
 		}
 		if err := func() error {
-			if request.Set {
+			if value, ok := request.Get(); ok {
 				if err := func() error {
 					if err := (validate.String{
 						MinLength:    6,
@@ -475,7 +475,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 						Email:        false,
 						Hostname:     false,
 						Regex:        nil,
-					}).Validate(string(request.Value)); err != nil {
+					}).Validate(string(value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
