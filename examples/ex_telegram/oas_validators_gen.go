@@ -13,9 +13,9 @@ import (
 func (s *AddStickerToSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MaskPosition.Set {
+		if value, ok := s.MaskPosition.Get(); ok {
 			if err := func() error {
-				if err := s.MaskPosition.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -98,9 +98,9 @@ func (s *Animation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -123,7 +123,7 @@ func (s *Animation) Validate() error {
 func (s *AnswerCallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Text.Set {
+		if value, ok := s.Text.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -133,7 +133,7 @@ func (s *AnswerCallbackQuery) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Text.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -184,7 +184,7 @@ func (s *AnswerInlineQuery) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SwitchPmParameter.Set {
+		if value, ok := s.SwitchPmParameter.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    1,
@@ -194,7 +194,7 @@ func (s *AnswerInlineQuery) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.SwitchPmParameter.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -269,9 +269,9 @@ func (s *Audio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -339,9 +339,9 @@ func (s *BotCommand) Validate() error {
 func (s *CallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Message.Set {
+		if value, ok := s.Message.Get(); ok {
 			if err := func() error {
-				if err := s.Message.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -394,9 +394,9 @@ func (s *Chat) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Location.Set {
+		if value, ok := s.Location.Get(); ok {
 			if err := func() error {
-				if err := s.Location.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -419,7 +419,7 @@ func (s *Chat) Validate() error {
 func (s *ChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MemberLimit.Set {
+		if value, ok := s.MemberLimit.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -430,7 +430,7 @@ func (s *ChatInviteLink) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MemberLimit.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -464,9 +464,9 @@ func (s *ChatJoinRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InviteLink.Set {
+		if value, ok := s.InviteLink.Get(); ok {
 			if err := func() error {
-				if err := s.InviteLink.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -537,9 +537,9 @@ func (s *ChatMemberUpdated) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InviteLink.Set {
+		if value, ok := s.InviteLink.Get(); ok {
 			if err := func() error {
-				if err := s.InviteLink.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -576,9 +576,9 @@ func (s ChatType) Validate() error {
 func (s *ChosenInlineResult) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Location.Set {
+		if value, ok := s.Location.Get(); ok {
 			if err := func() error {
-				if err := s.Location.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -601,7 +601,7 @@ func (s *ChosenInlineResult) Validate() error {
 func (s *CopyMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -611,7 +611,7 @@ func (s *CopyMessage) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -652,9 +652,9 @@ func (s *CopyMessage) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -701,7 +701,7 @@ func (s CopyMessageReplyMarkup) Validate() error {
 func (s *CreateChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Name.Set {
+		if value, ok := s.Name.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -711,7 +711,7 @@ func (s *CreateChatInviteLink) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Name.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -727,7 +727,7 @@ func (s *CreateChatInviteLink) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MemberLimit.Set {
+		if value, ok := s.MemberLimit.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -738,7 +738,7 @@ func (s *CreateChatInviteLink) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MemberLimit.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -799,9 +799,9 @@ func (s *CreateNewStickerSet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaskPosition.Set {
+		if value, ok := s.MaskPosition.Get(); ok {
 			if err := func() error {
-				if err := s.MaskPosition.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -824,9 +824,9 @@ func (s *CreateNewStickerSet) Validate() error {
 func (s *Document) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -849,7 +849,7 @@ func (s *Document) Validate() error {
 func (s *EditChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Name.Set {
+		if value, ok := s.Name.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -859,7 +859,7 @@ func (s *EditChatInviteLink) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Name.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -875,7 +875,7 @@ func (s *EditChatInviteLink) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MemberLimit.Set {
+		if value, ok := s.MemberLimit.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -886,7 +886,7 @@ func (s *EditChatInviteLink) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.MemberLimit.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -909,7 +909,7 @@ func (s *EditChatInviteLink) Validate() error {
 func (s *EditMessageCaption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -919,7 +919,7 @@ func (s *EditMessageCaption) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -960,9 +960,9 @@ func (s *EditMessageCaption) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1007,9 +1007,9 @@ func (s *EditMessageLiveLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HorizontalAccuracy.Set {
+		if value, ok := s.HorizontalAccuracy.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1025,7 +1025,7 @@ func (s *EditMessageLiveLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Heading.Set {
+		if value, ok := s.Heading.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1036,7 +1036,7 @@ func (s *EditMessageLiveLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Heading.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1052,7 +1052,7 @@ func (s *EditMessageLiveLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ProximityAlertRadius.Set {
+		if value, ok := s.ProximityAlertRadius.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1063,7 +1063,7 @@ func (s *EditMessageLiveLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1079,9 +1079,9 @@ func (s *EditMessageLiveLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1115,9 +1115,9 @@ func (s *EditMessageMedia) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1140,9 +1140,9 @@ func (s *EditMessageMedia) Validate() error {
 func (s *EditMessageReplyMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1209,9 +1209,9 @@ func (s *EditMessageText) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1284,7 +1284,7 @@ func (s EncryptedPassportElementType) Validate() error {
 func (s *ForceReply) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InputFieldPlaceholder.Set {
+		if value, ok := s.InputFieldPlaceholder.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    1,
@@ -1294,7 +1294,7 @@ func (s *ForceReply) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.InputFieldPlaceholder.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -1345,7 +1345,7 @@ func (s *Game) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Text.Set {
+		if value, ok := s.Text.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -1355,7 +1355,7 @@ func (s *Game) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Text.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -1396,9 +1396,9 @@ func (s *Game) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Animation.Set {
+		if value, ok := s.Animation.Get(); ok {
 			if err := func() error {
-				if err := s.Animation.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1421,7 +1421,7 @@ func (s *Game) Validate() error {
 func (s *GetUpdates) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Limit.Set {
+		if value, ok := s.Limit.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1432,7 +1432,7 @@ func (s *GetUpdates) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Limit.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1455,7 +1455,7 @@ func (s *GetUpdates) Validate() error {
 func (s *GetUserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Limit.Set {
+		if value, ok := s.Limit.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1466,7 +1466,7 @@ func (s *GetUserProfilePhotos) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Limit.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1489,7 +1489,7 @@ func (s *GetUserProfilePhotos) Validate() error {
 func (s *InlineKeyboardButton) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.CallbackData.Set {
+		if value, ok := s.CallbackData.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    1,
@@ -1499,7 +1499,7 @@ func (s *InlineKeyboardButton) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.CallbackData.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -1574,9 +1574,9 @@ func (s *InlineKeyboardMarkup) Validate() error {
 func (s *InlineQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ChatType.Set {
+		if value, ok := s.ChatType.Get(); ok {
 			if err := func() error {
-				if err := s.ChatType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1592,9 +1592,9 @@ func (s *InlineQuery) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Location.Set {
+		if value, ok := s.Location.Get(); ok {
 			if err := func() error {
-				if err := s.Location.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1751,9 +1751,9 @@ func (s *InlineQueryResultArticle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1769,7 +1769,7 @@ func (s *InlineQueryResultArticle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbWidth.Set {
+		if value, ok := s.ThumbWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1780,7 +1780,7 @@ func (s *InlineQueryResultArticle) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1796,7 +1796,7 @@ func (s *InlineQueryResultArticle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbHeight.Set {
+		if value, ok := s.ThumbHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1807,7 +1807,7 @@ func (s *InlineQueryResultArticle) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1849,7 +1849,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -1859,7 +1859,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -1900,7 +1900,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AudioDuration.Set {
+		if value, ok := s.AudioDuration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -1911,7 +1911,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.AudioDuration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -1927,9 +1927,9 @@ func (s *InlineQueryResultAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1945,9 +1945,9 @@ func (s *InlineQueryResultAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1989,7 +1989,7 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -1999,7 +1999,7 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2040,9 +2040,9 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2058,9 +2058,9 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2102,7 +2102,7 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2112,7 +2112,7 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2153,9 +2153,9 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2171,9 +2171,9 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2215,7 +2215,7 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2225,7 +2225,7 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2266,9 +2266,9 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2284,9 +2284,9 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2328,7 +2328,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2338,7 +2338,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2379,9 +2379,9 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2397,9 +2397,9 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2441,7 +2441,7 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2451,7 +2451,7 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2492,9 +2492,9 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2510,9 +2510,9 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2554,9 +2554,9 @@ func (s *InlineQueryResultCachedSticker) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2572,9 +2572,9 @@ func (s *InlineQueryResultCachedSticker) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2616,7 +2616,7 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2626,7 +2626,7 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2667,9 +2667,9 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2685,9 +2685,9 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2729,7 +2729,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2739,7 +2739,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2780,9 +2780,9 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2798,9 +2798,9 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2823,7 +2823,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 func (s *InlineQueryResultContact) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Vcard.Set {
+		if value, ok := s.Vcard.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2833,7 +2833,7 @@ func (s *InlineQueryResultContact) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Vcard.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -2849,9 +2849,9 @@ func (s *InlineQueryResultContact) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2867,9 +2867,9 @@ func (s *InlineQueryResultContact) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2885,7 +2885,7 @@ func (s *InlineQueryResultContact) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbWidth.Set {
+		if value, ok := s.ThumbWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -2896,7 +2896,7 @@ func (s *InlineQueryResultContact) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -2912,7 +2912,7 @@ func (s *InlineQueryResultContact) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbHeight.Set {
+		if value, ok := s.ThumbHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -2923,7 +2923,7 @@ func (s *InlineQueryResultContact) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -2965,7 +2965,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -2975,7 +2975,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -3016,9 +3016,9 @@ func (s *InlineQueryResultDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3034,9 +3034,9 @@ func (s *InlineQueryResultDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3052,7 +3052,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbWidth.Set {
+		if value, ok := s.ThumbWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3063,7 +3063,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3079,7 +3079,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbHeight.Set {
+		if value, ok := s.ThumbHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3090,7 +3090,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3132,9 +3132,9 @@ func (s *InlineQueryResultGame) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3176,7 +3176,7 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.GIFWidth.Set {
+		if value, ok := s.GIFWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3187,7 +3187,7 @@ func (s *InlineQueryResultGif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.GIFWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3203,7 +3203,7 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.GIFHeight.Set {
+		if value, ok := s.GIFHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3214,7 +3214,7 @@ func (s *InlineQueryResultGif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.GIFHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3230,7 +3230,7 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.GIFDuration.Set {
+		if value, ok := s.GIFDuration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3241,7 +3241,7 @@ func (s *InlineQueryResultGif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.GIFDuration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3257,7 +3257,7 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -3267,7 +3267,7 @@ func (s *InlineQueryResultGif) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -3308,9 +3308,9 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3326,9 +3326,9 @@ func (s *InlineQueryResultGif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3373,9 +3373,9 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HorizontalAccuracy.Set {
+		if value, ok := s.HorizontalAccuracy.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3391,7 +3391,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LivePeriod.Set {
+		if value, ok := s.LivePeriod.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3402,7 +3402,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.LivePeriod.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3418,7 +3418,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Heading.Set {
+		if value, ok := s.Heading.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3429,7 +3429,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Heading.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3445,7 +3445,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ProximityAlertRadius.Set {
+		if value, ok := s.ProximityAlertRadius.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3456,7 +3456,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3472,9 +3472,9 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3490,9 +3490,9 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3508,7 +3508,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbWidth.Set {
+		if value, ok := s.ThumbWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3519,7 +3519,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3535,7 +3535,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbHeight.Set {
+		if value, ok := s.ThumbHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3546,7 +3546,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3588,7 +3588,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Mpeg4Width.Set {
+		if value, ok := s.Mpeg4Width.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3599,7 +3599,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Mpeg4Width.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3615,7 +3615,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Mpeg4Height.Set {
+		if value, ok := s.Mpeg4Height.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3626,7 +3626,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Mpeg4Height.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3642,7 +3642,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Mpeg4Duration.Set {
+		if value, ok := s.Mpeg4Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3653,7 +3653,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Mpeg4Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3669,7 +3669,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -3679,7 +3679,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -3720,9 +3720,9 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3738,9 +3738,9 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3782,7 +3782,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoWidth.Set {
+		if value, ok := s.PhotoWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3793,7 +3793,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3809,7 +3809,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoHeight.Set {
+		if value, ok := s.PhotoHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3820,7 +3820,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -3836,7 +3836,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -3846,7 +3846,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -3887,9 +3887,9 @@ func (s *InlineQueryResultPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3905,9 +3905,9 @@ func (s *InlineQueryResultPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3952,9 +3952,9 @@ func (s *InlineQueryResultVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3970,9 +3970,9 @@ func (s *InlineQueryResultVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3988,7 +3988,7 @@ func (s *InlineQueryResultVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbWidth.Set {
+		if value, ok := s.ThumbWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -3999,7 +3999,7 @@ func (s *InlineQueryResultVenue) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4015,7 +4015,7 @@ func (s *InlineQueryResultVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ThumbHeight.Set {
+		if value, ok := s.ThumbHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4026,7 +4026,7 @@ func (s *InlineQueryResultVenue) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4068,7 +4068,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4078,7 +4078,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4119,7 +4119,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VideoWidth.Set {
+		if value, ok := s.VideoWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4130,7 +4130,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.VideoWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4146,7 +4146,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VideoHeight.Set {
+		if value, ok := s.VideoHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4157,7 +4157,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.VideoHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4173,7 +4173,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VideoDuration.Set {
+		if value, ok := s.VideoDuration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4184,7 +4184,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.VideoDuration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4200,9 +4200,9 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4218,9 +4218,9 @@ func (s *InlineQueryResultVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4262,7 +4262,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4272,7 +4272,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4313,7 +4313,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VoiceDuration.Set {
+		if value, ok := s.VoiceDuration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4324,7 +4324,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.VoiceDuration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4340,9 +4340,9 @@ func (s *InlineQueryResultVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4358,9 +4358,9 @@ func (s *InlineQueryResultVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputMessageContent.Set {
+		if value, ok := s.InputMessageContent.Get(); ok {
 			if err := func() error {
-				if err := s.InputMessageContent.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4383,7 +4383,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 func (s *InputContactMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Vcard.Set {
+		if value, ok := s.Vcard.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4393,7 +4393,7 @@ func (s *InputContactMessageContent) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Vcard.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4484,7 +4484,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoWidth.Set {
+		if value, ok := s.PhotoWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4495,7 +4495,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4511,7 +4511,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoHeight.Set {
+		if value, ok := s.PhotoHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4522,7 +4522,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4567,9 +4567,9 @@ func (s *InputLocationMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HorizontalAccuracy.Set {
+		if value, ok := s.HorizontalAccuracy.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4585,7 +4585,7 @@ func (s *InputLocationMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LivePeriod.Set {
+		if value, ok := s.LivePeriod.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4596,7 +4596,7 @@ func (s *InputLocationMessageContent) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.LivePeriod.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4612,7 +4612,7 @@ func (s *InputLocationMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Heading.Set {
+		if value, ok := s.Heading.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4623,7 +4623,7 @@ func (s *InputLocationMessageContent) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Heading.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4639,7 +4639,7 @@ func (s *InputLocationMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ProximityAlertRadius.Set {
+		if value, ok := s.ProximityAlertRadius.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4650,7 +4650,7 @@ func (s *InputLocationMessageContent) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4705,7 +4705,7 @@ func (s InputMedia) Validate() error {
 func (s *InputMediaAnimation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4715,7 +4715,7 @@ func (s *InputMediaAnimation) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4756,7 +4756,7 @@ func (s *InputMediaAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Width.Set {
+		if value, ok := s.Width.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4767,7 +4767,7 @@ func (s *InputMediaAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Width.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4783,7 +4783,7 @@ func (s *InputMediaAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Height.Set {
+		if value, ok := s.Height.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4794,7 +4794,7 @@ func (s *InputMediaAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Height.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4810,7 +4810,7 @@ func (s *InputMediaAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4821,7 +4821,7 @@ func (s *InputMediaAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4844,7 +4844,7 @@ func (s *InputMediaAnimation) Validate() error {
 func (s *InputMediaAudio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4854,7 +4854,7 @@ func (s *InputMediaAudio) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4895,7 +4895,7 @@ func (s *InputMediaAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -4906,7 +4906,7 @@ func (s *InputMediaAudio) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -4929,7 +4929,7 @@ func (s *InputMediaAudio) Validate() error {
 func (s *InputMediaDocument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4939,7 +4939,7 @@ func (s *InputMediaDocument) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -4987,7 +4987,7 @@ func (s *InputMediaDocument) Validate() error {
 func (s *InputMediaPhoto) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -4997,7 +4997,7 @@ func (s *InputMediaPhoto) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -5045,7 +5045,7 @@ func (s *InputMediaPhoto) Validate() error {
 func (s *InputMediaVideo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -5055,7 +5055,7 @@ func (s *InputMediaVideo) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -5096,7 +5096,7 @@ func (s *InputMediaVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Width.Set {
+		if value, ok := s.Width.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -5107,7 +5107,7 @@ func (s *InputMediaVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Width.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -5123,7 +5123,7 @@ func (s *InputMediaVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Height.Set {
+		if value, ok := s.Height.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -5134,7 +5134,7 @@ func (s *InputMediaVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Height.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -5150,7 +5150,7 @@ func (s *InputMediaVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -5161,7 +5161,7 @@ func (s *InputMediaVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -5318,9 +5318,9 @@ func (s *Location) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HorizontalAccuracy.Set {
+		if value, ok := s.HorizontalAccuracy.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -5336,7 +5336,7 @@ func (s *Location) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Heading.Set {
+		if value, ok := s.Heading.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -5347,7 +5347,7 @@ func (s *Location) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Heading.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -5410,9 +5410,9 @@ func (s *MaskPosition) Validate() error {
 func (s *Message) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.SenderChat.Set {
+		if value, ok := s.SenderChat.Get(); ok {
 			if err := func() error {
-				if err := s.SenderChat.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5439,9 +5439,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ForwardFromChat.Set {
+		if value, ok := s.ForwardFromChat.Get(); ok {
 			if err := func() error {
-				if err := s.ForwardFromChat.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5476,7 +5476,7 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Text.Set {
+		if value, ok := s.Text.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -5486,7 +5486,7 @@ func (s *Message) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Text.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -5527,9 +5527,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Animation.Set {
+		if value, ok := s.Animation.Get(); ok {
 			if err := func() error {
-				if err := s.Animation.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5545,9 +5545,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Audio.Set {
+		if value, ok := s.Audio.Get(); ok {
 			if err := func() error {
-				if err := s.Audio.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5563,9 +5563,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Document.Set {
+		if value, ok := s.Document.Get(); ok {
 			if err := func() error {
-				if err := s.Document.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5606,9 +5606,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Sticker.Set {
+		if value, ok := s.Sticker.Get(); ok {
 			if err := func() error {
-				if err := s.Sticker.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5624,9 +5624,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Video.Set {
+		if value, ok := s.Video.Get(); ok {
 			if err := func() error {
-				if err := s.Video.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5642,9 +5642,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VideoNote.Set {
+		if value, ok := s.VideoNote.Get(); ok {
 			if err := func() error {
-				if err := s.VideoNote.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5660,9 +5660,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Voice.Set {
+		if value, ok := s.Voice.Get(); ok {
 			if err := func() error {
-				if err := s.Voice.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5678,7 +5678,7 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -5688,7 +5688,7 @@ func (s *Message) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -5729,9 +5729,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Game.Set {
+		if value, ok := s.Game.Get(); ok {
 			if err := func() error {
-				if err := s.Game.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5747,9 +5747,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Poll.Set {
+		if value, ok := s.Poll.Get(); ok {
 			if err := func() error {
-				if err := s.Poll.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5765,9 +5765,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Venue.Set {
+		if value, ok := s.Venue.Get(); ok {
 			if err := func() error {
-				if err := s.Venue.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5783,9 +5783,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Location.Set {
+		if value, ok := s.Location.Get(); ok {
 			if err := func() error {
-				if err := s.Location.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5845,9 +5845,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PassportData.Set {
+		if value, ok := s.PassportData.Get(); ok {
 			if err := func() error {
-				if err := s.PassportData.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5863,9 +5863,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VoiceChatEnded.Set {
+		if value, ok := s.VoiceChatEnded.Get(); ok {
 			if err := func() error {
-				if err := s.VoiceChatEnded.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5881,9 +5881,9 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6304,7 +6304,7 @@ func (s *Poll) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Explanation.Set {
+		if value, ok := s.Explanation.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -6314,7 +6314,7 @@ func (s *Poll) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Explanation.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6444,7 +6444,7 @@ func (s *ReplyKeyboardMarkup) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InputFieldPlaceholder.Set {
+		if value, ok := s.InputFieldPlaceholder.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    1,
@@ -6454,7 +6454,7 @@ func (s *ReplyKeyboardMarkup) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.InputFieldPlaceholder.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6573,9 +6573,9 @@ func (s *ResultArrayOfUpdate) Validate() error {
 func (s *ResultChat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result.Set {
+		if value, ok := s.Result.Get(); ok {
 			if err := func() error {
-				if err := s.Result.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6598,9 +6598,9 @@ func (s *ResultChat) Validate() error {
 func (s *ResultChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result.Set {
+		if value, ok := s.Result.Get(); ok {
 			if err := func() error {
-				if err := s.Result.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6623,9 +6623,9 @@ func (s *ResultChatInviteLink) Validate() error {
 func (s *ResultMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result.Set {
+		if value, ok := s.Result.Get(); ok {
 			if err := func() error {
-				if err := s.Result.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6648,9 +6648,9 @@ func (s *ResultMessage) Validate() error {
 func (s *ResultPoll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result.Set {
+		if value, ok := s.Result.Get(); ok {
 			if err := func() error {
-				if err := s.Result.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6673,9 +6673,9 @@ func (s *ResultPoll) Validate() error {
 func (s *ResultUserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result.Set {
+		if value, ok := s.Result.Get(); ok {
 			if err := func() error {
-				if err := s.Result.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6698,7 +6698,7 @@ func (s *ResultUserProfilePhotos) Validate() error {
 func (s *SendAnimation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -6709,7 +6709,7 @@ func (s *SendAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -6725,7 +6725,7 @@ func (s *SendAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Width.Set {
+		if value, ok := s.Width.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -6736,7 +6736,7 @@ func (s *SendAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Width.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -6752,7 +6752,7 @@ func (s *SendAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Height.Set {
+		if value, ok := s.Height.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -6763,7 +6763,7 @@ func (s *SendAnimation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Height.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -6779,7 +6779,7 @@ func (s *SendAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -6789,7 +6789,7 @@ func (s *SendAnimation) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6830,9 +6830,9 @@ func (s *SendAnimation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6879,7 +6879,7 @@ func (s SendAnimationReplyMarkup) Validate() error {
 func (s *SendAudio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -6889,7 +6889,7 @@ func (s *SendAudio) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -6930,7 +6930,7 @@ func (s *SendAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -6941,7 +6941,7 @@ func (s *SendAudio) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -6957,9 +6957,9 @@ func (s *SendAudio) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7006,7 +7006,7 @@ func (s SendAudioReplyMarkup) Validate() error {
 func (s *SendContact) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Vcard.Set {
+		if value, ok := s.Vcard.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7016,7 +7016,7 @@ func (s *SendContact) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Vcard.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7032,9 +7032,9 @@ func (s *SendContact) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7081,9 +7081,9 @@ func (s SendContactReplyMarkup) Validate() error {
 func (s *SendDice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7130,7 +7130,7 @@ func (s SendDiceReplyMarkup) Validate() error {
 func (s *SendDocument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7140,7 +7140,7 @@ func (s *SendDocument) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7181,9 +7181,9 @@ func (s *SendDocument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7230,9 +7230,9 @@ func (s SendDocumentReplyMarkup) Validate() error {
 func (s *SendGame) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7323,7 +7323,7 @@ func (s *SendInvoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoWidth.Set {
+		if value, ok := s.PhotoWidth.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -7334,7 +7334,7 @@ func (s *SendInvoice) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -7350,7 +7350,7 @@ func (s *SendInvoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PhotoHeight.Set {
+		if value, ok := s.PhotoHeight.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -7361,7 +7361,7 @@ func (s *SendInvoice) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -7377,9 +7377,9 @@ func (s *SendInvoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7424,9 +7424,9 @@ func (s *SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HorizontalAccuracy.Set {
+		if value, ok := s.HorizontalAccuracy.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -7442,7 +7442,7 @@ func (s *SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LivePeriod.Set {
+		if value, ok := s.LivePeriod.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -7453,7 +7453,7 @@ func (s *SendLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.LivePeriod.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -7469,7 +7469,7 @@ func (s *SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Heading.Set {
+		if value, ok := s.Heading.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -7480,7 +7480,7 @@ func (s *SendLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Heading.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -7496,7 +7496,7 @@ func (s *SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ProximityAlertRadius.Set {
+		if value, ok := s.ProximityAlertRadius.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -7507,7 +7507,7 @@ func (s *SendLocation) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -7523,9 +7523,9 @@ func (s *SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7678,9 +7678,9 @@ func (s *SendMessage) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7727,7 +7727,7 @@ func (s SendMessageReplyMarkup) Validate() error {
 func (s *SendPhoto) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7737,7 +7737,7 @@ func (s *SendPhoto) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7778,9 +7778,9 @@ func (s *SendPhoto) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7857,7 +7857,7 @@ func (s *SendPoll) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Explanation.Set {
+		if value, ok := s.Explanation.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7867,7 +7867,7 @@ func (s *SendPoll) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Explanation.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7908,9 +7908,9 @@ func (s *SendPoll) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7957,9 +7957,9 @@ func (s SendPollReplyMarkup) Validate() error {
 func (s *SendSticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8028,9 +8028,9 @@ func (s *SendVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8077,7 +8077,7 @@ func (s SendVenueReplyMarkup) Validate() error {
 func (s *SendVideo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -8088,7 +8088,7 @@ func (s *SendVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -8104,7 +8104,7 @@ func (s *SendVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Width.Set {
+		if value, ok := s.Width.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -8115,7 +8115,7 @@ func (s *SendVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Width.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -8131,7 +8131,7 @@ func (s *SendVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Height.Set {
+		if value, ok := s.Height.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -8142,7 +8142,7 @@ func (s *SendVideo) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Height.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -8158,7 +8158,7 @@ func (s *SendVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8168,7 +8168,7 @@ func (s *SendVideo) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8209,9 +8209,9 @@ func (s *SendVideo) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8234,7 +8234,7 @@ func (s *SendVideo) Validate() error {
 func (s *SendVideoNote) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -8245,7 +8245,7 @@ func (s *SendVideoNote) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -8261,9 +8261,9 @@ func (s *SendVideoNote) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8334,7 +8334,7 @@ func (s SendVideoReplyMarkup) Validate() error {
 func (s *SendVoice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Caption.Set {
+		if value, ok := s.Caption.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8344,7 +8344,7 @@ func (s *SendVoice) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Caption.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8385,7 +8385,7 @@ func (s *SendVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Duration.Set {
+		if value, ok := s.Duration.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -8396,7 +8396,7 @@ func (s *SendVoice) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.Duration.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -8412,9 +8412,9 @@ func (s *SendVoice) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8487,7 +8487,7 @@ func (s *SetChatAdministratorCustomTitle) Validate() error {
 func (s *SetChatDescription) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Description.Set {
+		if value, ok := s.Description.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8497,7 +8497,7 @@ func (s *SetChatDescription) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Description.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8674,9 +8674,9 @@ func (s *Sticker) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8692,9 +8692,9 @@ func (s *Sticker) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaskPosition.Set {
+		if value, ok := s.MaskPosition.Get(); ok {
 			if err := func() error {
-				if err := s.MaskPosition.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8717,9 +8717,9 @@ func (s *Sticker) Validate() error {
 func (s *StopMessageLiveLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8742,9 +8742,9 @@ func (s *StopMessageLiveLocation) Validate() error {
 func (s *StopPoll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ReplyMarkup.Set {
+		if value, ok := s.ReplyMarkup.Get(); ok {
 			if err := func() error {
-				if err := s.ReplyMarkup.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8767,9 +8767,9 @@ func (s *StopPoll) Validate() error {
 func (s *Update) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Message.Set {
+		if value, ok := s.Message.Get(); ok {
 			if err := func() error {
-				if err := s.Message.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8785,9 +8785,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.EditedMessage.Set {
+		if value, ok := s.EditedMessage.Get(); ok {
 			if err := func() error {
-				if err := s.EditedMessage.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8803,9 +8803,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ChannelPost.Set {
+		if value, ok := s.ChannelPost.Get(); ok {
 			if err := func() error {
-				if err := s.ChannelPost.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8821,9 +8821,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.EditedChannelPost.Set {
+		if value, ok := s.EditedChannelPost.Get(); ok {
 			if err := func() error {
-				if err := s.EditedChannelPost.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8839,9 +8839,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InlineQuery.Set {
+		if value, ok := s.InlineQuery.Get(); ok {
 			if err := func() error {
-				if err := s.InlineQuery.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8857,9 +8857,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ChosenInlineResult.Set {
+		if value, ok := s.ChosenInlineResult.Get(); ok {
 			if err := func() error {
-				if err := s.ChosenInlineResult.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8875,9 +8875,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.CallbackQuery.Set {
+		if value, ok := s.CallbackQuery.Get(); ok {
 			if err := func() error {
-				if err := s.CallbackQuery.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8893,9 +8893,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Poll.Set {
+		if value, ok := s.Poll.Get(); ok {
 			if err := func() error {
-				if err := s.Poll.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8911,9 +8911,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PollAnswer.Set {
+		if value, ok := s.PollAnswer.Get(); ok {
 			if err := func() error {
-				if err := s.PollAnswer.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8929,9 +8929,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MyChatMember.Set {
+		if value, ok := s.MyChatMember.Get(); ok {
 			if err := func() error {
-				if err := s.MyChatMember.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8947,9 +8947,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ChatMember.Set {
+		if value, ok := s.ChatMember.Get(); ok {
 			if err := func() error {
-				if err := s.ChatMember.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8965,9 +8965,9 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ChatJoinRequest.Set {
+		if value, ok := s.ChatJoinRequest.Get(); ok {
 			if err := func() error {
-				if err := s.ChatJoinRequest.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9120,9 +9120,9 @@ func (s *Video) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9165,9 +9165,9 @@ func (s *VideoNote) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Thumb.Set {
+		if value, ok := s.Thumb.Get(); ok {
 			if err := func() error {
-				if err := s.Thumb.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

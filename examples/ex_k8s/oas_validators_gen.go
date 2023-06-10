@@ -267,9 +267,9 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 func (s *IoK8sAPIAppsV1DaemonSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -345,9 +345,9 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Validate() error {
 func (s *IoK8sAPIAppsV1Deployment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -423,9 +423,9 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Validate() error {
 func (s *IoK8sAPIAppsV1ReplicaSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -483,9 +483,9 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 func (s *IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Template.Set {
+		if value, ok := s.Template.Get(); ok {
 			if err := func() error {
-				if err := s.Template.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -508,9 +508,9 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 func (s *IoK8sAPIAppsV1StatefulSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -604,9 +604,9 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Status.Set {
+		if value, ok := s.Status.Get(); ok {
 			if err := func() error {
-				if err := s.Status.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -682,9 +682,9 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() err
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Status.Set {
+		if value, ok := s.Status.Get(); ok {
 			if err := func() error {
-				if err := s.Status.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -760,9 +760,9 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() err
 func (s *IoK8sAPIBatchV1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -838,9 +838,9 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Validate() error {
 func (s *IoK8sAPIBatchV1Job) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -916,9 +916,9 @@ func (s *IoK8sAPIBatchV1JobSpec) Validate() error {
 func (s *IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -941,9 +941,9 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 func (s *IoK8sAPIBatchV1beta1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1019,9 +1019,9 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Validate() error {
 func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1055,9 +1055,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Status.Set {
+		if value, ok := s.Status.Get(); ok {
 			if err := func() error {
-				if err := s.Status.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1115,9 +1115,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Extra.Set {
+		if value, ok := s.Extra.Get(); ok {
 			if err := func() error {
-				if err := s.Extra.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1224,9 +1224,9 @@ func (s *IoK8sAPICoordinationV1LeaseList) Validate() error {
 func (s *IoK8sAPICoreV1Affinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.NodeAffinity.Set {
+		if value, ok := s.NodeAffinity.Get(); ok {
 			if err := func() error {
-				if err := s.NodeAffinity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1303,9 +1303,9 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Validate() error {
 func (s *IoK8sAPICoreV1ConfigMap) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.BinaryData.Set {
+		if value, ok := s.BinaryData.Get(); ok {
 			if err := func() error {
-				if err := s.BinaryData.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1428,9 +1428,9 @@ func (s *IoK8sAPICoreV1EventList) Validate() error {
 func (s *IoK8sAPICoreV1LimitRange) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1524,9 +1524,9 @@ func (s *IoK8sAPICoreV1NamespaceList) Validate() error {
 func (s *IoK8sAPICoreV1NodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
+		if value, ok := s.RequiredDuringSchedulingIgnoredDuringExecution.Get(); ok {
 			if err := func() error {
-				if err := s.RequiredDuringSchedulingIgnoredDuringExecution.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1585,9 +1585,9 @@ func (s *IoK8sAPICoreV1NodeSelector) Validate() error {
 func (s *IoK8sAPICoreV1PersistentVolume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1663,9 +1663,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Cephfs.Set {
+		if value, ok := s.Cephfs.Get(); ok {
 			if err := func() error {
-				if err := s.Cephfs.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1681,9 +1681,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.NodeAffinity.Set {
+		if value, ok := s.NodeAffinity.Get(); ok {
 			if err := func() error {
-				if err := s.NodeAffinity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1699,9 +1699,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Rbd.Set {
+		if value, ok := s.Rbd.Get(); ok {
 			if err := func() error {
-				if err := s.Rbd.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1724,9 +1724,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 func (s *IoK8sAPICoreV1Pod) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1784,9 +1784,9 @@ func (s *IoK8sAPICoreV1PodList) Validate() error {
 func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Affinity.Set {
+		if value, ok := s.Affinity.Get(); ok {
 			if err := func() error {
-				if err := s.Affinity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1845,9 +1845,9 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 func (s *IoK8sAPICoreV1PodTemplate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Template.Set {
+		if value, ok := s.Template.Get(); ok {
 			if err := func() error {
-				if err := s.Template.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1905,9 +1905,9 @@ func (s *IoK8sAPICoreV1PodTemplateList) Validate() error {
 func (s *IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1966,9 +1966,9 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 func (s *IoK8sAPICoreV1ReplicationController) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2026,9 +2026,9 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 func (s *IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Template.Set {
+		if value, ok := s.Template.Get(); ok {
 			if err := func() error {
-				if err := s.Template.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2069,9 +2069,9 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 func (s *IoK8sAPICoreV1Secret) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Data.Set {
+		if value, ok := s.Data.Get(); ok {
 			if err := func() error {
-				if err := s.Data.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2244,9 +2244,9 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 func (s *IoK8sAPICoreV1Volume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Cephfs.Set {
+		if value, ok := s.Cephfs.Get(); ok {
 			if err := func() error {
-				if err := s.Cephfs.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2262,9 +2262,9 @@ func (s *IoK8sAPICoreV1Volume) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Rbd.Set {
+		if value, ok := s.Rbd.Get(); ok {
 			if err := func() error {
-				if err := s.Rbd.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2287,9 +2287,9 @@ func (s *IoK8sAPICoreV1Volume) Validate() error {
 func (s *IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Required.Set {
+		if value, ok := s.Required.Get(); ok {
 			if err := func() error {
-				if err := s.Required.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2524,9 +2524,9 @@ func (s *IoK8sAPIEventsV1beta1EventList) Validate() error {
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2771,9 +2771,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3036,9 +3036,9 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 func (s *IoK8sAPINetworkingV1Ingress) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3114,9 +3114,9 @@ func (s *IoK8sAPINetworkingV1IngressList) Validate() error {
 func (s *IoK8sAPINetworkingV1IngressRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.HTTP.Set {
+		if value, ok := s.HTTP.Get(); ok {
 			if err := func() error {
-				if err := s.HTTP.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3279,9 +3279,9 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3339,9 +3339,9 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RuntimeClass.Set {
+		if value, ok := s.RuntimeClass.Get(); ok {
 			if err := func() error {
-				if err := s.RuntimeClass.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3797,9 +3797,9 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InlineVolumeSpec.Set {
+		if value, ok := s.InlineVolumeSpec.Get(); ok {
 			if err := func() error {
-				if err := s.InlineVolumeSpec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3876,9 +3876,9 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Webhook.Set {
+		if value, ok := s.Webhook.Get(); ok {
 			if err := func() error {
-				if err := s.Webhook.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3954,9 +3954,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Conversion.Set {
+		if value, ok := s.Conversion.Get(); ok {
 			if err := func() error {
-				if err := s.Conversion.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4007,9 +4007,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Schema.Set {
+		if value, ok := s.Schema.Get(); ok {
 			if err := func() error {
-				if err := s.Schema.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4032,9 +4032,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.OpenAPIV3Schema.Set {
+		if value, ok := s.OpenAPIV3Schema.Get(); ok {
 			if err := func() error {
-				if err := s.OpenAPIV3Schema.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4107,9 +4107,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.Definitions.Set {
+		if value, ok := s.Definitions.Get(); ok {
 			if err := func() error {
-				if err := s.Definitions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4125,9 +4125,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.Maximum.Set {
+		if value, ok := s.Maximum.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Maximum.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4143,9 +4143,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.Minimum.Set {
+		if value, ok := s.Minimum.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Minimum.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4161,9 +4161,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.MultipleOf.Set {
+		if value, ok := s.MultipleOf.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.MultipleOf.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4223,9 +4223,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.PatternProperties.Set {
+		if value, ok := s.PatternProperties.Get(); ok {
 			if err := func() error {
-				if err := s.PatternProperties.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4241,9 +4241,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valid
 		})
 	}
 	if err := func() error {
-		if s.Properties.Set {
+		if value, ok := s.Properties.Get(); ok {
 			if err := func() error {
-				if err := s.Properties.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4355,9 +4355,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) V
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ClientConfig.Set {
+		if value, ok := s.ClientConfig.Get(); ok {
 			if err := func() error {
-				if err := s.ClientConfig.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4526,9 +4526,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Spec.Set {
+		if value, ok := s.Spec.Get(); ok {
 			if err := func() error {
-				if err := s.Spec.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

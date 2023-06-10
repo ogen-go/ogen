@@ -2789,9 +2789,9 @@ func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

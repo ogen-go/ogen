@@ -526,9 +526,9 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -967,9 +967,9 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1645,9 +1645,9 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1730,7 +1730,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    6,
@@ -1740,7 +1740,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(request.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil

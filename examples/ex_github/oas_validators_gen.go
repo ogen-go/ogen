@@ -39,7 +39,7 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 func (s *ActionsCreateOrUpdateOrgSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.EncryptedValue.Set {
+		if value, ok := s.EncryptedValue.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -49,7 +49,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
-				}).Validate(string(s.EncryptedValue.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -95,7 +95,7 @@ func (s ActionsCreateOrUpdateOrgSecretReqVisibility) Validate() error {
 func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.EncryptedValue.Set {
+		if value, ok := s.EncryptedValue.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -105,7 +105,7 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
-				}).Validate(string(s.EncryptedValue.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -128,9 +128,9 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -176,9 +176,9 @@ func (s *ActionsEnterprisePermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -885,9 +885,9 @@ func (s *ActionsOrganizationPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -910,9 +910,9 @@ func (s *ActionsOrganizationPermissions) Validate() error {
 func (s *ActionsRepositoryPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -985,9 +985,9 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1010,9 +1010,9 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1107,9 +1107,9 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
 func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1332,9 +1332,9 @@ func (s AllowedActions) Validate() error {
 func (s *AppPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Actions.Set {
+		if value, ok := s.Actions.Get(); ok {
 			if err := func() error {
-				if err := s.Actions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1350,9 +1350,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Administration.Set {
+		if value, ok := s.Administration.Get(); ok {
 			if err := func() error {
-				if err := s.Administration.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1368,9 +1368,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Checks.Set {
+		if value, ok := s.Checks.Get(); ok {
 			if err := func() error {
-				if err := s.Checks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1386,9 +1386,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ContentReferences.Set {
+		if value, ok := s.ContentReferences.Get(); ok {
 			if err := func() error {
-				if err := s.ContentReferences.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1404,9 +1404,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Contents.Set {
+		if value, ok := s.Contents.Get(); ok {
 			if err := func() error {
-				if err := s.Contents.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1422,9 +1422,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Deployments.Set {
+		if value, ok := s.Deployments.Get(); ok {
 			if err := func() error {
-				if err := s.Deployments.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1440,9 +1440,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Environments.Set {
+		if value, ok := s.Environments.Get(); ok {
 			if err := func() error {
-				if err := s.Environments.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1458,9 +1458,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Issues.Set {
+		if value, ok := s.Issues.Get(); ok {
 			if err := func() error {
-				if err := s.Issues.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1476,9 +1476,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Metadata.Set {
+		if value, ok := s.Metadata.Get(); ok {
 			if err := func() error {
-				if err := s.Metadata.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1494,9 +1494,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Packages.Set {
+		if value, ok := s.Packages.Get(); ok {
 			if err := func() error {
-				if err := s.Packages.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1512,9 +1512,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Pages.Set {
+		if value, ok := s.Pages.Get(); ok {
 			if err := func() error {
-				if err := s.Pages.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1530,9 +1530,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PullRequests.Set {
+		if value, ok := s.PullRequests.Get(); ok {
 			if err := func() error {
-				if err := s.PullRequests.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1548,9 +1548,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RepositoryHooks.Set {
+		if value, ok := s.RepositoryHooks.Get(); ok {
 			if err := func() error {
-				if err := s.RepositoryHooks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1566,9 +1566,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RepositoryProjects.Set {
+		if value, ok := s.RepositoryProjects.Get(); ok {
 			if err := func() error {
-				if err := s.RepositoryProjects.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1584,9 +1584,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SecretScanningAlerts.Set {
+		if value, ok := s.SecretScanningAlerts.Get(); ok {
 			if err := func() error {
-				if err := s.SecretScanningAlerts.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1602,9 +1602,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Secrets.Set {
+		if value, ok := s.Secrets.Get(); ok {
 			if err := func() error {
-				if err := s.Secrets.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1620,9 +1620,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SecurityEvents.Set {
+		if value, ok := s.SecurityEvents.Get(); ok {
 			if err := func() error {
-				if err := s.SecurityEvents.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1638,9 +1638,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SingleFile.Set {
+		if value, ok := s.SingleFile.Get(); ok {
 			if err := func() error {
-				if err := s.SingleFile.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1656,9 +1656,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Statuses.Set {
+		if value, ok := s.Statuses.Get(); ok {
 			if err := func() error {
-				if err := s.Statuses.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1674,9 +1674,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VulnerabilityAlerts.Set {
+		if value, ok := s.VulnerabilityAlerts.Get(); ok {
 			if err := func() error {
-				if err := s.VulnerabilityAlerts.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1692,9 +1692,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Workflows.Set {
+		if value, ok := s.Workflows.Get(); ok {
 			if err := func() error {
-				if err := s.Workflows.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1710,9 +1710,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Members.Set {
+		if value, ok := s.Members.Get(); ok {
 			if err := func() error {
-				if err := s.Members.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1728,9 +1728,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationAdministration.Set {
+		if value, ok := s.OrganizationAdministration.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationAdministration.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1746,9 +1746,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationHooks.Set {
+		if value, ok := s.OrganizationHooks.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationHooks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1764,9 +1764,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationPlan.Set {
+		if value, ok := s.OrganizationPlan.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationPlan.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1782,9 +1782,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationProjects.Set {
+		if value, ok := s.OrganizationProjects.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationProjects.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1800,9 +1800,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationPackages.Set {
+		if value, ok := s.OrganizationPackages.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationPackages.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1818,9 +1818,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationSecrets.Set {
+		if value, ok := s.OrganizationSecrets.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationSecrets.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1836,9 +1836,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationSelfHostedRunners.Set {
+		if value, ok := s.OrganizationSelfHostedRunners.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationSelfHostedRunners.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1854,9 +1854,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationUserBlocking.Set {
+		if value, ok := s.OrganizationUserBlocking.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationUserBlocking.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1872,9 +1872,9 @@ func (s *AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TeamDiscussions.Set {
+		if value, ok := s.TeamDiscussions.Get(); ok {
 			if err := func() error {
-				if err := s.TeamDiscussions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2286,9 +2286,9 @@ func (s *AppsCreateFromManifestCreated) Validate() error {
 func (s *AppsCreateInstallationAccessTokenReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permissions.Set {
+		if value, ok := s.Permissions.Get(); ok {
 			if err := func() error {
-				if err := s.Permissions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2657,9 +2657,9 @@ func (s AppsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 func (s *AppsScopeTokenReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permissions.Set {
+		if value, ok := s.Permissions.Get(); ok {
 			if err := func() error {
-				if err := s.Permissions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2682,9 +2682,9 @@ func (s *AppsScopeTokenReq) Validate() error {
 func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2707,9 +2707,9 @@ func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
 func (s *AuthenticationToken) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RepositorySelection.Set {
+		if value, ok := s.RepositorySelection.Get(); ok {
 			if err := func() error {
-				if err := s.RepositorySelection.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2764,9 +2764,9 @@ func (s AuthorAssociation) Validate() error {
 func (s *Authorization) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Installation.Set {
+		if value, ok := s.Installation.Get(); ok {
 			if err := func() error {
-				if err := s.Installation.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2837,9 +2837,9 @@ func (s AutoMergeMergeMethod) Validate() error {
 func (s *BranchProtection) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RequiredStatusChecks.Set {
+		if value, ok := s.RequiredStatusChecks.Get(); ok {
 			if err := func() error {
-				if err := s.RequiredStatusChecks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2855,9 +2855,9 @@ func (s *BranchProtection) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequiredPullRequestReviews.Set {
+		if value, ok := s.RequiredPullRequestReviews.Get(); ok {
 			if err := func() error {
-				if err := s.RequiredPullRequestReviews.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2873,9 +2873,9 @@ func (s *BranchProtection) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Restrictions.Set {
+		if value, ok := s.Restrictions.Get(); ok {
 			if err := func() error {
-				if err := s.Restrictions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -2996,8 +2996,15 @@ func (s *CheckRun) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Conclusion.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Conclusion.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3007,8 +3014,15 @@ func (s *CheckRun) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.App.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.App.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3029,9 +3043,9 @@ func (s *CheckRun) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Deployment.Set {
+		if value, ok := s.Deployment.Get(); ok {
 			if err := func() error {
-				if err := s.Deployment.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3086,8 +3100,15 @@ func (s CheckRunStatus) Validate() error {
 func (s *CheckSuite) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.Status.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Status.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3097,8 +3118,15 @@ func (s *CheckSuite) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Conclusion.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Conclusion.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3108,8 +3136,15 @@ func (s *CheckSuite) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.App.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.App.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3429,8 +3464,15 @@ func (s *CodeScanningAlert) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.DismissedReason.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.DismissedReason.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3495,9 +3537,9 @@ func (s CodeScanningAlertDismissedReason) Validate() error {
 func (s *CodeScanningAlertInstance) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3516,8 +3558,15 @@ func (s *CodeScanningAlertInstance) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Classifications {
 			if err := func() error {
-				if err := elem.Value.Validate(); err != nil {
-					return err
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -3556,8 +3605,15 @@ func (s *CodeScanningAlertItems) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.DismissedReason.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.DismissedReason.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -3596,9 +3652,9 @@ func (s *CodeScanningAlertItems) Validate() error {
 func (s *CodeScanningAlertRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Severity.Set {
+		if value, ok := s.Severity.Get(); ok {
 			if err := func() error {
-				if err := s.Severity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3614,9 +3670,9 @@ func (s *CodeScanningAlertRule) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SecuritySeverityLevel.Set {
+		if value, ok := s.SecuritySeverityLevel.Get(); ok {
 			if err := func() error {
-				if err := s.SecuritySeverityLevel.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3632,9 +3688,9 @@ func (s *CodeScanningAlertRule) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Tags.Set {
+		if value, ok := s.Tags.Get(); ok {
 			if err := func() error {
-				if s.Tags.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -3685,9 +3741,9 @@ func (s CodeScanningAlertRuleSeverity) Validate() error {
 func (s *CodeScanningAlertRuleSummary) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Severity.Set {
+		if value, ok := s.Severity.Get(); ok {
 			if err := func() error {
-				if err := s.Severity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3853,9 +3909,9 @@ func (s CodeScanningListRecentAnalysesOKApplicationJSON) Validate() error {
 func (s *CodeScanningSarifsStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.ProcessingStatus.Set {
+		if value, ok := s.ProcessingStatus.Get(); ok {
 			if err := func() error {
-				if err := s.ProcessingStatus.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -3899,9 +3955,9 @@ func (s *CodeScanningUpdateAlertReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.DismissedReason.Set {
+		if value, ok := s.DismissedReason.Get(); ok {
 			if err := func() error {
-				if err := s.DismissedReason.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4294,9 +4350,9 @@ func (s *ContributorActivity) Validate() error {
 func (s *Deployment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4319,9 +4375,9 @@ func (s *Deployment) Validate() error {
 func (s *DeploymentSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4374,9 +4430,9 @@ func (s *DeploymentStatus) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4525,9 +4581,9 @@ func (s EnabledRepositories) Validate() error {
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -4686,9 +4742,9 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() er
 func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.TotalCount.Set {
+		if value, ok := s.TotalCount.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.TotalCount.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4876,9 +4932,9 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() err
 		})
 	}
 	if err := func() error {
-		if s.AllowedActions.Set {
+		if value, ok := s.AllowedActions.Get(); ok {
 			if err := func() error {
-				if err := s.AllowedActions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5067,9 +5123,9 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Vali
 		})
 	}
 	if err := func() error {
-		if s.Value.Set {
+		if value, ok := s.Value.Get(); ok {
 			if err := func() error {
-				if err := s.Value.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5155,9 +5211,9 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5247,9 +5303,9 @@ func (s *Event) Validate() error {
 func (s *EventPayload) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Issue.Set {
+		if value, ok := s.Issue.Get(); ok {
 			if err := func() error {
-				if err := s.Issue.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5265,9 +5321,9 @@ func (s *EventPayload) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Comment.Set {
+		if value, ok := s.Comment.Get(); ok {
 			if err := func() error {
-				if err := s.Comment.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5290,9 +5346,9 @@ func (s *EventPayload) Validate() error {
 func (s *FullRepository) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.SecurityAndAnalysis.Set {
+		if value, ok := s.SecurityAndAnalysis.Get(); ok {
 			if err := func() error {
-				if err := s.SecurityAndAnalysis.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5315,9 +5371,9 @@ func (s *FullRepository) Validate() error {
 func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.AdvancedSecurity.Set {
+		if value, ok := s.AdvancedSecurity.Get(); ok {
 			if err := func() error {
-				if err := s.AdvancedSecurity.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5333,9 +5389,9 @@ func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.SecretScanning.Set {
+		if value, ok := s.SecretScanning.Get(); ok {
 			if err := func() error {
-				if err := s.SecretScanning.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5358,9 +5414,9 @@ func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Status.Set {
+		if value, ok := s.Status.Get(); ok {
 			if err := func() error {
-				if err := s.Status.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5393,9 +5449,9 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Validate() erro
 func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Status.Set {
+		if value, ok := s.Status.Get(); ok {
 			if err := func() error {
-				if err := s.Status.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5483,13 +5539,13 @@ func (s *GistCommentHeaders) Validate() error {
 func (s *GistSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Forks.Set {
+		if value, ok := s.Forks.Get(); ok {
 			if err := func() error {
-				if s.Forks.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				var failures []validate.FieldError
-				for i, elem := range s.Forks.Value {
+				for i, elem := range value {
 					if err := func() error {
 						if err := elem.Validate(); err != nil {
 							return err
@@ -5518,9 +5574,9 @@ func (s *GistSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.History.Set {
+		if value, ok := s.History.Get(); ok {
 			if err := func() error {
-				if s.History.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -5543,9 +5599,9 @@ func (s *GistSimple) Validate() error {
 func (s *GistSimpleForksItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.User.Set {
+		if value, ok := s.User.Get(); ok {
 			if err := func() error {
-				if err := s.User.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5612,9 +5668,9 @@ func (s *GistsCreateCommentReq) Validate() error {
 func (s *GistsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Public.Set {
+		if value, ok := s.Public.Get(); ok {
 			if err := func() error {
-				if err := s.Public.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5948,9 +6004,9 @@ func (s *GitCreateTreeReq) Validate() error {
 func (s *GitCreateTreeReqTreeItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Mode.Set {
+		if value, ok := s.Mode.Get(); ok {
 			if err := func() error {
-				if err := s.Mode.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -5966,9 +6022,9 @@ func (s *GitCreateTreeReqTreeItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Type.Set {
+		if value, ok := s.Type.Get(); ok {
 			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6217,9 +6273,9 @@ func (s *Hook) Validate() error {
 func (s *HookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6388,9 +6444,9 @@ func (s ImportStatus) Validate() error {
 func (s *InstallationToken) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permissions.Set {
+		if value, ok := s.Permissions.Get(); ok {
 			if err := func() error {
-				if err := s.Permissions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6406,9 +6462,9 @@ func (s *InstallationToken) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RepositorySelection.Set {
+		if value, ok := s.RepositorySelection.Get(); ok {
 			if err := func() error {
-				if err := s.RepositorySelection.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6498,9 +6554,9 @@ func (s *InteractionLimit) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Expiry.Set {
+		if value, ok := s.Expiry.Get(); ok {
 			if err := func() error {
-				if err := s.Expiry.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6552,9 +6608,9 @@ func (s *Issue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Assignees.Set {
+		if value, ok := s.Assignees.Get(); ok {
 			if err := func() error {
-				if s.Assignees.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -6570,8 +6626,15 @@ func (s *Issue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Milestone.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Milestone.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -6581,9 +6644,9 @@ func (s *Issue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6628,9 +6691,9 @@ func (s *IssueComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6671,9 +6734,9 @@ func (s *IssueCommentHeaders) Validate() error {
 func (s *IssueEvent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Issue.Set {
+		if value, ok := s.Issue.Get(); ok {
 			if err := func() error {
-				if err := s.Issue.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6689,9 +6752,9 @@ func (s *IssueEvent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AuthorAssociation.Set {
+		if value, ok := s.AuthorAssociation.Get(); ok {
 			if err := func() error {
-				if err := s.AuthorAssociation.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6707,9 +6770,9 @@ func (s *IssueEvent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6750,9 +6813,9 @@ func (s *IssueHeaders) Validate() error {
 func (s *IssueSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Assignees.Set {
+		if value, ok := s.Assignees.Get(); ok {
 			if err := func() error {
-				if s.Assignees.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -6779,8 +6842,15 @@ func (s *IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Milestone.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Milestone.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -6831,9 +6901,9 @@ func (s *IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6867,9 +6937,9 @@ func (s *IssueSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Assignees.Set {
+		if value, ok := s.Assignees.Get(); ok {
 			if err := func() error {
-				if s.Assignees.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -6885,8 +6955,15 @@ func (s *IssueSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Milestone.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Milestone.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -6907,9 +6984,9 @@ func (s *IssueSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.PerformedViaGithubApp.Set {
+		if value, ok := s.PerformedViaGithubApp.Get(); ok {
 			if err := func() error {
-				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6932,9 +7009,9 @@ func (s *IssueSimple) Validate() error {
 func (s *IssuesCreateMilestoneReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7561,9 +7638,9 @@ func (s IssuesListState) Validate() error {
 func (s *IssuesLockReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.LockReason.Set {
+		if value, ok := s.LockReason.Get(); ok {
 			if err := func() error {
-				if err := s.LockReason.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7607,9 +7684,9 @@ func (s IssuesRemoveLabelOKApplicationJSON) Validate() error {
 func (s *IssuesUpdateMilestoneReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7642,9 +7719,9 @@ func (s IssuesUpdateMilestoneReqState) Validate() error {
 func (s *IssuesUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7846,9 +7923,9 @@ func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
 func (s *MarkdownRenderReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Mode.Set {
+		if value, ok := s.Mode.Get(); ok {
 			if err := func() error {
-				if err := s.Mode.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7881,7 +7958,7 @@ func (s MarkdownRenderReqMode) Validate() error {
 func (s *MarketplaceAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Email.Set {
+		if value, ok := s.Email.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7891,7 +7968,7 @@ func (s *MarketplaceAccount) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Email.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7907,7 +7984,7 @@ func (s *MarketplaceAccount) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OrganizationBillingEmail.Set {
+		if value, ok := s.OrganizationBillingEmail.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -7917,7 +7994,7 @@ func (s *MarketplaceAccount) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.OrganizationBillingEmail.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -7958,9 +8035,9 @@ func (s *MarketplaceListingPlan) Validate() error {
 func (s *MarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MarketplacePendingChange.Set {
+		if value, ok := s.MarketplacePendingChange.Get(); ok {
 			if err := func() error {
-				if err := s.MarketplacePendingChange.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -7994,9 +8071,9 @@ func (s *MarketplacePurchase) Validate() error {
 func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Plan.Set {
+		if value, ok := s.Plan.Get(); ok {
 			if err := func() error {
-				if err := s.Plan.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8019,9 +8096,9 @@ func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
 func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Plan.Set {
+		if value, ok := s.Plan.Get(); ok {
 			if err := func() error {
-				if err := s.Plan.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8044,9 +8121,9 @@ func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 func (s *MergedUpstream) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MergeType.Set {
+		if value, ok := s.MergeType.Get(); ok {
 			if err := func() error {
-				if err := s.MergeType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8358,9 +8435,9 @@ func (s MigrationsStartForOrgReqExcludeItem) Validate() error {
 func (s *MigrationsStartImportReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Vcs.Set {
+		if value, ok := s.Vcs.Get(); ok {
 			if err := func() error {
-				if err := s.Vcs.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8529,9 +8606,9 @@ func (s NullableScopedInstallationRepositorySelection) Validate() error {
 func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Scopes.Set {
+		if value, ok := s.Scopes.Get(); ok {
 			if err := func() error {
-				if s.Scopes.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -8547,7 +8624,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ClientID.Set {
+		if value, ok := s.ClientID.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8557,7 +8634,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.ClientID.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8573,7 +8650,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ClientSecret.Set {
+		if value, ok := s.ClientSecret.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8583,7 +8660,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 					Email:        false,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.ClientSecret.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8639,9 +8716,9 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Val
 		})
 	}
 	if err := func() error {
-		if s.Scopes.Set {
+		if value, ok := s.Scopes.Get(); ok {
 			if err := func() error {
-				if s.Scopes.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -8697,9 +8774,9 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error 
 		})
 	}
 	if err := func() error {
-		if s.Scopes.Set {
+		if value, ok := s.Scopes.Get(); ok {
 			if err := func() error {
-				if s.Scopes.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -8792,9 +8869,9 @@ func (s *OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
 func (s *OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Scopes.Set {
+		if value, ok := s.Scopes.Get(); ok {
 			if err := func() error {
-				if s.Scopes.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -8935,7 +9012,7 @@ func (s OrganizationActionsSecretVisibility) Validate() error {
 func (s *OrganizationFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Email.Set {
+		if value, ok := s.Email.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8945,7 +9022,7 @@ func (s *OrganizationFull) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Email.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8961,7 +9038,7 @@ func (s *OrganizationFull) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.BillingEmail.Set {
+		if value, ok := s.BillingEmail.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -8971,7 +9048,7 @@ func (s *OrganizationFull) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.BillingEmail.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -8994,9 +9071,9 @@ func (s *OrganizationFull) Validate() error {
 func (s *OrganizationSecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9012,9 +9089,9 @@ func (s *OrganizationSecretScanningAlert) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Resolution.Set {
+		if value, ok := s.Resolution.Get(); ok {
 			if err := func() error {
-				if err := s.Resolution.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9037,9 +9114,9 @@ func (s *OrganizationSecretScanningAlert) Validate() error {
 func (s *OrgsCreateInvitationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Role.Set {
+		if value, ok := s.Role.Get(); ok {
 			if err := func() error {
-				if err := s.Role.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9092,9 +9169,9 @@ func (s *OrgsCreateWebhookReq) Validate() error {
 func (s *OrgsCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9444,9 +9521,9 @@ func (s *OrgsListWebhooksOKHeaders) Validate() error {
 func (s *OrgsSetMembershipForUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Role.Set {
+		if value, ok := s.Role.Get(); ok {
 			if err := func() error {
-				if err := s.Role.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9505,9 +9582,9 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReqState) Validate() error {
 func (s *OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9530,9 +9607,9 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 func (s *OrgsUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Config.Set {
+		if value, ok := s.Config.Get(); ok {
 			if err := func() error {
-				if err := s.Config.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9555,9 +9632,9 @@ func (s *OrgsUpdateWebhookReq) Validate() error {
 func (s *OrgsUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9627,9 +9704,9 @@ func (s PackagePackageType) Validate() error {
 func (s *PackageVersion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Metadata.Set {
+		if value, ok := s.Metadata.Get(); ok {
 			if err := func() error {
-				if err := s.Metadata.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -9663,9 +9740,9 @@ func (s *PackageVersionMetadata) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Container.Set {
+		if value, ok := s.Container.Get(); ok {
 			if err := func() error {
-				if err := s.Container.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10342,8 +10419,15 @@ func (s PackagesRestorePackageVersionForUserPackageType) Validate() error {
 func (s *Page) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.Status.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Status.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -10353,9 +10437,9 @@ func (s *Page) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ProtectedDomainState.Set {
+		if value, ok := s.ProtectedDomainState.Get(); ok {
 			if err := func() error {
-				if err := s.ProtectedDomainState.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10371,9 +10455,9 @@ func (s *Page) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.HTTPSCertificate.Set {
+		if value, ok := s.HTTPSCertificate.Get(); ok {
 			if err := func() error {
-				if err := s.HTTPSCertificate.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10508,16 +10592,23 @@ func (s *ParticipationStats) Validate() error {
 func (s *PrivateUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        true,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Email.Value)); err != nil {
-			return errors.Wrap(err, "string")
+		if value, ok := s.Email.Get(); ok {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        true,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -10534,9 +10625,9 @@ func (s *PrivateUser) Validate() error {
 func (s *Project) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.OrganizationPermission.Set {
+		if value, ok := s.OrganizationPermission.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationPermission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10573,9 +10664,9 @@ func (s ProjectOrganizationPermission) Validate() error {
 func (s *ProjectsAddCollaboratorReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10881,9 +10972,9 @@ func (s *ProjectsMoveColumnReq) Validate() error {
 func (s *ProjectsUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.OrganizationPermission.Set {
+		if value, ok := s.OrganizationPermission.Get(); ok {
 			if err := func() error {
-				if err := s.OrganizationPermission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10920,9 +11011,9 @@ func (s ProjectsUpdateReqOrganizationPermission) Validate() error {
 func (s *ProtectedBranch) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RequiredStatusChecks.Set {
+		if value, ok := s.RequiredStatusChecks.Get(); ok {
 			if err := func() error {
-				if err := s.RequiredStatusChecks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10938,9 +11029,9 @@ func (s *ProtectedBranch) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequiredPullRequestReviews.Set {
+		if value, ok := s.RequiredPullRequestReviews.Get(); ok {
 			if err := func() error {
-				if err := s.RequiredPullRequestReviews.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10956,9 +11047,9 @@ func (s *ProtectedBranch) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Restrictions.Set {
+		if value, ok := s.Restrictions.Get(); ok {
 			if err := func() error {
-				if err := s.Restrictions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -10981,7 +11072,7 @@ func (s *ProtectedBranch) Validate() error {
 func (s *ProtectedBranchPullRequestReview) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RequiredApprovingReviewCount.Set {
+		if value, ok := s.RequiredApprovingReviewCount.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -10992,7 +11083,7 @@ func (s *ProtectedBranchPullRequestReview) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.RequiredApprovingReviewCount.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil
@@ -11015,9 +11106,9 @@ func (s *ProtectedBranchPullRequestReview) Validate() error {
 func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.DismissalRestrictions.Set {
+		if value, ok := s.DismissalRestrictions.Get(); ok {
 			if err := func() error {
-				if err := s.DismissalRestrictions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11069,16 +11160,23 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validat
 func (s *PublicUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        true,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Email.Value)); err != nil {
-			return errors.Wrap(err, "string")
+		if value, ok := s.Email.Get(); ok {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        true,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -11117,8 +11215,15 @@ func (s *PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Milestone.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Milestone.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -11128,9 +11233,9 @@ func (s *PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Assignees.Set {
+		if value, ok := s.Assignees.Get(); ok {
 			if err := func() error {
-				if s.Assignees.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11146,9 +11251,9 @@ func (s *PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestedReviewers.Set {
+		if value, ok := s.RequestedReviewers.Get(); ok {
 			if err := func() error {
-				if s.RequestedReviewers.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11164,9 +11269,9 @@ func (s *PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestedTeams.Set {
+		if value, ok := s.RequestedTeams.Get(); ok {
 			if err := func() error {
-				if s.RequestedTeams.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11193,8 +11298,15 @@ func (s *PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.AutoMerge.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.AutoMerge.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -11258,9 +11370,9 @@ func (s *PullRequestReviewComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.StartSide.Set {
+		if value, ok := s.StartSide.Get(); ok {
 			if err := func() error {
-				if err := s.StartSide.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11276,9 +11388,9 @@ func (s *PullRequestReviewComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Side.Set {
+		if value, ok := s.Side.Get(); ok {
 			if err := func() error {
-				if err := s.Side.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11397,8 +11509,15 @@ func (s *PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Milestone.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Milestone.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -11408,9 +11527,9 @@ func (s *PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Assignees.Set {
+		if value, ok := s.Assignees.Get(); ok {
 			if err := func() error {
-				if s.Assignees.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11426,9 +11545,9 @@ func (s *PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestedReviewers.Set {
+		if value, ok := s.RequestedReviewers.Get(); ok {
 			if err := func() error {
-				if s.RequestedReviewers.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11444,9 +11563,9 @@ func (s *PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestedTeams.Set {
+		if value, ok := s.RequestedTeams.Get(); ok {
 			if err := func() error {
-				if s.RequestedTeams.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -11473,8 +11592,15 @@ func (s *PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.AutoMerge.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.AutoMerge.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -11501,9 +11627,9 @@ func (s PullRequestState) Validate() error {
 func (s *PullsCreateReviewCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Side.Set {
+		if value, ok := s.Side.Get(); ok {
 			if err := func() error {
-				if err := s.Side.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11519,9 +11645,9 @@ func (s *PullsCreateReviewCommentReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.StartSide.Set {
+		if value, ok := s.StartSide.Get(); ok {
 			if err := func() error {
-				if err := s.StartSide.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11566,9 +11692,9 @@ func (s PullsCreateReviewCommentReqStartSide) Validate() error {
 func (s *PullsCreateReviewReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Event.Set {
+		if value, ok := s.Event.Get(); ok {
 			if err := func() error {
-				if err := s.Event.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -11926,9 +12052,9 @@ func (s PullsListState) Validate() error {
 func (s *PullsMergeReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MergeMethod.Set {
+		if value, ok := s.MergeMethod.Get(); ok {
 			if err := func() error {
-				if err := s.MergeMethod.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -12011,9 +12137,9 @@ func (s PullsSubmitReviewReqEvent) Validate() error {
 func (s *PullsUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13173,9 +13299,9 @@ func (s *ReposAddAppAccessRestrictionsReq0) Validate() error {
 func (s *ReposAddCollaboratorReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13383,9 +13509,9 @@ func (s *ReposCreateDeploymentStatusReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Environment.Set {
+		if value, ok := s.Environment.Get(); ok {
 			if err := func() error {
-				if err := s.Environment.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13459,9 +13585,9 @@ func (s *ReposCreateDispatchEventReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ClientPayload.Set {
+		if value, ok := s.ClientPayload.Get(); ok {
 			if err := func() error {
-				if err := s.ClientPayload.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13492,9 +13618,9 @@ func (s ReposCreateDispatchEventReqClientPayload) Validate() error {
 func (s *ReposCreateInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13549,9 +13675,9 @@ func (s *ReposCreatePagesSiteReq) Validate() error {
 func (s *ReposCreatePagesSiteReqSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Path.Set {
+		if value, ok := s.Path.Get(); ok {
 			if err := func() error {
-				if err := s.Path.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13584,9 +13710,9 @@ func (s ReposCreatePagesSiteReqSourcePath) Validate() error {
 func (s *ReposCreateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Config.Set {
+		if value, ok := s.Config.Get(); ok {
 			if err := func() error {
-				if err := s.Config.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -13609,9 +13735,9 @@ func (s *ReposCreateWebhookReq) Validate() error {
 func (s *ReposCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15015,8 +15141,15 @@ func (s *ReposSetUserAccessRestrictionsReq0) Validate() error {
 func (s *ReposUpdateBranchProtectionReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.RequiredStatusChecks.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.RequiredStatusChecks.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -15026,8 +15159,15 @@ func (s *ReposUpdateBranchProtectionReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Restrictions.Value.Validate(); err != nil {
-			return err
+		if value, ok := s.Restrictions.Get(); ok {
+			if err := func() error {
+				if err := value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -15091,9 +15231,9 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 func (s *ReposUpdateInvitationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permissions.Set {
+		if value, ok := s.Permissions.Get(); ok {
 			if err := func() error {
-				if err := s.Permissions.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15132,9 +15272,9 @@ func (s ReposUpdateInvitationReqPermissions) Validate() error {
 func (s *ReposUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Visibility.Set {
+		if value, ok := s.Visibility.Get(); ok {
 			if err := func() error {
-				if err := s.Visibility.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15171,9 +15311,9 @@ func (s ReposUpdateReqVisibility) Validate() error {
 func (s *ReposUpdateWebhookConfigForRepoReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15196,9 +15336,9 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Validate() error {
 func (s *ReposUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Config.Set {
+		if value, ok := s.Config.Get(); ok {
 			if err := func() error {
-				if err := s.Config.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15221,9 +15361,9 @@ func (s *ReposUpdateWebhookReq) Validate() error {
 func (s *ReposUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15291,9 +15431,9 @@ func (s *ReviewComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Side.Set {
+		if value, ok := s.Side.Get(); ok {
 			if err := func() error {
-				if err := s.Side.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15309,9 +15449,9 @@ func (s *ReviewComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.StartSide.Set {
+		if value, ok := s.StartSide.Get(); ok {
 			if err := func() error {
-				if err := s.StartSide.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -15425,9 +15565,9 @@ func (s *RunnerGroupsOrg) Validate() error {
 func (s *RunnerLabelsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Type.Set {
+		if value, ok := s.Type.Get(); ok {
 			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16084,9 +16224,9 @@ func (s SearchUsersSort) Validate() error {
 func (s *SecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.State.Set {
+		if value, ok := s.State.Get(); ok {
 			if err := func() error {
-				if err := s.State.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16102,9 +16242,9 @@ func (s *SecretScanningAlert) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Resolution.Set {
+		if value, ok := s.Resolution.Get(); ok {
 			if err := func() error {
-				if err := s.Resolution.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16241,9 +16381,9 @@ func (s *SecretScanningUpdateAlertReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Resolution.Set {
+		if value, ok := s.Resolution.Get(); ok {
 			if err := func() error {
-				if err := s.Resolution.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16266,9 +16406,9 @@ func (s *SecretScanningUpdateAlertReq) Validate() error {
 func (s *ShortBranch) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Protection.Set {
+		if value, ok := s.Protection.Get(); ok {
 			if err := func() error {
-				if err := s.Protection.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16309,9 +16449,9 @@ func (s *StatusCheckPolicy) Validate() error {
 func (s *TeamFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Privacy.Set {
+		if value, ok := s.Privacy.Get(); ok {
 			if err := func() error {
-				if err := s.Privacy.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16404,9 +16544,9 @@ func (s TeamMembershipState) Validate() error {
 func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Role.Set {
+		if value, ok := s.Role.Get(); ok {
 			if err := func() error {
-				if err := s.Role.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16439,9 +16579,9 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) Validate() error {
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Role.Set {
+		if value, ok := s.Role.Get(); ok {
 			if err := func() error {
-				if err := s.Role.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16474,9 +16614,9 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) Validate() error {
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16511,9 +16651,9 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Validate() error {
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16548,9 +16688,9 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Validate() error 
 func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16589,9 +16729,9 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Validate() error {
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16644,9 +16784,9 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 func (s *TeamsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Privacy.Set {
+		if value, ok := s.Privacy.Get(); ok {
 			if err := func() error {
-				if err := s.Privacy.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -16662,9 +16802,9 @@ func (s *TeamsCreateReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17078,9 +17218,9 @@ func (s *TeamsListReposLegacyOKHeaders) Validate() error {
 func (s *TeamsUpdateInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Privacy.Set {
+		if value, ok := s.Privacy.Get(); ok {
 			if err := func() error {
-				if err := s.Privacy.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17096,9 +17236,9 @@ func (s *TeamsUpdateInOrgReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17157,9 +17297,9 @@ func (s *TeamsUpdateLegacyOK) Validate() error {
 func (s *TeamsUpdateLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Privacy.Set {
+		if value, ok := s.Privacy.Get(); ok {
 			if err := func() error {
-				if err := s.Privacy.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17175,9 +17315,9 @@ func (s *TeamsUpdateLegacyReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Permission.Set {
+		if value, ok := s.Permission.Get(); ok {
 			if err := func() error {
-				if err := s.Permission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17270,9 +17410,9 @@ func (s *TopicSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Related.Set {
+		if value, ok := s.Related.Get(); ok {
 			if err := func() error {
-				if s.Related.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -17288,9 +17428,9 @@ func (s *TopicSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Aliases.Set {
+		if value, ok := s.Aliases.Get(); ok {
 			if err := func() error {
-				if s.Aliases.Value == nil {
+				if value == nil {
 					return errors.New("nil is invalid value")
 				}
 				return nil
@@ -17353,7 +17493,7 @@ func (s *UserSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Email.Set {
+		if value, ok := s.Email.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -17363,7 +17503,7 @@ func (s *UserSearchResultItem) Validate() error {
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(s.Email.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -18034,9 +18174,9 @@ func (s *ValidationError) Validate() error {
 func (s *ValidationErrorErrorsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Value.Set {
+		if value, ok := s.Value.Get(); ok {
 			if err := func() error {
-				if err := s.Value.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18095,9 +18235,9 @@ func (s *ViewTraffic) Validate() error {
 func (s *WebhookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl.Set {
+		if value, ok := s.InsecureSsl.Get(); ok {
 			if err := func() error {
-				if err := s.InsecureSsl.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

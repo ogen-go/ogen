@@ -55,9 +55,9 @@ func (s Boards) Validate() error {
 func (s *Captcha) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -111,9 +111,9 @@ func (s CaptchaType) Validate() error {
 func (s *Error) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Code.Set {
+		if value, ok := s.Code.Get(); ok {
 			if err := func() error {
-				if err := s.Code.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -256,9 +256,9 @@ func (s FileType) Validate() error {
 func (s *Like) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -281,9 +281,9 @@ func (s *Like) Validate() error {
 func (s *MobilePost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -299,9 +299,9 @@ func (s *MobilePost) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Post.Set {
+		if value, ok := s.Post.Get(); ok {
 			if err := func() error {
-				if err := s.Post.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -324,9 +324,9 @@ func (s *MobilePost) Validate() error {
 func (s *MobileThreadLastInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -349,9 +349,9 @@ func (s *MobileThreadLastInfo) Validate() error {
 func (s *MobileThreadPostsAfter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -400,9 +400,9 @@ func (s *MobileThreadPostsAfter) Validate() error {
 func (s *Passcode) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -457,9 +457,9 @@ func (s *Post) Validate() error {
 func (s *PostingNewPost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -482,9 +482,9 @@ func (s *PostingNewPost) Validate() error {
 func (s *PostingNewThread) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -507,9 +507,9 @@ func (s *PostingNewThread) Validate() error {
 func (s *Report) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Error.Set {
+		if value, ok := s.Error.Get(); ok {
 			if err := func() error {
-				if err := s.Error.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

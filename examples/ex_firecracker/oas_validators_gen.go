@@ -23,9 +23,9 @@ func (s CpuTemplate) Validate() error {
 func (s *Drive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RateLimiter.Set {
+		if value, ok := s.RateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.RateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -73,9 +73,9 @@ func (s *FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Logger.Set {
+		if value, ok := s.Logger.Get(); ok {
 			if err := func() error {
-				if err := s.Logger.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -91,9 +91,9 @@ func (s *FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MachineConfig.Set {
+		if value, ok := s.MachineConfig.Get(); ok {
 			if err := func() error {
-				if err := s.MachineConfig.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -134,9 +134,9 @@ func (s *FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VsockDevice.Set {
+		if value, ok := s.VsockDevice.Get(); ok {
 			if err := func() error {
-				if err := s.VsockDevice.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -219,9 +219,9 @@ func (s InstanceInfoState) Validate() error {
 func (s *Logger) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Level.Set {
+		if value, ok := s.Level.Get(); ok {
 			if err := func() error {
-				if err := s.Level.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -258,9 +258,9 @@ func (s LoggerLevel) Validate() error {
 func (s *MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.CPUTemplate.Set {
+		if value, ok := s.CPUTemplate.Get(); ok {
 			if err := func() error {
-				if err := s.CPUTemplate.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -303,9 +303,9 @@ func (s *MachineConfiguration) Validate() error {
 func (s *NetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RxRateLimiter.Set {
+		if value, ok := s.RxRateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.RxRateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -321,9 +321,9 @@ func (s *NetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TxRateLimiter.Set {
+		if value, ok := s.TxRateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.TxRateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -347,9 +347,9 @@ func (s *NetworkInterface) Validate() error {
 func (s *PartialDrive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RateLimiter.Set {
+		if value, ok := s.RateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.RateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -372,9 +372,9 @@ func (s *PartialDrive) Validate() error {
 func (s *PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.RxRateLimiter.Set {
+		if value, ok := s.RxRateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.RxRateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -390,9 +390,9 @@ func (s *PartialNetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TxRateLimiter.Set {
+		if value, ok := s.TxRateLimiter.Get(); ok {
 			if err := func() error {
-				if err := s.TxRateLimiter.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -415,9 +415,9 @@ func (s *PartialNetworkInterface) Validate() error {
 func (s *RateLimiter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Bandwidth.Set {
+		if value, ok := s.Bandwidth.Get(); ok {
 			if err := func() error {
-				if err := s.Bandwidth.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -433,9 +433,9 @@ func (s *RateLimiter) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Ops.Set {
+		if value, ok := s.Ops.Get(); ok {
 			if err := func() error {
-				if err := s.Ops.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -458,9 +458,9 @@ func (s *RateLimiter) Validate() error {
 func (s *SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.SnapshotType.Set {
+		if value, ok := s.SnapshotType.Get(); ok {
 			if err := func() error {
-				if err := s.SnapshotType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -493,7 +493,7 @@ func (s SnapshotCreateParamsSnapshotType) Validate() error {
 func (s *TokenBucket) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.OneTimeBurst.Set {
+		if value, ok := s.OneTimeBurst.Get(); ok {
 			if err := func() error {
 				if err := (validate.Int{
 					MinSet:        true,
@@ -504,7 +504,7 @@ func (s *TokenBucket) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
-				}).Validate(int64(s.OneTimeBurst.Value)); err != nil {
+				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
 				return nil

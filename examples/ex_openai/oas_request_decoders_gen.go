@@ -787,7 +787,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"n\"")
 				}
 				if err := func() error {
-					if request.N.Set {
+					if value, ok := request.N.Get(); ok {
 						if err := func() error {
 							if err := (validate.Int{
 								MinSet:        true,
@@ -798,7 +798,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 								MaxExclusive:  false,
 								MultipleOfSet: false,
 								MultipleOf:    0,
-							}).Validate(int64(request.N.Value)); err != nil {
+							}).Validate(int64(value)); err != nil {
 								return errors.Wrap(err, "int")
 							}
 							return nil
@@ -843,9 +843,9 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"size\"")
 				}
 				if err := func() error {
-					if request.Size.Set {
+					if value, ok := request.Size.Get(); ok {
 						if err := func() error {
-							if err := request.Size.Value.Validate(); err != nil {
+							if err := value.Validate(); err != nil {
 								return err
 							}
 							return nil
@@ -890,9 +890,9 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"response_format\"")
 				}
 				if err := func() error {
-					if request.ResponseFormat.Set {
+					if value, ok := request.ResponseFormat.Get(); ok {
 						if err := func() error {
-							if err := request.ResponseFormat.Value.Validate(); err != nil {
+							if err := value.Validate(); err != nil {
 								return err
 							}
 							return nil
@@ -1064,7 +1064,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"n\"")
 				}
 				if err := func() error {
-					if request.N.Set {
+					if value, ok := request.N.Get(); ok {
 						if err := func() error {
 							if err := (validate.Int{
 								MinSet:        true,
@@ -1075,7 +1075,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 								MaxExclusive:  false,
 								MultipleOfSet: false,
 								MultipleOf:    0,
-							}).Validate(int64(request.N.Value)); err != nil {
+							}).Validate(int64(value)); err != nil {
 								return errors.Wrap(err, "int")
 							}
 							return nil
@@ -1120,9 +1120,9 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"size\"")
 				}
 				if err := func() error {
-					if request.Size.Set {
+					if value, ok := request.Size.Get(); ok {
 						if err := func() error {
-							if err := request.Size.Value.Validate(); err != nil {
+							if err := value.Validate(); err != nil {
 								return err
 							}
 							return nil
@@ -1167,9 +1167,9 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"response_format\"")
 				}
 				if err := func() error {
-					if request.ResponseFormat.Set {
+					if value, ok := request.ResponseFormat.Get(); ok {
 						if err := func() error {
-							if err := request.ResponseFormat.Value.Validate(); err != nil {
+							if err := value.Validate(); err != nil {
 								return err
 							}
 							return nil
@@ -1551,9 +1551,9 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"temperature\"")
 				}
 				if err := func() error {
-					if request.Temperature.Set {
+					if value, ok := request.Temperature.Get(); ok {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(request.Temperature.Value)); err != nil {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -1793,9 +1793,9 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 					return req, close, errors.Wrap(err, "decode \"temperature\"")
 				}
 				if err := func() error {
-					if request.Temperature.Set {
+					if value, ok := request.Temperature.Get(); ok {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(request.Temperature.Value)); err != nil {
+							if err := (validate.Float{}).Validate(float64(value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil

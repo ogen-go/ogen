@@ -258,9 +258,9 @@ func (s *CurrencyPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Blocked.Set {
+		if value, ok := s.Blocked.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -344,9 +344,9 @@ func (s *LimitOrderResponse) Validate() error {
 func (s *MarketInstrument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MinPriceIncrement.Set {
+		if value, ok := s.MinPriceIncrement.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -362,9 +362,9 @@ func (s *MarketInstrument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Currency.Set {
+		if value, ok := s.Currency.Get(); ok {
 			if err := func() error {
-				if err := s.Currency.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -552,9 +552,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Commission.Set {
+		if value, ok := s.Commission.Get(); ok {
 			if err := func() error {
-				if err := s.Commission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -592,9 +592,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Price.Set {
+		if value, ok := s.Price.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Price.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -610,9 +610,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.InstrumentType.Set {
+		if value, ok := s.InstrumentType.Get(); ok {
 			if err := func() error {
-				if err := s.InstrumentType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -628,9 +628,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.OperationType.Set {
+		if value, ok := s.OperationType.Get(); ok {
 			if err := func() error {
-				if err := s.OperationType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -976,9 +976,9 @@ func (s *Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.FaceValue.Set {
+		if value, ok := s.FaceValue.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.FaceValue.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -994,9 +994,9 @@ func (s *Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LastPrice.Set {
+		if value, ok := s.LastPrice.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.LastPrice.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1012,9 +1012,9 @@ func (s *Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ClosePrice.Set {
+		if value, ok := s.ClosePrice.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.ClosePrice.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1030,9 +1030,9 @@ func (s *Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LimitUp.Set {
+		if value, ok := s.LimitUp.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.LimitUp.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1048,9 +1048,9 @@ func (s *Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.LimitDown.Set {
+		if value, ok := s.LimitDown.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.LimitDown.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1148,9 +1148,9 @@ func (s *PlacedLimitOrder) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Commission.Set {
+		if value, ok := s.Commission.Get(); ok {
 			if err := func() error {
-				if err := s.Commission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1195,9 +1195,9 @@ func (s *PlacedMarketOrder) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Commission.Set {
+		if value, ok := s.Commission.Get(); ok {
 			if err := func() error {
-				if err := s.Commission.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1295,9 +1295,9 @@ func (s *PortfolioPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Blocked.Set {
+		if value, ok := s.Blocked.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1313,9 +1313,9 @@ func (s *PortfolioPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.ExpectedYield.Set {
+		if value, ok := s.ExpectedYield.Get(); ok {
 			if err := func() error {
-				if err := s.ExpectedYield.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1331,9 +1331,9 @@ func (s *PortfolioPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AveragePositionPrice.Set {
+		if value, ok := s.AveragePositionPrice.Get(); ok {
 			if err := func() error {
-				if err := s.AveragePositionPrice.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1349,9 +1349,9 @@ func (s *PortfolioPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.AveragePositionPriceNoNkd.Set {
+		if value, ok := s.AveragePositionPriceNoNkd.Get(); ok {
 			if err := func() error {
-				if err := s.AveragePositionPriceNoNkd.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1434,9 +1434,9 @@ func (s SandboxCurrency) Validate() error {
 func (s *SandboxRegisterRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.BrokerAccountType.Set {
+		if value, ok := s.BrokerAccountType.Get(); ok {
 			if err := func() error {
-				if err := s.BrokerAccountType.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -1524,9 +1524,9 @@ func (s *SandboxSetPositionBalanceRequest) Validate() error {
 func (s *SearchMarketInstrument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MinPriceIncrement.Set {
+		if value, ok := s.MinPriceIncrement.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -1542,9 +1542,9 @@ func (s *SearchMarketInstrument) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Currency.Set {
+		if value, ok := s.Currency.Get(); ok {
 			if err := func() error {
-				if err := s.Currency.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

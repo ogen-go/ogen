@@ -2266,9 +2266,9 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -8090,9 +8090,9 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -8385,9 +8385,9 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -8680,9 +8680,9 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -8771,8 +8771,15 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -8872,8 +8879,15 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -8975,9 +8989,9 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9270,9 +9284,9 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9361,8 +9375,15 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -9462,8 +9483,15 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -10521,9 +10549,9 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -10612,8 +10640,15 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -10713,8 +10748,15 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -18155,8 +18197,15 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-			return errors.Wrap(err, "float")
+		if value, ok := request.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -18242,8 +18291,15 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -18346,8 +18402,15 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -18743,8 +18806,15 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-			return errors.Wrap(err, "float")
+		if value, ok := request.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -18830,8 +18900,15 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -18934,8 +19011,15 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -20041,8 +20125,15 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
-			return errors.Wrap(err, "float")
+		if value, ok := request.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).Validate(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -20128,8 +20219,15 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-					return errors.Wrap(err, "float")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.Float{}).Validate(float64(value)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -20232,8 +20330,15 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
-							return errors.Wrap(err, "float")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.Float{}).Validate(float64(value)); err != nil {
+									return errors.Wrap(err, "float")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -23916,16 +24021,23 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        true,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(request.Value)); err != nil {
-			return errors.Wrap(err, "string")
+		if value, ok := request.Get(); ok {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        true,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -24011,16 +24123,23 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(elem.Value)); err != nil {
-					return errors.Wrap(err, "string")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.String{
+							MinLength:    0,
+							MinLengthSet: false,
+							MaxLength:    0,
+							MaxLengthSet: false,
+							Email:        true,
+							Hostname:     false,
+							Regex:        nil,
+						}).Validate(string(value)); err != nil {
+							return errors.Wrap(err, "string")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -24123,16 +24242,23 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(elem.Value)); err != nil {
-							return errors.Wrap(err, "string")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.String{
+									MinLength:    0,
+									MinLengthSet: false,
+									MaxLength:    0,
+									MaxLengthSet: false,
+									Email:        true,
+									Hostname:     false,
+									Regex:        nil,
+								}).Validate(string(value)); err != nil {
+									return errors.Wrap(err, "string")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -24552,16 +24678,23 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     true,
-			Regex:        nil,
-		}).Validate(string(request.Value)); err != nil {
-			return errors.Wrap(err, "string")
+		if value, ok := request.Get(); ok {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     true,
+					Regex:        nil,
+				}).Validate(string(value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
 		return nil
 	}(); err != nil {
@@ -24647,16 +24780,23 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(elem.Value)); err != nil {
-					return errors.Wrap(err, "string")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.String{
+							MinLength:    0,
+							MinLengthSet: false,
+							MaxLength:    0,
+							MaxLengthSet: false,
+							Email:        false,
+							Hostname:     true,
+							Regex:        nil,
+						}).Validate(string(value)); err != nil {
+							return errors.Wrap(err, "string")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -24759,16 +24899,23 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(elem.Value)); err != nil {
-							return errors.Wrap(err, "string")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.String{
+									MinLength:    0,
+									MinLengthSet: false,
+									MaxLength:    0,
+									MaxLengthSet: false,
+									Email:        false,
+									Hostname:     true,
+									Regex:        nil,
+								}).Validate(string(value)); err != nil {
+									return errors.Wrap(err, "string")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -35256,7 +35403,7 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -35266,7 +35413,7 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(request.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -35575,7 +35722,7 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -35585,7 +35732,7 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(request.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -35674,16 +35821,23 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(elem.Value)); err != nil {
-					return errors.Wrap(err, "string")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.String{
+							MinLength:    0,
+							MinLengthSet: false,
+							MaxLength:    0,
+							MaxLengthSet: false,
+							Email:        true,
+							Hostname:     false,
+							Regex:        nil,
+						}).Validate(string(value)); err != nil {
+							return errors.Wrap(err, "string")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -35783,16 +35937,23 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(elem.Value)); err != nil {
-							return errors.Wrap(err, "string")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.String{
+									MinLength:    0,
+									MinLengthSet: false,
+									MaxLength:    0,
+									MaxLengthSet: false,
+									Email:        true,
+									Hostname:     false,
+									Regex:        nil,
+								}).Validate(string(value)); err != nil {
+									return errors.Wrap(err, "string")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {
@@ -35894,7 +36055,7 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -35904,7 +36065,7 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(request.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -36213,7 +36374,7 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 	}
 	// Validate request before sending.
 	if err := func() error {
-		if request.Set {
+		if value, ok := request.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
 					MinLength:    0,
@@ -36223,7 +36384,7 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(request.Value)); err != nil {
+				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -36312,16 +36473,23 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(elem.Value)); err != nil {
-					return errors.Wrap(err, "string")
+				if value, ok := elem.Get(); ok {
+					if err := func() error {
+						if err := (validate.String{
+							MinLength:    0,
+							MinLengthSet: false,
+							MaxLength:    0,
+							MaxLengthSet: false,
+							Email:        false,
+							Hostname:     true,
+							Regex:        nil,
+						}).Validate(string(value)); err != nil {
+							return errors.Wrap(err, "string")
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
 				}
 				return nil
 			}(); err != nil {
@@ -36421,16 +36589,23 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(elem.Value)); err != nil {
-							return errors.Wrap(err, "string")
+						if value, ok := elem.Get(); ok {
+							if err := func() error {
+								if err := (validate.String{
+									MinLength:    0,
+									MinLengthSet: false,
+									MaxLength:    0,
+									MaxLengthSet: false,
+									Email:        false,
+									Hostname:     true,
+									Regex:        nil,
+								}).Validate(string(value)); err != nil {
+									return errors.Wrap(err, "string")
+								}
+								return nil
+							}(); err != nil {
+								return err
+							}
 						}
 						return nil
 					}(); err != nil {

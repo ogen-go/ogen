@@ -17860,9 +17860,9 @@ func (s CallbacksOrReferences) Validate() error {
 func (s *Components) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Schemas.Set {
+		if value, ok := s.Schemas.Get(); ok {
 			if err := func() error {
-				if err := s.Schemas.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17878,9 +17878,9 @@ func (s *Components) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Responses.Set {
+		if value, ok := s.Responses.Get(); ok {
 			if err := func() error {
-				if err := s.Responses.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17896,9 +17896,9 @@ func (s *Components) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Parameters.Set {
+		if value, ok := s.Parameters.Get(); ok {
 			if err := func() error {
-				if err := s.Parameters.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17914,9 +17914,9 @@ func (s *Components) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestBodies.Set {
+		if value, ok := s.RequestBodies.Get(); ok {
 			if err := func() error {
-				if err := s.RequestBodies.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17932,9 +17932,9 @@ func (s *Components) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Headers.Set {
+		if value, ok := s.Headers.Get(); ok {
 			if err := func() error {
-				if err := s.Headers.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17950,9 +17950,9 @@ func (s *Components) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Callbacks.Set {
+		if value, ok := s.Callbacks.Get(); ok {
 			if err := func() error {
-				if err := s.Callbacks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17975,9 +17975,9 @@ func (s *Components) Validate() error {
 func (s *Encoding) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Headers.Set {
+		if value, ok := s.Headers.Get(); ok {
 			if err := func() error {
-				if err := s.Headers.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18036,9 +18036,9 @@ func (s Enum) Validate() error {
 func (s *Header) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Schema.Set {
+		if value, ok := s.Schema.Get(); ok {
 			if err := func() error {
-				if err := s.Schema.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18054,9 +18054,9 @@ func (s *Header) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Content.Set {
+		if value, ok := s.Content.Get(); ok {
 			if err := func() error {
-				if err := s.Content.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18121,9 +18121,9 @@ func (s Maximum) Validate() error {
 func (s *MediaType) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Schema.Set {
+		if value, ok := s.Schema.Get(); ok {
 			if err := func() error {
-				if err := s.Schema.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18139,9 +18139,9 @@ func (s *MediaType) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Encoding.Set {
+		if value, ok := s.Encoding.Get(); ok {
 			if err := func() error {
-				if err := s.Encoding.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18233,9 +18233,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.RequestBody.Set {
+		if value, ok := s.RequestBody.Get(); ok {
 			if err := func() error {
-				if err := s.RequestBody.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18262,9 +18262,9 @@ func (s *Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Callbacks.Set {
+		if value, ok := s.Callbacks.Get(); ok {
 			if err := func() error {
-				if err := s.Callbacks.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18324,9 +18324,9 @@ func (s *Parameter) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Style.Set {
+		if value, ok := s.Style.Get(); ok {
 			if err := func() error {
-				if err := s.Style.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18342,9 +18342,9 @@ func (s *Parameter) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Schema.Set {
+		if value, ok := s.Schema.Get(); ok {
 			if err := func() error {
-				if err := s.Schema.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18360,9 +18360,9 @@ func (s *Parameter) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Content.Set {
+		if value, ok := s.Content.Get(); ok {
 			if err := func() error {
-				if err := s.Content.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18454,9 +18454,9 @@ func (s ParametersOrReferences) Validate() error {
 func (s *PathItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Get.Set {
+		if value, ok := s.Get.Get(); ok {
 			if err := func() error {
-				if err := s.Get.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18472,9 +18472,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Put.Set {
+		if value, ok := s.Put.Get(); ok {
 			if err := func() error {
-				if err := s.Put.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18490,9 +18490,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Post.Set {
+		if value, ok := s.Post.Get(); ok {
 			if err := func() error {
-				if err := s.Post.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18508,9 +18508,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Delete.Set {
+		if value, ok := s.Delete.Get(); ok {
 			if err := func() error {
-				if err := s.Delete.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18526,9 +18526,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Options.Set {
+		if value, ok := s.Options.Get(); ok {
 			if err := func() error {
-				if err := s.Options.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18544,9 +18544,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Head.Set {
+		if value, ok := s.Head.Get(); ok {
 			if err := func() error {
-				if err := s.Head.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18562,9 +18562,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Patch.Set {
+		if value, ok := s.Patch.Get(); ok {
 			if err := func() error {
-				if err := s.Patch.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18580,9 +18580,9 @@ func (s *PathItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Trace.Set {
+		if value, ok := s.Trace.Get(); ok {
 			if err := func() error {
-				if err := s.Trace.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18738,9 +18738,9 @@ func (s RequestBodyOrReference) Validate() error {
 func (s *Response) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Headers.Set {
+		if value, ok := s.Headers.Get(); ok {
 			if err := func() error {
-				if err := s.Headers.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18756,9 +18756,9 @@ func (s *Response) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Content.Set {
+		if value, ok := s.Content.Get(); ok {
 			if err := func() error {
-				if err := s.Content.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18795,9 +18795,9 @@ func (s ResponseOrReference) Validate() error {
 func (s *Responses) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Default.Set {
+		if value, ok := s.Default.Get(); ok {
 			if err := func() error {
-				if err := s.Default.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18873,9 +18873,9 @@ func (s ResponsesPattern0) Validate() error {
 func (s *Schema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.MultipleOf.Set {
+		if value, ok := s.MultipleOf.Get(); ok {
 			if err := func() error {
-				if err := s.MultipleOf.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18891,9 +18891,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Maximum.Set {
+		if value, ok := s.Maximum.Get(); ok {
 			if err := func() error {
-				if err := s.Maximum.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18909,9 +18909,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Minimum.Set {
+		if value, ok := s.Minimum.Get(); ok {
 			if err := func() error {
-				if err := s.Minimum.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18927,9 +18927,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaxLength.Set {
+		if value, ok := s.MaxLength.Get(); ok {
 			if err := func() error {
-				if err := s.MaxLength.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18945,9 +18945,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MinLength.Set {
+		if value, ok := s.MinLength.Get(); ok {
 			if err := func() error {
-				if err := s.MinLength.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18963,9 +18963,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaxItems.Set {
+		if value, ok := s.MaxItems.Get(); ok {
 			if err := func() error {
-				if err := s.MaxItems.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18981,9 +18981,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MinItems.Set {
+		if value, ok := s.MinItems.Get(); ok {
 			if err := func() error {
-				if err := s.MinItems.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -18999,9 +18999,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MaxProperties.Set {
+		if value, ok := s.MaxProperties.Get(); ok {
 			if err := func() error {
-				if err := s.MaxProperties.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -19017,9 +19017,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.MinProperties.Set {
+		if value, ok := s.MinProperties.Get(); ok {
 			if err := func() error {
-				if err := s.MinProperties.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -19073,9 +19073,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Type.Set {
+		if value, ok := s.Type.Get(); ok {
 			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -19228,9 +19228,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Properties.Set {
+		if value, ok := s.Properties.Get(); ok {
 			if err := func() error {
-				if err := s.Properties.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -19394,9 +19394,9 @@ func (s *Spec) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Components.Set {
+		if value, ok := s.Components.Get(); ok {
 			if err := func() error {
-				if err := s.Components.Value.Validate(); err != nil {
+				if err := value.Validate(); err != nil {
 					return err
 				}
 				return nil

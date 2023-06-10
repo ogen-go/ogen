@@ -7080,9 +7080,9 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -10143,9 +10143,9 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Status.Set {
+				if value, ok := params.Status.Get(); ok {
 					if err := func() error {
-						if err := params.Status.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -15412,9 +15412,9 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -15473,9 +15473,9 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -17834,9 +17834,9 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -17890,9 +17890,9 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -18155,9 +18155,9 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -18211,9 +18211,9 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -21364,9 +21364,9 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Status.Set {
+				if value, ok := params.Status.Get(); ok {
 					if err := func() error {
-						if err := params.Status.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -21425,9 +21425,9 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -21885,9 +21885,9 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 				return err
 			}
 			if err := func() error {
-				if params.Status.Set {
+				if value, ok := params.Status.Get(); ok {
 					if err := func() error {
-						if err := params.Status.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -21946,9 +21946,9 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -24313,9 +24313,9 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -26735,9 +26735,9 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 				return err
 			}
 			if err := func() error {
-				if params.Include.Set {
+				if value, ok := params.Include.Get(); ok {
 					if err := func() error {
-						if err := params.Include.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -26873,9 +26873,9 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -37932,9 +37932,9 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -37993,9 +37993,9 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -38095,9 +38095,9 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -38156,9 +38156,9 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -39262,9 +39262,9 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -39318,9 +39318,9 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -39853,9 +39853,9 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -39914,9 +39914,9 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40016,9 +40016,9 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40077,9 +40077,9 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40432,9 +40432,9 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40493,9 +40493,9 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40595,9 +40595,9 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -40656,9 +40656,9 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -41135,9 +41135,9 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -41360,9 +41360,9 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -41421,9 +41421,9 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -42596,9 +42596,9 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -42657,9 +42657,9 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -42718,9 +42718,9 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -49874,9 +49874,9 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Include.Set {
+				if value, ok := params.Include.Get(); ok {
 					if err := func() error {
-						if err := params.Include.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -50012,9 +50012,9 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -51779,9 +51779,9 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -51840,9 +51840,9 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Role.Set {
+				if value, ok := params.Role.Get(); ok {
 					if err := func() error {
-						if err := params.Role.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -52035,9 +52035,9 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEsc
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -52290,9 +52290,9 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, 
 				return err
 			}
 			if err := func() error {
-				if params.Filter.Set {
+				if value, ok := params.Filter.Get(); ok {
 					if err := func() error {
-						if err := params.Filter.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -56235,9 +56235,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -56607,9 +56607,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -58098,9 +58098,9 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 				return err
 			}
 			if err := func() error {
-				if params.Visibility.Set {
+				if value, ok := params.Visibility.Get(); ok {
 					if err := func() error {
-						if err := params.Visibility.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -58291,9 +58291,9 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 				return err
 			}
 			if err := func() error {
-				if params.Visibility.Set {
+				if value, ok := params.Visibility.Get(); ok {
 					if err := func() error {
-						if err := params.Visibility.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -58439,9 +58439,9 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 				return err
 			}
 			if err := func() error {
-				if params.Visibility.Set {
+				if value, ok := params.Visibility.Get(); ok {
 					if err := func() error {
-						if err := params.Visibility.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -60849,9 +60849,9 @@ func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Req
 				return err
 			}
 			if err := func() error {
-				if params.ArchivedState.Set {
+				if value, ok := params.ArchivedState.Get(); ok {
 					if err := func() error {
-						if err := params.ArchivedState.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -61106,9 +61106,9 @@ func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *
 				return err
 			}
 			if err := func() error {
-				if params.Affiliation.Set {
+				if value, ok := params.Affiliation.Get(); ok {
 					if err := func() error {
-						if err := params.Affiliation.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -61538,9 +61538,9 @@ func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Re
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -61843,9 +61843,9 @@ func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.R
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -62095,9 +62095,9 @@ func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.R
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -64940,9 +64940,9 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -65083,9 +65083,9 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -65139,9 +65139,9 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -66718,9 +66718,9 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -66774,9 +66774,9 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -67137,9 +67137,9 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -67193,9 +67193,9 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -72195,9 +72195,9 @@ func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -72550,9 +72550,9 @@ func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -72905,9 +72905,9 @@ func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, 
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -73260,9 +73260,9 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEs
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -73668,9 +73668,9 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, args
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -74022,9 +74022,9 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, arg
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -74377,9 +74377,9 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -74678,9 +74678,9 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscape
 				return err
 			}
 			if err := func() error {
-				if params.Content.Set {
+				if value, ok := params.Content.Get(); ok {
 					if err := func() error {
-						if err := params.Content.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -83934,9 +83934,9 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 				return err
 			}
 			if err := func() error {
-				if params.Per.Set {
+				if value, ok := params.Per.Get(); ok {
 					if err := func() error {
-						if err := params.Per.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -88970,9 +88970,9 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 				return err
 			}
 			if err := func() error {
-				if params.Per.Set {
+				if value, ok := params.Per.Get(); ok {
 					if err := func() error {
-						if err := params.Per.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -90387,9 +90387,9 @@ func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *htt
 				return err
 			}
 			if err := func() error {
-				if params.Affiliation.Set {
+				if value, ok := params.Affiliation.Get(); ok {
 					if err := func() error {
-						if err := params.Affiliation.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93231,9 +93231,9 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Visibility.Set {
+				if value, ok := params.Visibility.Get(); ok {
 					if err := func() error {
-						if err := params.Visibility.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93338,9 +93338,9 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Type.Set {
+				if value, ok := params.Type.Get(); ok {
 					if err := func() error {
-						if err := params.Type.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93399,9 +93399,9 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93455,9 +93455,9 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93811,9 +93811,9 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Type.Set {
+				if value, ok := params.Type.Get(); ok {
 					if err := func() error {
-						if err := params.Type.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93872,9 +93872,9 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -93928,9 +93928,9 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -94202,9 +94202,9 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Type.Set {
+				if value, ok := params.Type.Get(); ok {
 					if err := func() error {
-						if err := params.Type.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -94263,9 +94263,9 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -94319,9 +94319,9 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -94624,9 +94624,9 @@ func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Reques
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -102715,9 +102715,9 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -102776,9 +102776,9 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103032,9 +103032,9 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103093,9 +103093,9 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103352,9 +103352,9 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103413,9 +103413,9 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103712,9 +103712,9 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -103773,9 +103773,9 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -104031,9 +104031,9 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -104092,9 +104092,9 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -104524,9 +104524,9 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 			if err := func() error {
-				if params.Sort.Set {
+				if value, ok := params.Sort.Get(); ok {
 					if err := func() error {
-						if err := params.Sort.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -104585,9 +104585,9 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 			if err := func() error {
-				if params.Order.Set {
+				if value, ok := params.Order.Get(); ok {
 					if err := func() error {
-						if err := params.Order.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -105024,9 +105024,9 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -105378,9 +105378,9 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 				return err
 			}
 			if err := func() error {
-				if params.State.Set {
+				if value, ok := params.State.Get(); ok {
 					if err := func() error {
-						if err := params.State.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -111204,9 +111204,9 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -111509,9 +111509,9 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -111826,9 +111826,9 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -112119,9 +112119,9 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 				return err
 			}
 			if err := func() error {
-				if params.Direction.Set {
+				if value, ok := params.Direction.Get(); ok {
 					if err := func() error {
-						if err := params.Direction.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -112914,9 +112914,9 @@ func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http
 				return err
 			}
 			if err := func() error {
-				if params.Role.Set {
+				if value, ok := params.Role.Get(); ok {
 					if err := func() error {
-						if err := params.Role.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -113169,9 +113169,9 @@ func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *htt
 				return err
 			}
 			if err := func() error {
-				if params.Role.Set {
+				if value, ok := params.Role.Get(); ok {
 					if err := func() error {
-						if err := params.Role.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
@@ -117187,9 +117187,9 @@ func decodeUsersGetContextForUserParams(args [1]string, argsEscaped bool, r *htt
 				return err
 			}
 			if err := func() error {
-				if params.SubjectType.Set {
+				if value, ok := params.SubjectType.Get(); ok {
 					if err := func() error {
-						if err := params.SubjectType.Value.Validate(); err != nil {
+						if err := value.Validate(); err != nil {
 							return err
 						}
 						return nil
