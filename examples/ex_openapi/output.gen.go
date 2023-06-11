@@ -15754,7 +15754,10 @@ func (s *SecurityRequirement) Decode(d *jx.Decoder) error {
 		case err != nil:
 			return errors.Wrap(err, "execute regex")
 		case !match:
-			return errors.Errorf("unexpected field %q", k)
+			switch string(k) {
+			default:
+				return errors.Errorf("unexpected field %q", k)
+			}
 		}
 		var elem []string
 		if err := func() error {

@@ -990,6 +990,86 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
+	t.Run("Issue943", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input     string
+			Expected  api.Issue943
+			ExpectErr bool
+		}{
+			{
+				`{"selector": "variant1", "variant1_field": 10}`,
+				api.NewIssue943Variant1Issue943(api.Issue943Variant1{
+					Variant1Field: 10,
+				}),
+				false,
+			},
+			{
+				`{"selector": "variant2", "variant2_field": true}`,
+				api.NewIssue943Variant2Issue943(api.Issue943Variant2{
+					Variant2Field: true,
+				}),
+				false,
+			},
+			{
+				`{"selector": "variant3", "variant3_foo": "foo", "variant3_bar": "bar"}`,
+				api.NewIssue943MapIssue943(api.Issue943Map{
+					Pattern0Props: api.Issue943MapPattern0{
+						"variant3_foo": "foo",
+						"variant3_bar": "bar",
+					},
+				}),
+				false,
+			},
+			{
+				`{"selector": "variant1", "variant2_field": true}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant1", "variant3_foo": "foo"}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant2", "variant1_field": 10}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant2", "variant3_foo": "foo"}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant3", "variant1_field": 10}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant3", "variant2_field": true}`,
+				api.Issue943{},
+				true,
+			},
+			{
+				`{"selector": "variant3", "unknown": true}`,
+				api.Issue943{},
+				true,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := api.Issue943{}
+				err := r.Decode(jx.DecodeStr(tc.Input))
+				if tc.ExpectErr {
+					require.Error(t, err)
+					return
+				}
+				require.NoError(t, err)
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
 }
 
 func TestJSONAny(t *testing.T) {

@@ -1974,6 +1974,8 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2019,6 +2021,8 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2064,6 +2068,8 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2126,6 +2132,8 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"chat_id\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2220,6 +2228,8 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"chat_id\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2331,6 +2341,8 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"user_id\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2408,6 +2420,8 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -12091,6 +12105,8 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -12352,6 +12368,8 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -13741,6 +13759,8 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -14497,6 +14517,8 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -14809,6 +14831,8 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -14940,6 +14964,8 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"reply_markup\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15251,6 +15277,8 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15552,6 +15580,8 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15864,6 +15894,8 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16159,6 +16191,8 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16477,6 +16511,8 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16806,6 +16842,8 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -17050,6 +17088,8 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18176,6 +18216,8 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"duration\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18402,6 +18444,8 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"title\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18594,6 +18638,8 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"disable_content_type_detection\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18752,6 +18798,8 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"caption_entities\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18995,6 +19043,8 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"supports_streaming\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -25590,6 +25640,8 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -25721,6 +25773,8 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -25864,6 +25918,8 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -25995,6 +26051,8 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26126,6 +26184,8 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26257,6 +26317,8 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26388,6 +26450,8 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26531,6 +26595,8 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26662,6 +26728,8 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
+		case "type":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}

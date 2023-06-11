@@ -1244,6 +1244,9 @@
           },
           "oneOf-mapping-reference": {
             "$ref": "#/components/schemas/OneOfMappingReference"
+          },
+          "issue943": {
+            "$ref": "#/components/schemas/Issue943"
           }
         }
       },
@@ -1480,6 +1483,76 @@
             "$ref": "#/components/schemas/OneOfNullables"
           }
         ]
+      },
+      "Issue943": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Issue943Variant1"
+          },
+          {
+            "$ref": "#/components/schemas/Issue943Variant2"
+          },
+          {
+            "$ref": "#/components/schemas/Issue943Map"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "selector",
+          "mapping": {
+            "variant1": "#/components/schemas/Issue943Variant1",
+            "variant2": "#/components/schemas/Issue943Variant2",
+            "variant3": "#/components/schemas/Issue943Map"
+          }
+        }
+      },
+      "Issue943Variant1": {
+        "type": "object",
+        "required": [
+          "selector",
+          "variant1_field"
+        ],
+        "properties": {
+          "selector": {
+            "type": "string"
+          },
+          "variant1_field": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Issue943Variant2": {
+        "type": "object",
+        "required": [
+          "selector",
+          "variant2_field"
+        ],
+        "properties": {
+          "selector": {
+            "type": "string"
+          },
+          "variant2_field": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Issue943Map": {
+        "type": "object",
+        "required": [
+          "selector"
+        ],
+        "properties": {
+          "selector": {
+            "type": "string"
+          }
+        },
+        "patternProperties": {
+          "^variant3_.*": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "TestFloatValidation": {
         "type": "object",

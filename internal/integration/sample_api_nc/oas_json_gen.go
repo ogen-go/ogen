@@ -2055,6 +2055,441 @@ func (s *Issue1433) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes Issue943 as json.
+func (s Issue943) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case Issue943Variant1Issue943:
+		e.ObjStart()
+		e.FieldStart("selector")
+		e.Str("variant1")
+		s.Issue943Variant1.encodeFields(e)
+		e.ObjEnd()
+	case Issue943Variant2Issue943:
+		e.ObjStart()
+		e.FieldStart("selector")
+		e.Str("variant2")
+		s.Issue943Variant2.encodeFields(e)
+		e.ObjEnd()
+	case Issue943MapIssue943:
+		e.ObjStart()
+		e.FieldStart("selector")
+		e.Str("variant3")
+		s.Issue943Map.encodeFields(e)
+		e.ObjEnd()
+	}
+}
+
+// Decode decodes Issue943 from json.
+func (s *Issue943) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Issue943 to nil")
+	}
+	// Sum type discriminator.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "selector":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "variant1":
+					s.Type = Issue943Variant1Issue943
+					found = true
+				case "variant2":
+					s.Type = Issue943Variant2Issue943
+					found = true
+				case "variant3":
+					s.Type = Issue943MapIssue943
+					found = true
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case Issue943Variant1Issue943:
+		if err := s.Issue943Variant1.Decode(d); err != nil {
+			return err
+		}
+	case Issue943Variant2Issue943:
+		if err := s.Issue943Variant2.Decode(d); err != nil {
+			return err
+		}
+	case Issue943MapIssue943:
+		if err := s.Issue943Map.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Issue943) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Issue943) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *Issue943Map) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *Issue943Map) encodeFields(e *jx.Encoder) {
+	for k, elem := range s.Pattern0Props {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+var jsonFieldsNameOfIssue943Map = [0]string{}
+
+// Decode decodes Issue943Map from json.
+func (s *Issue943Map) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Issue943Map to nil")
+	}
+	s.Pattern0Props = map[string]string{}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "selector":
+			return d.Skip()
+		default:
+			var handled bool
+			switch match, err := regexMap["^variant3_[^\r\n\u2028\u2029]*"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
+				handled = true
+				var elem string
+				if err := func() error {
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return errors.Wrapf(err, "decode field %q", k)
+				}
+				s.Pattern0Props[string(k)] = elem
+			}
+			if handled {
+				return nil
+			}
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Issue943Map")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *Issue943Map) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Issue943Map) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s Issue943MapPattern0) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Issue943MapPattern0) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes Issue943MapPattern0 from json.
+func (s *Issue943MapPattern0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Issue943MapPattern0 to nil")
+	}
+	m := s.init()
+	pattern := regexMap["^variant3_[^\r\n\u2028\u2029]*"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
+			return d.Skip()
+		}
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Issue943MapPattern0")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Issue943MapPattern0) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Issue943MapPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *Issue943Variant1) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *Issue943Variant1) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("variant1_field")
+		e.Int(s.Variant1Field)
+	}
+}
+
+var jsonFieldsNameOfIssue943Variant1 = [1]string{
+	0: "variant1_field",
+}
+
+// Decode decodes Issue943Variant1 from json.
+func (s *Issue943Variant1) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Issue943Variant1 to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "variant1_field":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.Variant1Field = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"variant1_field\"")
+			}
+		case "selector":
+			return d.Skip()
+		default:
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Issue943Variant1")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue943Variant1) {
+					name = jsonFieldsNameOfIssue943Variant1[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *Issue943Variant1) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Issue943Variant1) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *Issue943Variant2) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *Issue943Variant2) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("variant2_field")
+		e.Bool(s.Variant2Field)
+	}
+}
+
+var jsonFieldsNameOfIssue943Variant2 = [1]string{
+	0: "variant2_field",
+}
+
+// Decode decodes Issue943Variant2 from json.
+func (s *Issue943Variant2) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Issue943Variant2 to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "variant2_field":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Bool()
+				s.Variant2Field = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"variant2_field\"")
+			}
+		case "selector":
+			return d.Skip()
+		default:
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Issue943Variant2")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue943Variant2) {
+					name = jsonFieldsNameOfIssue943Variant2[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *Issue943Variant2) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Issue943Variant2) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *MapWithProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3200,13 +3635,20 @@ func (s *OneOfBugs) encodeFields(e *jx.Encoder) {
 			s.OneOfMinusMappingMinusReference.Encode(e)
 		}
 	}
+	{
+		if s.Issue943.Set {
+			e.FieldStart("issue943")
+			s.Issue943.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfOneOfBugs = [4]string{
+var jsonFieldsNameOfOneOfBugs = [5]string{
 	0: "issue143",
 	1: "additional-fields",
 	2: "oneOf-uuid-int-enum",
 	3: "oneOf-mapping-reference",
+	4: "issue943",
 }
 
 // Decode decodes OneOfBugs from json.
@@ -3257,6 +3699,16 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"oneOf-mapping-reference\"")
+			}
+		case "issue943":
+			if err := func() error {
+				s.Issue943.Reset()
+				if err := s.Issue943.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"issue943\"")
 			}
 		default:
 			return d.Skip()
@@ -3441,6 +3893,8 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"description\"")
 			}
+		case "infoType":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -3540,6 +3994,8 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"info\"")
 			}
+		case "infoType":
+			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -4362,7 +4818,10 @@ func (s *OnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
 		case err != nil:
 			return errors.Wrap(err, "execute regex")
 		case !match:
-			return errors.Errorf("unexpected field %q", k)
+			switch string(k) {
+			default:
+				return errors.Errorf("unexpected field %q", k)
+			}
 		}
 		var elem string
 		if err := func() error {
@@ -4907,6 +5366,39 @@ func (s OptInt32) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptInt32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Issue943 as json.
+func (o OptIssue943) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Issue943 from json.
+func (o *OptIssue943) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptIssue943 to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIssue943) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIssue943) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

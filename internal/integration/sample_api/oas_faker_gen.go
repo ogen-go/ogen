@@ -366,6 +366,54 @@ func (s *Issue1433) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *Issue943) SetFake() {
+	var variant Issue943Variant1
+
+	{
+		variant.SetFake()
+	}
+	s.SetIssue943Variant1(variant)
+}
+
+// SetFake set fake values.
+func (s *Issue943Map) SetFake() {
+	{
+		{
+			s.Pattern0Props.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue943MapPattern0) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue943Variant1) SetFake() {
+	{
+		{
+			s.Variant1Field = int(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue943Variant2) SetFake() {
+	{
+		{
+			s.Variant2Field = true
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *MapWithProperties) SetFake() {
 	{
 		{
@@ -547,6 +595,11 @@ func (s *OneOfBugs) SetFake() {
 	{
 		{
 			s.OneOfMinusMappingMinusReference.SetFake()
+		}
+	}
+	{
+		{
+			s.Issue943.SetFake()
 		}
 	}
 }
@@ -836,6 +889,15 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 	{
 		elem = int32(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue943) SetFake() {
+	var elem Issue943
+	{
+		elem.SetFake()
 	}
 	s.SetTo(elem)
 }
