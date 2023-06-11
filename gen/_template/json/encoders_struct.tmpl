@@ -77,17 +77,21 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		{{- end }}
 		switch string(k) {
 	{{- range $i, $f := $fields }}
-	case {{ quote $f.Tag.JSON }}:
-		{{- if $f.Spec.Required }}
-		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
-		{{ end -}}
+		case {{ quote $f.Tag.JSON }}:
+			{{- if $f.Spec.Required }}
+			requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
+			{{ end -}}
 
-		if err := func() error {
-			{{- template "json/dec" field_elem $f }}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, {{ printf "decode field %q" $f.Tag.JSON | quote }})
-		}
+			if err := func() error {
+				{{- template "json/dec" field_elem $f }}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, {{ printf "decode field %q" $f.Tag.JSON | quote }})
+			}
+	{{- end }}
+	{{- range $k, $_ := $.AllowedProps }}
+		case {{ quote $k }}:
+			return d.Skip()
 	{{- end }}
 		default:
 			{{- if $pattern }}

@@ -70,6 +70,7 @@ type Type struct {
 	GenericVariant      GenericVariant      // only for generic
 	MapPattern          ogenregex.Regexp    // only for map
 	DenyAdditionalProps bool                // only for map and struct
+	AllowedProps        map[string]struct{} // only for map and struct
 	Validators          Validators
 	// Features contains a set of features the type must implement.
 	// Available features: 'json', 'uri'.

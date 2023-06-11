@@ -278,6 +278,11 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 					xslices.Filter(&s.Fields, func(f *ir.Field) bool {
 						return f.Tag.JSON != propName
 					})
+
+					if s.AllowedProps == nil {
+						s.AllowedProps = map[string]struct{}{}
+					}
+					s.AllowedProps[propName] = struct{}{}
 				}
 			}
 			if !found {

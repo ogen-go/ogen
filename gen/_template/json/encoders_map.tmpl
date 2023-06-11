@@ -40,7 +40,14 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 			return errors.Wrap(err, "execute regex")
 		case !match:
 			{{- if $.DenyAdditionalProps }}
-			return errors.Errorf("unexpected field %q", k)
+			switch string(k) {
+			{{- range $k, $_ := $.AllowedProps }}
+			case {{ quote $k }}:
+				return d.Skip()
+			{{- end }}
+			default:
+				return errors.Errorf("unexpected field %q", k)
+			}
 			{{- else }}
 			return d.Skip()
 			{{- end }}
