@@ -924,6 +924,154 @@ func (s *Issue1433) SetUniqueMinus4(val string) {
 	s.UniqueMinus4 = val
 }
 
+// Ref: #/components/schemas/Issue943
+// Issue943 represents sum type.
+type Issue943 struct {
+	Type             Issue943Type // switch on this field
+	Issue943Variant1 Issue943Variant1
+	Issue943Variant2 Issue943Variant2
+	Issue943Map      Issue943Map
+}
+
+// Issue943Type is oneOf type of Issue943.
+type Issue943Type string
+
+// Possible values for Issue943Type.
+const (
+	Issue943Variant1Issue943 Issue943Type = "Issue943Variant1"
+	Issue943Variant2Issue943 Issue943Type = "Issue943Variant2"
+	Issue943MapIssue943      Issue943Type = "Issue943Map"
+)
+
+// IsIssue943Variant1 reports whether Issue943 is Issue943Variant1.
+func (s Issue943) IsIssue943Variant1() bool { return s.Type == Issue943Variant1Issue943 }
+
+// IsIssue943Variant2 reports whether Issue943 is Issue943Variant2.
+func (s Issue943) IsIssue943Variant2() bool { return s.Type == Issue943Variant2Issue943 }
+
+// IsIssue943Map reports whether Issue943 is Issue943Map.
+func (s Issue943) IsIssue943Map() bool { return s.Type == Issue943MapIssue943 }
+
+// SetIssue943Variant1 sets Issue943 to Issue943Variant1.
+func (s *Issue943) SetIssue943Variant1(v Issue943Variant1) {
+	s.Type = Issue943Variant1Issue943
+	s.Issue943Variant1 = v
+}
+
+// GetIssue943Variant1 returns Issue943Variant1 and true boolean if Issue943 is Issue943Variant1.
+func (s Issue943) GetIssue943Variant1() (v Issue943Variant1, ok bool) {
+	if !s.IsIssue943Variant1() {
+		return v, false
+	}
+	return s.Issue943Variant1, true
+}
+
+// NewIssue943Variant1Issue943 returns new Issue943 from Issue943Variant1.
+func NewIssue943Variant1Issue943(v Issue943Variant1) Issue943 {
+	var s Issue943
+	s.SetIssue943Variant1(v)
+	return s
+}
+
+// SetIssue943Variant2 sets Issue943 to Issue943Variant2.
+func (s *Issue943) SetIssue943Variant2(v Issue943Variant2) {
+	s.Type = Issue943Variant2Issue943
+	s.Issue943Variant2 = v
+}
+
+// GetIssue943Variant2 returns Issue943Variant2 and true boolean if Issue943 is Issue943Variant2.
+func (s Issue943) GetIssue943Variant2() (v Issue943Variant2, ok bool) {
+	if !s.IsIssue943Variant2() {
+		return v, false
+	}
+	return s.Issue943Variant2, true
+}
+
+// NewIssue943Variant2Issue943 returns new Issue943 from Issue943Variant2.
+func NewIssue943Variant2Issue943(v Issue943Variant2) Issue943 {
+	var s Issue943
+	s.SetIssue943Variant2(v)
+	return s
+}
+
+// SetIssue943Map sets Issue943 to Issue943Map.
+func (s *Issue943) SetIssue943Map(v Issue943Map) {
+	s.Type = Issue943MapIssue943
+	s.Issue943Map = v
+}
+
+// GetIssue943Map returns Issue943Map and true boolean if Issue943 is Issue943Map.
+func (s Issue943) GetIssue943Map() (v Issue943Map, ok bool) {
+	if !s.IsIssue943Map() {
+		return v, false
+	}
+	return s.Issue943Map, true
+}
+
+// NewIssue943MapIssue943 returns new Issue943 from Issue943Map.
+func NewIssue943MapIssue943(v Issue943Map) Issue943 {
+	var s Issue943
+	s.SetIssue943Map(v)
+	return s
+}
+
+// Ref: #/components/schemas/Issue943Map
+type Issue943Map struct {
+	// Pattern: "^variant3_[^\r\n\u2028\u2029]*".
+	Pattern0Props Issue943MapPattern0
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s *Issue943Map) GetPattern0Props() Issue943MapPattern0 {
+	return s.Pattern0Props
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Issue943Map) SetPattern0Props(val Issue943MapPattern0) {
+	s.Pattern0Props = val
+}
+
+type Issue943MapPattern0 map[string]string
+
+func (s *Issue943MapPattern0) init() Issue943MapPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/components/schemas/Issue943Variant1
+type Issue943Variant1 struct {
+	Variant1Field int `json:"variant1_field"`
+}
+
+// GetVariant1Field returns the value of Variant1Field.
+func (s *Issue943Variant1) GetVariant1Field() int {
+	return s.Variant1Field
+}
+
+// SetVariant1Field sets the value of Variant1Field.
+func (s *Issue943Variant1) SetVariant1Field(val int) {
+	s.Variant1Field = val
+}
+
+// Ref: #/components/schemas/Issue943Variant2
+type Issue943Variant2 struct {
+	Variant2Field bool `json:"variant2_field"`
+}
+
+// GetVariant2Field returns the value of Variant2Field.
+func (s *Issue943Variant2) GetVariant2Field() bool {
+	return s.Variant2Field
+}
+
+// SetVariant2Field sets the value of Variant2Field.
+func (s *Issue943Variant2) SetVariant2Field(val bool) {
+	s.Variant2Field = val
+}
+
 // Ref: #/components/schemas/MapWithProperties
 type MapWithProperties struct {
 	Required        int                               `json:"required"`
@@ -1580,6 +1728,7 @@ type OneOfBugs struct {
 	AdditionalMinusFields           OneVariantHasNoUniqueFields `json:"additional-fields"`
 	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      `json:"oneOf-uuid-int-enum"`
 	OneOfMinusMappingMinusReference OptOneOfMappingReference    `json:"oneOf-mapping-reference"`
+	Issue943                        OptIssue943                 `json:"issue943"`
 }
 
 // GetIssue143 returns the value of Issue143.
@@ -1602,6 +1751,11 @@ func (s *OneOfBugs) GetOneOfMinusMappingMinusReference() OptOneOfMappingReferenc
 	return s.OneOfMinusMappingMinusReference
 }
 
+// GetIssue943 returns the value of Issue943.
+func (s *OneOfBugs) GetIssue943() OptIssue943 {
+	return s.Issue943
+}
+
 // SetIssue143 sets the value of Issue143.
 func (s *OneOfBugs) SetIssue143(val Issue143) {
 	s.Issue143 = val
@@ -1620,6 +1774,11 @@ func (s *OneOfBugs) SetOneOfMinusUUIDMinusIntMinusEnum(val OptOneOfUUIDAndIntEnu
 // SetOneOfMinusMappingMinusReference sets the value of OneOfMinusMappingMinusReference.
 func (s *OneOfBugs) SetOneOfMinusMappingMinusReference(val OptOneOfMappingReference) {
 	s.OneOfMinusMappingMinusReference = val
+}
+
+// SetIssue943 sets the value of Issue943.
+func (s *OneOfBugs) SetIssue943(val OptIssue943) {
+	s.Issue943 = val
 }
 
 // Ref: #/components/schemas/OneOfMappingReference
@@ -2922,6 +3081,52 @@ func (o OptInt32) Get() (v int32, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue943 returns new OptIssue943 with value set to v.
+func NewOptIssue943(v Issue943) OptIssue943 {
+	return OptIssue943{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue943 is optional Issue943.
+type OptIssue943 struct {
+	Value Issue943
+	Set   bool
+}
+
+// IsSet returns true if OptIssue943 was set.
+func (o OptIssue943) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue943) Reset() {
+	var v Issue943
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue943) SetTo(v Issue943) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue943) Get() (v Issue943, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue943) Or(d Issue943) Issue943 {
 	if v, ok := o.Get(); ok {
 		return v
 	}

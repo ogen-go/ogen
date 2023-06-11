@@ -205,6 +205,68 @@ func TestIssue1433_EncodeDecode(t *testing.T) {
 	var typ2 Issue1433
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestIssue943_EncodeDecode(t *testing.T) {
+	var typ Issue943
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue943
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue943Map_EncodeDecode(t *testing.T) {
+	var typ Issue943Map
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue943Map
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue943MapPattern0_EncodeDecode(t *testing.T) {
+	var typ Issue943MapPattern0
+	typ = make(Issue943MapPattern0)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue943MapPattern0
+	typ2 = make(Issue943MapPattern0)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue943Variant1_EncodeDecode(t *testing.T) {
+	var typ Issue943Variant1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue943Variant1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue943Variant2_EncodeDecode(t *testing.T) {
+	var typ Issue943Variant2
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue943Variant2
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestMapWithProperties_EncodeDecode(t *testing.T) {
 	var typ MapWithProperties
 	typ.SetFake()

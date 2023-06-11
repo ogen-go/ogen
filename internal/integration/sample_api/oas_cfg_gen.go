@@ -19,9 +19,10 @@ import (
 )
 
 var regexMap = map[string]ogenregex.Regexp{
-	"^\\d-\\d$":                   ogenregex.MustCompile("^\\d-\\d$"),
-	"foo[^\r\n\u2028\u2029]*":     ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
-	"string_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
+	"^\\d-\\d$":                      ogenregex.MustCompile("^\\d-\\d$"),
+	"^variant3_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("^variant3_[^\r\n\u2028\u2029]*"),
+	"foo[^\r\n\u2028\u2029]*":        ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
+	"string_[^\r\n\u2028\u2029]*":    ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
 }
 var ratMap = map[string]*big.Rat{
 	"10": func() *big.Rat {
