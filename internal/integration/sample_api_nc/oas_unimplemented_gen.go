@@ -226,6 +226,13 @@ func (UnimplementedHandler) TestTuple(ctx context.Context) (r *TupleTest, _ erro
 	return r, ht.ErrNotImplemented
 }
 
+// TestTupleNamed implements testTupleNamed operation.
+//
+// GET /testTupleNamed
+func (UnimplementedHandler) TestTupleNamed(ctx context.Context) (r *TupleNamedTest, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestUniqueItems implements testUniqueItems operation.
 //
 // GET /testUniqueItems

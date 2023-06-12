@@ -140,6 +140,10 @@ type Handler interface {
 	//
 	// GET /testTuple
 	TestTuple(ctx context.Context) (*TupleTest, error)
+	// TestTupleNamed implements testTupleNamed operation.
+	//
+	// GET /testTupleNamed
+	TestTupleNamed(ctx context.Context) (*TupleNamedTest, error)
 	// TestUniqueItems implements testUniqueItems operation.
 	//
 	// GET /testUniqueItems

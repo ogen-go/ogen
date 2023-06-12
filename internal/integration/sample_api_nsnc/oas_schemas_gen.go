@@ -4835,6 +4835,90 @@ type TestNullableOneofsOK OneOfWithNullable
 
 func (*TestNullableOneofsOK) testNullableOneofsRes() {}
 
+// Ref: #/components/schemas/TupleNamedTest
+type TupleNamedTest struct {
+	Integer int
+	Boolean bool
+	V2      string
+	V3      [][]string
+	V4      TupleNamedTestV4
+}
+
+// GetInteger returns the value of Integer.
+func (s *TupleNamedTest) GetInteger() int {
+	return s.Integer
+}
+
+// GetBoolean returns the value of Boolean.
+func (s *TupleNamedTest) GetBoolean() bool {
+	return s.Boolean
+}
+
+// GetV2 returns the value of V2.
+func (s *TupleNamedTest) GetV2() string {
+	return s.V2
+}
+
+// GetV3 returns the value of V3.
+func (s *TupleNamedTest) GetV3() [][]string {
+	return s.V3
+}
+
+// GetV4 returns the value of V4.
+func (s *TupleNamedTest) GetV4() TupleNamedTestV4 {
+	return s.V4
+}
+
+// SetInteger sets the value of Integer.
+func (s *TupleNamedTest) SetInteger(val int) {
+	s.Integer = val
+}
+
+// SetBoolean sets the value of Boolean.
+func (s *TupleNamedTest) SetBoolean(val bool) {
+	s.Boolean = val
+}
+
+// SetV2 sets the value of V2.
+func (s *TupleNamedTest) SetV2(val string) {
+	s.V2 = val
+}
+
+// SetV3 sets the value of V3.
+func (s *TupleNamedTest) SetV3(val [][]string) {
+	s.V3 = val
+}
+
+// SetV4 sets the value of V4.
+func (s *TupleNamedTest) SetV4(val TupleNamedTestV4) {
+	s.V4 = val
+}
+
+type TupleNamedTestV4 struct {
+	Foo string    `json:"foo"`
+	Bar OptString `json:"bar"`
+}
+
+// GetFoo returns the value of Foo.
+func (s *TupleNamedTestV4) GetFoo() string {
+	return s.Foo
+}
+
+// GetBar returns the value of Bar.
+func (s *TupleNamedTestV4) GetBar() OptString {
+	return s.Bar
+}
+
+// SetFoo sets the value of Foo.
+func (s *TupleNamedTestV4) SetFoo(val string) {
+	s.Foo = val
+}
+
+// SetBar sets the value of Bar.
+func (s *TupleNamedTestV4) SetBar(val OptString) {
+	s.Bar = val
+}
+
 // Ref: #/components/schemas/TupleTest
 type TupleTest struct {
 	V0 int
