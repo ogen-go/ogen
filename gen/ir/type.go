@@ -72,6 +72,7 @@ type Type struct {
 	DenyAdditionalProps bool                // only for map and struct
 	AllowedProps        map[string]struct{} // only for map and struct
 	Validators          Validators
+	Tuple               bool // only for struct
 	// Features contains a set of features the type must implement.
 	// Available features: 'json', 'uri'.
 	//

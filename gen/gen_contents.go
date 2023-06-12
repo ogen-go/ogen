@@ -103,7 +103,8 @@ func (g *Generator) generateFormContent(
 ) (*ir.Type, error) {
 	if s := media.Schema; s != nil &&
 		((s.AdditionalProperties != nil && s.Item != nil) ||
-			len(s.PatternProperties) > 0) {
+			len(s.PatternProperties) > 0) ||
+		len(s.Items) > 0 {
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
