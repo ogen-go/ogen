@@ -656,7 +656,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
 						switch r.Method {
 						case "GET":
 							s.handleTestTupleRequest([0]string{}, elemIsEscaped, w, r)
@@ -665,6 +664,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						return
+					}
+					switch elem[0] {
+					case 'N': // Prefix: "Named"
+						if l := len("Named"); len(elem) >= l && elem[0:l] == "Named" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleTestTupleNamedRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
 					}
 				case 'U': // Prefix: "UniqueItems"
 					if l := len("UniqueItems"); len(elem) >= l && elem[0:l] == "UniqueItems" {
@@ -1444,7 +1463,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							// Leaf: TestTuple
 							r.name = "TestTuple"
 							r.operationID = "testTuple"
 							r.pathPattern = "/testTuple"
@@ -1453,6 +1471,29 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						default:
 							return
+						}
+					}
+					switch elem[0] {
+					case 'N': // Prefix: "Named"
+						if l := len("Named"); len(elem) >= l && elem[0:l] == "Named" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: TestTupleNamed
+								r.name = "TestTupleNamed"
+								r.operationID = "testTupleNamed"
+								r.pathPattern = "/testTupleNamed"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'U': // Prefix: "UniqueItems"

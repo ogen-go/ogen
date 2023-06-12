@@ -412,6 +412,11 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 			for i, item := range tuple {
 				fieldName := fmt.Sprintf("V%d", i)
+				if item.XOgenName != "" {
+					// Using the name from the ogen schema extension.
+					// Avoiding name conflicts is up to user.
+					fieldName = item.XOgenName
+				}
 				f, err := g.generate(name+fieldName, item, false)
 				if err != nil {
 					return nil, errors.Wrapf(err, "tuple element %d", i)

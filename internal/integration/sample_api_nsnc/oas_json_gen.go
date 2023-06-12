@@ -7770,6 +7770,245 @@ func (s *TestNullableOneofsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *TupleNamedTest) Encode(e *jx.Encoder) {
+	e.ArrStart()
+	s.encodeTuple(e)
+	e.ArrEnd()
+}
+
+// encodeTuple encodes fields.
+func (s *TupleNamedTest) encodeTuple(e *jx.Encoder) {
+	{
+		elem := s.Integer
+		e.Int(elem)
+	}
+	{
+		elem := s.Boolean
+		e.Bool(elem)
+	}
+	{
+		elem := s.V2
+		e.Str(elem)
+	}
+	{
+		elem := s.V3
+		e.ArrStart()
+		for _, elem := range elem {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+		elem := s.V4
+		elem.Encode(e)
+	}
+}
+
+// Decode decodes TupleNamedTest from json.
+func (s *TupleNamedTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TupleNamedTest to nil")
+	}
+	n := 0
+	if err := d.Arr(func(d *jx.Decoder) error {
+		switch n {
+		case 0:
+			n++
+			v, err := d.Int()
+			s.Integer = int(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		case 1:
+			n++
+			v, err := d.Bool()
+			s.Boolean = bool(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		case 2:
+			n++
+			v, err := d.Str()
+			s.V2 = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		case 3:
+			n++
+			s.V3 = make([][]string, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				s.V3 = append(s.V3, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		case 4:
+			n++
+			if err := s.V4.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		default:
+			return errors.Errorf("expected 5 elements, got %d", n)
+		}
+	}); err != nil {
+		return err
+	}
+	if n == 0 {
+		return errors.Errorf("expected 5 elements, got %d", n)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *TupleNamedTest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *TupleNamedTest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *TupleNamedTestV4) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *TupleNamedTestV4) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("foo")
+		e.Str(s.Foo)
+	}
+	{
+		if s.Bar.Set {
+			e.FieldStart("bar")
+			s.Bar.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfTupleNamedTestV4 = [2]string{
+	0: "foo",
+	1: "bar",
+}
+
+// Decode decodes TupleNamedTestV4 from json.
+func (s *TupleNamedTestV4) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TupleNamedTestV4 to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "foo":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Foo = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"foo\"")
+			}
+		case "bar":
+			if err := func() error {
+				s.Bar.Reset()
+				if err := s.Bar.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bar\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TupleNamedTestV4")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfTupleNamedTestV4) {
+					name = jsonFieldsNameOfTupleNamedTestV4[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *TupleNamedTestV4) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *TupleNamedTestV4) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *TupleTest) Encode(e *jx.Encoder) {
 	e.ArrStart()
 	s.encodeTuple(e)
