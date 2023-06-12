@@ -103,6 +103,26 @@ func (p PatternProperties) ToJSONSchema() (result jsonschema.RawPatternPropertie
 	return result
 }
 
+// ToJSONSchema converts Items to jsonschema.RawItems.
+func (p *Items) ToJSONSchema() *jsonschema.RawItems {
+	if p == nil {
+		return nil
+	}
+
+	if item := p.Item; item != nil {
+		return &jsonschema.RawItems{
+			Item: item.ToJSONSchema(),
+		}
+	}
+	rawItems := make([]*jsonschema.RawSchema, len(p.Items))
+	for i, item := range p.Items {
+		rawItems[i] = item.ToJSONSchema()
+	}
+	return &jsonschema.RawItems{
+		Items: rawItems,
+	}
+}
+
 // ToJSONSchema converts Discriminator to jsonschema.RawDiscriminator.
 func (d *Discriminator) ToJSONSchema() *jsonschema.RawDiscriminator {
 	if d == nil {

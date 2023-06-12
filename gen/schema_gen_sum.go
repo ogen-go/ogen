@@ -704,7 +704,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		r.DefaultSet = true
 	case s1.DefaultSet && s2.DefaultSet:
 		if !reflect.DeepEqual(s1.Default, s2.Default) {
-			return nil, errors.Errorf("schemes have different defaults")
+			return nil, errors.New("schemes have different defaults")
 		}
 
 		r.Default = s1.Default
@@ -758,14 +758,31 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 	// Array validation
 	{
-		r.Item, err = mergeSchemes(s1.Item, s2.Item)
-		if err != nil {
-			return nil, errors.Wrap(err, "merge item schema")
-		}
+		switch {
+		case len(s1.Items) > 0 && len(s2.Items) > 0:
+			if len(s1.Items) != len(s2.Items) {
+				return nil, errors.Errorf("items length is different: %d and %d", len(s1.Items), len(s2.Items))
+			}
+			result := make([]*jsonschema.Schema, len(s1.Items))
+			for i, e1 := range s1.Items {
+				e2 := s2.Items[i]
+				result[i], err = mergeSchemes(e1, e2)
+				if err != nil {
+					return nil, errors.Wrapf(err, "merge items[%d]", i)
+				}
+			}
+		case len(s1.Items) == 0 && len(s2.Items) == 0:
+			r.Item, err = mergeSchemes(s1.Item, s2.Item)
+			if err != nil {
+				return nil, errors.Wrap(err, "merge item schema")
+			}
 
-		r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
-		r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
-		r.UniqueItems = s1.UniqueItems || s2.UniqueItems
+			r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
+			r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
+			r.UniqueItems = s1.UniqueItems || s2.UniqueItems
+		default:
+			return nil, errors.New("can't merge different types of items")
+		}
 	}
 
 	// Object validation

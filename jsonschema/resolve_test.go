@@ -96,8 +96,10 @@ func TestExternalReference(t *testing.T) {
 
 	out, err := parser.Parse(&RawSchema{
 		Type: "array",
-		Items: &RawSchema{
-			Ref: "#/components/schemas/LocalSchema",
+		Items: &RawItems{
+			Item: &RawSchema{
+				Ref: "#/components/schemas/LocalSchema",
+			},
 		},
 	}, testCtx())
 	require.NoError(t, err)

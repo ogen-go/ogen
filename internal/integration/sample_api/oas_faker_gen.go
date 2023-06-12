@@ -1436,6 +1436,63 @@ func (s *TestNullableOneofsOK) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *TupleTest) SetFake() {
+	{
+		{
+			s.V0 = int(0)
+		}
+	}
+	{
+		{
+			s.V1 = true
+		}
+	}
+	{
+		{
+			s.V2 = "string"
+		}
+	}
+	{
+		{
+			s.V3 = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.V3 = append(s.V3, elem)
+			}
+		}
+	}
+	{
+		{
+			s.V4.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *TupleTestV4) SetFake() {
+	{
+		{
+			s.Foo = "string"
+		}
+	}
+	{
+		{
+			s.Bar.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *UniqueItemsTest) SetFake() {
 	{
 		{

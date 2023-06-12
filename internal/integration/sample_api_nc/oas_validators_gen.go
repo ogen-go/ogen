@@ -956,6 +956,41 @@ func (s TestNullableOneofsOK) Validate() error {
 	}
 	return nil
 }
+func (s *TupleTest) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.V3 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.V3 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "V3",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s *UniqueItemsTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

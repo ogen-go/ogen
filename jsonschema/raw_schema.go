@@ -11,7 +11,7 @@ type RawSchema struct {
 	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty" yaml:"additionalProperties,omitempty"`
 	PatternProperties    RawPatternProperties  `json:"patternProperties,omitempty" yaml:"patternProperties,omitempty"`
 	Required             []string              `json:"required,omitempty" yaml:"required,omitempty"`
-	Items                *RawSchema            `json:"items,omitempty" yaml:"items,omitempty"`
+	Items                *RawItems             `json:"items,omitempty" yaml:"items,omitempty"`
 	Nullable             bool                  `json:"nullable,omitempty" yaml:"nullable,omitempty"`
 	AllOf                []*RawSchema          `json:"allOf,omitempty" yaml:"allOf,omitempty"`
 	OneOf                []*RawSchema          `json:"oneOf,omitempty" yaml:"oneOf,omitempty"`

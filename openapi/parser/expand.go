@@ -690,9 +690,13 @@ func (e *expander) Schema(schema *jsonschema.Schema, walked map[*jsonschema.Sche
 		expanded.MaxItems = schema.MaxItems
 		expanded.UniqueItems = schema.UniqueItems
 
-		expanded.Items, err = e.Schema(schema.Item, walked)
+		var item *ogen.Schema
+		item, err = e.Schema(schema.Item, walked)
 		if err != nil {
 			return nil, errors.Wrap(err, "expand items")
+		}
+		expanded.Items = &ogen.Items{
+			Item: item,
 		}
 
 	case jsonschema.Integer, jsonschema.Number:

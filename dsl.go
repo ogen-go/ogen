@@ -836,7 +836,9 @@ func (s *Schema) SetRequired(r []string) *Schema {
 
 // SetItems sets the Items of the Schema.
 func (s *Schema) SetItems(i *Schema) *Schema {
-	s.Items = i
+	s.Items = &Items{
+		Item: i,
+	}
 	return s
 }
 
@@ -1035,8 +1037,10 @@ func schema(t, f string) *Schema {
 // AsArray returns a new "array" Schema wrapping the receiver.
 func (s *Schema) AsArray() *Schema {
 	return &Schema{
-		Type:  jsonschema.Array.String(),
-		Items: s,
+		Type: jsonschema.Array.String(),
+		Items: &Items{
+			Item: s,
+		},
 	}
 }
 

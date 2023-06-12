@@ -402,12 +402,33 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 		return s, nil
 	case jsonschema.Array:
+		if tuple := schema.Items; len(tuple) > 0 {
+			ret := g.regtype(name, &ir.Type{
+				Kind:   ir.KindStruct,
+				Name:   name,
+				Schema: schema,
+				Tuple:  true,
+			})
+
+			for i, item := range tuple {
+				fieldName := fmt.Sprintf("V%d", i)
+				f, err := g.generate(name+fieldName, item, false)
+				if err != nil {
+					return nil, errors.Wrapf(err, "tuple element %d", i)
+				}
+				ret.Fields = append(ret.Fields, &ir.Field{
+					Name: fieldName,
+					Type: f,
+				})
+			}
+
+			return ret, nil
+		}
 		array := &ir.Type{
 			Kind:        ir.KindArray,
 			Schema:      schema,
 			NilSemantic: ir.NilInvalid,
 		}
-
 		array.Validators.SetArray(schema)
 
 		ret := g.regtype(name, array)

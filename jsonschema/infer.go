@@ -101,9 +101,12 @@ func apply(s *RawSchema, d *jx.Decoder) error {
 		i := 0
 		return d.Arr(func(d *jx.Decoder) error {
 			if s.Items == nil {
-				s.Items = new(RawSchema)
+				s.Items = new(RawItems)
 			}
-			if err := apply(s.Items, d); err != nil {
+			if s.Items.Item == nil {
+				s.Items.Item = new(RawSchema)
+			}
+			if err := apply(s.Items.Item, d); err != nil {
 				return errors.Wrapf(err, "apply item %d", i)
 			}
 			i++

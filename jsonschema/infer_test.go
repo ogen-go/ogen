@@ -38,20 +38,26 @@ func TestInfer_Apply(t *testing.T) {
 
 		{RawSchema{Type: "array"}, []string{"[]"}},
 		{RawSchema{
-			Type:  "array",
-			Items: &RawSchema{Type: "integer"},
+			Type: "array",
+			Items: &RawItems{
+				Item: &RawSchema{Type: "integer"},
+			},
 		}, []string{"[1]"}},
 		{RawSchema{
-			Type:  "array",
-			Items: &RawSchema{Type: "number"},
+			Type: "array",
+			Items: &RawItems{
+				Item: &RawSchema{Type: "number"},
+			},
 		}, []string{"[1, 10, 5, 0.5]"}},
 		{RawSchema{
 			Type: "array",
-			Items: &RawSchema{
-				OneOf: []*RawSchema{
-					{Type: "integer"},
-					{Type: "boolean"},
-					{Type: "string"},
+			Items: &RawItems{
+				Item: &RawSchema{
+					OneOf: []*RawSchema{
+						{Type: "integer"},
+						{Type: "boolean"},
+						{Type: "string"},
+					},
 				},
 			},
 		}, []string{`[1, true, "foo"]`}},

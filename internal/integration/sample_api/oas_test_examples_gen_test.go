@@ -801,6 +801,30 @@ func TestTestNullableOneofsOK_EncodeDecode(t *testing.T) {
 	var typ2 TestNullableOneofsOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestTupleTest_EncodeDecode(t *testing.T) {
+	var typ TupleTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TupleTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTupleTestV4_EncodeDecode(t *testing.T) {
+	var typ TupleTestV4
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TupleTestV4
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestUniqueItemsTest_EncodeDecode(t *testing.T) {
 	var typ UniqueItemsTest
 	typ.SetFake()

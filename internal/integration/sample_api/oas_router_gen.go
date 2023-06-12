@@ -648,6 +648,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'T': // Prefix: "Tuple"
+					if l := len("Tuple"); len(elem) >= l && elem[0:l] == "Tuple" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestTupleRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				case 'U': // Prefix: "UniqueItems"
 					if l := len("UniqueItems"); len(elem) >= l && elem[0:l] == "UniqueItems" {
 						elem = elem[l:]
@@ -1409,6 +1427,27 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = "TestNullableOneofs"
 							r.operationID = "testNullableOneofs"
 							r.pathPattern = "/testNullableOneofs"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'T': // Prefix: "Tuple"
+					if l := len("Tuple"); len(elem) >= l && elem[0:l] == "Tuple" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: TestTuple
+							r.name = "TestTuple"
+							r.operationID = "testTuple"
+							r.pathPattern = "/testTuple"
 							r.args = args
 							r.count = 0
 							return r, true
