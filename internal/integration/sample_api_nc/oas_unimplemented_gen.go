@@ -219,6 +219,13 @@ func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNulla
 	return r, ht.ErrNotImplemented
 }
 
+// TestTuple implements testTuple operation.
+//
+// GET /testTuple
+func (UnimplementedHandler) TestTuple(ctx context.Context) (r *TupleTest, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestUniqueItems implements testUniqueItems operation.
 //
 // GET /testUniqueItems

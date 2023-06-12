@@ -136,6 +136,10 @@ type Handler interface {
 	//
 	// GET /testNullableOneofs
 	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
+	// TestTuple implements testTuple operation.
+	//
+	// GET /testTuple
+	TestTuple(ctx context.Context) (*TupleTest, error)
 	// TestUniqueItems implements testUniqueItems operation.
 	//
 	// GET /testUniqueItems
