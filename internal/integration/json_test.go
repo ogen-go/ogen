@@ -1191,3 +1191,35 @@ func TestJSONIP(t *testing.T) {
 	a.NoError(ip.Decode(jx.DecodeStr(`"2001:db8::68"`)))
 	a.NoError(ip.Decode(jx.DecodeStr(`"1.1.1.1"`)))
 }
+
+func TestTupleJSON(t *testing.T) {
+	for i, tc := range []struct {
+		Input     string
+		Expected  api.TupleTest
+		ExpectErr bool
+	}{
+		{`[1, true, "foo", [ ["sub1"], ["sub2"] ], {"foo": "foo"}]`, api.TupleTest{
+			V0: 1,
+			V1: true,
+			V2: "foo",
+			V3: [][]string{{"sub1"}, {"sub2"}},
+			V4: api.TupleTestV4{Foo: "foo"},
+		}, false},
+
+		{`[]`, api.TupleTest{}, true},
+		{`[true, 1, "foo", [], {"foo": "foo"}]`, api.TupleTest{}, true},
+	} {
+		// Make range value copy to prevent data races.
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			r := &api.TupleTest{}
+			err := r.Decode(jx.DecodeStr(tc.Input))
+			if tc.ExpectErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			testEncode(t, r, tc.Input)
+		})
+	}
+}

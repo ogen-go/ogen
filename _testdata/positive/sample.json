@@ -747,6 +747,23 @@
           }
         }
       }
+    },
+    "/testTuple": {
+      "get": {
+        "operationId": "testTuple",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TupleTest"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1706,6 +1723,43 @@
           }
         },
         "additionalProperties": false
+      },
+      "TupleTest": {
+        "type": "array",
+        "items": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "foo"
+            ],
+            "properties": {
+              "foo": {
+                "type": "string"
+              },
+              "bar": {
+                "type": "string"
+              }
+            }
+          }
+        ]
       }
     },
     "parameters": {
