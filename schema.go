@@ -51,7 +51,7 @@ type Schema struct {
 	// Value MUST be an object and not an array.
 	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
 	// MUST be present if the Type is "array".
-	Items *Schema `json:"items,omitempty" yaml:"items,omitempty"`
+	Items *Items `json:"items,omitempty" yaml:"items,omitempty"`
 
 	// A true value adds "null" to the allowed type specified by the type keyword,
 	// only if type is explicitly defined within the same Schema Object.
@@ -492,6 +492,62 @@ func (p *PatternProperties) UnmarshalJSON(data []byte) error {
 		})
 		return nil
 	})
+}
+
+// Items is unparsed JSON Schema items validator description.
+type Items struct {
+	Item  *Schema
+	Items []*Schema
+}
+
+// MarshalYAML implements yaml.Marshaler.
+func (p Items) MarshalYAML() (any, error) {
+	if p.Item != nil {
+		return p.Item, nil
+	}
+	return p.Items, nil
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (p *Items) UnmarshalYAML(node *yaml.Node) error {
+	switch node.Kind {
+	case yaml.MappingNode:
+		return node.Decode(&p.Item)
+	case yaml.SequenceNode:
+		return node.Decode(&p.Items)
+	default:
+		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+	}
+}
+
+// MarshalJSON implements json.Marshaler.
+func (p Items) MarshalJSON() ([]byte, error) {
+	if p.Item != nil {
+		return json.Marshal(p.Item)
+	}
+	return json.Marshal(p.Items)
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (p *Items) UnmarshalJSON(data []byte) error {
+	switch tt := jx.DecodeBytes(data).Next(); tt {
+	case jx.Object:
+		s := Schema{}
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+		p.Item = &s
+		return nil
+	case jx.Array:
+		var s []*Schema
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+		p.Items = s
+		return nil
+	default:
+		return errors.Errorf("unexpected type %s", tt.String())
+	}
 }
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.

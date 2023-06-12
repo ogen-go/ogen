@@ -92,8 +92,10 @@ func TestSchemaRecursive(t *testing.T) {
 					Name: "friends",
 					Schema: &RawSchema{
 						Type: "array",
-						Items: &RawSchema{
-							Ref: "#/components/schemas/Pet",
+						Items: &RawItems{
+							Item: &RawSchema{
+								Ref: "#/components/schemas/Pet",
+							},
 						},
 					},
 				},
@@ -309,8 +311,10 @@ func TestSchemaReferencedArray(t *testing.T) {
 	components := components{
 		"Pets": {
 			Type: "array",
-			Items: &RawSchema{
-				Type: "string",
+			Items: &RawItems{
+				Item: &RawSchema{
+					Type: "string",
+				},
 			},
 		},
 	}

@@ -258,3 +258,59 @@ func (p *RawPatternProperties) UnmarshalJSON(data []byte) error {
 		return nil
 	})
 }
+
+// RawItems is unparsed JSON Schema items validator description.
+type RawItems struct {
+	Item  *RawSchema
+	Items []*RawSchema
+}
+
+// MarshalYAML implements yaml.Marshaler.
+func (p RawItems) MarshalYAML() (any, error) {
+	if p.Item != nil {
+		return p.Item, nil
+	}
+	return p.Items, nil
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (p *RawItems) UnmarshalYAML(node *yaml.Node) error {
+	switch node.Kind {
+	case yaml.MappingNode:
+		return node.Decode(&p.Item)
+	case yaml.SequenceNode:
+		return node.Decode(&p.Items)
+	default:
+		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+	}
+}
+
+// MarshalJSON implements json.Marshaler.
+func (p RawItems) MarshalJSON() ([]byte, error) {
+	if p.Item != nil {
+		return json.Marshal(p.Item)
+	}
+	return json.Marshal(p.Items)
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (p *RawItems) UnmarshalJSON(data []byte) error {
+	switch tt := jx.DecodeBytes(data).Next(); tt {
+	case jx.Object:
+		s := RawSchema{}
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+		p.Item = &s
+		return nil
+	case jx.Array:
+		var s []*RawSchema
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+		p.Items = s
+		return nil
+	default:
+		return errors.Errorf("unexpected type %s", tt.String())
+	}
+}

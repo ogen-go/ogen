@@ -358,13 +358,15 @@ func TestBuilder(t *testing.T) {
 	maxStr := ogen.Num("2")
 	umax := uint64(max)
 	assert.Equal(t, &ogen.Schema{
-		Ref:              "ref",
-		Description:      "desc",
-		Type:             "object",
-		Format:           "",
-		Properties:       []ogen.Property{{Name: "prop"}},
-		Required:         []string{"prop"},
-		Items:            ogen.String(),
+		Ref:         "ref",
+		Description: "desc",
+		Type:        "object",
+		Format:      "",
+		Properties:  []ogen.Property{{Name: "prop"}},
+		Required:    []string{"prop"},
+		Items: &ogen.Items{
+			Item: ogen.String(),
+		},
 		Nullable:         true,
 		AllOf:            []*ogen.Schema{ogen.NewSchema()},
 		OneOf:            []*ogen.Schema{ogen.NewSchema()},

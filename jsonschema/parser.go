@@ -502,10 +502,22 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			return nil, err
 		}
 
-		if schema.Items != nil {
-			s.Item, err = p.parse(schema.Items, ctx)
-			if err != nil {
-				return nil, wrapField("items", err)
+		if items := schema.Items; items != nil {
+			if item := items.Item; item != nil {
+				s.Item, err = p.parse(items.Item, ctx)
+				if err != nil {
+					return nil, wrapField("items", err)
+				}
+			} else {
+				itemsLoc := s.Locator.Field("items")
+				if len(items.Items) == 0 {
+					err := errors.New("array is empty")
+					return nil, wrapField("items", err)
+				}
+				s.Items, err = p.parseMany(items.Items, itemsLoc, ctx)
+				if err != nil {
+					return nil, wrapField("items", err)
+				}
 			}
 		}
 	}

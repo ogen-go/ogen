@@ -58,6 +58,7 @@ type Schema struct {
 	Deprecated  bool
 
 	Item                 *Schema           // Only for Array and Object with additional properties.
+	Items                []*Schema         // Only for Array
 	AdditionalProperties *bool             // Whether Object has additional properties.
 	PatternProperties    []PatternProperty // Only for Object.
 	Enum                 []any             // Only for Enum.

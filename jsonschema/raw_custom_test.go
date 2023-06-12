@@ -151,3 +151,35 @@ func TestPatternProperties(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
+
+func TestItems(t *testing.T) {
+	create := func() any {
+		return &RawItems{}
+	}
+
+	tests := []struct {
+		data    string
+		value   RawItems
+		wantErr bool
+	}{
+		{`{"type":"string"}`, RawItems{Item: &RawSchema{Type: "string"}}, false},
+		{`[]`, RawItems{}, false},
+		{`[{"type":"string"}, {"type":"integer"}]`, RawItems{
+			Items: []*RawSchema{
+				{Type: "string"},
+				{Type: "integer"},
+			},
+		}, false},
+		// Invalid YAML.
+		{`{`, RawItems{}, true},
+		{`{]`, RawItems{}, true},
+		// Invalid type.
+		{`"foo"`, RawItems{}, true},
+		{`{"type": {}}`, RawItems{}, true},
+		{`0`, RawItems{}, true},
+	}
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
+	}
+}
