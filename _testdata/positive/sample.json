@@ -764,6 +764,23 @@
           }
         }
       }
+    },
+    "/testTupleNamed": {
+      "get": {
+        "operationId": "testTupleNamed",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TupleNamedTest"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1732,6 +1749,45 @@
           },
           {
             "type": "boolean"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "foo"
+            ],
+            "properties": {
+              "foo": {
+                "type": "string"
+              },
+              "bar": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "TupleNamedTest": {
+        "type": "array",
+        "items": [
+          {
+            "type": "integer",
+            "x-ogen-name": "Integer"
+          },
+          {
+            "type": "boolean",
+            "x-ogen-name": "Boolean"
           },
           {
             "type": "string"
