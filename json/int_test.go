@@ -8,6 +8,91 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func testDecodeEncode[T any](
+	decode func(d *jx.Decoder) (T, error),
+	encode func(e *jx.Encoder, v T),
+	input string,
+	wantVal T,
+	wantErr bool,
+) func(t *testing.T) {
+	return func(t *testing.T) {
+		a := require.New(t)
+		d := jx.DecodeStr(input)
+
+		got, err := decode(d)
+		if wantErr {
+			a.Errorf(err, "input: %q", input)
+			return
+		}
+		a.NoError(err)
+		a.Equal(wantVal, got)
+
+		e := jx.GetEncoder()
+		encode(e, wantVal)
+
+		d.ResetBytes(e.Bytes())
+		got2, err := decode(d)
+		a.NoError(err)
+		a.Equal(wantVal, got2)
+	}
+}
+
+func TestStringInt8(t *testing.T) {
+	tests := []struct {
+		input   string
+		wantVal int8
+		wantErr bool
+	}{
+		{`"-1"`, -1, false},
+		{`"0"`, 0, false},
+		{`"1"`, 1, false},
+		{`"10"`, 10, false},
+		{`"100"`, 100, false},
+
+		{"1", 0, true},
+		{`"1000"`, 0, true},
+		{`"foo"`, 0, true},
+	}
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
+			DecodeStringInt8,
+			EncodeStringInt8,
+			tt.input,
+			tt.wantVal,
+			tt.wantErr,
+		))
+	}
+}
+
+func TestStringInt16(t *testing.T) {
+	tests := []struct {
+		input   string
+		wantVal int16
+		wantErr bool
+	}{
+		{`"-1"`, -1, false},
+		{`"0"`, 0, false},
+		{`"1"`, 1, false},
+		{`"10"`, 10, false},
+		{`"10000"`, 10000, false},
+
+		{"1", 0, true},
+		{`"100000"`, 0, true},
+		{`"foo"`, 0, true},
+	}
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
+			DecodeStringInt16,
+			EncodeStringInt16,
+			tt.input,
+			tt.wantVal,
+			tt.wantErr,
+		))
+	}
+}
+
 func TestStringInt32(t *testing.T) {
 	tests := []struct {
 		input   string
@@ -26,26 +111,13 @@ func TestStringInt32(t *testing.T) {
 	}
 	for i, tt := range tests {
 		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-			d := jx.DecodeStr(tt.input)
-
-			got, err := DecodeStringInt32(d)
-			if tt.wantErr {
-				a.Error(err)
-				return
-			}
-			a.NoError(err)
-			a.Equal(tt.wantVal, got)
-
-			e := jx.GetEncoder()
-			EncodeStringInt32(e, tt.wantVal)
-
-			d.ResetBytes(e.Bytes())
-			got2, err := DecodeStringInt32(d)
-			a.NoError(err)
-			a.Equal(tt.wantVal, got2)
-		})
+		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
+			DecodeStringInt32,
+			EncodeStringInt32,
+			tt.input,
+			tt.wantVal,
+			tt.wantErr,
+		))
 	}
 }
 
@@ -67,26 +139,13 @@ func TestStringInt64(t *testing.T) {
 	}
 	for i, tt := range tests {
 		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-			d := jx.DecodeStr(tt.input)
-
-			got, err := DecodeStringInt64(d)
-			if tt.wantErr {
-				a.Error(err)
-				return
-			}
-			a.NoError(err)
-			a.Equal(tt.wantVal, got)
-
-			e := jx.GetEncoder()
-			EncodeStringInt64(e, tt.wantVal)
-
-			d.ResetBytes(e.Bytes())
-			got2, err := DecodeStringInt64(d)
-			a.NoError(err)
-			a.Equal(tt.wantVal, got2)
-		})
+		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
+			DecodeStringInt64,
+			EncodeStringInt64,
+			tt.input,
+			tt.wantVal,
+			tt.wantErr,
+		))
 	}
 }
 

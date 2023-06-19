@@ -132,15 +132,9 @@ func (j JSON) Format() string {
 		return "IPv6"
 	case "uri":
 		return "URI"
-	case "int8",
-		"int16",
-		"int32",
-		"int64",
-		"uint",
-		"uint8",
-		"uint16",
-		"uint32",
-		"uint64":
+	case "int", "int8", "int16", "int32", "int64",
+		"uint", "uint8", "uint16", "uint32", "uint64",
+		"float32", "float64":
 		if s.Type != jsonschema.String {
 			return ""
 		}

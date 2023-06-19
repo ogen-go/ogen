@@ -76,12 +76,22 @@ func (s *NilInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilInt16) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilInt32) SetFake() {
 	s.Null = true
 }
 
 // SetFake set fake values.
 func (s *NilInt64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilInt8) SetFake() {
 	s.Null = true
 }
 
@@ -141,12 +151,22 @@ func (s *NilUint) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilUint16) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilUint32) SetFake() {
 	s.Null = true
 }
 
 // SetFake set fake values.
 func (s *NilUint64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilUint8) SetFake() {
 	s.Null = true
 }
 
@@ -261,6 +281,15 @@ func (s *OptInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptInt16) SetFake() {
+	var elem int16
+	{
+		elem = int16(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptInt32) SetFake() {
 	var elem int32
 	{
@@ -274,6 +303,15 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 	{
 		elem = int64(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptInt8) SetFake() {
+	var elem int8
+	{
+		elem = int8(0)
 	}
 	s.SetTo(elem)
 }
@@ -345,6 +383,12 @@ func (s *OptNilInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNilInt16) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptNilInt32) SetFake() {
 	s.Null = true
 	s.Set = true
@@ -352,6 +396,12 @@ func (s *OptNilInt32) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilInt64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilInt8) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -423,6 +473,12 @@ func (s *OptNilUint) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNilUint16) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptNilUint32) SetFake() {
 	s.Null = true
 	s.Set = true
@@ -430,6 +486,12 @@ func (s *OptNilUint32) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilUint64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilUint8) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -576,6 +638,15 @@ func (s *OptUint) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptUint16) SetFake() {
+	var elem uint16
+	{
+		elem = uint16(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptUint32) SetFake() {
 	var elem uint32
 	{
@@ -589,6 +660,15 @@ func (s *OptUint64) SetFake() {
 	var elem uint64
 	{
 		elem = uint64(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptUint8) SetFake() {
+	var elem uint8
+	{
+		elem = uint8(0)
 	}
 	s.SetTo(elem)
 }
@@ -678,6 +758,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayIntegerInt16 = append(s.RequiredArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -702,6 +794,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayIntegerInt8 = append(s.RequiredArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -709,6 +813,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = uint(0)
 				}
 				s.RequiredArrayIntegerUint = append(s.RequiredArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayIntegerUint16 = append(s.RequiredArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -733,6 +849,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = uint64(0)
 				}
 				s.RequiredArrayIntegerUint64 = append(s.RequiredArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayIntegerUint8 = append(s.RequiredArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -966,6 +1094,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayStringFloat32 = append(s.RequiredArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayStringFloat64 = append(s.RequiredArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -973,6 +1125,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayStringInt = append(s.RequiredArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayStringInt16 = append(s.RequiredArrayStringInt16, elem)
 			}
 		}
 	}
@@ -997,6 +1173,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayStringInt8 = append(s.RequiredArrayStringInt8, elem)
 			}
 		}
 	}
@@ -1057,6 +1245,66 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.RequiredArrayStringUint = append(s.RequiredArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayStringUint16 = append(s.RequiredArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.RequiredArrayStringUint32 = append(s.RequiredArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.RequiredArrayStringUint64 = append(s.RequiredArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayStringUint8 = append(s.RequiredArrayStringUint8, elem)
 			}
 		}
 	}
@@ -1208,6 +1456,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt16 = append(s.RequiredDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -1246,6 +1513,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt8 = append(s.RequiredDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -1260,6 +1546,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint = append(s.RequiredDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint16 = append(s.RequiredDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -1298,6 +1603,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint64 = append(s.RequiredDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint8 = append(s.RequiredDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -1664,6 +1988,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat32 = append(s.RequiredDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat64 = append(s.RequiredDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -1678,6 +2040,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt = append(s.RequiredDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt16 = append(s.RequiredDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -1716,6 +2116,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt8 = append(s.RequiredDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -1811,6 +2230,101 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint = append(s.RequiredDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint16 = append(s.RequiredDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint32 = append(s.RequiredDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint64 = append(s.RequiredDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint8 = append(s.RequiredDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -1954,6 +2468,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt16 = int16(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
@@ -1964,7 +2483,17 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt8 = int8(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint16 = uint16(0)
 		}
 	}
 	{
@@ -1975,6 +2504,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredIntegerUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint8 = uint8(0)
 		}
 	}
 	{
@@ -2074,7 +2608,27 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringFloat32 = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringFloat64 = float64(0)
+		}
+	}
+	{
+		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt16 = int16(0)
 		}
 	}
 	{
@@ -2085,6 +2639,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt8 = int8(0)
 		}
 	}
 	{
@@ -2110,6 +2669,31 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint16 = uint16(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint32 = uint32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint8 = uint8(0)
 		}
 	}
 	{
@@ -2190,6 +2774,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayIntegerInt16 = append(s.OptionalArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -2214,6 +2810,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayIntegerInt8 = append(s.OptionalArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -2221,6 +2829,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = uint(0)
 				}
 				s.OptionalArrayIntegerUint = append(s.OptionalArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayIntegerUint16 = append(s.OptionalArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -2245,6 +2865,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = uint64(0)
 				}
 				s.OptionalArrayIntegerUint64 = append(s.OptionalArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayIntegerUint8 = append(s.OptionalArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -2478,6 +3110,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayStringFloat32 = append(s.OptionalArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayStringFloat64 = append(s.OptionalArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -2485,6 +3141,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayStringInt = append(s.OptionalArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayStringInt16 = append(s.OptionalArrayStringInt16, elem)
 			}
 		}
 	}
@@ -2509,6 +3189,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayStringInt8 = append(s.OptionalArrayStringInt8, elem)
 			}
 		}
 	}
@@ -2569,6 +3261,66 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.OptionalArrayStringUint = append(s.OptionalArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayStringUint16 = append(s.OptionalArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.OptionalArrayStringUint32 = append(s.OptionalArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.OptionalArrayStringUint64 = append(s.OptionalArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayStringUint8 = append(s.OptionalArrayStringUint8, elem)
 			}
 		}
 	}
@@ -2720,6 +3472,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt16 = append(s.OptionalDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -2758,6 +3529,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt8 = append(s.OptionalDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -2772,6 +3562,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint = append(s.OptionalDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint16 = append(s.OptionalDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -2810,6 +3619,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint64 = append(s.OptionalDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint8 = append(s.OptionalDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -3176,6 +4004,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat32 = append(s.OptionalDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat64 = append(s.OptionalDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -3190,6 +4056,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt = append(s.OptionalDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt16 = append(s.OptionalDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -3228,6 +4132,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt8 = append(s.OptionalDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -3323,6 +4246,101 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint = append(s.OptionalDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint16 = append(s.OptionalDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint32 = append(s.OptionalDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint64 = append(s.OptionalDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint8 = append(s.OptionalDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -3466,6 +4484,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt16.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
@@ -3476,7 +4499,17 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt8.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint16.SetFake()
 		}
 	}
 	{
@@ -3487,6 +4520,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint8.SetFake()
 		}
 	}
 	{
@@ -3586,7 +4624,27 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalStringFloat32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringFloat64.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt16.SetFake()
 		}
 	}
 	{
@@ -3597,6 +4655,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt8.SetFake()
 		}
 	}
 	{
@@ -3622,6 +4685,31 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint16.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint8.SetFake()
 		}
 	}
 	{
@@ -3710,6 +4798,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayIntegerInt16 = append(s.RequiredArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -3734,6 +4834,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayIntegerInt8 = append(s.RequiredArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -3741,6 +4853,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = uint(0)
 				}
 				s.RequiredArrayIntegerUint = append(s.RequiredArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayIntegerUint16 = append(s.RequiredArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -3765,6 +4889,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = uint64(0)
 				}
 				s.RequiredArrayIntegerUint64 = append(s.RequiredArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayIntegerUint8 = append(s.RequiredArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -3998,6 +5134,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayStringFloat32 = append(s.RequiredArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayStringFloat64 = append(s.RequiredArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -4005,6 +5165,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayStringInt = append(s.RequiredArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayStringInt16 = append(s.RequiredArrayStringInt16, elem)
 			}
 		}
 	}
@@ -4029,6 +5213,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayStringInt8 = append(s.RequiredArrayStringInt8, elem)
 			}
 		}
 	}
@@ -4089,6 +5285,66 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.RequiredArrayStringUint = append(s.RequiredArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayStringUint16 = append(s.RequiredArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.RequiredArrayStringUint32 = append(s.RequiredArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.RequiredArrayStringUint64 = append(s.RequiredArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayStringUint8 = append(s.RequiredArrayStringUint8, elem)
 			}
 		}
 	}
@@ -4240,6 +5496,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt16 = append(s.RequiredDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -4278,6 +5553,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt8 = append(s.RequiredDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -4292,6 +5586,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint = append(s.RequiredDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint16 = append(s.RequiredDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -4330,6 +5643,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint64 = append(s.RequiredDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint8 = append(s.RequiredDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -4696,6 +6028,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat32 = append(s.RequiredDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat64 = append(s.RequiredDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -4710,6 +6080,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt = append(s.RequiredDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt16 = append(s.RequiredDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -4748,6 +6156,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt8 = append(s.RequiredDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -4843,6 +6270,101 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint = append(s.RequiredDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint16 = append(s.RequiredDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint32 = append(s.RequiredDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint64 = append(s.RequiredDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint8 = append(s.RequiredDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -4986,6 +6508,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt16 = int16(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
@@ -4996,7 +6523,17 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt8 = int8(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint16 = uint16(0)
 		}
 	}
 	{
@@ -5007,6 +6544,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredIntegerUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint8 = uint8(0)
 		}
 	}
 	{
@@ -5106,7 +6648,27 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringFloat32 = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringFloat64 = float64(0)
+		}
+	}
+	{
+		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt16 = int16(0)
 		}
 	}
 	{
@@ -5117,6 +6679,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt8 = int8(0)
 		}
 	}
 	{
@@ -5142,6 +6709,31 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint16 = uint16(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint32 = uint32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint8 = uint8(0)
 		}
 	}
 	{
@@ -5222,6 +6814,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayIntegerInt16 = append(s.OptionalArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -5246,6 +6850,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayIntegerInt8 = append(s.OptionalArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -5253,6 +6869,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = uint(0)
 				}
 				s.OptionalArrayIntegerUint = append(s.OptionalArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayIntegerUint16 = append(s.OptionalArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -5277,6 +6905,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = uint64(0)
 				}
 				s.OptionalArrayIntegerUint64 = append(s.OptionalArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayIntegerUint8 = append(s.OptionalArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -5510,6 +7150,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayStringFloat32 = append(s.OptionalArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayStringFloat64 = append(s.OptionalArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -5517,6 +7181,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayStringInt = append(s.OptionalArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayStringInt16 = append(s.OptionalArrayStringInt16, elem)
 			}
 		}
 	}
@@ -5541,6 +7229,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayStringInt8 = append(s.OptionalArrayStringInt8, elem)
 			}
 		}
 	}
@@ -5601,6 +7301,66 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.OptionalArrayStringUint = append(s.OptionalArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayStringUint16 = append(s.OptionalArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.OptionalArrayStringUint32 = append(s.OptionalArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.OptionalArrayStringUint64 = append(s.OptionalArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayStringUint8 = append(s.OptionalArrayStringUint8, elem)
 			}
 		}
 	}
@@ -5752,6 +7512,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt16 = append(s.OptionalDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -5790,6 +7569,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt8 = append(s.OptionalDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -5804,6 +7602,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint = append(s.OptionalDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint16 = append(s.OptionalDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -5842,6 +7659,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint64 = append(s.OptionalDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint8 = append(s.OptionalDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -6208,6 +8044,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat32 = append(s.OptionalDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat64 = append(s.OptionalDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -6222,6 +8096,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt = append(s.OptionalDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt16 = append(s.OptionalDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -6260,6 +8172,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt8 = append(s.OptionalDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -6355,6 +8286,101 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint = append(s.OptionalDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint16 = append(s.OptionalDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint32 = append(s.OptionalDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint64 = append(s.OptionalDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint8 = append(s.OptionalDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -6498,6 +8524,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt16.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
@@ -6508,7 +8539,17 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt8.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint16.SetFake()
 		}
 	}
 	{
@@ -6519,6 +8560,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint8.SetFake()
 		}
 	}
 	{
@@ -6618,7 +8664,27 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalStringFloat32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringFloat64.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt16.SetFake()
 		}
 	}
 	{
@@ -6629,6 +8695,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt8.SetFake()
 		}
 	}
 	{
@@ -6654,6 +8725,31 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint16.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint8.SetFake()
 		}
 	}
 	{
@@ -6742,6 +8838,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayIntegerInt16 = append(s.RequiredArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -6766,6 +8874,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayIntegerInt8 = append(s.RequiredArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -6773,6 +8893,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = uint(0)
 				}
 				s.RequiredArrayIntegerUint = append(s.RequiredArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayIntegerUint16 = append(s.RequiredArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -6797,6 +8929,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = uint64(0)
 				}
 				s.RequiredArrayIntegerUint64 = append(s.RequiredArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayIntegerUint8 = append(s.RequiredArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -7030,6 +9174,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayStringFloat32 = append(s.RequiredArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayStringFloat64 = append(s.RequiredArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -7037,6 +9205,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayStringInt = append(s.RequiredArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.RequiredArrayStringInt16 = append(s.RequiredArrayStringInt16, elem)
 			}
 		}
 	}
@@ -7061,6 +9253,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = int64(0)
 				}
 				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.RequiredArrayStringInt8 = append(s.RequiredArrayStringInt8, elem)
 			}
 		}
 	}
@@ -7121,6 +9325,66 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.RequiredArrayStringUint = append(s.RequiredArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.RequiredArrayStringUint16 = append(s.RequiredArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.RequiredArrayStringUint32 = append(s.RequiredArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.RequiredArrayStringUint64 = append(s.RequiredArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.RequiredArrayStringUint8 = append(s.RequiredArrayStringUint8, elem)
 			}
 		}
 	}
@@ -7272,6 +9536,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt16 = append(s.RequiredDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -7310,6 +9593,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt8 = append(s.RequiredDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -7324,6 +9626,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint = append(s.RequiredDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint16 = append(s.RequiredDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -7362,6 +9683,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUint64 = append(s.RequiredDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUint8 = append(s.RequiredDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -7728,6 +10068,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat32 = append(s.RequiredDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringFloat64 = append(s.RequiredDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -7742,6 +10120,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt = append(s.RequiredDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt16 = append(s.RequiredDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -7780,6 +10196,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt8 = append(s.RequiredDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -7875,6 +10310,101 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint = append(s.RequiredDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint16 = append(s.RequiredDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint32 = append(s.RequiredDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint64 = append(s.RequiredDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUint8 = append(s.RequiredDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -8018,6 +10548,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt16 = int16(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
@@ -8028,7 +10563,17 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredIntegerInt8 = int8(0)
+		}
+	}
+	{
+		{
 			s.RequiredIntegerUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint16 = uint16(0)
 		}
 	}
 	{
@@ -8039,6 +10584,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredIntegerUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUint8 = uint8(0)
 		}
 	}
 	{
@@ -8138,7 +10688,27 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringFloat32 = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringFloat64 = float64(0)
+		}
+	}
+	{
+		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt16 = int16(0)
 		}
 	}
 	{
@@ -8149,6 +10719,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt8 = int8(0)
 		}
 	}
 	{
@@ -8174,6 +10749,31 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUint = uint(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint16 = uint16(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint32 = uint32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint64 = uint64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringUint8 = uint8(0)
 		}
 	}
 	{
@@ -8254,6 +10854,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayIntegerInt16 = append(s.OptionalArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
@@ -8278,6 +10890,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayIntegerInt8 = append(s.OptionalArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem uint
@@ -8285,6 +10909,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = uint(0)
 				}
 				s.OptionalArrayIntegerUint = append(s.OptionalArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayIntegerUint16 = append(s.OptionalArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -8309,6 +10945,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = uint64(0)
 				}
 				s.OptionalArrayIntegerUint64 = append(s.OptionalArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayIntegerUint8 = append(s.OptionalArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -8542,6 +11190,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayStringFloat32 = append(s.OptionalArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayStringFloat64 = append(s.OptionalArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -8549,6 +11221,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayStringInt = append(s.OptionalArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem int16
+				{
+					elem = int16(0)
+				}
+				s.OptionalArrayStringInt16 = append(s.OptionalArrayStringInt16, elem)
 			}
 		}
 	}
@@ -8573,6 +11269,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem int8
+				{
+					elem = int8(0)
+				}
+				s.OptionalArrayStringInt8 = append(s.OptionalArrayStringInt8, elem)
 			}
 		}
 	}
@@ -8633,6 +11341,66 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem uint
+				{
+					elem = uint(0)
+				}
+				s.OptionalArrayStringUint = append(s.OptionalArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint16
+				{
+					elem = uint16(0)
+				}
+				s.OptionalArrayStringUint16 = append(s.OptionalArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint32
+				{
+					elem = uint32(0)
+				}
+				s.OptionalArrayStringUint32 = append(s.OptionalArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint64
+				{
+					elem = uint64(0)
+				}
+				s.OptionalArrayStringUint64 = append(s.OptionalArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem uint8
+				{
+					elem = uint8(0)
+				}
+				s.OptionalArrayStringUint8 = append(s.OptionalArrayStringUint8, elem)
 			}
 		}
 	}
@@ -8784,6 +11552,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt16 = append(s.OptionalDoubleArrayIntegerInt16, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
@@ -8822,6 +11609,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayIntegerInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt8 = append(s.OptionalDoubleArrayIntegerInt8, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayIntegerUint = nil
 			for i := 0; i < 0; i++ {
 				var elem []uint
@@ -8836,6 +11642,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint = append(s.OptionalDoubleArrayIntegerUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint16 = append(s.OptionalDoubleArrayIntegerUint16, elem)
 			}
 		}
 	}
@@ -8874,6 +11699,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUint64 = append(s.OptionalDoubleArrayIntegerUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUint8 = append(s.OptionalDoubleArrayIntegerUint8, elem)
 			}
 		}
 	}
@@ -9240,6 +12084,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringFloat32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat32 = append(s.OptionalDoubleArrayStringFloat32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringFloat64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringFloat64 = append(s.OptionalDoubleArrayStringFloat64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -9254,6 +12136,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt = append(s.OptionalDoubleArrayStringInt, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int16
+						{
+							elemElem = int16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt16 = append(s.OptionalDoubleArrayStringInt16, elem)
 			}
 		}
 	}
@@ -9292,6 +12212,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int8
+						{
+							elemElem = int8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt8 = append(s.OptionalDoubleArrayStringInt8, elem)
 			}
 		}
 	}
@@ -9387,6 +12326,101 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint
+						{
+							elemElem = uint(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint = append(s.OptionalDoubleArrayStringUint, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint16 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint16
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint16
+						{
+							elemElem = uint16(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint16 = append(s.OptionalDoubleArrayStringUint16, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint32
+						{
+							elemElem = uint32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint32 = append(s.OptionalDoubleArrayStringUint32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint64
+						{
+							elemElem = uint64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint64 = append(s.OptionalDoubleArrayStringUint64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUint8 = nil
+			for i := 0; i < 0; i++ {
+				var elem []uint8
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uint8
+						{
+							elemElem = uint8(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUint8 = append(s.OptionalDoubleArrayStringUint8, elem)
 			}
 		}
 	}
@@ -9530,6 +12564,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt16.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
@@ -9540,7 +12579,17 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalIntegerInt8.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalIntegerUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint16.SetFake()
 		}
 	}
 	{
@@ -9551,6 +12600,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalIntegerUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUint8.SetFake()
 		}
 	}
 	{
@@ -9650,7 +12704,27 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalStringFloat32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringFloat64.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt16.SetFake()
 		}
 	}
 	{
@@ -9661,6 +12735,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt8.SetFake()
 		}
 	}
 	{
@@ -9686,6 +12765,31 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint16.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUint8.SetFake()
 		}
 	}
 	{

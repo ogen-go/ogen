@@ -349,6 +349,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case '1': // Prefix: "16"
+									if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case '3': // Prefix: "32"
 									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 										elem = elem[l:]
@@ -597,6 +721,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
+								case '8': // Prefix: "8"
+									if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								}
 							case 'n': // Prefix: "nullable"
 								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -683,6 +931,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -921,6 +1293,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															switch r.Method {
 															case "POST":
 																s.handleTestRequestIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2718,6 +3214,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -2966,6 +3586,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									}
 								case 'n': // Prefix: "nullable"
 									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -3052,6 +3796,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
 										case '3': // Prefix: "32"
 											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
@@ -3290,6 +4158,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																switch r.Method {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -5779,6 +6771,266 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
+								case 'f': // Prefix: "float"
+									if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringFloat32Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringFloat64Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'h': // Prefix: "hostname"
 									if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 										elem = elem[l:]
@@ -5922,9 +7174,140 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											break
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringIntRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
 										}
 										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringInt16Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
 										case '3': // Prefix: "32"
 											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
@@ -6169,6 +7552,235 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																return
 															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringInt8Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
 														}
 													}
 												}
@@ -6874,6 +8486,626 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 									switch elem[0] {
+									case 'i': // Prefix: "int"
+										if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringUintRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringUint16Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '3': // Prefix: "32"
+											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringUint32Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '6': // Prefix: "64"
+											if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringUint64Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringUint8Request([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case 'n': // Prefix: "nix"
 										if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 											elem = elem[l:]
@@ -8728,6 +10960,266 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringFloat32Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringFloat64Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								}
 							case 'h': // Prefix: "hostname"
 								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 									elem = elem[l:]
@@ -8871,9 +11363,140 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringIntRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringInt16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -9118,6 +11741,235 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															return
 														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringInt8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
 													}
 												}
 											}
@@ -9823,6 +12675,626 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringUintRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringUint16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringUint32Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringUint64Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringUint8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case 'n': // Prefix: "nix"
 									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 										elem = elem[l:]
@@ -10985,6 +14457,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case '1': // Prefix: "16"
+									if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case '3': // Prefix: "32"
 									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 										elem = elem[l:]
@@ -11233,6 +14829,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
+								case '8': // Prefix: "8"
+									if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								}
 							case 'n': // Prefix: "nullable"
 								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -11319,6 +15039,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -11557,6 +15401,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															switch r.Method {
 															case "POST":
 																s.handleTestResponseIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -14046,6 +18014,266 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringFloat32Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringFloat64Request([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								}
 							case 'h': // Prefix: "hostname"
 								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 									elem = elem[l:]
@@ -14189,9 +18417,140 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringIntRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringInt16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -14436,6 +18795,235 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															return
 														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringInt8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
 													}
 												}
 											}
@@ -15141,6 +19729,626 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringUintRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringUint16Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringUint32Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringUint64Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringUint8Request([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case 'n': // Prefix: "nix"
 									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 										elem = elem[l:]
@@ -16453,6 +21661,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case '1': // Prefix: "16"
+									if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestIntegerInt16"
+											r.operationID = "test_request_integer_int16"
+											r.pathPattern = "/test_request_integer_int16"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerInt16Array"
+													r.operationID = "test_request_integer_int16_array"
+													r.pathPattern = "/test_request_integer_int16_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestIntegerInt16ArrayArray
+														r.name = "TestRequestIntegerInt16ArrayArray"
+														r.operationID = "test_request_integer_int16_array_array"
+														r.pathPattern = "/test_request_integer_int16_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerInt16Nullable"
+													r.operationID = "test_request_integer_int16_nullable"
+													r.pathPattern = "/test_request_integer_int16_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerInt16NullableArray"
+														r.operationID = "test_request_integer_int16_nullable_array"
+														r.pathPattern = "/test_request_integer_int16_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerInt16NullableArrayArray
+															r.name = "TestRequestIntegerInt16NullableArrayArray"
+															r.operationID = "test_request_integer_int16_nullable_array_array"
+															r.pathPattern = "/test_request_integer_int16_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case '3': // Prefix: "32"
 									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 										elem = elem[l:]
@@ -16737,6 +22087,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 										}
 									}
+								case '8': // Prefix: "8"
+									if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestIntegerInt8"
+											r.operationID = "test_request_integer_int8"
+											r.pathPattern = "/test_request_integer_int8"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerInt8Array"
+													r.operationID = "test_request_integer_int8_array"
+													r.pathPattern = "/test_request_integer_int8_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestIntegerInt8ArrayArray
+														r.name = "TestRequestIntegerInt8ArrayArray"
+														r.operationID = "test_request_integer_int8_array_array"
+														r.pathPattern = "/test_request_integer_int8_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerInt8Nullable"
+													r.operationID = "test_request_integer_int8_nullable"
+													r.pathPattern = "/test_request_integer_int8_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerInt8NullableArray"
+														r.operationID = "test_request_integer_int8_nullable_array"
+														r.pathPattern = "/test_request_integer_int8_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerInt8NullableArrayArray
+															r.name = "TestRequestIntegerInt8NullableArrayArray"
+															r.operationID = "test_request_integer_int8_nullable_array_array"
+															r.pathPattern = "/test_request_integer_int8_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								}
 							case 'n': // Prefix: "nullable"
 								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -16835,6 +22327,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestIntegerUint16"
+												r.operationID = "test_request_integer_uint16"
+												r.pathPattern = "/test_request_integer_uint16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUint16Array"
+														r.operationID = "test_request_integer_uint16_array"
+														r.pathPattern = "/test_request_integer_uint16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerUint16ArrayArray
+															r.name = "TestRequestIntegerUint16ArrayArray"
+															r.operationID = "test_request_integer_uint16_array_array"
+															r.pathPattern = "/test_request_integer_uint16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUint16Nullable"
+														r.operationID = "test_request_integer_uint16_nullable"
+														r.pathPattern = "/test_request_integer_uint16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUint16NullableArray"
+															r.operationID = "test_request_integer_uint16_nullable_array"
+															r.pathPattern = "/test_request_integer_uint16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestIntegerUint16NullableArrayArray
+																r.name = "TestRequestIntegerUint16NullableArrayArray"
+																r.operationID = "test_request_integer_uint16_nullable_array_array"
+																r.pathPattern = "/test_request_integer_uint16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -17108,6 +22742,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = "TestRequestIntegerUint64NullableArrayArray"
 																r.operationID = "test_request_integer_uint64_nullable_array_array"
 																r.pathPattern = "/test_request_integer_uint64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestIntegerUint8"
+												r.operationID = "test_request_integer_uint8"
+												r.pathPattern = "/test_request_integer_uint8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUint8Array"
+														r.operationID = "test_request_integer_uint8_array"
+														r.pathPattern = "/test_request_integer_uint8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerUint8ArrayArray
+															r.name = "TestRequestIntegerUint8ArrayArray"
+															r.operationID = "test_request_integer_uint8_array_array"
+															r.pathPattern = "/test_request_integer_uint8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUint8Nullable"
+														r.operationID = "test_request_integer_uint8_nullable"
+														r.pathPattern = "/test_request_integer_uint8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUint8NullableArray"
+															r.operationID = "test_request_integer_uint8_nullable_array"
+															r.pathPattern = "/test_request_integer_uint8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestIntegerUint8NullableArrayArray
+																r.name = "TestRequestIntegerUint8NullableArrayArray"
+																r.operationID = "test_request_integer_uint8_nullable_array_array"
+																r.pathPattern = "/test_request_integer_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19155,6 +24931,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										break
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredIntegerInt16"
+												r.operationID = "test_request_required_integer_int16"
+												r.pathPattern = "/test_request_required_integer_int16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerInt16Array"
+														r.operationID = "test_request_required_integer_int16_array"
+														r.pathPattern = "/test_request_required_integer_int16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredIntegerInt16ArrayArray
+															r.name = "TestRequestRequiredIntegerInt16ArrayArray"
+															r.operationID = "test_request_required_integer_int16_array_array"
+															r.pathPattern = "/test_request_required_integer_int16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerInt16Nullable"
+														r.operationID = "test_request_required_integer_int16_nullable"
+														r.pathPattern = "/test_request_required_integer_int16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerInt16NullableArray"
+															r.operationID = "test_request_required_integer_int16_nullable_array"
+															r.pathPattern = "/test_request_required_integer_int16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerInt16NullableArrayArray
+																r.name = "TestRequestRequiredIntegerInt16NullableArrayArray"
+																r.operationID = "test_request_required_integer_int16_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_int16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -19439,6 +25357,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 											}
 										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredIntegerInt8"
+												r.operationID = "test_request_required_integer_int8"
+												r.pathPattern = "/test_request_required_integer_int8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerInt8Array"
+														r.operationID = "test_request_required_integer_int8_array"
+														r.pathPattern = "/test_request_required_integer_int8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredIntegerInt8ArrayArray
+															r.name = "TestRequestRequiredIntegerInt8ArrayArray"
+															r.operationID = "test_request_required_integer_int8_array_array"
+															r.pathPattern = "/test_request_required_integer_int8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerInt8Nullable"
+														r.operationID = "test_request_required_integer_int8_nullable"
+														r.pathPattern = "/test_request_required_integer_int8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerInt8NullableArray"
+															r.operationID = "test_request_required_integer_int8_nullable_array"
+															r.pathPattern = "/test_request_required_integer_int8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerInt8NullableArrayArray
+																r.name = "TestRequestRequiredIntegerInt8NullableArrayArray"
+																r.operationID = "test_request_required_integer_int8_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_int8_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									}
 								case 'n': // Prefix: "nullable"
 									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -19537,6 +25597,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 										}
 										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredIntegerUint16"
+													r.operationID = "test_request_required_integer_uint16"
+													r.pathPattern = "/test_request_required_integer_uint16"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUint16Array"
+															r.operationID = "test_request_required_integer_uint16_array"
+															r.pathPattern = "/test_request_required_integer_uint16_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerUint16ArrayArray
+																r.name = "TestRequestRequiredIntegerUint16ArrayArray"
+																r.operationID = "test_request_required_integer_uint16_array_array"
+																r.pathPattern = "/test_request_required_integer_uint16_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUint16Nullable"
+															r.operationID = "test_request_required_integer_uint16_nullable"
+															r.pathPattern = "/test_request_required_integer_uint16_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUint16NullableArray"
+																r.operationID = "test_request_required_integer_uint16_nullable_array"
+																r.pathPattern = "/test_request_required_integer_uint16_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredIntegerUint16NullableArrayArray
+																	r.name = "TestRequestRequiredIntegerUint16NullableArrayArray"
+																	r.operationID = "test_request_required_integer_uint16_nullable_array_array"
+																	r.pathPattern = "/test_request_required_integer_uint16_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
 										case '3': // Prefix: "32"
 											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
@@ -19810,6 +26012,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = "TestRequestRequiredIntegerUint64NullableArrayArray"
 																	r.operationID = "test_request_required_integer_uint64_nullable_array_array"
 																	r.pathPattern = "/test_request_required_integer_uint64_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredIntegerUint8"
+													r.operationID = "test_request_required_integer_uint8"
+													r.pathPattern = "/test_request_required_integer_uint8"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUint8Array"
+															r.operationID = "test_request_required_integer_uint8_array"
+															r.pathPattern = "/test_request_required_integer_uint8_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerUint8ArrayArray
+																r.name = "TestRequestRequiredIntegerUint8ArrayArray"
+																r.operationID = "test_request_required_integer_uint8_array_array"
+																r.pathPattern = "/test_request_required_integer_uint8_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUint8Nullable"
+															r.operationID = "test_request_required_integer_uint8_nullable"
+															r.pathPattern = "/test_request_required_integer_uint8_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUint8NullableArray"
+																r.operationID = "test_request_required_integer_uint8_nullable_array"
+																r.pathPattern = "/test_request_required_integer_uint8_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredIntegerUint8NullableArrayArray
+																	r.name = "TestRequestRequiredIntegerUint8NullableArrayArray"
+																	r.operationID = "test_request_required_integer_uint8_nullable_array_array"
+																	r.pathPattern = "/test_request_required_integer_uint8_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -22648,6 +28992,302 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 										}
 									}
+								case 'f': // Prefix: "float"
+									if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredStringFloat32"
+												r.operationID = "test_request_required_string_float32"
+												r.pathPattern = "/test_request_required_string_float32"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringFloat32Array"
+														r.operationID = "test_request_required_string_float32_array"
+														r.pathPattern = "/test_request_required_string_float32_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringFloat32ArrayArray
+															r.name = "TestRequestRequiredStringFloat32ArrayArray"
+															r.operationID = "test_request_required_string_float32_array_array"
+															r.pathPattern = "/test_request_required_string_float32_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringFloat32Nullable"
+														r.operationID = "test_request_required_string_float32_nullable"
+														r.pathPattern = "/test_request_required_string_float32_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringFloat32NullableArray"
+															r.operationID = "test_request_required_string_float32_nullable_array"
+															r.pathPattern = "/test_request_required_string_float32_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringFloat32NullableArrayArray
+																r.name = "TestRequestRequiredStringFloat32NullableArrayArray"
+																r.operationID = "test_request_required_string_float32_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_float32_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredStringFloat64"
+												r.operationID = "test_request_required_string_float64"
+												r.pathPattern = "/test_request_required_string_float64"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringFloat64Array"
+														r.operationID = "test_request_required_string_float64_array"
+														r.pathPattern = "/test_request_required_string_float64_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringFloat64ArrayArray
+															r.name = "TestRequestRequiredStringFloat64ArrayArray"
+															r.operationID = "test_request_required_string_float64_array_array"
+															r.pathPattern = "/test_request_required_string_float64_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringFloat64Nullable"
+														r.operationID = "test_request_required_string_float64_nullable"
+														r.pathPattern = "/test_request_required_string_float64_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringFloat64NullableArray"
+															r.operationID = "test_request_required_string_float64_nullable_array"
+															r.pathPattern = "/test_request_required_string_float64_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringFloat64NullableArrayArray
+																r.name = "TestRequestRequiredStringFloat64NullableArrayArray"
+																r.operationID = "test_request_required_string_float64_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_float64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'h': // Prefix: "hostname"
 									if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 										elem = elem[l:]
@@ -22809,9 +29449,161 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											break
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredStringInt"
+												r.operationID = "test_request_required_string_int"
+												r.pathPattern = "/test_request_required_string_int"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringInt16"
+													r.operationID = "test_request_required_string_int16"
+													r.pathPattern = "/test_request_required_string_int16"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringInt16Array"
+															r.operationID = "test_request_required_string_int16_array"
+															r.pathPattern = "/test_request_required_string_int16_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringInt16ArrayArray
+																r.name = "TestRequestRequiredStringInt16ArrayArray"
+																r.operationID = "test_request_required_string_int16_array_array"
+																r.pathPattern = "/test_request_required_string_int16_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringInt16Nullable"
+															r.operationID = "test_request_required_string_int16_nullable"
+															r.pathPattern = "/test_request_required_string_int16_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringInt16NullableArray"
+																r.operationID = "test_request_required_string_int16_nullable_array"
+																r.pathPattern = "/test_request_required_string_int16_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringInt16NullableArrayArray
+																	r.name = "TestRequestRequiredStringInt16NullableArrayArray"
+																	r.operationID = "test_request_required_string_int16_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_int16_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
 										case '3': // Prefix: "32"
 											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
@@ -23091,6 +29883,268 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																default:
 																	return
 																}
+															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringInt8"
+													r.operationID = "test_request_required_string_int8"
+													r.pathPattern = "/test_request_required_string_int8"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringInt8Array"
+															r.operationID = "test_request_required_string_int8_array"
+															r.pathPattern = "/test_request_required_string_int8_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringInt8ArrayArray
+																r.name = "TestRequestRequiredStringInt8ArrayArray"
+																r.operationID = "test_request_required_string_int8_array_array"
+																r.pathPattern = "/test_request_required_string_int8_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringInt8Nullable"
+															r.operationID = "test_request_required_string_int8_nullable"
+															r.pathPattern = "/test_request_required_string_int8_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringInt8NullableArray"
+																r.operationID = "test_request_required_string_int8_nullable_array"
+																r.pathPattern = "/test_request_required_string_int8_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringInt8NullableArrayArray
+																	r.name = "TestRequestRequiredStringInt8NullableArrayArray"
+																	r.operationID = "test_request_required_string_int8_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_int8_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringIntArray"
+														r.operationID = "test_request_required_string_int_array"
+														r.pathPattern = "/test_request_required_string_int_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringIntArrayArray
+															r.name = "TestRequestRequiredStringIntArrayArray"
+															r.operationID = "test_request_required_string_int_array_array"
+															r.pathPattern = "/test_request_required_string_int_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringIntNullable"
+														r.operationID = "test_request_required_string_int_nullable"
+														r.pathPattern = "/test_request_required_string_int_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringIntNullableArray"
+															r.operationID = "test_request_required_string_int_nullable_array"
+															r.pathPattern = "/test_request_required_string_int_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringIntNullableArrayArray
+																r.name = "TestRequestRequiredStringIntNullableArrayArray"
+																r.operationID = "test_request_required_string_int_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_int_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
 															}
 														}
 													}
@@ -23896,6 +30950,716 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										break
 									}
 									switch elem[0] {
+									case 'i': // Prefix: "int"
+										if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredStringUint"
+												r.operationID = "test_request_required_string_uint"
+												r.pathPattern = "/test_request_required_string_uint"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '1': // Prefix: "16"
+											if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringUint16"
+													r.operationID = "test_request_required_string_uint16"
+													r.pathPattern = "/test_request_required_string_uint16"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint16Array"
+															r.operationID = "test_request_required_string_uint16_array"
+															r.pathPattern = "/test_request_required_string_uint16_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringUint16ArrayArray
+																r.name = "TestRequestRequiredStringUint16ArrayArray"
+																r.operationID = "test_request_required_string_uint16_array_array"
+																r.pathPattern = "/test_request_required_string_uint16_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint16Nullable"
+															r.operationID = "test_request_required_string_uint16_nullable"
+															r.pathPattern = "/test_request_required_string_uint16_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringUint16NullableArray"
+																r.operationID = "test_request_required_string_uint16_nullable_array"
+																r.pathPattern = "/test_request_required_string_uint16_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringUint16NullableArrayArray
+																	r.name = "TestRequestRequiredStringUint16NullableArrayArray"
+																	r.operationID = "test_request_required_string_uint16_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_uint16_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '3': // Prefix: "32"
+											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringUint32"
+													r.operationID = "test_request_required_string_uint32"
+													r.pathPattern = "/test_request_required_string_uint32"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint32Array"
+															r.operationID = "test_request_required_string_uint32_array"
+															r.pathPattern = "/test_request_required_string_uint32_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringUint32ArrayArray
+																r.name = "TestRequestRequiredStringUint32ArrayArray"
+																r.operationID = "test_request_required_string_uint32_array_array"
+																r.pathPattern = "/test_request_required_string_uint32_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint32Nullable"
+															r.operationID = "test_request_required_string_uint32_nullable"
+															r.pathPattern = "/test_request_required_string_uint32_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringUint32NullableArray"
+																r.operationID = "test_request_required_string_uint32_nullable_array"
+																r.pathPattern = "/test_request_required_string_uint32_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringUint32NullableArrayArray
+																	r.name = "TestRequestRequiredStringUint32NullableArrayArray"
+																	r.operationID = "test_request_required_string_uint32_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_uint32_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '6': // Prefix: "64"
+											if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringUint64"
+													r.operationID = "test_request_required_string_uint64"
+													r.pathPattern = "/test_request_required_string_uint64"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint64Array"
+															r.operationID = "test_request_required_string_uint64_array"
+															r.pathPattern = "/test_request_required_string_uint64_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringUint64ArrayArray
+																r.name = "TestRequestRequiredStringUint64ArrayArray"
+																r.operationID = "test_request_required_string_uint64_array_array"
+																r.pathPattern = "/test_request_required_string_uint64_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint64Nullable"
+															r.operationID = "test_request_required_string_uint64_nullable"
+															r.pathPattern = "/test_request_required_string_uint64_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringUint64NullableArray"
+																r.operationID = "test_request_required_string_uint64_nullable_array"
+																r.pathPattern = "/test_request_required_string_uint64_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringUint64NullableArrayArray
+																	r.name = "TestRequestRequiredStringUint64NullableArrayArray"
+																	r.operationID = "test_request_required_string_uint64_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_uint64_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '8': // Prefix: "8"
+											if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringUint8"
+													r.operationID = "test_request_required_string_uint8"
+													r.pathPattern = "/test_request_required_string_uint8"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint8Array"
+															r.operationID = "test_request_required_string_uint8_array"
+															r.pathPattern = "/test_request_required_string_uint8_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringUint8ArrayArray
+																r.name = "TestRequestRequiredStringUint8ArrayArray"
+																r.operationID = "test_request_required_string_uint8_array_array"
+																r.pathPattern = "/test_request_required_string_uint8_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUint8Nullable"
+															r.operationID = "test_request_required_string_uint8_nullable"
+															r.pathPattern = "/test_request_required_string_uint8_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredStringUint8NullableArray"
+																r.operationID = "test_request_required_string_uint8_nullable_array"
+																r.pathPattern = "/test_request_required_string_uint8_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredStringUint8NullableArrayArray
+																	r.name = "TestRequestRequiredStringUint8NullableArrayArray"
+																	r.operationID = "test_request_required_string_uint8_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_uint8_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringUintArray"
+														r.operationID = "test_request_required_string_uint_array"
+														r.pathPattern = "/test_request_required_string_uint_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringUintArrayArray
+															r.name = "TestRequestRequiredStringUintArrayArray"
+															r.operationID = "test_request_required_string_uint_array_array"
+															r.pathPattern = "/test_request_required_string_uint_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringUintNullable"
+														r.operationID = "test_request_required_string_uint_nullable"
+														r.pathPattern = "/test_request_required_string_uint_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringUintNullableArray"
+															r.operationID = "test_request_required_string_uint_nullable_array"
+															r.pathPattern = "/test_request_required_string_uint_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringUintNullableArrayArray
+																r.name = "TestRequestRequiredStringUintNullableArrayArray"
+																r.operationID = "test_request_required_string_uint_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_uint_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case 'n': // Prefix: "nix"
 										if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 											elem = elem[l:]
@@ -26011,6 +33775,302 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 									}
 								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestStringFloat32"
+											r.operationID = "test_request_string_float32"
+											r.pathPattern = "/test_request_string_float32"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringFloat32Array"
+													r.operationID = "test_request_string_float32_array"
+													r.pathPattern = "/test_request_string_float32_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringFloat32ArrayArray
+														r.name = "TestRequestStringFloat32ArrayArray"
+														r.operationID = "test_request_string_float32_array_array"
+														r.pathPattern = "/test_request_string_float32_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringFloat32Nullable"
+													r.operationID = "test_request_string_float32_nullable"
+													r.pathPattern = "/test_request_string_float32_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringFloat32NullableArray"
+														r.operationID = "test_request_string_float32_nullable_array"
+														r.pathPattern = "/test_request_string_float32_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringFloat32NullableArrayArray
+															r.name = "TestRequestStringFloat32NullableArrayArray"
+															r.operationID = "test_request_string_float32_nullable_array_array"
+															r.pathPattern = "/test_request_string_float32_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestStringFloat64"
+											r.operationID = "test_request_string_float64"
+											r.pathPattern = "/test_request_string_float64"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringFloat64Array"
+													r.operationID = "test_request_string_float64_array"
+													r.pathPattern = "/test_request_string_float64_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringFloat64ArrayArray
+														r.name = "TestRequestStringFloat64ArrayArray"
+														r.operationID = "test_request_string_float64_array_array"
+														r.pathPattern = "/test_request_string_float64_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringFloat64Nullable"
+													r.operationID = "test_request_string_float64_nullable"
+													r.pathPattern = "/test_request_string_float64_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringFloat64NullableArray"
+														r.operationID = "test_request_string_float64_nullable_array"
+														r.pathPattern = "/test_request_string_float64_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringFloat64NullableArrayArray
+															r.name = "TestRequestStringFloat64NullableArrayArray"
+															r.operationID = "test_request_string_float64_nullable_array_array"
+															r.pathPattern = "/test_request_string_float64_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
 							case 'h': // Prefix: "hostname"
 								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 									elem = elem[l:]
@@ -26172,9 +34232,161 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = "TestRequestStringInt"
+											r.operationID = "test_request_string_int"
+											r.pathPattern = "/test_request_string_int"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringInt16"
+												r.operationID = "test_request_string_int16"
+												r.pathPattern = "/test_request_string_int16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringInt16Array"
+														r.operationID = "test_request_string_int16_array"
+														r.pathPattern = "/test_request_string_int16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringInt16ArrayArray
+															r.name = "TestRequestStringInt16ArrayArray"
+															r.operationID = "test_request_string_int16_array_array"
+															r.pathPattern = "/test_request_string_int16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringInt16Nullable"
+														r.operationID = "test_request_string_int16_nullable"
+														r.pathPattern = "/test_request_string_int16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringInt16NullableArray"
+															r.operationID = "test_request_string_int16_nullable_array"
+															r.pathPattern = "/test_request_string_int16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringInt16NullableArrayArray
+																r.name = "TestRequestStringInt16NullableArrayArray"
+																r.operationID = "test_request_string_int16_nullable_array_array"
+																r.pathPattern = "/test_request_string_int16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -26454,6 +34666,268 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															default:
 																return
 															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringInt8"
+												r.operationID = "test_request_string_int8"
+												r.pathPattern = "/test_request_string_int8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringInt8Array"
+														r.operationID = "test_request_string_int8_array"
+														r.pathPattern = "/test_request_string_int8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringInt8ArrayArray
+															r.name = "TestRequestStringInt8ArrayArray"
+															r.operationID = "test_request_string_int8_array_array"
+															r.pathPattern = "/test_request_string_int8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringInt8Nullable"
+														r.operationID = "test_request_string_int8_nullable"
+														r.pathPattern = "/test_request_string_int8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringInt8NullableArray"
+															r.operationID = "test_request_string_int8_nullable_array"
+															r.pathPattern = "/test_request_string_int8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringInt8NullableArrayArray
+																r.name = "TestRequestStringInt8NullableArrayArray"
+																r.operationID = "test_request_string_int8_nullable_array_array"
+																r.pathPattern = "/test_request_string_int8_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringIntArray"
+													r.operationID = "test_request_string_int_array"
+													r.pathPattern = "/test_request_string_int_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringIntArrayArray
+														r.name = "TestRequestStringIntArrayArray"
+														r.operationID = "test_request_string_int_array_array"
+														r.pathPattern = "/test_request_string_int_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringIntNullable"
+													r.operationID = "test_request_string_int_nullable"
+													r.pathPattern = "/test_request_string_int_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringIntNullableArray"
+														r.operationID = "test_request_string_int_nullable_array"
+														r.pathPattern = "/test_request_string_int_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringIntNullableArrayArray
+															r.name = "TestRequestStringIntNullableArrayArray"
+															r.operationID = "test_request_string_int_nullable_array_array"
+															r.pathPattern = "/test_request_string_int_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
 														}
 													}
 												}
@@ -27259,6 +35733,716 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestStringUint"
+											r.operationID = "test_request_string_uint"
+											r.pathPattern = "/test_request_string_uint"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringUint16"
+												r.operationID = "test_request_string_uint16"
+												r.pathPattern = "/test_request_string_uint16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint16Array"
+														r.operationID = "test_request_string_uint16_array"
+														r.pathPattern = "/test_request_string_uint16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringUint16ArrayArray
+															r.name = "TestRequestStringUint16ArrayArray"
+															r.operationID = "test_request_string_uint16_array_array"
+															r.pathPattern = "/test_request_string_uint16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint16Nullable"
+														r.operationID = "test_request_string_uint16_nullable"
+														r.pathPattern = "/test_request_string_uint16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringUint16NullableArray"
+															r.operationID = "test_request_string_uint16_nullable_array"
+															r.pathPattern = "/test_request_string_uint16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringUint16NullableArrayArray
+																r.name = "TestRequestStringUint16NullableArrayArray"
+																r.operationID = "test_request_string_uint16_nullable_array_array"
+																r.pathPattern = "/test_request_string_uint16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringUint32"
+												r.operationID = "test_request_string_uint32"
+												r.pathPattern = "/test_request_string_uint32"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint32Array"
+														r.operationID = "test_request_string_uint32_array"
+														r.pathPattern = "/test_request_string_uint32_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringUint32ArrayArray
+															r.name = "TestRequestStringUint32ArrayArray"
+															r.operationID = "test_request_string_uint32_array_array"
+															r.pathPattern = "/test_request_string_uint32_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint32Nullable"
+														r.operationID = "test_request_string_uint32_nullable"
+														r.pathPattern = "/test_request_string_uint32_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringUint32NullableArray"
+															r.operationID = "test_request_string_uint32_nullable_array"
+															r.pathPattern = "/test_request_string_uint32_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringUint32NullableArrayArray
+																r.name = "TestRequestStringUint32NullableArrayArray"
+																r.operationID = "test_request_string_uint32_nullable_array_array"
+																r.pathPattern = "/test_request_string_uint32_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringUint64"
+												r.operationID = "test_request_string_uint64"
+												r.pathPattern = "/test_request_string_uint64"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint64Array"
+														r.operationID = "test_request_string_uint64_array"
+														r.pathPattern = "/test_request_string_uint64_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringUint64ArrayArray
+															r.name = "TestRequestStringUint64ArrayArray"
+															r.operationID = "test_request_string_uint64_array_array"
+															r.pathPattern = "/test_request_string_uint64_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint64Nullable"
+														r.operationID = "test_request_string_uint64_nullable"
+														r.pathPattern = "/test_request_string_uint64_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringUint64NullableArray"
+															r.operationID = "test_request_string_uint64_nullable_array"
+															r.pathPattern = "/test_request_string_uint64_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringUint64NullableArrayArray
+																r.name = "TestRequestStringUint64NullableArrayArray"
+																r.operationID = "test_request_string_uint64_nullable_array_array"
+																r.pathPattern = "/test_request_string_uint64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringUint8"
+												r.operationID = "test_request_string_uint8"
+												r.pathPattern = "/test_request_string_uint8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint8Array"
+														r.operationID = "test_request_string_uint8_array"
+														r.pathPattern = "/test_request_string_uint8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringUint8ArrayArray
+															r.name = "TestRequestStringUint8ArrayArray"
+															r.operationID = "test_request_string_uint8_array_array"
+															r.pathPattern = "/test_request_string_uint8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUint8Nullable"
+														r.operationID = "test_request_string_uint8_nullable"
+														r.pathPattern = "/test_request_string_uint8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestStringUint8NullableArray"
+															r.operationID = "test_request_string_uint8_nullable_array"
+															r.pathPattern = "/test_request_string_uint8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestStringUint8NullableArrayArray
+																r.name = "TestRequestStringUint8NullableArrayArray"
+																r.operationID = "test_request_string_uint8_nullable_array_array"
+																r.pathPattern = "/test_request_string_uint8_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringUintArray"
+													r.operationID = "test_request_string_uint_array"
+													r.pathPattern = "/test_request_string_uint_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringUintArrayArray
+														r.name = "TestRequestStringUintArrayArray"
+														r.operationID = "test_request_string_uint_array_array"
+														r.pathPattern = "/test_request_string_uint_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringUintNullable"
+													r.operationID = "test_request_string_uint_nullable"
+													r.pathPattern = "/test_request_string_uint_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringUintNullableArray"
+														r.operationID = "test_request_string_uint_nullable_array"
+														r.pathPattern = "/test_request_string_uint_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringUintNullableArrayArray
+															r.name = "TestRequestStringUintNullableArrayArray"
+															r.operationID = "test_request_string_uint_nullable_array_array"
+															r.pathPattern = "/test_request_string_uint_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'n': // Prefix: "nix"
 									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 										elem = elem[l:]
@@ -28583,6 +37767,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case '1': // Prefix: "16"
+									if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseIntegerInt16"
+											r.operationID = "test_response_integer_int16"
+											r.pathPattern = "/test_response_integer_int16"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerInt16Array"
+													r.operationID = "test_response_integer_int16_array"
+													r.pathPattern = "/test_response_integer_int16_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseIntegerInt16ArrayArray
+														r.name = "TestResponseIntegerInt16ArrayArray"
+														r.operationID = "test_response_integer_int16_array_array"
+														r.pathPattern = "/test_response_integer_int16_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerInt16Nullable"
+													r.operationID = "test_response_integer_int16_nullable"
+													r.pathPattern = "/test_response_integer_int16_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerInt16NullableArray"
+														r.operationID = "test_response_integer_int16_nullable_array"
+														r.pathPattern = "/test_response_integer_int16_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerInt16NullableArrayArray
+															r.name = "TestResponseIntegerInt16NullableArrayArray"
+															r.operationID = "test_response_integer_int16_nullable_array_array"
+															r.pathPattern = "/test_response_integer_int16_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case '3': // Prefix: "32"
 									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 										elem = elem[l:]
@@ -28867,6 +38193,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 										}
 									}
+								case '8': // Prefix: "8"
+									if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseIntegerInt8"
+											r.operationID = "test_response_integer_int8"
+											r.pathPattern = "/test_response_integer_int8"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerInt8Array"
+													r.operationID = "test_response_integer_int8_array"
+													r.pathPattern = "/test_response_integer_int8_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseIntegerInt8ArrayArray
+														r.name = "TestResponseIntegerInt8ArrayArray"
+														r.operationID = "test_response_integer_int8_array_array"
+														r.pathPattern = "/test_response_integer_int8_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerInt8Nullable"
+													r.operationID = "test_response_integer_int8_nullable"
+													r.pathPattern = "/test_response_integer_int8_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerInt8NullableArray"
+														r.operationID = "test_response_integer_int8_nullable_array"
+														r.pathPattern = "/test_response_integer_int8_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerInt8NullableArrayArray
+															r.name = "TestResponseIntegerInt8NullableArrayArray"
+															r.operationID = "test_response_integer_int8_nullable_array_array"
+															r.pathPattern = "/test_response_integer_int8_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								}
 							case 'n': // Prefix: "nullable"
 								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -28965,6 +38433,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseIntegerUint16"
+												r.operationID = "test_response_integer_uint16"
+												r.pathPattern = "/test_response_integer_uint16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUint16Array"
+														r.operationID = "test_response_integer_uint16_array"
+														r.pathPattern = "/test_response_integer_uint16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerUint16ArrayArray
+															r.name = "TestResponseIntegerUint16ArrayArray"
+															r.operationID = "test_response_integer_uint16_array_array"
+															r.pathPattern = "/test_response_integer_uint16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUint16Nullable"
+														r.operationID = "test_response_integer_uint16_nullable"
+														r.pathPattern = "/test_response_integer_uint16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUint16NullableArray"
+															r.operationID = "test_response_integer_uint16_nullable_array"
+															r.pathPattern = "/test_response_integer_uint16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseIntegerUint16NullableArrayArray
+																r.name = "TestResponseIntegerUint16NullableArrayArray"
+																r.operationID = "test_response_integer_uint16_nullable_array_array"
+																r.pathPattern = "/test_response_integer_uint16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -29238,6 +38848,148 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = "TestResponseIntegerUint64NullableArrayArray"
 																r.operationID = "test_response_integer_uint64_nullable_array_array"
 																r.pathPattern = "/test_response_integer_uint64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseIntegerUint8"
+												r.operationID = "test_response_integer_uint8"
+												r.pathPattern = "/test_response_integer_uint8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUint8Array"
+														r.operationID = "test_response_integer_uint8_array"
+														r.pathPattern = "/test_response_integer_uint8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerUint8ArrayArray
+															r.name = "TestResponseIntegerUint8ArrayArray"
+															r.operationID = "test_response_integer_uint8_array_array"
+															r.pathPattern = "/test_response_integer_uint8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUint8Nullable"
+														r.operationID = "test_response_integer_uint8_nullable"
+														r.pathPattern = "/test_response_integer_uint8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUint8NullableArray"
+															r.operationID = "test_response_integer_uint8_nullable_array"
+															r.pathPattern = "/test_response_integer_uint8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseIntegerUint8NullableArrayArray
+																r.name = "TestResponseIntegerUint8NullableArrayArray"
+																r.operationID = "test_response_integer_uint8_nullable_array_array"
+																r.pathPattern = "/test_response_integer_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32076,6 +41828,302 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 									}
 								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseStringFloat32"
+											r.operationID = "test_response_string_float32"
+											r.pathPattern = "/test_response_string_float32"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringFloat32Array"
+													r.operationID = "test_response_string_float32_array"
+													r.pathPattern = "/test_response_string_float32_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringFloat32ArrayArray
+														r.name = "TestResponseStringFloat32ArrayArray"
+														r.operationID = "test_response_string_float32_array_array"
+														r.pathPattern = "/test_response_string_float32_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringFloat32Nullable"
+													r.operationID = "test_response_string_float32_nullable"
+													r.pathPattern = "/test_response_string_float32_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringFloat32NullableArray"
+														r.operationID = "test_response_string_float32_nullable_array"
+														r.pathPattern = "/test_response_string_float32_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringFloat32NullableArrayArray
+															r.name = "TestResponseStringFloat32NullableArrayArray"
+															r.operationID = "test_response_string_float32_nullable_array_array"
+															r.pathPattern = "/test_response_string_float32_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseStringFloat64"
+											r.operationID = "test_response_string_float64"
+											r.pathPattern = "/test_response_string_float64"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringFloat64Array"
+													r.operationID = "test_response_string_float64_array"
+													r.pathPattern = "/test_response_string_float64_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringFloat64ArrayArray
+														r.name = "TestResponseStringFloat64ArrayArray"
+														r.operationID = "test_response_string_float64_array_array"
+														r.pathPattern = "/test_response_string_float64_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringFloat64Nullable"
+													r.operationID = "test_response_string_float64_nullable"
+													r.pathPattern = "/test_response_string_float64_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringFloat64NullableArray"
+														r.operationID = "test_response_string_float64_nullable_array"
+														r.pathPattern = "/test_response_string_float64_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringFloat64NullableArrayArray
+															r.name = "TestResponseStringFloat64NullableArrayArray"
+															r.operationID = "test_response_string_float64_nullable_array_array"
+															r.pathPattern = "/test_response_string_float64_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
 							case 'h': // Prefix: "hostname"
 								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
 									elem = elem[l:]
@@ -32237,9 +42285,161 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = "TestResponseStringInt"
+											r.operationID = "test_response_string_int"
+											r.pathPattern = "/test_response_string_int"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringInt16"
+												r.operationID = "test_response_string_int16"
+												r.pathPattern = "/test_response_string_int16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringInt16Array"
+														r.operationID = "test_response_string_int16_array"
+														r.pathPattern = "/test_response_string_int16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringInt16ArrayArray
+															r.name = "TestResponseStringInt16ArrayArray"
+															r.operationID = "test_response_string_int16_array_array"
+															r.pathPattern = "/test_response_string_int16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringInt16Nullable"
+														r.operationID = "test_response_string_int16_nullable"
+														r.pathPattern = "/test_response_string_int16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringInt16NullableArray"
+															r.operationID = "test_response_string_int16_nullable_array"
+															r.pathPattern = "/test_response_string_int16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringInt16NullableArrayArray
+																r.name = "TestResponseStringInt16NullableArrayArray"
+																r.operationID = "test_response_string_int16_nullable_array_array"
+																r.pathPattern = "/test_response_string_int16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case '3': // Prefix: "32"
 										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
@@ -32519,6 +42719,268 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															default:
 																return
 															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringInt8"
+												r.operationID = "test_response_string_int8"
+												r.pathPattern = "/test_response_string_int8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringInt8Array"
+														r.operationID = "test_response_string_int8_array"
+														r.pathPattern = "/test_response_string_int8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringInt8ArrayArray
+															r.name = "TestResponseStringInt8ArrayArray"
+															r.operationID = "test_response_string_int8_array_array"
+															r.pathPattern = "/test_response_string_int8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringInt8Nullable"
+														r.operationID = "test_response_string_int8_nullable"
+														r.pathPattern = "/test_response_string_int8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringInt8NullableArray"
+															r.operationID = "test_response_string_int8_nullable_array"
+															r.pathPattern = "/test_response_string_int8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringInt8NullableArrayArray
+																r.name = "TestResponseStringInt8NullableArrayArray"
+																r.operationID = "test_response_string_int8_nullable_array_array"
+																r.pathPattern = "/test_response_string_int8_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringIntArray"
+													r.operationID = "test_response_string_int_array"
+													r.pathPattern = "/test_response_string_int_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringIntArrayArray
+														r.name = "TestResponseStringIntArrayArray"
+														r.operationID = "test_response_string_int_array_array"
+														r.pathPattern = "/test_response_string_int_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringIntNullable"
+													r.operationID = "test_response_string_int_nullable"
+													r.pathPattern = "/test_response_string_int_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringIntNullableArray"
+														r.operationID = "test_response_string_int_nullable_array"
+														r.pathPattern = "/test_response_string_int_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringIntNullableArrayArray
+															r.name = "TestResponseStringIntNullableArrayArray"
+															r.operationID = "test_response_string_int_nullable_array_array"
+															r.pathPattern = "/test_response_string_int_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
 														}
 													}
 												}
@@ -33324,6 +43786,716 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseStringUint"
+											r.operationID = "test_response_string_uint"
+											r.pathPattern = "/test_response_string_uint"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '1': // Prefix: "16"
+										if l := len("16"); len(elem) >= l && elem[0:l] == "16" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringUint16"
+												r.operationID = "test_response_string_uint16"
+												r.pathPattern = "/test_response_string_uint16"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint16Array"
+														r.operationID = "test_response_string_uint16_array"
+														r.pathPattern = "/test_response_string_uint16_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringUint16ArrayArray
+															r.name = "TestResponseStringUint16ArrayArray"
+															r.operationID = "test_response_string_uint16_array_array"
+															r.pathPattern = "/test_response_string_uint16_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint16Nullable"
+														r.operationID = "test_response_string_uint16_nullable"
+														r.pathPattern = "/test_response_string_uint16_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringUint16NullableArray"
+															r.operationID = "test_response_string_uint16_nullable_array"
+															r.pathPattern = "/test_response_string_uint16_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringUint16NullableArrayArray
+																r.name = "TestResponseStringUint16NullableArrayArray"
+																r.operationID = "test_response_string_uint16_nullable_array_array"
+																r.pathPattern = "/test_response_string_uint16_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringUint32"
+												r.operationID = "test_response_string_uint32"
+												r.pathPattern = "/test_response_string_uint32"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint32Array"
+														r.operationID = "test_response_string_uint32_array"
+														r.pathPattern = "/test_response_string_uint32_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringUint32ArrayArray
+															r.name = "TestResponseStringUint32ArrayArray"
+															r.operationID = "test_response_string_uint32_array_array"
+															r.pathPattern = "/test_response_string_uint32_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint32Nullable"
+														r.operationID = "test_response_string_uint32_nullable"
+														r.pathPattern = "/test_response_string_uint32_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringUint32NullableArray"
+															r.operationID = "test_response_string_uint32_nullable_array"
+															r.pathPattern = "/test_response_string_uint32_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringUint32NullableArrayArray
+																r.name = "TestResponseStringUint32NullableArrayArray"
+																r.operationID = "test_response_string_uint32_nullable_array_array"
+																r.pathPattern = "/test_response_string_uint32_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringUint64"
+												r.operationID = "test_response_string_uint64"
+												r.pathPattern = "/test_response_string_uint64"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint64Array"
+														r.operationID = "test_response_string_uint64_array"
+														r.pathPattern = "/test_response_string_uint64_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringUint64ArrayArray
+															r.name = "TestResponseStringUint64ArrayArray"
+															r.operationID = "test_response_string_uint64_array_array"
+															r.pathPattern = "/test_response_string_uint64_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint64Nullable"
+														r.operationID = "test_response_string_uint64_nullable"
+														r.pathPattern = "/test_response_string_uint64_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringUint64NullableArray"
+															r.operationID = "test_response_string_uint64_nullable_array"
+															r.pathPattern = "/test_response_string_uint64_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringUint64NullableArrayArray
+																r.name = "TestResponseStringUint64NullableArrayArray"
+																r.operationID = "test_response_string_uint64_nullable_array_array"
+																r.pathPattern = "/test_response_string_uint64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '8': // Prefix: "8"
+										if l := len("8"); len(elem) >= l && elem[0:l] == "8" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringUint8"
+												r.operationID = "test_response_string_uint8"
+												r.pathPattern = "/test_response_string_uint8"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint8Array"
+														r.operationID = "test_response_string_uint8_array"
+														r.pathPattern = "/test_response_string_uint8_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringUint8ArrayArray
+															r.name = "TestResponseStringUint8ArrayArray"
+															r.operationID = "test_response_string_uint8_array_array"
+															r.pathPattern = "/test_response_string_uint8_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUint8Nullable"
+														r.operationID = "test_response_string_uint8_nullable"
+														r.pathPattern = "/test_response_string_uint8_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseStringUint8NullableArray"
+															r.operationID = "test_response_string_uint8_nullable_array"
+															r.pathPattern = "/test_response_string_uint8_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseStringUint8NullableArrayArray
+																r.name = "TestResponseStringUint8NullableArrayArray"
+																r.operationID = "test_response_string_uint8_nullable_array_array"
+																r.pathPattern = "/test_response_string_uint8_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringUintArray"
+													r.operationID = "test_response_string_uint_array"
+													r.pathPattern = "/test_response_string_uint_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringUintArrayArray
+														r.name = "TestResponseStringUintArrayArray"
+														r.operationID = "test_response_string_uint_array_array"
+														r.pathPattern = "/test_response_string_uint_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringUintNullable"
+													r.operationID = "test_response_string_uint_nullable"
+													r.pathPattern = "/test_response_string_uint_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringUintNullableArray"
+														r.operationID = "test_response_string_uint_nullable_array"
+														r.pathPattern = "/test_response_string_uint_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringUintNullableArrayArray
+															r.name = "TestResponseStringUintNullableArrayArray"
+															r.operationID = "test_response_string_uint_nullable_array_array"
+															r.pathPattern = "/test_response_string_uint_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'n': // Prefix: "nix"
 									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
 										elem = elem[l:]

@@ -46,6 +46,17 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -68,6 +79,17 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -75,6 +97,17 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -97,6 +130,17 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -386,6 +430,62 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -422,6 +522,28 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -440,6 +562,17 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int8",
 			Error: err,
 		})
 	}
@@ -495,6 +628,61 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -660,6 +848,34 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -716,6 +932,34 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -740,6 +984,34 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -796,6 +1068,34 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -1408,6 +1708,96 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -1457,6 +1847,62 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_hostname",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int16",
 			Error: err,
 		})
 	}
@@ -1513,6 +1959,34 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -1653,6 +2127,146 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -1905,6 +2519,28 @@ func (s *TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat32)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat64)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -2033,6 +2669,56 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayStringHostname {
 			if err := func() error {
 				if err := (validate.String{
@@ -2141,6 +2827,31 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -2191,6 +2902,31 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerUint {
 			if err := func() error {
 				if elem == nil {
@@ -2211,6 +2947,31 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -2261,6 +3022,31 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -2817,6 +3603,90 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringHostname {
 			if err := func() error {
 				if elem == nil {
@@ -2867,6 +3737,56 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -2912,6 +3832,31 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -3037,6 +3982,131 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -3292,6 +4362,42 @@ func (s *TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat32.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat64.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float64",
 			Error: err,
 		})
 	}
@@ -3362,6 +4468,17 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -3384,6 +4501,17 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -3391,6 +4519,17 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -3413,6 +4552,17 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -3702,6 +4852,62 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -3738,6 +4944,28 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -3756,6 +4984,17 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int8",
 			Error: err,
 		})
 	}
@@ -3811,6 +5050,61 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -3976,6 +5270,34 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -4032,6 +5354,34 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -4056,6 +5406,34 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -4112,6 +5490,34 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -4724,6 +6130,96 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -4773,6 +6269,62 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_hostname",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int16",
 			Error: err,
 		})
 	}
@@ -4829,6 +6381,34 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -4969,6 +6549,146 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -5221,6 +6941,28 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat32)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat64)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -5349,6 +7091,56 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayStringHostname {
 			if err := func() error {
 				if err := (validate.String{
@@ -5457,6 +7249,31 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -5507,6 +7324,31 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerUint {
 			if err := func() error {
 				if elem == nil {
@@ -5527,6 +7369,31 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -5577,6 +7444,31 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -6133,6 +8025,90 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringHostname {
 			if err := func() error {
 				if elem == nil {
@@ -6183,6 +8159,56 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -6228,6 +8254,31 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -6353,6 +8404,131 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -6608,6 +8784,42 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat32.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat64.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float64",
 			Error: err,
 		})
 	}
@@ -6678,6 +8890,17 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -6700,6 +8923,17 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -6707,6 +8941,17 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -6729,6 +8974,17 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -7018,6 +9274,62 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -7054,6 +9366,28 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -7072,6 +9406,17 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_int8",
 			Error: err,
 		})
 	}
@@ -7127,6 +9472,61 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -7292,6 +9692,34 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerInt32 == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -7348,6 +9776,34 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayIntegerInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayIntegerUint == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -7372,6 +9828,34 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -7428,6 +9912,34 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayIntegerUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -8040,6 +10552,96 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringFloat64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredDoubleArrayStringHostname == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -8089,6 +10691,62 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_hostname",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int16",
 			Error: err,
 		})
 	}
@@ -8145,6 +10803,34 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringInt8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -8285,6 +10971,146 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint16 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint32 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint64 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUint8 == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -8537,6 +11363,28 @@ func (s *TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat32)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).ValidateStringified(float64(s.RequiredStringFloat64)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -8665,6 +11513,56 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat32 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalArrayStringFloat64 {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayStringHostname {
 			if err := func() error {
 				if err := (validate.String{
@@ -8773,6 +11671,31 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -8823,6 +11746,31 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_int8",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayIntegerUint {
 			if err := func() error {
 				if elem == nil {
@@ -8843,6 +11791,31 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint16",
 			Error: err,
 		})
 	}
@@ -8893,6 +11866,31 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_integer_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayIntegerUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_integer_uint8",
 			Error: err,
 		})
 	}
@@ -9449,6 +12447,90 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringFloat64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_float64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringHostname {
 			if err := func() error {
 				if elem == nil {
@@ -9499,6 +12581,56 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}
 	if err := func() error {
 		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
 		for i, elem := range s.OptionalDoubleArrayStringInt32 {
 			if err := func() error {
 				if elem == nil {
@@ -9544,6 +12676,31 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_int64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringInt8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_int8",
 			Error: err,
 		})
 	}
@@ -9669,6 +12826,131 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint16 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint16",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint32 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint64 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint64",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUint8 {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_uint8",
 			Error: err,
 		})
 	}
@@ -9924,6 +13206,42 @@ func (s *TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat32.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float32",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if value, ok := s.OptionalStringFloat64.Get(); ok {
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_string_float64",
 			Error: err,
 		})
 	}

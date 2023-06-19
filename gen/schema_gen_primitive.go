@@ -174,13 +174,13 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"": ir.Int,
 
 			// FIXME(tdakkota): add decoder for int8, int16, uint8, uint16 to jx.
-			// "int8":   ir.Int8,
-			// "int16":  ir.Int16,
-			"int32": ir.Int32,
-			"int64": ir.Int64,
-			"uint":  ir.Uint,
-			// "uint8":  ir.Uint8,
-			// "uint16": ir.Uint16,
+			"int8":   ir.Int8,
+			"int16":  ir.Int16,
+			"int32":  ir.Int32,
+			"int64":  ir.Int64,
+			"uint":   ir.Uint,
+			"uint8":  ir.Uint8,
+			"uint16": ir.Uint16,
 			"uint32": ir.Uint32,
 			"uint64": ir.Uint64,
 
@@ -217,14 +217,26 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"":          ir.String,
 
 			// Custom format, see https://github.com/ogen-go/ogen/issues/309.
+			"int":   ir.Int,
+			"int8":  ir.Int8,
+			"int16": ir.Int16,
 			"int32": ir.Int32,
 			"int64": ir.Int64,
+
+			"uint":   ir.Uint,
+			"uint8":  ir.Uint8,
+			"uint16": ir.Uint16,
+			"uint32": ir.Uint32,
+			"uint64": ir.Uint64,
 			// See https://github.com/ogen-go/ogen/issues/307.
 			"unix":         ir.Time,
 			"unix-seconds": ir.Time,
 			"unix-nano":    ir.Time,
 			"unix-micro":   ir.Time,
 			"unix-milli":   ir.Time,
+			// See https://github.com/ogen-go/ogen/issues/957.
+			"float32": ir.Float32,
+			"float64": ir.Float64,
 		},
 		jsonschema.Boolean: {
 			"": ir.Bool,

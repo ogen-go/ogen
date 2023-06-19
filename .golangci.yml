@@ -134,6 +134,6 @@ issues:
 
     # Not supposed to be constant.
     - linters: [goconst]
-      text: 'string `(string|number|u?int\d{0,2})`'
+      text: 'string `(string|number|u?int\d{0,2}|float\d{2})`'
     - linters: [goconst]
       text: "string `(Unix|unix|date|time|ipv6)"

@@ -112,6 +112,14 @@ func (t *Type) IsFloat() bool {
 	}
 }
 
+func (t *Type) IsStringifiedFloat() bool {
+	s := t.Schema
+	return t.IsFloat() &&
+		s != nil &&
+		s.Type == jsonschema.String &&
+		(s.Format == "float32" || s.Format == "float64")
+}
+
 func (t *Type) IsNull() bool {
 	return t.Primitive == Null
 }
