@@ -131,7 +131,7 @@
             {{- else }}
 			MultipleOf: nil,
 			{{- end }}
-		{{ end }} }).Validate(float64({{ $.Var }})); err != nil {
+		{{ end }} }).Validate{{- if $t.IsStringifiedFloat -}}Stringified{{- end }}(float64({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "float")
 		}
     {{- end }}
