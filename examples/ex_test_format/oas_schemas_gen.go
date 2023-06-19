@@ -487,6 +487,51 @@ func (o NilInt) Or(d int) int {
 	return d
 }
 
+// NewNilInt16 returns new NilInt16 with value set to v.
+func NewNilInt16(v int16) NilInt16 {
+	return NilInt16{
+		Value: v,
+	}
+}
+
+// NilInt16 is nullable int16.
+type NilInt16 struct {
+	Value int16
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt16) SetTo(v int16) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilInt16) SetToNull() {
+	o.Null = true
+	var v int16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt16) Get() (v int16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilInt32 returns new NilInt32 with value set to v.
 func NewNilInt32(v int32) NilInt32 {
 	return NilInt32{
@@ -571,6 +616,51 @@ func (o NilInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilInt8 returns new NilInt8 with value set to v.
+func NewNilInt8(v int8) NilInt8 {
+	return NilInt8{
+		Value: v,
+	}
+}
+
+// NilInt8 is nullable int8.
+type NilInt8 struct {
+	Value int8
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt8) SetTo(v int8) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilInt8) SetToNull() {
+	o.Null = true
+	var v int8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt8) Get() (v int8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilInt8) Or(d int8) int8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1072,6 +1162,51 @@ func (o NilUint) Or(d uint) uint {
 	return d
 }
 
+// NewNilUint16 returns new NilUint16 with value set to v.
+func NewNilUint16(v uint16) NilUint16 {
+	return NilUint16{
+		Value: v,
+	}
+}
+
+// NilUint16 is nullable uint16.
+type NilUint16 struct {
+	Value uint16
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUint16) SetTo(v uint16) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUint16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUint16) SetToNull() {
+	o.Null = true
+	var v uint16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUint16) Get() (v uint16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilUint32 returns new NilUint32 with value set to v.
 func NewNilUint32(v uint32) NilUint32 {
 	return NilUint32{
@@ -1156,6 +1291,51 @@ func (o NilUint64) Get() (v uint64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilUint8 returns new NilUint8 with value set to v.
+func NewNilUint8(v uint8) NilUint8 {
+	return NilUint8{
+		Value: v,
+	}
+}
+
+// NilUint8 is nullable uint8.
+type NilUint8 struct {
+	Value uint8
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUint8) SetTo(v uint8) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUint8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilUint8) SetToNull() {
+	o.Null = true
+	var v uint8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUint8) Get() (v uint8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1802,6 +1982,52 @@ func (o OptInt) Or(d int) int {
 	return d
 }
 
+// NewOptInt16 returns new OptInt16 with value set to v.
+func NewOptInt16(v int16) OptInt16 {
+	return OptInt16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt16 is optional int16.
+type OptInt16 struct {
+	Value int16
+	Set   bool
+}
+
+// IsSet returns true if OptInt16 was set.
+func (o OptInt16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt16) Reset() {
+	var v int16
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt16) SetTo(v int16) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt16) Get() (v int16, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt32 returns new OptInt32 with value set to v.
 func NewOptInt32(v int32) OptInt32 {
 	return OptInt32{
@@ -1888,6 +2114,52 @@ func (o OptInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInt8 returns new OptInt8 with value set to v.
+func NewOptInt8(v int8) OptInt8 {
+	return OptInt8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt8 is optional int8.
+type OptInt8 struct {
+	Value int8
+	Set   bool
+}
+
+// IsSet returns true if OptInt8 was set.
+func (o OptInt8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt8) Reset() {
+	var v int8
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt8) SetTo(v int8) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt8) Get() (v int8, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt8) Or(d int8) int8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2587,6 +2859,69 @@ func (o OptNilInt) Or(d int) int {
 	return d
 }
 
+// NewOptNilInt16 returns new OptNilInt16 with value set to v.
+func NewOptNilInt16(v int16) OptNilInt16 {
+	return OptNilInt16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilInt16 is optional nullable int16.
+type OptNilInt16 struct {
+	Value int16
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilInt16 was set.
+func (o OptNilInt16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilInt16) Reset() {
+	var v int16
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilInt16) SetTo(v int16) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilInt16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilInt16) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilInt16) Get() (v int16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilInt32 returns new OptNilInt32 with value set to v.
 func NewOptNilInt32(v int32) OptNilInt32 {
 	return OptNilInt32{
@@ -2707,6 +3042,69 @@ func (o OptNilInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilInt8 returns new OptNilInt8 with value set to v.
+func NewOptNilInt8(v int8) OptNilInt8 {
+	return OptNilInt8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilInt8 is optional nullable int8.
+type OptNilInt8 struct {
+	Value int8
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilInt8 was set.
+func (o OptNilInt8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilInt8) Reset() {
+	var v int8
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilInt8) SetTo(v int8) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilInt8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilInt8) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilInt8) Get() (v int8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilInt8) Or(d int8) int8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -3406,6 +3804,69 @@ func (o OptNilUint) Or(d uint) uint {
 	return d
 }
 
+// NewOptNilUint16 returns new OptNilUint16 with value set to v.
+func NewOptNilUint16(v uint16) OptNilUint16 {
+	return OptNilUint16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilUint16 is optional nullable uint16.
+type OptNilUint16 struct {
+	Value uint16
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilUint16 was set.
+func (o OptNilUint16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilUint16) Reset() {
+	var v uint16
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilUint16) SetTo(v uint16) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilUint16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUint16) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilUint16) Get() (v uint16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilUint32 returns new OptNilUint32 with value set to v.
 func NewOptNilUint32(v uint32) OptNilUint32 {
 	return OptNilUint32{
@@ -3526,6 +3987,69 @@ func (o OptNilUint64) Get() (v uint64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilUint8 returns new OptNilUint8 with value set to v.
+func NewOptNilUint8(v uint8) OptNilUint8 {
+	return OptNilUint8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilUint8 is optional nullable uint8.
+type OptNilUint8 struct {
+	Value uint8
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilUint8 was set.
+func (o OptNilUint8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilUint8) Reset() {
+	var v uint8
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilUint8) SetTo(v uint8) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilUint8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilUint8) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilUint8) Get() (v uint8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4382,6 +4906,52 @@ func (o OptUint) Or(d uint) uint {
 	return d
 }
 
+// NewOptUint16 returns new OptUint16 with value set to v.
+func NewOptUint16(v uint16) OptUint16 {
+	return OptUint16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUint16 is optional uint16.
+type OptUint16 struct {
+	Value uint16
+	Set   bool
+}
+
+// IsSet returns true if OptUint16 was set.
+func (o OptUint16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUint16) Reset() {
+	var v uint16
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUint16) SetTo(v uint16) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUint16) Get() (v uint16, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptUint32 returns new OptUint32 with value set to v.
 func NewOptUint32(v uint32) OptUint32 {
 	return OptUint32{
@@ -4468,6 +5038,52 @@ func (o OptUint64) Get() (v uint64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUint8 returns new OptUint8 with value set to v.
+func NewOptUint8(v uint8) OptUint8 {
+	return OptUint8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUint8 is optional uint8.
+type OptUint8 struct {
+	Value uint8
+	Set   bool
+}
+
+// IsSet returns true if OptUint8 was set.
+func (o OptUint8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUint8) Reset() {
+	var v uint8
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUint8) SetTo(v uint8) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUint8) Get() (v uint8, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4665,11 +5281,15 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayAny                           []jx.Raw             `json:"required_array_any"`
 	RequiredArrayBoolean                       []bool               `json:"required_array_boolean"`
 	RequiredArrayInteger                       []int                `json:"required_array_integer"`
+	RequiredArrayIntegerInt16                  []int16              `json:"required_array_integer_int16"`
 	RequiredArrayIntegerInt32                  []int32              `json:"required_array_integer_int32"`
 	RequiredArrayIntegerInt64                  []int64              `json:"required_array_integer_int64"`
+	RequiredArrayIntegerInt8                   []int8               `json:"required_array_integer_int8"`
 	RequiredArrayIntegerUint                   []uint               `json:"required_array_integer_uint"`
+	RequiredArrayIntegerUint16                 []uint16             `json:"required_array_integer_uint16"`
 	RequiredArrayIntegerUint32                 []uint32             `json:"required_array_integer_uint32"`
 	RequiredArrayIntegerUint64                 []uint64             `json:"required_array_integer_uint64"`
+	RequiredArrayIntegerUint8                  []uint8              `json:"required_array_integer_uint8"`
 	RequiredArrayIntegerUnix                   []time.Time          `json:"required_array_integer_unix"`
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          `json:"required_array_integer_unix-micro"`
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
@@ -4689,14 +5309,24 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayStringDateMinusTime           []time.Time          `json:"required_array_string_date-time"`
 	RequiredArrayStringDuration                []time.Duration      `json:"required_array_string_duration"`
 	RequiredArrayStringEmail                   []string             `json:"required_array_string_email"`
+	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
+	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
+	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
 	RequiredArrayStringInt64                   []int64              `json:"required_array_string_int64"`
+	RequiredArrayStringInt8                    []int8               `json:"required_array_string_int8"`
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
+	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
+	RequiredArrayStringUint16                  []uint16             `json:"required_array_string_uint16"`
+	RequiredArrayStringUint32                  []uint32             `json:"required_array_string_uint32"`
+	RequiredArrayStringUint64                  []uint64             `json:"required_array_string_uint64"`
+	RequiredArrayStringUint8                   []uint8              `json:"required_array_string_uint8"`
 	RequiredArrayStringUnix                    []time.Time          `json:"required_array_string_unix"`
 	RequiredArrayStringUnixMinusMicro          []time.Time          `json:"required_array_string_unix-micro"`
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
@@ -4708,11 +5338,15 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayAny                     [][]jx.Raw           `json:"required_double_array_any"`
 	RequiredDoubleArrayBoolean                 [][]bool             `json:"required_double_array_boolean"`
 	RequiredDoubleArrayInteger                 [][]int              `json:"required_double_array_integer"`
+	RequiredDoubleArrayIntegerInt16            [][]int16            `json:"required_double_array_integer_int16"`
 	RequiredDoubleArrayIntegerInt32            [][]int32            `json:"required_double_array_integer_int32"`
 	RequiredDoubleArrayIntegerInt64            [][]int64            `json:"required_double_array_integer_int64"`
+	RequiredDoubleArrayIntegerInt8             [][]int8             `json:"required_double_array_integer_int8"`
 	RequiredDoubleArrayIntegerUint             [][]uint             `json:"required_double_array_integer_uint"`
+	RequiredDoubleArrayIntegerUint16           [][]uint16           `json:"required_double_array_integer_uint16"`
 	RequiredDoubleArrayIntegerUint32           [][]uint32           `json:"required_double_array_integer_uint32"`
 	RequiredDoubleArrayIntegerUint64           [][]uint64           `json:"required_double_array_integer_uint64"`
+	RequiredDoubleArrayIntegerUint8            [][]uint8            `json:"required_double_array_integer_uint8"`
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        `json:"required_double_array_integer_unix"`
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"required_double_array_integer_unix-micro"`
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
@@ -4732,14 +5366,24 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        `json:"required_double_array_string_date-time"`
 	RequiredDoubleArrayStringDuration          [][]time.Duration    `json:"required_double_array_string_duration"`
 	RequiredDoubleArrayStringEmail             [][]string           `json:"required_double_array_string_email"`
+	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
+	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
+	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
 	RequiredDoubleArrayStringInt64             [][]int64            `json:"required_double_array_string_int64"`
+	RequiredDoubleArrayStringInt8              [][]int8             `json:"required_double_array_string_int8"`
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
+	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
+	RequiredDoubleArrayStringUint16            [][]uint16           `json:"required_double_array_string_uint16"`
+	RequiredDoubleArrayStringUint32            [][]uint32           `json:"required_double_array_string_uint32"`
+	RequiredDoubleArrayStringUint64            [][]uint64           `json:"required_double_array_string_uint64"`
+	RequiredDoubleArrayStringUint8             [][]uint8            `json:"required_double_array_string_uint8"`
 	RequiredDoubleArrayStringUnix              [][]time.Time        `json:"required_double_array_string_unix"`
 	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"required_double_array_string_unix-micro"`
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
@@ -4748,11 +5392,15 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
+	RequiredIntegerInt16                       int16                `json:"required_integer_int16"`
 	RequiredIntegerInt32                       int32                `json:"required_integer_int32"`
 	RequiredIntegerInt64                       int64                `json:"required_integer_int64"`
+	RequiredIntegerInt8                        int8                 `json:"required_integer_int8"`
 	RequiredIntegerUint                        uint                 `json:"required_integer_uint"`
+	RequiredIntegerUint16                      uint16               `json:"required_integer_uint16"`
 	RequiredIntegerUint32                      uint32               `json:"required_integer_uint32"`
 	RequiredIntegerUint64                      uint64               `json:"required_integer_uint64"`
+	RequiredIntegerUint8                       uint8                `json:"required_integer_uint8"`
 	RequiredIntegerUnix                        time.Time            `json:"required_integer_unix"`
 	RequiredIntegerUnixMinusMicro              time.Time            `json:"required_integer_unix-micro"`
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
@@ -4772,14 +5420,24 @@ type TestRequestFormatTestReq struct {
 	RequiredStringDateMinusTime                time.Time            `json:"required_string_date-time"`
 	RequiredStringDuration                     time.Duration        `json:"required_string_duration"`
 	RequiredStringEmail                        string               `json:"required_string_email"`
+	RequiredStringFloat32                      float32              `json:"required_string_float32"`
+	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringInt                          int                  `json:"required_string_int"`
+	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
 	RequiredStringInt64                        int64                `json:"required_string_int64"`
+	RequiredStringInt8                         int8                 `json:"required_string_int8"`
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
+	RequiredStringUint                         uint                 `json:"required_string_uint"`
+	RequiredStringUint16                       uint16               `json:"required_string_uint16"`
+	RequiredStringUint32                       uint32               `json:"required_string_uint32"`
+	RequiredStringUint64                       uint64               `json:"required_string_uint64"`
+	RequiredStringUint8                        uint8                `json:"required_string_uint8"`
 	RequiredStringUnix                         time.Time            `json:"required_string_unix"`
 	RequiredStringUnixMinusMicro               time.Time            `json:"required_string_unix-micro"`
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
@@ -4791,11 +5449,15 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayAny                           []jx.Raw             `json:"optional_array_any"`
 	OptionalArrayBoolean                       []bool               `json:"optional_array_boolean"`
 	OptionalArrayInteger                       []int                `json:"optional_array_integer"`
+	OptionalArrayIntegerInt16                  []int16              `json:"optional_array_integer_int16"`
 	OptionalArrayIntegerInt32                  []int32              `json:"optional_array_integer_int32"`
 	OptionalArrayIntegerInt64                  []int64              `json:"optional_array_integer_int64"`
+	OptionalArrayIntegerInt8                   []int8               `json:"optional_array_integer_int8"`
 	OptionalArrayIntegerUint                   []uint               `json:"optional_array_integer_uint"`
+	OptionalArrayIntegerUint16                 []uint16             `json:"optional_array_integer_uint16"`
 	OptionalArrayIntegerUint32                 []uint32             `json:"optional_array_integer_uint32"`
 	OptionalArrayIntegerUint64                 []uint64             `json:"optional_array_integer_uint64"`
+	OptionalArrayIntegerUint8                  []uint8              `json:"optional_array_integer_uint8"`
 	OptionalArrayIntegerUnix                   []time.Time          `json:"optional_array_integer_unix"`
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          `json:"optional_array_integer_unix-micro"`
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
@@ -4815,14 +5477,24 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayStringDateMinusTime           []time.Time          `json:"optional_array_string_date-time"`
 	OptionalArrayStringDuration                []time.Duration      `json:"optional_array_string_duration"`
 	OptionalArrayStringEmail                   []string             `json:"optional_array_string_email"`
+	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
+	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
+	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
 	OptionalArrayStringInt64                   []int64              `json:"optional_array_string_int64"`
+	OptionalArrayStringInt8                    []int8               `json:"optional_array_string_int8"`
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
+	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
+	OptionalArrayStringUint16                  []uint16             `json:"optional_array_string_uint16"`
+	OptionalArrayStringUint32                  []uint32             `json:"optional_array_string_uint32"`
+	OptionalArrayStringUint64                  []uint64             `json:"optional_array_string_uint64"`
+	OptionalArrayStringUint8                   []uint8              `json:"optional_array_string_uint8"`
 	OptionalArrayStringUnix                    []time.Time          `json:"optional_array_string_unix"`
 	OptionalArrayStringUnixMinusMicro          []time.Time          `json:"optional_array_string_unix-micro"`
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
@@ -4834,11 +5506,15 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayAny                     [][]jx.Raw           `json:"optional_double_array_any"`
 	OptionalDoubleArrayBoolean                 [][]bool             `json:"optional_double_array_boolean"`
 	OptionalDoubleArrayInteger                 [][]int              `json:"optional_double_array_integer"`
+	OptionalDoubleArrayIntegerInt16            [][]int16            `json:"optional_double_array_integer_int16"`
 	OptionalDoubleArrayIntegerInt32            [][]int32            `json:"optional_double_array_integer_int32"`
 	OptionalDoubleArrayIntegerInt64            [][]int64            `json:"optional_double_array_integer_int64"`
+	OptionalDoubleArrayIntegerInt8             [][]int8             `json:"optional_double_array_integer_int8"`
 	OptionalDoubleArrayIntegerUint             [][]uint             `json:"optional_double_array_integer_uint"`
+	OptionalDoubleArrayIntegerUint16           [][]uint16           `json:"optional_double_array_integer_uint16"`
 	OptionalDoubleArrayIntegerUint32           [][]uint32           `json:"optional_double_array_integer_uint32"`
 	OptionalDoubleArrayIntegerUint64           [][]uint64           `json:"optional_double_array_integer_uint64"`
+	OptionalDoubleArrayIntegerUint8            [][]uint8            `json:"optional_double_array_integer_uint8"`
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        `json:"optional_double_array_integer_unix"`
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"optional_double_array_integer_unix-micro"`
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
@@ -4858,14 +5534,24 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        `json:"optional_double_array_string_date-time"`
 	OptionalDoubleArrayStringDuration          [][]time.Duration    `json:"optional_double_array_string_duration"`
 	OptionalDoubleArrayStringEmail             [][]string           `json:"optional_double_array_string_email"`
+	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
+	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
+	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
 	OptionalDoubleArrayStringInt64             [][]int64            `json:"optional_double_array_string_int64"`
+	OptionalDoubleArrayStringInt8              [][]int8             `json:"optional_double_array_string_int8"`
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
+	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
+	OptionalDoubleArrayStringUint16            [][]uint16           `json:"optional_double_array_string_uint16"`
+	OptionalDoubleArrayStringUint32            [][]uint32           `json:"optional_double_array_string_uint32"`
+	OptionalDoubleArrayStringUint64            [][]uint64           `json:"optional_double_array_string_uint64"`
+	OptionalDoubleArrayStringUint8             [][]uint8            `json:"optional_double_array_string_uint8"`
 	OptionalDoubleArrayStringUnix              [][]time.Time        `json:"optional_double_array_string_unix"`
 	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"optional_double_array_string_unix-micro"`
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
@@ -4874,11 +5560,15 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
+	OptionalIntegerInt16                       OptInt16             `json:"optional_integer_int16"`
 	OptionalIntegerInt32                       OptInt32             `json:"optional_integer_int32"`
 	OptionalIntegerInt64                       OptInt64             `json:"optional_integer_int64"`
+	OptionalIntegerInt8                        OptInt8              `json:"optional_integer_int8"`
 	OptionalIntegerUint                        OptUint              `json:"optional_integer_uint"`
+	OptionalIntegerUint16                      OptUint16            `json:"optional_integer_uint16"`
 	OptionalIntegerUint32                      OptUint32            `json:"optional_integer_uint32"`
 	OptionalIntegerUint64                      OptUint64            `json:"optional_integer_uint64"`
+	OptionalIntegerUint8                       OptUint8             `json:"optional_integer_uint8"`
 	OptionalIntegerUnix                        OptUnixSeconds       `json:"optional_integer_unix"`
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         `json:"optional_integer_unix-micro"`
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
@@ -4898,14 +5588,24 @@ type TestRequestFormatTestReq struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
+	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringInt                          OptInt               `json:"optional_string_int"`
+	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
+	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
+	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
+	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -4935,6 +5635,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
+// GetRequiredArrayIntegerInt16 returns the value of RequiredArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt16() []int16 {
+	return s.RequiredArrayIntegerInt16
+}
+
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
@@ -4945,9 +5650,19 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
 	return s.RequiredArrayIntegerInt64
 }
 
+// GetRequiredArrayIntegerInt8 returns the value of RequiredArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt8() []int8 {
+	return s.RequiredArrayIntegerInt8
+}
+
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
 func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint16 returns the value of RequiredArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint16() []uint16 {
+	return s.RequiredArrayIntegerUint16
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
@@ -4958,6 +5673,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUint8 returns the value of RequiredArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint8() []uint8 {
+	return s.RequiredArrayIntegerUint8
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
@@ -5055,9 +5775,29 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringEmail() []string {
 	return s.RequiredArrayStringEmail
 }
 
+// GetRequiredArrayStringFloat32 returns the value of RequiredArrayStringFloat32.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringFloat32() []float32 {
+	return s.RequiredArrayStringFloat32
+}
+
+// GetRequiredArrayStringFloat64 returns the value of RequiredArrayStringFloat64.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringFloat64() []float64 {
+	return s.RequiredArrayStringFloat64
+}
+
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt() []int {
+	return s.RequiredArrayStringInt
+}
+
+// GetRequiredArrayStringInt16 returns the value of RequiredArrayStringInt16.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt16() []int16 {
+	return s.RequiredArrayStringInt16
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
@@ -5068,6 +5808,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt32() []int32 {
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringInt8 returns the value of RequiredArrayStringInt8.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt8() []int8 {
+	return s.RequiredArrayStringInt8
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
@@ -5093,6 +5838,31 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringPassword() []string {
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUint returns the value of RequiredArrayStringUint.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUint() []uint {
+	return s.RequiredArrayStringUint
+}
+
+// GetRequiredArrayStringUint16 returns the value of RequiredArrayStringUint16.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUint16() []uint16 {
+	return s.RequiredArrayStringUint16
+}
+
+// GetRequiredArrayStringUint32 returns the value of RequiredArrayStringUint32.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUint32() []uint32 {
+	return s.RequiredArrayStringUint32
+}
+
+// GetRequiredArrayStringUint64 returns the value of RequiredArrayStringUint64.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUint64() []uint64 {
+	return s.RequiredArrayStringUint64
+}
+
+// GetRequiredArrayStringUint8 returns the value of RequiredArrayStringUint8.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUint8() []uint8 {
+	return s.RequiredArrayStringUint8
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
@@ -5150,6 +5920,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
 	return s.RequiredDoubleArrayInteger
 }
 
+// GetRequiredDoubleArrayIntegerInt16 returns the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt16() [][]int16 {
+	return s.RequiredDoubleArrayIntegerInt16
+}
+
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
@@ -5160,9 +5935,19 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int6
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
+// GetRequiredDoubleArrayIntegerInt8 returns the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt8() [][]int8 {
+	return s.RequiredDoubleArrayIntegerInt8
+}
+
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint16 returns the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint16() [][]uint16 {
+	return s.RequiredDoubleArrayIntegerUint16
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
@@ -5173,6 +5958,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uin
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUint8 returns the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint8() [][]uint8 {
+	return s.RequiredDoubleArrayIntegerUint8
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
@@ -5270,9 +6060,29 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]strin
 	return s.RequiredDoubleArrayStringEmail
 }
 
+// GetRequiredDoubleArrayStringFloat32 returns the value of RequiredDoubleArrayStringFloat32.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringFloat32() [][]float32 {
+	return s.RequiredDoubleArrayStringFloat32
+}
+
+// GetRequiredDoubleArrayStringFloat64 returns the value of RequiredDoubleArrayStringFloat64.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringFloat64() [][]float64 {
+	return s.RequiredDoubleArrayStringFloat64
+}
+
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt() [][]int {
+	return s.RequiredDoubleArrayStringInt
+}
+
+// GetRequiredDoubleArrayStringInt16 returns the value of RequiredDoubleArrayStringInt16.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt16() [][]int16 {
+	return s.RequiredDoubleArrayStringInt16
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
@@ -5283,6 +6093,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringInt8 returns the value of RequiredDoubleArrayStringInt8.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt8() [][]int8 {
+	return s.RequiredDoubleArrayStringInt8
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
@@ -5308,6 +6123,31 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]st
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUint returns the value of RequiredDoubleArrayStringUint.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUint() [][]uint {
+	return s.RequiredDoubleArrayStringUint
+}
+
+// GetRequiredDoubleArrayStringUint16 returns the value of RequiredDoubleArrayStringUint16.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUint16() [][]uint16 {
+	return s.RequiredDoubleArrayStringUint16
+}
+
+// GetRequiredDoubleArrayStringUint32 returns the value of RequiredDoubleArrayStringUint32.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUint32() [][]uint32 {
+	return s.RequiredDoubleArrayStringUint32
+}
+
+// GetRequiredDoubleArrayStringUint64 returns the value of RequiredDoubleArrayStringUint64.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUint64() [][]uint64 {
+	return s.RequiredDoubleArrayStringUint64
+}
+
+// GetRequiredDoubleArrayStringUint8 returns the value of RequiredDoubleArrayStringUint8.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUint8() [][]uint8 {
+	return s.RequiredDoubleArrayStringUint8
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
@@ -5350,6 +6190,11 @@ func (s *TestRequestFormatTestReq) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
+// GetRequiredIntegerInt16 returns the value of RequiredIntegerInt16.
+func (s *TestRequestFormatTestReq) GetRequiredIntegerInt16() int16 {
+	return s.RequiredIntegerInt16
+}
+
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
 func (s *TestRequestFormatTestReq) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
@@ -5360,9 +6205,19 @@ func (s *TestRequestFormatTestReq) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
+// GetRequiredIntegerInt8 returns the value of RequiredIntegerInt8.
+func (s *TestRequestFormatTestReq) GetRequiredIntegerInt8() int8 {
+	return s.RequiredIntegerInt8
+}
+
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
 func (s *TestRequestFormatTestReq) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint16 returns the value of RequiredIntegerUint16.
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUint16() uint16 {
+	return s.RequiredIntegerUint16
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
@@ -5373,6 +6228,11 @@ func (s *TestRequestFormatTestReq) GetRequiredIntegerUint32() uint32 {
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
 func (s *TestRequestFormatTestReq) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUint8 returns the value of RequiredIntegerUint8.
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUint8() uint8 {
+	return s.RequiredIntegerUint8
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
@@ -5470,9 +6330,29 @@ func (s *TestRequestFormatTestReq) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
+// GetRequiredStringFloat32 returns the value of RequiredStringFloat32.
+func (s *TestRequestFormatTestReq) GetRequiredStringFloat32() float32 {
+	return s.RequiredStringFloat32
+}
+
+// GetRequiredStringFloat64 returns the value of RequiredStringFloat64.
+func (s *TestRequestFormatTestReq) GetRequiredStringFloat64() float64 {
+	return s.RequiredStringFloat64
+}
+
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestRequestFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt returns the value of RequiredStringInt.
+func (s *TestRequestFormatTestReq) GetRequiredStringInt() int {
+	return s.RequiredStringInt
+}
+
+// GetRequiredStringInt16 returns the value of RequiredStringInt16.
+func (s *TestRequestFormatTestReq) GetRequiredStringInt16() int16 {
+	return s.RequiredStringInt16
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
@@ -5483,6 +6363,11 @@ func (s *TestRequestFormatTestReq) GetRequiredStringInt32() int32 {
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
 func (s *TestRequestFormatTestReq) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
+}
+
+// GetRequiredStringInt8 returns the value of RequiredStringInt8.
+func (s *TestRequestFormatTestReq) GetRequiredStringInt8() int8 {
+	return s.RequiredStringInt8
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
@@ -5508,6 +6393,31 @@ func (s *TestRequestFormatTestReq) GetRequiredStringPassword() string {
 // GetRequiredStringTime returns the value of RequiredStringTime.
 func (s *TestRequestFormatTestReq) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
+}
+
+// GetRequiredStringUint returns the value of RequiredStringUint.
+func (s *TestRequestFormatTestReq) GetRequiredStringUint() uint {
+	return s.RequiredStringUint
+}
+
+// GetRequiredStringUint16 returns the value of RequiredStringUint16.
+func (s *TestRequestFormatTestReq) GetRequiredStringUint16() uint16 {
+	return s.RequiredStringUint16
+}
+
+// GetRequiredStringUint32 returns the value of RequiredStringUint32.
+func (s *TestRequestFormatTestReq) GetRequiredStringUint32() uint32 {
+	return s.RequiredStringUint32
+}
+
+// GetRequiredStringUint64 returns the value of RequiredStringUint64.
+func (s *TestRequestFormatTestReq) GetRequiredStringUint64() uint64 {
+	return s.RequiredStringUint64
+}
+
+// GetRequiredStringUint8 returns the value of RequiredStringUint8.
+func (s *TestRequestFormatTestReq) GetRequiredStringUint8() uint8 {
+	return s.RequiredStringUint8
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
@@ -5565,6 +6475,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
+// GetOptionalArrayIntegerInt16 returns the value of OptionalArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt16() []int16 {
+	return s.OptionalArrayIntegerInt16
+}
+
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
@@ -5575,9 +6490,19 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
 	return s.OptionalArrayIntegerInt64
 }
 
+// GetOptionalArrayIntegerInt8 returns the value of OptionalArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt8() []int8 {
+	return s.OptionalArrayIntegerInt8
+}
+
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
 func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint16 returns the value of OptionalArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint16() []uint16 {
+	return s.OptionalArrayIntegerUint16
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
@@ -5588,6 +6513,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUint8 returns the value of OptionalArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint8() []uint8 {
+	return s.OptionalArrayIntegerUint8
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
@@ -5685,9 +6615,29 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringEmail() []string {
 	return s.OptionalArrayStringEmail
 }
 
+// GetOptionalArrayStringFloat32 returns the value of OptionalArrayStringFloat32.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringFloat32() []float32 {
+	return s.OptionalArrayStringFloat32
+}
+
+// GetOptionalArrayStringFloat64 returns the value of OptionalArrayStringFloat64.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringFloat64() []float64 {
+	return s.OptionalArrayStringFloat64
+}
+
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt() []int {
+	return s.OptionalArrayStringInt
+}
+
+// GetOptionalArrayStringInt16 returns the value of OptionalArrayStringInt16.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt16() []int16 {
+	return s.OptionalArrayStringInt16
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
@@ -5698,6 +6648,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt32() []int32 {
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringInt8 returns the value of OptionalArrayStringInt8.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt8() []int8 {
+	return s.OptionalArrayStringInt8
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
@@ -5723,6 +6678,31 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringPassword() []string {
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUint returns the value of OptionalArrayStringUint.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUint() []uint {
+	return s.OptionalArrayStringUint
+}
+
+// GetOptionalArrayStringUint16 returns the value of OptionalArrayStringUint16.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUint16() []uint16 {
+	return s.OptionalArrayStringUint16
+}
+
+// GetOptionalArrayStringUint32 returns the value of OptionalArrayStringUint32.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUint32() []uint32 {
+	return s.OptionalArrayStringUint32
+}
+
+// GetOptionalArrayStringUint64 returns the value of OptionalArrayStringUint64.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUint64() []uint64 {
+	return s.OptionalArrayStringUint64
+}
+
+// GetOptionalArrayStringUint8 returns the value of OptionalArrayStringUint8.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUint8() []uint8 {
+	return s.OptionalArrayStringUint8
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
@@ -5780,6 +6760,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
 	return s.OptionalDoubleArrayInteger
 }
 
+// GetOptionalDoubleArrayIntegerInt16 returns the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt16() [][]int16 {
+	return s.OptionalDoubleArrayIntegerInt16
+}
+
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
@@ -5790,9 +6775,19 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int6
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
+// GetOptionalDoubleArrayIntegerInt8 returns the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt8() [][]int8 {
+	return s.OptionalDoubleArrayIntegerInt8
+}
+
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint16 returns the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint16() [][]uint16 {
+	return s.OptionalDoubleArrayIntegerUint16
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
@@ -5803,6 +6798,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uin
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUint8 returns the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint8() [][]uint8 {
+	return s.OptionalDoubleArrayIntegerUint8
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
@@ -5900,9 +6900,29 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]strin
 	return s.OptionalDoubleArrayStringEmail
 }
 
+// GetOptionalDoubleArrayStringFloat32 returns the value of OptionalDoubleArrayStringFloat32.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringFloat32() [][]float32 {
+	return s.OptionalDoubleArrayStringFloat32
+}
+
+// GetOptionalDoubleArrayStringFloat64 returns the value of OptionalDoubleArrayStringFloat64.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringFloat64() [][]float64 {
+	return s.OptionalDoubleArrayStringFloat64
+}
+
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt() [][]int {
+	return s.OptionalDoubleArrayStringInt
+}
+
+// GetOptionalDoubleArrayStringInt16 returns the value of OptionalDoubleArrayStringInt16.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt16() [][]int16 {
+	return s.OptionalDoubleArrayStringInt16
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
@@ -5913,6 +6933,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringInt8 returns the value of OptionalDoubleArrayStringInt8.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt8() [][]int8 {
+	return s.OptionalDoubleArrayStringInt8
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
@@ -5938,6 +6963,31 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]st
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUint returns the value of OptionalDoubleArrayStringUint.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUint() [][]uint {
+	return s.OptionalDoubleArrayStringUint
+}
+
+// GetOptionalDoubleArrayStringUint16 returns the value of OptionalDoubleArrayStringUint16.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUint16() [][]uint16 {
+	return s.OptionalDoubleArrayStringUint16
+}
+
+// GetOptionalDoubleArrayStringUint32 returns the value of OptionalDoubleArrayStringUint32.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUint32() [][]uint32 {
+	return s.OptionalDoubleArrayStringUint32
+}
+
+// GetOptionalDoubleArrayStringUint64 returns the value of OptionalDoubleArrayStringUint64.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUint64() [][]uint64 {
+	return s.OptionalDoubleArrayStringUint64
+}
+
+// GetOptionalDoubleArrayStringUint8 returns the value of OptionalDoubleArrayStringUint8.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUint8() [][]uint8 {
+	return s.OptionalDoubleArrayStringUint8
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
@@ -5980,6 +7030,11 @@ func (s *TestRequestFormatTestReq) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
+// GetOptionalIntegerInt16 returns the value of OptionalIntegerInt16.
+func (s *TestRequestFormatTestReq) GetOptionalIntegerInt16() OptInt16 {
+	return s.OptionalIntegerInt16
+}
+
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
 func (s *TestRequestFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
@@ -5990,9 +7045,19 @@ func (s *TestRequestFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
+// GetOptionalIntegerInt8 returns the value of OptionalIntegerInt8.
+func (s *TestRequestFormatTestReq) GetOptionalIntegerInt8() OptInt8 {
+	return s.OptionalIntegerInt8
+}
+
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
 func (s *TestRequestFormatTestReq) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint16 returns the value of OptionalIntegerUint16.
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUint16() OptUint16 {
+	return s.OptionalIntegerUint16
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
@@ -6003,6 +7068,11 @@ func (s *TestRequestFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
 func (s *TestRequestFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUint8 returns the value of OptionalIntegerUint8.
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUint8() OptUint8 {
+	return s.OptionalIntegerUint8
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
@@ -6100,9 +7170,29 @@ func (s *TestRequestFormatTestReq) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
+// GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
+func (s *TestRequestFormatTestReq) GetOptionalStringFloat32() OptFloat32 {
+	return s.OptionalStringFloat32
+}
+
+// GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
+func (s *TestRequestFormatTestReq) GetOptionalStringFloat64() OptFloat64 {
+	return s.OptionalStringFloat64
+}
+
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt returns the value of OptionalStringInt.
+func (s *TestRequestFormatTestReq) GetOptionalStringInt() OptInt {
+	return s.OptionalStringInt
+}
+
+// GetOptionalStringInt16 returns the value of OptionalStringInt16.
+func (s *TestRequestFormatTestReq) GetOptionalStringInt16() OptInt16 {
+	return s.OptionalStringInt16
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
@@ -6113,6 +7203,11 @@ func (s *TestRequestFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
 func (s *TestRequestFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
+}
+
+// GetOptionalStringInt8 returns the value of OptionalStringInt8.
+func (s *TestRequestFormatTestReq) GetOptionalStringInt8() OptInt8 {
+	return s.OptionalStringInt8
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
@@ -6138,6 +7233,31 @@ func (s *TestRequestFormatTestReq) GetOptionalStringPassword() OptString {
 // GetOptionalStringTime returns the value of OptionalStringTime.
 func (s *TestRequestFormatTestReq) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
+}
+
+// GetOptionalStringUint returns the value of OptionalStringUint.
+func (s *TestRequestFormatTestReq) GetOptionalStringUint() OptUint {
+	return s.OptionalStringUint
+}
+
+// GetOptionalStringUint16 returns the value of OptionalStringUint16.
+func (s *TestRequestFormatTestReq) GetOptionalStringUint16() OptUint16 {
+	return s.OptionalStringUint16
+}
+
+// GetOptionalStringUint32 returns the value of OptionalStringUint32.
+func (s *TestRequestFormatTestReq) GetOptionalStringUint32() OptUint32 {
+	return s.OptionalStringUint32
+}
+
+// GetOptionalStringUint64 returns the value of OptionalStringUint64.
+func (s *TestRequestFormatTestReq) GetOptionalStringUint64() OptUint64 {
+	return s.OptionalStringUint64
+}
+
+// GetOptionalStringUint8 returns the value of OptionalStringUint8.
+func (s *TestRequestFormatTestReq) GetOptionalStringUint8() OptUint8 {
+	return s.OptionalStringUint8
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
@@ -6195,6 +7315,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayInteger(val []int) {
 	s.RequiredArrayInteger = val
 }
 
+// SetRequiredArrayIntegerInt16 sets the value of RequiredArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt16(val []int16) {
+	s.RequiredArrayIntegerInt16 = val
+}
+
 // SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt32(val []int32) {
 	s.RequiredArrayIntegerInt32 = val
@@ -6205,9 +7330,19 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt64(val []int64) {
 	s.RequiredArrayIntegerInt64 = val
 }
 
+// SetRequiredArrayIntegerInt8 sets the value of RequiredArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt8(val []int8) {
+	s.RequiredArrayIntegerInt8 = val
+}
+
 // SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
 func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint(val []uint) {
 	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint16 sets the value of RequiredArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint16(val []uint16) {
+	s.RequiredArrayIntegerUint16 = val
 }
 
 // SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
@@ -6218,6 +7353,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint32(val []uint32) {
 // SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint64(val []uint64) {
 	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUint8 sets the value of RequiredArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint8(val []uint8) {
+	s.RequiredArrayIntegerUint8 = val
 }
 
 // SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
@@ -6315,9 +7455,29 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringEmail(val []string) {
 	s.RequiredArrayStringEmail = val
 }
 
+// SetRequiredArrayStringFloat32 sets the value of RequiredArrayStringFloat32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringFloat32(val []float32) {
+	s.RequiredArrayStringFloat32 = val
+}
+
+// SetRequiredArrayStringFloat64 sets the value of RequiredArrayStringFloat64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringFloat64(val []float64) {
+	s.RequiredArrayStringFloat64 = val
+}
+
 // SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringHostname(val []string) {
 	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt(val []int) {
+	s.RequiredArrayStringInt = val
+}
+
+// SetRequiredArrayStringInt16 sets the value of RequiredArrayStringInt16.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt16(val []int16) {
+	s.RequiredArrayStringInt16 = val
 }
 
 // SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
@@ -6328,6 +7488,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt32(val []int32) {
 // SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt64(val []int64) {
 	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringInt8 sets the value of RequiredArrayStringInt8.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt8(val []int8) {
+	s.RequiredArrayStringInt8 = val
 }
 
 // SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
@@ -6353,6 +7518,31 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringPassword(val []string) 
 // SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringTime(val []time.Time) {
 	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUint sets the value of RequiredArrayStringUint.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUint(val []uint) {
+	s.RequiredArrayStringUint = val
+}
+
+// SetRequiredArrayStringUint16 sets the value of RequiredArrayStringUint16.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUint16(val []uint16) {
+	s.RequiredArrayStringUint16 = val
+}
+
+// SetRequiredArrayStringUint32 sets the value of RequiredArrayStringUint32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUint32(val []uint32) {
+	s.RequiredArrayStringUint32 = val
+}
+
+// SetRequiredArrayStringUint64 sets the value of RequiredArrayStringUint64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUint64(val []uint64) {
+	s.RequiredArrayStringUint64 = val
+}
+
+// SetRequiredArrayStringUint8 sets the value of RequiredArrayStringUint8.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUint8(val []uint8) {
+	s.RequiredArrayStringUint8 = val
 }
 
 // SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
@@ -6410,6 +7600,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayInteger(val [][]int) {
 	s.RequiredDoubleArrayInteger = val
 }
 
+// SetRequiredDoubleArrayIntegerInt16 sets the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt16(val [][]int16) {
+	s.RequiredDoubleArrayIntegerInt16 = val
+}
+
 // SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
 	s.RequiredDoubleArrayIntegerInt32 = val
@@ -6420,9 +7615,19 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt64(val [][]in
 	s.RequiredDoubleArrayIntegerInt64 = val
 }
 
+// SetRequiredDoubleArrayIntegerInt8 sets the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt8(val [][]int8) {
+	s.RequiredDoubleArrayIntegerInt8 = val
+}
+
 // SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
 	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint16 sets the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint16(val [][]uint16) {
+	s.RequiredDoubleArrayIntegerUint16 = val
 }
 
 // SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
@@ -6433,6 +7638,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint32(val [][]u
 // SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
 	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint8 sets the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint8(val [][]uint8) {
+	s.RequiredDoubleArrayIntegerUint8 = val
 }
 
 // SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
@@ -6530,9 +7740,29 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringEmail(val [][]str
 	s.RequiredDoubleArrayStringEmail = val
 }
 
+// SetRequiredDoubleArrayStringFloat32 sets the value of RequiredDoubleArrayStringFloat32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringFloat32(val [][]float32) {
+	s.RequiredDoubleArrayStringFloat32 = val
+}
+
+// SetRequiredDoubleArrayStringFloat64 sets the value of RequiredDoubleArrayStringFloat64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringFloat64(val [][]float64) {
+	s.RequiredDoubleArrayStringFloat64 = val
+}
+
 // SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringHostname(val [][]string) {
 	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt(val [][]int) {
+	s.RequiredDoubleArrayStringInt = val
+}
+
+// SetRequiredDoubleArrayStringInt16 sets the value of RequiredDoubleArrayStringInt16.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt16(val [][]int16) {
+	s.RequiredDoubleArrayStringInt16 = val
 }
 
 // SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
@@ -6543,6 +7773,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt32(val [][]int
 // SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt64(val [][]int64) {
 	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringInt8 sets the value of RequiredDoubleArrayStringInt8.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt8(val [][]int8) {
+	s.RequiredDoubleArrayStringInt8 = val
 }
 
 // SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
@@ -6568,6 +7803,31 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringPassword(val [][]
 // SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
 	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUint sets the value of RequiredDoubleArrayStringUint.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUint(val [][]uint) {
+	s.RequiredDoubleArrayStringUint = val
+}
+
+// SetRequiredDoubleArrayStringUint16 sets the value of RequiredDoubleArrayStringUint16.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUint16(val [][]uint16) {
+	s.RequiredDoubleArrayStringUint16 = val
+}
+
+// SetRequiredDoubleArrayStringUint32 sets the value of RequiredDoubleArrayStringUint32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUint32(val [][]uint32) {
+	s.RequiredDoubleArrayStringUint32 = val
+}
+
+// SetRequiredDoubleArrayStringUint64 sets the value of RequiredDoubleArrayStringUint64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUint64(val [][]uint64) {
+	s.RequiredDoubleArrayStringUint64 = val
+}
+
+// SetRequiredDoubleArrayStringUint8 sets the value of RequiredDoubleArrayStringUint8.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUint8(val [][]uint8) {
+	s.RequiredDoubleArrayStringUint8 = val
 }
 
 // SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
@@ -6610,6 +7870,11 @@ func (s *TestRequestFormatTestReq) SetRequiredInteger(val int) {
 	s.RequiredInteger = val
 }
 
+// SetRequiredIntegerInt16 sets the value of RequiredIntegerInt16.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerInt16(val int16) {
+	s.RequiredIntegerInt16 = val
+}
+
 // SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
 func (s *TestRequestFormatTestReq) SetRequiredIntegerInt32(val int32) {
 	s.RequiredIntegerInt32 = val
@@ -6620,9 +7885,19 @@ func (s *TestRequestFormatTestReq) SetRequiredIntegerInt64(val int64) {
 	s.RequiredIntegerInt64 = val
 }
 
+// SetRequiredIntegerInt8 sets the value of RequiredIntegerInt8.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerInt8(val int8) {
+	s.RequiredIntegerInt8 = val
+}
+
 // SetRequiredIntegerUint sets the value of RequiredIntegerUint.
 func (s *TestRequestFormatTestReq) SetRequiredIntegerUint(val uint) {
 	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint16 sets the value of RequiredIntegerUint16.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUint16(val uint16) {
+	s.RequiredIntegerUint16 = val
 }
 
 // SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
@@ -6633,6 +7908,11 @@ func (s *TestRequestFormatTestReq) SetRequiredIntegerUint32(val uint32) {
 // SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
 func (s *TestRequestFormatTestReq) SetRequiredIntegerUint64(val uint64) {
 	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUint8 sets the value of RequiredIntegerUint8.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUint8(val uint8) {
+	s.RequiredIntegerUint8 = val
 }
 
 // SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
@@ -6730,9 +8010,29 @@ func (s *TestRequestFormatTestReq) SetRequiredStringEmail(val string) {
 	s.RequiredStringEmail = val
 }
 
+// SetRequiredStringFloat32 sets the value of RequiredStringFloat32.
+func (s *TestRequestFormatTestReq) SetRequiredStringFloat32(val float32) {
+	s.RequiredStringFloat32 = val
+}
+
+// SetRequiredStringFloat64 sets the value of RequiredStringFloat64.
+func (s *TestRequestFormatTestReq) SetRequiredStringFloat64(val float64) {
+	s.RequiredStringFloat64 = val
+}
+
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestRequestFormatTestReq) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt sets the value of RequiredStringInt.
+func (s *TestRequestFormatTestReq) SetRequiredStringInt(val int) {
+	s.RequiredStringInt = val
+}
+
+// SetRequiredStringInt16 sets the value of RequiredStringInt16.
+func (s *TestRequestFormatTestReq) SetRequiredStringInt16(val int16) {
+	s.RequiredStringInt16 = val
 }
 
 // SetRequiredStringInt32 sets the value of RequiredStringInt32.
@@ -6743,6 +8043,11 @@ func (s *TestRequestFormatTestReq) SetRequiredStringInt32(val int32) {
 // SetRequiredStringInt64 sets the value of RequiredStringInt64.
 func (s *TestRequestFormatTestReq) SetRequiredStringInt64(val int64) {
 	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringInt8 sets the value of RequiredStringInt8.
+func (s *TestRequestFormatTestReq) SetRequiredStringInt8(val int8) {
+	s.RequiredStringInt8 = val
 }
 
 // SetRequiredStringIP sets the value of RequiredStringIP.
@@ -6768,6 +8073,31 @@ func (s *TestRequestFormatTestReq) SetRequiredStringPassword(val string) {
 // SetRequiredStringTime sets the value of RequiredStringTime.
 func (s *TestRequestFormatTestReq) SetRequiredStringTime(val time.Time) {
 	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUint sets the value of RequiredStringUint.
+func (s *TestRequestFormatTestReq) SetRequiredStringUint(val uint) {
+	s.RequiredStringUint = val
+}
+
+// SetRequiredStringUint16 sets the value of RequiredStringUint16.
+func (s *TestRequestFormatTestReq) SetRequiredStringUint16(val uint16) {
+	s.RequiredStringUint16 = val
+}
+
+// SetRequiredStringUint32 sets the value of RequiredStringUint32.
+func (s *TestRequestFormatTestReq) SetRequiredStringUint32(val uint32) {
+	s.RequiredStringUint32 = val
+}
+
+// SetRequiredStringUint64 sets the value of RequiredStringUint64.
+func (s *TestRequestFormatTestReq) SetRequiredStringUint64(val uint64) {
+	s.RequiredStringUint64 = val
+}
+
+// SetRequiredStringUint8 sets the value of RequiredStringUint8.
+func (s *TestRequestFormatTestReq) SetRequiredStringUint8(val uint8) {
+	s.RequiredStringUint8 = val
 }
 
 // SetRequiredStringUnix sets the value of RequiredStringUnix.
@@ -6825,6 +8155,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayInteger(val []int) {
 	s.OptionalArrayInteger = val
 }
 
+// SetOptionalArrayIntegerInt16 sets the value of OptionalArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt16(val []int16) {
+	s.OptionalArrayIntegerInt16 = val
+}
+
 // SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt32(val []int32) {
 	s.OptionalArrayIntegerInt32 = val
@@ -6835,9 +8170,19 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt64(val []int64) {
 	s.OptionalArrayIntegerInt64 = val
 }
 
+// SetOptionalArrayIntegerInt8 sets the value of OptionalArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt8(val []int8) {
+	s.OptionalArrayIntegerInt8 = val
+}
+
 // SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
 func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint(val []uint) {
 	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint16 sets the value of OptionalArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint16(val []uint16) {
+	s.OptionalArrayIntegerUint16 = val
 }
 
 // SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
@@ -6848,6 +8193,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint32(val []uint32) {
 // SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint64(val []uint64) {
 	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUint8 sets the value of OptionalArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint8(val []uint8) {
+	s.OptionalArrayIntegerUint8 = val
 }
 
 // SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
@@ -6945,9 +8295,29 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringEmail(val []string) {
 	s.OptionalArrayStringEmail = val
 }
 
+// SetOptionalArrayStringFloat32 sets the value of OptionalArrayStringFloat32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringFloat32(val []float32) {
+	s.OptionalArrayStringFloat32 = val
+}
+
+// SetOptionalArrayStringFloat64 sets the value of OptionalArrayStringFloat64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringFloat64(val []float64) {
+	s.OptionalArrayStringFloat64 = val
+}
+
 // SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringHostname(val []string) {
 	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt(val []int) {
+	s.OptionalArrayStringInt = val
+}
+
+// SetOptionalArrayStringInt16 sets the value of OptionalArrayStringInt16.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt16(val []int16) {
+	s.OptionalArrayStringInt16 = val
 }
 
 // SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
@@ -6958,6 +8328,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt32(val []int32) {
 // SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt64(val []int64) {
 	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringInt8 sets the value of OptionalArrayStringInt8.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt8(val []int8) {
+	s.OptionalArrayStringInt8 = val
 }
 
 // SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
@@ -6983,6 +8358,31 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringPassword(val []string) 
 // SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringTime(val []time.Time) {
 	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUint sets the value of OptionalArrayStringUint.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUint(val []uint) {
+	s.OptionalArrayStringUint = val
+}
+
+// SetOptionalArrayStringUint16 sets the value of OptionalArrayStringUint16.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUint16(val []uint16) {
+	s.OptionalArrayStringUint16 = val
+}
+
+// SetOptionalArrayStringUint32 sets the value of OptionalArrayStringUint32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUint32(val []uint32) {
+	s.OptionalArrayStringUint32 = val
+}
+
+// SetOptionalArrayStringUint64 sets the value of OptionalArrayStringUint64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUint64(val []uint64) {
+	s.OptionalArrayStringUint64 = val
+}
+
+// SetOptionalArrayStringUint8 sets the value of OptionalArrayStringUint8.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUint8(val []uint8) {
+	s.OptionalArrayStringUint8 = val
 }
 
 // SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
@@ -7040,6 +8440,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayInteger(val [][]int) {
 	s.OptionalDoubleArrayInteger = val
 }
 
+// SetOptionalDoubleArrayIntegerInt16 sets the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt16(val [][]int16) {
+	s.OptionalDoubleArrayIntegerInt16 = val
+}
+
 // SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
 	s.OptionalDoubleArrayIntegerInt32 = val
@@ -7050,9 +8455,19 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt64(val [][]in
 	s.OptionalDoubleArrayIntegerInt64 = val
 }
 
+// SetOptionalDoubleArrayIntegerInt8 sets the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt8(val [][]int8) {
+	s.OptionalDoubleArrayIntegerInt8 = val
+}
+
 // SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
 	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint16 sets the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint16(val [][]uint16) {
+	s.OptionalDoubleArrayIntegerUint16 = val
 }
 
 // SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
@@ -7063,6 +8478,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint32(val [][]u
 // SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
 	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint8 sets the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint8(val [][]uint8) {
+	s.OptionalDoubleArrayIntegerUint8 = val
 }
 
 // SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
@@ -7160,9 +8580,29 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringEmail(val [][]str
 	s.OptionalDoubleArrayStringEmail = val
 }
 
+// SetOptionalDoubleArrayStringFloat32 sets the value of OptionalDoubleArrayStringFloat32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringFloat32(val [][]float32) {
+	s.OptionalDoubleArrayStringFloat32 = val
+}
+
+// SetOptionalDoubleArrayStringFloat64 sets the value of OptionalDoubleArrayStringFloat64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringFloat64(val [][]float64) {
+	s.OptionalDoubleArrayStringFloat64 = val
+}
+
 // SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringHostname(val [][]string) {
 	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt(val [][]int) {
+	s.OptionalDoubleArrayStringInt = val
+}
+
+// SetOptionalDoubleArrayStringInt16 sets the value of OptionalDoubleArrayStringInt16.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt16(val [][]int16) {
+	s.OptionalDoubleArrayStringInt16 = val
 }
 
 // SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
@@ -7173,6 +8613,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt32(val [][]int
 // SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt64(val [][]int64) {
 	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringInt8 sets the value of OptionalDoubleArrayStringInt8.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt8(val [][]int8) {
+	s.OptionalDoubleArrayStringInt8 = val
 }
 
 // SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
@@ -7198,6 +8643,31 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringPassword(val [][]
 // SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
 	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUint sets the value of OptionalDoubleArrayStringUint.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUint(val [][]uint) {
+	s.OptionalDoubleArrayStringUint = val
+}
+
+// SetOptionalDoubleArrayStringUint16 sets the value of OptionalDoubleArrayStringUint16.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUint16(val [][]uint16) {
+	s.OptionalDoubleArrayStringUint16 = val
+}
+
+// SetOptionalDoubleArrayStringUint32 sets the value of OptionalDoubleArrayStringUint32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUint32(val [][]uint32) {
+	s.OptionalDoubleArrayStringUint32 = val
+}
+
+// SetOptionalDoubleArrayStringUint64 sets the value of OptionalDoubleArrayStringUint64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUint64(val [][]uint64) {
+	s.OptionalDoubleArrayStringUint64 = val
+}
+
+// SetOptionalDoubleArrayStringUint8 sets the value of OptionalDoubleArrayStringUint8.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUint8(val [][]uint8) {
+	s.OptionalDoubleArrayStringUint8 = val
 }
 
 // SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
@@ -7240,6 +8710,11 @@ func (s *TestRequestFormatTestReq) SetOptionalInteger(val OptInt) {
 	s.OptionalInteger = val
 }
 
+// SetOptionalIntegerInt16 sets the value of OptionalIntegerInt16.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerInt16(val OptInt16) {
+	s.OptionalIntegerInt16 = val
+}
+
 // SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
 func (s *TestRequestFormatTestReq) SetOptionalIntegerInt32(val OptInt32) {
 	s.OptionalIntegerInt32 = val
@@ -7250,9 +8725,19 @@ func (s *TestRequestFormatTestReq) SetOptionalIntegerInt64(val OptInt64) {
 	s.OptionalIntegerInt64 = val
 }
 
+// SetOptionalIntegerInt8 sets the value of OptionalIntegerInt8.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerInt8(val OptInt8) {
+	s.OptionalIntegerInt8 = val
+}
+
 // SetOptionalIntegerUint sets the value of OptionalIntegerUint.
 func (s *TestRequestFormatTestReq) SetOptionalIntegerUint(val OptUint) {
 	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint16 sets the value of OptionalIntegerUint16.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUint16(val OptUint16) {
+	s.OptionalIntegerUint16 = val
 }
 
 // SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
@@ -7263,6 +8748,11 @@ func (s *TestRequestFormatTestReq) SetOptionalIntegerUint32(val OptUint32) {
 // SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
 func (s *TestRequestFormatTestReq) SetOptionalIntegerUint64(val OptUint64) {
 	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUint8 sets the value of OptionalIntegerUint8.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUint8(val OptUint8) {
+	s.OptionalIntegerUint8 = val
 }
 
 // SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
@@ -7360,9 +8850,29 @@ func (s *TestRequestFormatTestReq) SetOptionalStringEmail(val OptString) {
 	s.OptionalStringEmail = val
 }
 
+// SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
+func (s *TestRequestFormatTestReq) SetOptionalStringFloat32(val OptFloat32) {
+	s.OptionalStringFloat32 = val
+}
+
+// SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
+func (s *TestRequestFormatTestReq) SetOptionalStringFloat64(val OptFloat64) {
+	s.OptionalStringFloat64 = val
+}
+
 // SetOptionalStringHostname sets the value of OptionalStringHostname.
 func (s *TestRequestFormatTestReq) SetOptionalStringHostname(val OptString) {
 	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt sets the value of OptionalStringInt.
+func (s *TestRequestFormatTestReq) SetOptionalStringInt(val OptInt) {
+	s.OptionalStringInt = val
+}
+
+// SetOptionalStringInt16 sets the value of OptionalStringInt16.
+func (s *TestRequestFormatTestReq) SetOptionalStringInt16(val OptInt16) {
+	s.OptionalStringInt16 = val
 }
 
 // SetOptionalStringInt32 sets the value of OptionalStringInt32.
@@ -7373,6 +8883,11 @@ func (s *TestRequestFormatTestReq) SetOptionalStringInt32(val OptStringInt32) {
 // SetOptionalStringInt64 sets the value of OptionalStringInt64.
 func (s *TestRequestFormatTestReq) SetOptionalStringInt64(val OptStringInt64) {
 	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringInt8 sets the value of OptionalStringInt8.
+func (s *TestRequestFormatTestReq) SetOptionalStringInt8(val OptInt8) {
+	s.OptionalStringInt8 = val
 }
 
 // SetOptionalStringIP sets the value of OptionalStringIP.
@@ -7398,6 +8913,31 @@ func (s *TestRequestFormatTestReq) SetOptionalStringPassword(val OptString) {
 // SetOptionalStringTime sets the value of OptionalStringTime.
 func (s *TestRequestFormatTestReq) SetOptionalStringTime(val OptTime) {
 	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUint sets the value of OptionalStringUint.
+func (s *TestRequestFormatTestReq) SetOptionalStringUint(val OptUint) {
+	s.OptionalStringUint = val
+}
+
+// SetOptionalStringUint16 sets the value of OptionalStringUint16.
+func (s *TestRequestFormatTestReq) SetOptionalStringUint16(val OptUint16) {
+	s.OptionalStringUint16 = val
+}
+
+// SetOptionalStringUint32 sets the value of OptionalStringUint32.
+func (s *TestRequestFormatTestReq) SetOptionalStringUint32(val OptUint32) {
+	s.OptionalStringUint32 = val
+}
+
+// SetOptionalStringUint64 sets the value of OptionalStringUint64.
+func (s *TestRequestFormatTestReq) SetOptionalStringUint64(val OptUint64) {
+	s.OptionalStringUint64 = val
+}
+
+// SetOptionalStringUint8 sets the value of OptionalStringUint8.
+func (s *TestRequestFormatTestReq) SetOptionalStringUint8(val OptUint8) {
+	s.OptionalStringUint8 = val
 }
 
 // SetOptionalStringUnix sets the value of OptionalStringUnix.
@@ -7442,11 +8982,15 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayAny                           []jx.Raw             `json:"required_array_any"`
 	RequiredArrayBoolean                       []bool               `json:"required_array_boolean"`
 	RequiredArrayInteger                       []int                `json:"required_array_integer"`
+	RequiredArrayIntegerInt16                  []int16              `json:"required_array_integer_int16"`
 	RequiredArrayIntegerInt32                  []int32              `json:"required_array_integer_int32"`
 	RequiredArrayIntegerInt64                  []int64              `json:"required_array_integer_int64"`
+	RequiredArrayIntegerInt8                   []int8               `json:"required_array_integer_int8"`
 	RequiredArrayIntegerUint                   []uint               `json:"required_array_integer_uint"`
+	RequiredArrayIntegerUint16                 []uint16             `json:"required_array_integer_uint16"`
 	RequiredArrayIntegerUint32                 []uint32             `json:"required_array_integer_uint32"`
 	RequiredArrayIntegerUint64                 []uint64             `json:"required_array_integer_uint64"`
+	RequiredArrayIntegerUint8                  []uint8              `json:"required_array_integer_uint8"`
 	RequiredArrayIntegerUnix                   []time.Time          `json:"required_array_integer_unix"`
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          `json:"required_array_integer_unix-micro"`
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
@@ -7466,14 +9010,24 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayStringDateMinusTime           []time.Time          `json:"required_array_string_date-time"`
 	RequiredArrayStringDuration                []time.Duration      `json:"required_array_string_duration"`
 	RequiredArrayStringEmail                   []string             `json:"required_array_string_email"`
+	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
+	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
+	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
 	RequiredArrayStringInt64                   []int64              `json:"required_array_string_int64"`
+	RequiredArrayStringInt8                    []int8               `json:"required_array_string_int8"`
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
+	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
+	RequiredArrayStringUint16                  []uint16             `json:"required_array_string_uint16"`
+	RequiredArrayStringUint32                  []uint32             `json:"required_array_string_uint32"`
+	RequiredArrayStringUint64                  []uint64             `json:"required_array_string_uint64"`
+	RequiredArrayStringUint8                   []uint8              `json:"required_array_string_uint8"`
 	RequiredArrayStringUnix                    []time.Time          `json:"required_array_string_unix"`
 	RequiredArrayStringUnixMinusMicro          []time.Time          `json:"required_array_string_unix-micro"`
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
@@ -7485,11 +9039,15 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayAny                     [][]jx.Raw           `json:"required_double_array_any"`
 	RequiredDoubleArrayBoolean                 [][]bool             `json:"required_double_array_boolean"`
 	RequiredDoubleArrayInteger                 [][]int              `json:"required_double_array_integer"`
+	RequiredDoubleArrayIntegerInt16            [][]int16            `json:"required_double_array_integer_int16"`
 	RequiredDoubleArrayIntegerInt32            [][]int32            `json:"required_double_array_integer_int32"`
 	RequiredDoubleArrayIntegerInt64            [][]int64            `json:"required_double_array_integer_int64"`
+	RequiredDoubleArrayIntegerInt8             [][]int8             `json:"required_double_array_integer_int8"`
 	RequiredDoubleArrayIntegerUint             [][]uint             `json:"required_double_array_integer_uint"`
+	RequiredDoubleArrayIntegerUint16           [][]uint16           `json:"required_double_array_integer_uint16"`
 	RequiredDoubleArrayIntegerUint32           [][]uint32           `json:"required_double_array_integer_uint32"`
 	RequiredDoubleArrayIntegerUint64           [][]uint64           `json:"required_double_array_integer_uint64"`
+	RequiredDoubleArrayIntegerUint8            [][]uint8            `json:"required_double_array_integer_uint8"`
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        `json:"required_double_array_integer_unix"`
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"required_double_array_integer_unix-micro"`
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
@@ -7509,14 +9067,24 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        `json:"required_double_array_string_date-time"`
 	RequiredDoubleArrayStringDuration          [][]time.Duration    `json:"required_double_array_string_duration"`
 	RequiredDoubleArrayStringEmail             [][]string           `json:"required_double_array_string_email"`
+	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
+	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
+	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
 	RequiredDoubleArrayStringInt64             [][]int64            `json:"required_double_array_string_int64"`
+	RequiredDoubleArrayStringInt8              [][]int8             `json:"required_double_array_string_int8"`
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
+	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
+	RequiredDoubleArrayStringUint16            [][]uint16           `json:"required_double_array_string_uint16"`
+	RequiredDoubleArrayStringUint32            [][]uint32           `json:"required_double_array_string_uint32"`
+	RequiredDoubleArrayStringUint64            [][]uint64           `json:"required_double_array_string_uint64"`
+	RequiredDoubleArrayStringUint8             [][]uint8            `json:"required_double_array_string_uint8"`
 	RequiredDoubleArrayStringUnix              [][]time.Time        `json:"required_double_array_string_unix"`
 	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"required_double_array_string_unix-micro"`
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
@@ -7525,11 +9093,15 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
+	RequiredIntegerInt16                       int16                `json:"required_integer_int16"`
 	RequiredIntegerInt32                       int32                `json:"required_integer_int32"`
 	RequiredIntegerInt64                       int64                `json:"required_integer_int64"`
+	RequiredIntegerInt8                        int8                 `json:"required_integer_int8"`
 	RequiredIntegerUint                        uint                 `json:"required_integer_uint"`
+	RequiredIntegerUint16                      uint16               `json:"required_integer_uint16"`
 	RequiredIntegerUint32                      uint32               `json:"required_integer_uint32"`
 	RequiredIntegerUint64                      uint64               `json:"required_integer_uint64"`
+	RequiredIntegerUint8                       uint8                `json:"required_integer_uint8"`
 	RequiredIntegerUnix                        time.Time            `json:"required_integer_unix"`
 	RequiredIntegerUnixMinusMicro              time.Time            `json:"required_integer_unix-micro"`
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
@@ -7549,14 +9121,24 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredStringDateMinusTime                time.Time            `json:"required_string_date-time"`
 	RequiredStringDuration                     time.Duration        `json:"required_string_duration"`
 	RequiredStringEmail                        string               `json:"required_string_email"`
+	RequiredStringFloat32                      float32              `json:"required_string_float32"`
+	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringInt                          int                  `json:"required_string_int"`
+	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
 	RequiredStringInt64                        int64                `json:"required_string_int64"`
+	RequiredStringInt8                         int8                 `json:"required_string_int8"`
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
+	RequiredStringUint                         uint                 `json:"required_string_uint"`
+	RequiredStringUint16                       uint16               `json:"required_string_uint16"`
+	RequiredStringUint32                       uint32               `json:"required_string_uint32"`
+	RequiredStringUint64                       uint64               `json:"required_string_uint64"`
+	RequiredStringUint8                        uint8                `json:"required_string_uint8"`
 	RequiredStringUnix                         time.Time            `json:"required_string_unix"`
 	RequiredStringUnixMinusMicro               time.Time            `json:"required_string_unix-micro"`
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
@@ -7568,11 +9150,15 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayAny                           []jx.Raw             `json:"optional_array_any"`
 	OptionalArrayBoolean                       []bool               `json:"optional_array_boolean"`
 	OptionalArrayInteger                       []int                `json:"optional_array_integer"`
+	OptionalArrayIntegerInt16                  []int16              `json:"optional_array_integer_int16"`
 	OptionalArrayIntegerInt32                  []int32              `json:"optional_array_integer_int32"`
 	OptionalArrayIntegerInt64                  []int64              `json:"optional_array_integer_int64"`
+	OptionalArrayIntegerInt8                   []int8               `json:"optional_array_integer_int8"`
 	OptionalArrayIntegerUint                   []uint               `json:"optional_array_integer_uint"`
+	OptionalArrayIntegerUint16                 []uint16             `json:"optional_array_integer_uint16"`
 	OptionalArrayIntegerUint32                 []uint32             `json:"optional_array_integer_uint32"`
 	OptionalArrayIntegerUint64                 []uint64             `json:"optional_array_integer_uint64"`
+	OptionalArrayIntegerUint8                  []uint8              `json:"optional_array_integer_uint8"`
 	OptionalArrayIntegerUnix                   []time.Time          `json:"optional_array_integer_unix"`
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          `json:"optional_array_integer_unix-micro"`
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
@@ -7592,14 +9178,24 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayStringDateMinusTime           []time.Time          `json:"optional_array_string_date-time"`
 	OptionalArrayStringDuration                []time.Duration      `json:"optional_array_string_duration"`
 	OptionalArrayStringEmail                   []string             `json:"optional_array_string_email"`
+	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
+	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
+	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
 	OptionalArrayStringInt64                   []int64              `json:"optional_array_string_int64"`
+	OptionalArrayStringInt8                    []int8               `json:"optional_array_string_int8"`
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
+	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
+	OptionalArrayStringUint16                  []uint16             `json:"optional_array_string_uint16"`
+	OptionalArrayStringUint32                  []uint32             `json:"optional_array_string_uint32"`
+	OptionalArrayStringUint64                  []uint64             `json:"optional_array_string_uint64"`
+	OptionalArrayStringUint8                   []uint8              `json:"optional_array_string_uint8"`
 	OptionalArrayStringUnix                    []time.Time          `json:"optional_array_string_unix"`
 	OptionalArrayStringUnixMinusMicro          []time.Time          `json:"optional_array_string_unix-micro"`
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
@@ -7611,11 +9207,15 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayAny                     [][]jx.Raw           `json:"optional_double_array_any"`
 	OptionalDoubleArrayBoolean                 [][]bool             `json:"optional_double_array_boolean"`
 	OptionalDoubleArrayInteger                 [][]int              `json:"optional_double_array_integer"`
+	OptionalDoubleArrayIntegerInt16            [][]int16            `json:"optional_double_array_integer_int16"`
 	OptionalDoubleArrayIntegerInt32            [][]int32            `json:"optional_double_array_integer_int32"`
 	OptionalDoubleArrayIntegerInt64            [][]int64            `json:"optional_double_array_integer_int64"`
+	OptionalDoubleArrayIntegerInt8             [][]int8             `json:"optional_double_array_integer_int8"`
 	OptionalDoubleArrayIntegerUint             [][]uint             `json:"optional_double_array_integer_uint"`
+	OptionalDoubleArrayIntegerUint16           [][]uint16           `json:"optional_double_array_integer_uint16"`
 	OptionalDoubleArrayIntegerUint32           [][]uint32           `json:"optional_double_array_integer_uint32"`
 	OptionalDoubleArrayIntegerUint64           [][]uint64           `json:"optional_double_array_integer_uint64"`
+	OptionalDoubleArrayIntegerUint8            [][]uint8            `json:"optional_double_array_integer_uint8"`
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        `json:"optional_double_array_integer_unix"`
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"optional_double_array_integer_unix-micro"`
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
@@ -7635,14 +9235,24 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        `json:"optional_double_array_string_date-time"`
 	OptionalDoubleArrayStringDuration          [][]time.Duration    `json:"optional_double_array_string_duration"`
 	OptionalDoubleArrayStringEmail             [][]string           `json:"optional_double_array_string_email"`
+	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
+	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
+	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
 	OptionalDoubleArrayStringInt64             [][]int64            `json:"optional_double_array_string_int64"`
+	OptionalDoubleArrayStringInt8              [][]int8             `json:"optional_double_array_string_int8"`
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
+	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
+	OptionalDoubleArrayStringUint16            [][]uint16           `json:"optional_double_array_string_uint16"`
+	OptionalDoubleArrayStringUint32            [][]uint32           `json:"optional_double_array_string_uint32"`
+	OptionalDoubleArrayStringUint64            [][]uint64           `json:"optional_double_array_string_uint64"`
+	OptionalDoubleArrayStringUint8             [][]uint8            `json:"optional_double_array_string_uint8"`
 	OptionalDoubleArrayStringUnix              [][]time.Time        `json:"optional_double_array_string_unix"`
 	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"optional_double_array_string_unix-micro"`
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
@@ -7651,11 +9261,15 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
+	OptionalIntegerInt16                       OptInt16             `json:"optional_integer_int16"`
 	OptionalIntegerInt32                       OptInt32             `json:"optional_integer_int32"`
 	OptionalIntegerInt64                       OptInt64             `json:"optional_integer_int64"`
+	OptionalIntegerInt8                        OptInt8              `json:"optional_integer_int8"`
 	OptionalIntegerUint                        OptUint              `json:"optional_integer_uint"`
+	OptionalIntegerUint16                      OptUint16            `json:"optional_integer_uint16"`
 	OptionalIntegerUint32                      OptUint32            `json:"optional_integer_uint32"`
 	OptionalIntegerUint64                      OptUint64            `json:"optional_integer_uint64"`
+	OptionalIntegerUint8                       OptUint8             `json:"optional_integer_uint8"`
 	OptionalIntegerUnix                        OptUnixSeconds       `json:"optional_integer_unix"`
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         `json:"optional_integer_unix-micro"`
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
@@ -7675,14 +9289,24 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
+	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringInt                          OptInt               `json:"optional_string_int"`
+	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
+	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
+	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
+	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -7712,6 +9336,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
+// GetRequiredArrayIntegerInt16 returns the value of RequiredArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt16() []int16 {
+	return s.RequiredArrayIntegerInt16
+}
+
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
@@ -7722,9 +9351,19 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt64() []int6
 	return s.RequiredArrayIntegerInt64
 }
 
+// GetRequiredArrayIntegerInt8 returns the value of RequiredArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt8() []int8 {
+	return s.RequiredArrayIntegerInt8
+}
+
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint16 returns the value of RequiredArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint16() []uint16 {
+	return s.RequiredArrayIntegerUint16
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
@@ -7735,6 +9374,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint32() []uin
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUint8 returns the value of RequiredArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint8() []uint8 {
+	return s.RequiredArrayIntegerUint8
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
@@ -7832,9 +9476,29 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringEmail() []strin
 	return s.RequiredArrayStringEmail
 }
 
+// GetRequiredArrayStringFloat32 returns the value of RequiredArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringFloat32() []float32 {
+	return s.RequiredArrayStringFloat32
+}
+
+// GetRequiredArrayStringFloat64 returns the value of RequiredArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringFloat64() []float64 {
+	return s.RequiredArrayStringFloat64
+}
+
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt() []int {
+	return s.RequiredArrayStringInt
+}
+
+// GetRequiredArrayStringInt16 returns the value of RequiredArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt16() []int16 {
+	return s.RequiredArrayStringInt16
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
@@ -7845,6 +9509,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt32() []int32
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringInt8 returns the value of RequiredArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt8() []int8 {
+	return s.RequiredArrayStringInt8
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
@@ -7870,6 +9539,31 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringPassword() []st
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUint returns the value of RequiredArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUint() []uint {
+	return s.RequiredArrayStringUint
+}
+
+// GetRequiredArrayStringUint16 returns the value of RequiredArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUint16() []uint16 {
+	return s.RequiredArrayStringUint16
+}
+
+// GetRequiredArrayStringUint32 returns the value of RequiredArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUint32() []uint32 {
+	return s.RequiredArrayStringUint32
+}
+
+// GetRequiredArrayStringUint64 returns the value of RequiredArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUint64() []uint64 {
+	return s.RequiredArrayStringUint64
+}
+
+// GetRequiredArrayStringUint8 returns the value of RequiredArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUint8() []uint8 {
+	return s.RequiredArrayStringUint8
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
@@ -7927,6 +9621,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayInteger() [][]i
 	return s.RequiredDoubleArrayInteger
 }
 
+// GetRequiredDoubleArrayIntegerInt16 returns the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt16() [][]int16 {
+	return s.RequiredDoubleArrayIntegerInt16
+}
+
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
@@ -7937,9 +9636,19 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt64() 
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
+// GetRequiredDoubleArrayIntegerInt8 returns the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt8() [][]int8 {
+	return s.RequiredDoubleArrayIntegerInt8
+}
+
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint16 returns the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint16() [][]uint16 {
+	return s.RequiredDoubleArrayIntegerUint16
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
@@ -7950,6 +9659,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint32()
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUint8 returns the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint8() [][]uint8 {
+	return s.RequiredDoubleArrayIntegerUint8
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
@@ -8047,9 +9761,29 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringEmail() [
 	return s.RequiredDoubleArrayStringEmail
 }
 
+// GetRequiredDoubleArrayStringFloat32 returns the value of RequiredDoubleArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringFloat32() [][]float32 {
+	return s.RequiredDoubleArrayStringFloat32
+}
+
+// GetRequiredDoubleArrayStringFloat64 returns the value of RequiredDoubleArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringFloat64() [][]float64 {
+	return s.RequiredDoubleArrayStringFloat64
+}
+
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt() [][]int {
+	return s.RequiredDoubleArrayStringInt
+}
+
+// GetRequiredDoubleArrayStringInt16 returns the value of RequiredDoubleArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt16() [][]int16 {
+	return s.RequiredDoubleArrayStringInt16
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
@@ -8060,6 +9794,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt32() [
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringInt8 returns the value of RequiredDoubleArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt8() [][]int8 {
+	return s.RequiredDoubleArrayStringInt8
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
@@ -8085,6 +9824,31 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringPassword(
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUint returns the value of RequiredDoubleArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUint() [][]uint {
+	return s.RequiredDoubleArrayStringUint
+}
+
+// GetRequiredDoubleArrayStringUint16 returns the value of RequiredDoubleArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUint16() [][]uint16 {
+	return s.RequiredDoubleArrayStringUint16
+}
+
+// GetRequiredDoubleArrayStringUint32 returns the value of RequiredDoubleArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUint32() [][]uint32 {
+	return s.RequiredDoubleArrayStringUint32
+}
+
+// GetRequiredDoubleArrayStringUint64 returns the value of RequiredDoubleArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUint64() [][]uint64 {
+	return s.RequiredDoubleArrayStringUint64
+}
+
+// GetRequiredDoubleArrayStringUint8 returns the value of RequiredDoubleArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUint8() [][]uint8 {
+	return s.RequiredDoubleArrayStringUint8
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
@@ -8127,6 +9891,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
+// GetRequiredIntegerInt16 returns the value of RequiredIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt16() int16 {
+	return s.RequiredIntegerInt16
+}
+
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
@@ -8137,9 +9906,19 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
+// GetRequiredIntegerInt8 returns the value of RequiredIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt8() int8 {
+	return s.RequiredIntegerInt8
+}
+
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint16 returns the value of RequiredIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint16() uint16 {
+	return s.RequiredIntegerUint16
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
@@ -8150,6 +9929,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint32() uint32 {
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUint8 returns the value of RequiredIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint8() uint8 {
+	return s.RequiredIntegerUint8
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
@@ -8247,9 +10031,29 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
+// GetRequiredStringFloat32 returns the value of RequiredStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringFloat32() float32 {
+	return s.RequiredStringFloat32
+}
+
+// GetRequiredStringFloat64 returns the value of RequiredStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringFloat64() float64 {
+	return s.RequiredStringFloat64
+}
+
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt returns the value of RequiredStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt() int {
+	return s.RequiredStringInt
+}
+
+// GetRequiredStringInt16 returns the value of RequiredStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt16() int16 {
+	return s.RequiredStringInt16
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
@@ -8260,6 +10064,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt32() int32 {
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
+}
+
+// GetRequiredStringInt8 returns the value of RequiredStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt8() int8 {
+	return s.RequiredStringInt8
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
@@ -8285,6 +10094,31 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringPassword() string {
 // GetRequiredStringTime returns the value of RequiredStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
+}
+
+// GetRequiredStringUint returns the value of RequiredStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUint() uint {
+	return s.RequiredStringUint
+}
+
+// GetRequiredStringUint16 returns the value of RequiredStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUint16() uint16 {
+	return s.RequiredStringUint16
+}
+
+// GetRequiredStringUint32 returns the value of RequiredStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUint32() uint32 {
+	return s.RequiredStringUint32
+}
+
+// GetRequiredStringUint64 returns the value of RequiredStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUint64() uint64 {
+	return s.RequiredStringUint64
+}
+
+// GetRequiredStringUint8 returns the value of RequiredStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUint8() uint8 {
+	return s.RequiredStringUint8
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
@@ -8342,6 +10176,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
+// GetOptionalArrayIntegerInt16 returns the value of OptionalArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt16() []int16 {
+	return s.OptionalArrayIntegerInt16
+}
+
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
@@ -8352,9 +10191,19 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt64() []int6
 	return s.OptionalArrayIntegerInt64
 }
 
+// GetOptionalArrayIntegerInt8 returns the value of OptionalArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt8() []int8 {
+	return s.OptionalArrayIntegerInt8
+}
+
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint16 returns the value of OptionalArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint16() []uint16 {
+	return s.OptionalArrayIntegerUint16
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
@@ -8365,6 +10214,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint32() []uin
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUint8 returns the value of OptionalArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint8() []uint8 {
+	return s.OptionalArrayIntegerUint8
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
@@ -8462,9 +10316,29 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringEmail() []strin
 	return s.OptionalArrayStringEmail
 }
 
+// GetOptionalArrayStringFloat32 returns the value of OptionalArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringFloat32() []float32 {
+	return s.OptionalArrayStringFloat32
+}
+
+// GetOptionalArrayStringFloat64 returns the value of OptionalArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringFloat64() []float64 {
+	return s.OptionalArrayStringFloat64
+}
+
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt() []int {
+	return s.OptionalArrayStringInt
+}
+
+// GetOptionalArrayStringInt16 returns the value of OptionalArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt16() []int16 {
+	return s.OptionalArrayStringInt16
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
@@ -8475,6 +10349,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt32() []int32
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringInt8 returns the value of OptionalArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt8() []int8 {
+	return s.OptionalArrayStringInt8
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
@@ -8500,6 +10379,31 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringPassword() []st
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUint returns the value of OptionalArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUint() []uint {
+	return s.OptionalArrayStringUint
+}
+
+// GetOptionalArrayStringUint16 returns the value of OptionalArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUint16() []uint16 {
+	return s.OptionalArrayStringUint16
+}
+
+// GetOptionalArrayStringUint32 returns the value of OptionalArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUint32() []uint32 {
+	return s.OptionalArrayStringUint32
+}
+
+// GetOptionalArrayStringUint64 returns the value of OptionalArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUint64() []uint64 {
+	return s.OptionalArrayStringUint64
+}
+
+// GetOptionalArrayStringUint8 returns the value of OptionalArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUint8() []uint8 {
+	return s.OptionalArrayStringUint8
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
@@ -8557,6 +10461,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayInteger() [][]i
 	return s.OptionalDoubleArrayInteger
 }
 
+// GetOptionalDoubleArrayIntegerInt16 returns the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt16() [][]int16 {
+	return s.OptionalDoubleArrayIntegerInt16
+}
+
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
@@ -8567,9 +10476,19 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt64() 
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
+// GetOptionalDoubleArrayIntegerInt8 returns the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt8() [][]int8 {
+	return s.OptionalDoubleArrayIntegerInt8
+}
+
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint16 returns the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint16() [][]uint16 {
+	return s.OptionalDoubleArrayIntegerUint16
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
@@ -8580,6 +10499,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint32()
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUint8 returns the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint8() [][]uint8 {
+	return s.OptionalDoubleArrayIntegerUint8
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
@@ -8677,9 +10601,29 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringEmail() [
 	return s.OptionalDoubleArrayStringEmail
 }
 
+// GetOptionalDoubleArrayStringFloat32 returns the value of OptionalDoubleArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringFloat32() [][]float32 {
+	return s.OptionalDoubleArrayStringFloat32
+}
+
+// GetOptionalDoubleArrayStringFloat64 returns the value of OptionalDoubleArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringFloat64() [][]float64 {
+	return s.OptionalDoubleArrayStringFloat64
+}
+
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt() [][]int {
+	return s.OptionalDoubleArrayStringInt
+}
+
+// GetOptionalDoubleArrayStringInt16 returns the value of OptionalDoubleArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt16() [][]int16 {
+	return s.OptionalDoubleArrayStringInt16
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
@@ -8690,6 +10634,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt32() [
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringInt8 returns the value of OptionalDoubleArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt8() [][]int8 {
+	return s.OptionalDoubleArrayStringInt8
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
@@ -8715,6 +10664,31 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringPassword(
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUint returns the value of OptionalDoubleArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUint() [][]uint {
+	return s.OptionalDoubleArrayStringUint
+}
+
+// GetOptionalDoubleArrayStringUint16 returns the value of OptionalDoubleArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUint16() [][]uint16 {
+	return s.OptionalDoubleArrayStringUint16
+}
+
+// GetOptionalDoubleArrayStringUint32 returns the value of OptionalDoubleArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUint32() [][]uint32 {
+	return s.OptionalDoubleArrayStringUint32
+}
+
+// GetOptionalDoubleArrayStringUint64 returns the value of OptionalDoubleArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUint64() [][]uint64 {
+	return s.OptionalDoubleArrayStringUint64
+}
+
+// GetOptionalDoubleArrayStringUint8 returns the value of OptionalDoubleArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUint8() [][]uint8 {
+	return s.OptionalDoubleArrayStringUint8
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
@@ -8757,6 +10731,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
+// GetOptionalIntegerInt16 returns the value of OptionalIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt16() OptInt16 {
+	return s.OptionalIntegerInt16
+}
+
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
@@ -8767,9 +10746,19 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
+// GetOptionalIntegerInt8 returns the value of OptionalIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt8() OptInt8 {
+	return s.OptionalIntegerInt8
+}
+
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint16 returns the value of OptionalIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint16() OptUint16 {
+	return s.OptionalIntegerUint16
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
@@ -8780,6 +10769,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint32() OptUint32 
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUint8 returns the value of OptionalIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint8() OptUint8 {
+	return s.OptionalIntegerUint8
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
@@ -8877,9 +10871,29 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
+// GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat32() OptFloat32 {
+	return s.OptionalStringFloat32
+}
+
+// GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat64() OptFloat64 {
+	return s.OptionalStringFloat64
+}
+
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt returns the value of OptionalStringInt.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt() OptInt {
+	return s.OptionalStringInt
+}
+
+// GetOptionalStringInt16 returns the value of OptionalStringInt16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt16() OptInt16 {
+	return s.OptionalStringInt16
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
@@ -8890,6 +10904,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt32() OptStringInt
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
+}
+
+// GetOptionalStringInt8 returns the value of OptionalStringInt8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt8() OptInt8 {
+	return s.OptionalStringInt8
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
@@ -8915,6 +10934,31 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringPassword() OptString
 // GetOptionalStringTime returns the value of OptionalStringTime.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
+}
+
+// GetOptionalStringUint returns the value of OptionalStringUint.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint() OptUint {
+	return s.OptionalStringUint
+}
+
+// GetOptionalStringUint16 returns the value of OptionalStringUint16.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint16() OptUint16 {
+	return s.OptionalStringUint16
+}
+
+// GetOptionalStringUint32 returns the value of OptionalStringUint32.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint32() OptUint32 {
+	return s.OptionalStringUint32
+}
+
+// GetOptionalStringUint64 returns the value of OptionalStringUint64.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint64() OptUint64 {
+	return s.OptionalStringUint64
+}
+
+// GetOptionalStringUint8 returns the value of OptionalStringUint8.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint8() OptUint8 {
+	return s.OptionalStringUint8
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
@@ -8972,6 +11016,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayInteger(val []int) {
 	s.RequiredArrayInteger = val
 }
 
+// SetRequiredArrayIntegerInt16 sets the value of RequiredArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt16(val []int16) {
+	s.RequiredArrayIntegerInt16 = val
+}
+
 // SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt32(val []int32) {
 	s.RequiredArrayIntegerInt32 = val
@@ -8982,9 +11031,19 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt64(val []in
 	s.RequiredArrayIntegerInt64 = val
 }
 
+// SetRequiredArrayIntegerInt8 sets the value of RequiredArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt8(val []int8) {
+	s.RequiredArrayIntegerInt8 = val
+}
+
 // SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint(val []uint) {
 	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint16 sets the value of RequiredArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint16(val []uint16) {
+	s.RequiredArrayIntegerUint16 = val
 }
 
 // SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
@@ -8995,6 +11054,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint32(val []u
 // SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint64(val []uint64) {
 	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUint8 sets the value of RequiredArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint8(val []uint8) {
+	s.RequiredArrayIntegerUint8 = val
 }
 
 // SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
@@ -9092,9 +11156,29 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringEmail(val []str
 	s.RequiredArrayStringEmail = val
 }
 
+// SetRequiredArrayStringFloat32 sets the value of RequiredArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringFloat32(val []float32) {
+	s.RequiredArrayStringFloat32 = val
+}
+
+// SetRequiredArrayStringFloat64 sets the value of RequiredArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringFloat64(val []float64) {
+	s.RequiredArrayStringFloat64 = val
+}
+
 // SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringHostname(val []string) {
 	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt(val []int) {
+	s.RequiredArrayStringInt = val
+}
+
+// SetRequiredArrayStringInt16 sets the value of RequiredArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt16(val []int16) {
+	s.RequiredArrayStringInt16 = val
 }
 
 // SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
@@ -9105,6 +11189,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt32(val []int
 // SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt64(val []int64) {
 	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringInt8 sets the value of RequiredArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt8(val []int8) {
+	s.RequiredArrayStringInt8 = val
 }
 
 // SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
@@ -9130,6 +11219,31 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringPassword(val []
 // SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringTime(val []time.Time) {
 	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUint sets the value of RequiredArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUint(val []uint) {
+	s.RequiredArrayStringUint = val
+}
+
+// SetRequiredArrayStringUint16 sets the value of RequiredArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUint16(val []uint16) {
+	s.RequiredArrayStringUint16 = val
+}
+
+// SetRequiredArrayStringUint32 sets the value of RequiredArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUint32(val []uint32) {
+	s.RequiredArrayStringUint32 = val
+}
+
+// SetRequiredArrayStringUint64 sets the value of RequiredArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUint64(val []uint64) {
+	s.RequiredArrayStringUint64 = val
+}
+
+// SetRequiredArrayStringUint8 sets the value of RequiredArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUint8(val []uint8) {
+	s.RequiredArrayStringUint8 = val
 }
 
 // SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
@@ -9187,6 +11301,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayInteger(val [][
 	s.RequiredDoubleArrayInteger = val
 }
 
+// SetRequiredDoubleArrayIntegerInt16 sets the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt16(val [][]int16) {
+	s.RequiredDoubleArrayIntegerInt16 = val
+}
+
 // SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
 	s.RequiredDoubleArrayIntegerInt32 = val
@@ -9197,9 +11316,19 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt64(va
 	s.RequiredDoubleArrayIntegerInt64 = val
 }
 
+// SetRequiredDoubleArrayIntegerInt8 sets the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt8(val [][]int8) {
+	s.RequiredDoubleArrayIntegerInt8 = val
+}
+
 // SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
 	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint16 sets the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint16(val [][]uint16) {
+	s.RequiredDoubleArrayIntegerUint16 = val
 }
 
 // SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
@@ -9210,6 +11339,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint32(v
 // SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
 	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint8 sets the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint8(val [][]uint8) {
+	s.RequiredDoubleArrayIntegerUint8 = val
 }
 
 // SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
@@ -9307,9 +11441,29 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringEmail(val
 	s.RequiredDoubleArrayStringEmail = val
 }
 
+// SetRequiredDoubleArrayStringFloat32 sets the value of RequiredDoubleArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringFloat32(val [][]float32) {
+	s.RequiredDoubleArrayStringFloat32 = val
+}
+
+// SetRequiredDoubleArrayStringFloat64 sets the value of RequiredDoubleArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringFloat64(val [][]float64) {
+	s.RequiredDoubleArrayStringFloat64 = val
+}
+
 // SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringHostname(val [][]string) {
 	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt(val [][]int) {
+	s.RequiredDoubleArrayStringInt = val
+}
+
+// SetRequiredDoubleArrayStringInt16 sets the value of RequiredDoubleArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt16(val [][]int16) {
+	s.RequiredDoubleArrayStringInt16 = val
 }
 
 // SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
@@ -9320,6 +11474,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt32(val
 // SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt64(val [][]int64) {
 	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringInt8 sets the value of RequiredDoubleArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt8(val [][]int8) {
+	s.RequiredDoubleArrayStringInt8 = val
 }
 
 // SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
@@ -9345,6 +11504,31 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringPassword(
 // SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
 	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUint sets the value of RequiredDoubleArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUint(val [][]uint) {
+	s.RequiredDoubleArrayStringUint = val
+}
+
+// SetRequiredDoubleArrayStringUint16 sets the value of RequiredDoubleArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUint16(val [][]uint16) {
+	s.RequiredDoubleArrayStringUint16 = val
+}
+
+// SetRequiredDoubleArrayStringUint32 sets the value of RequiredDoubleArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUint32(val [][]uint32) {
+	s.RequiredDoubleArrayStringUint32 = val
+}
+
+// SetRequiredDoubleArrayStringUint64 sets the value of RequiredDoubleArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUint64(val [][]uint64) {
+	s.RequiredDoubleArrayStringUint64 = val
+}
+
+// SetRequiredDoubleArrayStringUint8 sets the value of RequiredDoubleArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUint8(val [][]uint8) {
+	s.RequiredDoubleArrayStringUint8 = val
 }
 
 // SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
@@ -9387,6 +11571,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredInteger(val int) {
 	s.RequiredInteger = val
 }
 
+// SetRequiredIntegerInt16 sets the value of RequiredIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt16(val int16) {
+	s.RequiredIntegerInt16 = val
+}
+
 // SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt32(val int32) {
 	s.RequiredIntegerInt32 = val
@@ -9397,9 +11586,19 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt64(val int64) {
 	s.RequiredIntegerInt64 = val
 }
 
+// SetRequiredIntegerInt8 sets the value of RequiredIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt8(val int8) {
+	s.RequiredIntegerInt8 = val
+}
+
 // SetRequiredIntegerUint sets the value of RequiredIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint(val uint) {
 	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint16 sets the value of RequiredIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint16(val uint16) {
+	s.RequiredIntegerUint16 = val
 }
 
 // SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
@@ -9410,6 +11609,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint32(val uint32) 
 // SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint64(val uint64) {
 	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUint8 sets the value of RequiredIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint8(val uint8) {
+	s.RequiredIntegerUint8 = val
 }
 
 // SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
@@ -9507,9 +11711,29 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringEmail(val string) {
 	s.RequiredStringEmail = val
 }
 
+// SetRequiredStringFloat32 sets the value of RequiredStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringFloat32(val float32) {
+	s.RequiredStringFloat32 = val
+}
+
+// SetRequiredStringFloat64 sets the value of RequiredStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringFloat64(val float64) {
+	s.RequiredStringFloat64 = val
+}
+
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt sets the value of RequiredStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt(val int) {
+	s.RequiredStringInt = val
+}
+
+// SetRequiredStringInt16 sets the value of RequiredStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt16(val int16) {
+	s.RequiredStringInt16 = val
 }
 
 // SetRequiredStringInt32 sets the value of RequiredStringInt32.
@@ -9520,6 +11744,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt32(val int32) {
 // SetRequiredStringInt64 sets the value of RequiredStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt64(val int64) {
 	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringInt8 sets the value of RequiredStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt8(val int8) {
+	s.RequiredStringInt8 = val
 }
 
 // SetRequiredStringIP sets the value of RequiredStringIP.
@@ -9545,6 +11774,31 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringPassword(val string)
 // SetRequiredStringTime sets the value of RequiredStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringTime(val time.Time) {
 	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUint sets the value of RequiredStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUint(val uint) {
+	s.RequiredStringUint = val
+}
+
+// SetRequiredStringUint16 sets the value of RequiredStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUint16(val uint16) {
+	s.RequiredStringUint16 = val
+}
+
+// SetRequiredStringUint32 sets the value of RequiredStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUint32(val uint32) {
+	s.RequiredStringUint32 = val
+}
+
+// SetRequiredStringUint64 sets the value of RequiredStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUint64(val uint64) {
+	s.RequiredStringUint64 = val
+}
+
+// SetRequiredStringUint8 sets the value of RequiredStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUint8(val uint8) {
+	s.RequiredStringUint8 = val
 }
 
 // SetRequiredStringUnix sets the value of RequiredStringUnix.
@@ -9602,6 +11856,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayInteger(val []int) {
 	s.OptionalArrayInteger = val
 }
 
+// SetOptionalArrayIntegerInt16 sets the value of OptionalArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt16(val []int16) {
+	s.OptionalArrayIntegerInt16 = val
+}
+
 // SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt32(val []int32) {
 	s.OptionalArrayIntegerInt32 = val
@@ -9612,9 +11871,19 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt64(val []in
 	s.OptionalArrayIntegerInt64 = val
 }
 
+// SetOptionalArrayIntegerInt8 sets the value of OptionalArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt8(val []int8) {
+	s.OptionalArrayIntegerInt8 = val
+}
+
 // SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint(val []uint) {
 	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint16 sets the value of OptionalArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint16(val []uint16) {
+	s.OptionalArrayIntegerUint16 = val
 }
 
 // SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
@@ -9625,6 +11894,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint32(val []u
 // SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint64(val []uint64) {
 	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUint8 sets the value of OptionalArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint8(val []uint8) {
+	s.OptionalArrayIntegerUint8 = val
 }
 
 // SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
@@ -9722,9 +11996,29 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringEmail(val []str
 	s.OptionalArrayStringEmail = val
 }
 
+// SetOptionalArrayStringFloat32 sets the value of OptionalArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringFloat32(val []float32) {
+	s.OptionalArrayStringFloat32 = val
+}
+
+// SetOptionalArrayStringFloat64 sets the value of OptionalArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringFloat64(val []float64) {
+	s.OptionalArrayStringFloat64 = val
+}
+
 // SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringHostname(val []string) {
 	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt(val []int) {
+	s.OptionalArrayStringInt = val
+}
+
+// SetOptionalArrayStringInt16 sets the value of OptionalArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt16(val []int16) {
+	s.OptionalArrayStringInt16 = val
 }
 
 // SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
@@ -9735,6 +12029,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt32(val []int
 // SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt64(val []int64) {
 	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringInt8 sets the value of OptionalArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt8(val []int8) {
+	s.OptionalArrayStringInt8 = val
 }
 
 // SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
@@ -9760,6 +12059,31 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringPassword(val []
 // SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringTime(val []time.Time) {
 	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUint sets the value of OptionalArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUint(val []uint) {
+	s.OptionalArrayStringUint = val
+}
+
+// SetOptionalArrayStringUint16 sets the value of OptionalArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUint16(val []uint16) {
+	s.OptionalArrayStringUint16 = val
+}
+
+// SetOptionalArrayStringUint32 sets the value of OptionalArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUint32(val []uint32) {
+	s.OptionalArrayStringUint32 = val
+}
+
+// SetOptionalArrayStringUint64 sets the value of OptionalArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUint64(val []uint64) {
+	s.OptionalArrayStringUint64 = val
+}
+
+// SetOptionalArrayStringUint8 sets the value of OptionalArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUint8(val []uint8) {
+	s.OptionalArrayStringUint8 = val
 }
 
 // SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
@@ -9817,6 +12141,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayInteger(val [][
 	s.OptionalDoubleArrayInteger = val
 }
 
+// SetOptionalDoubleArrayIntegerInt16 sets the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt16(val [][]int16) {
+	s.OptionalDoubleArrayIntegerInt16 = val
+}
+
 // SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
 	s.OptionalDoubleArrayIntegerInt32 = val
@@ -9827,9 +12156,19 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt64(va
 	s.OptionalDoubleArrayIntegerInt64 = val
 }
 
+// SetOptionalDoubleArrayIntegerInt8 sets the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt8(val [][]int8) {
+	s.OptionalDoubleArrayIntegerInt8 = val
+}
+
 // SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
 	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint16 sets the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint16(val [][]uint16) {
+	s.OptionalDoubleArrayIntegerUint16 = val
 }
 
 // SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
@@ -9840,6 +12179,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint32(v
 // SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
 	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint8 sets the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint8(val [][]uint8) {
+	s.OptionalDoubleArrayIntegerUint8 = val
 }
 
 // SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
@@ -9937,9 +12281,29 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringEmail(val
 	s.OptionalDoubleArrayStringEmail = val
 }
 
+// SetOptionalDoubleArrayStringFloat32 sets the value of OptionalDoubleArrayStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringFloat32(val [][]float32) {
+	s.OptionalDoubleArrayStringFloat32 = val
+}
+
+// SetOptionalDoubleArrayStringFloat64 sets the value of OptionalDoubleArrayStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringFloat64(val [][]float64) {
+	s.OptionalDoubleArrayStringFloat64 = val
+}
+
 // SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringHostname(val [][]string) {
 	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt(val [][]int) {
+	s.OptionalDoubleArrayStringInt = val
+}
+
+// SetOptionalDoubleArrayStringInt16 sets the value of OptionalDoubleArrayStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt16(val [][]int16) {
+	s.OptionalDoubleArrayStringInt16 = val
 }
 
 // SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
@@ -9950,6 +12314,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt32(val
 // SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt64(val [][]int64) {
 	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringInt8 sets the value of OptionalDoubleArrayStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt8(val [][]int8) {
+	s.OptionalDoubleArrayStringInt8 = val
 }
 
 // SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
@@ -9975,6 +12344,31 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringPassword(
 // SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
 	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUint sets the value of OptionalDoubleArrayStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUint(val [][]uint) {
+	s.OptionalDoubleArrayStringUint = val
+}
+
+// SetOptionalDoubleArrayStringUint16 sets the value of OptionalDoubleArrayStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUint16(val [][]uint16) {
+	s.OptionalDoubleArrayStringUint16 = val
+}
+
+// SetOptionalDoubleArrayStringUint32 sets the value of OptionalDoubleArrayStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUint32(val [][]uint32) {
+	s.OptionalDoubleArrayStringUint32 = val
+}
+
+// SetOptionalDoubleArrayStringUint64 sets the value of OptionalDoubleArrayStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUint64(val [][]uint64) {
+	s.OptionalDoubleArrayStringUint64 = val
+}
+
+// SetOptionalDoubleArrayStringUint8 sets the value of OptionalDoubleArrayStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUint8(val [][]uint8) {
+	s.OptionalDoubleArrayStringUint8 = val
 }
 
 // SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
@@ -10017,6 +12411,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalInteger(val OptInt) {
 	s.OptionalInteger = val
 }
 
+// SetOptionalIntegerInt16 sets the value of OptionalIntegerInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt16(val OptInt16) {
+	s.OptionalIntegerInt16 = val
+}
+
 // SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt32(val OptInt32) {
 	s.OptionalIntegerInt32 = val
@@ -10027,9 +12426,19 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt64(val OptInt64)
 	s.OptionalIntegerInt64 = val
 }
 
+// SetOptionalIntegerInt8 sets the value of OptionalIntegerInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt8(val OptInt8) {
+	s.OptionalIntegerInt8 = val
+}
+
 // SetOptionalIntegerUint sets the value of OptionalIntegerUint.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint(val OptUint) {
 	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint16 sets the value of OptionalIntegerUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint16(val OptUint16) {
+	s.OptionalIntegerUint16 = val
 }
 
 // SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
@@ -10040,6 +12449,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint32(val OptUint3
 // SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint64(val OptUint64) {
 	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUint8 sets the value of OptionalIntegerUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint8(val OptUint8) {
+	s.OptionalIntegerUint8 = val
 }
 
 // SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
@@ -10137,9 +12551,29 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringEmail(val OptString)
 	s.OptionalStringEmail = val
 }
 
+// SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat32(val OptFloat32) {
+	s.OptionalStringFloat32 = val
+}
+
+// SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat64(val OptFloat64) {
+	s.OptionalStringFloat64 = val
+}
+
 // SetOptionalStringHostname sets the value of OptionalStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringHostname(val OptString) {
 	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt sets the value of OptionalStringInt.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt(val OptInt) {
+	s.OptionalStringInt = val
+}
+
+// SetOptionalStringInt16 sets the value of OptionalStringInt16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt16(val OptInt16) {
+	s.OptionalStringInt16 = val
 }
 
 // SetOptionalStringInt32 sets the value of OptionalStringInt32.
@@ -10150,6 +12584,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt32(val OptStringI
 // SetOptionalStringInt64 sets the value of OptionalStringInt64.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt64(val OptStringInt64) {
 	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringInt8 sets the value of OptionalStringInt8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt8(val OptInt8) {
+	s.OptionalStringInt8 = val
 }
 
 // SetOptionalStringIP sets the value of OptionalStringIP.
@@ -10175,6 +12614,31 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringPassword(val OptStri
 // SetOptionalStringTime sets the value of OptionalStringTime.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringTime(val OptTime) {
 	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUint sets the value of OptionalStringUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint(val OptUint) {
+	s.OptionalStringUint = val
+}
+
+// SetOptionalStringUint16 sets the value of OptionalStringUint16.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint16(val OptUint16) {
+	s.OptionalStringUint16 = val
+}
+
+// SetOptionalStringUint32 sets the value of OptionalStringUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint32(val OptUint32) {
+	s.OptionalStringUint32 = val
+}
+
+// SetOptionalStringUint64 sets the value of OptionalStringUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint64(val OptUint64) {
+	s.OptionalStringUint64 = val
+}
+
+// SetOptionalStringUint8 sets the value of OptionalStringUint8.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint8(val OptUint8) {
+	s.OptionalStringUint8 = val
 }
 
 // SetOptionalStringUnix sets the value of OptionalStringUnix.
@@ -10219,11 +12683,15 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayAny                           []jx.Raw             `json:"required_array_any"`
 	RequiredArrayBoolean                       []bool               `json:"required_array_boolean"`
 	RequiredArrayInteger                       []int                `json:"required_array_integer"`
+	RequiredArrayIntegerInt16                  []int16              `json:"required_array_integer_int16"`
 	RequiredArrayIntegerInt32                  []int32              `json:"required_array_integer_int32"`
 	RequiredArrayIntegerInt64                  []int64              `json:"required_array_integer_int64"`
+	RequiredArrayIntegerInt8                   []int8               `json:"required_array_integer_int8"`
 	RequiredArrayIntegerUint                   []uint               `json:"required_array_integer_uint"`
+	RequiredArrayIntegerUint16                 []uint16             `json:"required_array_integer_uint16"`
 	RequiredArrayIntegerUint32                 []uint32             `json:"required_array_integer_uint32"`
 	RequiredArrayIntegerUint64                 []uint64             `json:"required_array_integer_uint64"`
+	RequiredArrayIntegerUint8                  []uint8              `json:"required_array_integer_uint8"`
 	RequiredArrayIntegerUnix                   []time.Time          `json:"required_array_integer_unix"`
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          `json:"required_array_integer_unix-micro"`
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
@@ -10243,14 +12711,24 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayStringDateMinusTime           []time.Time          `json:"required_array_string_date-time"`
 	RequiredArrayStringDuration                []time.Duration      `json:"required_array_string_duration"`
 	RequiredArrayStringEmail                   []string             `json:"required_array_string_email"`
+	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
+	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
+	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
 	RequiredArrayStringInt64                   []int64              `json:"required_array_string_int64"`
+	RequiredArrayStringInt8                    []int8               `json:"required_array_string_int8"`
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
+	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
+	RequiredArrayStringUint16                  []uint16             `json:"required_array_string_uint16"`
+	RequiredArrayStringUint32                  []uint32             `json:"required_array_string_uint32"`
+	RequiredArrayStringUint64                  []uint64             `json:"required_array_string_uint64"`
+	RequiredArrayStringUint8                   []uint8              `json:"required_array_string_uint8"`
 	RequiredArrayStringUnix                    []time.Time          `json:"required_array_string_unix"`
 	RequiredArrayStringUnixMinusMicro          []time.Time          `json:"required_array_string_unix-micro"`
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
@@ -10262,11 +12740,15 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayAny                     [][]jx.Raw           `json:"required_double_array_any"`
 	RequiredDoubleArrayBoolean                 [][]bool             `json:"required_double_array_boolean"`
 	RequiredDoubleArrayInteger                 [][]int              `json:"required_double_array_integer"`
+	RequiredDoubleArrayIntegerInt16            [][]int16            `json:"required_double_array_integer_int16"`
 	RequiredDoubleArrayIntegerInt32            [][]int32            `json:"required_double_array_integer_int32"`
 	RequiredDoubleArrayIntegerInt64            [][]int64            `json:"required_double_array_integer_int64"`
+	RequiredDoubleArrayIntegerInt8             [][]int8             `json:"required_double_array_integer_int8"`
 	RequiredDoubleArrayIntegerUint             [][]uint             `json:"required_double_array_integer_uint"`
+	RequiredDoubleArrayIntegerUint16           [][]uint16           `json:"required_double_array_integer_uint16"`
 	RequiredDoubleArrayIntegerUint32           [][]uint32           `json:"required_double_array_integer_uint32"`
 	RequiredDoubleArrayIntegerUint64           [][]uint64           `json:"required_double_array_integer_uint64"`
+	RequiredDoubleArrayIntegerUint8            [][]uint8            `json:"required_double_array_integer_uint8"`
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        `json:"required_double_array_integer_unix"`
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"required_double_array_integer_unix-micro"`
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
@@ -10286,14 +12768,24 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        `json:"required_double_array_string_date-time"`
 	RequiredDoubleArrayStringDuration          [][]time.Duration    `json:"required_double_array_string_duration"`
 	RequiredDoubleArrayStringEmail             [][]string           `json:"required_double_array_string_email"`
+	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
+	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
+	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
 	RequiredDoubleArrayStringInt64             [][]int64            `json:"required_double_array_string_int64"`
+	RequiredDoubleArrayStringInt8              [][]int8             `json:"required_double_array_string_int8"`
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
+	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
+	RequiredDoubleArrayStringUint16            [][]uint16           `json:"required_double_array_string_uint16"`
+	RequiredDoubleArrayStringUint32            [][]uint32           `json:"required_double_array_string_uint32"`
+	RequiredDoubleArrayStringUint64            [][]uint64           `json:"required_double_array_string_uint64"`
+	RequiredDoubleArrayStringUint8             [][]uint8            `json:"required_double_array_string_uint8"`
 	RequiredDoubleArrayStringUnix              [][]time.Time        `json:"required_double_array_string_unix"`
 	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"required_double_array_string_unix-micro"`
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
@@ -10302,11 +12794,15 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
+	RequiredIntegerInt16                       int16                `json:"required_integer_int16"`
 	RequiredIntegerInt32                       int32                `json:"required_integer_int32"`
 	RequiredIntegerInt64                       int64                `json:"required_integer_int64"`
+	RequiredIntegerInt8                        int8                 `json:"required_integer_int8"`
 	RequiredIntegerUint                        uint                 `json:"required_integer_uint"`
+	RequiredIntegerUint16                      uint16               `json:"required_integer_uint16"`
 	RequiredIntegerUint32                      uint32               `json:"required_integer_uint32"`
 	RequiredIntegerUint64                      uint64               `json:"required_integer_uint64"`
+	RequiredIntegerUint8                       uint8                `json:"required_integer_uint8"`
 	RequiredIntegerUnix                        time.Time            `json:"required_integer_unix"`
 	RequiredIntegerUnixMinusMicro              time.Time            `json:"required_integer_unix-micro"`
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
@@ -10326,14 +12822,24 @@ type TestResponseFormatTestOK struct {
 	RequiredStringDateMinusTime                time.Time            `json:"required_string_date-time"`
 	RequiredStringDuration                     time.Duration        `json:"required_string_duration"`
 	RequiredStringEmail                        string               `json:"required_string_email"`
+	RequiredStringFloat32                      float32              `json:"required_string_float32"`
+	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringInt                          int                  `json:"required_string_int"`
+	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
 	RequiredStringInt64                        int64                `json:"required_string_int64"`
+	RequiredStringInt8                         int8                 `json:"required_string_int8"`
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
+	RequiredStringUint                         uint                 `json:"required_string_uint"`
+	RequiredStringUint16                       uint16               `json:"required_string_uint16"`
+	RequiredStringUint32                       uint32               `json:"required_string_uint32"`
+	RequiredStringUint64                       uint64               `json:"required_string_uint64"`
+	RequiredStringUint8                        uint8                `json:"required_string_uint8"`
 	RequiredStringUnix                         time.Time            `json:"required_string_unix"`
 	RequiredStringUnixMinusMicro               time.Time            `json:"required_string_unix-micro"`
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
@@ -10345,11 +12851,15 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayAny                           []jx.Raw             `json:"optional_array_any"`
 	OptionalArrayBoolean                       []bool               `json:"optional_array_boolean"`
 	OptionalArrayInteger                       []int                `json:"optional_array_integer"`
+	OptionalArrayIntegerInt16                  []int16              `json:"optional_array_integer_int16"`
 	OptionalArrayIntegerInt32                  []int32              `json:"optional_array_integer_int32"`
 	OptionalArrayIntegerInt64                  []int64              `json:"optional_array_integer_int64"`
+	OptionalArrayIntegerInt8                   []int8               `json:"optional_array_integer_int8"`
 	OptionalArrayIntegerUint                   []uint               `json:"optional_array_integer_uint"`
+	OptionalArrayIntegerUint16                 []uint16             `json:"optional_array_integer_uint16"`
 	OptionalArrayIntegerUint32                 []uint32             `json:"optional_array_integer_uint32"`
 	OptionalArrayIntegerUint64                 []uint64             `json:"optional_array_integer_uint64"`
+	OptionalArrayIntegerUint8                  []uint8              `json:"optional_array_integer_uint8"`
 	OptionalArrayIntegerUnix                   []time.Time          `json:"optional_array_integer_unix"`
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          `json:"optional_array_integer_unix-micro"`
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
@@ -10369,14 +12879,24 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayStringDateMinusTime           []time.Time          `json:"optional_array_string_date-time"`
 	OptionalArrayStringDuration                []time.Duration      `json:"optional_array_string_duration"`
 	OptionalArrayStringEmail                   []string             `json:"optional_array_string_email"`
+	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
+	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
+	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
 	OptionalArrayStringInt64                   []int64              `json:"optional_array_string_int64"`
+	OptionalArrayStringInt8                    []int8               `json:"optional_array_string_int8"`
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
+	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
+	OptionalArrayStringUint16                  []uint16             `json:"optional_array_string_uint16"`
+	OptionalArrayStringUint32                  []uint32             `json:"optional_array_string_uint32"`
+	OptionalArrayStringUint64                  []uint64             `json:"optional_array_string_uint64"`
+	OptionalArrayStringUint8                   []uint8              `json:"optional_array_string_uint8"`
 	OptionalArrayStringUnix                    []time.Time          `json:"optional_array_string_unix"`
 	OptionalArrayStringUnixMinusMicro          []time.Time          `json:"optional_array_string_unix-micro"`
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
@@ -10388,11 +12908,15 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayAny                     [][]jx.Raw           `json:"optional_double_array_any"`
 	OptionalDoubleArrayBoolean                 [][]bool             `json:"optional_double_array_boolean"`
 	OptionalDoubleArrayInteger                 [][]int              `json:"optional_double_array_integer"`
+	OptionalDoubleArrayIntegerInt16            [][]int16            `json:"optional_double_array_integer_int16"`
 	OptionalDoubleArrayIntegerInt32            [][]int32            `json:"optional_double_array_integer_int32"`
 	OptionalDoubleArrayIntegerInt64            [][]int64            `json:"optional_double_array_integer_int64"`
+	OptionalDoubleArrayIntegerInt8             [][]int8             `json:"optional_double_array_integer_int8"`
 	OptionalDoubleArrayIntegerUint             [][]uint             `json:"optional_double_array_integer_uint"`
+	OptionalDoubleArrayIntegerUint16           [][]uint16           `json:"optional_double_array_integer_uint16"`
 	OptionalDoubleArrayIntegerUint32           [][]uint32           `json:"optional_double_array_integer_uint32"`
 	OptionalDoubleArrayIntegerUint64           [][]uint64           `json:"optional_double_array_integer_uint64"`
+	OptionalDoubleArrayIntegerUint8            [][]uint8            `json:"optional_double_array_integer_uint8"`
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        `json:"optional_double_array_integer_unix"`
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        `json:"optional_double_array_integer_unix-micro"`
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
@@ -10412,14 +12936,24 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        `json:"optional_double_array_string_date-time"`
 	OptionalDoubleArrayStringDuration          [][]time.Duration    `json:"optional_double_array_string_duration"`
 	OptionalDoubleArrayStringEmail             [][]string           `json:"optional_double_array_string_email"`
+	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
+	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
+	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
 	OptionalDoubleArrayStringInt64             [][]int64            `json:"optional_double_array_string_int64"`
+	OptionalDoubleArrayStringInt8              [][]int8             `json:"optional_double_array_string_int8"`
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
+	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
+	OptionalDoubleArrayStringUint16            [][]uint16           `json:"optional_double_array_string_uint16"`
+	OptionalDoubleArrayStringUint32            [][]uint32           `json:"optional_double_array_string_uint32"`
+	OptionalDoubleArrayStringUint64            [][]uint64           `json:"optional_double_array_string_uint64"`
+	OptionalDoubleArrayStringUint8             [][]uint8            `json:"optional_double_array_string_uint8"`
 	OptionalDoubleArrayStringUnix              [][]time.Time        `json:"optional_double_array_string_unix"`
 	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        `json:"optional_double_array_string_unix-micro"`
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
@@ -10428,11 +12962,15 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
+	OptionalIntegerInt16                       OptInt16             `json:"optional_integer_int16"`
 	OptionalIntegerInt32                       OptInt32             `json:"optional_integer_int32"`
 	OptionalIntegerInt64                       OptInt64             `json:"optional_integer_int64"`
+	OptionalIntegerInt8                        OptInt8              `json:"optional_integer_int8"`
 	OptionalIntegerUint                        OptUint              `json:"optional_integer_uint"`
+	OptionalIntegerUint16                      OptUint16            `json:"optional_integer_uint16"`
 	OptionalIntegerUint32                      OptUint32            `json:"optional_integer_uint32"`
 	OptionalIntegerUint64                      OptUint64            `json:"optional_integer_uint64"`
+	OptionalIntegerUint8                       OptUint8             `json:"optional_integer_uint8"`
 	OptionalIntegerUnix                        OptUnixSeconds       `json:"optional_integer_unix"`
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         `json:"optional_integer_unix-micro"`
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
@@ -10452,14 +12990,24 @@ type TestResponseFormatTestOK struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
+	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringInt                          OptInt               `json:"optional_string_int"`
+	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
+	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
+	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
+	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -10489,6 +13037,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
+// GetRequiredArrayIntegerInt16 returns the value of RequiredArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt16() []int16 {
+	return s.RequiredArrayIntegerInt16
+}
+
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
@@ -10499,9 +13052,19 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt64() []int64 {
 	return s.RequiredArrayIntegerInt64
 }
 
+// GetRequiredArrayIntegerInt8 returns the value of RequiredArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt8() []int8 {
+	return s.RequiredArrayIntegerInt8
+}
+
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
 func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint16 returns the value of RequiredArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint16() []uint16 {
+	return s.RequiredArrayIntegerUint16
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
@@ -10512,6 +13075,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint32() []uint32 {
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUint8 returns the value of RequiredArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint8() []uint8 {
+	return s.RequiredArrayIntegerUint8
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
@@ -10609,9 +13177,29 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringEmail() []string {
 	return s.RequiredArrayStringEmail
 }
 
+// GetRequiredArrayStringFloat32 returns the value of RequiredArrayStringFloat32.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringFloat32() []float32 {
+	return s.RequiredArrayStringFloat32
+}
+
+// GetRequiredArrayStringFloat64 returns the value of RequiredArrayStringFloat64.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringFloat64() []float64 {
+	return s.RequiredArrayStringFloat64
+}
+
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt() []int {
+	return s.RequiredArrayStringInt
+}
+
+// GetRequiredArrayStringInt16 returns the value of RequiredArrayStringInt16.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt16() []int16 {
+	return s.RequiredArrayStringInt16
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
@@ -10622,6 +13210,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt32() []int32 {
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringInt8 returns the value of RequiredArrayStringInt8.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt8() []int8 {
+	return s.RequiredArrayStringInt8
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
@@ -10647,6 +13240,31 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringPassword() []string {
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUint returns the value of RequiredArrayStringUint.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUint() []uint {
+	return s.RequiredArrayStringUint
+}
+
+// GetRequiredArrayStringUint16 returns the value of RequiredArrayStringUint16.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUint16() []uint16 {
+	return s.RequiredArrayStringUint16
+}
+
+// GetRequiredArrayStringUint32 returns the value of RequiredArrayStringUint32.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUint32() []uint32 {
+	return s.RequiredArrayStringUint32
+}
+
+// GetRequiredArrayStringUint64 returns the value of RequiredArrayStringUint64.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUint64() []uint64 {
+	return s.RequiredArrayStringUint64
+}
+
+// GetRequiredArrayStringUint8 returns the value of RequiredArrayStringUint8.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUint8() []uint8 {
+	return s.RequiredArrayStringUint8
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
@@ -10704,6 +13322,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayInteger() [][]int {
 	return s.RequiredDoubleArrayInteger
 }
 
+// GetRequiredDoubleArrayIntegerInt16 returns the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt16() [][]int16 {
+	return s.RequiredDoubleArrayIntegerInt16
+}
+
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
@@ -10714,9 +13337,19 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt64() [][]int6
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
+// GetRequiredDoubleArrayIntegerInt8 returns the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt8() [][]int8 {
+	return s.RequiredDoubleArrayIntegerInt8
+}
+
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint16 returns the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint16() [][]uint16 {
+	return s.RequiredDoubleArrayIntegerUint16
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
@@ -10727,6 +13360,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint32() [][]uin
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUint8 returns the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint8() [][]uint8 {
+	return s.RequiredDoubleArrayIntegerUint8
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
@@ -10824,9 +13462,29 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringEmail() [][]strin
 	return s.RequiredDoubleArrayStringEmail
 }
 
+// GetRequiredDoubleArrayStringFloat32 returns the value of RequiredDoubleArrayStringFloat32.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringFloat32() [][]float32 {
+	return s.RequiredDoubleArrayStringFloat32
+}
+
+// GetRequiredDoubleArrayStringFloat64 returns the value of RequiredDoubleArrayStringFloat64.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringFloat64() [][]float64 {
+	return s.RequiredDoubleArrayStringFloat64
+}
+
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt() [][]int {
+	return s.RequiredDoubleArrayStringInt
+}
+
+// GetRequiredDoubleArrayStringInt16 returns the value of RequiredDoubleArrayStringInt16.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt16() [][]int16 {
+	return s.RequiredDoubleArrayStringInt16
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
@@ -10837,6 +13495,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt32() [][]int32
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringInt8 returns the value of RequiredDoubleArrayStringInt8.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt8() [][]int8 {
+	return s.RequiredDoubleArrayStringInt8
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
@@ -10862,6 +13525,31 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringPassword() [][]st
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUint returns the value of RequiredDoubleArrayStringUint.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUint() [][]uint {
+	return s.RequiredDoubleArrayStringUint
+}
+
+// GetRequiredDoubleArrayStringUint16 returns the value of RequiredDoubleArrayStringUint16.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUint16() [][]uint16 {
+	return s.RequiredDoubleArrayStringUint16
+}
+
+// GetRequiredDoubleArrayStringUint32 returns the value of RequiredDoubleArrayStringUint32.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUint32() [][]uint32 {
+	return s.RequiredDoubleArrayStringUint32
+}
+
+// GetRequiredDoubleArrayStringUint64 returns the value of RequiredDoubleArrayStringUint64.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUint64() [][]uint64 {
+	return s.RequiredDoubleArrayStringUint64
+}
+
+// GetRequiredDoubleArrayStringUint8 returns the value of RequiredDoubleArrayStringUint8.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUint8() [][]uint8 {
+	return s.RequiredDoubleArrayStringUint8
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
@@ -10904,6 +13592,11 @@ func (s *TestResponseFormatTestOK) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
+// GetRequiredIntegerInt16 returns the value of RequiredIntegerInt16.
+func (s *TestResponseFormatTestOK) GetRequiredIntegerInt16() int16 {
+	return s.RequiredIntegerInt16
+}
+
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
 func (s *TestResponseFormatTestOK) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
@@ -10914,9 +13607,19 @@ func (s *TestResponseFormatTestOK) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
+// GetRequiredIntegerInt8 returns the value of RequiredIntegerInt8.
+func (s *TestResponseFormatTestOK) GetRequiredIntegerInt8() int8 {
+	return s.RequiredIntegerInt8
+}
+
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
 func (s *TestResponseFormatTestOK) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint16 returns the value of RequiredIntegerUint16.
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUint16() uint16 {
+	return s.RequiredIntegerUint16
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
@@ -10927,6 +13630,11 @@ func (s *TestResponseFormatTestOK) GetRequiredIntegerUint32() uint32 {
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
 func (s *TestResponseFormatTestOK) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUint8 returns the value of RequiredIntegerUint8.
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUint8() uint8 {
+	return s.RequiredIntegerUint8
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
@@ -11024,9 +13732,29 @@ func (s *TestResponseFormatTestOK) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
+// GetRequiredStringFloat32 returns the value of RequiredStringFloat32.
+func (s *TestResponseFormatTestOK) GetRequiredStringFloat32() float32 {
+	return s.RequiredStringFloat32
+}
+
+// GetRequiredStringFloat64 returns the value of RequiredStringFloat64.
+func (s *TestResponseFormatTestOK) GetRequiredStringFloat64() float64 {
+	return s.RequiredStringFloat64
+}
+
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestResponseFormatTestOK) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt returns the value of RequiredStringInt.
+func (s *TestResponseFormatTestOK) GetRequiredStringInt() int {
+	return s.RequiredStringInt
+}
+
+// GetRequiredStringInt16 returns the value of RequiredStringInt16.
+func (s *TestResponseFormatTestOK) GetRequiredStringInt16() int16 {
+	return s.RequiredStringInt16
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
@@ -11037,6 +13765,11 @@ func (s *TestResponseFormatTestOK) GetRequiredStringInt32() int32 {
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
 func (s *TestResponseFormatTestOK) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
+}
+
+// GetRequiredStringInt8 returns the value of RequiredStringInt8.
+func (s *TestResponseFormatTestOK) GetRequiredStringInt8() int8 {
+	return s.RequiredStringInt8
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
@@ -11062,6 +13795,31 @@ func (s *TestResponseFormatTestOK) GetRequiredStringPassword() string {
 // GetRequiredStringTime returns the value of RequiredStringTime.
 func (s *TestResponseFormatTestOK) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
+}
+
+// GetRequiredStringUint returns the value of RequiredStringUint.
+func (s *TestResponseFormatTestOK) GetRequiredStringUint() uint {
+	return s.RequiredStringUint
+}
+
+// GetRequiredStringUint16 returns the value of RequiredStringUint16.
+func (s *TestResponseFormatTestOK) GetRequiredStringUint16() uint16 {
+	return s.RequiredStringUint16
+}
+
+// GetRequiredStringUint32 returns the value of RequiredStringUint32.
+func (s *TestResponseFormatTestOK) GetRequiredStringUint32() uint32 {
+	return s.RequiredStringUint32
+}
+
+// GetRequiredStringUint64 returns the value of RequiredStringUint64.
+func (s *TestResponseFormatTestOK) GetRequiredStringUint64() uint64 {
+	return s.RequiredStringUint64
+}
+
+// GetRequiredStringUint8 returns the value of RequiredStringUint8.
+func (s *TestResponseFormatTestOK) GetRequiredStringUint8() uint8 {
+	return s.RequiredStringUint8
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
@@ -11119,6 +13877,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
+// GetOptionalArrayIntegerInt16 returns the value of OptionalArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt16() []int16 {
+	return s.OptionalArrayIntegerInt16
+}
+
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
@@ -11129,9 +13892,19 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt64() []int64 {
 	return s.OptionalArrayIntegerInt64
 }
 
+// GetOptionalArrayIntegerInt8 returns the value of OptionalArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt8() []int8 {
+	return s.OptionalArrayIntegerInt8
+}
+
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
 func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint16 returns the value of OptionalArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint16() []uint16 {
+	return s.OptionalArrayIntegerUint16
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
@@ -11142,6 +13915,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint32() []uint32 {
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUint8 returns the value of OptionalArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint8() []uint8 {
+	return s.OptionalArrayIntegerUint8
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
@@ -11239,9 +14017,29 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringEmail() []string {
 	return s.OptionalArrayStringEmail
 }
 
+// GetOptionalArrayStringFloat32 returns the value of OptionalArrayStringFloat32.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringFloat32() []float32 {
+	return s.OptionalArrayStringFloat32
+}
+
+// GetOptionalArrayStringFloat64 returns the value of OptionalArrayStringFloat64.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringFloat64() []float64 {
+	return s.OptionalArrayStringFloat64
+}
+
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt() []int {
+	return s.OptionalArrayStringInt
+}
+
+// GetOptionalArrayStringInt16 returns the value of OptionalArrayStringInt16.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt16() []int16 {
+	return s.OptionalArrayStringInt16
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
@@ -11252,6 +14050,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt32() []int32 {
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringInt8 returns the value of OptionalArrayStringInt8.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt8() []int8 {
+	return s.OptionalArrayStringInt8
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
@@ -11277,6 +14080,31 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringPassword() []string {
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUint returns the value of OptionalArrayStringUint.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUint() []uint {
+	return s.OptionalArrayStringUint
+}
+
+// GetOptionalArrayStringUint16 returns the value of OptionalArrayStringUint16.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUint16() []uint16 {
+	return s.OptionalArrayStringUint16
+}
+
+// GetOptionalArrayStringUint32 returns the value of OptionalArrayStringUint32.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUint32() []uint32 {
+	return s.OptionalArrayStringUint32
+}
+
+// GetOptionalArrayStringUint64 returns the value of OptionalArrayStringUint64.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUint64() []uint64 {
+	return s.OptionalArrayStringUint64
+}
+
+// GetOptionalArrayStringUint8 returns the value of OptionalArrayStringUint8.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUint8() []uint8 {
+	return s.OptionalArrayStringUint8
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
@@ -11334,6 +14162,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayInteger() [][]int {
 	return s.OptionalDoubleArrayInteger
 }
 
+// GetOptionalDoubleArrayIntegerInt16 returns the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt16() [][]int16 {
+	return s.OptionalDoubleArrayIntegerInt16
+}
+
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
@@ -11344,9 +14177,19 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt64() [][]int6
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
+// GetOptionalDoubleArrayIntegerInt8 returns the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt8() [][]int8 {
+	return s.OptionalDoubleArrayIntegerInt8
+}
+
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint16 returns the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint16() [][]uint16 {
+	return s.OptionalDoubleArrayIntegerUint16
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
@@ -11357,6 +14200,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint32() [][]uin
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUint8 returns the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint8() [][]uint8 {
+	return s.OptionalDoubleArrayIntegerUint8
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
@@ -11454,9 +14302,29 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringEmail() [][]strin
 	return s.OptionalDoubleArrayStringEmail
 }
 
+// GetOptionalDoubleArrayStringFloat32 returns the value of OptionalDoubleArrayStringFloat32.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringFloat32() [][]float32 {
+	return s.OptionalDoubleArrayStringFloat32
+}
+
+// GetOptionalDoubleArrayStringFloat64 returns the value of OptionalDoubleArrayStringFloat64.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringFloat64() [][]float64 {
+	return s.OptionalDoubleArrayStringFloat64
+}
+
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt() [][]int {
+	return s.OptionalDoubleArrayStringInt
+}
+
+// GetOptionalDoubleArrayStringInt16 returns the value of OptionalDoubleArrayStringInt16.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt16() [][]int16 {
+	return s.OptionalDoubleArrayStringInt16
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
@@ -11467,6 +14335,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt32() [][]int32
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringInt8 returns the value of OptionalDoubleArrayStringInt8.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt8() [][]int8 {
+	return s.OptionalDoubleArrayStringInt8
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
@@ -11492,6 +14365,31 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringPassword() [][]st
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUint returns the value of OptionalDoubleArrayStringUint.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUint() [][]uint {
+	return s.OptionalDoubleArrayStringUint
+}
+
+// GetOptionalDoubleArrayStringUint16 returns the value of OptionalDoubleArrayStringUint16.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUint16() [][]uint16 {
+	return s.OptionalDoubleArrayStringUint16
+}
+
+// GetOptionalDoubleArrayStringUint32 returns the value of OptionalDoubleArrayStringUint32.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUint32() [][]uint32 {
+	return s.OptionalDoubleArrayStringUint32
+}
+
+// GetOptionalDoubleArrayStringUint64 returns the value of OptionalDoubleArrayStringUint64.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUint64() [][]uint64 {
+	return s.OptionalDoubleArrayStringUint64
+}
+
+// GetOptionalDoubleArrayStringUint8 returns the value of OptionalDoubleArrayStringUint8.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUint8() [][]uint8 {
+	return s.OptionalDoubleArrayStringUint8
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
@@ -11534,6 +14432,11 @@ func (s *TestResponseFormatTestOK) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
+// GetOptionalIntegerInt16 returns the value of OptionalIntegerInt16.
+func (s *TestResponseFormatTestOK) GetOptionalIntegerInt16() OptInt16 {
+	return s.OptionalIntegerInt16
+}
+
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
 func (s *TestResponseFormatTestOK) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
@@ -11544,9 +14447,19 @@ func (s *TestResponseFormatTestOK) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
+// GetOptionalIntegerInt8 returns the value of OptionalIntegerInt8.
+func (s *TestResponseFormatTestOK) GetOptionalIntegerInt8() OptInt8 {
+	return s.OptionalIntegerInt8
+}
+
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
 func (s *TestResponseFormatTestOK) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint16 returns the value of OptionalIntegerUint16.
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUint16() OptUint16 {
+	return s.OptionalIntegerUint16
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
@@ -11557,6 +14470,11 @@ func (s *TestResponseFormatTestOK) GetOptionalIntegerUint32() OptUint32 {
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
 func (s *TestResponseFormatTestOK) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUint8 returns the value of OptionalIntegerUint8.
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUint8() OptUint8 {
+	return s.OptionalIntegerUint8
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
@@ -11654,9 +14572,29 @@ func (s *TestResponseFormatTestOK) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
+// GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
+func (s *TestResponseFormatTestOK) GetOptionalStringFloat32() OptFloat32 {
+	return s.OptionalStringFloat32
+}
+
+// GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
+func (s *TestResponseFormatTestOK) GetOptionalStringFloat64() OptFloat64 {
+	return s.OptionalStringFloat64
+}
+
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt returns the value of OptionalStringInt.
+func (s *TestResponseFormatTestOK) GetOptionalStringInt() OptInt {
+	return s.OptionalStringInt
+}
+
+// GetOptionalStringInt16 returns the value of OptionalStringInt16.
+func (s *TestResponseFormatTestOK) GetOptionalStringInt16() OptInt16 {
+	return s.OptionalStringInt16
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
@@ -11667,6 +14605,11 @@ func (s *TestResponseFormatTestOK) GetOptionalStringInt32() OptStringInt32 {
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
 func (s *TestResponseFormatTestOK) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
+}
+
+// GetOptionalStringInt8 returns the value of OptionalStringInt8.
+func (s *TestResponseFormatTestOK) GetOptionalStringInt8() OptInt8 {
+	return s.OptionalStringInt8
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
@@ -11692,6 +14635,31 @@ func (s *TestResponseFormatTestOK) GetOptionalStringPassword() OptString {
 // GetOptionalStringTime returns the value of OptionalStringTime.
 func (s *TestResponseFormatTestOK) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
+}
+
+// GetOptionalStringUint returns the value of OptionalStringUint.
+func (s *TestResponseFormatTestOK) GetOptionalStringUint() OptUint {
+	return s.OptionalStringUint
+}
+
+// GetOptionalStringUint16 returns the value of OptionalStringUint16.
+func (s *TestResponseFormatTestOK) GetOptionalStringUint16() OptUint16 {
+	return s.OptionalStringUint16
+}
+
+// GetOptionalStringUint32 returns the value of OptionalStringUint32.
+func (s *TestResponseFormatTestOK) GetOptionalStringUint32() OptUint32 {
+	return s.OptionalStringUint32
+}
+
+// GetOptionalStringUint64 returns the value of OptionalStringUint64.
+func (s *TestResponseFormatTestOK) GetOptionalStringUint64() OptUint64 {
+	return s.OptionalStringUint64
+}
+
+// GetOptionalStringUint8 returns the value of OptionalStringUint8.
+func (s *TestResponseFormatTestOK) GetOptionalStringUint8() OptUint8 {
+	return s.OptionalStringUint8
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
@@ -11749,6 +14717,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayInteger(val []int) {
 	s.RequiredArrayInteger = val
 }
 
+// SetRequiredArrayIntegerInt16 sets the value of RequiredArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt16(val []int16) {
+	s.RequiredArrayIntegerInt16 = val
+}
+
 // SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt32(val []int32) {
 	s.RequiredArrayIntegerInt32 = val
@@ -11759,9 +14732,19 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt64(val []int64) {
 	s.RequiredArrayIntegerInt64 = val
 }
 
+// SetRequiredArrayIntegerInt8 sets the value of RequiredArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt8(val []int8) {
+	s.RequiredArrayIntegerInt8 = val
+}
+
 // SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
 func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint(val []uint) {
 	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint16 sets the value of RequiredArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint16(val []uint16) {
+	s.RequiredArrayIntegerUint16 = val
 }
 
 // SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
@@ -11772,6 +14755,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint32(val []uint32) {
 // SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint64(val []uint64) {
 	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUint8 sets the value of RequiredArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint8(val []uint8) {
+	s.RequiredArrayIntegerUint8 = val
 }
 
 // SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
@@ -11869,9 +14857,29 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringEmail(val []string) {
 	s.RequiredArrayStringEmail = val
 }
 
+// SetRequiredArrayStringFloat32 sets the value of RequiredArrayStringFloat32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringFloat32(val []float32) {
+	s.RequiredArrayStringFloat32 = val
+}
+
+// SetRequiredArrayStringFloat64 sets the value of RequiredArrayStringFloat64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringFloat64(val []float64) {
+	s.RequiredArrayStringFloat64 = val
+}
+
 // SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringHostname(val []string) {
 	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt(val []int) {
+	s.RequiredArrayStringInt = val
+}
+
+// SetRequiredArrayStringInt16 sets the value of RequiredArrayStringInt16.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt16(val []int16) {
+	s.RequiredArrayStringInt16 = val
 }
 
 // SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
@@ -11882,6 +14890,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt32(val []int32) {
 // SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt64(val []int64) {
 	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringInt8 sets the value of RequiredArrayStringInt8.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt8(val []int8) {
+	s.RequiredArrayStringInt8 = val
 }
 
 // SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
@@ -11907,6 +14920,31 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringPassword(val []string) 
 // SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringTime(val []time.Time) {
 	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUint sets the value of RequiredArrayStringUint.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUint(val []uint) {
+	s.RequiredArrayStringUint = val
+}
+
+// SetRequiredArrayStringUint16 sets the value of RequiredArrayStringUint16.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUint16(val []uint16) {
+	s.RequiredArrayStringUint16 = val
+}
+
+// SetRequiredArrayStringUint32 sets the value of RequiredArrayStringUint32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUint32(val []uint32) {
+	s.RequiredArrayStringUint32 = val
+}
+
+// SetRequiredArrayStringUint64 sets the value of RequiredArrayStringUint64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUint64(val []uint64) {
+	s.RequiredArrayStringUint64 = val
+}
+
+// SetRequiredArrayStringUint8 sets the value of RequiredArrayStringUint8.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUint8(val []uint8) {
+	s.RequiredArrayStringUint8 = val
 }
 
 // SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
@@ -11964,6 +15002,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayInteger(val [][]int) {
 	s.RequiredDoubleArrayInteger = val
 }
 
+// SetRequiredDoubleArrayIntegerInt16 sets the value of RequiredDoubleArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt16(val [][]int16) {
+	s.RequiredDoubleArrayIntegerInt16 = val
+}
+
 // SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
 	s.RequiredDoubleArrayIntegerInt32 = val
@@ -11974,9 +15017,19 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt64(val [][]in
 	s.RequiredDoubleArrayIntegerInt64 = val
 }
 
+// SetRequiredDoubleArrayIntegerInt8 sets the value of RequiredDoubleArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt8(val [][]int8) {
+	s.RequiredDoubleArrayIntegerInt8 = val
+}
+
 // SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
 	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint16 sets the value of RequiredDoubleArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint16(val [][]uint16) {
+	s.RequiredDoubleArrayIntegerUint16 = val
 }
 
 // SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
@@ -11987,6 +15040,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint32(val [][]u
 // SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
 	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint8 sets the value of RequiredDoubleArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint8(val [][]uint8) {
+	s.RequiredDoubleArrayIntegerUint8 = val
 }
 
 // SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
@@ -12084,9 +15142,29 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringEmail(val [][]str
 	s.RequiredDoubleArrayStringEmail = val
 }
 
+// SetRequiredDoubleArrayStringFloat32 sets the value of RequiredDoubleArrayStringFloat32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringFloat32(val [][]float32) {
+	s.RequiredDoubleArrayStringFloat32 = val
+}
+
+// SetRequiredDoubleArrayStringFloat64 sets the value of RequiredDoubleArrayStringFloat64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringFloat64(val [][]float64) {
+	s.RequiredDoubleArrayStringFloat64 = val
+}
+
 // SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringHostname(val [][]string) {
 	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt(val [][]int) {
+	s.RequiredDoubleArrayStringInt = val
+}
+
+// SetRequiredDoubleArrayStringInt16 sets the value of RequiredDoubleArrayStringInt16.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt16(val [][]int16) {
+	s.RequiredDoubleArrayStringInt16 = val
 }
 
 // SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
@@ -12097,6 +15175,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt32(val [][]int
 // SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt64(val [][]int64) {
 	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringInt8 sets the value of RequiredDoubleArrayStringInt8.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt8(val [][]int8) {
+	s.RequiredDoubleArrayStringInt8 = val
 }
 
 // SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
@@ -12122,6 +15205,31 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringPassword(val [][]
 // SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
 	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUint sets the value of RequiredDoubleArrayStringUint.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUint(val [][]uint) {
+	s.RequiredDoubleArrayStringUint = val
+}
+
+// SetRequiredDoubleArrayStringUint16 sets the value of RequiredDoubleArrayStringUint16.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUint16(val [][]uint16) {
+	s.RequiredDoubleArrayStringUint16 = val
+}
+
+// SetRequiredDoubleArrayStringUint32 sets the value of RequiredDoubleArrayStringUint32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUint32(val [][]uint32) {
+	s.RequiredDoubleArrayStringUint32 = val
+}
+
+// SetRequiredDoubleArrayStringUint64 sets the value of RequiredDoubleArrayStringUint64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUint64(val [][]uint64) {
+	s.RequiredDoubleArrayStringUint64 = val
+}
+
+// SetRequiredDoubleArrayStringUint8 sets the value of RequiredDoubleArrayStringUint8.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUint8(val [][]uint8) {
+	s.RequiredDoubleArrayStringUint8 = val
 }
 
 // SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
@@ -12164,6 +15272,11 @@ func (s *TestResponseFormatTestOK) SetRequiredInteger(val int) {
 	s.RequiredInteger = val
 }
 
+// SetRequiredIntegerInt16 sets the value of RequiredIntegerInt16.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerInt16(val int16) {
+	s.RequiredIntegerInt16 = val
+}
+
 // SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
 func (s *TestResponseFormatTestOK) SetRequiredIntegerInt32(val int32) {
 	s.RequiredIntegerInt32 = val
@@ -12174,9 +15287,19 @@ func (s *TestResponseFormatTestOK) SetRequiredIntegerInt64(val int64) {
 	s.RequiredIntegerInt64 = val
 }
 
+// SetRequiredIntegerInt8 sets the value of RequiredIntegerInt8.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerInt8(val int8) {
+	s.RequiredIntegerInt8 = val
+}
+
 // SetRequiredIntegerUint sets the value of RequiredIntegerUint.
 func (s *TestResponseFormatTestOK) SetRequiredIntegerUint(val uint) {
 	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint16 sets the value of RequiredIntegerUint16.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUint16(val uint16) {
+	s.RequiredIntegerUint16 = val
 }
 
 // SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
@@ -12187,6 +15310,11 @@ func (s *TestResponseFormatTestOK) SetRequiredIntegerUint32(val uint32) {
 // SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
 func (s *TestResponseFormatTestOK) SetRequiredIntegerUint64(val uint64) {
 	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUint8 sets the value of RequiredIntegerUint8.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUint8(val uint8) {
+	s.RequiredIntegerUint8 = val
 }
 
 // SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
@@ -12284,9 +15412,29 @@ func (s *TestResponseFormatTestOK) SetRequiredStringEmail(val string) {
 	s.RequiredStringEmail = val
 }
 
+// SetRequiredStringFloat32 sets the value of RequiredStringFloat32.
+func (s *TestResponseFormatTestOK) SetRequiredStringFloat32(val float32) {
+	s.RequiredStringFloat32 = val
+}
+
+// SetRequiredStringFloat64 sets the value of RequiredStringFloat64.
+func (s *TestResponseFormatTestOK) SetRequiredStringFloat64(val float64) {
+	s.RequiredStringFloat64 = val
+}
+
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestResponseFormatTestOK) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt sets the value of RequiredStringInt.
+func (s *TestResponseFormatTestOK) SetRequiredStringInt(val int) {
+	s.RequiredStringInt = val
+}
+
+// SetRequiredStringInt16 sets the value of RequiredStringInt16.
+func (s *TestResponseFormatTestOK) SetRequiredStringInt16(val int16) {
+	s.RequiredStringInt16 = val
 }
 
 // SetRequiredStringInt32 sets the value of RequiredStringInt32.
@@ -12297,6 +15445,11 @@ func (s *TestResponseFormatTestOK) SetRequiredStringInt32(val int32) {
 // SetRequiredStringInt64 sets the value of RequiredStringInt64.
 func (s *TestResponseFormatTestOK) SetRequiredStringInt64(val int64) {
 	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringInt8 sets the value of RequiredStringInt8.
+func (s *TestResponseFormatTestOK) SetRequiredStringInt8(val int8) {
+	s.RequiredStringInt8 = val
 }
 
 // SetRequiredStringIP sets the value of RequiredStringIP.
@@ -12322,6 +15475,31 @@ func (s *TestResponseFormatTestOK) SetRequiredStringPassword(val string) {
 // SetRequiredStringTime sets the value of RequiredStringTime.
 func (s *TestResponseFormatTestOK) SetRequiredStringTime(val time.Time) {
 	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUint sets the value of RequiredStringUint.
+func (s *TestResponseFormatTestOK) SetRequiredStringUint(val uint) {
+	s.RequiredStringUint = val
+}
+
+// SetRequiredStringUint16 sets the value of RequiredStringUint16.
+func (s *TestResponseFormatTestOK) SetRequiredStringUint16(val uint16) {
+	s.RequiredStringUint16 = val
+}
+
+// SetRequiredStringUint32 sets the value of RequiredStringUint32.
+func (s *TestResponseFormatTestOK) SetRequiredStringUint32(val uint32) {
+	s.RequiredStringUint32 = val
+}
+
+// SetRequiredStringUint64 sets the value of RequiredStringUint64.
+func (s *TestResponseFormatTestOK) SetRequiredStringUint64(val uint64) {
+	s.RequiredStringUint64 = val
+}
+
+// SetRequiredStringUint8 sets the value of RequiredStringUint8.
+func (s *TestResponseFormatTestOK) SetRequiredStringUint8(val uint8) {
+	s.RequiredStringUint8 = val
 }
 
 // SetRequiredStringUnix sets the value of RequiredStringUnix.
@@ -12379,6 +15557,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayInteger(val []int) {
 	s.OptionalArrayInteger = val
 }
 
+// SetOptionalArrayIntegerInt16 sets the value of OptionalArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt16(val []int16) {
+	s.OptionalArrayIntegerInt16 = val
+}
+
 // SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt32(val []int32) {
 	s.OptionalArrayIntegerInt32 = val
@@ -12389,9 +15572,19 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt64(val []int64) {
 	s.OptionalArrayIntegerInt64 = val
 }
 
+// SetOptionalArrayIntegerInt8 sets the value of OptionalArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt8(val []int8) {
+	s.OptionalArrayIntegerInt8 = val
+}
+
 // SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
 func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint(val []uint) {
 	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint16 sets the value of OptionalArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint16(val []uint16) {
+	s.OptionalArrayIntegerUint16 = val
 }
 
 // SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
@@ -12402,6 +15595,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint32(val []uint32) {
 // SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint64(val []uint64) {
 	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUint8 sets the value of OptionalArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint8(val []uint8) {
+	s.OptionalArrayIntegerUint8 = val
 }
 
 // SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
@@ -12499,9 +15697,29 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringEmail(val []string) {
 	s.OptionalArrayStringEmail = val
 }
 
+// SetOptionalArrayStringFloat32 sets the value of OptionalArrayStringFloat32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringFloat32(val []float32) {
+	s.OptionalArrayStringFloat32 = val
+}
+
+// SetOptionalArrayStringFloat64 sets the value of OptionalArrayStringFloat64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringFloat64(val []float64) {
+	s.OptionalArrayStringFloat64 = val
+}
+
 // SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringHostname(val []string) {
 	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt(val []int) {
+	s.OptionalArrayStringInt = val
+}
+
+// SetOptionalArrayStringInt16 sets the value of OptionalArrayStringInt16.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt16(val []int16) {
+	s.OptionalArrayStringInt16 = val
 }
 
 // SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
@@ -12512,6 +15730,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt32(val []int32) {
 // SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt64(val []int64) {
 	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringInt8 sets the value of OptionalArrayStringInt8.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt8(val []int8) {
+	s.OptionalArrayStringInt8 = val
 }
 
 // SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
@@ -12537,6 +15760,31 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringPassword(val []string) 
 // SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringTime(val []time.Time) {
 	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUint sets the value of OptionalArrayStringUint.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUint(val []uint) {
+	s.OptionalArrayStringUint = val
+}
+
+// SetOptionalArrayStringUint16 sets the value of OptionalArrayStringUint16.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUint16(val []uint16) {
+	s.OptionalArrayStringUint16 = val
+}
+
+// SetOptionalArrayStringUint32 sets the value of OptionalArrayStringUint32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUint32(val []uint32) {
+	s.OptionalArrayStringUint32 = val
+}
+
+// SetOptionalArrayStringUint64 sets the value of OptionalArrayStringUint64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUint64(val []uint64) {
+	s.OptionalArrayStringUint64 = val
+}
+
+// SetOptionalArrayStringUint8 sets the value of OptionalArrayStringUint8.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUint8(val []uint8) {
+	s.OptionalArrayStringUint8 = val
 }
 
 // SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
@@ -12594,6 +15842,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayInteger(val [][]int) {
 	s.OptionalDoubleArrayInteger = val
 }
 
+// SetOptionalDoubleArrayIntegerInt16 sets the value of OptionalDoubleArrayIntegerInt16.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt16(val [][]int16) {
+	s.OptionalDoubleArrayIntegerInt16 = val
+}
+
 // SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
 	s.OptionalDoubleArrayIntegerInt32 = val
@@ -12604,9 +15857,19 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt64(val [][]in
 	s.OptionalDoubleArrayIntegerInt64 = val
 }
 
+// SetOptionalDoubleArrayIntegerInt8 sets the value of OptionalDoubleArrayIntegerInt8.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt8(val [][]int8) {
+	s.OptionalDoubleArrayIntegerInt8 = val
+}
+
 // SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
 	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint16 sets the value of OptionalDoubleArrayIntegerUint16.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint16(val [][]uint16) {
+	s.OptionalDoubleArrayIntegerUint16 = val
 }
 
 // SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
@@ -12617,6 +15880,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint32(val [][]u
 // SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
 	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint8 sets the value of OptionalDoubleArrayIntegerUint8.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint8(val [][]uint8) {
+	s.OptionalDoubleArrayIntegerUint8 = val
 }
 
 // SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
@@ -12714,9 +15982,29 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringEmail(val [][]str
 	s.OptionalDoubleArrayStringEmail = val
 }
 
+// SetOptionalDoubleArrayStringFloat32 sets the value of OptionalDoubleArrayStringFloat32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringFloat32(val [][]float32) {
+	s.OptionalDoubleArrayStringFloat32 = val
+}
+
+// SetOptionalDoubleArrayStringFloat64 sets the value of OptionalDoubleArrayStringFloat64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringFloat64(val [][]float64) {
+	s.OptionalDoubleArrayStringFloat64 = val
+}
+
 // SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringHostname(val [][]string) {
 	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt(val [][]int) {
+	s.OptionalDoubleArrayStringInt = val
+}
+
+// SetOptionalDoubleArrayStringInt16 sets the value of OptionalDoubleArrayStringInt16.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt16(val [][]int16) {
+	s.OptionalDoubleArrayStringInt16 = val
 }
 
 // SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
@@ -12727,6 +16015,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt32(val [][]int
 // SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt64(val [][]int64) {
 	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringInt8 sets the value of OptionalDoubleArrayStringInt8.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt8(val [][]int8) {
+	s.OptionalDoubleArrayStringInt8 = val
 }
 
 // SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
@@ -12752,6 +16045,31 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringPassword(val [][]
 // SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
 	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUint sets the value of OptionalDoubleArrayStringUint.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUint(val [][]uint) {
+	s.OptionalDoubleArrayStringUint = val
+}
+
+// SetOptionalDoubleArrayStringUint16 sets the value of OptionalDoubleArrayStringUint16.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUint16(val [][]uint16) {
+	s.OptionalDoubleArrayStringUint16 = val
+}
+
+// SetOptionalDoubleArrayStringUint32 sets the value of OptionalDoubleArrayStringUint32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUint32(val [][]uint32) {
+	s.OptionalDoubleArrayStringUint32 = val
+}
+
+// SetOptionalDoubleArrayStringUint64 sets the value of OptionalDoubleArrayStringUint64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUint64(val [][]uint64) {
+	s.OptionalDoubleArrayStringUint64 = val
+}
+
+// SetOptionalDoubleArrayStringUint8 sets the value of OptionalDoubleArrayStringUint8.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUint8(val [][]uint8) {
+	s.OptionalDoubleArrayStringUint8 = val
 }
 
 // SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
@@ -12794,6 +16112,11 @@ func (s *TestResponseFormatTestOK) SetOptionalInteger(val OptInt) {
 	s.OptionalInteger = val
 }
 
+// SetOptionalIntegerInt16 sets the value of OptionalIntegerInt16.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerInt16(val OptInt16) {
+	s.OptionalIntegerInt16 = val
+}
+
 // SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
 func (s *TestResponseFormatTestOK) SetOptionalIntegerInt32(val OptInt32) {
 	s.OptionalIntegerInt32 = val
@@ -12804,9 +16127,19 @@ func (s *TestResponseFormatTestOK) SetOptionalIntegerInt64(val OptInt64) {
 	s.OptionalIntegerInt64 = val
 }
 
+// SetOptionalIntegerInt8 sets the value of OptionalIntegerInt8.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerInt8(val OptInt8) {
+	s.OptionalIntegerInt8 = val
+}
+
 // SetOptionalIntegerUint sets the value of OptionalIntegerUint.
 func (s *TestResponseFormatTestOK) SetOptionalIntegerUint(val OptUint) {
 	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint16 sets the value of OptionalIntegerUint16.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUint16(val OptUint16) {
+	s.OptionalIntegerUint16 = val
 }
 
 // SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
@@ -12817,6 +16150,11 @@ func (s *TestResponseFormatTestOK) SetOptionalIntegerUint32(val OptUint32) {
 // SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
 func (s *TestResponseFormatTestOK) SetOptionalIntegerUint64(val OptUint64) {
 	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUint8 sets the value of OptionalIntegerUint8.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUint8(val OptUint8) {
+	s.OptionalIntegerUint8 = val
 }
 
 // SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
@@ -12914,9 +16252,29 @@ func (s *TestResponseFormatTestOK) SetOptionalStringEmail(val OptString) {
 	s.OptionalStringEmail = val
 }
 
+// SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
+func (s *TestResponseFormatTestOK) SetOptionalStringFloat32(val OptFloat32) {
+	s.OptionalStringFloat32 = val
+}
+
+// SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
+func (s *TestResponseFormatTestOK) SetOptionalStringFloat64(val OptFloat64) {
+	s.OptionalStringFloat64 = val
+}
+
 // SetOptionalStringHostname sets the value of OptionalStringHostname.
 func (s *TestResponseFormatTestOK) SetOptionalStringHostname(val OptString) {
 	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt sets the value of OptionalStringInt.
+func (s *TestResponseFormatTestOK) SetOptionalStringInt(val OptInt) {
+	s.OptionalStringInt = val
+}
+
+// SetOptionalStringInt16 sets the value of OptionalStringInt16.
+func (s *TestResponseFormatTestOK) SetOptionalStringInt16(val OptInt16) {
+	s.OptionalStringInt16 = val
 }
 
 // SetOptionalStringInt32 sets the value of OptionalStringInt32.
@@ -12927,6 +16285,11 @@ func (s *TestResponseFormatTestOK) SetOptionalStringInt32(val OptStringInt32) {
 // SetOptionalStringInt64 sets the value of OptionalStringInt64.
 func (s *TestResponseFormatTestOK) SetOptionalStringInt64(val OptStringInt64) {
 	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringInt8 sets the value of OptionalStringInt8.
+func (s *TestResponseFormatTestOK) SetOptionalStringInt8(val OptInt8) {
+	s.OptionalStringInt8 = val
 }
 
 // SetOptionalStringIP sets the value of OptionalStringIP.
@@ -12952,6 +16315,31 @@ func (s *TestResponseFormatTestOK) SetOptionalStringPassword(val OptString) {
 // SetOptionalStringTime sets the value of OptionalStringTime.
 func (s *TestResponseFormatTestOK) SetOptionalStringTime(val OptTime) {
 	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUint sets the value of OptionalStringUint.
+func (s *TestResponseFormatTestOK) SetOptionalStringUint(val OptUint) {
+	s.OptionalStringUint = val
+}
+
+// SetOptionalStringUint16 sets the value of OptionalStringUint16.
+func (s *TestResponseFormatTestOK) SetOptionalStringUint16(val OptUint16) {
+	s.OptionalStringUint16 = val
+}
+
+// SetOptionalStringUint32 sets the value of OptionalStringUint32.
+func (s *TestResponseFormatTestOK) SetOptionalStringUint32(val OptUint32) {
+	s.OptionalStringUint32 = val
+}
+
+// SetOptionalStringUint64 sets the value of OptionalStringUint64.
+func (s *TestResponseFormatTestOK) SetOptionalStringUint64(val OptUint64) {
+	s.OptionalStringUint64 = val
+}
+
+// SetOptionalStringUint8 sets the value of OptionalStringUint8.
+func (s *TestResponseFormatTestOK) SetOptionalStringUint8(val OptUint8) {
+	s.OptionalStringUint8 = val
 }
 
 // SetOptionalStringUnix sets the value of OptionalStringUnix.

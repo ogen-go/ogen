@@ -25,15 +25,23 @@ type TestQueryParameterParams struct {
 	BooleanArray            []bool
 	Integer                 int
 	IntegerArray            []int
+	IntegerInt16            int16
+	IntegerInt16Array       []int16
 	IntegerInt32            int32
 	IntegerInt32Array       []int32
 	IntegerInt64            int64
 	IntegerInt64Array       []int64
+	IntegerInt8             int8
+	IntegerInt8Array        []int8
 	IntegerUint             uint
+	IntegerUint16           uint16
+	IntegerUint16Array      []uint16
 	IntegerUint32           uint32
 	IntegerUint32Array      []uint32
 	IntegerUint64           uint64
 	IntegerUint64Array      []uint64
+	IntegerUint8            uint8
+	IntegerUint8Array       []uint8
 	IntegerUintArray        []uint
 	IntegerUnix             time.Time
 	IntegerUnixMicro        time.Time
@@ -71,12 +79,22 @@ type TestQueryParameterParams struct {
 	StringDurationArray     []time.Duration
 	StringEmail             string
 	StringEmailArray        []string
+	StringFloat32           float32
+	StringFloat32Array      []float32
+	StringFloat64           float64
+	StringFloat64Array      []float64
 	StringHostname          string
 	StringHostnameArray     []string
+	StringInt               int
+	StringInt16             int16
+	StringInt16Array        []int16
 	StringInt32             int32
 	StringInt32Array        []int32
 	StringInt64             int64
 	StringInt64Array        []int64
+	StringInt8              int8
+	StringInt8Array         []int8
+	StringIntArray          []int
 	StringIP                netip.Addr
 	StringIPArray           []netip.Addr
 	StringIpv4              netip.Addr
@@ -87,6 +105,16 @@ type TestQueryParameterParams struct {
 	StringPasswordArray     []string
 	StringTime              time.Time
 	StringTimeArray         []time.Time
+	StringUint              uint
+	StringUint16            uint16
+	StringUint16Array       []uint16
+	StringUint32            uint32
+	StringUint32Array       []uint32
+	StringUint64            uint64
+	StringUint64Array       []uint64
+	StringUint8             uint8
+	StringUint8Array        []uint8
+	StringUintArray         []uint
 	StringUnix              time.Time
 	StringUnixMicro         time.Time
 	StringUnixMicroArray    []time.Time
@@ -134,6 +162,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 	}
 	{
 		key := middleware.ParameterKey{
+			Name: "integer_int16",
+			In:   "query",
+		}
+		params.IntegerInt16 = packed[key].(int16)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int16_array",
+			In:   "query",
+		}
+		params.IntegerInt16Array = packed[key].([]int16)
+	}
+	{
+		key := middleware.ParameterKey{
 			Name: "integer_int32",
 			In:   "query",
 		}
@@ -162,10 +204,38 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 	}
 	{
 		key := middleware.ParameterKey{
+			Name: "integer_int8",
+			In:   "query",
+		}
+		params.IntegerInt8 = packed[key].(int8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int8_array",
+			In:   "query",
+		}
+		params.IntegerInt8Array = packed[key].([]int8)
+	}
+	{
+		key := middleware.ParameterKey{
 			Name: "integer_uint",
 			In:   "query",
 		}
 		params.IntegerUint = packed[key].(uint)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint16",
+			In:   "query",
+		}
+		params.IntegerUint16 = packed[key].(uint16)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint16_array",
+			In:   "query",
+		}
+		params.IntegerUint16Array = packed[key].([]uint16)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -194,6 +264,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.IntegerUint64Array = packed[key].([]uint64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint8",
+			In:   "query",
+		}
+		params.IntegerUint8 = packed[key].(uint8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint8_array",
+			In:   "query",
+		}
+		params.IntegerUint8Array = packed[key].([]uint8)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -456,6 +540,34 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 	}
 	{
 		key := middleware.ParameterKey{
+			Name: "string_float32",
+			In:   "query",
+		}
+		params.StringFloat32 = packed[key].(float32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_float32_array",
+			In:   "query",
+		}
+		params.StringFloat32Array = packed[key].([]float32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_float64",
+			In:   "query",
+		}
+		params.StringFloat64 = packed[key].(float64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_float64_array",
+			In:   "query",
+		}
+		params.StringFloat64Array = packed[key].([]float64)
+	}
+	{
+		key := middleware.ParameterKey{
 			Name: "string_hostname",
 			In:   "query",
 		}
@@ -467,6 +579,27 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringHostnameArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int",
+			In:   "query",
+		}
+		params.StringInt = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int16",
+			In:   "query",
+		}
+		params.StringInt16 = packed[key].(int16)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int16_array",
+			In:   "query",
+		}
+		params.StringInt16Array = packed[key].([]int16)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -495,6 +628,27 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringInt64Array = packed[key].([]int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int8",
+			In:   "query",
+		}
+		params.StringInt8 = packed[key].(int8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int8_array",
+			In:   "query",
+		}
+		params.StringInt8Array = packed[key].([]int8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int_array",
+			In:   "query",
+		}
+		params.StringIntArray = packed[key].([]int)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -565,6 +719,76 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringTimeArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint",
+			In:   "query",
+		}
+		params.StringUint = packed[key].(uint)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint16",
+			In:   "query",
+		}
+		params.StringUint16 = packed[key].(uint16)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint16_array",
+			In:   "query",
+		}
+		params.StringUint16Array = packed[key].([]uint16)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint32",
+			In:   "query",
+		}
+		params.StringUint32 = packed[key].(uint32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint32_array",
+			In:   "query",
+		}
+		params.StringUint32Array = packed[key].([]uint32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint64",
+			In:   "query",
+		}
+		params.StringUint64 = packed[key].(uint64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint64_array",
+			In:   "query",
+		}
+		params.StringUint64Array = packed[key].([]uint64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint8",
+			In:   "query",
+		}
+		params.StringUint8 = packed[key].(uint8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint8_array",
+			In:   "query",
+		}
+		params.StringUint8Array = packed[key].([]uint8)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uint_array",
+			In:   "query",
+		}
+		params.StringUintArray = packed[key].([]uint)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -847,6 +1071,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 			Err:  err,
 		}
 	}
+	// Decode query: integer_int16.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_int16",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt16(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerInt16 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int16",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_int16_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_int16_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerInt16ArrayVal int16
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt16(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerInt16ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerInt16Array = append(params.IntegerInt16Array, paramsDotIntegerInt16ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.IntegerInt16Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int16_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
 	// Decode query: integer_int32.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
@@ -1025,6 +1338,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 			Err:  err,
 		}
 	}
+	// Decode query: integer_int8.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_int8",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt8(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerInt8 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int8",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_int8_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_int8_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerInt8ArrayVal int8
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt8(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerInt8ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerInt8Array = append(params.IntegerInt8Array, paramsDotIntegerInt8ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.IntegerInt8Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int8_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
 	// Decode query: integer_uint.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
@@ -1057,6 +1459,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "integer_uint",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_uint16.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_uint16",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUint16(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUint16 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint16",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_uint16_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_uint16_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUint16ArrayVal uint16
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUint16(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUint16ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUint16Array = append(params.IntegerUint16Array, paramsDotIntegerUint16ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.IntegerUint16Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint16_array",
 			In:   "query",
 			Err:  err,
 		}
@@ -1235,6 +1726,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "integer_uint64_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_uint8.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_uint8",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUint8(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUint8 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint8",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_uint8_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_uint8_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUint8ArrayVal uint8
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUint8(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUint8ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUint8Array = append(params.IntegerUint8Array, paramsDotIntegerUint8ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.IntegerUint8Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint8_array",
 			In:   "query",
 			Err:  err,
 		}
@@ -3010,6 +3590,234 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 			Err:  err,
 		}
 	}
+	// Decode query: string_float32.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_float32",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToFloat32(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringFloat32 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(params.StringFloat32)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_float32",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_float32_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_float32_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringFloat32ArrayVal float32
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToFloat32(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringFloat32ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringFloat32Array = append(params.StringFloat32Array, paramsDotStringFloat32ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringFloat32Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range params.StringFloat32Array {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_float32_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_float64.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_float64",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToFloat64(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringFloat64 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := (validate.Float{}).ValidateStringified(float64(params.StringFloat64)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_float64",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_float64_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_float64_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringFloat64ArrayVal float64
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToFloat64(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringFloat64ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringFloat64Array = append(params.StringFloat64Array, paramsDotStringFloat64ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringFloat64Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				var failures []validate.FieldError
+				for i, elem := range params.StringFloat64Array {
+					if err := func() error {
+						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_float64_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
 	// Decode query: string_hostname.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
@@ -3136,6 +3944,131 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_hostname_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringInt = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int16.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int16",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringInt16(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringInt16 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int16",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int16_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int16_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringInt16ArrayVal int16
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringInt16(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringInt16ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringInt16Array = append(params.StringInt16Array, paramsDotStringInt16ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringInt16Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int16_array",
 			In:   "query",
 			Err:  err,
 		}
@@ -3314,6 +4247,148 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_int64_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int8.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int8",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringInt8(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringInt8 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int8",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int8_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int8_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringInt8ArrayVal int8
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringInt8(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringInt8ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringInt8Array = append(params.StringInt8Array, paramsDotStringInt8ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringInt8Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int8_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_int_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_int_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringIntArrayVal int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringIntArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringIntArray = append(params.StringIntArray, paramsDotStringIntArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringIntArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int_array",
 			In:   "query",
 			Err:  err,
 		}
@@ -3759,6 +4834,451 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_time_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringUint(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUint = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint16.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint16",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringUint16(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUint16 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint16",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint16_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint16_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUint16ArrayVal uint16
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringUint16(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUint16ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUint16Array = append(params.StringUint16Array, paramsDotStringUint16ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUint16Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint16_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint32.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint32",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringUint32(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUint32 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint32",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint32_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint32_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUint32ArrayVal uint32
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringUint32(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUint32ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUint32Array = append(params.StringUint32Array, paramsDotStringUint32ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUint32Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint32_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint64.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint64",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringUint64(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUint64 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint64",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint64_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint64_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUint64ArrayVal uint64
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringUint64(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUint64ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUint64Array = append(params.StringUint64Array, paramsDotStringUint64ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUint64Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint64_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint8.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint8",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringUint8(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUint8 = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint8",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint8_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint8_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUint8ArrayVal uint8
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringUint8(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUint8ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUint8Array = append(params.StringUint8Array, paramsDotStringUint8ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUint8Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint8_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_uint_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_uint_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUintArrayVal uint
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringUint(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUintArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUintArray = append(params.StringUintArray, paramsDotStringUintArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUintArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uint_array",
 			In:   "query",
 			Err:  err,
 		}
