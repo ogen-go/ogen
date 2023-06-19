@@ -64,6 +64,15 @@ func (t Float) Validate(v float64) error {
 	if math.IsInf(v, 0) {
 		return errors.Errorf("value %f is infinite", v)
 	}
+	return t.validate(v)
+}
+
+// ValidateStringified returns error if v does not match validation rules.
+func (t Float) ValidateStringified(v float64) error {
+	return t.validate(v)
+}
+
+func (t Float) validate(v float64) error {
 	if t.MinSet && (v < t.Min || t.MinExclusive && v == t.Min) {
 		return errors.Errorf("value %f less than %f", v, t.Min)
 	}
