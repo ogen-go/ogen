@@ -1,4 +1,9 @@
 linters-settings:
+  gosec:
+    config:
+      # Maximum allowed permissions mode file creation
+      # Default: "0600"
+      G306: "0644"
   gocyclo:
     min-complexity: 15
   maligned:

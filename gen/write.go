@@ -199,7 +199,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 	generated := buf.Bytes()
 	defer func() {
 		if rerr != nil {
-			_ = os.WriteFile(fileName+".dump", generated, 0o600)
+			_ = os.WriteFile(fileName+".dump", generated, 0o644)
 		}
 	}()
 
