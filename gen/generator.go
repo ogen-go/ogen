@@ -58,7 +58,7 @@ func expandSpec(api *openapi.API, p string) (err error) {
 		return errors.Wrap(err, "marshal")
 	}
 
-	if err := os.WriteFile(p, data, 0o600); err != nil {
+	if err := os.WriteFile(p, data, 0o644); err != nil {
 		return errors.Wrap(err, "write")
 	}
 

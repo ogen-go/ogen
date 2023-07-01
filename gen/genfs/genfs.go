@@ -23,5 +23,5 @@ func (t FormattedSource) WriteFile(name string, content []byte) error {
 		}
 		out = buf
 	}
-	return os.WriteFile(filepath.Join(t.Root, name), out, 0600)
+	return os.WriteFile(filepath.Join(t.Root, name), out, 0644)
 }

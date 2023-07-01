@@ -249,7 +249,7 @@ func run() error {
 		return errors.Wrap(err, "marshal spec")
 	}
 
-	return os.WriteFile(*output, data, 0o600)
+	return os.WriteFile(*output, data, 0o644)
 }
 
 func main() {
