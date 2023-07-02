@@ -18,6 +18,7 @@ func (s PascalExceptionStrat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PascalSpecialStrat) Validate() error {
 	switch s {
 	case "2+2":
@@ -28,6 +29,7 @@ func (s PascalSpecialStrat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PascalStrat) Validate() error {
 	switch s {
 	case "in-sync":
@@ -38,6 +40,7 @@ func (s PascalStrat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *ProbeLivenessOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -89,6 +92,7 @@ func (s *ProbeLivenessOK) Validate() error {
 	}
 	return nil
 }
+
 func (s VeryBadEnum) Validate() error {
 	switch s {
 	case " ":

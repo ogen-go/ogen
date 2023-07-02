@@ -61,6 +61,7 @@ func (s *ContentParameters) Validate() error {
 	}
 	return nil
 }
+
 func (s *User) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -104,6 +105,7 @@ func (s *User) Validate() error {
 	}
 	return nil
 }
+
 func (s UserRole) Validate() error {
 	switch s {
 	case "admin":

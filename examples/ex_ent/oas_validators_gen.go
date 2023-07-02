@@ -13,6 +13,7 @@ func (s ListPetCategoriesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+
 func (s ListPetFriendsOKApplicationJSON) Validate() error {
 	alias := ([]PetFriendsList)(s)
 	if alias == nil {
@@ -20,6 +21,7 @@ func (s ListPetFriendsOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+
 func (s ListPetOKApplicationJSON) Validate() error {
 	alias := ([]PetList)(s)
 	if alias == nil {

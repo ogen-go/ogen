@@ -35,6 +35,7 @@ func (s *AddStickerToSet) Validate() error {
 	}
 	return nil
 }
+
 func (s *Animation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -120,6 +121,7 @@ func (s *Animation) Validate() error {
 	}
 	return nil
 }
+
 func (s *AnswerCallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -153,6 +155,7 @@ func (s *AnswerCallbackQuery) Validate() error {
 	}
 	return nil
 }
+
 func (s *AnswerInlineQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -214,6 +217,7 @@ func (s *AnswerInlineQuery) Validate() error {
 	}
 	return nil
 }
+
 func (s *AnswerShippingQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -246,6 +250,7 @@ func (s *AnswerShippingQuery) Validate() error {
 	}
 	return nil
 }
+
 func (s *Audio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -291,6 +296,7 @@ func (s *Audio) Validate() error {
 	}
 	return nil
 }
+
 func (s *BotCommand) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -336,6 +342,7 @@ func (s *BotCommand) Validate() error {
 	}
 	return nil
 }
+
 func (s *CallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -361,6 +368,7 @@ func (s *CallbackQuery) Validate() error {
 	}
 	return nil
 }
+
 func (s *Chat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -416,6 +424,7 @@ func (s *Chat) Validate() error {
 	}
 	return nil
 }
+
 func (s *ChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -450,6 +459,7 @@ func (s *ChatInviteLink) Validate() error {
 	}
 	return nil
 }
+
 func (s *ChatJoinRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -486,6 +496,7 @@ func (s *ChatJoinRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *ChatLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -523,6 +534,7 @@ func (s *ChatLocation) Validate() error {
 	}
 	return nil
 }
+
 func (s *ChatMemberUpdated) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -559,6 +571,7 @@ func (s *ChatMemberUpdated) Validate() error {
 	}
 	return nil
 }
+
 func (s ChatType) Validate() error {
 	switch s {
 	case "private":
@@ -573,6 +586,7 @@ func (s ChatType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *ChosenInlineResult) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -598,6 +612,7 @@ func (s *ChosenInlineResult) Validate() error {
 	}
 	return nil
 }
+
 func (s *CopyMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -674,6 +689,7 @@ func (s *CopyMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s CopyMessageReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupCopyMessageReplyMarkup:
@@ -758,6 +774,7 @@ func (s *CreateChatInviteLink) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateNewStickerSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -821,6 +838,7 @@ func (s *CreateNewStickerSet) Validate() error {
 	}
 	return nil
 }
+
 func (s *Document) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -846,6 +864,7 @@ func (s *Document) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -906,6 +925,7 @@ func (s *EditChatInviteLink) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditMessageCaption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -982,6 +1002,7 @@ func (s *EditMessageCaption) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditMessageLiveLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1101,6 +1122,7 @@ func (s *EditMessageLiveLocation) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditMessageMedia) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1137,6 +1159,7 @@ func (s *EditMessageMedia) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditMessageReplyMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1162,6 +1185,7 @@ func (s *EditMessageReplyMarkup) Validate() error {
 	}
 	return nil
 }
+
 func (s *EditMessageText) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1231,6 +1255,7 @@ func (s *EditMessageText) Validate() error {
 	}
 	return nil
 }
+
 func (s *EncryptedPassportElement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1249,6 +1274,7 @@ func (s *EncryptedPassportElement) Validate() error {
 	}
 	return nil
 }
+
 func (s EncryptedPassportElementType) Validate() error {
 	switch s {
 	case "personal_details":
@@ -1281,6 +1307,7 @@ func (s EncryptedPassportElementType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *ForceReply) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1314,6 +1341,7 @@ func (s *ForceReply) Validate() error {
 	}
 	return nil
 }
+
 func (s *Game) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1418,6 +1446,7 @@ func (s *Game) Validate() error {
 	}
 	return nil
 }
+
 func (s *GetUpdates) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1452,6 +1481,7 @@ func (s *GetUpdates) Validate() error {
 	}
 	return nil
 }
+
 func (s *GetUserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1486,6 +1516,7 @@ func (s *GetUserProfilePhotos) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineKeyboardButton) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1519,6 +1550,7 @@ func (s *InlineKeyboardButton) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineKeyboardMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1571,6 +1603,7 @@ func (s *InlineKeyboardMarkup) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1614,6 +1647,7 @@ func (s *InlineQuery) Validate() error {
 	}
 	return nil
 }
+
 func (s InlineQueryChatType) Validate() error {
 	switch s {
 	case "sender":
@@ -1630,6 +1664,7 @@ func (s InlineQueryChatType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s InlineQueryResult) Validate() error {
 	switch s.Type {
 	case InlineQueryResultCachedAudioInlineQueryResult:
@@ -1827,6 +1862,7 @@ func (s *InlineQueryResultArticle) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultAudio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1967,6 +2003,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedAudio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2080,6 +2117,7 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedDocument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2193,6 +2231,7 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedGif) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2306,6 +2345,7 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2419,6 +2459,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedPhoto) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2532,6 +2573,7 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedSticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2594,6 +2636,7 @@ func (s *InlineQueryResultCachedSticker) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedVideo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2707,6 +2750,7 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultCachedVoice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2820,6 +2864,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultContact) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2943,6 +2988,7 @@ func (s *InlineQueryResultContact) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultDocument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3110,6 +3156,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultGame) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3154,6 +3201,7 @@ func (s *InlineQueryResultGame) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultGif) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3348,6 +3396,7 @@ func (s *InlineQueryResultGif) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3566,6 +3615,7 @@ func (s *InlineQueryResultLocation) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultMpeg4Gif) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3760,6 +3810,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultPhoto) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3927,6 +3978,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultVenue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4046,6 +4098,7 @@ func (s *InlineQueryResultVenue) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultVideo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4240,6 +4293,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 	}
 	return nil
 }
+
 func (s *InlineQueryResultVoice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4380,6 +4434,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputContactMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4413,6 +4468,7 @@ func (s *InputContactMessageContent) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputInvoiceMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4542,6 +4598,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputLocationMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4670,6 +4727,7 @@ func (s *InputLocationMessageContent) Validate() error {
 	}
 	return nil
 }
+
 func (s InputMedia) Validate() error {
 	switch s.Type {
 	case InputMediaAnimationInputMedia:
@@ -4841,6 +4899,7 @@ func (s *InputMediaAnimation) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputMediaAudio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4926,6 +4985,7 @@ func (s *InputMediaAudio) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputMediaDocument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4984,6 +5044,7 @@ func (s *InputMediaDocument) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputMediaPhoto) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5042,6 +5103,7 @@ func (s *InputMediaPhoto) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputMediaVideo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5181,6 +5243,7 @@ func (s *InputMediaVideo) Validate() error {
 	}
 	return nil
 }
+
 func (s InputMessageContent) Validate() error {
 	switch s.Type {
 	case InputTextMessageContentInputMessageContent:
@@ -5264,6 +5327,7 @@ func (s *InputTextMessageContent) Validate() error {
 	}
 	return nil
 }
+
 func (s *InputVenueMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5293,6 +5357,7 @@ func (s *InputVenueMessageContent) Validate() error {
 	}
 	return nil
 }
+
 func (s *Location) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5367,6 +5432,7 @@ func (s *Location) Validate() error {
 	}
 	return nil
 }
+
 func (s *MaskPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5407,6 +5473,7 @@ func (s *MaskPosition) Validate() error {
 	}
 	return nil
 }
+
 func (s *Message) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5903,6 +5970,7 @@ func (s *Message) Validate() error {
 	}
 	return nil
 }
+
 func (s *MessageEntity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5921,6 +5989,7 @@ func (s *MessageEntity) Validate() error {
 	}
 	return nil
 }
+
 func (s MessageEntityType) Validate() error {
 	switch s {
 	case "mention":
@@ -5993,6 +6062,7 @@ func (s *PassportData) Validate() error {
 	}
 	return nil
 }
+
 func (s PassportElementError) Validate() error {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
@@ -6042,6 +6112,7 @@ func (s PassportElementErrorDataFieldType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PassportElementErrorFileType) Validate() error {
 	switch s {
 	case "utility_bill":
@@ -6058,6 +6129,7 @@ func (s PassportElementErrorFileType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *PassportElementErrorFiles) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6076,6 +6148,7 @@ func (s *PassportElementErrorFiles) Validate() error {
 	}
 	return nil
 }
+
 func (s PassportElementErrorFilesType) Validate() error {
 	switch s {
 	case "utility_bill":
@@ -6092,6 +6165,7 @@ func (s PassportElementErrorFilesType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PassportElementErrorFrontSideType) Validate() error {
 	switch s {
 	case "passport":
@@ -6106,6 +6180,7 @@ func (s PassportElementErrorFrontSideType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PassportElementErrorReverseSideType) Validate() error {
 	switch s {
 	case "driver_license":
@@ -6116,6 +6191,7 @@ func (s PassportElementErrorReverseSideType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PassportElementErrorSelfieType) Validate() error {
 	switch s {
 	case "passport":
@@ -6130,6 +6206,7 @@ func (s PassportElementErrorSelfieType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PassportElementErrorTranslationFileType) Validate() error {
 	switch s {
 	case "passport":
@@ -6154,6 +6231,7 @@ func (s PassportElementErrorTranslationFileType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *PassportElementErrorTranslationFiles) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6172,6 +6250,7 @@ func (s *PassportElementErrorTranslationFiles) Validate() error {
 	}
 	return nil
 }
+
 func (s PassportElementErrorTranslationFilesType) Validate() error {
 	switch s {
 	case "passport":
@@ -6196,6 +6275,7 @@ func (s PassportElementErrorTranslationFilesType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *PhotoSize) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6243,6 +6323,7 @@ func (s *PhotoSize) Validate() error {
 	}
 	return nil
 }
+
 func (s *Poll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6359,6 +6440,7 @@ func (s *Poll) Validate() error {
 	}
 	return nil
 }
+
 func (s *PollAnswer) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6377,6 +6459,7 @@ func (s *PollAnswer) Validate() error {
 	}
 	return nil
 }
+
 func (s *PollOption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6403,6 +6486,7 @@ func (s *PollOption) Validate() error {
 	}
 	return nil
 }
+
 func (s PollType) Validate() error {
 	switch s {
 	case "regular":
@@ -6413,6 +6497,7 @@ func (s PollType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *ReplyKeyboardMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6474,6 +6559,7 @@ func (s *ReplyKeyboardMarkup) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultArrayOfBotCommand) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6506,6 +6592,7 @@ func (s *ResultArrayOfBotCommand) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultArrayOfMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6538,6 +6625,7 @@ func (s *ResultArrayOfMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultArrayOfUpdate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6570,6 +6658,7 @@ func (s *ResultArrayOfUpdate) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultChat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6595,6 +6684,7 @@ func (s *ResultChat) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultChatInviteLink) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6620,6 +6710,7 @@ func (s *ResultChatInviteLink) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6645,6 +6736,7 @@ func (s *ResultMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultPoll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6670,6 +6762,7 @@ func (s *ResultPoll) Validate() error {
 	}
 	return nil
 }
+
 func (s *ResultUserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6695,6 +6788,7 @@ func (s *ResultUserProfilePhotos) Validate() error {
 	}
 	return nil
 }
+
 func (s *SendAnimation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6852,6 +6946,7 @@ func (s *SendAnimation) Validate() error {
 	}
 	return nil
 }
+
 func (s SendAnimationReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAnimationReplyMarkup:
@@ -6979,6 +7074,7 @@ func (s *SendAudio) Validate() error {
 	}
 	return nil
 }
+
 func (s SendAudioReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAudioReplyMarkup:
@@ -7054,6 +7150,7 @@ func (s *SendContact) Validate() error {
 	}
 	return nil
 }
+
 func (s SendContactReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendContactReplyMarkup:
@@ -7103,6 +7200,7 @@ func (s *SendDice) Validate() error {
 	}
 	return nil
 }
+
 func (s SendDiceReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDiceReplyMarkup:
@@ -7203,6 +7301,7 @@ func (s *SendDocument) Validate() error {
 	}
 	return nil
 }
+
 func (s SendDocumentReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDocumentReplyMarkup:
@@ -7252,6 +7351,7 @@ func (s *SendGame) Validate() error {
 	}
 	return nil
 }
+
 func (s *SendInvoice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -7399,6 +7499,7 @@ func (s *SendInvoice) Validate() error {
 	}
 	return nil
 }
+
 func (s *SendLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -7545,6 +7646,7 @@ func (s *SendLocation) Validate() error {
 	}
 	return nil
 }
+
 func (s SendLocationReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendLocationReplyMarkup:
@@ -7604,6 +7706,7 @@ func (s *SendMediaGroup) Validate() error {
 	}
 	return nil
 }
+
 func (s SendMediaGroupMediaItem) Validate() error {
 	switch s.Type {
 	case InputMediaAudioSendMediaGroupMediaItem:
@@ -7700,6 +7803,7 @@ func (s *SendMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s SendMessageReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendMessageReplyMarkup:
@@ -7800,6 +7904,7 @@ func (s *SendPhoto) Validate() error {
 	}
 	return nil
 }
+
 func (s SendPhotoReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPhotoReplyMarkup:
@@ -7930,6 +8035,7 @@ func (s *SendPoll) Validate() error {
 	}
 	return nil
 }
+
 func (s SendPollReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPollReplyMarkup:
@@ -7979,6 +8085,7 @@ func (s *SendSticker) Validate() error {
 	}
 	return nil
 }
+
 func (s SendStickerReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendStickerReplyMarkup:
@@ -8050,6 +8157,7 @@ func (s *SendVenue) Validate() error {
 	}
 	return nil
 }
+
 func (s SendVenueReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVenueReplyMarkup:
@@ -8231,6 +8339,7 @@ func (s *SendVideo) Validate() error {
 	}
 	return nil
 }
+
 func (s *SendVideoNote) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8283,6 +8392,7 @@ func (s *SendVideoNote) Validate() error {
 	}
 	return nil
 }
+
 func (s SendVideoNoteReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
@@ -8434,6 +8544,7 @@ func (s *SendVoice) Validate() error {
 	}
 	return nil
 }
+
 func (s SendVoiceReplyMarkup) Validate() error {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVoiceReplyMarkup:
@@ -8484,6 +8595,7 @@ func (s *SetChatAdministratorCustomTitle) Validate() error {
 	}
 	return nil
 }
+
 func (s *SetChatDescription) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8517,6 +8629,7 @@ func (s *SetChatDescription) Validate() error {
 	}
 	return nil
 }
+
 func (s *SetChatTitle) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8543,6 +8656,7 @@ func (s *SetChatTitle) Validate() error {
 	}
 	return nil
 }
+
 func (s *SetMyCommands) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8578,6 +8692,7 @@ func (s *SetMyCommands) Validate() error {
 	}
 	return nil
 }
+
 func (s *SetPassportDataErrors) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8613,6 +8728,7 @@ func (s *SetPassportDataErrors) Validate() error {
 	}
 	return nil
 }
+
 func (s *ShippingOption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8631,6 +8747,7 @@ func (s *ShippingOption) Validate() error {
 	}
 	return nil
 }
+
 func (s *Sticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8714,6 +8831,7 @@ func (s *Sticker) Validate() error {
 	}
 	return nil
 }
+
 func (s *StopMessageLiveLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8739,6 +8857,7 @@ func (s *StopMessageLiveLocation) Validate() error {
 	}
 	return nil
 }
+
 func (s *StopPoll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8764,6 +8883,7 @@ func (s *StopPoll) Validate() error {
 	}
 	return nil
 }
+
 func (s *Update) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8987,6 +9107,7 @@ func (s *Update) Validate() error {
 	}
 	return nil
 }
+
 func (s *UserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9039,6 +9160,7 @@ func (s *UserProfilePhotos) Validate() error {
 	}
 	return nil
 }
+
 func (s *Venue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9057,6 +9179,7 @@ func (s *Venue) Validate() error {
 	}
 	return nil
 }
+
 func (s *Video) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9142,6 +9265,7 @@ func (s *Video) Validate() error {
 	}
 	return nil
 }
+
 func (s *VideoNote) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9187,6 +9311,7 @@ func (s *VideoNote) Validate() error {
 	}
 	return nil
 }
+
 func (s *Voice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9214,6 +9339,7 @@ func (s *Voice) Validate() error {
 	}
 	return nil
 }
+
 func (s *VoiceChatEnded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

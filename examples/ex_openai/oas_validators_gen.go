@@ -28,6 +28,7 @@ func (s *ChatCompletionRequestMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s ChatCompletionRequestMessageRole) Validate() error {
 	switch s {
 	case "system":
@@ -40,6 +41,7 @@ func (s ChatCompletionRequestMessageRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *ChatCompletionResponseMessage) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -58,6 +60,7 @@ func (s *ChatCompletionResponseMessage) Validate() error {
 	}
 	return nil
 }
+
 func (s ChatCompletionResponseMessageRole) Validate() error {
 	switch s {
 	case "system":
@@ -70,6 +73,7 @@ func (s ChatCompletionResponseMessageRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *CreateAnswerRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -299,6 +303,7 @@ func (s *CreateAnswerRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateAnswerRequestStop) Validate() error {
 	switch s.Type {
 	case StringCreateAnswerRequestStop:
@@ -517,6 +522,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateChatCompletionRequestStop) Validate() error {
 	switch s.Type {
 	case StringCreateChatCompletionRequestStop:
@@ -574,6 +580,7 @@ func (s *CreateChatCompletionResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateChatCompletionResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -599,6 +606,7 @@ func (s *CreateChatCompletionResponseChoicesItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateClassificationRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -799,6 +807,7 @@ func (s *CreateClassificationRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateCompletionRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1058,6 +1067,7 @@ func (s *CreateCompletionRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateCompletionRequestPrompt) Validate() error {
 	switch s.Type {
 	case StringCreateCompletionRequestPrompt:
@@ -1131,6 +1141,7 @@ func (s *CreateCompletionResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateCompletionResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1156,6 +1167,7 @@ func (s *CreateCompletionResponseChoicesItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateCompletionResponseChoicesItemLogprobs) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1188,6 +1200,7 @@ func (s *CreateCompletionResponseChoicesItemLogprobs) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEditRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1276,6 +1289,7 @@ func (s *CreateEditRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEditResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1311,6 +1325,7 @@ func (s *CreateEditResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEditResponseChoicesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1336,6 +1351,7 @@ func (s *CreateEditResponseChoicesItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEditResponseChoicesItemLogprobs) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1368,6 +1384,7 @@ func (s *CreateEditResponseChoicesItemLogprobs) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEmbeddingRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1386,6 +1403,7 @@ func (s *CreateEmbeddingRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateEmbeddingRequestInput) Validate() error {
 	switch s.Type {
 	case StringCreateEmbeddingRequestInput:
@@ -1435,6 +1453,7 @@ func (s *CreateEmbeddingResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateEmbeddingResponseDataItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1470,6 +1489,7 @@ func (s *CreateEmbeddingResponseDataItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateFineTuneRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1574,6 +1594,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateImageEditRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1644,6 +1665,7 @@ func (s *CreateImageEditRequestMultipart) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateImageEditRequestMultipartResponseFormat) Validate() error {
 	switch s {
 	case "url":
@@ -1654,6 +1676,7 @@ func (s CreateImageEditRequestMultipartResponseFormat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s CreateImageEditRequestMultipartSize) Validate() error {
 	switch s {
 	case "256x256":
@@ -1666,6 +1689,7 @@ func (s CreateImageEditRequestMultipartSize) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *CreateImageRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1736,6 +1760,7 @@ func (s *CreateImageRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateImageRequestResponseFormat) Validate() error {
 	switch s {
 	case "url":
@@ -1746,6 +1771,7 @@ func (s CreateImageRequestResponseFormat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s CreateImageRequestSize) Validate() error {
 	switch s {
 	case "256x256":
@@ -1758,6 +1784,7 @@ func (s CreateImageRequestSize) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *CreateImageVariationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1828,6 +1855,7 @@ func (s *CreateImageVariationRequestMultipart) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateImageVariationRequestMultipartResponseFormat) Validate() error {
 	switch s {
 	case "url":
@@ -1838,6 +1866,7 @@ func (s CreateImageVariationRequestMultipartResponseFormat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s CreateImageVariationRequestMultipartSize) Validate() error {
 	switch s {
 	case "256x256":
@@ -1850,6 +1879,7 @@ func (s CreateImageVariationRequestMultipartSize) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *CreateModerationRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1868,6 +1898,7 @@ func (s *CreateModerationRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s CreateModerationRequestInput) Validate() error {
 	switch s.Type {
 	case StringCreateModerationRequestInput:
@@ -1917,6 +1948,7 @@ func (s *CreateModerationResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateModerationResponseResultsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1935,6 +1967,7 @@ func (s *CreateModerationResponseResultsItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateModerationResponseResultsItemCategoryScores) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2019,6 +2052,7 @@ func (s *CreateModerationResponseResultsItemCategoryScores) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateSearchRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2098,6 +2132,7 @@ func (s *CreateSearchRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateSearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2130,6 +2165,7 @@ func (s *CreateSearchResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateSearchResponseDataItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2155,6 +2191,7 @@ func (s *CreateSearchResponseDataItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateTranscriptionRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2180,6 +2217,7 @@ func (s *CreateTranscriptionRequestMultipart) Validate() error {
 	}
 	return nil
 }
+
 func (s *CreateTranslationRequestMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2205,6 +2243,7 @@ func (s *CreateTranslationRequestMultipart) Validate() error {
 	}
 	return nil
 }
+
 func (s *ListEnginesResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2223,6 +2262,7 @@ func (s *ListEnginesResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *ListFilesResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2241,6 +2281,7 @@ func (s *ListFilesResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *ListFineTuneEventsResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2259,6 +2300,7 @@ func (s *ListFineTuneEventsResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *ListFineTunesResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -2277,6 +2319,7 @@ func (s *ListFineTunesResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *ListModelsResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

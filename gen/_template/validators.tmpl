@@ -151,7 +151,7 @@
 
 {{- range $t := $.Types }}{{/*Range schemas*/}}
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
-{{- if $t.IsStruct }}{{/*If struct*/}}
+{{ if $t.IsStruct }}{{/*If struct*/}}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	var failures []validate.FieldError
 	{{- range $f := $t.Fields }}{{/*Range fields*/}}
