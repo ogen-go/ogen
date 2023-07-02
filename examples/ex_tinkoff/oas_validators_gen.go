@@ -20,6 +20,7 @@ func (s BrokerAccountType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Candle) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -82,6 +83,7 @@ func (s *Candle) Validate() error {
 	}
 	return nil
 }
+
 func (s CandleResolution) Validate() error {
 	switch s {
 	case "1min":
@@ -110,6 +112,7 @@ func (s CandleResolution) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Candles) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -156,6 +159,7 @@ func (s *Candles) Validate() error {
 	}
 	return nil
 }
+
 func (s *CandlesResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -174,6 +178,7 @@ func (s *CandlesResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *Currencies) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -209,6 +214,7 @@ func (s *Currencies) Validate() error {
 	}
 	return nil
 }
+
 func (s Currency) Validate() error {
 	switch s {
 	case "RUB":
@@ -233,6 +239,7 @@ func (s Currency) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *CurrencyPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -280,6 +287,7 @@ func (s *CurrencyPosition) Validate() error {
 	}
 	return nil
 }
+
 func (s InstrumentType) Validate() error {
 	switch s {
 	case "Stock":
@@ -294,6 +302,7 @@ func (s InstrumentType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *LimitOrderRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -323,6 +332,7 @@ func (s *LimitOrderRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *LimitOrderResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -341,6 +351,7 @@ func (s *LimitOrderResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *MarketInstrument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -395,6 +406,7 @@ func (s *MarketInstrument) Validate() error {
 	}
 	return nil
 }
+
 func (s *MarketInstrumentList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -430,6 +442,7 @@ func (s *MarketInstrumentList) Validate() error {
 	}
 	return nil
 }
+
 func (s *MarketInstrumentListResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -448,6 +461,7 @@ func (s *MarketInstrumentListResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *MarketOrderRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -466,6 +480,7 @@ func (s *MarketOrderRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *MarketOrderResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -484,6 +499,7 @@ func (s *MarketOrderResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *MoneyAmount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -513,6 +529,7 @@ func (s *MoneyAmount) Validate() error {
 	}
 	return nil
 }
+
 func (s *Operation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -650,6 +667,7 @@ func (s *Operation) Validate() error {
 	}
 	return nil
 }
+
 func (s OperationStatus) Validate() error {
 	switch s {
 	case "Done":
@@ -662,6 +680,7 @@ func (s OperationStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *OperationTrade) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -680,6 +699,7 @@ func (s *OperationTrade) Validate() error {
 	}
 	return nil
 }
+
 func (s OperationType) Validate() error {
 	switch s {
 	case "Buy":
@@ -690,6 +710,7 @@ func (s OperationType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s OperationTypeWithCommission) Validate() error {
 	switch s {
 	case "Buy":
@@ -738,6 +759,7 @@ func (s OperationTypeWithCommission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Operations) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -773,6 +795,7 @@ func (s *Operations) Validate() error {
 	}
 	return nil
 }
+
 func (s *OperationsResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -843,6 +866,7 @@ func (s *Order) Validate() error {
 	}
 	return nil
 }
+
 func (s *OrderResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -861,6 +885,7 @@ func (s *OrderResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s OrderStatus) Validate() error {
 	switch s {
 	case "New":
@@ -885,6 +910,7 @@ func (s OrderStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s OrderType) Validate() error {
 	switch s {
 	case "Limit":
@@ -895,6 +921,7 @@ func (s OrderType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Orderbook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1070,6 +1097,7 @@ func (s *Orderbook) Validate() error {
 	}
 	return nil
 }
+
 func (s *OrderbookResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1088,6 +1116,7 @@ func (s *OrderbookResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *OrdersResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1123,6 +1152,7 @@ func (s *OrdersResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *PlacedLimitOrder) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1170,6 +1200,7 @@ func (s *PlacedLimitOrder) Validate() error {
 	}
 	return nil
 }
+
 func (s *PlacedMarketOrder) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1217,6 +1248,7 @@ func (s *PlacedMarketOrder) Validate() error {
 	}
 	return nil
 }
+
 func (s *Portfolio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1252,6 +1284,7 @@ func (s *Portfolio) Validate() error {
 	}
 	return nil
 }
+
 func (s *PortfolioCurrenciesResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1270,6 +1303,7 @@ func (s *PortfolioCurrenciesResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *PortfolioPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1371,6 +1405,7 @@ func (s *PortfolioPosition) Validate() error {
 	}
 	return nil
 }
+
 func (s *PortfolioResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1389,6 +1424,7 @@ func (s *PortfolioResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *SandboxAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1407,6 +1443,7 @@ func (s *SandboxAccount) Validate() error {
 	}
 	return nil
 }
+
 func (s SandboxCurrency) Validate() error {
 	switch s {
 	case "RUB":
@@ -1431,6 +1468,7 @@ func (s SandboxCurrency) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *SandboxRegisterRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1456,6 +1494,7 @@ func (s *SandboxRegisterRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *SandboxRegisterResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1474,6 +1513,7 @@ func (s *SandboxRegisterResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *SandboxSetCurrencyBalanceRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1503,6 +1543,7 @@ func (s *SandboxSetCurrencyBalanceRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *SandboxSetPositionBalanceRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1521,6 +1562,7 @@ func (s *SandboxSetPositionBalanceRequest) Validate() error {
 	}
 	return nil
 }
+
 func (s *SearchMarketInstrument) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1575,6 +1617,7 @@ func (s *SearchMarketInstrument) Validate() error {
 	}
 	return nil
 }
+
 func (s *SearchMarketInstrumentResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1593,6 +1636,7 @@ func (s *SearchMarketInstrumentResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s TradeStatus) Validate() error {
 	switch s {
 	case "NormalTrading":
@@ -1603,6 +1647,7 @@ func (s TradeStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *UserAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1621,6 +1666,7 @@ func (s *UserAccount) Validate() error {
 	}
 	return nil
 }
+
 func (s *UserAccounts) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1656,6 +1702,7 @@ func (s *UserAccounts) Validate() error {
 	}
 	return nil
 }
+
 func (s *UserAccountsResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

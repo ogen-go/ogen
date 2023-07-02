@@ -28,6 +28,7 @@ func (s *CombinedDefStatusCode) Validate() error {
 	}
 	return nil
 }
+
 func (s CombinedType) Validate() error {
 	switch s {
 	case "200":
@@ -42,6 +43,7 @@ func (s CombinedType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s HeadersCombinedType) Validate() error {
 	switch s {
 	case "200":
@@ -54,6 +56,7 @@ func (s HeadersCombinedType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *HeadersJSONOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -72,6 +75,7 @@ func (s *HeadersJSONOK) Validate() error {
 	}
 	return nil
 }
+
 func (s QueryData) Validate() error {
 	alias := ([]float64)(s)
 	if alias == nil {
@@ -96,6 +100,7 @@ func (s QueryData) Validate() error {
 	}
 	return nil
 }
+
 func (s *User) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -139,6 +144,7 @@ func (s *User) Validate() error {
 	}
 	return nil
 }
+
 func (s UserRole) Validate() error {
 	switch s {
 	case "admin":

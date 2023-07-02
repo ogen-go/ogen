@@ -34,6 +34,7 @@ func (s *TestMultipartUploadOK) Validate() error {
 	}
 	return nil
 }
+
 func (s *TestMultipartUploadReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

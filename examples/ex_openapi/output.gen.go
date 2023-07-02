@@ -17804,6 +17804,7 @@ func (s *Callback) Validate() error {
 	}
 	return nil
 }
+
 func (s CallbackOrReference) Validate() error {
 	switch s.Type {
 	case CallbackCallbackOrReference:
@@ -17839,6 +17840,7 @@ func (s CallbackPattern0) Validate() error {
 	}
 	return nil
 }
+
 func (s CallbacksOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -17860,6 +17862,7 @@ func (s CallbacksOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s *Components) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -17975,6 +17978,7 @@ func (s *Components) Validate() error {
 	}
 	return nil
 }
+
 func (s *Encoding) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18000,6 +18004,7 @@ func (s *Encoding) Validate() error {
 	}
 	return nil
 }
+
 func (s Encodings) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18021,6 +18026,7 @@ func (s Encodings) Validate() error {
 	}
 	return nil
 }
+
 func (s Enum) Validate() error {
 	alias := ([]jx.Raw)(s)
 	if alias == nil {
@@ -18036,6 +18042,7 @@ func (s Enum) Validate() error {
 	}
 	return nil
 }
+
 func (s *Header) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18079,6 +18086,7 @@ func (s *Header) Validate() error {
 	}
 	return nil
 }
+
 func (s HeaderOrReference) Validate() error {
 	switch s.Type {
 	case HeaderHeaderOrReference:
@@ -18114,6 +18122,7 @@ func (s HeadersOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s Maximum) Validate() error {
 	alias := (float64)(s)
 	if err := (validate.Float{}).Validate(float64(alias)); err != nil {
@@ -18121,6 +18130,7 @@ func (s Maximum) Validate() error {
 	}
 	return nil
 }
+
 func (s *MediaType) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18164,6 +18174,7 @@ func (s *MediaType) Validate() error {
 	}
 	return nil
 }
+
 func (s MediaTypes) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18185,6 +18196,7 @@ func (s MediaTypes) Validate() error {
 	}
 	return nil
 }
+
 func (s Minimum) Validate() error {
 	alias := (float64)(s)
 	if err := (validate.Float{}).Validate(float64(alias)); err != nil {
@@ -18192,6 +18204,7 @@ func (s Minimum) Validate() error {
 	}
 	return nil
 }
+
 func (s MultipleOf) Validate() error {
 	alias := (float64)(s)
 	if err := (validate.Float{
@@ -18208,6 +18221,7 @@ func (s MultipleOf) Validate() error {
 	}
 	return nil
 }
+
 func (s *Operation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18385,6 +18399,7 @@ func (s *Parameter) Validate() error {
 	}
 	return nil
 }
+
 func (s ParameterIn) Validate() error {
 	switch s {
 	case "path":
@@ -18399,6 +18414,7 @@ func (s ParameterIn) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s ParameterOrReference) Validate() error {
 	switch s.Type {
 	case ParameterParameterOrReference:
@@ -18433,6 +18449,7 @@ func (s ParameterStyle) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s ParametersOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18454,6 +18471,7 @@ func (s ParametersOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s *PathItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18630,6 +18648,7 @@ func (s *PathItem) Validate() error {
 	}
 	return nil
 }
+
 func (s *Paths) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18648,6 +18667,7 @@ func (s *Paths) Validate() error {
 	}
 	return nil
 }
+
 func (s PathsPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18669,6 +18689,7 @@ func (s PathsPattern0) Validate() error {
 	}
 	return nil
 }
+
 func (s PositiveInteger) Validate() error {
 	alias := (int)(s)
 	if err := (validate.Int{
@@ -18685,6 +18706,7 @@ func (s PositiveInteger) Validate() error {
 	}
 	return nil
 }
+
 func (s RequestBodiesOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18706,6 +18728,7 @@ func (s RequestBodiesOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s *RequestBody) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -18724,6 +18747,7 @@ func (s *RequestBody) Validate() error {
 	}
 	return nil
 }
+
 func (s RequestBodyOrReference) Validate() error {
 	switch s.Type {
 	case RequestBodyRequestBodyOrReference:
@@ -18781,6 +18805,7 @@ func (s *Response) Validate() error {
 	}
 	return nil
 }
+
 func (s ResponseOrReference) Validate() error {
 	switch s.Type {
 	case ResponseResponseOrReference:
@@ -18831,6 +18856,7 @@ func (s *Responses) Validate() error {
 	}
 	return nil
 }
+
 func (s ResponsesOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18852,6 +18878,7 @@ func (s ResponsesOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s ResponsesPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -18873,6 +18900,7 @@ func (s ResponsesPattern0) Validate() error {
 	}
 	return nil
 }
+
 func (s *Schema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -19272,6 +19300,7 @@ func (s *Schema) Validate() error {
 	}
 	return nil
 }
+
 func (s SchemaAdditionalProperties) Validate() error {
 	switch s.Type {
 	case SchemaOrReferenceSchemaAdditionalProperties:
@@ -19321,6 +19350,7 @@ func (s SchemaProperties) Validate() error {
 	}
 	return nil
 }
+
 func (s SchemaType) Validate() error {
 	switch s {
 	case "array":
@@ -19341,6 +19371,7 @@ func (s SchemaType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s SchemasOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -19362,6 +19393,7 @@ func (s SchemasOrReferences) Validate() error {
 	}
 	return nil
 }
+
 func (s SecurityRequirement) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -19383,6 +19415,7 @@ func (s SecurityRequirement) Validate() error {
 	}
 	return nil
 }
+
 func (s *Spec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -19444,6 +19477,7 @@ func (s *Spec) Validate() error {
 	}
 	return nil
 }
+
 func (s StringArray) Validate() error {
 	alias := ([]string)(s)
 	if alias == nil {

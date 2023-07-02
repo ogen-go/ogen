@@ -46,6 +46,7 @@ func (s *ArrayTest) Validate() error {
 	}
 	return nil
 }
+
 func (s *Data) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -128,6 +129,7 @@ func (s *Data) Validate() error {
 	}
 	return nil
 }
+
 func (s *DefaultTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -231,6 +233,7 @@ func (s *DefaultTest) Validate() error {
 	}
 	return nil
 }
+
 func (s DefaultTestEnum) Validate() error {
 	switch s {
 	case "big":
@@ -241,6 +244,7 @@ func (s DefaultTestEnum) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *MapWithProperties) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -346,6 +350,7 @@ func (s *NullableEnums) Validate() error {
 	}
 	return nil
 }
+
 func (s NullableEnumsBoth) Validate() error {
 	switch s {
 	case "asc":
@@ -356,6 +361,7 @@ func (s NullableEnumsBoth) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s NullableEnumsOnlyNullValue) Validate() error {
 	switch s {
 	case "asc":
@@ -366,6 +372,7 @@ func (s NullableEnumsOnlyNullValue) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s NullableEnumsOnlyNullable) Validate() error {
 	switch s {
 	case "asc":
@@ -376,6 +383,7 @@ func (s NullableEnumsOnlyNullable) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s OneOfBooleanSumNullables) Validate() error {
 	switch s.Type {
 	case BoolOneOfBooleanSumNullables:
@@ -415,6 +423,7 @@ func (s *OneOfBugs) Validate() error {
 	}
 	return nil
 }
+
 func (s OneOfNullables) Validate() error {
 	switch s.Type {
 	case NullOneOfNullables:
@@ -457,6 +466,7 @@ func (s OneOfUUIDAndIntEnum1) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s OneOfWithNullable) Validate() error {
 	switch s.Type {
 	case NullOneOfWithNullable:
@@ -786,6 +796,7 @@ func (s *Pet) Validate() error {
 	}
 	return nil
 }
+
 func (s PetKind) Validate() error {
 	switch s {
 	case "big":
@@ -796,6 +807,7 @@ func (s PetKind) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s PetName) Validate() error {
 	alias := (string)(s)
 	if err := (validate.String{
@@ -811,6 +823,7 @@ func (s PetName) Validate() error {
 	}
 	return nil
 }
+
 func (s PetType) Validate() error {
 	switch s {
 	case "fifa":
@@ -821,6 +834,7 @@ func (s PetType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s RecursiveArray) Validate() error {
 	alias := ([]RecursiveArray)(s)
 	if alias == nil {
@@ -845,6 +859,7 @@ func (s RecursiveArray) Validate() error {
 	}
 	return nil
 }
+
 func (s StringMap) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -874,6 +889,7 @@ func (s StringMap) Validate() error {
 	}
 	return nil
 }
+
 func (s StringStringMap) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
@@ -895,6 +911,7 @@ func (s StringStringMap) Validate() error {
 	}
 	return nil
 }
+
 func (s *TestFloatValidation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -942,6 +959,7 @@ func (s *TestFloatValidation) Validate() error {
 	}
 	return nil
 }
+
 func (s TestNullableOneofsCreated) Validate() error {
 	alias := (OneOfWithNullable)(s)
 	if err := alias.Validate(); err != nil {
@@ -949,6 +967,7 @@ func (s TestNullableOneofsCreated) Validate() error {
 	}
 	return nil
 }
+
 func (s TestNullableOneofsOK) Validate() error {
 	alias := (OneOfWithNullable)(s)
 	if err := alias.Validate(); err != nil {
@@ -956,6 +975,7 @@ func (s TestNullableOneofsOK) Validate() error {
 	}
 	return nil
 }
+
 func (s *TupleNamedTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -991,6 +1011,7 @@ func (s *TupleNamedTest) Validate() error {
 	}
 	return nil
 }
+
 func (s *TupleTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1026,6 +1047,7 @@ func (s *TupleTest) Validate() error {
 	}
 	return nil
 }
+
 func (s *UniqueItemsTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -1084,6 +1106,7 @@ func (s *UniqueItemsTest) Validate() error {
 	}
 	return nil
 }
+
 func (s ValidationStringMap) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {

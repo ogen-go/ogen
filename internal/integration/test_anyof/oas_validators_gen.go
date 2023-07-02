@@ -42,6 +42,7 @@ func (s *IntegerNumber) Validate() error {
 	}
 	return nil
 }
+
 func (s *JaegerAnyOf) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -60,6 +61,7 @@ func (s *JaegerAnyOf) Validate() error {
 	}
 	return nil
 }
+
 func (s JaegerAnyOfSizeLimit) Validate() error {
 	switch s.Type {
 	case IntJaegerAnyOfSizeLimit:

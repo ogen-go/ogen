@@ -168,6 +168,7 @@ func (s *Book) Validate() error {
 	}
 	return nil
 }
+
 func (s *Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -229,6 +230,7 @@ func (s *Image) Validate() error {
 	}
 	return nil
 }
+
 func (s *Images) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -322,6 +324,7 @@ func (s SearchByTagIDOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+
 func (s SearchOKApplicationJSON) Validate() error {
 	alias := ([]SearchResponse)(s)
 	if alias == nil {
@@ -346,6 +349,7 @@ func (s SearchOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+
 func (s *SearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -378,6 +382,7 @@ func (s *SearchResponse) Validate() error {
 	}
 	return nil
 }
+
 func (s *Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -430,6 +435,7 @@ func (s *Tag) Validate() error {
 	}
 	return nil
 }
+
 func (s TagType) Validate() error {
 	switch s {
 	case "parody":

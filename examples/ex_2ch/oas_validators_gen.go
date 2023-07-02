@@ -28,6 +28,7 @@ func (s *Board) Validate() error {
 	}
 	return nil
 }
+
 func (s Boards) Validate() error {
 	alias := ([]Board)(s)
 	if alias == nil {
@@ -52,6 +53,7 @@ func (s Boards) Validate() error {
 	}
 	return nil
 }
+
 func (s *Captcha) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -88,6 +90,7 @@ func (s *Captcha) Validate() error {
 	}
 	return nil
 }
+
 func (s CaptchaType) Validate() error {
 	switch s {
 	case "recaptcha":
@@ -108,6 +111,7 @@ func (s CaptchaType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Error) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -133,6 +137,7 @@ func (s *Error) Validate() error {
 	}
 	return nil
 }
+
 func (s ErrorCode) Validate() error {
 	switch s {
 	case 0:
@@ -207,6 +212,7 @@ func (s ErrorCode) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *File) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -225,6 +231,7 @@ func (s *File) Validate() error {
 	}
 	return nil
 }
+
 func (s FileType) Validate() error {
 	switch s {
 	case 0:
@@ -253,6 +260,7 @@ func (s FileType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s *Like) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -278,6 +286,7 @@ func (s *Like) Validate() error {
 	}
 	return nil
 }
+
 func (s *MobilePost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -321,6 +330,7 @@ func (s *MobilePost) Validate() error {
 	}
 	return nil
 }
+
 func (s *MobileThreadLastInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -346,6 +356,7 @@ func (s *MobileThreadLastInfo) Validate() error {
 	}
 	return nil
 }
+
 func (s *MobileThreadPostsAfter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -422,6 +433,7 @@ func (s *Passcode) Validate() error {
 	}
 	return nil
 }
+
 func (s *Post) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -454,6 +466,7 @@ func (s *Post) Validate() error {
 	}
 	return nil
 }
+
 func (s *PostingNewPost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -479,6 +492,7 @@ func (s *PostingNewPost) Validate() error {
 	}
 	return nil
 }
+
 func (s *PostingNewThread) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -504,6 +518,7 @@ func (s *PostingNewThread) Validate() error {
 	}
 	return nil
 }
+
 func (s *Report) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -529,6 +544,7 @@ func (s *Report) Validate() error {
 	}
 	return nil
 }
+
 func (s UserPostingPostOK) Validate() error {
 	switch s.Type {
 	case PostingNewThreadUserPostingPostOK:

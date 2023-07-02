@@ -84,6 +84,7 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Validate() error {
 	}
 	return nil
 }
+
 func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -167,6 +168,7 @@ func (s *Robot) Validate() error {
 	}
 	return nil
 }
+
 func (s *RobotMultipart) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -196,6 +198,7 @@ func (s *RobotMultipart) Validate() error {
 	}
 	return nil
 }
+
 func (s RobotMultipartState) Validate() error {
 	switch s {
 	case "on":
@@ -206,6 +209,7 @@ func (s RobotMultipartState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+
 func (s RobotState) Validate() error {
 	switch s {
 	case "on":
