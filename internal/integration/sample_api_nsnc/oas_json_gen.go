@@ -2210,7 +2210,6 @@ func (s *Issue943Map) Decode(d *jx.Decoder) error {
 			}
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue943Map")
 	}
@@ -4044,7 +4043,6 @@ func (s *OneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode OneOfMappingReferenceBData")
 	}
@@ -4769,7 +4767,6 @@ func (s *OnlyEmptyObject) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode OnlyEmptyObject")
 	}
