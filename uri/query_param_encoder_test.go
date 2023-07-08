@@ -71,6 +71,20 @@ func TestQueryParamEncoder(t *testing.T) {
 			},
 			{
 				Param:   "id",
+				Input:   []string{},
+				Expect:  "",
+				Style:   QueryStyleForm,
+				Explode: true,
+			},
+			{
+				Param:   "id",
+				Input:   []string{},
+				Expect:  "id=",
+				Style:   QueryStyleForm,
+				Explode: false,
+			},
+			{
+				Param:   "id",
 				Input:   []string{"3", "4", "5"},
 				Expect:  "id=3&id=4&id=5",
 				Style:   QueryStyleSpaceDelimited,
