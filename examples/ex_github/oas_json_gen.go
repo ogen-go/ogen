@@ -537,7 +537,6 @@ func (s *Accepted) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Accepted")
 	}
@@ -900,7 +899,6 @@ func (s *ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsCancelWorkflowRunAccepted")
 	}
@@ -1258,7 +1256,6 @@ func (s *ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsCreateOrUpdateRepoSecretCreated")
 	}
@@ -3955,7 +3952,6 @@ func (s *ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsReRunWorkflowCreated")
 	}
@@ -4128,7 +4124,6 @@ func (s *ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsRetryWorkflowCreated")
 	}
@@ -10510,7 +10505,6 @@ func (s *AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsCreateFromManifestReq")
 	}
@@ -13798,7 +13792,6 @@ func (s *AuthenticationTokenPermissions) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode AuthenticationTokenPermissions")
 	}
@@ -20921,7 +20914,6 @@ func (s *ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksRerequestSuiteCreated")
 	}
@@ -33527,7 +33519,6 @@ func (s *EmptyObject) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode EmptyObject")
 	}
@@ -36769,7 +36760,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1")
 	}
@@ -36949,7 +36939,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Decod
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem")
 	}
@@ -44094,7 +44083,6 @@ func (s *GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode GistsCheckIsStarredNotFound")
 	}
@@ -96107,7 +96095,6 @@ func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) e
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgsConvertMemberToOutsideCollaboratorAccepted")
 	}
@@ -108209,7 +108196,6 @@ func (s *ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsMoveCardCreated")
 	}
@@ -108794,7 +108780,6 @@ func (s *ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsMoveColumnCreated")
 	}

@@ -771,7 +771,6 @@ func (s *CreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateAnswerRequestLogitBias")
 	}
@@ -1425,7 +1424,6 @@ func (s *CreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateChatCompletionRequestLogitBias")
 	}
@@ -2269,7 +2267,6 @@ func (s *CreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateClassificationRequestLogitBias")
 	}
@@ -2923,7 +2920,6 @@ func (s *CreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateCompletionRequestLogitBias")
 	}
@@ -3569,7 +3565,6 @@ func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *j
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem")
 	}
@@ -4359,7 +4354,6 @@ func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *jx.Deco
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateEditResponseChoicesItemLogprobsTopLogprobsItem")
 	}

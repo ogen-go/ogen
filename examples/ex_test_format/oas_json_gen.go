@@ -4594,7 +4594,6 @@ func (s *TestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestRequestEmptyStructReq")
 	}
@@ -14619,7 +14618,6 @@ func (s *TestRequestRequiredEmptyStructReq) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestRequestRequiredEmptyStructReq")
 	}
@@ -24644,7 +24642,6 @@ func (s *TestResponseEmptyStructOK) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestResponseEmptyStructOK")
 	}
