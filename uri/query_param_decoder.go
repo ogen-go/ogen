@@ -59,6 +59,11 @@ func (d *queryParamDecoder) DecodeArray(f func(d Decoder) error) error {
 			return errors.New("invalid value")
 		}
 
+		// do not decode `?param=` as `[""]` and leave the parameter as whatever zero value it has
+		if values[0] == "" {
+			return nil
+		}
+
 		for _, item := range strings.Split(values[0], ",") {
 			if err := f(&constval{item}); err != nil {
 				return err
