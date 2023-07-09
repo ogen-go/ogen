@@ -6035,7 +6035,6 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 			}
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Callback")
 	}
@@ -13088,7 +13087,6 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 			}
 			return errors.Errorf("unexpected field %q", k)
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Paths")
 	}

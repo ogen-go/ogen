@@ -2168,7 +2168,6 @@ func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MmdsGetOK")
 	}
@@ -2213,7 +2212,6 @@ func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MmdsPatchReq")
 	}
@@ -2258,7 +2256,6 @@ func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MmdsPutReq")
 	}

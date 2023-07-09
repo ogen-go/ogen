@@ -2235,7 +2235,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec")
 	}
@@ -70484,7 +70483,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus")
 	}
@@ -70754,7 +70752,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON")
 	}
@@ -71766,7 +71763,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray")
 	}
@@ -71811,7 +71807,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool")
 	}
@@ -71856,7 +71851,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray")
 	}
@@ -73552,7 +73546,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1FieldsV1")
 	}
@@ -75231,7 +75224,6 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgRuntimeRawExtension")
 	}

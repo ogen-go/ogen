@@ -2106,7 +2106,6 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllChatAdministrators")
 	}
@@ -2153,7 +2152,6 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllGroupChats")
 	}
@@ -2200,7 +2198,6 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllPrivateChats")
 	}
@@ -2552,7 +2549,6 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeDefault")
 	}
@@ -2597,7 +2593,6 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CallbackGame")
 	}
@@ -21576,7 +21571,6 @@ func (s *MenuButtonCommands) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MenuButtonCommands")
 	}
@@ -21623,7 +21617,6 @@ func (s *MenuButtonDefault) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MenuButtonDefault")
 	}
@@ -42592,7 +42585,6 @@ func (s *VideoChatStarted) Decode(d *jx.Decoder) error {
 		default:
 			return d.Skip()
 		}
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode VideoChatStarted")
 	}
