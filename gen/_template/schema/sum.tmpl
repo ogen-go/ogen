@@ -14,7 +14,14 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 	{{- range $s := $.SumOf }}
-		{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $s.Go }}
+	{{- $m := $.SumSpec.PickMappingEntryFor $s }}
+	{{- if ne $m nil }}
+	{{- /* try to use mapping key if the entry for $s is defined */}}
+	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $m.Key }}
+	{{- else }}
+	{{- /* otherwise fallback to SumOf Type name */}}
+	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $s.Go }}
+	{{- end }}
 	{{- end }}
 )
 
