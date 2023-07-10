@@ -938,9 +938,9 @@ type Issue943Type string
 
 // Possible values for Issue943Type.
 const (
-	Issue943Variant1Issue943 Issue943Type = "Issue943Variant1"
-	Issue943Variant2Issue943 Issue943Type = "Issue943Variant2"
-	Issue943MapIssue943      Issue943Type = "Issue943Map"
+	Issue943Variant1Issue943 Issue943Type = "variant1"
+	Issue943Variant2Issue943 Issue943Type = "variant2"
+	Issue943MapIssue943      Issue943Type = "variant3"
 )
 
 // IsIssue943Variant1 reports whether Issue943 is Issue943Variant1.
@@ -1794,8 +1794,8 @@ type OneOfMappingReferenceType string
 
 // Possible values for OneOfMappingReferenceType.
 const (
-	OneOfMappingReferenceAOneOfMappingReference OneOfMappingReferenceType = "OneOfMappingReferenceA"
-	OneOfMappingReferenceBOneOfMappingReference OneOfMappingReferenceType = "OneOfMappingReferenceB"
+	OneOfMappingReferenceAOneOfMappingReference OneOfMappingReferenceType = "simple"
+	OneOfMappingReferenceBOneOfMappingReference OneOfMappingReferenceType = "extended"
 )
 
 // IsOneOfMappingReferenceA reports whether OneOfMappingReference is OneOfMappingReferenceA.
