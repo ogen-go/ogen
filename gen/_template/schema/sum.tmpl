@@ -15,7 +15,7 @@ type {{ $.Name }}Type string
 const (
 	{{- range $s := $.SumOf }}
 	{{- $m := $.SumSpec.PickMappingEntryFor $s }}
-	{{- if ne $m nil }}
+	{{- if $m }}
 	{{- /* try to use mapping key if the entry for $s is defined */}}
 	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $m.Key }}
 	{{- else }}
