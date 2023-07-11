@@ -48,6 +48,20 @@ type SumSpec struct {
 	TypeDiscriminator bool
 }
 
+// PickMappingEntryFor returns mapping entry for given type if exists.
+func (s SumSpec) PickMappingEntryFor(t *Type) *SumSpecMap {
+	if s.Discriminator == "" {
+		return nil
+	}
+
+	for _, m := range s.Mapping {
+		if m.Type == t {
+			return &m
+		}
+	}
+	return nil
+}
+
 type Type struct {
 	Doc                 string              // ogen documentation
 	Kind                Kind                // kind

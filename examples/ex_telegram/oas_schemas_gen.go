@@ -752,13 +752,13 @@ type BotCommandScopeType string
 
 // Possible values for BotCommandScopeType.
 const (
-	BotCommandScopeDefaultBotCommandScope               BotCommandScopeType = "BotCommandScopeDefault"
-	BotCommandScopeAllPrivateChatsBotCommandScope       BotCommandScopeType = "BotCommandScopeAllPrivateChats"
-	BotCommandScopeAllGroupChatsBotCommandScope         BotCommandScopeType = "BotCommandScopeAllGroupChats"
-	BotCommandScopeAllChatAdministratorsBotCommandScope BotCommandScopeType = "BotCommandScopeAllChatAdministrators"
-	BotCommandScopeChatBotCommandScope                  BotCommandScopeType = "BotCommandScopeChat"
-	BotCommandScopeChatAdministratorsBotCommandScope    BotCommandScopeType = "BotCommandScopeChatAdministrators"
-	BotCommandScopeChatMemberBotCommandScope            BotCommandScopeType = "BotCommandScopeChatMember"
+	BotCommandScopeDefaultBotCommandScope               BotCommandScopeType = "default"
+	BotCommandScopeAllPrivateChatsBotCommandScope       BotCommandScopeType = "all_private_chats"
+	BotCommandScopeAllGroupChatsBotCommandScope         BotCommandScopeType = "all_group_chats"
+	BotCommandScopeAllChatAdministratorsBotCommandScope BotCommandScopeType = "all_chat_administrators"
+	BotCommandScopeChatBotCommandScope                  BotCommandScopeType = "chat"
+	BotCommandScopeChatAdministratorsBotCommandScope    BotCommandScopeType = "chat_administrators"
+	BotCommandScopeChatMemberBotCommandScope            BotCommandScopeType = "chat_member"
 )
 
 // IsBotCommandScopeDefault reports whether BotCommandScope is BotCommandScopeDefault.
@@ -5124,21 +5124,21 @@ const (
 	InlineQueryResultCachedGifInlineQueryResult      InlineQueryResultType = "InlineQueryResultCachedGif"
 	InlineQueryResultCachedMpeg4GifInlineQueryResult InlineQueryResultType = "InlineQueryResultCachedMpeg4Gif"
 	InlineQueryResultCachedPhotoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedPhoto"
-	InlineQueryResultCachedStickerInlineQueryResult  InlineQueryResultType = "InlineQueryResultCachedSticker"
+	InlineQueryResultCachedStickerInlineQueryResult  InlineQueryResultType = "sticker"
 	InlineQueryResultCachedVideoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVideo"
 	InlineQueryResultCachedVoiceInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVoice"
-	InlineQueryResultArticleInlineQueryResult        InlineQueryResultType = "InlineQueryResultArticle"
-	InlineQueryResultAudioInlineQueryResult          InlineQueryResultType = "InlineQueryResultAudio"
-	InlineQueryResultContactInlineQueryResult        InlineQueryResultType = "InlineQueryResultContact"
-	InlineQueryResultGameInlineQueryResult           InlineQueryResultType = "InlineQueryResultGame"
-	InlineQueryResultDocumentInlineQueryResult       InlineQueryResultType = "InlineQueryResultDocument"
-	InlineQueryResultGifInlineQueryResult            InlineQueryResultType = "InlineQueryResultGif"
-	InlineQueryResultLocationInlineQueryResult       InlineQueryResultType = "InlineQueryResultLocation"
-	InlineQueryResultMpeg4GifInlineQueryResult       InlineQueryResultType = "InlineQueryResultMpeg4Gif"
-	InlineQueryResultPhotoInlineQueryResult          InlineQueryResultType = "InlineQueryResultPhoto"
-	InlineQueryResultVenueInlineQueryResult          InlineQueryResultType = "InlineQueryResultVenue"
-	InlineQueryResultVideoInlineQueryResult          InlineQueryResultType = "InlineQueryResultVideo"
-	InlineQueryResultVoiceInlineQueryResult          InlineQueryResultType = "InlineQueryResultVoice"
+	InlineQueryResultArticleInlineQueryResult        InlineQueryResultType = "article"
+	InlineQueryResultAudioInlineQueryResult          InlineQueryResultType = "audio"
+	InlineQueryResultContactInlineQueryResult        InlineQueryResultType = "contact"
+	InlineQueryResultGameInlineQueryResult           InlineQueryResultType = "game"
+	InlineQueryResultDocumentInlineQueryResult       InlineQueryResultType = "document"
+	InlineQueryResultGifInlineQueryResult            InlineQueryResultType = "gif"
+	InlineQueryResultLocationInlineQueryResult       InlineQueryResultType = "location"
+	InlineQueryResultMpeg4GifInlineQueryResult       InlineQueryResultType = "mpeg4_gif"
+	InlineQueryResultPhotoInlineQueryResult          InlineQueryResultType = "photo"
+	InlineQueryResultVenueInlineQueryResult          InlineQueryResultType = "venue"
+	InlineQueryResultVideoInlineQueryResult          InlineQueryResultType = "video"
+	InlineQueryResultVoiceInlineQueryResult          InlineQueryResultType = "voice"
 )
 
 // IsInlineQueryResultCachedAudio reports whether InlineQueryResult is InlineQueryResultCachedAudio.
@@ -8602,11 +8602,11 @@ type InputMediaType string
 
 // Possible values for InputMediaType.
 const (
-	InputMediaAnimationInputMedia InputMediaType = "InputMediaAnimation"
-	InputMediaDocumentInputMedia  InputMediaType = "InputMediaDocument"
-	InputMediaAudioInputMedia     InputMediaType = "InputMediaAudio"
-	InputMediaPhotoInputMedia     InputMediaType = "InputMediaPhoto"
-	InputMediaVideoInputMedia     InputMediaType = "InputMediaVideo"
+	InputMediaAnimationInputMedia InputMediaType = "animation"
+	InputMediaDocumentInputMedia  InputMediaType = "document"
+	InputMediaAudioInputMedia     InputMediaType = "audio"
+	InputMediaPhotoInputMedia     InputMediaType = "photo"
+	InputMediaVideoInputMedia     InputMediaType = "video"
 )
 
 // IsInputMediaAnimation reports whether InputMedia is InputMediaAnimation.
@@ -14632,15 +14632,15 @@ type PassportElementErrorType string
 
 // Possible values for PassportElementErrorType.
 const (
-	PassportElementErrorDataFieldPassportElementError        PassportElementErrorType = "PassportElementErrorDataField"
-	PassportElementErrorFrontSidePassportElementError        PassportElementErrorType = "PassportElementErrorFrontSide"
-	PassportElementErrorReverseSidePassportElementError      PassportElementErrorType = "PassportElementErrorReverseSide"
-	PassportElementErrorSelfiePassportElementError           PassportElementErrorType = "PassportElementErrorSelfie"
-	PassportElementErrorFilePassportElementError             PassportElementErrorType = "PassportElementErrorFile"
-	PassportElementErrorFilesPassportElementError            PassportElementErrorType = "PassportElementErrorFiles"
-	PassportElementErrorTranslationFilePassportElementError  PassportElementErrorType = "PassportElementErrorTranslationFile"
-	PassportElementErrorTranslationFilesPassportElementError PassportElementErrorType = "PassportElementErrorTranslationFiles"
-	PassportElementErrorUnspecifiedPassportElementError      PassportElementErrorType = "PassportElementErrorUnspecified"
+	PassportElementErrorDataFieldPassportElementError        PassportElementErrorType = "data"
+	PassportElementErrorFrontSidePassportElementError        PassportElementErrorType = "front_side"
+	PassportElementErrorReverseSidePassportElementError      PassportElementErrorType = "reverse_side"
+	PassportElementErrorSelfiePassportElementError           PassportElementErrorType = "selfie"
+	PassportElementErrorFilePassportElementError             PassportElementErrorType = "file"
+	PassportElementErrorFilesPassportElementError            PassportElementErrorType = "files"
+	PassportElementErrorTranslationFilePassportElementError  PassportElementErrorType = "translation_file"
+	PassportElementErrorTranslationFilesPassportElementError PassportElementErrorType = "translation_files"
+	PassportElementErrorUnspecifiedPassportElementError      PassportElementErrorType = "unspecified"
 )
 
 // IsPassportElementErrorDataField reports whether PassportElementError is PassportElementErrorDataField.
@@ -19221,10 +19221,10 @@ type SendMediaGroupMediaItemType string
 
 // Possible values for SendMediaGroupMediaItemType.
 const (
-	InputMediaAudioSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaAudio"
-	InputMediaDocumentSendMediaGroupMediaItem SendMediaGroupMediaItemType = "InputMediaDocument"
-	InputMediaPhotoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaPhoto"
-	InputMediaVideoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaVideo"
+	InputMediaAudioSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "audio"
+	InputMediaDocumentSendMediaGroupMediaItem SendMediaGroupMediaItemType = "document"
+	InputMediaPhotoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "photo"
+	InputMediaVideoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "video"
 )
 
 // IsInputMediaAudio reports whether SendMediaGroupMediaItem is InputMediaAudio.
