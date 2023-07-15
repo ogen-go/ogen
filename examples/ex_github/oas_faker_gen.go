@@ -5283,8 +5283,8 @@ func (s *CodeSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 }
@@ -5965,8 +5965,8 @@ func (s *CommitSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 }
@@ -11786,8 +11786,8 @@ func (s *IssueSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 	{
@@ -12993,8 +12993,8 @@ func (s *LabelSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 }
@@ -28284,8 +28284,8 @@ func (s *RepoSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 	{
@@ -35637,8 +35637,8 @@ func (s *TopicSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 	{
@@ -35935,8 +35935,8 @@ func (s *UserSearchResultItem) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.TextMatches = nil
+		{
+			s.TextMatches.SetFake()
 		}
 	}
 	{

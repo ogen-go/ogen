@@ -4173,16 +4173,8 @@ func (s *CodeSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -4434,16 +4426,8 @@ func (s *CommitSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -7134,16 +7118,8 @@ func (s *IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -8171,16 +8147,8 @@ func (s *LabelSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -13781,16 +13749,8 @@ func (s *RepoSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -18158,16 +18118,8 @@ func (s *TopicSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -18288,16 +18240,8 @@ func (s *UserSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.TextMatches == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.TextMatches.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.TextMatches.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {

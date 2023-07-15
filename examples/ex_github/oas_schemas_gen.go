@@ -11512,19 +11512,19 @@ func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifRes(
 // Code Search Result Item.
 // Ref: #/components/schemas/code-search-result-item
 type CodeSearchResultItem struct {
-	Name           string                   `json:"name"`
-	Path           string                   `json:"path"`
-	Sha            string                   `json:"sha"`
-	URL            url.URL                  `json:"url"`
-	GitURL         url.URL                  `json:"git_url"`
-	HTMLURL        url.URL                  `json:"html_url"`
-	Repository     MinimalRepository        `json:"repository"`
-	Score          float64                  `json:"score"`
-	FileSize       OptInt                   `json:"file_size"`
-	Language       OptNilString             `json:"language"`
-	LastModifiedAt OptDateTime              `json:"last_modified_at"`
-	LineNumbers    []string                 `json:"line_numbers"`
-	TextMatches    *SearchResultTextMatches `json:"text_matches"`
+	Name           string                  `json:"name"`
+	Path           string                  `json:"path"`
+	Sha            string                  `json:"sha"`
+	URL            url.URL                 `json:"url"`
+	GitURL         url.URL                 `json:"git_url"`
+	HTMLURL        url.URL                 `json:"html_url"`
+	Repository     MinimalRepository       `json:"repository"`
+	Score          float64                 `json:"score"`
+	FileSize       OptInt                  `json:"file_size"`
+	Language       OptNilString            `json:"language"`
+	LastModifiedAt OptDateTime             `json:"last_modified_at"`
+	LineNumbers    []string                `json:"line_numbers"`
+	TextMatches    SearchResultTextMatches `json:"text_matches"`
 }
 
 // GetName returns the value of Name.
@@ -11588,7 +11588,7 @@ func (s *CodeSearchResultItem) GetLineNumbers() []string {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *CodeSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *CodeSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -11653,7 +11653,7 @@ func (s *CodeSearchResultItem) SetLineNumbers(val []string) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *CodeSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *CodeSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -12910,7 +12910,7 @@ type CommitSearchResultItem struct {
 	Repository  MinimalRepository                   `json:"repository"`
 	Score       float64                             `json:"score"`
 	NodeID      string                              `json:"node_id"`
-	TextMatches *SearchResultTextMatches            `json:"text_matches"`
+	TextMatches SearchResultTextMatches             `json:"text_matches"`
 }
 
 // GetURL returns the value of URL.
@@ -12969,7 +12969,7 @@ func (s *CommitSearchResultItem) GetNodeID() string {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *CommitSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *CommitSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -13029,7 +13029,7 @@ func (s *CommitSearchResultItem) SetNodeID(val string) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *CommitSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *CommitSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -25430,7 +25430,7 @@ type IssueSearchResultItem struct {
 	CreatedAt             time.Time                           `json:"created_at"`
 	UpdatedAt             time.Time                           `json:"updated_at"`
 	ClosedAt              NilDateTime                         `json:"closed_at"`
-	TextMatches           *SearchResultTextMatches            `json:"text_matches"`
+	TextMatches           SearchResultTextMatches             `json:"text_matches"`
 	PullRequest           OptIssueSearchResultItemPullRequest `json:"pull_request"`
 	Body                  OptString                           `json:"body"`
 	Score                 float64                             `json:"score"`
@@ -25554,7 +25554,7 @@ func (s *IssueSearchResultItem) GetClosedAt() NilDateTime {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *IssueSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *IssueSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -25719,7 +25719,7 @@ func (s *IssueSearchResultItem) SetClosedAt(val NilDateTime) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *IssueSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *IssueSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -29197,15 +29197,15 @@ func (*LabelHeaders) issuesCreateLabelRes() {}
 // Label Search Result Item.
 // Ref: #/components/schemas/label-search-result-item
 type LabelSearchResultItem struct {
-	ID          int                      `json:"id"`
-	NodeID      string                   `json:"node_id"`
-	URL         url.URL                  `json:"url"`
-	Name        string                   `json:"name"`
-	Color       string                   `json:"color"`
-	Default     bool                     `json:"default"`
-	Description NilString                `json:"description"`
-	Score       float64                  `json:"score"`
-	TextMatches *SearchResultTextMatches `json:"text_matches"`
+	ID          int                     `json:"id"`
+	NodeID      string                  `json:"node_id"`
+	URL         url.URL                 `json:"url"`
+	Name        string                  `json:"name"`
+	Color       string                  `json:"color"`
+	Default     bool                    `json:"default"`
+	Description NilString               `json:"description"`
+	Score       float64                 `json:"score"`
+	TextMatches SearchResultTextMatches `json:"text_matches"`
 }
 
 // GetID returns the value of ID.
@@ -29249,7 +29249,7 @@ func (s *LabelSearchResultItem) GetScore() float64 {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *LabelSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *LabelSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -29294,7 +29294,7 @@ func (s *LabelSearchResultItem) SetScore(val float64) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *LabelSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *LabelSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -79876,7 +79876,7 @@ type RepoSearchResultItem struct {
 	Disabled            bool                               `json:"disabled"`
 	License             NilNullableLicenseSimple           `json:"license"`
 	Permissions         OptRepoSearchResultItemPermissions `json:"permissions"`
-	TextMatches         *SearchResultTextMatches           `json:"text_matches"`
+	TextMatches         SearchResultTextMatches            `json:"text_matches"`
 	TempCloneToken      OptString                          `json:"temp_clone_token"`
 	AllowMergeCommit    OptBool                            `json:"allow_merge_commit"`
 	AllowSquashMerge    OptBool                            `json:"allow_squash_merge"`
@@ -80272,7 +80272,7 @@ func (s *RepoSearchResultItem) GetPermissions() OptRepoSearchResultItemPermissio
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *RepoSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *RepoSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -80697,7 +80697,7 @@ func (s *RepoSearchResultItem) SetPermissions(val OptRepoSearchResultItemPermiss
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *RepoSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *RepoSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -98099,7 +98099,7 @@ type TopicSearchResultItem struct {
 	Score            float64                                     `json:"score"`
 	RepositoryCount  OptNilInt                                   `json:"repository_count"`
 	LogoURL          OptNilURI                                   `json:"logo_url"`
-	TextMatches      *SearchResultTextMatches                    `json:"text_matches"`
+	TextMatches      SearchResultTextMatches                     `json:"text_matches"`
 	Related          OptNilTopicSearchResultItemRelatedItemArray `json:"related"`
 	Aliases          OptNilTopicSearchResultItemAliasesItemArray `json:"aliases"`
 }
@@ -98170,7 +98170,7 @@ func (s *TopicSearchResultItem) GetLogoURL() OptNilURI {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *TopicSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *TopicSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -98250,7 +98250,7 @@ func (s *TopicSearchResultItem) SetLogoURL(val OptNilURI) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *TopicSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *TopicSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 
@@ -98519,40 +98519,40 @@ func (s *UserMarketplacePurchase) SetPlan(val MarketplaceListingPlan) {
 // User Search Result Item.
 // Ref: #/components/schemas/user-search-result-item
 type UserSearchResultItem struct {
-	Login             string                   `json:"login"`
-	ID                int                      `json:"id"`
-	NodeID            string                   `json:"node_id"`
-	AvatarURL         url.URL                  `json:"avatar_url"`
-	GravatarID        NilString                `json:"gravatar_id"`
-	URL               url.URL                  `json:"url"`
-	HTMLURL           url.URL                  `json:"html_url"`
-	FollowersURL      url.URL                  `json:"followers_url"`
-	SubscriptionsURL  url.URL                  `json:"subscriptions_url"`
-	OrganizationsURL  url.URL                  `json:"organizations_url"`
-	ReposURL          url.URL                  `json:"repos_url"`
-	ReceivedEventsURL url.URL                  `json:"received_events_url"`
-	Type              string                   `json:"type"`
-	Score             float64                  `json:"score"`
-	FollowingURL      string                   `json:"following_url"`
-	GistsURL          string                   `json:"gists_url"`
-	StarredURL        string                   `json:"starred_url"`
-	EventsURL         string                   `json:"events_url"`
-	PublicRepos       OptInt                   `json:"public_repos"`
-	PublicGists       OptInt                   `json:"public_gists"`
-	Followers         OptInt                   `json:"followers"`
-	Following         OptInt                   `json:"following"`
-	CreatedAt         OptDateTime              `json:"created_at"`
-	UpdatedAt         OptDateTime              `json:"updated_at"`
-	Name              OptNilString             `json:"name"`
-	Bio               OptNilString             `json:"bio"`
-	Email             OptNilString             `json:"email"`
-	Location          OptNilString             `json:"location"`
-	SiteAdmin         bool                     `json:"site_admin"`
-	Hireable          OptNilBool               `json:"hireable"`
-	TextMatches       *SearchResultTextMatches `json:"text_matches"`
-	Blog              OptNilString             `json:"blog"`
-	Company           OptNilString             `json:"company"`
-	SuspendedAt       OptNilDateTime           `json:"suspended_at"`
+	Login             string                  `json:"login"`
+	ID                int                     `json:"id"`
+	NodeID            string                  `json:"node_id"`
+	AvatarURL         url.URL                 `json:"avatar_url"`
+	GravatarID        NilString               `json:"gravatar_id"`
+	URL               url.URL                 `json:"url"`
+	HTMLURL           url.URL                 `json:"html_url"`
+	FollowersURL      url.URL                 `json:"followers_url"`
+	SubscriptionsURL  url.URL                 `json:"subscriptions_url"`
+	OrganizationsURL  url.URL                 `json:"organizations_url"`
+	ReposURL          url.URL                 `json:"repos_url"`
+	ReceivedEventsURL url.URL                 `json:"received_events_url"`
+	Type              string                  `json:"type"`
+	Score             float64                 `json:"score"`
+	FollowingURL      string                  `json:"following_url"`
+	GistsURL          string                  `json:"gists_url"`
+	StarredURL        string                  `json:"starred_url"`
+	EventsURL         string                  `json:"events_url"`
+	PublicRepos       OptInt                  `json:"public_repos"`
+	PublicGists       OptInt                  `json:"public_gists"`
+	Followers         OptInt                  `json:"followers"`
+	Following         OptInt                  `json:"following"`
+	CreatedAt         OptDateTime             `json:"created_at"`
+	UpdatedAt         OptDateTime             `json:"updated_at"`
+	Name              OptNilString            `json:"name"`
+	Bio               OptNilString            `json:"bio"`
+	Email             OptNilString            `json:"email"`
+	Location          OptNilString            `json:"location"`
+	SiteAdmin         bool                    `json:"site_admin"`
+	Hireable          OptNilBool              `json:"hireable"`
+	TextMatches       SearchResultTextMatches `json:"text_matches"`
+	Blog              OptNilString            `json:"blog"`
+	Company           OptNilString            `json:"company"`
+	SuspendedAt       OptNilDateTime          `json:"suspended_at"`
 }
 
 // GetLogin returns the value of Login.
@@ -98706,7 +98706,7 @@ func (s *UserSearchResultItem) GetHireable() OptNilBool {
 }
 
 // GetTextMatches returns the value of TextMatches.
-func (s *UserSearchResultItem) GetTextMatches() *SearchResultTextMatches {
+func (s *UserSearchResultItem) GetTextMatches() SearchResultTextMatches {
 	return s.TextMatches
 }
 
@@ -98876,7 +98876,7 @@ func (s *UserSearchResultItem) SetHireable(val OptNilBool) {
 }
 
 // SetTextMatches sets the value of TextMatches.
-func (s *UserSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
+func (s *UserSearchResultItem) SetTextMatches(val SearchResultTextMatches) {
 	s.TextMatches = val
 }
 

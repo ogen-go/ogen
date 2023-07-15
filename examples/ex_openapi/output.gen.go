@@ -491,7 +491,7 @@ type Enum []jx.Raw
 type Example struct {
 	Summary       OptString `json:"summary"`
 	Description   OptString `json:"description"`
-	Value         *Any      `json:"value"`
+	Value         Any       `json:"value"`
 	ExternalValue OptString `json:"externalValue"`
 	// Pattern: "^x-".
 	Pattern0Props ExamplePattern0
@@ -508,7 +508,7 @@ func (s *Example) GetDescription() OptString {
 }
 
 // GetValue returns the value of Value.
-func (s *Example) GetValue() *Any {
+func (s *Example) GetValue() Any {
 	return s.Value
 }
 
@@ -533,7 +533,7 @@ func (s *Example) SetDescription(val OptString) {
 }
 
 // SetValue sets the value of Value.
-func (s *Example) SetValue(val *Any) {
+func (s *Example) SetValue(val Any) {
 	s.Value = val
 }
 
@@ -703,7 +703,7 @@ type Header struct {
 	Explode         OptBool                 `json:"explode"`
 	AllowReserved   OptBool                 `json:"allowReserved"`
 	Schema          OptSchemaOrReference    `json:"schema"`
-	Example         *Any                    `json:"example"`
+	Example         Any                     `json:"example"`
 	Examples        OptExamplesOrReferences `json:"examples"`
 	Content         OptMediaTypes           `json:"content"`
 	// Pattern: "^x-".
@@ -751,7 +751,7 @@ func (s *Header) GetSchema() OptSchemaOrReference {
 }
 
 // GetExample returns the value of Example.
-func (s *Header) GetExample() *Any {
+func (s *Header) GetExample() Any {
 	return s.Example
 }
 
@@ -811,7 +811,7 @@ func (s *Header) SetSchema(val OptSchemaOrReference) {
 }
 
 // SetExample sets the value of Example.
-func (s *Header) SetExample(val *Any) {
+func (s *Header) SetExample(val Any) {
 	s.Example = val
 }
 
@@ -1075,7 +1075,7 @@ type Link struct {
 	OperationRef OptString            `json:"operationRef"`
 	OperationId  OptString            `json:"operationId"`
 	Parameters   OptAnysOrExpressions `json:"parameters"`
-	RequestBody  *Any                 `json:"requestBody"`
+	RequestBody  Any                  `json:"requestBody"`
 	Description  OptString            `json:"description"`
 	Server       OptServer            `json:"server"`
 	// Pattern: "^x-".
@@ -1098,7 +1098,7 @@ func (s *Link) GetParameters() OptAnysOrExpressions {
 }
 
 // GetRequestBody returns the value of RequestBody.
-func (s *Link) GetRequestBody() *Any {
+func (s *Link) GetRequestBody() Any {
 	return s.RequestBody
 }
 
@@ -1133,7 +1133,7 @@ func (s *Link) SetParameters(val OptAnysOrExpressions) {
 }
 
 // SetRequestBody sets the value of RequestBody.
-func (s *Link) SetRequestBody(val *Any) {
+func (s *Link) SetRequestBody(val Any) {
 	s.RequestBody = val
 }
 
@@ -1246,7 +1246,7 @@ type Maximum float64
 // Ref: #/definitions/mediaType
 type MediaType struct {
 	Schema   OptSchemaOrReference    `json:"schema"`
-	Example  *Any                    `json:"example"`
+	Example  Any                     `json:"example"`
 	Examples OptExamplesOrReferences `json:"examples"`
 	Encoding OptEncodings            `json:"encoding"`
 	// Pattern: "^x-".
@@ -1259,7 +1259,7 @@ func (s *MediaType) GetSchema() OptSchemaOrReference {
 }
 
 // GetExample returns the value of Example.
-func (s *MediaType) GetExample() *Any {
+func (s *MediaType) GetExample() Any {
 	return s.Example
 }
 
@@ -1284,7 +1284,7 @@ func (s *MediaType) SetSchema(val OptSchemaOrReference) {
 }
 
 // SetExample sets the value of Example.
-func (s *MediaType) SetExample(val *Any) {
+func (s *MediaType) SetExample(val Any) {
 	s.Example = val
 }
 
@@ -3626,7 +3626,7 @@ type Parameter struct {
 	Explode         OptBool                 `json:"explode"`
 	AllowReserved   OptBool                 `json:"allowReserved"`
 	Schema          OptSchemaOrReference    `json:"schema"`
-	Example         *Any                    `json:"example"`
+	Example         Any                     `json:"example"`
 	Examples        OptExamplesOrReferences `json:"examples"`
 	Content         OptMediaTypes           `json:"content"`
 	// Pattern: "^x-".
@@ -3684,7 +3684,7 @@ func (s *Parameter) GetSchema() OptSchemaOrReference {
 }
 
 // GetExample returns the value of Example.
-func (s *Parameter) GetExample() *Any {
+func (s *Parameter) GetExample() Any {
 	return s.Example
 }
 
@@ -3754,7 +3754,7 @@ func (s *Parameter) SetSchema(val OptSchemaOrReference) {
 }
 
 // SetExample sets the value of Example.
-func (s *Parameter) SetExample(val *Any) {
+func (s *Parameter) SetExample(val Any) {
 	s.Example = val
 }
 
@@ -4593,7 +4593,7 @@ type Schema struct {
 	WriteOnly            OptBool                     `json:"writeOnly"`
 	XML                  OptXML                      `json:"xml"`
 	ExternalDocs         OptExternalDocs             `json:"externalDocs"`
-	Example              *Any                        `json:"example"`
+	Example              Any                         `json:"example"`
 	Deprecated           OptBool                     `json:"deprecated"`
 	Title                OptTitle                    `json:"title"`
 	MultipleOf           OptMultipleOf               `json:"multipleOf"`
@@ -4609,8 +4609,8 @@ type Schema struct {
 	UniqueItems          OptUniqueItems              `json:"uniqueItems"`
 	MaxProperties        OptPositiveInteger          `json:"maxProperties"`
 	MinProperties        OptPositiveInteger          `json:"minProperties"`
-	Required             *StringArray                `json:"required"`
-	Enum                 *Enum                       `json:"enum"`
+	Required             StringArray                 `json:"required"`
+	Enum                 Enum                        `json:"enum"`
 	Type                 OptSchemaType               `json:"type"`
 	AllOf                []SchemaOrReference         `json:"allOf"`
 	OneOf                []SchemaOrReference         `json:"oneOf"`
@@ -4619,7 +4619,7 @@ type Schema struct {
 	Items                *SchemaOrReference          `json:"items"`
 	Properties           OptSchemaProperties         `json:"properties"`
 	AdditionalProperties *SchemaAdditionalProperties `json:"additionalProperties"`
-	Default              *DefaultType                `json:"default"`
+	Default              DefaultType                 `json:"default"`
 	Description          OptString                   `json:"description"`
 	Format               OptString                   `json:"format"`
 	// Pattern: "^x-".
@@ -4657,7 +4657,7 @@ func (s *Schema) GetExternalDocs() OptExternalDocs {
 }
 
 // GetExample returns the value of Example.
-func (s *Schema) GetExample() *Any {
+func (s *Schema) GetExample() Any {
 	return s.Example
 }
 
@@ -4737,12 +4737,12 @@ func (s *Schema) GetMinProperties() OptPositiveInteger {
 }
 
 // GetRequired returns the value of Required.
-func (s *Schema) GetRequired() *StringArray {
+func (s *Schema) GetRequired() StringArray {
 	return s.Required
 }
 
 // GetEnum returns the value of Enum.
-func (s *Schema) GetEnum() *Enum {
+func (s *Schema) GetEnum() Enum {
 	return s.Enum
 }
 
@@ -4787,7 +4787,7 @@ func (s *Schema) GetAdditionalProperties() *SchemaAdditionalProperties {
 }
 
 // GetDefault returns the value of Default.
-func (s *Schema) GetDefault() *DefaultType {
+func (s *Schema) GetDefault() DefaultType {
 	return s.Default
 }
 
@@ -4837,7 +4837,7 @@ func (s *Schema) SetExternalDocs(val OptExternalDocs) {
 }
 
 // SetExample sets the value of Example.
-func (s *Schema) SetExample(val *Any) {
+func (s *Schema) SetExample(val Any) {
 	s.Example = val
 }
 
@@ -4917,12 +4917,12 @@ func (s *Schema) SetMinProperties(val OptPositiveInteger) {
 }
 
 // SetRequired sets the value of Required.
-func (s *Schema) SetRequired(val *StringArray) {
+func (s *Schema) SetRequired(val StringArray) {
 	s.Required = val
 }
 
 // SetEnum sets the value of Enum.
-func (s *Schema) SetEnum(val *Enum) {
+func (s *Schema) SetEnum(val Enum) {
 	s.Enum = val
 }
 
@@ -4967,7 +4967,7 @@ func (s *Schema) SetAdditionalProperties(val *SchemaAdditionalProperties) {
 }
 
 // SetDefault sets the value of Default.
-func (s *Schema) SetDefault(val *DefaultType) {
+func (s *Schema) SetDefault(val DefaultType) {
 	s.Default = val
 }
 
@@ -7273,10 +7273,8 @@ func (s *Example) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Value != nil {
-			e.FieldStart("value")
-			s.Value.Encode(e)
-		}
+		e.FieldStart("value")
+		s.Value.Encode(e)
 	}
 	{
 		if s.ExternalValue.Set {
@@ -7329,12 +7327,9 @@ func (s *Example) Decode(d *jx.Decoder) error {
 			}
 		case "value":
 			if err := func() error {
-				s.Value = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.Value.Decode(d); err != nil {
 					return err
 				}
-				s.Value = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"value\"")
@@ -7947,10 +7942,8 @@ func (s *Header) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Example != nil {
-			e.FieldStart("example")
-			s.Example.Encode(e)
-		}
+		e.FieldStart("example")
+		s.Example.Encode(e)
 	}
 	{
 		if s.Examples.Set {
@@ -8076,12 +8069,9 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				s.Example = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.Example.Decode(d); err != nil {
 					return err
 				}
-				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -8918,10 +8908,8 @@ func (s *Link) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.RequestBody != nil {
-			e.FieldStart("requestBody")
-			s.RequestBody.Encode(e)
-		}
+		e.FieldStart("requestBody")
+		s.RequestBody.Encode(e)
 	}
 	{
 		if s.Description.Set {
@@ -8992,12 +8980,9 @@ func (s *Link) Decode(d *jx.Decoder) error {
 			}
 		case "requestBody":
 			if err := func() error {
-				s.RequestBody = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.RequestBody.Decode(d); err != nil {
 					return err
 				}
-				s.RequestBody = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"requestBody\"")
@@ -9354,10 +9339,8 @@ func (s *MediaType) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Example != nil {
-			e.FieldStart("example")
-			s.Example.Encode(e)
-		}
+		e.FieldStart("example")
+		s.Example.Encode(e)
 	}
 	{
 		if s.Examples.Set {
@@ -9406,12 +9389,9 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				s.Example = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.Example.Decode(d); err != nil {
 					return err
 				}
-				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -11996,10 +11976,8 @@ func (s *Parameter) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Example != nil {
-			e.FieldStart("example")
-			s.Example.Encode(e)
-		}
+		e.FieldStart("example")
+		s.Example.Encode(e)
 	}
 	{
 		if s.Examples.Set {
@@ -12150,12 +12128,9 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				s.Example = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.Example.Decode(d); err != nil {
 					return err
 				}
-				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -14435,10 +14410,8 @@ func (s *Schema) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Example != nil {
-			e.FieldStart("example")
-			s.Example.Encode(e)
-		}
+		e.FieldStart("example")
+		s.Example.Encode(e)
 	}
 	{
 		if s.Deprecated.Set {
@@ -14603,10 +14576,8 @@ func (s *Schema) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Default != nil {
-			e.FieldStart("default")
-			s.Default.Encode(e)
-		}
+		e.FieldStart("default")
+		s.Default.Encode(e)
 	}
 	{
 		if s.Description.Set {
@@ -14737,12 +14708,9 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				s.Example = nil
-				var elem Any
-				if err := elem.Decode(d); err != nil {
+				if err := s.Example.Decode(d); err != nil {
 					return err
 				}
-				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -14899,24 +14867,18 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		case "required":
 			if err := func() error {
-				s.Required = nil
-				var elem StringArray
-				if err := elem.Decode(d); err != nil {
+				if err := s.Required.Decode(d); err != nil {
 					return err
 				}
-				s.Required = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required\"")
 			}
 		case "enum":
 			if err := func() error {
-				s.Enum = nil
-				var elem Enum
-				if err := elem.Decode(d); err != nil {
+				if err := s.Enum.Decode(d); err != nil {
 					return err
 				}
-				s.Enum = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"enum\"")
@@ -15030,12 +14992,9 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		case "default":
 			if err := func() error {
-				s.Default = nil
-				var elem DefaultType
-				if err := elem.Decode(d); err != nil {
+				if err := s.Default.Decode(d); err != nil {
 					return err
 				}
-				s.Default = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"default\"")
@@ -19064,16 +19023,8 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Required == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Required.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.Required.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -19083,16 +19034,8 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Enum == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Enum.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
+		if err := s.Enum.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
