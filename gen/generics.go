@@ -60,22 +60,26 @@ func checkStructRecursions(ctx *genctx, s *ir.Type) error {
 }
 
 func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
+	dealiased := t
+	if dealiased.IsAlias() {
+		dealiased = dealiased.AliasTo
+	}
 	// Do not wrap if
 	//  * type is Any
 	//  * type is Stream
 	//  * type is not nullable and not optional
-	if t.IsAny() || t.IsStream() || !v.Any() {
+	if dealiased.IsAny() || dealiased.IsStream() || !v.Any() {
 		return t, nil
 	}
 	// Do not wrap if type is Null primitive and generic is nullable only.
-	if t.IsNull() {
+	if dealiased.IsNull() {
 		if v.OnlyNullable() {
 			return t, nil
 		}
 		v.Nullable = false
 	}
 
-	if t.IsArray() || t.Primitive == ir.ByteSlice {
+	if dealiased.IsArray() || dealiased.Primitive == ir.ByteSlice {
 		// Using special case for array nil value if possible.
 		switch {
 		case v.OnlyOptional():

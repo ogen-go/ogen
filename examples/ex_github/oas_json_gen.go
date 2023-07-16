@@ -25809,12 +25809,9 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -28843,12 +28840,9 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -56873,12 +56867,9 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -62422,12 +62413,9 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -130504,12 +130492,9 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -164761,12 +164746,9 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
@@ -166096,12 +166078,9 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "text_matches":
 			if err := func() error {
-				s.TextMatches = nil
-				var elem SearchResultTextMatches
-				if err := elem.Decode(d); err != nil {
+				if err := s.TextMatches.Decode(d); err != nil {
 					return err
 				}
-				s.TextMatches = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"text_matches\"")
