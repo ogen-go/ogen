@@ -185,13 +185,51 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		name = "R" + name
 	}
 
+	var (
+		oneOf                   *ir.Type
+		anyOf                   *ir.Type
+		checkOnlyObjectVariants = func(sum []*jsonschema.Schema) error {
+			for _, s := range sum {
+				if s.Type == jsonschema.Object {
+					continue
+				}
+
+				ptr := s.Pointer
+				err := errors.Errorf("can't merge object with %s", s.Type)
+
+				pos, ok := ptr.Position()
+				if !ok {
+					return err
+				}
+
+				return &location.Error{
+					File: ptr.File(),
+					Pos:  pos,
+					Err:  err,
+				}
+			}
+			return nil
+		}
+	)
 	switch {
 	case len(schema.AnyOf) > 0:
-		t, err := g.anyOf(name, schema)
+		side := schema.Type == jsonschema.Object
+		sumName := name
+		if side {
+			sumName += "Sum"
+		}
+		t, err := g.anyOf(sumName, schema, side)
 		if err != nil {
 			return nil, errors.Wrap(err, "anyOf")
 		}
-		return t, nil
+
+		if !side {
+			return t, nil
+		}
+		if err := checkOnlyObjectVariants(schema.AnyOf); err != nil {
+			return nil, err
+		}
+		anyOf = t
 	case len(schema.AllOf) > 0:
 		t, err := g.allOf(name, schema)
 		if err != nil {
@@ -199,11 +237,23 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 		return t, nil
 	case len(schema.OneOf) > 0:
-		t, err := g.oneOf(name, schema)
+		side := schema.Type == jsonschema.Object
+		sumName := name
+		if side {
+			sumName += "Sum"
+		}
+		t, err := g.oneOf(sumName, schema, side)
 		if err != nil {
 			return nil, errors.Wrap(err, "oneOf")
 		}
-		return t, nil
+
+		if !side {
+			return t, nil
+		}
+		if err := checkOnlyObjectVariants(schema.OneOf); err != nil {
+			return nil, err
+		}
+		oneOf = t
 	}
 
 	switch schema.Type {
@@ -397,6 +447,32 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 						return nil, err
 					}
 				}
+			}
+		}
+		if anyOf != nil {
+			slot := fieldSlot{
+				original:      "anyOf",
+				nameDefinedAt: schema.Pointer.Key("anyOf"),
+			}
+			if err := addField(&ir.Field{
+				Name:   "AnyOf",
+				Type:   anyOf,
+				Inline: ir.InlineSum,
+			}, slot); err != nil {
+				return nil, err
+			}
+		}
+		if oneOf != nil {
+			slot := fieldSlot{
+				original:      "oneOf",
+				nameDefinedAt: schema.Pointer.Key("oneOf"),
+			}
+			if err := addField(&ir.Field{
+				Name:   "OneOf",
+				Type:   oneOf,
+				Inline: ir.InlineSum,
+			}, slot); err != nil {
+				return nil, err
 			}
 		}
 

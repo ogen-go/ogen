@@ -13,6 +13,7 @@
 {{- $fields := $.JSON.Fields }}
 {{- $additional := $.JSON.AdditionalProps }}
 {{- $pattern := $.JSON.PatternProps }}
+{{- $sum := $.JSON.SumProps }}
 {{- $va := $.Validators }}
 // Encode implements json.Marshaler.
 func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
@@ -79,6 +80,9 @@ func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
     	{{ template "json/enc" map_elem $p.Type.Item }}
 	}
 	{{- end }}
+	{{- range $s := $sum }}
+	s.{{ $s.Name }}.encodeFields(e)
+	{{- end }}
 }
 
 var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
@@ -92,6 +96,14 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
+
+	{{- range $s := $sum }}
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return s.{{ $s.Name }}.Decode(d)
+	}); err != nil {
+		return errors.Wrap(err, {{ printf "decode field %s" $s.Name | quote }})
+	}
+	{{- end }}
 
 	{{- $requiredMask := $fields.RequiredMask }}
 	{{- if $fields.HasRequired }}
