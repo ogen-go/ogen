@@ -1802,49 +1802,41 @@ func (s *BotCommand) UnmarshalJSON(data []byte) error {
 
 // Encode encodes BotCommandScope as json.
 func (s BotCommandScope) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s BotCommandScope) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case BotCommandScopeAllChatAdministratorsBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_chat_administrators")
 		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeAllGroupChatsBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_group_chats")
 		s.BotCommandScopeAllGroupChats.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeAllPrivateChatsBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_private_chats")
 		s.BotCommandScopeAllPrivateChats.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeChatBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat")
 		s.BotCommandScopeChat.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeChatAdministratorsBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat_administrators")
 		s.BotCommandScopeChatAdministrators.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeChatMemberBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat_member")
 		s.BotCommandScopeChatMember.encodeFields(e)
-		e.ObjEnd()
 	case BotCommandScopeDefaultBotCommandScope:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("default")
 		s.BotCommandScopeDefault.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -3607,43 +3599,37 @@ func (s *ChatLocation) UnmarshalJSON(data []byte) error {
 
 // Encode encodes ChatMember as json.
 func (s ChatMember) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s ChatMember) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case ChatMemberAdministratorChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberAdministrator")
 		s.ChatMemberAdministrator.encodeFields(e)
-		e.ObjEnd()
 	case ChatMemberBannedChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberBanned")
 		s.ChatMemberBanned.encodeFields(e)
-		e.ObjEnd()
 	case ChatMemberLeftChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberLeft")
 		s.ChatMemberLeft.encodeFields(e)
-		e.ObjEnd()
 	case ChatMemberMemberChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberMember")
 		s.ChatMemberMember.encodeFields(e)
-		e.ObjEnd()
 	case ChatMemberOwnerChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberOwner")
 		s.ChatMemberOwner.encodeFields(e)
-		e.ObjEnd()
 	case ChatMemberRestrictedChatMember:
-		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberRestricted")
 		s.ChatMemberRestricted.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -5995,6 +5981,19 @@ func (s CopyMessageReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplyCopyMessageReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s CopyMessageReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupCopyMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupCopyMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveCopyMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplyCopyMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -11652,85 +11651,65 @@ func (s *InlineQueryChatType) UnmarshalJSON(data []byte) error {
 
 // Encode encodes InlineQueryResult as json.
 func (s InlineQueryResult) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case InlineQueryResultArticleInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("article")
 		s.InlineQueryResultArticle.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultAudioInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
 		s.InlineQueryResultAudio.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultContactInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("contact")
 		s.InlineQueryResultContact.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultDocumentInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
 		s.InlineQueryResultDocument.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultGameInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("game")
 		s.InlineQueryResultGame.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultGifInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("gif")
 		s.InlineQueryResultGif.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultLocationInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("location")
 		s.InlineQueryResultLocation.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultMpeg4GifInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("mpeg4_gif")
 		s.InlineQueryResultMpeg4Gif.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultPhotoInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
 		s.InlineQueryResultPhoto.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultCachedStickerInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("sticker")
 		s.InlineQueryResultCachedSticker.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultVenueInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("venue")
 		s.InlineQueryResultVenue.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultVideoInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
 		s.InlineQueryResultVideo.encodeFields(e)
-		e.ObjEnd()
 	case InlineQueryResultVoiceInlineQueryResult:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("voice")
 		s.InlineQueryResultVoice.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -17916,37 +17895,33 @@ func (s *InputLocationMessageContent) UnmarshalJSON(data []byte) error {
 
 // Encode encodes InputMedia as json.
 func (s InputMedia) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s InputMedia) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case InputMediaAnimationInputMedia:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("animation")
 		s.InputMediaAnimation.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaAudioInputMedia:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
 		s.InputMediaAudio.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaDocumentInputMedia:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
 		s.InputMediaDocument.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaPhotoInputMedia:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
 		s.InputMediaPhoto.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaVideoInputMedia:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
 		s.InputMediaVideo.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -19110,6 +19085,21 @@ func (s InputMessageContent) Encode(e *jx.Encoder) {
 		s.InputContactMessageContent.Encode(e)
 	case InputInvoiceMessageContentInputMessageContent:
 		s.InputInvoiceMessageContent.Encode(e)
+	}
+}
+
+func (s InputMessageContent) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
 	}
 }
 
@@ -25366,61 +25356,49 @@ func (s *PassportData) UnmarshalJSON(data []byte) error {
 
 // Encode encodes PassportElementError as json.
 func (s PassportElementError) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s PassportElementError) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("data")
 		s.PassportElementErrorDataField.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorFilePassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("file")
 		s.PassportElementErrorFile.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorFilesPassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("files")
 		s.PassportElementErrorFiles.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorFrontSidePassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("front_side")
 		s.PassportElementErrorFrontSide.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorReverseSidePassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("reverse_side")
 		s.PassportElementErrorReverseSide.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorSelfiePassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("selfie")
 		s.PassportElementErrorSelfie.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorTranslationFilePassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("translation_file")
 		s.PassportElementErrorTranslationFile.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorTranslationFilesPassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("translation_files")
 		s.PassportElementErrorTranslationFiles.encodeFields(e)
-		e.ObjEnd()
 	case PassportElementErrorUnspecifiedPassportElementError:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("unspecified")
 		s.PassportElementErrorUnspecified.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -31518,6 +31496,19 @@ func (s SendAnimationReplyMarkup) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SendAnimationReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAnimationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendAnimationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendAnimationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendAnimationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+	}
+}
+
 // Decode decodes SendAnimationReplyMarkup from json.
 func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -31946,6 +31937,19 @@ func (s SendAudioReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendAudioReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendAudioReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAudioReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendAudioReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendAudioReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendAudioReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -32412,6 +32416,19 @@ func (s SendContactReplyMarkup) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SendContactReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendContactReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendContactReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendContactReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendContactReplyMarkup:
+		s.ForceReply.encodeFields(e)
+	}
+}
+
 // Decode decodes SendContactReplyMarkup from json.
 func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -32709,6 +32726,19 @@ func (s SendDiceReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendDiceReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendDiceReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendDiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendDiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendDiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -33106,6 +33136,19 @@ func (s SendDocumentReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendDocumentReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendDocumentReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDocumentReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendDocumentReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendDocumentReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendDocumentReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -34221,6 +34264,19 @@ func (s SendLocationReplyMarkup) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SendLocationReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendLocationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendLocationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendLocationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendLocationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+	}
+}
+
 // Decode decodes SendLocationReplyMarkup from json.
 func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -34502,31 +34558,29 @@ func (s *SendMediaGroup) UnmarshalJSON(data []byte) error {
 
 // Encode encodes SendMediaGroupMediaItem as json.
 func (s SendMediaGroupMediaItem) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case InputMediaAudioSendMediaGroupMediaItem:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
 		s.InputMediaAudio.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaDocumentSendMediaGroupMediaItem:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
 		s.InputMediaDocument.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaPhotoSendMediaGroupMediaItem:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
 		s.InputMediaPhoto.encodeFields(e)
-		e.ObjEnd()
 	case InputMediaVideoSendMediaGroupMediaItem:
-		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
 		s.InputMediaVideo.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -34867,6 +34921,19 @@ func (s SendMessageReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendMessageReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendMessageReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -35230,6 +35297,19 @@ func (s SendPhotoReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendPhotoReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendPhotoReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPhotoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendPhotoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendPhotoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendPhotoReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -35745,6 +35825,19 @@ func (s SendPollReplyMarkup) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SendPollReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPollReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendPollReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendPollReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendPollReplyMarkup:
+		s.ForceReply.encodeFields(e)
+	}
+}
+
 // Decode decodes SendPollReplyMarkup from json.
 func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -36042,6 +36135,19 @@ func (s SendStickerReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendStickerReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendStickerReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendStickerReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendStickerReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendStickerReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendStickerReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -36462,6 +36568,19 @@ func (s SendVenueReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendVenueReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendVenueReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVenueReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendVenueReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendVenueReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendVenueReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -37144,6 +37263,19 @@ func (s SendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SendVideoNoteReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendVideoNoteReplyMarkup:
+		s.ForceReply.encodeFields(e)
+	}
+}
+
 // Decode decodes SendVideoNoteReplyMarkup from json.
 func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -37262,6 +37394,19 @@ func (s SendVideoReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendVideoReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendVideoReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendVideoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendVideoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendVideoReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 
@@ -37642,6 +37787,19 @@ func (s SendVoiceReplyMarkup) Encode(e *jx.Encoder) {
 		s.ReplyKeyboardRemove.Encode(e)
 	case ForceReplySendVoiceReplyMarkup:
 		s.ForceReply.Encode(e)
+	}
+}
+
+func (s SendVoiceReplyMarkup) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVoiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardMarkupSendVoiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+	case ReplyKeyboardRemoveSendVoiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+	case ForceReplySendVoiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
 	}
 }
 

@@ -145,6 +145,78 @@ func TestID_EncodeDecode(t *testing.T) {
 	var typ2 ID
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestInlineDiscriminatorOneOf_EncodeDecode(t *testing.T) {
+	var typ InlineDiscriminatorOneOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineDiscriminatorOneOf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInlineDiscriminatorOneOfSum_EncodeDecode(t *testing.T) {
+	var typ InlineDiscriminatorOneOfSum
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineDiscriminatorOneOfSum
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInlineOneOfBar_EncodeDecode(t *testing.T) {
+	var typ InlineOneOfBar
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineOneOfBar
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInlineOneOfFoo_EncodeDecode(t *testing.T) {
+	var typ InlineOneOfFoo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineOneOfFoo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInlineUniqueFieldsOneOf_EncodeDecode(t *testing.T) {
+	var typ InlineUniqueFieldsOneOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineUniqueFieldsOneOf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInlineUniqueFieldsOneOfSum_EncodeDecode(t *testing.T) {
+	var typ InlineUniqueFieldsOneOfSum
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InlineUniqueFieldsOneOfSum
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestIssue143_EncodeDecode(t *testing.T) {
 	var typ Issue143
 	typ.SetFake()
@@ -317,6 +389,54 @@ func TestMaxPropertiesTest_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 MaxPropertiesTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMergeDiscriminatorOneOf_EncodeDecode(t *testing.T) {
+	var typ MergeDiscriminatorOneOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergeDiscriminatorOneOf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMergeDiscriminatorOneOfSum_EncodeDecode(t *testing.T) {
+	var typ MergeDiscriminatorOneOfSum
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergeDiscriminatorOneOfSum
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMergeUniqueFieldsOneOf_EncodeDecode(t *testing.T) {
+	var typ MergeUniqueFieldsOneOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergeUniqueFieldsOneOf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMergeUniqueFieldsOneOfSum_EncodeDecode(t *testing.T) {
+	var typ MergeUniqueFieldsOneOfSum
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergeUniqueFieldsOneOfSum
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestNoAdditionalPropertiesTest_EncodeDecode(t *testing.T) {
@@ -775,6 +895,18 @@ func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestFloatValidation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTestInlineOneOf_EncodeDecode(t *testing.T) {
+	var typ TestInlineOneOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TestInlineOneOf
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestNullableOneofsCreated_EncodeDecode(t *testing.T) {

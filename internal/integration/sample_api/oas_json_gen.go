@@ -583,6 +583,15 @@ func (s DataDescription) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s DataDescription) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case DescriptionDetailedDataDescription:
+		s.DescriptionDetailed.encodeFields(e)
+	case DescriptionSimpleDataDescription:
+		s.DescriptionSimple.encodeFields(e)
+	}
+}
+
 // Decode decodes DataDescription from json.
 func (s *DataDescription) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -1430,6 +1439,516 @@ func (s *ID) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode implements json.Marshaler.
+func (s *InlineDiscriminatorOneOf) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *InlineDiscriminatorOneOf) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("common")
+		e.Str(s.Common)
+	}
+	s.OneOf.encodeFields(e)
+}
+
+var jsonFieldsNameOfInlineDiscriminatorOneOf = [1]string{
+	0: "common",
+}
+
+// Decode decodes InlineDiscriminatorOneOf from json.
+func (s *InlineDiscriminatorOneOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineDiscriminatorOneOf to nil")
+	}
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return s.OneOf.Decode(d)
+	}); err != nil {
+		return errors.Wrap(err, "decode field OneOf")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Common = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"common\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode InlineDiscriminatorOneOf")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfInlineDiscriminatorOneOf) {
+					name = jsonFieldsNameOfInlineDiscriminatorOneOf[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *InlineDiscriminatorOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineDiscriminatorOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes InlineDiscriminatorOneOfSum as json.
+func (s InlineDiscriminatorOneOfSum) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfBarInlineDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("bar")
+		s.InlineOneOfBar.encodeFields(e)
+	case InlineOneOfFooInlineDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("foo")
+		s.InlineOneOfFoo.encodeFields(e)
+	}
+}
+
+// Decode decodes InlineDiscriminatorOneOfSum from json.
+func (s *InlineDiscriminatorOneOfSum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineDiscriminatorOneOfSum to nil")
+	}
+	// Sum type discriminator.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "kind":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "bar":
+					s.Type = InlineOneOfBarInlineDiscriminatorOneOfSum
+					found = true
+				case "foo":
+					s.Type = InlineOneOfFooInlineDiscriminatorOneOfSum
+					found = true
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case InlineOneOfFooInlineDiscriminatorOneOfSum:
+		if err := s.InlineOneOfFoo.Decode(d); err != nil {
+			return err
+		}
+	case InlineOneOfBarInlineDiscriminatorOneOfSum:
+		if err := s.InlineOneOfBar.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineDiscriminatorOneOfSum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineDiscriminatorOneOfSum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *InlineOneOfBar) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *InlineOneOfBar) encodeFields(e *jx.Encoder) {
+	{
+		if s.Bar.Set {
+			e.FieldStart("bar")
+			s.Bar.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfInlineOneOfBar = [1]string{
+	0: "bar",
+}
+
+// Decode decodes InlineOneOfBar from json.
+func (s *InlineOneOfBar) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineOneOfBar to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "bar":
+			if err := func() error {
+				s.Bar.Reset()
+				if err := s.Bar.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bar\"")
+			}
+		case "kind":
+			return d.Skip()
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode InlineOneOfBar")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *InlineOneOfBar) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineOneOfBar) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *InlineOneOfFoo) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *InlineOneOfFoo) encodeFields(e *jx.Encoder) {
+	{
+		if s.Foo.Set {
+			e.FieldStart("foo")
+			s.Foo.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfInlineOneOfFoo = [1]string{
+	0: "foo",
+}
+
+// Decode decodes InlineOneOfFoo from json.
+func (s *InlineOneOfFoo) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineOneOfFoo to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "foo":
+			if err := func() error {
+				s.Foo.Reset()
+				if err := s.Foo.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"foo\"")
+			}
+		case "kind":
+			return d.Skip()
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode InlineOneOfFoo")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *InlineOneOfFoo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineOneOfFoo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *InlineUniqueFieldsOneOf) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *InlineUniqueFieldsOneOf) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("common")
+		e.Str(s.Common)
+	}
+	s.OneOf.encodeFields(e)
+}
+
+var jsonFieldsNameOfInlineUniqueFieldsOneOf = [1]string{
+	0: "common",
+}
+
+// Decode decodes InlineUniqueFieldsOneOf from json.
+func (s *InlineUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineUniqueFieldsOneOf to nil")
+	}
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return s.OneOf.Decode(d)
+	}); err != nil {
+		return errors.Wrap(err, "decode field OneOf")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Common = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"common\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode InlineUniqueFieldsOneOf")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfInlineUniqueFieldsOneOf) {
+					name = jsonFieldsNameOfInlineUniqueFieldsOneOf[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *InlineUniqueFieldsOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineUniqueFieldsOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes InlineUniqueFieldsOneOfSum as json.
+func (s InlineUniqueFieldsOneOfSum) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfFooInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.Encode(e)
+	case InlineOneOfBarInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.Encode(e)
+	}
+}
+
+func (s InlineUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfFooInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+	case InlineOneOfBarInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+	}
+}
+
+// Decode decodes InlineUniqueFieldsOneOfSum from json.
+func (s *InlineUniqueFieldsOneOfSum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode InlineUniqueFieldsOneOfSum to nil")
+	}
+	// Sum type fields.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			switch string(key) {
+			case "foo":
+				match := InlineOneOfFooInlineUniqueFieldsOneOfSum
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
+				found = true
+				s.Type = match
+			case "bar":
+				match := InlineOneOfBarInlineUniqueFieldsOneOfSum
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
+				found = true
+				s.Type = match
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case InlineOneOfFooInlineUniqueFieldsOneOfSum:
+		if err := s.InlineOneOfFoo.Decode(d); err != nil {
+			return err
+		}
+	case InlineOneOfBarInlineUniqueFieldsOneOfSum:
+		if err := s.InlineOneOfBar.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineUniqueFieldsOneOfSum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineUniqueFieldsOneOfSum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Issue143 as json.
 func (s Issue143) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -1441,6 +1960,19 @@ func (s Issue143) Encode(e *jx.Encoder) {
 		s.Issue1432.Encode(e)
 	case Issue1433Issue143:
 		s.Issue1433.Encode(e)
+	}
+}
+
+func (s Issue143) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.encodeFields(e)
+	case Issue1431Issue143:
+		s.Issue1431.encodeFields(e)
+	case Issue1432Issue143:
+		s.Issue1432.encodeFields(e)
+	case Issue1433Issue143:
+		s.Issue1433.encodeFields(e)
 	}
 }
 
@@ -2057,25 +2589,25 @@ func (s *Issue1433) UnmarshalJSON(data []byte) error {
 
 // Encode encodes Issue943 as json.
 func (s Issue943) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s Issue943) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case Issue943Variant1Issue943:
-		e.ObjStart()
 		e.FieldStart("selector")
 		e.Str("variant1")
 		s.Issue943Variant1.encodeFields(e)
-		e.ObjEnd()
 	case Issue943Variant2Issue943:
-		e.ObjStart()
 		e.FieldStart("selector")
 		e.Str("variant2")
 		s.Issue943Variant2.encodeFields(e)
-		e.ObjEnd()
 	case Issue943MapIssue943:
-		e.ObjStart()
 		e.FieldStart("selector")
 		e.Str("variant3")
 		s.Issue943Map.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -2951,6 +3483,386 @@ func (s *MaxPropertiesTest) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode implements json.Marshaler.
+func (s *MergeDiscriminatorOneOf) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *MergeDiscriminatorOneOf) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("common")
+		e.Str(s.Common)
+	}
+	s.OneOf.encodeFields(e)
+}
+
+var jsonFieldsNameOfMergeDiscriminatorOneOf = [1]string{
+	0: "common",
+}
+
+// Decode decodes MergeDiscriminatorOneOf from json.
+func (s *MergeDiscriminatorOneOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MergeDiscriminatorOneOf to nil")
+	}
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return s.OneOf.Decode(d)
+	}); err != nil {
+		return errors.Wrap(err, "decode field OneOf")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Common = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"common\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode MergeDiscriminatorOneOf")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMergeDiscriminatorOneOf) {
+					name = jsonFieldsNameOfMergeDiscriminatorOneOf[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *MergeDiscriminatorOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MergeDiscriminatorOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MergeDiscriminatorOneOfSum as json.
+func (s MergeDiscriminatorOneOfSum) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfBarMergeDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("bar")
+		s.InlineOneOfBar.encodeFields(e)
+	case InlineOneOfFooMergeDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("foo")
+		s.InlineOneOfFoo.encodeFields(e)
+	}
+}
+
+// Decode decodes MergeDiscriminatorOneOfSum from json.
+func (s *MergeDiscriminatorOneOfSum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MergeDiscriminatorOneOfSum to nil")
+	}
+	// Sum type discriminator.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "kind":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "bar":
+					s.Type = InlineOneOfBarMergeDiscriminatorOneOfSum
+					found = true
+				case "foo":
+					s.Type = InlineOneOfFooMergeDiscriminatorOneOfSum
+					found = true
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case InlineOneOfFooMergeDiscriminatorOneOfSum:
+		if err := s.InlineOneOfFoo.Decode(d); err != nil {
+			return err
+		}
+	case InlineOneOfBarMergeDiscriminatorOneOfSum:
+		if err := s.InlineOneOfBar.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MergeDiscriminatorOneOfSum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MergeDiscriminatorOneOfSum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *MergeUniqueFieldsOneOf) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *MergeUniqueFieldsOneOf) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("common")
+		e.Str(s.Common)
+	}
+	s.OneOf.encodeFields(e)
+}
+
+var jsonFieldsNameOfMergeUniqueFieldsOneOf = [1]string{
+	0: "common",
+}
+
+// Decode decodes MergeUniqueFieldsOneOf from json.
+func (s *MergeUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MergeUniqueFieldsOneOf to nil")
+	}
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return s.OneOf.Decode(d)
+	}); err != nil {
+		return errors.Wrap(err, "decode field OneOf")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Common = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"common\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode MergeUniqueFieldsOneOf")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMergeUniqueFieldsOneOf) {
+					name = jsonFieldsNameOfMergeUniqueFieldsOneOf[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *MergeUniqueFieldsOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MergeUniqueFieldsOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MergeUniqueFieldsOneOfSum as json.
+func (s MergeUniqueFieldsOneOfSum) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfFooMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.Encode(e)
+	case InlineOneOfBarMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.Encode(e)
+	}
+}
+
+func (s MergeUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case InlineOneOfFooMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+	case InlineOneOfBarMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+	}
+}
+
+// Decode decodes MergeUniqueFieldsOneOfSum from json.
+func (s *MergeUniqueFieldsOneOfSum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MergeUniqueFieldsOneOfSum to nil")
+	}
+	// Sum type fields.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			switch string(key) {
+			case "foo":
+				match := InlineOneOfFooMergeUniqueFieldsOneOfSum
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
+				found = true
+				s.Type = match
+			case "bar":
+				match := InlineOneOfBarMergeUniqueFieldsOneOfSum
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
+				found = true
+				s.Type = match
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case InlineOneOfFooMergeUniqueFieldsOneOfSum:
+		if err := s.InlineOneOfFoo.Decode(d); err != nil {
+			return err
+		}
+	case InlineOneOfBarMergeUniqueFieldsOneOfSum:
+		if err := s.InlineOneOfBar.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MergeUniqueFieldsOneOfSum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MergeUniqueFieldsOneOfSum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int as json.
 func (o NilInt) Encode(e *jx.Encoder) {
 	if o.Null {
@@ -3767,19 +4679,21 @@ func (s *OneOfBugs) UnmarshalJSON(data []byte) error {
 
 // Encode encodes OneOfMappingReference as json.
 func (s OneOfMappingReference) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s OneOfMappingReference) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case OneOfMappingReferenceBOneOfMappingReference:
-		e.ObjStart()
 		e.FieldStart("infoType")
 		e.Str("extended")
 		s.OneOfMappingReferenceB.encodeFields(e)
-		e.ObjEnd()
 	case OneOfMappingReferenceAOneOfMappingReference:
-		e.ObjStart()
 		e.FieldStart("infoType")
 		e.Str("simple")
 		s.OneOfMappingReferenceA.encodeFields(e)
-		e.ObjEnd()
 	}
 }
 
@@ -4404,6 +5318,15 @@ func (s OneVariantHasNoUniqueFields) Encode(e *jx.Encoder) {
 		s.OneVariantHasNoUniqueFields0.Encode(e)
 	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
 		s.OneVariantHasNoUniqueFields1.Encode(e)
+	}
+}
+
+func (s OneVariantHasNoUniqueFields) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields0.encodeFields(e)
+	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields1.encodeFields(e)
 	}
 }
 
@@ -5297,6 +6220,72 @@ func (s *OptIPv6) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes InlineDiscriminatorOneOf as json.
+func (o OptInlineDiscriminatorOneOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes InlineDiscriminatorOneOf from json.
+func (o *OptInlineDiscriminatorOneOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptInlineDiscriminatorOneOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInlineDiscriminatorOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInlineDiscriminatorOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes InlineUniqueFieldsOneOf as json.
+func (o OptInlineUniqueFieldsOneOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes InlineUniqueFieldsOneOf from json.
+func (o *OptInlineUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptInlineUniqueFieldsOneOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInlineUniqueFieldsOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInlineUniqueFieldsOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -5496,6 +6485,72 @@ func (s OptMaxPropertiesTest) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptMaxPropertiesTest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MergeDiscriminatorOneOf as json.
+func (o OptMergeDiscriminatorOneOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MergeDiscriminatorOneOf from json.
+func (o *OptMergeDiscriminatorOneOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMergeDiscriminatorOneOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMergeDiscriminatorOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMergeDiscriminatorOneOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MergeUniqueFieldsOneOf as json.
+func (o OptMergeUniqueFieldsOneOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MergeUniqueFieldsOneOf from json.
+func (o *OptMergeUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMergeUniqueFieldsOneOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMergeUniqueFieldsOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMergeUniqueFieldsOneOf) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -7686,6 +8741,120 @@ func (s *TestFloatValidation) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *TestFloatValidation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *TestInlineOneOf) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *TestInlineOneOf) encodeFields(e *jx.Encoder) {
+	{
+		if s.InlineDiscriminator.Set {
+			e.FieldStart("inline_discriminator")
+			s.InlineDiscriminator.Encode(e)
+		}
+	}
+	{
+		if s.MergeDiscriminator.Set {
+			e.FieldStart("merge_discriminator")
+			s.MergeDiscriminator.Encode(e)
+		}
+	}
+	{
+		if s.InlineUniqueFields.Set {
+			e.FieldStart("inline_unique_fields")
+			s.InlineUniqueFields.Encode(e)
+		}
+	}
+	{
+		if s.MergeUniqueFields.Set {
+			e.FieldStart("merge_unique_fields")
+			s.MergeUniqueFields.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfTestInlineOneOf = [4]string{
+	0: "inline_discriminator",
+	1: "merge_discriminator",
+	2: "inline_unique_fields",
+	3: "merge_unique_fields",
+}
+
+// Decode decodes TestInlineOneOf from json.
+func (s *TestInlineOneOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TestInlineOneOf to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "inline_discriminator":
+			if err := func() error {
+				s.InlineDiscriminator.Reset()
+				if err := s.InlineDiscriminator.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"inline_discriminator\"")
+			}
+		case "merge_discriminator":
+			if err := func() error {
+				s.MergeDiscriminator.Reset()
+				if err := s.MergeDiscriminator.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"merge_discriminator\"")
+			}
+		case "inline_unique_fields":
+			if err := func() error {
+				s.InlineUniqueFields.Reset()
+				if err := s.InlineUniqueFields.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"inline_unique_fields\"")
+			}
+		case "merge_unique_fields":
+			if err := func() error {
+				s.MergeUniqueFields.Reset()
+				if err := s.MergeUniqueFields.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"merge_unique_fields\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TestInlineOneOf")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *TestInlineOneOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *TestInlineOneOf) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

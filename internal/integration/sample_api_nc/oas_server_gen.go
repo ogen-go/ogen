@@ -132,6 +132,10 @@ type Handler interface {
 	//
 	// POST /testFloatValidation
 	TestFloatValidation(ctx context.Context, req *TestFloatValidation) error
+	// TestInlineOneof implements testInlineOneof operation.
+	//
+	// GET /testInlineOneof
+	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs

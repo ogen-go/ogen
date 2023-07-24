@@ -663,6 +663,224 @@ func NewIntID(v int) ID {
 	return s
 }
 
+// Ref: #/components/schemas/InlineDiscriminatorOneOf
+type InlineDiscriminatorOneOf struct {
+	Common string `json:"common"`
+	OneOf  InlineDiscriminatorOneOfSum
+}
+
+// GetCommon returns the value of Common.
+func (s *InlineDiscriminatorOneOf) GetCommon() string {
+	return s.Common
+}
+
+// GetOneOf returns the value of OneOf.
+func (s *InlineDiscriminatorOneOf) GetOneOf() InlineDiscriminatorOneOfSum {
+	return s.OneOf
+}
+
+// SetCommon sets the value of Common.
+func (s *InlineDiscriminatorOneOf) SetCommon(val string) {
+	s.Common = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *InlineDiscriminatorOneOf) SetOneOf(val InlineDiscriminatorOneOfSum) {
+	s.OneOf = val
+}
+
+// InlineDiscriminatorOneOfSum represents sum type.
+type InlineDiscriminatorOneOfSum struct {
+	Type           InlineDiscriminatorOneOfSumType // switch on this field
+	InlineOneOfFoo InlineOneOfFoo
+	InlineOneOfBar InlineOneOfBar
+}
+
+// InlineDiscriminatorOneOfSumType is oneOf type of InlineDiscriminatorOneOfSum.
+type InlineDiscriminatorOneOfSumType string
+
+// Possible values for InlineDiscriminatorOneOfSumType.
+const (
+	InlineOneOfFooInlineDiscriminatorOneOfSum InlineDiscriminatorOneOfSumType = "foo"
+	InlineOneOfBarInlineDiscriminatorOneOfSum InlineDiscriminatorOneOfSumType = "bar"
+)
+
+// IsInlineOneOfFoo reports whether InlineDiscriminatorOneOfSum is InlineOneOfFoo.
+func (s InlineDiscriminatorOneOfSum) IsInlineOneOfFoo() bool {
+	return s.Type == InlineOneOfFooInlineDiscriminatorOneOfSum
+}
+
+// IsInlineOneOfBar reports whether InlineDiscriminatorOneOfSum is InlineOneOfBar.
+func (s InlineDiscriminatorOneOfSum) IsInlineOneOfBar() bool {
+	return s.Type == InlineOneOfBarInlineDiscriminatorOneOfSum
+}
+
+// SetInlineOneOfFoo sets InlineDiscriminatorOneOfSum to InlineOneOfFoo.
+func (s *InlineDiscriminatorOneOfSum) SetInlineOneOfFoo(v InlineOneOfFoo) {
+	s.Type = InlineOneOfFooInlineDiscriminatorOneOfSum
+	s.InlineOneOfFoo = v
+}
+
+// GetInlineOneOfFoo returns InlineOneOfFoo and true boolean if InlineDiscriminatorOneOfSum is InlineOneOfFoo.
+func (s InlineDiscriminatorOneOfSum) GetInlineOneOfFoo() (v InlineOneOfFoo, ok bool) {
+	if !s.IsInlineOneOfFoo() {
+		return v, false
+	}
+	return s.InlineOneOfFoo, true
+}
+
+// NewInlineOneOfFooInlineDiscriminatorOneOfSum returns new InlineDiscriminatorOneOfSum from InlineOneOfFoo.
+func NewInlineOneOfFooInlineDiscriminatorOneOfSum(v InlineOneOfFoo) InlineDiscriminatorOneOfSum {
+	var s InlineDiscriminatorOneOfSum
+	s.SetInlineOneOfFoo(v)
+	return s
+}
+
+// SetInlineOneOfBar sets InlineDiscriminatorOneOfSum to InlineOneOfBar.
+func (s *InlineDiscriminatorOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
+	s.Type = InlineOneOfBarInlineDiscriminatorOneOfSum
+	s.InlineOneOfBar = v
+}
+
+// GetInlineOneOfBar returns InlineOneOfBar and true boolean if InlineDiscriminatorOneOfSum is InlineOneOfBar.
+func (s InlineDiscriminatorOneOfSum) GetInlineOneOfBar() (v InlineOneOfBar, ok bool) {
+	if !s.IsInlineOneOfBar() {
+		return v, false
+	}
+	return s.InlineOneOfBar, true
+}
+
+// NewInlineOneOfBarInlineDiscriminatorOneOfSum returns new InlineDiscriminatorOneOfSum from InlineOneOfBar.
+func NewInlineOneOfBarInlineDiscriminatorOneOfSum(v InlineOneOfBar) InlineDiscriminatorOneOfSum {
+	var s InlineDiscriminatorOneOfSum
+	s.SetInlineOneOfBar(v)
+	return s
+}
+
+// Ref: #/components/schemas/InlineOneOfBar
+type InlineOneOfBar struct {
+	Bar OptString `json:"bar"`
+}
+
+// GetBar returns the value of Bar.
+func (s *InlineOneOfBar) GetBar() OptString {
+	return s.Bar
+}
+
+// SetBar sets the value of Bar.
+func (s *InlineOneOfBar) SetBar(val OptString) {
+	s.Bar = val
+}
+
+// Ref: #/components/schemas/InlineOneOfFoo
+type InlineOneOfFoo struct {
+	Foo OptString `json:"foo"`
+}
+
+// GetFoo returns the value of Foo.
+func (s *InlineOneOfFoo) GetFoo() OptString {
+	return s.Foo
+}
+
+// SetFoo sets the value of Foo.
+func (s *InlineOneOfFoo) SetFoo(val OptString) {
+	s.Foo = val
+}
+
+// Ref: #/components/schemas/InlineUniqueFieldsOneOf
+type InlineUniqueFieldsOneOf struct {
+	Common string `json:"common"`
+	OneOf  InlineUniqueFieldsOneOfSum
+}
+
+// GetCommon returns the value of Common.
+func (s *InlineUniqueFieldsOneOf) GetCommon() string {
+	return s.Common
+}
+
+// GetOneOf returns the value of OneOf.
+func (s *InlineUniqueFieldsOneOf) GetOneOf() InlineUniqueFieldsOneOfSum {
+	return s.OneOf
+}
+
+// SetCommon sets the value of Common.
+func (s *InlineUniqueFieldsOneOf) SetCommon(val string) {
+	s.Common = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *InlineUniqueFieldsOneOf) SetOneOf(val InlineUniqueFieldsOneOfSum) {
+	s.OneOf = val
+}
+
+// InlineUniqueFieldsOneOfSum represents sum type.
+type InlineUniqueFieldsOneOfSum struct {
+	Type           InlineUniqueFieldsOneOfSumType // switch on this field
+	InlineOneOfFoo InlineOneOfFoo
+	InlineOneOfBar InlineOneOfBar
+}
+
+// InlineUniqueFieldsOneOfSumType is oneOf type of InlineUniqueFieldsOneOfSum.
+type InlineUniqueFieldsOneOfSumType string
+
+// Possible values for InlineUniqueFieldsOneOfSumType.
+const (
+	InlineOneOfFooInlineUniqueFieldsOneOfSum InlineUniqueFieldsOneOfSumType = "InlineOneOfFoo"
+	InlineOneOfBarInlineUniqueFieldsOneOfSum InlineUniqueFieldsOneOfSumType = "InlineOneOfBar"
+)
+
+// IsInlineOneOfFoo reports whether InlineUniqueFieldsOneOfSum is InlineOneOfFoo.
+func (s InlineUniqueFieldsOneOfSum) IsInlineOneOfFoo() bool {
+	return s.Type == InlineOneOfFooInlineUniqueFieldsOneOfSum
+}
+
+// IsInlineOneOfBar reports whether InlineUniqueFieldsOneOfSum is InlineOneOfBar.
+func (s InlineUniqueFieldsOneOfSum) IsInlineOneOfBar() bool {
+	return s.Type == InlineOneOfBarInlineUniqueFieldsOneOfSum
+}
+
+// SetInlineOneOfFoo sets InlineUniqueFieldsOneOfSum to InlineOneOfFoo.
+func (s *InlineUniqueFieldsOneOfSum) SetInlineOneOfFoo(v InlineOneOfFoo) {
+	s.Type = InlineOneOfFooInlineUniqueFieldsOneOfSum
+	s.InlineOneOfFoo = v
+}
+
+// GetInlineOneOfFoo returns InlineOneOfFoo and true boolean if InlineUniqueFieldsOneOfSum is InlineOneOfFoo.
+func (s InlineUniqueFieldsOneOfSum) GetInlineOneOfFoo() (v InlineOneOfFoo, ok bool) {
+	if !s.IsInlineOneOfFoo() {
+		return v, false
+	}
+	return s.InlineOneOfFoo, true
+}
+
+// NewInlineOneOfFooInlineUniqueFieldsOneOfSum returns new InlineUniqueFieldsOneOfSum from InlineOneOfFoo.
+func NewInlineOneOfFooInlineUniqueFieldsOneOfSum(v InlineOneOfFoo) InlineUniqueFieldsOneOfSum {
+	var s InlineUniqueFieldsOneOfSum
+	s.SetInlineOneOfFoo(v)
+	return s
+}
+
+// SetInlineOneOfBar sets InlineUniqueFieldsOneOfSum to InlineOneOfBar.
+func (s *InlineUniqueFieldsOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
+	s.Type = InlineOneOfBarInlineUniqueFieldsOneOfSum
+	s.InlineOneOfBar = v
+}
+
+// GetInlineOneOfBar returns InlineOneOfBar and true boolean if InlineUniqueFieldsOneOfSum is InlineOneOfBar.
+func (s InlineUniqueFieldsOneOfSum) GetInlineOneOfBar() (v InlineOneOfBar, ok bool) {
+	if !s.IsInlineOneOfBar() {
+		return v, false
+	}
+	return s.InlineOneOfBar, true
+}
+
+// NewInlineOneOfBarInlineUniqueFieldsOneOfSum returns new InlineUniqueFieldsOneOfSum from InlineOneOfBar.
+func NewInlineOneOfBarInlineUniqueFieldsOneOfSum(v InlineOneOfBar) InlineUniqueFieldsOneOfSum {
+	var s InlineUniqueFieldsOneOfSum
+	s.SetInlineOneOfBar(v)
+	return s
+}
+
 // Ref: #/components/schemas/Issue143
 // Issue143 represents sum type.
 type Issue143 struct {
@@ -1210,6 +1428,196 @@ func (s *MaxPropertiesTest) SetOptionalB(val OptInt) {
 // SetOptionalC sets the value of OptionalC.
 func (s *MaxPropertiesTest) SetOptionalC(val OptInt) {
 	s.OptionalC = val
+}
+
+// Merged schema.
+// Ref: #/components/schemas/MergeDiscriminatorOneOf
+type MergeDiscriminatorOneOf struct {
+	Common string `json:"common"`
+	OneOf  MergeDiscriminatorOneOfSum
+}
+
+// GetCommon returns the value of Common.
+func (s *MergeDiscriminatorOneOf) GetCommon() string {
+	return s.Common
+}
+
+// GetOneOf returns the value of OneOf.
+func (s *MergeDiscriminatorOneOf) GetOneOf() MergeDiscriminatorOneOfSum {
+	return s.OneOf
+}
+
+// SetCommon sets the value of Common.
+func (s *MergeDiscriminatorOneOf) SetCommon(val string) {
+	s.Common = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *MergeDiscriminatorOneOf) SetOneOf(val MergeDiscriminatorOneOfSum) {
+	s.OneOf = val
+}
+
+// MergeDiscriminatorOneOfSum represents sum type.
+type MergeDiscriminatorOneOfSum struct {
+	Type           MergeDiscriminatorOneOfSumType // switch on this field
+	InlineOneOfFoo InlineOneOfFoo
+	InlineOneOfBar InlineOneOfBar
+}
+
+// MergeDiscriminatorOneOfSumType is oneOf type of MergeDiscriminatorOneOfSum.
+type MergeDiscriminatorOneOfSumType string
+
+// Possible values for MergeDiscriminatorOneOfSumType.
+const (
+	InlineOneOfFooMergeDiscriminatorOneOfSum MergeDiscriminatorOneOfSumType = "foo"
+	InlineOneOfBarMergeDiscriminatorOneOfSum MergeDiscriminatorOneOfSumType = "bar"
+)
+
+// IsInlineOneOfFoo reports whether MergeDiscriminatorOneOfSum is InlineOneOfFoo.
+func (s MergeDiscriminatorOneOfSum) IsInlineOneOfFoo() bool {
+	return s.Type == InlineOneOfFooMergeDiscriminatorOneOfSum
+}
+
+// IsInlineOneOfBar reports whether MergeDiscriminatorOneOfSum is InlineOneOfBar.
+func (s MergeDiscriminatorOneOfSum) IsInlineOneOfBar() bool {
+	return s.Type == InlineOneOfBarMergeDiscriminatorOneOfSum
+}
+
+// SetInlineOneOfFoo sets MergeDiscriminatorOneOfSum to InlineOneOfFoo.
+func (s *MergeDiscriminatorOneOfSum) SetInlineOneOfFoo(v InlineOneOfFoo) {
+	s.Type = InlineOneOfFooMergeDiscriminatorOneOfSum
+	s.InlineOneOfFoo = v
+}
+
+// GetInlineOneOfFoo returns InlineOneOfFoo and true boolean if MergeDiscriminatorOneOfSum is InlineOneOfFoo.
+func (s MergeDiscriminatorOneOfSum) GetInlineOneOfFoo() (v InlineOneOfFoo, ok bool) {
+	if !s.IsInlineOneOfFoo() {
+		return v, false
+	}
+	return s.InlineOneOfFoo, true
+}
+
+// NewInlineOneOfFooMergeDiscriminatorOneOfSum returns new MergeDiscriminatorOneOfSum from InlineOneOfFoo.
+func NewInlineOneOfFooMergeDiscriminatorOneOfSum(v InlineOneOfFoo) MergeDiscriminatorOneOfSum {
+	var s MergeDiscriminatorOneOfSum
+	s.SetInlineOneOfFoo(v)
+	return s
+}
+
+// SetInlineOneOfBar sets MergeDiscriminatorOneOfSum to InlineOneOfBar.
+func (s *MergeDiscriminatorOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
+	s.Type = InlineOneOfBarMergeDiscriminatorOneOfSum
+	s.InlineOneOfBar = v
+}
+
+// GetInlineOneOfBar returns InlineOneOfBar and true boolean if MergeDiscriminatorOneOfSum is InlineOneOfBar.
+func (s MergeDiscriminatorOneOfSum) GetInlineOneOfBar() (v InlineOneOfBar, ok bool) {
+	if !s.IsInlineOneOfBar() {
+		return v, false
+	}
+	return s.InlineOneOfBar, true
+}
+
+// NewInlineOneOfBarMergeDiscriminatorOneOfSum returns new MergeDiscriminatorOneOfSum from InlineOneOfBar.
+func NewInlineOneOfBarMergeDiscriminatorOneOfSum(v InlineOneOfBar) MergeDiscriminatorOneOfSum {
+	var s MergeDiscriminatorOneOfSum
+	s.SetInlineOneOfBar(v)
+	return s
+}
+
+// Merged schema.
+// Ref: #/components/schemas/MergeUniqueFieldsOneOf
+type MergeUniqueFieldsOneOf struct {
+	Common string `json:"common"`
+	OneOf  MergeUniqueFieldsOneOfSum
+}
+
+// GetCommon returns the value of Common.
+func (s *MergeUniqueFieldsOneOf) GetCommon() string {
+	return s.Common
+}
+
+// GetOneOf returns the value of OneOf.
+func (s *MergeUniqueFieldsOneOf) GetOneOf() MergeUniqueFieldsOneOfSum {
+	return s.OneOf
+}
+
+// SetCommon sets the value of Common.
+func (s *MergeUniqueFieldsOneOf) SetCommon(val string) {
+	s.Common = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *MergeUniqueFieldsOneOf) SetOneOf(val MergeUniqueFieldsOneOfSum) {
+	s.OneOf = val
+}
+
+// MergeUniqueFieldsOneOfSum represents sum type.
+type MergeUniqueFieldsOneOfSum struct {
+	Type           MergeUniqueFieldsOneOfSumType // switch on this field
+	InlineOneOfFoo InlineOneOfFoo
+	InlineOneOfBar InlineOneOfBar
+}
+
+// MergeUniqueFieldsOneOfSumType is oneOf type of MergeUniqueFieldsOneOfSum.
+type MergeUniqueFieldsOneOfSumType string
+
+// Possible values for MergeUniqueFieldsOneOfSumType.
+const (
+	InlineOneOfFooMergeUniqueFieldsOneOfSum MergeUniqueFieldsOneOfSumType = "InlineOneOfFoo"
+	InlineOneOfBarMergeUniqueFieldsOneOfSum MergeUniqueFieldsOneOfSumType = "InlineOneOfBar"
+)
+
+// IsInlineOneOfFoo reports whether MergeUniqueFieldsOneOfSum is InlineOneOfFoo.
+func (s MergeUniqueFieldsOneOfSum) IsInlineOneOfFoo() bool {
+	return s.Type == InlineOneOfFooMergeUniqueFieldsOneOfSum
+}
+
+// IsInlineOneOfBar reports whether MergeUniqueFieldsOneOfSum is InlineOneOfBar.
+func (s MergeUniqueFieldsOneOfSum) IsInlineOneOfBar() bool {
+	return s.Type == InlineOneOfBarMergeUniqueFieldsOneOfSum
+}
+
+// SetInlineOneOfFoo sets MergeUniqueFieldsOneOfSum to InlineOneOfFoo.
+func (s *MergeUniqueFieldsOneOfSum) SetInlineOneOfFoo(v InlineOneOfFoo) {
+	s.Type = InlineOneOfFooMergeUniqueFieldsOneOfSum
+	s.InlineOneOfFoo = v
+}
+
+// GetInlineOneOfFoo returns InlineOneOfFoo and true boolean if MergeUniqueFieldsOneOfSum is InlineOneOfFoo.
+func (s MergeUniqueFieldsOneOfSum) GetInlineOneOfFoo() (v InlineOneOfFoo, ok bool) {
+	if !s.IsInlineOneOfFoo() {
+		return v, false
+	}
+	return s.InlineOneOfFoo, true
+}
+
+// NewInlineOneOfFooMergeUniqueFieldsOneOfSum returns new MergeUniqueFieldsOneOfSum from InlineOneOfFoo.
+func NewInlineOneOfFooMergeUniqueFieldsOneOfSum(v InlineOneOfFoo) MergeUniqueFieldsOneOfSum {
+	var s MergeUniqueFieldsOneOfSum
+	s.SetInlineOneOfFoo(v)
+	return s
+}
+
+// SetInlineOneOfBar sets MergeUniqueFieldsOneOfSum to InlineOneOfBar.
+func (s *MergeUniqueFieldsOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
+	s.Type = InlineOneOfBarMergeUniqueFieldsOneOfSum
+	s.InlineOneOfBar = v
+}
+
+// GetInlineOneOfBar returns InlineOneOfBar and true boolean if MergeUniqueFieldsOneOfSum is InlineOneOfBar.
+func (s MergeUniqueFieldsOneOfSum) GetInlineOneOfBar() (v InlineOneOfBar, ok bool) {
+	if !s.IsInlineOneOfBar() {
+		return v, false
+	}
+	return s.InlineOneOfBar, true
+}
+
+// NewInlineOneOfBarMergeUniqueFieldsOneOfSum returns new MergeUniqueFieldsOneOfSum from InlineOneOfBar.
+func NewInlineOneOfBarMergeUniqueFieldsOneOfSum(v InlineOneOfBar) MergeUniqueFieldsOneOfSum {
+	var s MergeUniqueFieldsOneOfSum
+	s.SetInlineOneOfBar(v)
+	return s
 }
 
 // NewNilInt returns new NilInt with value set to v.
@@ -2995,6 +3403,98 @@ func (o OptIPv6) Or(d netip.Addr) netip.Addr {
 	return d
 }
 
+// NewOptInlineDiscriminatorOneOf returns new OptInlineDiscriminatorOneOf with value set to v.
+func NewOptInlineDiscriminatorOneOf(v InlineDiscriminatorOneOf) OptInlineDiscriminatorOneOf {
+	return OptInlineDiscriminatorOneOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineDiscriminatorOneOf is optional InlineDiscriminatorOneOf.
+type OptInlineDiscriminatorOneOf struct {
+	Value InlineDiscriminatorOneOf
+	Set   bool
+}
+
+// IsSet returns true if OptInlineDiscriminatorOneOf was set.
+func (o OptInlineDiscriminatorOneOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineDiscriminatorOneOf) Reset() {
+	var v InlineDiscriminatorOneOf
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineDiscriminatorOneOf) SetTo(v InlineDiscriminatorOneOf) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineDiscriminatorOneOf) Get() (v InlineDiscriminatorOneOf, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInlineDiscriminatorOneOf) Or(d InlineDiscriminatorOneOf) InlineDiscriminatorOneOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInlineUniqueFieldsOneOf returns new OptInlineUniqueFieldsOneOf with value set to v.
+func NewOptInlineUniqueFieldsOneOf(v InlineUniqueFieldsOneOf) OptInlineUniqueFieldsOneOf {
+	return OptInlineUniqueFieldsOneOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineUniqueFieldsOneOf is optional InlineUniqueFieldsOneOf.
+type OptInlineUniqueFieldsOneOf struct {
+	Value InlineUniqueFieldsOneOf
+	Set   bool
+}
+
+// IsSet returns true if OptInlineUniqueFieldsOneOf was set.
+func (o OptInlineUniqueFieldsOneOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineUniqueFieldsOneOf) Reset() {
+	var v InlineUniqueFieldsOneOf
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineUniqueFieldsOneOf) SetTo(v InlineUniqueFieldsOneOf) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineUniqueFieldsOneOf) Get() (v InlineUniqueFieldsOneOf, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInlineUniqueFieldsOneOf) Or(d InlineUniqueFieldsOneOf) InlineUniqueFieldsOneOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -3265,6 +3765,98 @@ func (o OptMaxPropertiesTest) Get() (v MaxPropertiesTest, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptMaxPropertiesTest) Or(d MaxPropertiesTest) MaxPropertiesTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMergeDiscriminatorOneOf returns new OptMergeDiscriminatorOneOf with value set to v.
+func NewOptMergeDiscriminatorOneOf(v MergeDiscriminatorOneOf) OptMergeDiscriminatorOneOf {
+	return OptMergeDiscriminatorOneOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMergeDiscriminatorOneOf is optional MergeDiscriminatorOneOf.
+type OptMergeDiscriminatorOneOf struct {
+	Value MergeDiscriminatorOneOf
+	Set   bool
+}
+
+// IsSet returns true if OptMergeDiscriminatorOneOf was set.
+func (o OptMergeDiscriminatorOneOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMergeDiscriminatorOneOf) Reset() {
+	var v MergeDiscriminatorOneOf
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMergeDiscriminatorOneOf) SetTo(v MergeDiscriminatorOneOf) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMergeDiscriminatorOneOf) Get() (v MergeDiscriminatorOneOf, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMergeDiscriminatorOneOf) Or(d MergeDiscriminatorOneOf) MergeDiscriminatorOneOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMergeUniqueFieldsOneOf returns new OptMergeUniqueFieldsOneOf with value set to v.
+func NewOptMergeUniqueFieldsOneOf(v MergeUniqueFieldsOneOf) OptMergeUniqueFieldsOneOf {
+	return OptMergeUniqueFieldsOneOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMergeUniqueFieldsOneOf is optional MergeUniqueFieldsOneOf.
+type OptMergeUniqueFieldsOneOf struct {
+	Value MergeUniqueFieldsOneOf
+	Set   bool
+}
+
+// IsSet returns true if OptMergeUniqueFieldsOneOf was set.
+func (o OptMergeUniqueFieldsOneOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMergeUniqueFieldsOneOf) Reset() {
+	var v MergeUniqueFieldsOneOf
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMergeUniqueFieldsOneOf) SetTo(v MergeUniqueFieldsOneOf) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMergeUniqueFieldsOneOf) Get() (v MergeUniqueFieldsOneOf, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMergeUniqueFieldsOneOf) Or(d MergeUniqueFieldsOneOf) MergeUniqueFieldsOneOf {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4826,6 +5418,54 @@ func (s *TestFloatValidation) SetMultipleOf(val float64) {
 
 // TestFloatValidationOK is response for TestFloatValidation operation.
 type TestFloatValidationOK struct{}
+
+// Ref: #/components/schemas/TestInlineOneOf
+type TestInlineOneOf struct {
+	InlineDiscriminator OptInlineDiscriminatorOneOf `json:"inline_discriminator"`
+	MergeDiscriminator  OptMergeDiscriminatorOneOf  `json:"merge_discriminator"`
+	InlineUniqueFields  OptInlineUniqueFieldsOneOf  `json:"inline_unique_fields"`
+	MergeUniqueFields   OptMergeUniqueFieldsOneOf   `json:"merge_unique_fields"`
+}
+
+// GetInlineDiscriminator returns the value of InlineDiscriminator.
+func (s *TestInlineOneOf) GetInlineDiscriminator() OptInlineDiscriminatorOneOf {
+	return s.InlineDiscriminator
+}
+
+// GetMergeDiscriminator returns the value of MergeDiscriminator.
+func (s *TestInlineOneOf) GetMergeDiscriminator() OptMergeDiscriminatorOneOf {
+	return s.MergeDiscriminator
+}
+
+// GetInlineUniqueFields returns the value of InlineUniqueFields.
+func (s *TestInlineOneOf) GetInlineUniqueFields() OptInlineUniqueFieldsOneOf {
+	return s.InlineUniqueFields
+}
+
+// GetMergeUniqueFields returns the value of MergeUniqueFields.
+func (s *TestInlineOneOf) GetMergeUniqueFields() OptMergeUniqueFieldsOneOf {
+	return s.MergeUniqueFields
+}
+
+// SetInlineDiscriminator sets the value of InlineDiscriminator.
+func (s *TestInlineOneOf) SetInlineDiscriminator(val OptInlineDiscriminatorOneOf) {
+	s.InlineDiscriminator = val
+}
+
+// SetMergeDiscriminator sets the value of MergeDiscriminator.
+func (s *TestInlineOneOf) SetMergeDiscriminator(val OptMergeDiscriminatorOneOf) {
+	s.MergeDiscriminator = val
+}
+
+// SetInlineUniqueFields sets the value of InlineUniqueFields.
+func (s *TestInlineOneOf) SetInlineUniqueFields(val OptInlineUniqueFieldsOneOf) {
+	s.InlineUniqueFields = val
+}
+
+// SetMergeUniqueFields sets the value of MergeUniqueFields.
+func (s *TestInlineOneOf) SetMergeUniqueFields(val OptMergeUniqueFieldsOneOf) {
+	s.MergeUniqueFields = val
+}
 
 type TestNullableOneofsCreated OneOfWithNullable
 
