@@ -781,6 +781,23 @@
           }
         }
       }
+    },
+    "/testInlineOneof": {
+      "get": {
+        "operationId": "testInlineOneof",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInlineOneOf"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1423,7 +1440,6 @@
         ]
       },
       "OneOfMappingReference": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/OneOfMappingReferenceA"
@@ -1816,6 +1832,147 @@
             }
           }
         ]
+      },
+      "TestInlineOneOf": {
+        "type": "object",
+        "properties": {
+          "inline_discriminator": {
+            "$ref": "#/components/schemas/InlineDiscriminatorOneOf"
+          },
+          "merge_discriminator": {
+            "$ref": "#/components/schemas/MergeDiscriminatorOneOf"
+          },
+          "inline_unique_fields": {
+            "$ref": "#/components/schemas/InlineUniqueFieldsOneOf"
+          },
+          "merge_unique_fields": {
+            "$ref": "#/components/schemas/MergeUniqueFieldsOneOf"
+          }
+        }
+      },
+      "InlineDiscriminatorOneOf": {
+        "type": "object",
+        "required": [
+          "common"
+        ],
+        "properties": {
+          "common": {
+            "type": "string"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InlineOneOfFoo"
+          },
+          {
+            "$ref": "#/components/schemas/InlineOneOfBar"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "foo": "#/components/schemas/InlineOneOfFoo",
+            "bar": "#/components/schemas/InlineOneOfBar"
+          }
+        }
+      },
+      "MergeDiscriminatorOneOf": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "common"
+            ],
+            "properties": {
+              "common": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineOneOfFoo"
+              },
+              {
+                "$ref": "#/components/schemas/InlineOneOfBar"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "foo": "#/components/schemas/InlineOneOfFoo",
+                "bar": "#/components/schemas/InlineOneOfBar"
+              }
+            }
+          }
+        ]
+      },
+      "InlineUniqueFieldsOneOf": {
+        "type": "object",
+        "required": [
+          "common"
+        ],
+        "properties": {
+          "common": {
+            "type": "string"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InlineOneOfFoo"
+          },
+          {
+            "$ref": "#/components/schemas/InlineOneOfBar"
+          }
+        ]
+      },
+      "MergeUniqueFieldsOneOf": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "common"
+            ],
+            "properties": {
+              "common": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineOneOfFoo"
+              },
+              {
+                "$ref": "#/components/schemas/InlineOneOfBar"
+              }
+            ]
+          }
+        ]
+      },
+      "InlineOneOfFoo": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "foo": {
+            "type": "string"
+          }
+        }
+      },
+      "InlineOneOfBar": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "bar": {
+            "type": "string"
+          }
+        }
       }
     },
     "parameters": {
