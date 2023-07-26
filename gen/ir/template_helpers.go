@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"strings"
 
 	"golang.org/x/exp/slices"
 
@@ -224,8 +225,8 @@ func (t *Type) TypeDiscriminator() (r []TypeDiscriminatorCase) {
 		}
 		r = append(r, cse)
 	}
-	slices.SortStableFunc(r, func(a, b TypeDiscriminatorCase) bool {
-		return a.JXTypes < b.JXTypes
+	slices.SortStableFunc(r, func(a, b TypeDiscriminatorCase) int {
+		return strings.Compare(a.JXTypes, b.JXTypes)
 	})
 	return r
 }

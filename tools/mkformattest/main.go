@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"os"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/slices"
@@ -50,8 +51,8 @@ func generateSpec() *ogen.Spec {
 		})
 
 		add("any", ogen.NewSchema())
-		slices.SortStableFunc(r, func(a, b *ogen.Property) bool {
-			return a.Name < b.Name
+		slices.SortStableFunc(r, func(a, b *ogen.Property) int {
+			return strings.Compare(a.Name, b.Name)
 		})
 		return r
 	}
@@ -89,8 +90,8 @@ func generateSpec() *ogen.Spec {
 			SetType(typ).
 			SetFormat(format).SetNullable(true))
 	})
-	slices.SortStableFunc(testSchemas, func(a, b *ogen.NamedSchema) bool {
-		return a.Name < b.Name
+	slices.SortStableFunc(testSchemas, func(a, b *ogen.NamedSchema) int {
+		return strings.Compare(a.Name, b.Name)
 	})
 	spec := &ogen.Spec{
 		OpenAPI: "3.1.0",
@@ -227,8 +228,8 @@ func generateSpec() *ogen.Spec {
 			add(name+"_array", s.AsArray())
 		})
 		p := op.Parameters
-		slices.SortStableFunc(p, func(a, b *ogen.Parameter) bool {
-			return a.Name < b.Name
+		slices.SortStableFunc(p, func(a, b *ogen.Parameter) int {
+			return strings.Compare(a.Name, b.Name)
 		})
 		spec.Paths["/test_query_parameter"] = &ogen.PathItem{
 			Post: op,

@@ -267,8 +267,8 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 }
 
 func sortOperations(ops []*ir.Operation) {
-	slices.SortStableFunc(ops, func(a, b *ir.Operation) bool {
-		return a.Name < b.Name
+	slices.SortStableFunc(ops, func(a, b *ir.Operation) int {
+		return strings.Compare(a.Name, b.Name)
 	})
 }
 

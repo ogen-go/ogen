@@ -337,8 +337,8 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				})
 			}
 		}
-		slices.SortStableFunc(sum.SumSpec.Mapping, func(a, b ir.SumSpecMap) bool {
-			return a.Key < b.Key
+		slices.SortStableFunc(sum.SumSpec.Mapping, func(a, b ir.SumSpecMap) int {
+			return strings.Compare(a.Key, b.Key)
 		})
 		return sum, nil
 	}
@@ -425,8 +425,8 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			Unique: xmaps.SortedKeys(f),
 		})
 	}
-	slices.SortStableFunc(variants, func(a, b sumVariant) bool {
-		return a.Name < b.Name
+	slices.SortStableFunc(variants, func(a, b sumVariant) int {
+		return strings.Compare(a.Name, b.Name)
 	})
 	for _, v := range variants {
 		for _, s := range sum.SumOf {

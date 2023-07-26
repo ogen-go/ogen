@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"testing"
 
 	"github.com/go-faster/yaml"
@@ -243,8 +244,8 @@ func TestComplicatedReference(t *testing.T) {
 			},
 		}
 	)
-	slices.SortFunc(spec.Operations, func(a, b *openapi.Operation) bool {
-		return a.OperationID < b.OperationID
+	slices.SortFunc(spec.Operations, func(a, b *openapi.Operation) int {
+		return strings.Compare(a.OperationID, b.OperationID)
 	})
 	compareJSON(t, &openapi.API{
 		Version: openapi.Version{
