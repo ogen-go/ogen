@@ -159,16 +159,16 @@ func chunkReports(reports []Report, context int, hcolor ColorFunc) []reportChunk
 	for _, src := range xmaps.SortedKeys(files) {
 		perFile := files[src]
 
-		slices.SortStableFunc(perFile, func(a, b Report) bool {
+		slices.SortStableFunc(perFile, func(a, b Report) int {
 			// report with a non-empty message takes precedence.
 			switch {
 			case a.Msg != "" && b.Msg == "":
-				return true
+				return -1
 			case b.Msg != "" && a.Msg == "":
-				return false
+				return 1
 			}
 
-			return a.Pos.Line < b.Pos.Line
+			return a.Pos.Line - b.Pos.Line
 		})
 
 		if len(perFile) == 0 {
@@ -208,9 +208,9 @@ func chunkReports(reports []Report, context int, hcolor ColorFunc) []reportChunk
 		}
 	}
 
-	slices.SortStableFunc(chunks, func(a, b reportChunk) bool {
+	slices.SortStableFunc(chunks, func(a, b reportChunk) int {
 		// chunk with a non-empty message takes precedence.
-		return a.Msg > b.Msg
+		return strings.Compare(b.Msg, a.Msg) // note the reverse order
 	})
 
 	return chunks

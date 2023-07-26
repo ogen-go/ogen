@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"runtime"
 	"runtime/pprof"
+	"strings"
 	"sync"
 	"text/template"
 
@@ -243,8 +244,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			customFormats = append(customFormats, format)
 		}
 	}
-	slices.SortStableFunc(customFormats, func(i, j ir.CustomFormat) bool {
-		return i.Name < j.Name
+	slices.SortStableFunc(customFormats, func(i, j ir.CustomFormat) int {
+		return strings.Compare(i.Name, j.Name)
 	})
 
 	cfg := TemplateConfig{

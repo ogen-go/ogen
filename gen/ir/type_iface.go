@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"strings"
 
 	"golang.org/x/exp/slices"
 
@@ -69,8 +70,8 @@ func (t *Type) ListImplementations() []*Type {
 	for impl := range t.Implementations {
 		result = append(result, impl)
 	}
-	slices.SortStableFunc(result, func(a, b *Type) bool {
-		return a.Name < b.Name
+	slices.SortStableFunc(result, func(a, b *Type) int {
+		return strings.Compare(a.Name, b.Name)
 	})
 	return result
 }

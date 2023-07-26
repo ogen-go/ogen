@@ -78,8 +78,8 @@ func (r *WebhookRoutes) Add(nr WebhookRoute) error {
 		return errors.Errorf("duplicate method %q", nr.Method)
 	}
 	r.Routes = append(r.Routes, nr)
-	slices.SortStableFunc(r.Routes, func(a, b WebhookRoute) bool {
-		return a.Method < b.Method
+	slices.SortStableFunc(r.Routes, func(a, b WebhookRoute) int {
+		return strings.Compare(a.Method, b.Method)
 	})
 	return nil
 }
