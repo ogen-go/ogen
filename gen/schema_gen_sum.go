@@ -175,15 +175,19 @@ func schemaName(k jsonschema.Ref) (string, bool) {
 	return path.Base(after), true
 }
 
-func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema, side bool) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
 	}
 
+	var regSchema *jsonschema.Schema
+	if !side {
+		regSchema = schema
+	}
 	sum := g.regtype(name, &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
-		Schema: schema,
+		Schema: regSchema,
 	})
 	{
 		variants, err := g.collectSumVariants(name, schema.AnyOf)
@@ -233,15 +237,19 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	return nil, &ErrNotImplemented{"complex anyOf"}
 }
 
-func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
 	}
 
+	var regSchema *jsonschema.Schema
+	if !side {
+		regSchema = schema
+	}
 	sum := g.regtype(name, &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
-		Schema: schema,
+		Schema: regSchema,
 	})
 	{
 		variants, err := g.collectSumVariants(name, schema.OneOf)
@@ -810,6 +818,28 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
 		}
+	}
+
+	// oneOf, anyOf
+	mergeSum := func(name string, s1, s2 []*jsonschema.Schema) ([]*jsonschema.Schema, error) {
+		switch {
+		case len(s1) > 0 && len(s2) > 0:
+			return nil, &ErrNotImplemented{Name: fmt.Sprintf("allOf with %s", name)}
+		case len(s1) > 0:
+			return s1, nil
+		case len(s2) > 0:
+			return s2, nil
+		default:
+			return nil, nil
+		}
+	}
+	r.OneOf, err = mergeSum("oneOf", s1.OneOf, s2.OneOf)
+	if err != nil {
+		return nil, errors.Wrap(err, "merge oneOf")
+	}
+	r.AnyOf, err = mergeSum("anyOf", s1.AnyOf, s2.AnyOf)
+	if err != nil {
+		return nil, errors.Wrap(err, "merge anyOf")
 	}
 
 	return r, nil

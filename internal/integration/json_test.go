@@ -1223,3 +1223,244 @@ func TestTupleJSON(t *testing.T) {
 		})
 	}
 }
+
+func TestInlineOneOf(t *testing.T) {
+	t.Run("InlineDiscriminator", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input     string
+			Expected  api.InlineDiscriminatorOneOf
+			ExpectErr bool
+		}{
+			{
+				`{"common": "object_field", "kind": "foo"}`,
+				api.InlineDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.InlineDiscriminatorOneOfSum{
+						Type:           api.InlineOneOfFooInlineDiscriminatorOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "foo", "foo": "sum_field"}`,
+				api.InlineDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.InlineDiscriminatorOneOfSum{
+						Type: api.InlineOneOfFooInlineDiscriminatorOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{
+							Foo: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "bar"}`,
+				api.InlineDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.InlineDiscriminatorOneOfSum{
+						Type:           api.InlineOneOfBarInlineDiscriminatorOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "bar", "bar": "sum_field"}`,
+				api.InlineDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.InlineDiscriminatorOneOfSum{
+						Type: api.InlineOneOfBarInlineDiscriminatorOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{
+							Bar: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{`{"common": "foo"}`, api.InlineDiscriminatorOneOf{}, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := &api.InlineDiscriminatorOneOf{}
+				err := r.Decode(jx.DecodeStr(tc.Input))
+				if tc.ExpectErr {
+					require.Error(t, err)
+					return
+				}
+				require.NoError(t, err)
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
+	t.Run("MergeDiscriminator", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input     string
+			Expected  api.MergeDiscriminatorOneOf
+			ExpectErr bool
+		}{
+			{
+				`{"common": "object_field", "kind": "foo"}`,
+				api.MergeDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.MergeDiscriminatorOneOfSum{
+						Type:           api.InlineOneOfFooMergeDiscriminatorOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "foo", "foo": "sum_field"}`,
+				api.MergeDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.MergeDiscriminatorOneOfSum{
+						Type: api.InlineOneOfFooMergeDiscriminatorOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{
+							Foo: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "bar"}`,
+				api.MergeDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.MergeDiscriminatorOneOfSum{
+						Type:           api.InlineOneOfBarMergeDiscriminatorOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "kind": "bar", "bar": "sum_field"}`,
+				api.MergeDiscriminatorOneOf{
+					Common: "object_field",
+					OneOf: api.MergeDiscriminatorOneOfSum{
+						Type: api.InlineOneOfBarMergeDiscriminatorOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{
+							Bar: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{`{"common": "foo"}`, api.MergeDiscriminatorOneOf{}, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := &api.MergeDiscriminatorOneOf{}
+				err := r.Decode(jx.DecodeStr(tc.Input))
+				if tc.ExpectErr {
+					require.Error(t, err)
+					return
+				}
+				require.NoError(t, err)
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
+	t.Run("InlineUniqueFields", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input     string
+			Expected  api.InlineUniqueFieldsOneOf
+			ExpectErr bool
+		}{
+			{
+				`{"common": "object_field", "foo": "sum_field"}`,
+				api.InlineUniqueFieldsOneOf{
+					Common: "object_field",
+					OneOf: api.InlineUniqueFieldsOneOfSum{
+						Type: api.InlineOneOfFooInlineUniqueFieldsOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{
+							Foo: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "bar": "sum_field"}`,
+				api.InlineUniqueFieldsOneOf{
+					Common: "object_field",
+					OneOf: api.InlineUniqueFieldsOneOfSum{
+						Type: api.InlineOneOfBarInlineUniqueFieldsOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{
+							Bar: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{`{"common": "foo"}`, api.InlineUniqueFieldsOneOf{}, true},
+			{`{"common": "foo", "kind": "foo"}`, api.InlineUniqueFieldsOneOf{}, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := &api.InlineUniqueFieldsOneOf{}
+				err := r.Decode(jx.DecodeStr(tc.Input))
+				if tc.ExpectErr {
+					require.Error(t, err)
+					return
+				}
+				require.NoError(t, err)
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
+	t.Run("MergeUniqueFields", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input     string
+			Expected  api.MergeUniqueFieldsOneOf
+			ExpectErr bool
+		}{
+			{
+				`{"common": "object_field", "foo": "sum_field"}`,
+				api.MergeUniqueFieldsOneOf{
+					Common: "object_field",
+					OneOf: api.MergeUniqueFieldsOneOfSum{
+						Type: api.InlineOneOfFooMergeUniqueFieldsOneOfSum,
+						InlineOneOfFoo: api.InlineOneOfFoo{
+							Foo: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{
+				`{"common": "object_field", "bar": "sum_field"}`,
+				api.MergeUniqueFieldsOneOf{
+					Common: "object_field",
+					OneOf: api.MergeUniqueFieldsOneOfSum{
+						Type: api.InlineOneOfBarMergeUniqueFieldsOneOfSum,
+						InlineOneOfBar: api.InlineOneOfBar{
+							Bar: api.NewOptString(`sum_field`),
+						},
+					},
+				},
+				false,
+			},
+			{`{"common": "foo"}`, api.MergeUniqueFieldsOneOf{}, true},
+			{`{"common": "foo", "kind": "foo"}`, api.MergeUniqueFieldsOneOf{}, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := &api.MergeUniqueFieldsOneOf{}
+				err := r.Decode(jx.DecodeStr(tc.Input))
+				if tc.ExpectErr {
+					require.Error(t, err)
+					return
+				}
+				require.NoError(t, err)
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
+}

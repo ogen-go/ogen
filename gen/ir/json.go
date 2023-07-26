@@ -96,6 +96,16 @@ func (j JSON) PatternProps() (fields []*Field) {
 	return fields
 }
 
+// SumProps return field of Type that should be encoded as inlined sum.
+func (j JSON) SumProps() (fields []*Field) {
+	for _, f := range j.t.Fields {
+		if f.Inline == InlineSum {
+			fields = append(fields, f)
+		}
+	}
+	return fields
+}
+
 // Format returns format name for handling json encoding or decoding.
 //
 // Mostly used for encoding or decoding of string formats, like `json.EncodeUUID`,

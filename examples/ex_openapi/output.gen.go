@@ -6065,6 +6065,15 @@ func (s CallbackOrReference) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s CallbackOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case CallbackCallbackOrReference:
+		s.Callback.encodeFields(e)
+	case ReferenceCallbackOrReference:
+		s.Reference.encodeFields(e)
+	}
+}
+
 // Decode decodes CallbackOrReference from json.
 func (s *CallbackOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -7398,6 +7407,15 @@ func (s ExampleOrReference) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s ExampleOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case ExampleExampleOrReference:
+		s.Example.encodeFields(e)
+	case ReferenceExampleOrReference:
+		s.Reference.encodeFields(e)
+	}
+}
+
 // Decode decodes ExampleOrReference from json.
 func (s *ExampleOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -8147,6 +8165,15 @@ func (s HeaderOrReference) Encode(e *jx.Encoder) {
 		s.Header.Encode(e)
 	case ReferenceHeaderOrReference:
 		s.Reference.Encode(e)
+	}
+}
+
+func (s HeaderOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case HeaderHeaderOrReference:
+		s.Header.encodeFields(e)
+	case ReferenceHeaderOrReference:
+		s.Reference.encodeFields(e)
 	}
 }
 
@@ -9058,6 +9085,15 @@ func (s LinkOrReference) Encode(e *jx.Encoder) {
 		s.Link.Encode(e)
 	case ReferenceLinkOrReference:
 		s.Reference.Encode(e)
+	}
+}
+
+func (s LinkOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case LinkLinkOrReference:
+		s.Link.encodeFields(e)
+	case ReferenceLinkOrReference:
+		s.Reference.encodeFields(e)
 	}
 }
 
@@ -12286,6 +12322,15 @@ func (s ParameterOrReference) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s ParameterOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case ParameterParameterOrReference:
+		s.Parameter.encodeFields(e)
+	case ReferenceParameterOrReference:
+		s.Reference.encodeFields(e)
+	}
+}
+
 // Decode decodes ParameterOrReference from json.
 func (s *ParameterOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -13598,6 +13643,15 @@ func (s RequestBodyOrReference) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s RequestBodyOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case RequestBodyRequestBodyOrReference:
+		s.RequestBody.encodeFields(e)
+	case ReferenceRequestBodyOrReference:
+		s.Reference.encodeFields(e)
+	}
+}
+
 // Decode decodes RequestBodyOrReference from json.
 func (s *RequestBodyOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -13922,6 +13976,15 @@ func (s ResponseOrReference) Encode(e *jx.Encoder) {
 		s.Response.Encode(e)
 	case ReferenceResponseOrReference:
 		s.Reference.Encode(e)
+	}
+}
+
+func (s ResponseOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case ResponseResponseOrReference:
+		s.Response.encodeFields(e)
+	case ReferenceResponseOrReference:
+		s.Reference.encodeFields(e)
 	}
 }
 
@@ -15121,6 +15184,15 @@ func (s SchemaOrReference) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s SchemaOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case SchemaSchemaOrReference:
+		s.Schema.encodeFields(e)
+	case ReferenceSchemaOrReference:
+		s.Reference.encodeFields(e)
+	}
+}
+
 // Decode decodes SchemaOrReference from json.
 func (s *SchemaOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -16005,6 +16077,15 @@ func (s SecuritySchemeOrReference) Encode(e *jx.Encoder) {
 		s.SecurityScheme.Encode(e)
 	case ReferenceSecuritySchemeOrReference:
 		s.Reference.Encode(e)
+	}
+}
+
+func (s SecuritySchemeOrReference) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case SecuritySchemeSecuritySchemeOrReference:
+		s.SecurityScheme.encodeFields(e)
+	case ReferenceSecuritySchemeOrReference:
+		s.Reference.encodeFields(e)
 	}
 }
 

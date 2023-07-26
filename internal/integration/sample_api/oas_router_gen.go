@@ -630,6 +630,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'I': // Prefix: "InlineOneof"
+					if l := len("InlineOneof"); len(elem) >= l && elem[0:l] == "InlineOneof" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestInlineOneofRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				case 'N': // Prefix: "NullableOneofs"
 					if l := len("NullableOneofs"); len(elem) >= l && elem[0:l] == "NullableOneofs" {
 						elem = elem[l:]
@@ -1425,6 +1443,27 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = "TestFloatValidation"
 							r.operationID = "testFloatValidation"
 							r.pathPattern = "/testFloatValidation"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'I': // Prefix: "InlineOneof"
+					if l := len("InlineOneof"); len(elem) >= l && elem[0:l] == "InlineOneof" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: TestInlineOneof
+							r.name = "TestInlineOneof"
+							r.operationID = "testInlineOneof"
+							r.pathPattern = "/testInlineOneof"
 							r.args = args
 							r.count = 0
 							return r, true

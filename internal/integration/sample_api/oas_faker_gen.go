@@ -280,6 +280,72 @@ func (s *ID) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *InlineDiscriminatorOneOf) SetFake() {
+	{
+		{
+			s.Common = "string"
+		}
+	}
+	{
+		{
+			s.OneOf.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *InlineDiscriminatorOneOfSum) SetFake() {
+	var variant InlineOneOfBar
+
+	{
+		variant.SetFake()
+	}
+	s.SetInlineOneOfBar(variant)
+}
+
+// SetFake set fake values.
+func (s *InlineOneOfBar) SetFake() {
+	{
+		{
+			s.Bar.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *InlineOneOfFoo) SetFake() {
+	{
+		{
+			s.Foo.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *InlineUniqueFieldsOneOf) SetFake() {
+	{
+		{
+			s.Common = "string"
+		}
+	}
+	{
+		{
+			s.OneOf.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *InlineUniqueFieldsOneOfSum) SetFake() {
+	var variant InlineOneOfFoo
+
+	{
+		variant.SetFake()
+	}
+	s.SetInlineOneOfFoo(variant)
+}
+
+// SetFake set fake values.
 func (s *Issue143) SetFake() {
 	var variant Issue1430
 
@@ -476,6 +542,54 @@ func (s *MaxPropertiesTest) SetFake() {
 			s.OptionalA.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *MergeDiscriminatorOneOf) SetFake() {
+	{
+		{
+			s.Common = "string"
+		}
+	}
+	{
+		{
+			s.OneOf.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *MergeDiscriminatorOneOfSum) SetFake() {
+	var variant InlineOneOfBar
+
+	{
+		variant.SetFake()
+	}
+	s.SetInlineOneOfBar(variant)
+}
+
+// SetFake set fake values.
+func (s *MergeUniqueFieldsOneOf) SetFake() {
+	{
+		{
+			s.Common = "string"
+		}
+	}
+	{
+		{
+			s.OneOf.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *MergeUniqueFieldsOneOfSum) SetFake() {
+	var variant InlineOneOfFoo
+
+	{
+		variant.SetFake()
+	}
+	s.SetInlineOneOfFoo(variant)
 }
 
 // SetFake set fake values.
@@ -876,6 +990,24 @@ func (s *OptIPv6) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptInlineDiscriminatorOneOf) SetFake() {
+	var elem InlineDiscriminatorOneOf
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptInlineUniqueFieldsOneOf) SetFake() {
+	var elem InlineUniqueFieldsOneOf
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptInt) SetFake() {
 	var elem int
 	{
@@ -923,6 +1055,24 @@ func (s *OptMapWithPropertiesInlinedSubMap) SetFake() {
 // SetFake set fake values.
 func (s *OptMaxPropertiesTest) SetFake() {
 	var elem MaxPropertiesTest
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptMergeDiscriminatorOneOf) SetFake() {
+	var elem MergeDiscriminatorOneOf
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptMergeUniqueFieldsOneOf) SetFake() {
+	var elem MergeUniqueFieldsOneOf
 	{
 		elem.SetFake()
 	}
@@ -1413,6 +1563,30 @@ func (s *TestFloatValidation) SetFake() {
 	{
 		{
 			s.MultipleOf = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *TestInlineOneOf) SetFake() {
+	{
+		{
+			s.InlineDiscriminator.SetFake()
+		}
+	}
+	{
+		{
+			s.MergeDiscriminator.SetFake()
+		}
+	}
+	{
+		{
+			s.InlineUniqueFields.SetFake()
+		}
+	}
+	{
+		{
+			s.MergeUniqueFields.SetFake()
 		}
 	}
 }

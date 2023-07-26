@@ -167976,6 +167976,15 @@ func (s UsersGetAuthenticatedOK) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s UsersGetAuthenticatedOK) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		s.PrivateUser.encodeFields(e)
+	case PublicUserUsersGetAuthenticatedOK:
+		s.PublicUser.encodeFields(e)
+	}
+}
+
 // Decode decodes UsersGetAuthenticatedOK from json.
 func (s *UsersGetAuthenticatedOK) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -168096,6 +168105,15 @@ func (s UsersGetByUsernameOK) Encode(e *jx.Encoder) {
 		s.PrivateUser.Encode(e)
 	case PublicUserUsersGetByUsernameOK:
 		s.PublicUser.Encode(e)
+	}
+}
+
+func (s UsersGetByUsernameOK) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		s.PrivateUser.encodeFields(e)
+	case PublicUserUsersGetByUsernameOK:
+		s.PublicUser.encodeFields(e)
 	}
 }
 

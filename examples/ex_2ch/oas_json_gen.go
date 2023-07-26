@@ -3152,6 +3152,15 @@ func (s UserPostingPostOK) Encode(e *jx.Encoder) {
 	}
 }
 
+func (s UserPostingPostOK) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case PostingNewThreadUserPostingPostOK:
+		s.PostingNewThread.encodeFields(e)
+	case PostingNewPostUserPostingPostOK:
+		s.PostingNewPost.encodeFields(e)
+	}
+}
+
 // Decode decodes UserPostingPostOK from json.
 func (s *UserPostingPostOK) Decode(d *jx.Decoder) error {
 	if s == nil {

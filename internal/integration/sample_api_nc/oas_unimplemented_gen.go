@@ -212,6 +212,13 @@ func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFl
 	return ht.ErrNotImplemented
 }
 
+// TestInlineOneof implements testInlineOneof operation.
+//
+// GET /testInlineOneof
+func (UnimplementedHandler) TestInlineOneof(ctx context.Context) (r *TestInlineOneOf, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestNullableOneofs implements testNullableOneofs operation.
 //
 // GET /testNullableOneofs

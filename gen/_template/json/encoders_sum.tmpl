@@ -3,16 +3,9 @@
 // Encode encodes {{ $.Name }} as json.
 func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	{{- if $d.Discriminator -}}
-	switch s.Type {
-	{{- range $m := $.SumSpec.Mapping }}
-	case {{ $m.Type.Name }}{{ $.Name }}:
-		e.ObjStart()
-		e.FieldStart({{ quote $.SumSpec.Discriminator }})
-		e.Str({{ quote $m.Key }})
-		s.{{ $m.Type.Name }}.encodeFields(e)
-		e.ObjEnd()
-	{{- end }}
-	}
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
 	{{- else }}
 	switch s.Type {
 	{{- range $s := $.SumOf }}
@@ -22,6 +15,30 @@ func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	}
     {{- end }}
 }
+
+{{ if or $d.Discriminator $d.Fields -}}
+func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
+	{{- if $d.Discriminator -}}
+		switch s.Type {
+		{{- range $m := $.SumSpec.Mapping }}
+		case {{ $m.Type.Name }}{{ $.Name }}:
+			e.FieldStart({{ quote $.SumSpec.Discriminator }})
+			e.Str({{ quote $m.Key }})
+			s.{{ $m.Type.Name }}.encodeFields(e)
+		{{- end }}
+		}
+	{{- else if $d.Fields }}
+		switch s.Type {
+		{{- range $s := $.SumOf }}
+		case {{ $s.Name }}{{ $.Name }}:
+			s.{{ $s.Name }}.encodeFields(e)
+		{{- end }}
+		}
+	{{- else }}
+		{{ errorf "unexpected sum type %s" $d }}
+	{{- end }}
+}
+{{- end }}
 
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
