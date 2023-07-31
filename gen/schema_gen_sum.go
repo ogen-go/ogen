@@ -275,7 +275,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 					vschema = schema.OneOf[i]
 				}
 
-				if vschema == v {
+				if vschema.Ref == v.Ref {
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
