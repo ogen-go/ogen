@@ -26,6 +26,13 @@ go get -d github.com/ogen-go/ogen
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target target/dir -package api --clean schema.json
 ```
 
+or using container:
+```shell
+docker run --rm \
+  --volume ".:/workspace" \
+  ghcr.io/ogen-go/ogen:latest --target workspace/petstore --clean workspace/petstore.yml
+```
+
 # Features
 
 - No reflection or `interface{}`
