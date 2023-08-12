@@ -186,7 +186,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 			}
 			return false
 		}(); !ok {
-			return res, errors.New("no security requirement satisfied")
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
 		}
 	}
 
@@ -311,7 +311,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 			}
 			return false
 		}(); !ok {
-			return res, errors.New("no security requirement satisfied")
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
 		}
 	}
 
@@ -414,7 +414,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 			}
 			return false
 		}(); !ok {
-			return res, errors.New("no security requirement satisfied")
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
 		}
 	}
 

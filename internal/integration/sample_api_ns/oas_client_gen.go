@@ -2116,7 +2116,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 			}
 			return false
 		}(); !ok {
-			return res, errors.New("no security requirement satisfied")
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
 		}
 	}
 

@@ -249,7 +249,7 @@ func TestSecurityClientCheck(t *testing.T) {
 
 					err = f(client, context.Background())
 					if tt.wantErr {
-						require.Error(t, err)
+						require.ErrorIs(t, err, ogenerrors.ErrSecurityRequirementIsNotSatisfied)
 						return
 					}
 					require.NoError(t, err)
