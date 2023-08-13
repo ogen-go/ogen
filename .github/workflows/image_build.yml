@@ -7,6 +7,7 @@ on:
 
 jobs:
   docker:
+    permissions: write-all
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -27,11 +28,8 @@ jobs:
 
       - name: Build and push
         run: |
-          IMAGE_NAME=$GITHUB_REPOSITORY:$GITHUB_REF_NAME
-          VERSION=$(git describe --tags --abbrev=0)
-
           docker buildx build . \
           --platform linux/amd64,linux/arm64 \
-          --tag ghcr.io/$IMAGE_NAME:$VERSION \
-          --tag ghcr.io/$IMAGE_NAME:latest \
+          --tag ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME \
+          --tag ghcr.io/$GITHUB_REPOSITORY:latest \
           --push
