@@ -13,7 +13,7 @@ import (
 // MultipartFile is multipart form file.
 type MultipartFile struct {
 	Name   string
-	File   io.Reader
+	File   io.ReadSeeker
 	Header textproto.MIMEHeader
 }
 
