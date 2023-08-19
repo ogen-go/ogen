@@ -7,6 +7,12 @@
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
     Operations
+{{- if $.Error }}
+	// NewError creates {{ $.ErrorGoType }} from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
+{{- end }}
 }
 
 // Server implements http server based on OpenAPI v3 specification and

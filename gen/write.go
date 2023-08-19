@@ -314,6 +314,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"response_decoders", genClient},
 		{"validators", g.hasValidators()},
 		{"middleware", genServer},
+		{"operations", genServer || genClient},
 		{"server", genServer},
 		{"client", genClient},
 		{"cfg", true},

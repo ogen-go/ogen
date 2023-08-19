@@ -24,6 +24,9 @@ type Client struct {
 	serverURL *url.URL
 	baseClient
 }
+
+var _ Operations = &Client{}
+
 type errorHandler interface {
 	NewError(ctx context.Context, err error) *ErrorStatusCode
 }

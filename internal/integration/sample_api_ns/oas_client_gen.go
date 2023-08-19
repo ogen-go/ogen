@@ -29,6 +29,8 @@ type Client struct {
 	baseClient
 }
 
+var _ Operations = &Client{}
+
 func trimTrailingSlashes(u *url.URL) {
 	u.Path = strings.TrimRight(u.Path, "/")
 	u.RawPath = strings.TrimRight(u.RawPath, "/")

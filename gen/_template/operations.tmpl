@@ -4,7 +4,7 @@
 {{ template "header" $ }}
 
 {{- with $ops := $.Operations }}
-// Operations defines contract for the operations described by OpenAPI v3 specification.
+// Operations defines a contract for the operations described by OpenAPI v3 specification.
 type Operations interface {
 {{- range $op := $ops }}
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
@@ -12,12 +12,6 @@ type Operations interface {
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
-{{- end }}
-{{- if $.Error }}
-	// NewError creates {{ $.ErrorGoType }} from error returned by handler.
-	//
-	// Used for common default response.
-	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
 {{- end }}
 }
 {{- end }}
