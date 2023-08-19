@@ -8,12 +8,7 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// ProbeLiveness implements probeLiveness operation.
-	//
-	// Liveness probe for kubernetes.
-	//
-	// GET /healthz
-	ProbeLiveness(ctx context.Context) (string, error)
+	Operations
 	// NewError creates *ErrorStatusCode from error returned by handler.
 	//
 	// Used for common default response.

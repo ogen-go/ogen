@@ -2,36 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// AllRequestBodies implements allRequestBodies operation.
-	//
-	// POST /allRequestBodies
-	AllRequestBodies(ctx context.Context, req AllRequestBodiesReq) (AllRequestBodiesOK, error)
-	// AllRequestBodiesOptional implements allRequestBodiesOptional operation.
-	//
-	// POST /allRequestBodiesOptional
-	AllRequestBodiesOptional(ctx context.Context, req AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error)
-	// Base64Request implements base64Request operation.
-	//
-	// POST /base64Request
-	Base64Request(ctx context.Context, req Base64RequestReq) (Base64RequestOK, error)
-	// MaskContentType implements maskContentType operation.
-	//
-	// POST /maskContentType
-	MaskContentType(ctx context.Context, req *MaskContentTypeReqWithContentType) (*MaskResponse, error)
-	// MaskContentTypeOptional implements maskContentTypeOptional operation.
-	//
-	// POST /maskContentTypeOptional
-	MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
-	// StreamJSON implements streamJSON operation.
-	//
-	// POST /streamJSON
-	StreamJSON(ctx context.Context, req []float64) (float64, error)
+	Operations
 }
 
 // Server implements http server based on OpenAPI v3 specification and

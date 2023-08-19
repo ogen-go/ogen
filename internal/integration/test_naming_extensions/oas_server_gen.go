@@ -2,16 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// HealthzGet implements GET /healthz operation.
-	//
-	// GET /healthz
-	HealthzGet(ctx context.Context) (*Person, error)
+	Operations
 }
 
 // Server implements http server based on OpenAPI v3 specification and

@@ -8,18 +8,7 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// DataCreate implements dataCreate operation.
-	//
-	// Creates data.
-	//
-	// POST /data
-	DataCreate(ctx context.Context, req OptData) (*Data, error)
-	// DataGet implements dataGet operation.
-	//
-	// Retrieve data.
-	//
-	// GET /data
-	DataGet(ctx context.Context) (*Data, error)
+	Operations
 	// NewError creates *ErrorStatusCode from error returned by handler.
 	//
 	// Used for common default response.

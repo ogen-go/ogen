@@ -44,6 +44,7 @@ type Client struct {
 	baseClient
 }
 
+var _ Operations = &Client{}
 var _ Handler = struct {
 	*Client
 }{}
