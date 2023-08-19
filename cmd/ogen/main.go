@@ -154,6 +154,7 @@ func run() error {
 		noWebhookClient   = set.Bool("no-webhook-client", false, "Disables webhook client generation")
 		noWebhookServer   = set.Bool("no-webhook-server", false, "Disables webhook server generation")
 		expandSpec        = set.String("expand-spec", "", "Path to file to generate expanded spec")
+		skipDefaultResp   = set.Bool("skip-default-responses", false, "Do not generate types for default responses")
 		// Debug options.
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented")
@@ -273,6 +274,7 @@ func run() error {
 		ConvenientErrors:     convenientErrors,
 		ContentTypeAliases:   ctAliases,
 		ExpandSpec:           *expandSpec,
+		SkipDefaultResp:      *skipDefaultResp,
 		Logger:               logger,
 	}
 
