@@ -2,20 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// EventPost implements POST /event operation.
-	//
-	// POST /event
-	EventPost(ctx context.Context, req any) (any, error)
-	// PhoneGet implements GET /phone operation.
-	//
-	// GET /phone
-	PhoneGet(ctx context.Context, req *User, params PhoneGetParams) (*User, error)
+	Operations
 }
 
 // Server implements http server based on OpenAPI v3 specification and

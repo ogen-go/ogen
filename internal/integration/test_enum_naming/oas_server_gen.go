@@ -2,18 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// ProbeLiveness implements probeLiveness operation.
-	//
-	// Liveness probe for kubernetes.
-	//
-	// GET /healthz
-	ProbeLiveness(ctx context.Context) (*ProbeLivenessOK, error)
+	Operations
 }
 
 // Server implements http server based on OpenAPI v3 specification and

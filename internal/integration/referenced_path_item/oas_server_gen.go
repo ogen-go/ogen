@@ -2,16 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// FooGet implements GET /foo operation.
-	//
-	// GET /foo
-	FooGet(ctx context.Context) (string, error)
+	Operations
 }
 
 // Server implements http server based on OpenAPI v3 specification and
