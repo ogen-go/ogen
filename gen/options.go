@@ -82,6 +82,9 @@ type Options struct {
 	// ExpandSpec is a path to expanded spec.
 	ExpandSpec string
 
+	// ShouldSkipDefaultResp whether to skip default responses.
+	SkipDefaultResp bool
+
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.
