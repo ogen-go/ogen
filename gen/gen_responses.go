@@ -54,7 +54,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 		}
 	}
 
-	if def := responses.Default; def != nil && g.errType == nil {
+	if def := responses.Default; def != nil && g.errType == nil && !g.opt.SkipDefaultResp {
 		var (
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
