@@ -141,19 +141,20 @@ func run() error {
 
 	var (
 		// Generator options.
-		targetDir         = set.String("target", "api", "Path to target dir")
-		packageName       = set.String("package", "api", "Target package name")
-		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
-		clean             = set.Bool("clean", false, "Clean generated files before generation")
-		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
-		allowRemote       = set.Bool("allow-remote", false, "Enables remote references resolving")
-		skipTestsRegex    = set.String("skip-tests", "", "Skip tests matched by regex")
-		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
-		noClient          = set.Bool("no-client", false, "Disables client generation")
-		noServer          = set.Bool("no-server", false, "Disables server generation")
-		noWebhookClient   = set.Bool("no-webhook-client", false, "Disables webhook client generation")
-		noWebhookServer   = set.Bool("no-webhook-server", false, "Disables webhook server generation")
-		expandSpec        = set.String("expand-spec", "", "Path to file to generate expanded spec")
+		targetDir          = set.String("target", "api", "Path to target dir")
+		packageName        = set.String("package", "api", "Target package name")
+		inferTypes         = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
+		clean              = set.Bool("clean", false, "Clean generated files before generation")
+		generateTests      = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
+		allowRemote        = set.Bool("allow-remote", false, "Enables remote references resolving")
+		skipTestsRegex     = set.String("skip-tests", "", "Skip tests matched by regex")
+		skipUnimplemented  = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
+		noClient           = set.Bool("no-client", false, "Disables client generation")
+		noServer           = set.Bool("no-server", false, "Disables server generation")
+		noWebhookClient    = set.Bool("no-webhook-client", false, "Disables webhook client generation")
+		noWebhookServer    = set.Bool("no-webhook-server", false, "Disables webhook server generation")
+		expandSpec         = set.String("expand-spec", "", "Path to file to generate expanded spec")
+		optionalIsNullable = set.Bool("optional-is-nullable", false, "Whether optional fields are nullable")
 		// Debug options.
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented")
@@ -273,6 +274,7 @@ func run() error {
 		ConvenientErrors:     convenientErrors,
 		ContentTypeAliases:   ctAliases,
 		ExpandSpec:           *expandSpec,
+		OptionalIsNullable:   *optionalIsNullable,
 		Logger:               logger,
 	}
 
