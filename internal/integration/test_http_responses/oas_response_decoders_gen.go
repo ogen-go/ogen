@@ -40,7 +40,11 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
@@ -300,7 +304,11 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, _ error) 
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes, _ error) {
@@ -564,7 +572,11 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, _ error) {
@@ -614,7 +626,11 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 		}
 		return res, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatternCodeRes, _ error) {
@@ -703,7 +719,11 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 		}
 		return res, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGenericResponsesRes, _ error) {
@@ -779,7 +799,11 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res OctetStreamBinaryStringSchemaOK, _ error) {
@@ -804,7 +828,11 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res Octet
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamEmptySchemaOK, _ error) {
@@ -829,7 +857,11 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK, _ error) {
@@ -909,7 +941,11 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) {
@@ -976,7 +1012,11 @@ func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPlainBinaryStringSchemaOK, _ error) {
@@ -1001,5 +1041,9 @@ func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPla
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }

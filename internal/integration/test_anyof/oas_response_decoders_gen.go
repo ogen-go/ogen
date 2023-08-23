@@ -52,7 +52,11 @@ func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, _ error) {
@@ -93,7 +97,11 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, _ error) {
@@ -134,5 +142,9 @@ func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }

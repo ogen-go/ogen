@@ -64,7 +64,11 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		}
 		return res, errors.Wrap(defRes, "error")
 	{{- else }}
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		err := validate.UnexpectedStatusCode(resp.StatusCode)
+		if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+			err = errors.Wrapf(err, "request failed: %s", string(buf))
+		}
+		return res, err
 	{{- end }}
 }
 {{ end }}

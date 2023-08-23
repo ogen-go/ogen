@@ -3,7 +3,10 @@
 package api
 
 import (
+	"io"
 	"net/http"
+
+	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/validate"
 )
@@ -14,7 +17,11 @@ func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityO
 		// Code 200.
 		return &DisjointSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurityOK, _ error) {
@@ -23,7 +30,11 @@ func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurit
 		// Code 200.
 		return &IntersectSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, _ error) {
@@ -32,5 +43,9 @@ func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityO
 		// Code 200.
 		return &OptionalSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }

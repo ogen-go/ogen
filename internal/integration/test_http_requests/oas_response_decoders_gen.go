@@ -38,7 +38,11 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequestBodiesOptionalOK, _ error) {
@@ -63,7 +67,11 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ error) {
@@ -88,7 +96,11 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ error) {
@@ -129,7 +141,11 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskResponse, _ error) {
@@ -170,7 +186,11 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskRespon
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
@@ -213,5 +233,9 @@ func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }

@@ -55,7 +55,11 @@ func decodeDataGetFormatResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeDefaultTestResponse(resp *http.Response) (res int32, _ error) {
@@ -98,11 +102,19 @@ func decodeDefaultTestResponse(resp *http.Response) (res int32, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeErrorGetResponse(resp *http.Response) (res ErrorGetRes, _ error) {
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, _ error) {
@@ -146,7 +158,11 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, _ error) {
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, _ error) {
@@ -190,11 +206,19 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, _ error) 
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutRes, _ error) {
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAdditionalPropertiesTest, _ error) {
@@ -235,11 +259,19 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAddit
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeNullableDefaultResponseResponse(resp *http.Response) (res NullableDefaultResponseRes, _ error) {
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeOneofBugResponse(resp *http.Response) (res *OneofBugOK, _ error) {
@@ -248,7 +280,11 @@ func decodeOneofBugResponse(resp *http.Response) (res *OneofBugOK, _ error) {
 		// Code 200.
 		return &OneofBugOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecursiveMap, _ error) {
@@ -289,7 +325,11 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecur
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetCreateResponse(resp *http.Response) (res *Pet, _ error) {
@@ -330,7 +370,11 @@ func decodePetCreateResponse(resp *http.Response) (res *Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, _ error) {
@@ -381,7 +425,11 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetGetResponse(resp *http.Response) (res *Pet, _ error) {
@@ -422,7 +470,11 @@ func decodePetGetResponse(resp *http.Response) (res *Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRes, _ error) {
@@ -450,7 +502,11 @@ func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRe
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNameRes, _ error) {
@@ -478,7 +534,11 @@ func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNa
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetGetByNameResponse(resp *http.Response) (res *Pet, _ error) {
@@ -519,7 +579,11 @@ func decodePetGetByNameResponse(resp *http.Response) (res *Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetNameByIDResponse(resp *http.Response) (res string, _ error) {
@@ -562,15 +626,27 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNameAliasPostRes, _ error) {
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetUpdateNamePostResponse(resp *http.Response) (res PetUpdateNamePostRes, _ error) {
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodePetUploadAvatarByIDResponse(resp *http.Response) (res PetUploadAvatarByIDRes, _ error) {
@@ -582,7 +658,11 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response) (res PetUploadAvatar
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, _ error) {
@@ -623,7 +703,11 @@ func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, _ error) {
@@ -664,7 +748,11 @@ func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeSecurityTestResponse(resp *http.Response) (res string, _ error) {
@@ -707,7 +795,11 @@ func decodeSecurityTestResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, _ error) {
@@ -748,7 +840,11 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValidationOK, _ error) {
@@ -757,7 +853,11 @@ func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValid
 		// Code 200.
 		return &TestFloatValidationOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestInlineOneofResponse(resp *http.Response) (res *TestInlineOneOf, _ error) {
@@ -798,7 +898,11 @@ func decodeTestInlineOneofResponse(resp *http.Response) (res *TestInlineOneOf, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneofsRes, _ error) {
@@ -909,7 +1013,11 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestTupleResponse(resp *http.Response) (res *TupleTest, _ error) {
@@ -950,7 +1058,11 @@ func decodeTestTupleResponse(resp *http.Response) (res *TupleTest, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestTupleNamedResponse(resp *http.Response) (res *TupleNamedTest, _ error) {
@@ -991,7 +1103,11 @@ func decodeTestTupleNamedResponse(resp *http.Response) (res *TupleNamedTest, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeTestUniqueItemsResponse(resp *http.Response) (res *UniqueItemsTest, _ error) {
@@ -1032,5 +1148,9 @@ func decodeTestUniqueItemsResponse(resp *http.Response) (res *UniqueItemsTest, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }

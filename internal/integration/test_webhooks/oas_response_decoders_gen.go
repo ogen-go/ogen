@@ -135,7 +135,11 @@ func decodeStatusWebhookResponse(resp *http.Response) (res *StatusWebhookOK, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, _ error) {
