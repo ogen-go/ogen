@@ -144,7 +144,7 @@ func (g *Generator) generateFormContent(
 			return nil
 		}
 	}
-	t, err := g.generateSchema(ctx, typeName, media.Schema, optional, &override)
+	t, err := g.generateSchema(ctx, typeName, media.Schema, optional, &override, g.opt.OptionalIsNullable)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
@@ -266,7 +266,7 @@ func (g *Generator) generateContents(
 
 			switch encoding {
 			case ir.EncodingJSON:
-				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
+				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil, g.opt.OptionalIsNullable)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}

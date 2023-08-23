@@ -29,6 +29,8 @@ type schemaGen struct {
 	depthLimit    int
 	depthCount    int
 
+	optionalIsNullable bool
+
 	log *zap.Logger
 }
 
@@ -109,7 +111,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bo
 		return nil, err
 	}
 
-	nullable := schema != nil && schema.Nullable
+	nullable := schema != nil && (schema.Nullable || (optional && g.optionalIsNullable))
 	t, err = boxType(t, ir.GenericVariant{
 		Optional: optional,
 		Nullable: nullable,

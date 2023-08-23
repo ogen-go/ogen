@@ -6,6 +6,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --no-server             --target sample_api_ns   ../../_testdata/positive/sample.json
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --no-client             --target sample_api_nc   ../../_testdata/positive/sample.json
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --no-server --no-client --target sample_api_nsnc ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --optional-is-nullable  --target sample_api_oin  ../../_testdata/positive/sample.json
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --skip-default-responses --target sample_api_sdr ../../_testdata/positive/sample.json
 
 //go:generate go run ../../cmd/ogen -v --clean --convenient-errors --target sample_err ../../_testdata/positive/convenient_errors/errors.json

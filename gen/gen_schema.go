@@ -53,6 +53,7 @@ func (g *Generator) generateSchema(
 	schema *jsonschema.Schema,
 	optional bool,
 	override *generateSchemaOverride,
+	optionalIsNullable bool,
 ) (_ *ir.Type, rerr error) {
 	defer handleSchemaDepth(schema, &rerr)
 
@@ -67,6 +68,7 @@ func (g *Generator) generateSchema(
 	}
 
 	gen := newSchemaGen(lookup)
+	gen.optionalIsNullable = optionalIsNullable
 	if o := override; o != nil {
 		if n := o.nameRef; n != nil {
 			prev := gen.nameRef
@@ -109,6 +111,8 @@ type GenerateSchemaOptions struct {
 	PkgName string
 	// TrimPrefix is a ref name prefixes to trim. Defaults to []string{"#/definitions/", "#/$defs/"}.
 	TrimPrefix []string
+	// Treat optional fields as nullable. Defaults to false.
+	OptionalIsNullable bool
 	// Logger to use.
 	Logger *zap.Logger
 }
@@ -149,6 +153,7 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	gen := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
 		return nil, false
 	})
+	gen.optionalIsNullable = opts.OptionalIsNullable
 	gen.log = opts.Logger.Named("schemagen")
 
 	{
