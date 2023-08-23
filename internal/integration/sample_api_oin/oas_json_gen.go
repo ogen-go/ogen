@@ -5783,6 +5783,14 @@ func (o *OptNilAnyArray) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	o.Value = make([]jx.Raw, 0)
@@ -5842,6 +5850,14 @@ func (o *OptNilAnyTest) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -5889,6 +5905,14 @@ func (o *OptNilAnyTestAnyMap) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -5941,6 +5965,14 @@ func (o *OptNilArrayTest) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -5988,6 +6020,14 @@ func (o *OptNilByte) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6041,6 +6081,14 @@ func (o *OptNilData) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6088,6 +6136,14 @@ func (o *OptNilDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6141,6 +6197,14 @@ func (o *OptNilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Ti
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	v, err := format(d)
@@ -6192,6 +6256,14 @@ func (o *OptNilDefaultTestEnum) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6239,6 +6311,14 @@ func (o *OptNilDuration) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6292,6 +6372,14 @@ func (o *OptNilFloat64) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	v, err := d.Float64()
@@ -6343,6 +6431,14 @@ func (o *OptNilID) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6390,6 +6486,14 @@ func (o *OptNilIP) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6443,6 +6547,14 @@ func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	v, err := json.DecodeIPv4(d)
@@ -6492,6 +6604,14 @@ func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6545,6 +6665,14 @@ func (o *OptNilInlineDiscriminatorOneOf) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6594,6 +6722,14 @@ func (o *OptNilInlineUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6641,6 +6777,14 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6694,6 +6838,14 @@ func (o *OptNilInt32) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	v, err := d.Int32()
@@ -6745,6 +6897,14 @@ func (o *OptNilIssue943) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6794,6 +6954,14 @@ func (o *OptNilMapWithProperties) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6841,6 +7009,14 @@ func (o *OptNilMapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6893,6 +7069,14 @@ func (o *OptNilMaxPropertiesTest) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -6940,6 +7124,14 @@ func (o *OptNilMergeDiscriminatorOneOf) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -6991,6 +7183,14 @@ func (o *OptNilMergeUniqueFieldsOneOf) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -7038,6 +7238,14 @@ func (o *OptNilNullableEnums) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7089,6 +7297,14 @@ func (o *OptNilOneOfMappingReference) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -7136,6 +7352,14 @@ func (o *OptNilOneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7187,6 +7411,14 @@ func (o *OptNilOnePropertyObject) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -7234,6 +7466,14 @@ func (o *OptNilOnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7284,6 +7524,14 @@ func (o *OptNilPet) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7337,6 +7585,14 @@ func (o *OptNilPetArray) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7396,6 +7652,14 @@ func (o *OptNilPetName) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -7445,6 +7709,14 @@ func (o *OptNilPetType) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	if err := o.Value.Decode(d); err != nil {
@@ -7492,6 +7764,14 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7547,6 +7827,14 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7616,6 +7904,14 @@ func (o *OptNilStringArrayArray) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	o.Value = make([][]string, 0)
@@ -7683,6 +7979,14 @@ func (o *OptNilStringMap) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	o.Value = make(StringMap)
@@ -7733,6 +8037,14 @@ func (o *OptNilStringStringMap) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	o.Value = make(StringStringMap)
@@ -7781,6 +8093,14 @@ func (o *OptNilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7834,6 +8154,14 @@ func (o *OptNilURI) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	v, err := json.DecodeURI(d)
@@ -7883,6 +8211,14 @@ func (o *OptNilUUID) Decode(d *jx.Decoder) error {
 		o.Value = v
 		o.Set = true
 		o.Null = true
+		return nil
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
 		return nil
 	}
 	o.Set = true
@@ -7936,6 +8272,14 @@ func (o *OptNilValidationStringMap) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	o.Null = false
 	o.Value = make(ValidationStringMap)
@@ -7971,6 +8315,14 @@ func (o *OptNullValue) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullValue to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {
 		return err
@@ -8003,6 +8355,14 @@ func (o OptOneOfMappingReferenceBData) Encode(e *jx.Encoder) {
 func (o *OptOneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOneOfMappingReferenceBData to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
 	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {
@@ -8037,6 +8397,14 @@ func (o *OptOnlyEmptyObject) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOnlyEmptyObject to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {
 		return err
@@ -8070,6 +8438,14 @@ func (o *OptPet) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPet to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {
 		return err
@@ -8102,6 +8478,14 @@ func (o OptRecursiveMap) Encode(e *jx.Encoder) {
 func (o *OptRecursiveMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRecursiveMap to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
 	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {

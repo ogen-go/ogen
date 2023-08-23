@@ -423,6 +423,14 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBool to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	v, err := d.Bool()
 	if err != nil {
@@ -458,6 +466,14 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	v, err := d.Int()
 	if err != nil {
@@ -492,6 +508,14 @@ func (o OptString) Encode(e *jx.Encoder) {
 func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
 	}
 	o.Set = true
 	v, err := d.Str()

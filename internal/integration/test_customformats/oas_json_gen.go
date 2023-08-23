@@ -27,6 +27,14 @@ func (o *OptHex) Decode(d *jx.Decoder, format func(*jx.Decoder) (int64, error)) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptHex to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	v, err := formatHex().DecodeJSON(d)
 	if err != nil {
@@ -62,6 +70,14 @@ func (o *OptPhone) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom2.Phone
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPhone to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	v, err := formatPhone().DecodeJSON(d)
 	if err != nil {
@@ -96,6 +112,14 @@ func (o OptRgba) Encode(e *jx.Encoder, format func(*jx.Encoder, custom3.RGBA)) {
 func (o *OptRgba) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom3.RGBA, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRgba to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
 	}
 	o.Set = true
 	v, err := formatRgba().DecodeJSON(d)

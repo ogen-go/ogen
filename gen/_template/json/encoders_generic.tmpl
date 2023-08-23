@@ -59,6 +59,14 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if or $g.Format $g.CustomFormat }}
 	{{- end }}
 
 	{{- if $v.Optional }}
+		if d.Next() == jx.Null {
+			if err := d.Null(); err != nil {
+				return err
+			}
+
+			o.Set = false
+			return nil
+		}
 		o.Set = true
 	{{- end }}
 	{{- if $v.Nullable }}

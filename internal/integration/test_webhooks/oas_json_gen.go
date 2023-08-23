@@ -235,6 +235,14 @@ func (o *OptEvent) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptEvent to nil")
 	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
+	}
 	o.Set = true
 	if err := o.Value.Decode(d); err != nil {
 		return err
@@ -267,6 +275,14 @@ func (o OptString) Encode(e *jx.Encoder) {
 func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		o.Set = false
+		return nil
 	}
 	o.Set = true
 	v, err := d.Str()
