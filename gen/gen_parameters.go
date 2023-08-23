@@ -110,7 +110,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 	}
 
 	generate := func(ctx *genctx, sch *jsonschema.Schema) (*ir.Type, error) {
-		return g.generateSchema(ctx, paramTypeName, sch, !p.Required, nil)
+		return g.generateSchema(ctx, paramTypeName, sch, !p.Required, nil, g.opt.OptionalIsNullable)
 	}
 	t, err := func() (*ir.Type, error) {
 		if content := p.Content; content != nil {
