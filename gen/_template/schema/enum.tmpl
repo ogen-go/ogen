@@ -33,6 +33,20 @@ func (s *{{ $.Name }}) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+{{ else -}}
+
+func (s *{{ $.Name }}) String() string {
+	switch *s {
+	{{- range $variant := $.EnumVariants }}
+	case {{ $variant.Name }}:
+		return "{{ $variant.Name }}"
+	{{- end }}
+	default:
+		return fmt.Sprintf("UNKNOWN<%s>", *s)
+	}
+}
+
 {{- end }}
 
 {{ end }}

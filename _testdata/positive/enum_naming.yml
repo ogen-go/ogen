@@ -19,6 +19,8 @@ paths:
                   - PascalStrat
                   - PascalSpecialStrat
                   - PascalExceptionStrat
+                  - CustomNamingStr
+                  - CustomNamingInt
                 properties:
                   VeryBadEnum:
                     $ref: '#/components/schemas/VeryBadEnum'
@@ -28,6 +30,10 @@ paths:
                     $ref: '#/components/schemas/PascalSpecialStrat'
                   PascalExceptionStrat:
                     $ref: '#/components/schemas/PascalExceptionStrat'
+                  CustomNamingStr:
+                    $ref: '#/components/schemas/CustomNamingStr'
+                  CustomNamingInt:
+                    $ref: '#/components/schemas/CustomNamingInt'
 components:
   schemas:
     VeryBadEnum:
@@ -158,3 +164,17 @@ components:
       enum:
         - '1'
         - '-2'
+    CustomNamingStr:
+      type: string
+      enum: [ "a", "b", "e" ]
+      x-ogen-enum-naming:
+        a: Alice
+        b: Bob
+        e: Eve
+    CustomNamingInt:
+      type: integer
+      enum: [ 1, 2, 3 ]
+      x-ogen-enum-naming:
+        1: One
+        2: Two
+        3: Three

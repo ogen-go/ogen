@@ -44,7 +44,8 @@ type XProperty struct {
 
 // Schema is a JSON Schema.
 type Schema struct {
-	XOgenName string // Annotation to set type name.
+	XOgenName       string            // Annotation to set type name.
+	XOgenEnumNaming map[string]string // Annotation to set enum naming strategy.
 
 	Ref Ref // Whether schema is referenced.
 
