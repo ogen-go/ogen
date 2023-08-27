@@ -244,6 +244,35 @@ type Node struct {
 }
 ```
 
+### Custom enum field names
+
+Optionally, enum fields name can be specified by `x-ogen-enum-naming`, for example:
+
+```yaml
+components:
+  schemas:
+    NodeWeight:
+      type: integer
+      enum: [ 1, 3, 5 ]
+      x-ogen-enum-naming:
+        1: Low
+        3: Medium
+        5: High
+```
+
+The generated source code looks like:
+
+```go
+// Ref: #/components/schemas/NodeWeight
+type NodeWeight int
+
+const (
+    Low     NodeWeight = 1
+    Medium  NodeWeight = 3
+    High    NodeWeight = 35
+)
+```
+
 ### Extra struct field tags
 
 Optionally, additional Go struct field tags can be specified by `x-oapi-codegen-extra-tags`, for example:

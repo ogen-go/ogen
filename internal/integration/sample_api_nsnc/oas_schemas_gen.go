@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"io"
 	"net/netip"
 	"net/url"
@@ -2502,6 +2503,17 @@ const (
 	OneOfUUIDAndIntEnum10 OneOfUUIDAndIntEnum1 = 0
 	OneOfUUIDAndIntEnum11 OneOfUUIDAndIntEnum1 = 1
 )
+
+func (s *OneOfUUIDAndIntEnum1) String() string {
+	switch *s {
+	case OneOfUUIDAndIntEnum10:
+		return "OneOfUUIDAndIntEnum10"
+	case OneOfUUIDAndIntEnum11:
+		return "OneOfUUIDAndIntEnum11"
+	default:
+		return fmt.Sprintf("UNKNOWN<%s>", *s)
+	}
+}
 
 // Ref: #/components/schemas/OneOfWithNullable
 // OneOfWithNullable represents sum type.
