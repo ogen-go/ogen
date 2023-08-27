@@ -43,7 +43,7 @@ func (s *{{ $.Name }}) String() string {
 		return "{{ $variant.Name }}"
 	{{- end }}
 	default:
-		return fmt.Sprintf("UNKNOWN<%s>", *s)
+		return fmt.Sprintf("UNKNOWN<%v>", *s)
 	}
 }
 
