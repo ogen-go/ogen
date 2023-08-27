@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"io"
 	"net/netip"
 	"net/url"
@@ -2540,6 +2541,17 @@ func (OneOfUUIDAndIntEnum1) AllValues() []OneOfUUIDAndIntEnum1 {
 	return []OneOfUUIDAndIntEnum1{
 		OneOfUUIDAndIntEnum10,
 		OneOfUUIDAndIntEnum11,
+	}
+}
+
+func (s *OneOfUUIDAndIntEnum1) String() string {
+	switch *s {
+	case OneOfUUIDAndIntEnum10:
+		return "OneOfUUIDAndIntEnum10"
+	case OneOfUUIDAndIntEnum11:
+		return "OneOfUUIDAndIntEnum11"
+	default:
+		return fmt.Sprintf("UNKNOWN<%v>", *s)
 	}
 }
 

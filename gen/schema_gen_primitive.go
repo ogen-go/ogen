@@ -31,7 +31,8 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 
 	type namingStrategy int
 	const (
-		pascalName namingStrategy = iota
+		customMapping namingStrategy = iota
+		pascalName
 		pascalSpecialName
 		cleanSuffix
 		indexSuffix
@@ -50,6 +51,14 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		}
 
 		switch s {
+		case customMapping:
+			if schema.XOgenEnumNaming == nil {
+				return "", fmt.Errorf("no custom mapping for enum %q", name)
+			}
+			if mappedName, ok := schema.XOgenEnumNaming[vstr]; ok {
+				return mappedName, nil
+			}
+			return "", fmt.Errorf("name '%v' not found in custom mapping for enum %q", vstr, name)
 		case pascalName:
 			return pascal(name, vstr)
 		case pascalSpecialName:
@@ -98,7 +107,7 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 
 	chosenStrategy, err := func() (namingStrategy, error) {
 	nextStrategy:
-		for strategy := pascalName; strategy < _lastStrategy; strategy++ {
+		for strategy := customMapping; strategy < _lastStrategy; strategy++ {
 			// Treat enum type name as duplicate to prevent collisions.
 			names := map[string]struct{}{
 				name: {},

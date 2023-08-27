@@ -19,6 +19,7 @@ import (
 
 const (
 	xOgenName       = "x-ogen-name"
+	xOgenEnumNaming = "x-ogen-enum-naming"
 	xOgenProperties = "x-ogen-properties"
 	xOapiExtraTags  = "x-oapi-codegen-extra-tags"
 )
@@ -142,6 +143,10 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 				if err := validateGoIdent(s.XOgenName); err != nil {
 					return p.wrapLocation(p.file(ctx), locator, err)
+				}
+			case xOgenEnumNaming:
+				if err := val.Decode(&s.XOgenEnumNaming); err != nil {
+					return err
 				}
 			case xOgenProperties:
 				props := map[string]XProperty{}

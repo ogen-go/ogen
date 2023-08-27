@@ -3,8 +3,90 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 )
+
+// Ref: #/components/schemas/CustomNamingInt
+type CustomNamingInt int
+
+const (
+	One   CustomNamingInt = 1
+	Two   CustomNamingInt = 2
+	Three CustomNamingInt = 3
+)
+
+// AllValues returns all CustomNamingInt values.
+func (CustomNamingInt) AllValues() []CustomNamingInt {
+	return []CustomNamingInt{
+		One,
+		Two,
+		Three,
+	}
+}
+
+func (s *CustomNamingInt) String() string {
+	switch *s {
+	case One:
+		return "One"
+	case Two:
+		return "Two"
+	case Three:
+		return "Three"
+	default:
+		return fmt.Sprintf("UNKNOWN<%v>", *s)
+	}
+}
+
+// Ref: #/components/schemas/CustomNamingStr
+type CustomNamingStr string
+
+const (
+	Alice CustomNamingStr = "a"
+	Bob   CustomNamingStr = "b"
+	Eve   CustomNamingStr = "e"
+)
+
+// AllValues returns all CustomNamingStr values.
+func (CustomNamingStr) AllValues() []CustomNamingStr {
+	return []CustomNamingStr{
+		Alice,
+		Bob,
+		Eve,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CustomNamingStr) MarshalText() ([]byte, error) {
+	switch s {
+	case Alice:
+		return []byte(s), nil
+	case Bob:
+		return []byte(s), nil
+	case Eve:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CustomNamingStr) UnmarshalText(data []byte) error {
+	switch CustomNamingStr(data) {
+	case Alice:
+		*s = Alice
+		return nil
+	case Bob:
+		*s = Bob
+		return nil
+	case Eve:
+		*s = Eve
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/PascalExceptionStrat
 type PascalExceptionStrat string
@@ -137,6 +219,8 @@ type ProbeLivenessOK struct {
 	PascalStrat          PascalStrat          `json:"PascalStrat"`
 	PascalSpecialStrat   PascalSpecialStrat   `json:"PascalSpecialStrat"`
 	PascalExceptionStrat PascalExceptionStrat `json:"PascalExceptionStrat"`
+	CustomNamingStr      CustomNamingStr      `json:"CustomNamingStr"`
+	CustomNamingInt      CustomNamingInt      `json:"CustomNamingInt"`
 }
 
 // GetVeryBadEnum returns the value of VeryBadEnum.
@@ -159,6 +243,16 @@ func (s *ProbeLivenessOK) GetPascalExceptionStrat() PascalExceptionStrat {
 	return s.PascalExceptionStrat
 }
 
+// GetCustomNamingStr returns the value of CustomNamingStr.
+func (s *ProbeLivenessOK) GetCustomNamingStr() CustomNamingStr {
+	return s.CustomNamingStr
+}
+
+// GetCustomNamingInt returns the value of CustomNamingInt.
+func (s *ProbeLivenessOK) GetCustomNamingInt() CustomNamingInt {
+	return s.CustomNamingInt
+}
+
 // SetVeryBadEnum sets the value of VeryBadEnum.
 func (s *ProbeLivenessOK) SetVeryBadEnum(val VeryBadEnum) {
 	s.VeryBadEnum = val
@@ -177,6 +271,16 @@ func (s *ProbeLivenessOK) SetPascalSpecialStrat(val PascalSpecialStrat) {
 // SetPascalExceptionStrat sets the value of PascalExceptionStrat.
 func (s *ProbeLivenessOK) SetPascalExceptionStrat(val PascalExceptionStrat) {
 	s.PascalExceptionStrat = val
+}
+
+// SetCustomNamingStr sets the value of CustomNamingStr.
+func (s *ProbeLivenessOK) SetCustomNamingStr(val CustomNamingStr) {
+	s.CustomNamingStr = val
+}
+
+// SetCustomNamingInt sets the value of CustomNamingInt.
+func (s *ProbeLivenessOK) SetCustomNamingInt(val CustomNamingInt) {
+	s.CustomNamingInt = val
 }
 
 // Ref: #/components/schemas/VeryBadEnum

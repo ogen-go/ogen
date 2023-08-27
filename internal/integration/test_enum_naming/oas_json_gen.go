@@ -12,6 +12,80 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// Encode encodes CustomNamingInt as json.
+func (s CustomNamingInt) Encode(e *jx.Encoder) {
+	e.Int(int(s))
+}
+
+// Decode decodes CustomNamingInt from json.
+func (s *CustomNamingInt) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode CustomNamingInt to nil")
+	}
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	*s = CustomNamingInt(v)
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s CustomNamingInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CustomNamingInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes CustomNamingStr as json.
+func (s CustomNamingStr) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes CustomNamingStr from json.
+func (s *CustomNamingStr) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode CustomNamingStr to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch CustomNamingStr(v) {
+	case Alice:
+		*s = Alice
+	case Bob:
+		*s = Bob
+	case Eve:
+		*s = Eve
+	default:
+		*s = CustomNamingStr(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s CustomNamingStr) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CustomNamingStr) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes PascalExceptionStrat as json.
 func (s PascalExceptionStrat) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -157,13 +231,23 @@ func (s *ProbeLivenessOK) encodeFields(e *jx.Encoder) {
 		e.FieldStart("PascalExceptionStrat")
 		s.PascalExceptionStrat.Encode(e)
 	}
+	{
+		e.FieldStart("CustomNamingStr")
+		s.CustomNamingStr.Encode(e)
+	}
+	{
+		e.FieldStart("CustomNamingInt")
+		s.CustomNamingInt.Encode(e)
+	}
 }
 
-var jsonFieldsNameOfProbeLivenessOK = [4]string{
+var jsonFieldsNameOfProbeLivenessOK = [6]string{
 	0: "VeryBadEnum",
 	1: "PascalStrat",
 	2: "PascalSpecialStrat",
 	3: "PascalExceptionStrat",
+	4: "CustomNamingStr",
+	5: "CustomNamingInt",
 }
 
 // Decode decodes ProbeLivenessOK from json.
@@ -215,6 +299,26 @@ func (s *ProbeLivenessOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"PascalExceptionStrat\"")
 			}
+		case "CustomNamingStr":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				if err := s.CustomNamingStr.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"CustomNamingStr\"")
+			}
+		case "CustomNamingInt":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				if err := s.CustomNamingInt.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"CustomNamingInt\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -225,7 +329,7 @@ func (s *ProbeLivenessOK) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00001111,
+		0b00111111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
