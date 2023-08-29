@@ -107,7 +107,7 @@ func handleNullableEnum(s *Schema) {
 	})
 	// Filter all `null`s.
 	if s.Nullable {
-		xslices.Filter(&s.Enum, func(v any) bool {
+		s.Enum = xslices.Filter(s.Enum, func(v any) bool {
 			return v != nil
 		})
 	}

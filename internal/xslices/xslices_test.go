@@ -12,10 +12,7 @@ func TestFilter(t *testing.T) {
 	odd := func(x int) bool {
 		return x%2 == 1
 	}
-	filter := func(v []int, cb func(int) bool) []int {
-		Filter(&v, cb)
-		return v
-	}
+	filter := Filter[[]int]
 
 	a.Empty(filter([]int(nil), odd))
 	a.Empty(filter([]int{}, odd))
