@@ -29,6 +29,18 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 }
 
 {{ range $s := $.Securities }}
+{{- if $s.Format.IsOAuth2Security }}
+var oauth2Scopes = map[string][]string {
+{{- range $operationName, $scopes := $s.Scopes }}
+	{{ quote $operationName }}: []string{
+		{{- range $scope := $scopes }}
+			{{ quote $scope }},
+		{{- end}}
+	},
+{{- end }}
+}
+
+{{- end }}
 func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t {{ $s.Type.Name }}
 	{{- if $s.Format.IsAPIKeySecurity }}
@@ -74,6 +86,13 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 			return ctx, false, nil
 		}
 		t.Token = token
+	{{- else if $s.Format.IsOAuth2Security }}
+		token, ok := findAuthorization(req.Header, "Bearer")
+		if !ok {
+			return ctx, false, nil
+		}
+		t.Token = token
+		t.Scopes = oauth2Scopes[operationName]
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
@@ -120,6 +139,8 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName s
     {{- else if $s.Format.IsBasicHTTPSecurity }}
 		req.SetBasicAuth(t.Username, t.Password)
 	{{- else if $s.Format.IsBearerSecurity }}
+		req.Header.Set("Authorization", "Bearer " + t.Token)
+	{{- else if $s.Format.IsOAuth2Security }}
 		req.Header.Set("Authorization", "Bearer " + t.Token)
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}

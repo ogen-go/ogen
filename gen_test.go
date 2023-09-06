@@ -173,13 +173,10 @@ func TestGenerate(t *testing.T) {
 		},
 		map[string][]string{
 			"autorest/additionalProperties.json": {},
-			"autorest/ApiManagementClient-openapi.json": {
-				"oauth2 security",
-			},
-			"autorest/lro.json":                 {},
-			"autorest/storage.json":             {},
-			"autorest/xms-error-responses.json": {},
-			"2ch.yml":                           {},
+			"autorest/lro.json":                  {},
+			"autorest/storage.json":              {},
+			"autorest/xms-error-responses.json":  {},
+			"2ch.yml":                            {},
 			"api.github.com.json": {
 				"complex anyOf",
 				"discriminator inference",

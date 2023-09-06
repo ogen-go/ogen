@@ -36,6 +36,30 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.Security
 	return s, nil
 }
 
+func (g *Generator) generateSecurityOauth2(
+	s *ir.Security,
+	operationName string,
+	spec openapi.SecurityScheme,
+) *ir.Security {
+	s.Format = ir.Oauth2SecurityFormat
+	s.Kind = ir.HeaderSecurity
+	s.Scopes = map[string][]string{
+		operationName: spec.Scopes,
+	}
+
+	s.Type.Fields = append(s.Type.Fields,
+		&ir.Field{
+			Name: "Token",
+			Type: ir.Primitive(ir.String, nil),
+		},
+		&ir.Field{
+			Name: "Scopes",
+			Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+		},
+	)
+	return s
+}
+
 func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
@@ -66,8 +90,11 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecuritySc
 	return s, nil
 }
 
-func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
+func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
+		if spec.Security.Type == "oauth2" {
+			sec.Scopes[operationName] = spec.Scopes
+		}
 		return sec, nil
 	}
 	security := spec.Security
@@ -98,21 +125,27 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityScheme) (
 		return g.generateSecurityAPIKey(s, spec)
 	case "http":
 		return g.generateSecurityHTTP(s, spec)
-	case "openIdConnect", "oauth2", "mutualTLS":
+	case "oauth2":
+		return g.generateSecurityOauth2(s, operationName, spec), nil
+	case "openIdConnect", "mutualTLS":
 		return nil, &ErrNotImplemented{Name: fmt.Sprintf("%s security", typ)}
 	default:
 		return nil, errors.Errorf("unknown security type %q", typ)
 	}
 }
 
-func (g *Generator) generateSecurities(ctx *genctx, spec openapi.SecurityRequirements) (r ir.SecurityRequirements, _ error) {
+func (g *Generator) generateSecurities(
+	ctx *genctx,
+	operationName string,
+	spec openapi.SecurityRequirements,
+) (r ir.SecurityRequirements, _ error) {
 	indexes := map[string]int{}
 	for idx, requirement := range spec {
 		var set bitset.Bitset
 
 		if err := func() error {
 			for _, scheme := range requirement.Schemes {
-				s, err := g.generateSecurity(ctx, scheme)
+				s, err := g.generateSecurity(ctx, operationName, scheme)
 				if err != nil {
 					return errors.Wrapf(err, "security scheme %q", scheme.Name)
 				}
