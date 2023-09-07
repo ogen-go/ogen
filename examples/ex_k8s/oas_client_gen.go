@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -85,6 +86,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, para
 func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (res ConnectCoreV1DeleteNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -248,6 +251,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Conte
 func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (res ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -429,6 +434,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, 
 func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (res ConnectCoreV1DeleteNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -592,6 +599,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.C
 func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (res ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -773,6 +782,8 @@ func (c *Client) ConnectCoreV1DeleteNodeProxy(ctx context.Context, params Connec
 func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (res ConnectCoreV1DeleteNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -917,6 +928,8 @@ func (c *Client) ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, param
 func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (res ConnectCoreV1DeleteNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -1079,6 +1092,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params
 func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (res ConnectCoreV1GetNamespacedPodAttachRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 
 	// Run stopwatch.
@@ -1310,6 +1325,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (res ConnectCoreV1GetNamespacedPodExecRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 
 	// Run stopwatch.
@@ -1558,6 +1575,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, p
 func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (res ConnectCoreV1GetNamespacedPodPortforwardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 
 	// Run stopwatch.
@@ -1721,6 +1740,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (res ConnectCoreV1GetNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -1884,6 +1905,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context,
 func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (res ConnectCoreV1GetNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2065,6 +2088,8 @@ func (c *Client) ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (res ConnectCoreV1GetNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2228,6 +2253,8 @@ func (c *Client) ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (res ConnectCoreV1GetNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2409,6 +2436,8 @@ func (c *Client) ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCo
 func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (res ConnectCoreV1GetNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2553,6 +2582,8 @@ func (c *Client) ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (res ConnectCoreV1GetNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2715,6 +2746,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params
 func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (res ConnectCoreV1HeadNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2878,6 +2911,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context
 func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (res ConnectCoreV1HeadNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3059,6 +3094,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, pa
 func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (res ConnectCoreV1HeadNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3222,6 +3259,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Con
 func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (res ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3403,6 +3442,8 @@ func (c *Client) ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectC
 func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (res ConnectCoreV1HeadNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3547,6 +3588,8 @@ func (c *Client) ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (res ConnectCoreV1HeadNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3709,6 +3752,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (res ConnectCoreV1OptionsNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3872,6 +3917,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (res ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4053,6 +4100,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context,
 func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (res ConnectCoreV1OptionsNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4216,6 +4265,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.
 func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (res ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4397,6 +4448,8 @@ func (c *Client) ConnectCoreV1OptionsNodeProxy(ctx context.Context, params Conne
 func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (res ConnectCoreV1OptionsNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4541,6 +4594,8 @@ func (c *Client) ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, para
 func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (res ConnectCoreV1OptionsNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4703,6 +4758,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, param
 func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (res ConnectCoreV1PatchNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4866,6 +4923,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Contex
 func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (res ConnectCoreV1PatchNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5047,6 +5106,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, p
 func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (res ConnectCoreV1PatchNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -5210,6 +5271,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Co
 func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5391,6 +5454,8 @@ func (c *Client) ConnectCoreV1PatchNodeProxy(ctx context.Context, params Connect
 func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (res ConnectCoreV1PatchNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -5535,6 +5600,8 @@ func (c *Client) ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params
 func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (res ConnectCoreV1PatchNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5697,6 +5764,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, param
 func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (res ConnectCoreV1PostNamespacedPodAttachRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 
 	// Run stopwatch.
@@ -5928,6 +5997,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (res ConnectCoreV1PostNamespacedPodExecRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 
 	// Run stopwatch.
@@ -6176,6 +6247,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, 
 func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (res ConnectCoreV1PostNamespacedPodPortforwardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 
 	// Run stopwatch.
@@ -6339,6 +6412,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params
 func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (res ConnectCoreV1PostNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -6502,6 +6577,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context
 func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (res ConnectCoreV1PostNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -6683,6 +6760,8 @@ func (c *Client) ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, pa
 func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (res ConnectCoreV1PostNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -6846,6 +6925,8 @@ func (c *Client) ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Con
 func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PostNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7027,6 +7108,8 @@ func (c *Client) ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectC
 func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (res ConnectCoreV1PostNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7171,6 +7254,8 @@ func (c *Client) ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (res ConnectCoreV1PostNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7333,6 +7418,8 @@ func (c *Client) ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (res ConnectCoreV1PutNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7496,6 +7583,8 @@ func (c *Client) ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context,
 func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (res ConnectCoreV1PutNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7677,6 +7766,8 @@ func (c *Client) ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (res ConnectCoreV1PutNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7840,6 +7931,8 @@ func (c *Client) ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PutNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -8021,6 +8114,8 @@ func (c *Client) ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCo
 func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (res ConnectCoreV1PutNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -8165,6 +8260,8 @@ func (c *Client) ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (res ConnectCoreV1PutNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -8327,6 +8424,8 @@ func (c *Client) GetAPIVersions(ctx context.Context) (GetAPIVersionsRes, error) 
 func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAPIVersions"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/"),
 	}
 
 	// Run stopwatch.
@@ -8431,6 +8530,8 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (GetAdmis
 func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8535,6 +8636,8 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (Ge
 func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -8639,6 +8742,8 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (GetApiextensions
 func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8743,6 +8848,8 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (GetApiexte
 func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -8847,6 +8954,8 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (GetApiregistra
 func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8951,6 +9060,8 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (GetApire
 func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9055,6 +9166,8 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (GetAppsAPIGroupRes, error
 func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/"),
 	}
 
 	// Run stopwatch.
@@ -9159,6 +9272,8 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (GetAppsV1APIResourc
 func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9263,6 +9378,8 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (GetAuthenticati
 func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -9367,6 +9484,8 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (GetAuthen
 func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9471,6 +9590,8 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (GetAuthorization
 func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -9575,6 +9696,8 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (GetAuthori
 func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9679,6 +9802,8 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (GetAutoscalingAPIG
 func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/"),
 	}
 
 	// Run stopwatch.
@@ -9783,6 +9908,8 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (GetAutoscali
 func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9887,6 +10014,8 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (GetAuto
 func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/"),
 	}
 
 	// Run stopwatch.
@@ -9991,6 +10120,8 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (GetAuto
 func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/"),
 	}
 
 	// Run stopwatch.
@@ -10095,6 +10226,8 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (GetBatchAPIGroupRes, err
 func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/"),
 	}
 
 	// Run stopwatch.
@@ -10199,6 +10332,8 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (GetBatchV1APIResou
 func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10303,6 +10438,8 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (GetBatchV1bet
 func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -10407,6 +10544,8 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (GetCertificatesAP
 func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -10511,6 +10650,8 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (GetCertific
 func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10615,6 +10756,8 @@ func (c *Client) GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error) 
 func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCodeVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/version/"),
 	}
 
 	// Run stopwatch.
@@ -10719,6 +10862,8 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (GetCoordinationAP
 func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -10823,6 +10968,8 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (GetCoordina
 func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10927,6 +11074,8 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes,
 func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreAPIVersions"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/"),
 	}
 
 	// Run stopwatch.
@@ -11031,6 +11180,8 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (GetCoreV1APIResourc
 func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11135,6 +11286,8 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (GetDiscoveryAPIGroup
 func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11239,6 +11392,8 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (GetDiscoveryV1
 func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11343,6 +11498,8 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (GetDiscov
 func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11447,6 +11604,8 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (GetEventsAPIGroupRes, e
 func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11551,6 +11710,8 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (GetEventsV1APIRes
 func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11655,6 +11816,8 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (GetEventsV1b
 func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11759,6 +11922,8 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (GetFlowco
 func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11863,6 +12028,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11967,6 +12134,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
 	}
 
 	// Run stopwatch.
@@ -12071,6 +12240,8 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (GetInternalA
 func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12175,6 +12346,8 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -12279,6 +12452,8 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (GetNetworkingAPIGro
 func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12383,6 +12558,8 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (GetNetworking
 func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -12487,6 +12664,8 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (GetNodeAPIGroupRes, error
 func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12591,6 +12770,8 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (GetNodeV1APIResourc
 func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -12695,6 +12876,8 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (GetNodeV1alph
 func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -12799,6 +12982,8 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (GetNodeV1beta1
 func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -12903,6 +13088,8 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (GetPolicyAPIGroupRes, e
 func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/"),
 	}
 
 	// Run stopwatch.
@@ -13007,6 +13194,8 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (GetPolicyV1APIRes
 func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13111,6 +13300,8 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (GetPolicyV1b
 func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -13215,6 +13406,8 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (GetRbacAutho
 func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13319,6 +13512,8 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (GetRba
 func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13423,6 +13618,8 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (GetSchedulingAPIGro
 func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13527,6 +13724,8 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (GetScheduling
 func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13631,6 +13830,8 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/.well-known/openid-configuration/"),
 	}
 
 	// Run stopwatch.
@@ -13735,6 +13936,8 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetSe
 func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/openid/v1/jwks/"),
 	}
 
 	// Run stopwatch.
@@ -13839,6 +14042,8 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (GetStorageAPIGroupRes,
 func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13943,6 +14148,8 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (GetStorageV1APIR
 func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -14047,6 +14254,8 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (GetStorage
 func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -14151,6 +14360,8 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (GetStorageV
 func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -14255,6 +14466,8 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -14533,6 +14746,8 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -14811,6 +15026,8 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
 	}
 
 	// Run stopwatch.
@@ -15089,6 +15306,8 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
 	}
 
 	// Run stopwatch.
@@ -15367,6 +15586,8 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -15645,6 +15866,8 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -15923,6 +16146,8 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/deployments"),
 	}
 
 	// Run stopwatch.
@@ -16201,6 +16426,8 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -16498,6 +16725,8 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (res ListAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -16795,6 +17024,8 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (res ListAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -17092,6 +17323,8 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (res ListAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -17389,6 +17622,8 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (res ListAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -17686,6 +17921,8 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -17964,6 +18201,8 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -18242,6 +18481,8 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -18520,6 +18761,8 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -18817,6 +19060,8 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19095,6 +19340,8 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19392,6 +19639,8 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19670,6 +19919,8 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19967,6 +20218,8 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -20245,6 +20498,8 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/jobs"),
 	}
 
 	// Run stopwatch.
@@ -20523,6 +20778,8 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (res ListBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -20820,6 +21077,8 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (res ListBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
 	}
 
 	// Run stopwatch.
@@ -21117,6 +21376,8 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -21395,6 +21656,8 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -21692,6 +21955,8 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
 	}
 
 	// Run stopwatch.
@@ -21970,6 +22235,8 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/leases"),
 	}
 
 	// Run stopwatch.
@@ -22248,6 +22515,8 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (res ListCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
 	}
 
 	// Run stopwatch.
@@ -22545,6 +22814,8 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (res ListCoreV1ComponentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ComponentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/componentstatuses"),
 	}
 
 	// Run stopwatch.
@@ -22823,6 +23094,8 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -23101,6 +23374,8 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -23379,6 +23654,8 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/events"),
 	}
 
 	// Run stopwatch.
@@ -23657,6 +23934,8 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -23935,6 +24214,8 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces"),
 	}
 
 	// Run stopwatch.
@@ -24213,6 +24494,8 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (res ListCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -24510,6 +24793,8 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (res ListCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -24807,6 +25092,8 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (res ListCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -25104,6 +25391,8 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (res ListCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -25401,6 +25690,8 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -25698,6 +25989,8 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (res ListCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods"),
 	}
 
 	// Run stopwatch.
@@ -25995,6 +26288,8 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (res ListCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -26292,6 +26587,8 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -26589,6 +26886,8 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -26886,6 +27185,8 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (res ListCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets"),
 	}
 
 	// Run stopwatch.
@@ -27183,6 +27484,8 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (res ListCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services"),
 	}
 
 	// Run stopwatch.
@@ -27480,6 +27783,8 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (res ListCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -27777,6 +28082,8 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes"),
 	}
 
 	// Run stopwatch.
@@ -28055,6 +28362,8 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes"),
 	}
 
 	// Run stopwatch.
@@ -28333,6 +28642,8 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -28611,6 +28922,8 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/pods"),
 	}
 
 	// Run stopwatch.
@@ -28889,6 +29202,8 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -29167,6 +29482,8 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -29445,6 +29762,8 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -29723,6 +30042,8 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/secrets"),
 	}
 
 	// Run stopwatch.
@@ -30001,6 +30322,8 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -30279,6 +30602,8 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/services"),
 	}
 
 	// Run stopwatch.
@@ -30557,6 +30882,8 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -30835,6 +31162,8 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31132,6 +31461,8 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31410,6 +31741,8 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31707,6 +32040,8 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/events"),
 	}
 
 	// Run stopwatch.
@@ -31985,6 +32320,8 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (res ListEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -32282,6 +32619,8 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/events"),
 	}
 
 	// Run stopwatch.
@@ -32560,6 +32899,8 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (res ListEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -32857,6 +33198,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -33135,6 +33478,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -33413,6 +33758,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -33691,6 +34038,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -33969,6 +34318,8 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
 	}
 
 	// Run stopwatch.
@@ -34247,6 +34598,8 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
 	}
 
 	// Run stopwatch.
@@ -34525,6 +34878,8 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -34803,6 +35158,8 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (res ListNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -35100,6 +35457,8 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -35397,6 +35756,8 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -35675,6 +36036,8 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -35953,6 +36316,8 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -36231,6 +36596,8 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -36509,6 +36876,8 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -36806,6 +37175,8 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37084,6 +37455,8 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37381,6 +37754,8 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37659,6 +38034,8 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
 	}
 
 	// Run stopwatch.
@@ -37937,6 +38314,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
 	}
 
 	// Run stopwatch.
@@ -38215,6 +38594,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
 	}
 
 	// Run stopwatch.
@@ -38493,6 +38874,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
 	}
 
 	// Run stopwatch.
@@ -38790,6 +39173,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -39087,6 +39472,8 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -39365,6 +39752,8 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
 	}
 
 	// Run stopwatch.
@@ -39643,6 +40032,8 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
 	}
 
 	// Run stopwatch.
@@ -39921,6 +40312,8 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers"),
 	}
 
 	// Run stopwatch.
@@ -40199,6 +40592,8 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes"),
 	}
 
 	// Run stopwatch.
@@ -40477,6 +40872,8 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses"),
 	}
 
 	// Run stopwatch.
@@ -40755,6 +41152,8 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
 	}
 
 	// Run stopwatch.
@@ -41033,6 +41432,8 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41311,6 +41712,8 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41608,6 +42011,8 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41886,6 +42291,8 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -42181,6 +42588,8 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerParams) (res *LogFileHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/logs/{logpath}"),
 	}
 
 	// Run stopwatch.
@@ -42301,6 +42710,8 @@ func (c *Client) LogFileListHandler(ctx context.Context) error {
 func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/logs/"),
 	}
 
 	// Run stopwatch.
@@ -42405,6 +42816,8 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42548,6 +42961,8 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42691,6 +43106,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42834,6 +43251,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -42978,6 +43397,8 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (res ReadApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43121,6 +43542,8 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -43265,6 +43688,8 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43427,6 +43852,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43589,6 +44016,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -43752,6 +44181,8 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (res ReadAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43914,6 +44345,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -44077,6 +44510,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -44240,6 +44675,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -44402,6 +44839,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -44565,6 +45004,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -44728,6 +45169,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -44890,6 +45333,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -45053,6 +45498,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45216,6 +45663,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -45378,6 +45827,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45541,6 +45992,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -45703,6 +46156,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45866,6 +46321,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46028,6 +46485,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46191,6 +46650,8 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (res ReadBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46353,6 +46814,8 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46516,6 +46979,8 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (res ReadBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46678,6 +47143,8 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (res ReadBatchV1NamespacedJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46841,6 +47308,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47003,6 +47472,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -47166,6 +47637,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47309,6 +47782,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
 	}
 
 	// Run stopwatch.
@@ -47453,6 +47928,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -47597,6 +48074,8 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47759,6 +48238,8 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (res ReadCoreV1ComponentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1ComponentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/componentstatuses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47902,6 +48383,8 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (res ReadCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48045,6 +48528,8 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (res ReadCoreV1NamespaceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespaceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -48189,6 +48674,8 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (res ReadCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48351,6 +48838,8 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (res ReadCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48513,6 +49002,8 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (res ReadCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48675,6 +49166,8 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48837,6 +49330,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48999,6 +49494,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -49162,6 +49659,8 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (res ReadCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
 	}
 
 	// Run stopwatch.
@@ -49324,6 +49823,8 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
 	}
 
 	// Run stopwatch.
@@ -49487,6 +49988,8 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (res ReadCoreV1NamespacedPodLogRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodLog"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
 	}
 
 	// Run stopwatch.
@@ -49786,6 +50289,8 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (res ReadCoreV1NamespacedPodStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -49949,6 +50454,8 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50111,6 +50618,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50273,6 +50782,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -50436,6 +50947,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -50599,6 +51112,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50761,6 +51276,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -50924,6 +51441,8 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (res ReadCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51086,6 +51605,8 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (res ReadCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51248,6 +51769,8 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51410,6 +51933,8 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -51573,6 +52098,8 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (res ReadCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51716,6 +52243,8 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (res ReadCoreV1NodeStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NodeStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -51860,6 +52389,8 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (res ReadCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52003,6 +52534,8 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -52147,6 +52680,8 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52309,6 +52844,8 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52471,6 +53008,8 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (res ReadEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52633,6 +53172,8 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (res ReadEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52795,6 +53336,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52938,6 +53481,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53082,6 +53627,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53225,6 +53772,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53369,6 +53918,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53512,6 +54063,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53656,6 +54209,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53799,6 +54354,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53943,6 +54500,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54086,6 +54645,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -54230,6 +54791,8 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (res ReadNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54373,6 +54936,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (res ReadNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54535,6 +55100,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -54698,6 +55265,8 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54860,6 +55429,8 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (res ReadNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55003,6 +55574,8 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55146,6 +55719,8 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (res ReadNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55289,6 +55864,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55451,6 +56028,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -55614,6 +56193,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55776,6 +56357,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -55939,6 +56522,8 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56082,6 +56667,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56225,6 +56812,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56368,6 +56957,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56530,6 +57121,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56692,6 +57285,8 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (res ReadSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56835,6 +57430,8 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (res ReadStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56978,6 +57575,8 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (res ReadStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57121,6 +57720,8 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (res ReadStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57264,6 +57865,8 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (res ReadStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57407,6 +58010,8 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -57551,6 +58156,8 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57713,6 +58320,8 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57877,6 +58486,8 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -58174,6 +58785,8 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -58454,6 +59067,8 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -58751,6 +59366,8 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -59030,6 +59647,8 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -59327,6 +59946,8 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
 	}
 
 	// Run stopwatch.
@@ -59606,6 +60227,8 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (res WatchApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -59903,6 +60526,8 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
 	}
 
 	// Run stopwatch.
@@ -60182,6 +60807,8 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -60461,6 +61088,8 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -60740,6 +61369,8 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/deployments"),
 	}
 
 	// Run stopwatch.
@@ -61019,6 +61650,8 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -61335,6 +61968,8 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -61633,6 +62268,8 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -61949,6 +62586,8 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -62247,6 +62886,8 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (res WatchAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -62563,6 +63204,8 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -62861,6 +63504,8 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -63177,6 +63822,8 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -63475,6 +64122,8 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -63791,6 +64440,8 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -64089,6 +64740,8 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -64368,6 +65021,8 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -64647,6 +65302,8 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -64926,6 +65583,8 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -65242,6 +65901,8 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -65540,6 +66201,8 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -65819,6 +66482,8 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -66135,6 +66800,8 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -66433,6 +67100,8 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -66712,6 +67381,8 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -67028,6 +67699,8 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -67326,6 +67999,8 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -67605,6 +68280,8 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/jobs"),
 	}
 
 	// Run stopwatch.
@@ -67884,6 +68561,8 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (res WatchBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -68200,6 +68879,8 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (res WatchBatchV1NamespacedCronJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -68498,6 +69179,8 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (res WatchBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -68814,6 +69497,8 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (res WatchBatchV1NamespacedJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
 	}
 
 	// Run stopwatch.
@@ -69112,6 +69797,8 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -69391,6 +70078,8 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -69707,6 +70396,8 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -70006,6 +70697,8 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
 	}
 
 	// Run stopwatch.
@@ -70303,6 +70996,8 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
 	}
 
 	// Run stopwatch.
@@ -70582,6 +71277,8 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
 	}
 
 	// Run stopwatch.
@@ -70861,6 +71558,8 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
 	}
 
 	// Run stopwatch.
@@ -71177,6 +71876,8 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
 	}
 
 	// Run stopwatch.
@@ -71475,6 +72176,8 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -71754,6 +72457,8 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -72033,6 +72738,8 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -72312,6 +73019,8 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -72591,6 +73300,8 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (res WatchCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{name}"),
 	}
 
 	// Run stopwatch.
@@ -72888,6 +73599,8 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (res WatchCoreV1NamespaceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespaceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces"),
 	}
 
 	// Run stopwatch.
@@ -73167,6 +73880,8 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (res WatchCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
 	}
 
 	// Run stopwatch.
@@ -73483,6 +74198,8 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -73781,6 +74498,8 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (res WatchCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
 	}
 
 	// Run stopwatch.
@@ -74097,6 +74816,8 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -74395,6 +75116,8 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (res WatchCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -74711,6 +75434,8 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (res WatchCoreV1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -75009,6 +75734,8 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
 	}
 
 	// Run stopwatch.
@@ -75325,6 +76052,8 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -75623,6 +76352,8 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 
 	// Run stopwatch.
@@ -75939,6 +76670,8 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -76237,6 +76970,8 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (res WatchCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
 	}
 
 	// Run stopwatch.
@@ -76553,6 +77288,8 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (res WatchCoreV1NamespacedPodListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
 	}
 
 	// Run stopwatch.
@@ -76851,6 +77588,8 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
 	}
 
 	// Run stopwatch.
@@ -77167,6 +77906,8 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -77465,6 +78206,8 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -77781,6 +78524,8 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -78079,6 +78824,8 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -78395,6 +79142,8 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -78693,6 +79442,8 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (res WatchCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79009,6 +79760,8 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (res WatchCoreV1NamespacedSecretListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
 	}
 
 	// Run stopwatch.
@@ -79307,6 +80060,8 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (res WatchCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79623,6 +80378,8 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79939,6 +80696,8 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -80237,6 +80996,8 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (res WatchCoreV1NamespacedServiceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services"),
 	}
 
 	// Run stopwatch.
@@ -80535,6 +81296,8 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (res WatchCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/nodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -80832,6 +81595,8 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (res WatchCoreV1NodeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NodeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/nodes"),
 	}
 
 	// Run stopwatch.
@@ -81111,6 +81876,8 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (res WatchCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -81408,6 +82175,8 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -81687,6 +82456,8 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes"),
 	}
 
 	// Run stopwatch.
@@ -81966,6 +82737,8 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/pods"),
 	}
 
 	// Run stopwatch.
@@ -82245,6 +83018,8 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -82524,6 +83299,8 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -82803,6 +83580,8 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -83082,6 +83861,8 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/secrets"),
 	}
 
 	// Run stopwatch.
@@ -83361,6 +84142,8 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -83640,6 +84423,8 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/services"),
 	}
 
 	// Run stopwatch.
@@ -83919,6 +84704,8 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -84198,6 +84985,8 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -84514,6 +85303,8 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -84812,6 +85603,8 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -85091,6 +85884,8 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -85407,6 +86202,8 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -85705,6 +86502,8 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -85984,6 +86783,8 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (res WatchEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -86300,6 +87101,8 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (res WatchEventsV1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -86598,6 +87401,8 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -86877,6 +87682,8 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (res WatchEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -87193,6 +88000,8 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -87491,6 +88300,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -87788,6 +88599,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -88068,6 +88881,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -88365,6 +89180,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -88644,6 +89461,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -88941,6 +89760,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -89221,6 +90042,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -89518,6 +90341,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -89797,6 +90622,8 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -90094,6 +90921,8 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
 	}
 
 	// Run stopwatch.
@@ -90373,6 +91202,8 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (res WatchNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -90670,6 +91501,8 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (res WatchNetworkingV1IngressClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
 	}
 
 	// Run stopwatch.
@@ -90949,6 +91782,8 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -91228,6 +92063,8 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (res WatchNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -91544,6 +92381,8 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -91842,6 +92681,8 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -92158,6 +92999,8 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -92456,6 +93299,8 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -92735,6 +93580,8 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (res WatchNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -93032,6 +93879,8 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (res WatchNodeV1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -93311,6 +94160,8 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -93608,6 +94459,8 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -93887,6 +94740,8 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (res WatchNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -94184,6 +95039,8 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -94463,6 +95320,8 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -94779,6 +95638,8 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95077,6 +95938,8 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95356,6 +96219,8 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -95672,6 +96537,8 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95970,6 +96837,8 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -96249,6 +97118,8 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -96546,6 +97417,8 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
 	}
 
 	// Run stopwatch.
@@ -96825,6 +97698,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -97122,6 +97997,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -97419,6 +98296,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
 	}
 
 	// Run stopwatch.
@@ -97698,6 +98577,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
 	}
 
 	// Run stopwatch.
@@ -97977,6 +98858,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -98293,6 +99176,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -98609,6 +99494,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -98907,6 +99794,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
 	}
 
 	// Run stopwatch.
@@ -99205,6 +100094,8 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -99484,6 +100375,8 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
 	}
 
 	// Run stopwatch.
@@ -99763,6 +100656,8 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (res WatchSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -100060,6 +100955,8 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
 	}
 
 	// Run stopwatch.
@@ -100339,6 +101236,8 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (res WatchStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -100636,6 +101535,8 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (res WatchStorageV1CSIDriverListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriverList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
 	}
 
 	// Run stopwatch.
@@ -100915,6 +101816,8 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (res WatchStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -101212,6 +102115,8 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (res WatchStorageV1CSINodeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINodeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
 	}
 
 	// Run stopwatch.
@@ -101491,6 +102396,8 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (res WatchStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -101788,6 +102695,8 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (res WatchStorageV1StorageClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
 	}
 
 	// Run stopwatch.
@@ -102067,6 +102976,8 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (res WatchStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -102364,6 +103275,8 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
 	}
 
 	// Run stopwatch.
@@ -102643,6 +103556,8 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -102922,6 +103837,8 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -103238,6 +104155,8 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -103536,6 +104455,8 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -103815,6 +104736,8 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -104131,6 +105054,8 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.

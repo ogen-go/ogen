@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -82,6 +83,8 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) error {
 func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (res *NullableStringsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/nullableStrings"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -180,6 +183,8 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) (res *ObjectsWithConflictingArrayPropertyOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -263,6 +268,8 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *
 func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) (res *ObjectsWithConflictingPropertiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -346,6 +353,8 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res *ReferencedAllofOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllof"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -443,6 +452,8 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 func (c *Client) sendReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res *ReferencedAllofOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -542,6 +553,8 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) error {
 func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *SimpleIntegerOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleInteger"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -634,6 +647,8 @@ func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) e
 func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsReq) (res *SimpleObjectsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleObjects"),
 	}
 
 	// Run stopwatch.
@@ -706,6 +721,8 @@ func (c *Client) StringsNotype(ctx context.Context, request NilString) error {
 func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res *StringsNotypeOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/stringsNotype"),
 	}
 	// Validate request before sending.
 	if err := func() error {

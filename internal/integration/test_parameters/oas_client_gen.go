@@ -13,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -79,7 +80,10 @@ func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params Complic
 }
 
 func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (res *ComplicatedParameterNameGetOK, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/complicatedParameterName"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -94,6 +98,7 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ComplicatedParameterNameGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -221,6 +226,8 @@ func (c *Client) ContentParameters(ctx context.Context, params ContentParameters
 func (c *Client) sendContentParameters(ctx context.Context, params ContentParametersParams) (res *ContentParameters, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
 	}
 
 	// Run stopwatch.
@@ -374,6 +381,8 @@ func (c *Client) CookieParameter(ctx context.Context, params CookieParameterPara
 func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/cookieParameter"),
 	}
 
 	// Run stopwatch.
@@ -461,6 +470,8 @@ func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterPara
 func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headerParameter"),
 	}
 
 	// Run stopwatch.
@@ -544,6 +555,8 @@ func (c *Client) ObjectCookieParameter(ctx context.Context, params ObjectCookieP
 func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCookieParameterParams) (res *OneLevelObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/objectCookieParameter"),
 	}
 
 	// Run stopwatch.
@@ -629,6 +642,8 @@ func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryPar
 func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (res *ObjectQueryParameterOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/objectQueryParameter"),
 	}
 
 	// Run stopwatch.
@@ -738,6 +753,8 @@ func (c *Client) PathParameter(ctx context.Context, params PathParameterParams) 
 func (c *Client) sendPathParameter(ctx context.Context, params PathParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pathParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
 	}
 
 	// Run stopwatch.
@@ -827,6 +844,8 @@ func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
 func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *SameNameOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/same_name/{param}"),
 	}
 
 	// Run stopwatch.
@@ -934,6 +953,8 @@ func (c *Client) SimilarNames(ctx context.Context, params SimilarNamesParams) er
 func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams) (res *SimilarNamesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("similarNames"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/similarNames"),
 	}
 
 	// Run stopwatch.

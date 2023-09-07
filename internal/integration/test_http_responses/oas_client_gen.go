@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -80,6 +81,8 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyConte
 func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
 	}
 
 	// Run stopwatch.
@@ -149,6 +152,8 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*
 func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
 	}
 
 	// Run stopwatch.
@@ -218,6 +223,8 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (CombinedR
 func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/combined"),
 	}
 
 	// Run stopwatch.
@@ -305,6 +312,8 @@ func (c *Client) Headers200(ctx context.Context) (*Headers200OK, error) {
 func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headers200"),
 	}
 
 	// Run stopwatch.
@@ -374,6 +383,8 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombinedParams) (res HeadersCombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersCombined"),
 	}
 
 	// Run stopwatch.
@@ -461,6 +472,8 @@ func (c *Client) HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error)
 func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersDefault"),
 	}
 
 	// Run stopwatch.
@@ -530,6 +543,8 @@ func (c *Client) HeadersJSON(ctx context.Context) (*HeadersJSONOK, error) {
 func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersJSON"),
 	}
 
 	// Run stopwatch.
@@ -599,6 +614,8 @@ func (c *Client) HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
 func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersPattern"),
 	}
 
 	// Run stopwatch.
@@ -671,6 +688,8 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/intersectPatternCode"),
 	}
 
 	// Run stopwatch.
@@ -758,6 +777,8 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (MultipleGenericR
 func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
 	}
 
 	// Run stopwatch.
@@ -827,6 +848,8 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (OctetStream
 func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
 	}
 
 	// Run stopwatch.
@@ -896,6 +919,8 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySc
 func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
 	}
 
 	// Run stopwatch.
@@ -967,6 +992,8 @@ func (c *Client) OptionalHeaders(ctx context.Context) (*OptionalHeadersOK, error
 func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalHeaders"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/optionalHeaders"),
 	}
 
 	// Run stopwatch.
@@ -1036,6 +1063,8 @@ func (c *Client) StreamJSON(ctx context.Context, params StreamJSONParams) (Strea
 func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (res StreamJSONRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 
 	// Run stopwatch.
@@ -1123,6 +1152,8 @@ func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBina
 func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextPlainBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
 	}
 
 	// Run stopwatch.
