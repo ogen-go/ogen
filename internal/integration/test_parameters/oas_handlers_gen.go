@@ -22,10 +22,14 @@ import (
 //
 // GET /complicatedParameterName
 func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/complicatedParameterName"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ComplicatedParameterNameGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()

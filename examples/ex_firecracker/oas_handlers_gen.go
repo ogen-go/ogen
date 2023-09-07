@@ -822,10 +822,14 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 //
 // PUT /mmds/config
 func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/mmds/config"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsConfigPut",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -928,10 +932,14 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 //
 // GET /mmds
 func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/mmds"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1015,10 +1023,14 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 //
 // PATCH /mmds
 func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/mmds"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsPatch",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1121,10 +1133,14 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 //
 // PUT /mmds
 func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/mmds"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsPut",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()

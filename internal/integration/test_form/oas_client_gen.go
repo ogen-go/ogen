@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -79,6 +80,8 @@ func (c *Client) OnlyForm(ctx context.Context, request *OnlyFormReq) error {
 func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *OnlyFormOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyForm"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/onlyForm"),
 	}
 
 	// Run stopwatch.
@@ -151,6 +154,8 @@ func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFi
 func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) (res *OnlyMultipartFileOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartFile"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/onlyMultipartFile"),
 	}
 
 	// Run stopwatch.
@@ -223,6 +228,8 @@ func (c *Client) OnlyMultipartForm(ctx context.Context, request *OnlyMultipartFo
 func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipartFormReq) (res *OnlyMultipartFormOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartForm"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/onlyMultipartForm"),
 	}
 
 	// Run stopwatch.
@@ -295,6 +302,8 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) erro
 func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) (res *TestFormURLEncodedOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
 	}
 
 	// Run stopwatch.
@@ -367,6 +376,8 @@ func (c *Client) TestMultipart(ctx context.Context, request *TestFormMultipart) 
 func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipart) (res *TestMultipartOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testMultipart"),
 	}
 
 	// Run stopwatch.
@@ -439,6 +450,8 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipart
 func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (res *TestMultipartUploadOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testMultipartUpload"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -520,6 +533,8 @@ func (c *Client) TestReuseFormOptionalSchema(ctx context.Context, request OptSha
 func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) (res *TestReuseFormOptionalSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormOptionalSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
 	}
 
 	// Run stopwatch.
@@ -592,6 +607,8 @@ func (c *Client) TestReuseFormSchema(ctx context.Context, request *SharedRequest
 func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) (res *TestReuseFormSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
 	}
 
 	// Run stopwatch.
@@ -664,6 +681,8 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res *TestShareFormSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testShareFormSchema"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {

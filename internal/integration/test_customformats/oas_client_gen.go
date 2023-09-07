@@ -12,6 +12,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
@@ -75,7 +77,10 @@ func (c *Client) EventPost(ctx context.Context, request any) (any, error) {
 }
 
 func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/event"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -90,6 +95,7 @@ func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err e
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EventPost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -144,7 +150,10 @@ func (c *Client) PhoneGet(ctx context.Context, request *User, params PhoneGetPar
 }
 
 func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGetParams) (res *User, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/phone"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -159,6 +168,7 @@ func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGe
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PhoneGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.

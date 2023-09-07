@@ -12,6 +12,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
@@ -75,7 +77,10 @@ func (c *Client) HealthzGet(ctx context.Context) (*Person, error) {
 }
 
 func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/healthz"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -90,6 +95,7 @@ func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HealthzGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
