@@ -124,11 +124,16 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
 
 	{{- $hasOTELAttrs := false }}
-	{{- with $attrs := $op.OTELAttributes }}
+	{{- $ogenAttrs := $op.OTELAttributes }}
+	{{- if or $ogenAttrs (not $op.WebhookInfo) }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		{{- range $attr := $attrs }}
+		{{- range $attr := $ogenAttrs }}
 		{{ $attr.String }},
+		{{- end }}
+		{{- if not $op.WebhookInfo }}
+		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 		{{- end }}
 	}
 	{{- else }}
