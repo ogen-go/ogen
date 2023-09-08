@@ -45,7 +45,11 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 	{{- else }}
 		switch response := response.(type) {
 		{{- range $info := $op.ListResponseTypes }}
+      {{- if and $info.Type.IsAlias $info.Type.AliasTo.IsArray }}
+			case {{ $info.Type.Name }}:
+      {{- else }}
 			case *{{ $info.Type.Name }}:
+      {{- end }}
 			{{- template "respond" $info }}
 		{{- end }}
 		default:

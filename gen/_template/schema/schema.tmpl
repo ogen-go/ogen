@@ -31,7 +31,11 @@
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
+{{- if and $.IsAlias $.AliasTo.IsArray }}
+func ({{ $.Go }}) {{ $method }}() {}
+{{- else }}
 func (*{{ $.Go }}) {{ $method }}() {}
+{{- end }}
 {{- end }}
 
 {{ end }}

@@ -217,15 +217,15 @@ func (*DeletePetOwnerNoContent) deletePetOwnerRes() {}
 
 type ListPetCategoriesOKApplicationJSON []PetCategoriesList
 
-func (*ListPetCategoriesOKApplicationJSON) listPetCategoriesRes() {}
+func (ListPetCategoriesOKApplicationJSON) listPetCategoriesRes() {}
 
 type ListPetFriendsOKApplicationJSON []PetFriendsList
 
-func (*ListPetFriendsOKApplicationJSON) listPetFriendsRes() {}
+func (ListPetFriendsOKApplicationJSON) listPetFriendsRes() {}
 
 type ListPetOKApplicationJSON []PetList
 
-func (*ListPetOKApplicationJSON) listPetRes() {}
+func (ListPetOKApplicationJSON) listPetRes() {}
 
 // NewOptDateTime returns new OptDateTime with value set to v.
 func NewOptDateTime(v time.Time) OptDateTime {

@@ -658,7 +658,7 @@ func (s *OptionalHeadersOK) SetXRequired(val string) {
 
 type QueryData []float64
 
-func (*QueryData) streamJSONRes() {}
+func (QueryData) streamJSONRes() {}
 
 type TextPlainBinaryStringSchemaOK struct {
 	Data io.Reader
