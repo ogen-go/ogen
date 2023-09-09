@@ -90,7 +90,11 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 					Err: err,
 				}
 				recordError({{ printf "Security:%s" $securityName | quote }}, err)
+				{{- if and $.Config.Error (not $op.WebhookInfo) }}
+				encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+				{{- else }}
 				s.cfg.ErrorHandler(ctx, w, r, err)
+				{{- end }}
 				return
 			}
 			if ok {
@@ -123,7 +127,11 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				Err: ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
 			recordError({{ quote "Security" }}, err)
+			{{- if and $.Config.Error (not $op.WebhookInfo) }}
+			encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+			{{- else }}
 			s.cfg.ErrorHandler(ctx, w, r, err)
+			{{- end }}
 			return
 		}
 	}
