@@ -21,6 +21,7 @@ func encodeCancelFineTuneResponse(response FineTune, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -34,6 +35,7 @@ func encodeCreateAnswerResponse(response *CreateAnswerResponse, w http.ResponseW
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -47,6 +49,7 @@ func encodeCreateChatCompletionResponse(response *CreateChatCompletionResponse, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -60,6 +63,7 @@ func encodeCreateClassificationResponse(response *CreateClassificationResponse, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -73,6 +77,7 @@ func encodeCreateCompletionResponse(response *CreateCompletionResponse, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -86,6 +91,7 @@ func encodeCreateEditResponse(response *CreateEditResponse, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -99,6 +105,7 @@ func encodeCreateEmbeddingResponse(response *CreateEmbeddingResponse, w http.Res
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -112,6 +119,7 @@ func encodeCreateFileResponse(response OpenAIFile, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -125,6 +133,7 @@ func encodeCreateFineTuneResponse(response FineTune, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -138,6 +147,7 @@ func encodeCreateImageResponse(response ImagesResponse, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -151,6 +161,7 @@ func encodeCreateImageEditResponse(response ImagesResponse, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -164,6 +175,7 @@ func encodeCreateImageVariationResponse(response ImagesResponse, w http.Response
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -177,6 +189,7 @@ func encodeCreateModerationResponse(response *CreateModerationResponse, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -190,6 +203,7 @@ func encodeCreateSearchResponse(response *CreateSearchResponse, w http.ResponseW
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -203,6 +217,7 @@ func encodeCreateTranscriptionResponse(response *CreateTranscriptionResponse, w 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -216,6 +231,7 @@ func encodeCreateTranslationResponse(response *CreateTranslationResponse, w http
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -229,6 +245,7 @@ func encodeDeleteFileResponse(response *DeleteFileResponse, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -242,6 +259,7 @@ func encodeDeleteModelResponse(response *DeleteModelResponse, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -255,6 +273,7 @@ func encodeDownloadFileResponse(response string, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -268,6 +287,7 @@ func encodeListEnginesResponse(response *ListEnginesResponse, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -281,6 +301,7 @@ func encodeListFilesResponse(response *ListFilesResponse, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -294,6 +315,7 @@ func encodeListFineTuneEventsResponse(response *ListFineTuneEventsResponse, w ht
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -307,6 +329,7 @@ func encodeListFineTunesResponse(response *ListFineTunesResponse, w http.Respons
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -320,6 +343,7 @@ func encodeListModelsResponse(response *ListModelsResponse, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -333,6 +357,7 @@ func encodeRetrieveEngineResponse(response Engine, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -346,6 +371,7 @@ func encodeRetrieveFileResponse(response OpenAIFile, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -359,6 +385,7 @@ func encodeRetrieveFineTuneResponse(response FineTune, w http.ResponseWriter, sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -372,5 +399,6 @@ func encodeRetrieveModelResponse(response Model, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

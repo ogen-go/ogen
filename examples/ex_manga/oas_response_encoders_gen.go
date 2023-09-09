@@ -24,6 +24,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *GetBookForbidden:
@@ -47,6 +48,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *GetPageCoverImageForbidden:
@@ -70,6 +72,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *GetPageImageForbidden:
@@ -93,6 +96,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *GetPageThumbnailImageForbidden:
@@ -118,6 +122,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *SearchForbidden:
@@ -143,6 +148,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *SearchByTagIDForbidden:

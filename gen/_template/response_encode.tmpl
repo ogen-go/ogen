@@ -115,7 +115,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 {{- end }}
 
 {{ if $.NoContent }}
-	return nil
+	{{ template "respond/return" $}}
 {{- else }}
 	{{- $type := $.Type }}
 	{{- $var := "response" }}
@@ -138,7 +138,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 			return errors.Wrap(err, "write")
 		}
 		{{- end }}
-		return nil
+		{{ template "respond/return" $}}
 	{{- else if $type.IsStream }}
 		{{- if $type.IsBase64Stream }}
 		writer := base64.NewEncoder(base64.StdEncoding, w)
@@ -149,9 +149,21 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		if _, err := io.Copy(writer, {{ $var }}); err != nil {
 			return errors.Wrap(err, "write")
 		}
-		return nil
+		{{ template "respond/return" $}}
 	{{- else }}
 		{{- errorf "%q: %s encoder not implemented" $.Encoding $type }}
 	{{- end }}
 {{- end }}
 {{ end }}
+
+{{ define "respond/return" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
+{{- if $.WithStatusCode }}
+if code >= http.StatusInternalServerError {
+	return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+}
+return nil
+{{- else }}
+return nil
+{{- end }}
+{{- end }}

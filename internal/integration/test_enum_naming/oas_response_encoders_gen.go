@@ -21,5 +21,6 @@ func encodeProbeLivenessResponse(response *ProbeLivenessOK, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

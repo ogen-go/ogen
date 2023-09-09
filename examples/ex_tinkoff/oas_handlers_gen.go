@@ -7,12 +7,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
@@ -143,7 +145,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeMarketBondsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -301,7 +305,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeMarketCandlesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -432,7 +438,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 
 	if err := encodeMarketCurrenciesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -563,7 +571,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeMarketEtfsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -713,7 +723,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 
 	if err := encodeMarketOrderbookGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -859,7 +871,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 
 	if err := encodeMarketSearchByFigiGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1005,7 +1019,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 
 	if err := encodeMarketSearchByTickerGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1136,7 +1152,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeMarketStocksGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1294,7 +1312,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeOperationsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1444,7 +1464,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeOrdersCancelPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1590,7 +1612,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeOrdersGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1755,7 +1779,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 
 	if err := encodeOrdersLimitOrderPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1920,7 +1946,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 
 	if err := encodeOrdersMarketOrderPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2066,7 +2094,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 
 	if err := encodePortfolioCurrenciesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2212,7 +2242,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodePortfolioGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2358,7 +2390,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeSandboxClearPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2519,7 +2553,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 
 	if err := encodeSandboxCurrenciesBalancePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2680,7 +2716,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 
 	if err := encodeSandboxPositionsBalancePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2826,7 +2864,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 
 	if err := encodeSandboxRegisterPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2972,7 +3012,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 
 	if err := encodeSandboxRemovePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3103,7 +3145,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeUserAccountsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
