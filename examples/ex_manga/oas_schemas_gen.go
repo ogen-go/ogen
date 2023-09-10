@@ -661,6 +661,19 @@ const (
 	TagTypeLanguage  TagType = "language"
 )
 
+// AllValues returns all TagType values.
+func (TagType) AllValues() []TagType {
+	return []TagType{
+		TagTypeParody,
+		TagTypeCharacter,
+		TagTypeTag,
+		TagTypeArtist,
+		TagTypeGroup,
+		TagTypeCategory,
+		TagTypeLanguage,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TagType) MarshalText() ([]byte, error) {
 	switch s {

@@ -58,6 +58,15 @@ const (
 	ChatCompletionRequestMessageRoleAssistant ChatCompletionRequestMessageRole = "assistant"
 )
 
+// AllValues returns all ChatCompletionRequestMessageRole values.
+func (ChatCompletionRequestMessageRole) AllValues() []ChatCompletionRequestMessageRole {
+	return []ChatCompletionRequestMessageRole{
+		ChatCompletionRequestMessageRoleSystem,
+		ChatCompletionRequestMessageRoleUser,
+		ChatCompletionRequestMessageRoleAssistant,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ChatCompletionRequestMessageRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -125,6 +134,15 @@ const (
 	ChatCompletionResponseMessageRoleUser      ChatCompletionResponseMessageRole = "user"
 	ChatCompletionResponseMessageRoleAssistant ChatCompletionResponseMessageRole = "assistant"
 )
+
+// AllValues returns all ChatCompletionResponseMessageRole values.
+func (ChatCompletionResponseMessageRole) AllValues() []ChatCompletionResponseMessageRole {
+	return []ChatCompletionResponseMessageRole{
+		ChatCompletionResponseMessageRoleSystem,
+		ChatCompletionResponseMessageRoleUser,
+		ChatCompletionResponseMessageRoleAssistant,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ChatCompletionResponseMessageRole) MarshalText() ([]byte, error) {
@@ -2738,6 +2756,14 @@ const (
 	CreateImageEditRequestMultipartResponseFormatB64JSON CreateImageEditRequestMultipartResponseFormat = "b64_json"
 )
 
+// AllValues returns all CreateImageEditRequestMultipartResponseFormat values.
+func (CreateImageEditRequestMultipartResponseFormat) AllValues() []CreateImageEditRequestMultipartResponseFormat {
+	return []CreateImageEditRequestMultipartResponseFormat{
+		CreateImageEditRequestMultipartResponseFormatURL,
+		CreateImageEditRequestMultipartResponseFormatB64JSON,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageEditRequestMultipartResponseFormat) MarshalText() ([]byte, error) {
 	switch s {
@@ -2772,6 +2798,15 @@ const (
 	CreateImageEditRequestMultipartSize512x512   CreateImageEditRequestMultipartSize = "512x512"
 	CreateImageEditRequestMultipartSize1024x1024 CreateImageEditRequestMultipartSize = "1024x1024"
 )
+
+// AllValues returns all CreateImageEditRequestMultipartSize values.
+func (CreateImageEditRequestMultipartSize) AllValues() []CreateImageEditRequestMultipartSize {
+	return []CreateImageEditRequestMultipartSize{
+		CreateImageEditRequestMultipartSize256x256,
+		CreateImageEditRequestMultipartSize512x512,
+		CreateImageEditRequestMultipartSize1024x1024,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageEditRequestMultipartSize) MarshalText() ([]byte, error) {
@@ -2877,6 +2912,14 @@ const (
 	CreateImageRequestResponseFormatB64JSON CreateImageRequestResponseFormat = "b64_json"
 )
 
+// AllValues returns all CreateImageRequestResponseFormat values.
+func (CreateImageRequestResponseFormat) AllValues() []CreateImageRequestResponseFormat {
+	return []CreateImageRequestResponseFormat{
+		CreateImageRequestResponseFormatURL,
+		CreateImageRequestResponseFormatB64JSON,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageRequestResponseFormat) MarshalText() ([]byte, error) {
 	switch s {
@@ -2911,6 +2954,15 @@ const (
 	CreateImageRequestSize512x512   CreateImageRequestSize = "512x512"
 	CreateImageRequestSize1024x1024 CreateImageRequestSize = "1024x1024"
 )
+
+// AllValues returns all CreateImageRequestSize values.
+func (CreateImageRequestSize) AllValues() []CreateImageRequestSize {
+	return []CreateImageRequestSize{
+		CreateImageRequestSize256x256,
+		CreateImageRequestSize512x512,
+		CreateImageRequestSize1024x1024,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageRequestSize) MarshalText() ([]byte, error) {
@@ -3017,6 +3069,14 @@ const (
 	CreateImageVariationRequestMultipartResponseFormatB64JSON CreateImageVariationRequestMultipartResponseFormat = "b64_json"
 )
 
+// AllValues returns all CreateImageVariationRequestMultipartResponseFormat values.
+func (CreateImageVariationRequestMultipartResponseFormat) AllValues() []CreateImageVariationRequestMultipartResponseFormat {
+	return []CreateImageVariationRequestMultipartResponseFormat{
+		CreateImageVariationRequestMultipartResponseFormatURL,
+		CreateImageVariationRequestMultipartResponseFormatB64JSON,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageVariationRequestMultipartResponseFormat) MarshalText() ([]byte, error) {
 	switch s {
@@ -3051,6 +3111,15 @@ const (
 	CreateImageVariationRequestMultipartSize512x512   CreateImageVariationRequestMultipartSize = "512x512"
 	CreateImageVariationRequestMultipartSize1024x1024 CreateImageVariationRequestMultipartSize = "1024x1024"
 )
+
+// AllValues returns all CreateImageVariationRequestMultipartSize values.
+func (CreateImageVariationRequestMultipartSize) AllValues() []CreateImageVariationRequestMultipartSize {
+	return []CreateImageVariationRequestMultipartSize{
+		CreateImageVariationRequestMultipartSize256x256,
+		CreateImageVariationRequestMultipartSize512x512,
+		CreateImageVariationRequestMultipartSize1024x1024,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CreateImageVariationRequestMultipartSize) MarshalText() ([]byte, error) {

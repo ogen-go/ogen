@@ -14,6 +14,14 @@ const (
 	PascalExceptionStratMinus2 PascalExceptionStrat = "-2"
 )
 
+// AllValues returns all PascalExceptionStrat values.
+func (PascalExceptionStrat) AllValues() []PascalExceptionStrat {
+	return []PascalExceptionStrat{
+		PascalExceptionStrat1,
+		PascalExceptionStratMinus2,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PascalExceptionStrat) MarshalText() ([]byte, error) {
 	switch s {
@@ -48,6 +56,14 @@ const (
 	PascalSpecialStrat2Minus2 PascalSpecialStrat = "2-2"
 )
 
+// AllValues returns all PascalSpecialStrat values.
+func (PascalSpecialStrat) AllValues() []PascalSpecialStrat {
+	return []PascalSpecialStrat{
+		PascalSpecialStrat2Plus2,
+		PascalSpecialStrat2Minus2,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PascalSpecialStrat) MarshalText() ([]byte, error) {
 	switch s {
@@ -81,6 +97,14 @@ const (
 	PascalStratInSync    PascalStrat = "in-sync"
 	PascalStratOutOfSync PascalStrat = "out-of-sync"
 )
+
+// AllValues returns all PascalStrat values.
+func (PascalStrat) AllValues() []PascalStrat {
+	return []PascalStrat{
+		PascalStratInSync,
+		PascalStratOutOfSync,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PascalStrat) MarshalText() ([]byte, error) {
@@ -266,6 +290,118 @@ const (
 	VeryBadEnum_104 VeryBadEnum = "multiValueExtendedProperties"
 	VeryBadEnum_105 VeryBadEnum = "singleValueExtendedProperties"
 )
+
+// AllValues returns all VeryBadEnum values.
+func (VeryBadEnum) AllValues() []VeryBadEnum {
+	return []VeryBadEnum{
+		VeryBadEnum_0,
+		VeryBadEnum_1,
+		VeryBadEnum_2,
+		VeryBadEnum_3,
+		VeryBadEnum_4,
+		VeryBadEnum_5,
+		VeryBadEnum_6,
+		VeryBadEnum_7,
+		VeryBadEnum_8,
+		VeryBadEnum_9,
+		VeryBadEnum_10,
+		VeryBadEnum_11,
+		VeryBadEnum_12,
+		VeryBadEnum_13,
+		VeryBadEnum_14,
+		VeryBadEnum_15,
+		VeryBadEnum_16,
+		VeryBadEnum_17,
+		VeryBadEnum_18,
+		VeryBadEnum_19,
+		VeryBadEnum_20,
+		VeryBadEnum_21,
+		VeryBadEnum_22,
+		VeryBadEnum_23,
+		VeryBadEnum_24,
+		VeryBadEnum_25,
+		VeryBadEnum_26,
+		VeryBadEnum_27,
+		VeryBadEnum_28,
+		VeryBadEnum_29,
+		VeryBadEnum_30,
+		VeryBadEnum_31,
+		VeryBadEnum_32,
+		VeryBadEnum_33,
+		VeryBadEnum_34,
+		VeryBadEnum_35,
+		VeryBadEnum_36,
+		VeryBadEnum_37,
+		VeryBadEnum_38,
+		VeryBadEnum_39,
+		VeryBadEnum_40,
+		VeryBadEnum_41,
+		VeryBadEnum_42,
+		VeryBadEnum_43,
+		VeryBadEnum_44,
+		VeryBadEnum_45,
+		VeryBadEnum_46,
+		VeryBadEnum_47,
+		VeryBadEnum_48,
+		VeryBadEnum_49,
+		VeryBadEnum_50,
+		VeryBadEnum_51,
+		VeryBadEnum_52,
+		VeryBadEnum_53,
+		VeryBadEnum_54,
+		VeryBadEnum_55,
+		VeryBadEnum_56,
+		VeryBadEnum_57,
+		VeryBadEnum_58,
+		VeryBadEnum_59,
+		VeryBadEnum_60,
+		VeryBadEnum_61,
+		VeryBadEnum_62,
+		VeryBadEnum_63,
+		VeryBadEnum_64,
+		VeryBadEnum_65,
+		VeryBadEnum_66,
+		VeryBadEnum_67,
+		VeryBadEnum_68,
+		VeryBadEnum_69,
+		VeryBadEnum_70,
+		VeryBadEnum_71,
+		VeryBadEnum_72,
+		VeryBadEnum_73,
+		VeryBadEnum_74,
+		VeryBadEnum_75,
+		VeryBadEnum_76,
+		VeryBadEnum_77,
+		VeryBadEnum_78,
+		VeryBadEnum_79,
+		VeryBadEnum_80,
+		VeryBadEnum_81,
+		VeryBadEnum_82,
+		VeryBadEnum_83,
+		VeryBadEnum_84,
+		VeryBadEnum_85,
+		VeryBadEnum_86,
+		VeryBadEnum_87,
+		VeryBadEnum_88,
+		VeryBadEnum_89,
+		VeryBadEnum_90,
+		VeryBadEnum_91,
+		VeryBadEnum_92,
+		VeryBadEnum_93,
+		VeryBadEnum_94,
+		VeryBadEnum_95,
+		VeryBadEnum_96,
+		VeryBadEnum_97,
+		VeryBadEnum_98,
+		VeryBadEnum_99,
+		VeryBadEnum_100,
+		VeryBadEnum_101,
+		VeryBadEnum_102,
+		VeryBadEnum_103,
+		VeryBadEnum_104,
+		VeryBadEnum_105,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s VeryBadEnum) MarshalText() ([]byte, error) {

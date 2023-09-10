@@ -226,6 +226,15 @@ const (
 	UserRoleBot   UserRole = "bot"
 )
 
+// AllValues returns all UserRole values.
+func (UserRole) AllValues() []UserRole {
+	return []UserRole{
+		UserRoleAdmin,
+		UserRoleUser,
+		UserRoleBot,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s UserRole) MarshalText() ([]byte, error) {
 	switch s {

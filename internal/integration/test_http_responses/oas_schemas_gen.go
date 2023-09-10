@@ -172,6 +172,16 @@ const (
 	CombinedTypeDefault CombinedType = "default"
 )
 
+// AllValues returns all CombinedType values.
+func (CombinedType) AllValues() []CombinedType {
+	return []CombinedType{
+		CombinedType200,
+		CombinedType2XX,
+		CombinedType5XX,
+		CombinedTypeDefault,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CombinedType) MarshalText() ([]byte, error) {
 	switch s {
@@ -320,6 +330,15 @@ const (
 	HeadersCombinedTypeDefault HeadersCombinedType = "default"
 	HeadersCombinedType4XX     HeadersCombinedType = "4XX"
 )
+
+// AllValues returns all HeadersCombinedType values.
+func (HeadersCombinedType) AllValues() []HeadersCombinedType {
+	return []HeadersCombinedType{
+		HeadersCombinedType200,
+		HeadersCombinedTypeDefault,
+		HeadersCombinedType4XX,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s HeadersCombinedType) MarshalText() ([]byte, error) {
@@ -729,6 +748,15 @@ const (
 	UserRoleUser  UserRole = "user"
 	UserRoleBot   UserRole = "bot"
 )
+
+// AllValues returns all UserRole values.
+func (UserRole) AllValues() []UserRole {
+	return []UserRole{
+		UserRoleAdmin,
+		UserRoleUser,
+		UserRoleBot,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s UserRole) MarshalText() ([]byte, error) {

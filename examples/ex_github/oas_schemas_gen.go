@@ -428,6 +428,15 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
 
+// AllValues returns all ActionsCreateOrUpdateOrgSecretReqVisibility values.
+func (ActionsCreateOrUpdateOrgSecretReqVisibility) AllValues() []ActionsCreateOrUpdateOrgSecretReqVisibility {
+	return []ActionsCreateOrUpdateOrgSecretReqVisibility{
+		ActionsCreateOrUpdateOrgSecretReqVisibilityAll,
+		ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate,
+		ActionsCreateOrUpdateOrgSecretReqVisibilitySelected,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsCreateOrUpdateOrgSecretReqVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -558,6 +567,15 @@ const (
 	ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll      ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility = "all"
 	ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility = "private"
 )
+
+// AllValues returns all ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility values.
+func (ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) AllValues() []ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility {
+	return []ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility{
+		ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected,
+		ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll,
+		ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) MarshalText() ([]byte, error) {
@@ -828,6 +846,14 @@ const (
 	ActionsListJobsForWorkflowRunFilterLatest ActionsListJobsForWorkflowRunFilter = "latest"
 	ActionsListJobsForWorkflowRunFilterAll    ActionsListJobsForWorkflowRunFilter = "all"
 )
+
+// AllValues returns all ActionsListJobsForWorkflowRunFilter values.
+func (ActionsListJobsForWorkflowRunFilter) AllValues() []ActionsListJobsForWorkflowRunFilter {
+	return []ActionsListJobsForWorkflowRunFilter{
+		ActionsListJobsForWorkflowRunFilterLatest,
+		ActionsListJobsForWorkflowRunFilterAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsListJobsForWorkflowRunFilter) MarshalText() ([]byte, error) {
@@ -1432,6 +1458,25 @@ const (
 	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
 )
 
+// AllValues returns all ActionsListWorkflowRunsForRepoStatus values.
+func (ActionsListWorkflowRunsForRepoStatus) AllValues() []ActionsListWorkflowRunsForRepoStatus {
+	return []ActionsListWorkflowRunsForRepoStatus{
+		ActionsListWorkflowRunsForRepoStatusCompleted,
+		ActionsListWorkflowRunsForRepoStatusActionRequired,
+		ActionsListWorkflowRunsForRepoStatusCancelled,
+		ActionsListWorkflowRunsForRepoStatusFailure,
+		ActionsListWorkflowRunsForRepoStatusNeutral,
+		ActionsListWorkflowRunsForRepoStatusSkipped,
+		ActionsListWorkflowRunsForRepoStatusStale,
+		ActionsListWorkflowRunsForRepoStatusSuccess,
+		ActionsListWorkflowRunsForRepoStatusTimedOut,
+		ActionsListWorkflowRunsForRepoStatusInProgress,
+		ActionsListWorkflowRunsForRepoStatusQueued,
+		ActionsListWorkflowRunsForRepoStatusRequested,
+		ActionsListWorkflowRunsForRepoStatusWaiting,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsListWorkflowRunsForRepoStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -1742,6 +1787,14 @@ const (
 	ActionsReviewPendingDeploymentsForRunReqStateRejected ActionsReviewPendingDeploymentsForRunReqState = "rejected"
 )
 
+// AllValues returns all ActionsReviewPendingDeploymentsForRunReqState values.
+func (ActionsReviewPendingDeploymentsForRunReqState) AllValues() []ActionsReviewPendingDeploymentsForRunReqState {
+	return []ActionsReviewPendingDeploymentsForRunReqState{
+		ActionsReviewPendingDeploymentsForRunReqStateApproved,
+		ActionsReviewPendingDeploymentsForRunReqStateRejected,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsReviewPendingDeploymentsForRunReqState) MarshalText() ([]byte, error) {
 	switch s {
@@ -1984,6 +2037,15 @@ const (
 	ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate  ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility = "private"
 )
 
+// AllValues returns all ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility values.
+func (ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) AllValues() []ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility {
+	return []ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility{
+		ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected,
+		ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll,
+		ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -2169,6 +2231,14 @@ const (
 	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
 )
 
+// AllValues returns all ActivityListReposStarredByAuthenticatedUserDirection values.
+func (ActivityListReposStarredByAuthenticatedUserDirection) AllValues() []ActivityListReposStarredByAuthenticatedUserDirection {
+	return []ActivityListReposStarredByAuthenticatedUserDirection{
+		ActivityListReposStarredByAuthenticatedUserDirectionAsc,
+		ActivityListReposStarredByAuthenticatedUserDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ActivityListReposStarredByAuthenticatedUserDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -2235,6 +2305,14 @@ const (
 	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
 	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
 )
+
+// AllValues returns all ActivityListReposStarredByAuthenticatedUserSort values.
+func (ActivityListReposStarredByAuthenticatedUserSort) AllValues() []ActivityListReposStarredByAuthenticatedUserSort {
+	return []ActivityListReposStarredByAuthenticatedUserSort{
+		ActivityListReposStarredByAuthenticatedUserSortCreated,
+		ActivityListReposStarredByAuthenticatedUserSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ActivityListReposStarredByAuthenticatedUserSort) MarshalText() ([]byte, error) {
@@ -2645,6 +2723,15 @@ const (
 	AllowedActionsLocalOnly AllowedActions = "local_only"
 	AllowedActionsSelected  AllowedActions = "selected"
 )
+
+// AllValues returns all AllowedActions values.
+func (AllowedActions) AllValues() []AllowedActions {
+	return []AllowedActions{
+		AllowedActionsAll,
+		AllowedActionsLocalOnly,
+		AllowedActionsSelected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AllowedActions) MarshalText() ([]byte, error) {
@@ -3094,6 +3181,14 @@ const (
 	AppPermissionsActionsWrite AppPermissionsActions = "write"
 )
 
+// AllValues returns all AppPermissionsActions values.
+func (AppPermissionsActions) AllValues() []AppPermissionsActions {
+	return []AppPermissionsActions{
+		AppPermissionsActionsRead,
+		AppPermissionsActionsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsActions) MarshalText() ([]byte, error) {
 	switch s {
@@ -3128,6 +3223,14 @@ const (
 	AppPermissionsAdministrationRead  AppPermissionsAdministration = "read"
 	AppPermissionsAdministrationWrite AppPermissionsAdministration = "write"
 )
+
+// AllValues returns all AppPermissionsAdministration values.
+func (AppPermissionsAdministration) AllValues() []AppPermissionsAdministration {
+	return []AppPermissionsAdministration{
+		AppPermissionsAdministrationRead,
+		AppPermissionsAdministrationWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsAdministration) MarshalText() ([]byte, error) {
@@ -3164,6 +3267,14 @@ const (
 	AppPermissionsChecksWrite AppPermissionsChecks = "write"
 )
 
+// AllValues returns all AppPermissionsChecks values.
+func (AppPermissionsChecks) AllValues() []AppPermissionsChecks {
+	return []AppPermissionsChecks{
+		AppPermissionsChecksRead,
+		AppPermissionsChecksWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsChecks) MarshalText() ([]byte, error) {
 	switch s {
@@ -3198,6 +3309,14 @@ const (
 	AppPermissionsContentReferencesRead  AppPermissionsContentReferences = "read"
 	AppPermissionsContentReferencesWrite AppPermissionsContentReferences = "write"
 )
+
+// AllValues returns all AppPermissionsContentReferences values.
+func (AppPermissionsContentReferences) AllValues() []AppPermissionsContentReferences {
+	return []AppPermissionsContentReferences{
+		AppPermissionsContentReferencesRead,
+		AppPermissionsContentReferencesWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsContentReferences) MarshalText() ([]byte, error) {
@@ -3234,6 +3353,14 @@ const (
 	AppPermissionsContentsWrite AppPermissionsContents = "write"
 )
 
+// AllValues returns all AppPermissionsContents values.
+func (AppPermissionsContents) AllValues() []AppPermissionsContents {
+	return []AppPermissionsContents{
+		AppPermissionsContentsRead,
+		AppPermissionsContentsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsContents) MarshalText() ([]byte, error) {
 	switch s {
@@ -3268,6 +3395,14 @@ const (
 	AppPermissionsDeploymentsRead  AppPermissionsDeployments = "read"
 	AppPermissionsDeploymentsWrite AppPermissionsDeployments = "write"
 )
+
+// AllValues returns all AppPermissionsDeployments values.
+func (AppPermissionsDeployments) AllValues() []AppPermissionsDeployments {
+	return []AppPermissionsDeployments{
+		AppPermissionsDeploymentsRead,
+		AppPermissionsDeploymentsWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsDeployments) MarshalText() ([]byte, error) {
@@ -3304,6 +3439,14 @@ const (
 	AppPermissionsEnvironmentsWrite AppPermissionsEnvironments = "write"
 )
 
+// AllValues returns all AppPermissionsEnvironments values.
+func (AppPermissionsEnvironments) AllValues() []AppPermissionsEnvironments {
+	return []AppPermissionsEnvironments{
+		AppPermissionsEnvironmentsRead,
+		AppPermissionsEnvironmentsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsEnvironments) MarshalText() ([]byte, error) {
 	switch s {
@@ -3338,6 +3481,14 @@ const (
 	AppPermissionsIssuesRead  AppPermissionsIssues = "read"
 	AppPermissionsIssuesWrite AppPermissionsIssues = "write"
 )
+
+// AllValues returns all AppPermissionsIssues values.
+func (AppPermissionsIssues) AllValues() []AppPermissionsIssues {
+	return []AppPermissionsIssues{
+		AppPermissionsIssuesRead,
+		AppPermissionsIssuesWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsIssues) MarshalText() ([]byte, error) {
@@ -3374,6 +3525,14 @@ const (
 	AppPermissionsMembersWrite AppPermissionsMembers = "write"
 )
 
+// AllValues returns all AppPermissionsMembers values.
+func (AppPermissionsMembers) AllValues() []AppPermissionsMembers {
+	return []AppPermissionsMembers{
+		AppPermissionsMembersRead,
+		AppPermissionsMembersWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsMembers) MarshalText() ([]byte, error) {
 	switch s {
@@ -3408,6 +3567,14 @@ const (
 	AppPermissionsMetadataRead  AppPermissionsMetadata = "read"
 	AppPermissionsMetadataWrite AppPermissionsMetadata = "write"
 )
+
+// AllValues returns all AppPermissionsMetadata values.
+func (AppPermissionsMetadata) AllValues() []AppPermissionsMetadata {
+	return []AppPermissionsMetadata{
+		AppPermissionsMetadataRead,
+		AppPermissionsMetadataWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsMetadata) MarshalText() ([]byte, error) {
@@ -3444,6 +3611,14 @@ const (
 	AppPermissionsOrganizationAdministrationWrite AppPermissionsOrganizationAdministration = "write"
 )
 
+// AllValues returns all AppPermissionsOrganizationAdministration values.
+func (AppPermissionsOrganizationAdministration) AllValues() []AppPermissionsOrganizationAdministration {
+	return []AppPermissionsOrganizationAdministration{
+		AppPermissionsOrganizationAdministrationRead,
+		AppPermissionsOrganizationAdministrationWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationAdministration) MarshalText() ([]byte, error) {
 	switch s {
@@ -3478,6 +3653,14 @@ const (
 	AppPermissionsOrganizationHooksRead  AppPermissionsOrganizationHooks = "read"
 	AppPermissionsOrganizationHooksWrite AppPermissionsOrganizationHooks = "write"
 )
+
+// AllValues returns all AppPermissionsOrganizationHooks values.
+func (AppPermissionsOrganizationHooks) AllValues() []AppPermissionsOrganizationHooks {
+	return []AppPermissionsOrganizationHooks{
+		AppPermissionsOrganizationHooksRead,
+		AppPermissionsOrganizationHooksWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationHooks) MarshalText() ([]byte, error) {
@@ -3514,6 +3697,14 @@ const (
 	AppPermissionsOrganizationPackagesWrite AppPermissionsOrganizationPackages = "write"
 )
 
+// AllValues returns all AppPermissionsOrganizationPackages values.
+func (AppPermissionsOrganizationPackages) AllValues() []AppPermissionsOrganizationPackages {
+	return []AppPermissionsOrganizationPackages{
+		AppPermissionsOrganizationPackagesRead,
+		AppPermissionsOrganizationPackagesWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationPackages) MarshalText() ([]byte, error) {
 	switch s {
@@ -3548,6 +3739,13 @@ const (
 	AppPermissionsOrganizationPlanRead AppPermissionsOrganizationPlan = "read"
 )
 
+// AllValues returns all AppPermissionsOrganizationPlan values.
+func (AppPermissionsOrganizationPlan) AllValues() []AppPermissionsOrganizationPlan {
+	return []AppPermissionsOrganizationPlan{
+		AppPermissionsOrganizationPlanRead,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationPlan) MarshalText() ([]byte, error) {
 	switch s {
@@ -3578,6 +3776,15 @@ const (
 	AppPermissionsOrganizationProjectsWrite AppPermissionsOrganizationProjects = "write"
 	AppPermissionsOrganizationProjectsAdmin AppPermissionsOrganizationProjects = "admin"
 )
+
+// AllValues returns all AppPermissionsOrganizationProjects values.
+func (AppPermissionsOrganizationProjects) AllValues() []AppPermissionsOrganizationProjects {
+	return []AppPermissionsOrganizationProjects{
+		AppPermissionsOrganizationProjectsRead,
+		AppPermissionsOrganizationProjectsWrite,
+		AppPermissionsOrganizationProjectsAdmin,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationProjects) MarshalText() ([]byte, error) {
@@ -3619,6 +3826,14 @@ const (
 	AppPermissionsOrganizationSecretsWrite AppPermissionsOrganizationSecrets = "write"
 )
 
+// AllValues returns all AppPermissionsOrganizationSecrets values.
+func (AppPermissionsOrganizationSecrets) AllValues() []AppPermissionsOrganizationSecrets {
+	return []AppPermissionsOrganizationSecrets{
+		AppPermissionsOrganizationSecretsRead,
+		AppPermissionsOrganizationSecretsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationSecrets) MarshalText() ([]byte, error) {
 	switch s {
@@ -3653,6 +3868,14 @@ const (
 	AppPermissionsOrganizationSelfHostedRunnersRead  AppPermissionsOrganizationSelfHostedRunners = "read"
 	AppPermissionsOrganizationSelfHostedRunnersWrite AppPermissionsOrganizationSelfHostedRunners = "write"
 )
+
+// AllValues returns all AppPermissionsOrganizationSelfHostedRunners values.
+func (AppPermissionsOrganizationSelfHostedRunners) AllValues() []AppPermissionsOrganizationSelfHostedRunners {
+	return []AppPermissionsOrganizationSelfHostedRunners{
+		AppPermissionsOrganizationSelfHostedRunnersRead,
+		AppPermissionsOrganizationSelfHostedRunnersWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationSelfHostedRunners) MarshalText() ([]byte, error) {
@@ -3689,6 +3912,14 @@ const (
 	AppPermissionsOrganizationUserBlockingWrite AppPermissionsOrganizationUserBlocking = "write"
 )
 
+// AllValues returns all AppPermissionsOrganizationUserBlocking values.
+func (AppPermissionsOrganizationUserBlocking) AllValues() []AppPermissionsOrganizationUserBlocking {
+	return []AppPermissionsOrganizationUserBlocking{
+		AppPermissionsOrganizationUserBlockingRead,
+		AppPermissionsOrganizationUserBlockingWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsOrganizationUserBlocking) MarshalText() ([]byte, error) {
 	switch s {
@@ -3723,6 +3954,14 @@ const (
 	AppPermissionsPackagesRead  AppPermissionsPackages = "read"
 	AppPermissionsPackagesWrite AppPermissionsPackages = "write"
 )
+
+// AllValues returns all AppPermissionsPackages values.
+func (AppPermissionsPackages) AllValues() []AppPermissionsPackages {
+	return []AppPermissionsPackages{
+		AppPermissionsPackagesRead,
+		AppPermissionsPackagesWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsPackages) MarshalText() ([]byte, error) {
@@ -3759,6 +3998,14 @@ const (
 	AppPermissionsPagesWrite AppPermissionsPages = "write"
 )
 
+// AllValues returns all AppPermissionsPages values.
+func (AppPermissionsPages) AllValues() []AppPermissionsPages {
+	return []AppPermissionsPages{
+		AppPermissionsPagesRead,
+		AppPermissionsPagesWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsPages) MarshalText() ([]byte, error) {
 	switch s {
@@ -3793,6 +4040,14 @@ const (
 	AppPermissionsPullRequestsRead  AppPermissionsPullRequests = "read"
 	AppPermissionsPullRequestsWrite AppPermissionsPullRequests = "write"
 )
+
+// AllValues returns all AppPermissionsPullRequests values.
+func (AppPermissionsPullRequests) AllValues() []AppPermissionsPullRequests {
+	return []AppPermissionsPullRequests{
+		AppPermissionsPullRequestsRead,
+		AppPermissionsPullRequestsWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsPullRequests) MarshalText() ([]byte, error) {
@@ -3829,6 +4084,14 @@ const (
 	AppPermissionsRepositoryHooksWrite AppPermissionsRepositoryHooks = "write"
 )
 
+// AllValues returns all AppPermissionsRepositoryHooks values.
+func (AppPermissionsRepositoryHooks) AllValues() []AppPermissionsRepositoryHooks {
+	return []AppPermissionsRepositoryHooks{
+		AppPermissionsRepositoryHooksRead,
+		AppPermissionsRepositoryHooksWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsRepositoryHooks) MarshalText() ([]byte, error) {
 	switch s {
@@ -3864,6 +4127,15 @@ const (
 	AppPermissionsRepositoryProjectsWrite AppPermissionsRepositoryProjects = "write"
 	AppPermissionsRepositoryProjectsAdmin AppPermissionsRepositoryProjects = "admin"
 )
+
+// AllValues returns all AppPermissionsRepositoryProjects values.
+func (AppPermissionsRepositoryProjects) AllValues() []AppPermissionsRepositoryProjects {
+	return []AppPermissionsRepositoryProjects{
+		AppPermissionsRepositoryProjectsRead,
+		AppPermissionsRepositoryProjectsWrite,
+		AppPermissionsRepositoryProjectsAdmin,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsRepositoryProjects) MarshalText() ([]byte, error) {
@@ -3905,6 +4177,14 @@ const (
 	AppPermissionsSecretScanningAlertsWrite AppPermissionsSecretScanningAlerts = "write"
 )
 
+// AllValues returns all AppPermissionsSecretScanningAlerts values.
+func (AppPermissionsSecretScanningAlerts) AllValues() []AppPermissionsSecretScanningAlerts {
+	return []AppPermissionsSecretScanningAlerts{
+		AppPermissionsSecretScanningAlertsRead,
+		AppPermissionsSecretScanningAlertsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsSecretScanningAlerts) MarshalText() ([]byte, error) {
 	switch s {
@@ -3939,6 +4219,14 @@ const (
 	AppPermissionsSecretsRead  AppPermissionsSecrets = "read"
 	AppPermissionsSecretsWrite AppPermissionsSecrets = "write"
 )
+
+// AllValues returns all AppPermissionsSecrets values.
+func (AppPermissionsSecrets) AllValues() []AppPermissionsSecrets {
+	return []AppPermissionsSecrets{
+		AppPermissionsSecretsRead,
+		AppPermissionsSecretsWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsSecrets) MarshalText() ([]byte, error) {
@@ -3975,6 +4263,14 @@ const (
 	AppPermissionsSecurityEventsWrite AppPermissionsSecurityEvents = "write"
 )
 
+// AllValues returns all AppPermissionsSecurityEvents values.
+func (AppPermissionsSecurityEvents) AllValues() []AppPermissionsSecurityEvents {
+	return []AppPermissionsSecurityEvents{
+		AppPermissionsSecurityEventsRead,
+		AppPermissionsSecurityEventsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsSecurityEvents) MarshalText() ([]byte, error) {
 	switch s {
@@ -4009,6 +4305,14 @@ const (
 	AppPermissionsSingleFileRead  AppPermissionsSingleFile = "read"
 	AppPermissionsSingleFileWrite AppPermissionsSingleFile = "write"
 )
+
+// AllValues returns all AppPermissionsSingleFile values.
+func (AppPermissionsSingleFile) AllValues() []AppPermissionsSingleFile {
+	return []AppPermissionsSingleFile{
+		AppPermissionsSingleFileRead,
+		AppPermissionsSingleFileWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsSingleFile) MarshalText() ([]byte, error) {
@@ -4045,6 +4349,14 @@ const (
 	AppPermissionsStatusesWrite AppPermissionsStatuses = "write"
 )
 
+// AllValues returns all AppPermissionsStatuses values.
+func (AppPermissionsStatuses) AllValues() []AppPermissionsStatuses {
+	return []AppPermissionsStatuses{
+		AppPermissionsStatusesRead,
+		AppPermissionsStatusesWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsStatuses) MarshalText() ([]byte, error) {
 	switch s {
@@ -4080,6 +4392,14 @@ const (
 	AppPermissionsTeamDiscussionsWrite AppPermissionsTeamDiscussions = "write"
 )
 
+// AllValues returns all AppPermissionsTeamDiscussions values.
+func (AppPermissionsTeamDiscussions) AllValues() []AppPermissionsTeamDiscussions {
+	return []AppPermissionsTeamDiscussions{
+		AppPermissionsTeamDiscussionsRead,
+		AppPermissionsTeamDiscussionsWrite,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsTeamDiscussions) MarshalText() ([]byte, error) {
 	switch s {
@@ -4114,6 +4434,13 @@ const (
 	AppPermissionsVulnerabilityAlertsRead AppPermissionsVulnerabilityAlerts = "read"
 )
 
+// AllValues returns all AppPermissionsVulnerabilityAlerts values.
+func (AppPermissionsVulnerabilityAlerts) AllValues() []AppPermissionsVulnerabilityAlerts {
+	return []AppPermissionsVulnerabilityAlerts{
+		AppPermissionsVulnerabilityAlertsRead,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsVulnerabilityAlerts) MarshalText() ([]byte, error) {
 	switch s {
@@ -4142,6 +4469,13 @@ type AppPermissionsWorkflows string
 const (
 	AppPermissionsWorkflowsWrite AppPermissionsWorkflows = "write"
 )
+
+// AllValues returns all AppPermissionsWorkflows values.
+func (AppPermissionsWorkflows) AllValues() []AppPermissionsWorkflows {
+	return []AppPermissionsWorkflows{
+		AppPermissionsWorkflowsWrite,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppPermissionsWorkflows) MarshalText() ([]byte, error) {
@@ -4783,6 +5117,14 @@ const (
 	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
 )
 
+// AllValues returns all AppsListAccountsForPlanDirection values.
+func (AppsListAccountsForPlanDirection) AllValues() []AppsListAccountsForPlanDirection {
+	return []AppsListAccountsForPlanDirection{
+		AppsListAccountsForPlanDirectionAsc,
+		AppsListAccountsForPlanDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppsListAccountsForPlanDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -4848,6 +5190,14 @@ const (
 	AppsListAccountsForPlanSortUpdated AppsListAccountsForPlanSort = "updated"
 )
 
+// AllValues returns all AppsListAccountsForPlanSort values.
+func (AppsListAccountsForPlanSort) AllValues() []AppsListAccountsForPlanSort {
+	return []AppsListAccountsForPlanSort{
+		AppsListAccountsForPlanSortCreated,
+		AppsListAccountsForPlanSortUpdated,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AppsListAccountsForPlanSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -4880,6 +5230,14 @@ const (
 	AppsListAccountsForPlanStubbedDirectionAsc  AppsListAccountsForPlanStubbedDirection = "asc"
 	AppsListAccountsForPlanStubbedDirectionDesc AppsListAccountsForPlanStubbedDirection = "desc"
 )
+
+// AllValues returns all AppsListAccountsForPlanStubbedDirection values.
+func (AppsListAccountsForPlanStubbedDirection) AllValues() []AppsListAccountsForPlanStubbedDirection {
+	return []AppsListAccountsForPlanStubbedDirection{
+		AppsListAccountsForPlanStubbedDirectionAsc,
+		AppsListAccountsForPlanStubbedDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppsListAccountsForPlanStubbedDirection) MarshalText() ([]byte, error) {
@@ -4941,6 +5299,14 @@ const (
 	AppsListAccountsForPlanStubbedSortCreated AppsListAccountsForPlanStubbedSort = "created"
 	AppsListAccountsForPlanStubbedSortUpdated AppsListAccountsForPlanStubbedSort = "updated"
 )
+
+// AllValues returns all AppsListAccountsForPlanStubbedSort values.
+func (AppsListAccountsForPlanStubbedSort) AllValues() []AppsListAccountsForPlanStubbedSort {
+	return []AppsListAccountsForPlanStubbedSort{
+		AppsListAccountsForPlanStubbedSortCreated,
+		AppsListAccountsForPlanStubbedSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AppsListAccountsForPlanStubbedSort) MarshalText() ([]byte, error) {
@@ -6121,6 +6487,14 @@ const (
 	AuthenticationTokenRepositorySelectionSelected AuthenticationTokenRepositorySelection = "selected"
 )
 
+// AllValues returns all AuthenticationTokenRepositorySelection values.
+func (AuthenticationTokenRepositorySelection) AllValues() []AuthenticationTokenRepositorySelection {
+	return []AuthenticationTokenRepositorySelection{
+		AuthenticationTokenRepositorySelectionAll,
+		AuthenticationTokenRepositorySelectionSelected,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s AuthenticationTokenRepositorySelection) MarshalText() ([]byte, error) {
 	switch s {
@@ -6161,6 +6535,20 @@ const (
 	AuthorAssociationNONE                 AuthorAssociation = "NONE"
 	AuthorAssociationOWNER                AuthorAssociation = "OWNER"
 )
+
+// AllValues returns all AuthorAssociation values.
+func (AuthorAssociation) AllValues() []AuthorAssociation {
+	return []AuthorAssociation{
+		AuthorAssociationCOLLABORATOR,
+		AuthorAssociationCONTRIBUTOR,
+		AuthorAssociationFIRSTTIMER,
+		AuthorAssociationFIRSTTIMECONTRIBUTOR,
+		AuthorAssociationMANNEQUIN,
+		AuthorAssociationMEMBER,
+		AuthorAssociationNONE,
+		AuthorAssociationOWNER,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AuthorAssociation) MarshalText() ([]byte, error) {
@@ -6519,6 +6907,15 @@ const (
 	AutoMergeMergeMethodSquash AutoMergeMergeMethod = "squash"
 	AutoMergeMergeMethodRebase AutoMergeMergeMethod = "rebase"
 )
+
+// AllValues returns all AutoMergeMergeMethod values.
+func (AutoMergeMergeMethod) AllValues() []AutoMergeMergeMethod {
+	return []AutoMergeMergeMethod{
+		AutoMergeMergeMethodMerge,
+		AutoMergeMergeMethodSquash,
+		AutoMergeMergeMethodRebase,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s AutoMergeMergeMethod) MarshalText() ([]byte, error) {
@@ -8923,6 +9320,19 @@ const (
 	CheckRunConclusionActionRequired CheckRunConclusion = "action_required"
 )
 
+// AllValues returns all CheckRunConclusion values.
+func (CheckRunConclusion) AllValues() []CheckRunConclusion {
+	return []CheckRunConclusion{
+		CheckRunConclusionSuccess,
+		CheckRunConclusionFailure,
+		CheckRunConclusionNeutral,
+		CheckRunConclusionCancelled,
+		CheckRunConclusionSkipped,
+		CheckRunConclusionTimedOut,
+		CheckRunConclusionActionRequired,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CheckRunConclusion) MarshalText() ([]byte, error) {
 	switch s {
@@ -9040,6 +9450,15 @@ const (
 	CheckRunStatusInProgress CheckRunStatus = "in_progress"
 	CheckRunStatusCompleted  CheckRunStatus = "completed"
 )
+
+// AllValues returns all CheckRunStatus values.
+func (CheckRunStatus) AllValues() []CheckRunStatus {
+	return []CheckRunStatus{
+		CheckRunStatusQueued,
+		CheckRunStatusInProgress,
+		CheckRunStatusCompleted,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CheckRunStatus) MarshalText() ([]byte, error) {
@@ -9277,6 +9696,19 @@ const (
 	CheckSuiteConclusionActionRequired CheckSuiteConclusion = "action_required"
 )
 
+// AllValues returns all CheckSuiteConclusion values.
+func (CheckSuiteConclusion) AllValues() []CheckSuiteConclusion {
+	return []CheckSuiteConclusion{
+		CheckSuiteConclusionSuccess,
+		CheckSuiteConclusionFailure,
+		CheckSuiteConclusionNeutral,
+		CheckSuiteConclusionCancelled,
+		CheckSuiteConclusionSkipped,
+		CheckSuiteConclusionTimedOut,
+		CheckSuiteConclusionActionRequired,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CheckSuiteConclusion) MarshalText() ([]byte, error) {
 	switch s {
@@ -9402,6 +9834,15 @@ const (
 	CheckSuiteStatusCompleted  CheckSuiteStatus = "completed"
 )
 
+// AllValues returns all CheckSuiteStatus values.
+func (CheckSuiteStatus) AllValues() []CheckSuiteStatus {
+	return []CheckSuiteStatus{
+		CheckSuiteStatusQueued,
+		CheckSuiteStatusInProgress,
+		CheckSuiteStatusCompleted,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CheckSuiteStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -9489,6 +9930,14 @@ const (
 	ChecksListForRefFilterAll    ChecksListForRefFilter = "all"
 )
 
+// AllValues returns all ChecksListForRefFilter values.
+func (ChecksListForRefFilter) AllValues() []ChecksListForRefFilter {
+	return []ChecksListForRefFilter{
+		ChecksListForRefFilterLatest,
+		ChecksListForRefFilterAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ChecksListForRefFilter) MarshalText() ([]byte, error) {
 	switch s {
@@ -9574,6 +10023,15 @@ const (
 	ChecksListForRefStatusCompleted  ChecksListForRefStatus = "completed"
 )
 
+// AllValues returns all ChecksListForRefStatus values.
+func (ChecksListForRefStatus) AllValues() []ChecksListForRefStatus {
+	return []ChecksListForRefStatus{
+		ChecksListForRefStatusQueued,
+		ChecksListForRefStatusInProgress,
+		ChecksListForRefStatusCompleted,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ChecksListForRefStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -9611,6 +10069,14 @@ const (
 	ChecksListForSuiteFilterLatest ChecksListForSuiteFilter = "latest"
 	ChecksListForSuiteFilterAll    ChecksListForSuiteFilter = "all"
 )
+
+// AllValues returns all ChecksListForSuiteFilter values.
+func (ChecksListForSuiteFilter) AllValues() []ChecksListForSuiteFilter {
+	return []ChecksListForSuiteFilter{
+		ChecksListForSuiteFilterLatest,
+		ChecksListForSuiteFilterAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ChecksListForSuiteFilter) MarshalText() ([]byte, error) {
@@ -9696,6 +10162,15 @@ const (
 	ChecksListForSuiteStatusInProgress ChecksListForSuiteStatus = "in_progress"
 	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
 )
+
+// AllValues returns all ChecksListForSuiteStatus values.
+func (ChecksListForSuiteStatus) AllValues() []ChecksListForSuiteStatus {
+	return []ChecksListForSuiteStatus{
+		ChecksListForSuiteStatusQueued,
+		ChecksListForSuiteStatusInProgress,
+		ChecksListForSuiteStatusCompleted,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ChecksListForSuiteStatus) MarshalText() ([]byte, error) {
@@ -10141,6 +10616,16 @@ const (
 	CodeScanningAlertClassificationLibrary   CodeScanningAlertClassification = "library"
 )
 
+// AllValues returns all CodeScanningAlertClassification values.
+func (CodeScanningAlertClassification) AllValues() []CodeScanningAlertClassification {
+	return []CodeScanningAlertClassification{
+		CodeScanningAlertClassificationSource,
+		CodeScanningAlertClassificationGenerated,
+		CodeScanningAlertClassificationTest,
+		CodeScanningAlertClassificationLibrary,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertClassification) MarshalText() ([]byte, error) {
 	switch s {
@@ -10189,6 +10674,15 @@ const (
 	CodeScanningAlertDismissedReasonWonTFix       CodeScanningAlertDismissedReason = "won't fix"
 	CodeScanningAlertDismissedReasonUsedInTests   CodeScanningAlertDismissedReason = "used in tests"
 )
+
+// AllValues returns all CodeScanningAlertDismissedReason values.
+func (CodeScanningAlertDismissedReason) AllValues() []CodeScanningAlertDismissedReason {
+	return []CodeScanningAlertDismissedReason{
+		CodeScanningAlertDismissedReasonFalsePositive,
+		CodeScanningAlertDismissedReasonWonTFix,
+		CodeScanningAlertDismissedReasonUsedInTests,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertDismissedReason) MarshalText() ([]byte, error) {
@@ -10659,6 +11153,16 @@ const (
 	CodeScanningAlertRuleSecuritySeverityLevelCritical CodeScanningAlertRuleSecuritySeverityLevel = "critical"
 )
 
+// AllValues returns all CodeScanningAlertRuleSecuritySeverityLevel values.
+func (CodeScanningAlertRuleSecuritySeverityLevel) AllValues() []CodeScanningAlertRuleSecuritySeverityLevel {
+	return []CodeScanningAlertRuleSecuritySeverityLevel{
+		CodeScanningAlertRuleSecuritySeverityLevelLow,
+		CodeScanningAlertRuleSecuritySeverityLevelMedium,
+		CodeScanningAlertRuleSecuritySeverityLevelHigh,
+		CodeScanningAlertRuleSecuritySeverityLevelCritical,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertRuleSecuritySeverityLevel) MarshalText() ([]byte, error) {
 	switch s {
@@ -10704,6 +11208,16 @@ const (
 	CodeScanningAlertRuleSeverityWarning CodeScanningAlertRuleSeverity = "warning"
 	CodeScanningAlertRuleSeverityError   CodeScanningAlertRuleSeverity = "error"
 )
+
+// AllValues returns all CodeScanningAlertRuleSeverity values.
+func (CodeScanningAlertRuleSeverity) AllValues() []CodeScanningAlertRuleSeverity {
+	return []CodeScanningAlertRuleSeverity{
+		CodeScanningAlertRuleSeverityNone,
+		CodeScanningAlertRuleSeverityNote,
+		CodeScanningAlertRuleSeverityWarning,
+		CodeScanningAlertRuleSeverityError,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertRuleSeverity) MarshalText() ([]byte, error) {
@@ -10803,6 +11317,16 @@ const (
 	CodeScanningAlertRuleSummarySeverityError   CodeScanningAlertRuleSummarySeverity = "error"
 )
 
+// AllValues returns all CodeScanningAlertRuleSummarySeverity values.
+func (CodeScanningAlertRuleSummarySeverity) AllValues() []CodeScanningAlertRuleSummarySeverity {
+	return []CodeScanningAlertRuleSummarySeverity{
+		CodeScanningAlertRuleSummarySeverityNone,
+		CodeScanningAlertRuleSummarySeverityNote,
+		CodeScanningAlertRuleSummarySeverityWarning,
+		CodeScanningAlertRuleSummarySeverityError,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertRuleSummarySeverity) MarshalText() ([]byte, error) {
 	switch s {
@@ -10849,6 +11373,14 @@ const (
 	CodeScanningAlertSetStateDismissed CodeScanningAlertSetState = "dismissed"
 )
 
+// AllValues returns all CodeScanningAlertSetState values.
+func (CodeScanningAlertSetState) AllValues() []CodeScanningAlertSetState {
+	return []CodeScanningAlertSetState{
+		CodeScanningAlertSetStateOpen,
+		CodeScanningAlertSetStateDismissed,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertSetState) MarshalText() ([]byte, error) {
 	switch s {
@@ -10885,6 +11417,16 @@ const (
 	CodeScanningAlertStateDismissed CodeScanningAlertState = "dismissed"
 	CodeScanningAlertStateFixed     CodeScanningAlertState = "fixed"
 )
+
+// AllValues returns all CodeScanningAlertState values.
+func (CodeScanningAlertState) AllValues() []CodeScanningAlertState {
+	return []CodeScanningAlertState{
+		CodeScanningAlertStateOpen,
+		CodeScanningAlertStateClosed,
+		CodeScanningAlertStateDismissed,
+		CodeScanningAlertStateFixed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningAlertState) MarshalText() ([]byte, error) {
@@ -11353,6 +11895,14 @@ const (
 	CodeScanningSarifsStatusProcessingStatusPending  CodeScanningSarifsStatusProcessingStatus = "pending"
 	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
 )
+
+// AllValues returns all CodeScanningSarifsStatusProcessingStatus values.
+func (CodeScanningSarifsStatusProcessingStatus) AllValues() []CodeScanningSarifsStatusProcessingStatus {
+	return []CodeScanningSarifsStatusProcessingStatus{
+		CodeScanningSarifsStatusProcessingStatusPending,
+		CodeScanningSarifsStatusProcessingStatusComplete,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CodeScanningSarifsStatusProcessingStatus) MarshalText() ([]byte, error) {
@@ -12699,6 +13249,16 @@ const (
 	CommitComparisonStatusBehind    CommitComparisonStatus = "behind"
 	CommitComparisonStatusIdentical CommitComparisonStatus = "identical"
 )
+
+// AllValues returns all CommitComparisonStatus values.
+func (CommitComparisonStatus) AllValues() []CommitComparisonStatus {
+	return []CommitComparisonStatus{
+		CommitComparisonStatusDiverged,
+		CommitComparisonStatusAhead,
+		CommitComparisonStatusBehind,
+		CommitComparisonStatusIdentical,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CommitComparisonStatus) MarshalText() ([]byte, error) {
@@ -14945,6 +15505,19 @@ const (
 	DeploymentStatusStateInProgress DeploymentStatusState = "in_progress"
 )
 
+// AllValues returns all DeploymentStatusState values.
+func (DeploymentStatusState) AllValues() []DeploymentStatusState {
+	return []DeploymentStatusState{
+		DeploymentStatusStateError,
+		DeploymentStatusStateFailure,
+		DeploymentStatusStateInactive,
+		DeploymentStatusStatePending,
+		DeploymentStatusStateSuccess,
+		DeploymentStatusStateQueued,
+		DeploymentStatusStateInProgress,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s DeploymentStatusState) MarshalText() ([]byte, error) {
 	switch s {
@@ -15134,6 +15707,19 @@ const (
 	DiffEntryStatusUnchanged DiffEntryStatus = "unchanged"
 )
 
+// AllValues returns all DiffEntryStatus values.
+func (DiffEntryStatus) AllValues() []DiffEntryStatus {
+	return []DiffEntryStatus{
+		DiffEntryStatusAdded,
+		DiffEntryStatusRemoved,
+		DiffEntryStatusModified,
+		DiffEntryStatusRenamed,
+		DiffEntryStatusCopied,
+		DiffEntryStatusChanged,
+		DiffEntryStatusUnchanged,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s DiffEntryStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -15267,6 +15853,15 @@ const (
 	EnabledOrganizationsSelected EnabledOrganizations = "selected"
 )
 
+// AllValues returns all EnabledOrganizations values.
+func (EnabledOrganizations) AllValues() []EnabledOrganizations {
+	return []EnabledOrganizations{
+		EnabledOrganizationsAll,
+		EnabledOrganizationsNone,
+		EnabledOrganizationsSelected,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EnabledOrganizations) MarshalText() ([]byte, error) {
 	switch s {
@@ -15308,6 +15903,15 @@ const (
 	EnabledRepositoriesNone     EnabledRepositories = "none"
 	EnabledRepositoriesSelected EnabledRepositories = "selected"
 )
+
+// AllValues returns all EnabledRepositories values.
+func (EnabledRepositories) AllValues() []EnabledRepositories {
+	return []EnabledRepositories{
+		EnabledRepositoriesAll,
+		EnabledRepositoriesNone,
+		EnabledRepositoriesSelected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s EnabledRepositories) MarshalText() ([]byte, error) {
@@ -15407,6 +16011,14 @@ const (
 	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility = "all"
 )
 
+// AllValues returns all EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility values.
+func (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) AllValues() []EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility {
+	return []EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility{
+		EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected,
+		EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -15459,6 +16071,15 @@ const (
 	EnterpriseAdminGetAuditLogIncludeAll EnterpriseAdminGetAuditLogInclude = "all"
 )
 
+// AllValues returns all EnterpriseAdminGetAuditLogInclude values.
+func (EnterpriseAdminGetAuditLogInclude) AllValues() []EnterpriseAdminGetAuditLogInclude {
+	return []EnterpriseAdminGetAuditLogInclude{
+		EnterpriseAdminGetAuditLogIncludeWeb,
+		EnterpriseAdminGetAuditLogIncludeGit,
+		EnterpriseAdminGetAuditLogIncludeAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EnterpriseAdminGetAuditLogInclude) MarshalText() ([]byte, error) {
 	switch s {
@@ -15496,6 +16117,14 @@ const (
 	EnterpriseAdminGetAuditLogOrderDesc EnterpriseAdminGetAuditLogOrder = "desc"
 	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
 )
+
+// AllValues returns all EnterpriseAdminGetAuditLogOrder values.
+func (EnterpriseAdminGetAuditLogOrder) AllValues() []EnterpriseAdminGetAuditLogOrder {
+	return []EnterpriseAdminGetAuditLogOrder{
+		EnterpriseAdminGetAuditLogOrderDesc,
+		EnterpriseAdminGetAuditLogOrderAsc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s EnterpriseAdminGetAuditLogOrder) MarshalText() ([]byte, error) {
@@ -16255,6 +16884,18 @@ const (
 	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
 )
 
+// AllValues returns all EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp values.
+func (EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) AllValues() []EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp {
+	return []EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp{
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add,
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add,
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove,
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove,
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace,
+		EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) MarshalText() ([]byte, error) {
 	switch s {
@@ -16465,6 +17106,14 @@ const (
 	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll      EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility = "all"
 )
 
+// AllValues returns all EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility values.
+func (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) AllValues() []EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility {
+	return []EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility{
+		EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected,
+		EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -16634,6 +17283,14 @@ const (
 	EnvironmentApprovalsStateApproved EnvironmentApprovalsState = "approved"
 	EnvironmentApprovalsStateRejected EnvironmentApprovalsState = "rejected"
 )
+
+// AllValues returns all EnvironmentApprovalsState values.
+func (EnvironmentApprovalsState) AllValues() []EnvironmentApprovalsState {
+	return []EnvironmentApprovalsState{
+		EnvironmentApprovalsStateApproved,
+		EnvironmentApprovalsStateRejected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s EnvironmentApprovalsState) MarshalText() ([]byte, error) {
@@ -18802,6 +19459,14 @@ const (
 	FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled FullRepositorySecurityAndAnalysisAdvancedSecurityStatus = "disabled"
 )
 
+// AllValues returns all FullRepositorySecurityAndAnalysisAdvancedSecurityStatus values.
+func (FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) AllValues() []FullRepositorySecurityAndAnalysisAdvancedSecurityStatus {
+	return []FullRepositorySecurityAndAnalysisAdvancedSecurityStatus{
+		FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled,
+		FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -18848,6 +19513,14 @@ const (
 	FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled  FullRepositorySecurityAndAnalysisSecretScanningStatus = "enabled"
 	FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled FullRepositorySecurityAndAnalysisSecretScanningStatus = "disabled"
 )
+
+// AllValues returns all FullRepositorySecurityAndAnalysisSecretScanningStatus values.
+func (FullRepositorySecurityAndAnalysisSecretScanningStatus) AllValues() []FullRepositorySecurityAndAnalysisSecretScanningStatus {
+	return []FullRepositorySecurityAndAnalysisSecretScanningStatus{
+		FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled,
+		FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) MarshalText() ([]byte, error) {
@@ -20082,6 +20755,14 @@ const (
 	GistsCreateReqPublic1False GistsCreateReqPublic1 = "false"
 )
 
+// AllValues returns all GistsCreateReqPublic1 values.
+func (GistsCreateReqPublic1) AllValues() []GistsCreateReqPublic1 {
+	return []GistsCreateReqPublic1{
+		GistsCreateReqPublic1True,
+		GistsCreateReqPublic1False,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s GistsCreateReqPublic1) MarshalText() ([]byte, error) {
 	switch s {
@@ -21120,6 +21801,15 @@ const (
 	GitCreateTagReqTypeBlob   GitCreateTagReqType = "blob"
 )
 
+// AllValues returns all GitCreateTagReqType values.
+func (GitCreateTagReqType) AllValues() []GitCreateTagReqType {
+	return []GitCreateTagReqType{
+		GitCreateTagReqTypeCommit,
+		GitCreateTagReqTypeTree,
+		GitCreateTagReqTypeBlob,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s GitCreateTagReqType) MarshalText() ([]byte, error) {
 	switch s {
@@ -21279,6 +21969,17 @@ const (
 	GitCreateTreeReqTreeItemMode120000 GitCreateTreeReqTreeItemMode = "120000"
 )
 
+// AllValues returns all GitCreateTreeReqTreeItemMode values.
+func (GitCreateTreeReqTreeItemMode) AllValues() []GitCreateTreeReqTreeItemMode {
+	return []GitCreateTreeReqTreeItemMode{
+		GitCreateTreeReqTreeItemMode100644,
+		GitCreateTreeReqTreeItemMode100755,
+		GitCreateTreeReqTreeItemMode040000,
+		GitCreateTreeReqTreeItemMode160000,
+		GitCreateTreeReqTreeItemMode120000,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s GitCreateTreeReqTreeItemMode) MarshalText() ([]byte, error) {
 	switch s {
@@ -21328,6 +22029,15 @@ const (
 	GitCreateTreeReqTreeItemTypeTree   GitCreateTreeReqTreeItemType = "tree"
 	GitCreateTreeReqTreeItemTypeCommit GitCreateTreeReqTreeItemType = "commit"
 )
+
+// AllValues returns all GitCreateTreeReqTreeItemType values.
+func (GitCreateTreeReqTreeItemType) AllValues() []GitCreateTreeReqTreeItemType {
+	return []GitCreateTreeReqTreeItemType{
+		GitCreateTreeReqTreeItemTypeBlob,
+		GitCreateTreeReqTreeItemTypeTree,
+		GitCreateTreeReqTreeItemTypeCommit,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s GitCreateTreeReqTreeItemType) MarshalText() ([]byte, error) {
@@ -23482,6 +24192,28 @@ const (
 	ImportStatusDetectionNeedsAuth     ImportStatus = "detection_needs_auth"
 )
 
+// AllValues returns all ImportStatus values.
+func (ImportStatus) AllValues() []ImportStatus {
+	return []ImportStatus{
+		ImportStatusAuth,
+		ImportStatusError,
+		ImportStatusNone,
+		ImportStatusDetecting,
+		ImportStatusChoose,
+		ImportStatusAuthFailed,
+		ImportStatusImporting,
+		ImportStatusMapping,
+		ImportStatusWaitingToPush,
+		ImportStatusPushing,
+		ImportStatusComplete,
+		ImportStatusSetup,
+		ImportStatusUnknown,
+		ImportStatusDetectionFoundMultiple,
+		ImportStatusDetectionFoundNothing,
+		ImportStatusDetectionNeedsAuth,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ImportStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -23679,6 +24411,14 @@ const (
 	InstallationTokenRepositorySelectionAll      InstallationTokenRepositorySelection = "all"
 	InstallationTokenRepositorySelectionSelected InstallationTokenRepositorySelection = "selected"
 )
+
+// AllValues returns all InstallationTokenRepositorySelection values.
+func (InstallationTokenRepositorySelection) AllValues() []InstallationTokenRepositorySelection {
+	return []InstallationTokenRepositorySelection{
+		InstallationTokenRepositorySelectionAll,
+		InstallationTokenRepositorySelectionSelected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s InstallationTokenRepositorySelection) MarshalText() ([]byte, error) {
@@ -24002,6 +24742,17 @@ const (
 	InteractionExpirySixMonths InteractionExpiry = "six_months"
 )
 
+// AllValues returns all InteractionExpiry values.
+func (InteractionExpiry) AllValues() []InteractionExpiry {
+	return []InteractionExpiry{
+		InteractionExpiryOneDay,
+		InteractionExpiryThreeDays,
+		InteractionExpiryOneWeek,
+		InteractionExpiryOneMonth,
+		InteractionExpirySixMonths,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s InteractionExpiry) MarshalText() ([]byte, error) {
 	switch s {
@@ -24054,6 +24805,15 @@ const (
 	InteractionGroupContributorsOnly  InteractionGroup = "contributors_only"
 	InteractionGroupCollaboratorsOnly InteractionGroup = "collaborators_only"
 )
+
+// AllValues returns all InteractionGroup values.
+func (InteractionGroup) AllValues() []InteractionGroup {
+	return []InteractionGroup{
+		InteractionGroupExistingUsers,
+		InteractionGroupContributorsOnly,
+		InteractionGroupCollaboratorsOnly,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s InteractionGroup) MarshalText() ([]byte, error) {
@@ -26463,6 +27223,14 @@ const (
 	IssuesCreateMilestoneReqStateClosed IssuesCreateMilestoneReqState = "closed"
 )
 
+// AllValues returns all IssuesCreateMilestoneReqState values.
+func (IssuesCreateMilestoneReqState) AllValues() []IssuesCreateMilestoneReqState {
+	return []IssuesCreateMilestoneReqState{
+		IssuesCreateMilestoneReqStateOpen,
+		IssuesCreateMilestoneReqStateClosed,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesCreateMilestoneReqState) MarshalText() ([]byte, error) {
 	switch s {
@@ -26883,6 +27651,14 @@ const (
 	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
 )
 
+// AllValues returns all IssuesListCommentsForRepoDirection values.
+func (IssuesListCommentsForRepoDirection) AllValues() []IssuesListCommentsForRepoDirection {
+	return []IssuesListCommentsForRepoDirection{
+		IssuesListCommentsForRepoDirectionAsc,
+		IssuesListCommentsForRepoDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListCommentsForRepoDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -26943,6 +27719,14 @@ const (
 	IssuesListCommentsForRepoSortCreated IssuesListCommentsForRepoSort = "created"
 	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
 )
+
+// AllValues returns all IssuesListCommentsForRepoSort values.
+func (IssuesListCommentsForRepoSort) AllValues() []IssuesListCommentsForRepoSort {
+	return []IssuesListCommentsForRepoSort{
+		IssuesListCommentsForRepoSortCreated,
+		IssuesListCommentsForRepoSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListCommentsForRepoSort) MarshalText() ([]byte, error) {
@@ -27013,6 +27797,14 @@ const (
 	IssuesListDirectionDesc IssuesListDirection = "desc"
 )
 
+// AllValues returns all IssuesListDirection values.
+func (IssuesListDirection) AllValues() []IssuesListDirection {
+	return []IssuesListDirection{
+		IssuesListDirectionAsc,
+		IssuesListDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -27078,6 +27870,18 @@ const (
 	IssuesListFilterAll        IssuesListFilter = "all"
 )
 
+// AllValues returns all IssuesListFilter values.
+func (IssuesListFilter) AllValues() []IssuesListFilter {
+	return []IssuesListFilter{
+		IssuesListFilterAssigned,
+		IssuesListFilterCreated,
+		IssuesListFilterMentioned,
+		IssuesListFilterSubscribed,
+		IssuesListFilterRepos,
+		IssuesListFilterAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListFilter) MarshalText() ([]byte, error) {
 	switch s {
@@ -27131,6 +27935,14 @@ const (
 	IssuesListForAuthenticatedUserDirectionDesc IssuesListForAuthenticatedUserDirection = "desc"
 )
 
+// AllValues returns all IssuesListForAuthenticatedUserDirection values.
+func (IssuesListForAuthenticatedUserDirection) AllValues() []IssuesListForAuthenticatedUserDirection {
+	return []IssuesListForAuthenticatedUserDirection{
+		IssuesListForAuthenticatedUserDirectionAsc,
+		IssuesListForAuthenticatedUserDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForAuthenticatedUserDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -27167,6 +27979,18 @@ const (
 	IssuesListForAuthenticatedUserFilterRepos      IssuesListForAuthenticatedUserFilter = "repos"
 	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
 )
+
+// AllValues returns all IssuesListForAuthenticatedUserFilter values.
+func (IssuesListForAuthenticatedUserFilter) AllValues() []IssuesListForAuthenticatedUserFilter {
+	return []IssuesListForAuthenticatedUserFilter{
+		IssuesListForAuthenticatedUserFilterAssigned,
+		IssuesListForAuthenticatedUserFilterCreated,
+		IssuesListForAuthenticatedUserFilterMentioned,
+		IssuesListForAuthenticatedUserFilterSubscribed,
+		IssuesListForAuthenticatedUserFilterRepos,
+		IssuesListForAuthenticatedUserFilterAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForAuthenticatedUserFilter) MarshalText() ([]byte, error) {
@@ -27250,6 +28074,15 @@ const (
 	IssuesListForAuthenticatedUserSortComments IssuesListForAuthenticatedUserSort = "comments"
 )
 
+// AllValues returns all IssuesListForAuthenticatedUserSort values.
+func (IssuesListForAuthenticatedUserSort) AllValues() []IssuesListForAuthenticatedUserSort {
+	return []IssuesListForAuthenticatedUserSort{
+		IssuesListForAuthenticatedUserSortCreated,
+		IssuesListForAuthenticatedUserSortUpdated,
+		IssuesListForAuthenticatedUserSortComments,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForAuthenticatedUserSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -27289,6 +28122,15 @@ const (
 	IssuesListForAuthenticatedUserStateAll    IssuesListForAuthenticatedUserState = "all"
 )
 
+// AllValues returns all IssuesListForAuthenticatedUserState values.
+func (IssuesListForAuthenticatedUserState) AllValues() []IssuesListForAuthenticatedUserState {
+	return []IssuesListForAuthenticatedUserState{
+		IssuesListForAuthenticatedUserStateOpen,
+		IssuesListForAuthenticatedUserStateClosed,
+		IssuesListForAuthenticatedUserStateAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForAuthenticatedUserState) MarshalText() ([]byte, error) {
 	switch s {
@@ -27327,6 +28169,14 @@ const (
 	IssuesListForOrgDirectionDesc IssuesListForOrgDirection = "desc"
 )
 
+// AllValues returns all IssuesListForOrgDirection values.
+func (IssuesListForOrgDirection) AllValues() []IssuesListForOrgDirection {
+	return []IssuesListForOrgDirection{
+		IssuesListForOrgDirectionAsc,
+		IssuesListForOrgDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForOrgDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -27363,6 +28213,18 @@ const (
 	IssuesListForOrgFilterRepos      IssuesListForOrgFilter = "repos"
 	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
 )
+
+// AllValues returns all IssuesListForOrgFilter values.
+func (IssuesListForOrgFilter) AllValues() []IssuesListForOrgFilter {
+	return []IssuesListForOrgFilter{
+		IssuesListForOrgFilterAssigned,
+		IssuesListForOrgFilterCreated,
+		IssuesListForOrgFilterMentioned,
+		IssuesListForOrgFilterSubscribed,
+		IssuesListForOrgFilterRepos,
+		IssuesListForOrgFilterAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForOrgFilter) MarshalText() ([]byte, error) {
@@ -27446,6 +28308,15 @@ const (
 	IssuesListForOrgSortComments IssuesListForOrgSort = "comments"
 )
 
+// AllValues returns all IssuesListForOrgSort values.
+func (IssuesListForOrgSort) AllValues() []IssuesListForOrgSort {
+	return []IssuesListForOrgSort{
+		IssuesListForOrgSortCreated,
+		IssuesListForOrgSortUpdated,
+		IssuesListForOrgSortComments,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForOrgSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -27485,6 +28356,15 @@ const (
 	IssuesListForOrgStateAll    IssuesListForOrgState = "all"
 )
 
+// AllValues returns all IssuesListForOrgState values.
+func (IssuesListForOrgState) AllValues() []IssuesListForOrgState {
+	return []IssuesListForOrgState{
+		IssuesListForOrgStateOpen,
+		IssuesListForOrgStateClosed,
+		IssuesListForOrgStateAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForOrgState) MarshalText() ([]byte, error) {
 	switch s {
@@ -27522,6 +28402,14 @@ const (
 	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
 	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
 )
+
+// AllValues returns all IssuesListForRepoDirection values.
+func (IssuesListForRepoDirection) AllValues() []IssuesListForRepoDirection {
+	return []IssuesListForRepoDirection{
+		IssuesListForRepoDirectionAsc,
+		IssuesListForRepoDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForRepoDirection) MarshalText() ([]byte, error) {
@@ -27593,6 +28481,15 @@ const (
 	IssuesListForRepoSortComments IssuesListForRepoSort = "comments"
 )
 
+// AllValues returns all IssuesListForRepoSort values.
+func (IssuesListForRepoSort) AllValues() []IssuesListForRepoSort {
+	return []IssuesListForRepoSort{
+		IssuesListForRepoSortCreated,
+		IssuesListForRepoSortUpdated,
+		IssuesListForRepoSortComments,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForRepoSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -27631,6 +28528,15 @@ const (
 	IssuesListForRepoStateClosed IssuesListForRepoState = "closed"
 	IssuesListForRepoStateAll    IssuesListForRepoState = "all"
 )
+
+// AllValues returns all IssuesListForRepoState values.
+func (IssuesListForRepoState) AllValues() []IssuesListForRepoState {
+	return []IssuesListForRepoState{
+		IssuesListForRepoStateOpen,
+		IssuesListForRepoStateClosed,
+		IssuesListForRepoStateAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListForRepoState) MarshalText() ([]byte, error) {
@@ -27752,6 +28658,14 @@ const (
 	IssuesListMilestonesDirectionDesc IssuesListMilestonesDirection = "desc"
 )
 
+// AllValues returns all IssuesListMilestonesDirection values.
+func (IssuesListMilestonesDirection) AllValues() []IssuesListMilestonesDirection {
+	return []IssuesListMilestonesDirection{
+		IssuesListMilestonesDirectionAsc,
+		IssuesListMilestonesDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListMilestonesDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -27813,6 +28727,14 @@ const (
 	IssuesListMilestonesSortCompleteness IssuesListMilestonesSort = "completeness"
 )
 
+// AllValues returns all IssuesListMilestonesSort values.
+func (IssuesListMilestonesSort) AllValues() []IssuesListMilestonesSort {
+	return []IssuesListMilestonesSort{
+		IssuesListMilestonesSortDueOn,
+		IssuesListMilestonesSortCompleteness,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListMilestonesSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -27846,6 +28768,15 @@ const (
 	IssuesListMilestonesStateClosed IssuesListMilestonesState = "closed"
 	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
 )
+
+// AllValues returns all IssuesListMilestonesState values.
+func (IssuesListMilestonesState) AllValues() []IssuesListMilestonesState {
+	return []IssuesListMilestonesState{
+		IssuesListMilestonesStateOpen,
+		IssuesListMilestonesStateClosed,
+		IssuesListMilestonesStateAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListMilestonesState) MarshalText() ([]byte, error) {
@@ -27914,6 +28845,15 @@ const (
 	IssuesListSortComments IssuesListSort = "comments"
 )
 
+// AllValues returns all IssuesListSort values.
+func (IssuesListSort) AllValues() []IssuesListSort {
+	return []IssuesListSort{
+		IssuesListSortCreated,
+		IssuesListSortUpdated,
+		IssuesListSortComments,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -27952,6 +28892,15 @@ const (
 	IssuesListStateClosed IssuesListState = "closed"
 	IssuesListStateAll    IssuesListState = "all"
 )
+
+// AllValues returns all IssuesListState values.
+func (IssuesListState) AllValues() []IssuesListState {
+	return []IssuesListState{
+		IssuesListStateOpen,
+		IssuesListStateClosed,
+		IssuesListStateAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesListState) MarshalText() ([]byte, error) {
@@ -28035,6 +28984,16 @@ const (
 	IssuesLockReqLockReasonResolved  IssuesLockReqLockReason = "resolved"
 	IssuesLockReqLockReasonSpam      IssuesLockReqLockReason = "spam"
 )
+
+// AllValues returns all IssuesLockReqLockReason values.
+func (IssuesLockReqLockReason) AllValues() []IssuesLockReqLockReason {
+	return []IssuesLockReqLockReason{
+		IssuesLockReqLockReasonOffTopic,
+		IssuesLockReqLockReasonTooHeated,
+		IssuesLockReqLockReasonResolved,
+		IssuesLockReqLockReasonSpam,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesLockReqLockReason) MarshalText() ([]byte, error) {
@@ -28243,6 +29202,14 @@ const (
 	IssuesUpdateMilestoneReqStateOpen   IssuesUpdateMilestoneReqState = "open"
 	IssuesUpdateMilestoneReqStateClosed IssuesUpdateMilestoneReqState = "closed"
 )
+
+// AllValues returns all IssuesUpdateMilestoneReqState values.
+func (IssuesUpdateMilestoneReqState) AllValues() []IssuesUpdateMilestoneReqState {
+	return []IssuesUpdateMilestoneReqState{
+		IssuesUpdateMilestoneReqStateOpen,
+		IssuesUpdateMilestoneReqStateClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesUpdateMilestoneReqState) MarshalText() ([]byte, error) {
@@ -28554,6 +29521,14 @@ const (
 	IssuesUpdateReqStateClosed IssuesUpdateReqState = "closed"
 )
 
+// AllValues returns all IssuesUpdateReqState values.
+func (IssuesUpdateReqState) AllValues() []IssuesUpdateReqState {
+	return []IssuesUpdateReqState{
+		IssuesUpdateReqStateOpen,
+		IssuesUpdateReqStateClosed,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s IssuesUpdateReqState) MarshalText() ([]byte, error) {
 	switch s {
@@ -28822,6 +29797,15 @@ const (
 	JobStatusCompleted  JobStatus = "completed"
 )
 
+// AllValues returns all JobStatus values.
+func (JobStatus) AllValues() []JobStatus {
+	return []JobStatus{
+		JobStatusQueued,
+		JobStatusInProgress,
+		JobStatusCompleted,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s JobStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -28935,6 +29919,15 @@ const (
 	JobStepsItemStatusInProgress JobStepsItemStatus = "in_progress"
 	JobStepsItemStatusCompleted  JobStepsItemStatus = "completed"
 )
+
+// AllValues returns all JobStepsItemStatus values.
+func (JobStepsItemStatus) AllValues() []JobStepsItemStatus {
+	return []JobStepsItemStatus{
+		JobStepsItemStatusQueued,
+		JobStepsItemStatusInProgress,
+		JobStepsItemStatusCompleted,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s JobStepsItemStatus) MarshalText() ([]byte, error) {
@@ -29949,6 +30942,14 @@ const (
 	MarkdownRenderReqModeGfm      MarkdownRenderReqMode = "gfm"
 )
 
+// AllValues returns all MarkdownRenderReqMode values.
+func (MarkdownRenderReqMode) AllValues() []MarkdownRenderReqMode {
+	return []MarkdownRenderReqMode{
+		MarkdownRenderReqModeMarkdown,
+		MarkdownRenderReqModeGfm,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MarkdownRenderReqMode) MarshalText() ([]byte, error) {
 	switch s {
@@ -30496,6 +31497,15 @@ const (
 	MergedUpstreamMergeTypeFastForward MergedUpstreamMergeType = "fast-forward"
 	MergedUpstreamMergeTypeNone        MergedUpstreamMergeType = "none"
 )
+
+// AllValues returns all MergedUpstreamMergeType values.
+func (MergedUpstreamMergeType) AllValues() []MergedUpstreamMergeType {
+	return []MergedUpstreamMergeType{
+		MergedUpstreamMergeTypeMerge,
+		MergedUpstreamMergeTypeFastForward,
+		MergedUpstreamMergeTypeNone,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s MergedUpstreamMergeType) MarshalText() ([]byte, error) {
@@ -31194,6 +32204,13 @@ const (
 	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
 )
 
+// AllValues returns all MigrationsGetStatusForOrgExcludeItem values.
+func (MigrationsGetStatusForOrgExcludeItem) AllValues() []MigrationsGetStatusForOrgExcludeItem {
+	return []MigrationsGetStatusForOrgExcludeItem{
+		MigrationsGetStatusForOrgExcludeItemRepositories,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsGetStatusForOrgExcludeItem) MarshalText() ([]byte, error) {
 	switch s {
@@ -31257,6 +32274,13 @@ type MigrationsListForOrgExcludeItem string
 const (
 	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
 )
+
+// AllValues returns all MigrationsListForOrgExcludeItem values.
+func (MigrationsListForOrgExcludeItem) AllValues() []MigrationsListForOrgExcludeItem {
+	return []MigrationsListForOrgExcludeItem{
+		MigrationsListForOrgExcludeItemRepositories,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsListForOrgExcludeItem) MarshalText() ([]byte, error) {
@@ -31413,6 +32437,14 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
 
+// AllValues returns all MigrationsSetLfsPreferenceReqUseLfs values.
+func (MigrationsSetLfsPreferenceReqUseLfs) AllValues() []MigrationsSetLfsPreferenceReqUseLfs {
+	return []MigrationsSetLfsPreferenceReqUseLfs{
+		MigrationsSetLfsPreferenceReqUseLfsOptIn,
+		MigrationsSetLfsPreferenceReqUseLfsOptOut,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsSetLfsPreferenceReqUseLfs) MarshalText() ([]byte, error) {
 	switch s {
@@ -31524,6 +32556,13 @@ const (
 	MigrationsStartForAuthenticatedUserReqExcludeItemRepositories MigrationsStartForAuthenticatedUserReqExcludeItem = "repositories"
 )
 
+// AllValues returns all MigrationsStartForAuthenticatedUserReqExcludeItem values.
+func (MigrationsStartForAuthenticatedUserReqExcludeItem) AllValues() []MigrationsStartForAuthenticatedUserReqExcludeItem {
+	return []MigrationsStartForAuthenticatedUserReqExcludeItem{
+		MigrationsStartForAuthenticatedUserReqExcludeItemRepositories,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsStartForAuthenticatedUserReqExcludeItem) MarshalText() ([]byte, error) {
 	switch s {
@@ -31632,6 +32671,13 @@ const (
 	MigrationsStartForOrgReqExcludeItemRepositories MigrationsStartForOrgReqExcludeItem = "repositories"
 )
 
+// AllValues returns all MigrationsStartForOrgReqExcludeItem values.
+func (MigrationsStartForOrgReqExcludeItem) AllValues() []MigrationsStartForOrgReqExcludeItem {
+	return []MigrationsStartForOrgReqExcludeItem{
+		MigrationsStartForOrgReqExcludeItemRepositories,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsStartForOrgReqExcludeItem) MarshalText() ([]byte, error) {
 	switch s {
@@ -31729,6 +32775,16 @@ const (
 	MigrationsStartImportReqVcsMercurial  MigrationsStartImportReqVcs = "mercurial"
 	MigrationsStartImportReqVcsTfvc       MigrationsStartImportReqVcs = "tfvc"
 )
+
+// AllValues returns all MigrationsStartImportReqVcs values.
+func (MigrationsStartImportReqVcs) AllValues() []MigrationsStartImportReqVcs {
+	return []MigrationsStartImportReqVcs{
+		MigrationsStartImportReqVcsSubversion,
+		MigrationsStartImportReqVcsGit,
+		MigrationsStartImportReqVcsMercurial,
+		MigrationsStartImportReqVcsTfvc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s MigrationsStartImportReqVcs) MarshalText() ([]byte, error) {
@@ -32062,6 +33118,14 @@ const (
 	MilestoneStateOpen   MilestoneState = "open"
 	MilestoneStateClosed MilestoneState = "closed"
 )
+
+// AllValues returns all MilestoneState values.
+func (MilestoneState) AllValues() []MilestoneState {
+	return []MilestoneState{
+		MilestoneStateOpen,
+		MilestoneStateClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s MilestoneState) MarshalText() ([]byte, error) {
@@ -35643,6 +36707,14 @@ const (
 	NullableMilestoneStateClosed NullableMilestoneState = "closed"
 )
 
+// AllValues returns all NullableMilestoneState values.
+func (NullableMilestoneState) AllValues() []NullableMilestoneState {
+	return []NullableMilestoneState{
+		NullableMilestoneStateOpen,
+		NullableMilestoneStateClosed,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s NullableMilestoneState) MarshalText() ([]byte, error) {
 	switch s {
@@ -39027,6 +40099,14 @@ const (
 	NullableScopedInstallationRepositorySelectionAll      NullableScopedInstallationRepositorySelection = "all"
 	NullableScopedInstallationRepositorySelectionSelected NullableScopedInstallationRepositorySelection = "selected"
 )
+
+// AllValues returns all NullableScopedInstallationRepositorySelection values.
+func (NullableScopedInstallationRepositorySelection) AllValues() []NullableScopedInstallationRepositorySelection {
+	return []NullableScopedInstallationRepositorySelection{
+		NullableScopedInstallationRepositorySelectionAll,
+		NullableScopedInstallationRepositorySelectionSelected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s NullableScopedInstallationRepositorySelection) MarshalText() ([]byte, error) {
@@ -61067,6 +62147,15 @@ const (
 	OrgMembershipRoleBillingManager OrgMembershipRole = "billing_manager"
 )
 
+// AllValues returns all OrgMembershipRole values.
+func (OrgMembershipRole) AllValues() []OrgMembershipRole {
+	return []OrgMembershipRole{
+		OrgMembershipRoleAdmin,
+		OrgMembershipRoleMember,
+		OrgMembershipRoleBillingManager,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgMembershipRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -61106,6 +62195,14 @@ const (
 	OrgMembershipStateActive  OrgMembershipState = "active"
 	OrgMembershipStatePending OrgMembershipState = "pending"
 )
+
+// AllValues returns all OrgMembershipState values.
+func (OrgMembershipState) AllValues() []OrgMembershipState {
+	return []OrgMembershipState{
+		OrgMembershipStateActive,
+		OrgMembershipStatePending,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgMembershipState) MarshalText() ([]byte, error) {
@@ -61203,6 +62300,15 @@ const (
 	OrganizationActionsSecretVisibilityPrivate  OrganizationActionsSecretVisibility = "private"
 	OrganizationActionsSecretVisibilitySelected OrganizationActionsSecretVisibility = "selected"
 )
+
+// AllValues returns all OrganizationActionsSecretVisibility values.
+func (OrganizationActionsSecretVisibility) AllValues() []OrganizationActionsSecretVisibility {
+	return []OrganizationActionsSecretVisibility{
+		OrganizationActionsSecretVisibilityAll,
+		OrganizationActionsSecretVisibilityPrivate,
+		OrganizationActionsSecretVisibilitySelected,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrganizationActionsSecretVisibility) MarshalText() ([]byte, error) {
@@ -62350,6 +63456,15 @@ const (
 	OrgsCreateInvitationReqRoleBillingManager OrgsCreateInvitationReqRole = "billing_manager"
 )
 
+// AllValues returns all OrgsCreateInvitationReqRole values.
+func (OrgsCreateInvitationReqRole) AllValues() []OrgsCreateInvitationReqRole {
+	return []OrgsCreateInvitationReqRole{
+		OrgsCreateInvitationReqRoleAdmin,
+		OrgsCreateInvitationReqRoleDirectMember,
+		OrgsCreateInvitationReqRoleBillingManager,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsCreateInvitationReqRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -62519,6 +63634,15 @@ const (
 	OrgsGetAuditLogIncludeAll OrgsGetAuditLogInclude = "all"
 )
 
+// AllValues returns all OrgsGetAuditLogInclude values.
+func (OrgsGetAuditLogInclude) AllValues() []OrgsGetAuditLogInclude {
+	return []OrgsGetAuditLogInclude{
+		OrgsGetAuditLogIncludeWeb,
+		OrgsGetAuditLogIncludeGit,
+		OrgsGetAuditLogIncludeAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsGetAuditLogInclude) MarshalText() ([]byte, error) {
 	switch s {
@@ -62556,6 +63680,14 @@ const (
 	OrgsGetAuditLogOrderDesc OrgsGetAuditLogOrder = "desc"
 	OrgsGetAuditLogOrderAsc  OrgsGetAuditLogOrder = "asc"
 )
+
+// AllValues returns all OrgsGetAuditLogOrder values.
+func (OrgsGetAuditLogOrder) AllValues() []OrgsGetAuditLogOrder {
+	return []OrgsGetAuditLogOrder{
+		OrgsGetAuditLogOrderDesc,
+		OrgsGetAuditLogOrderAsc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsGetAuditLogOrder) MarshalText() ([]byte, error) {
@@ -62728,6 +63860,14 @@ const (
 	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
 )
 
+// AllValues returns all OrgsListMembersFilter values.
+func (OrgsListMembersFilter) AllValues() []OrgsListMembersFilter {
+	return []OrgsListMembersFilter{
+		OrgsListMembersFilter2FADisabled,
+		OrgsListMembersFilterAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsListMembersFilter) MarshalText() ([]byte, error) {
 	switch s {
@@ -62807,6 +63947,15 @@ const (
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
 
+// AllValues returns all OrgsListMembersRole values.
+func (OrgsListMembersRole) AllValues() []OrgsListMembersRole {
+	return []OrgsListMembersRole{
+		OrgsListMembersRoleAll,
+		OrgsListMembersRoleAdmin,
+		OrgsListMembersRoleMember,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsListMembersRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -62879,6 +64028,14 @@ const (
 	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
 )
 
+// AllValues returns all OrgsListMembershipsForAuthenticatedUserState values.
+func (OrgsListMembershipsForAuthenticatedUserState) AllValues() []OrgsListMembershipsForAuthenticatedUserState {
+	return []OrgsListMembershipsForAuthenticatedUserState{
+		OrgsListMembershipsForAuthenticatedUserStateActive,
+		OrgsListMembershipsForAuthenticatedUserStatePending,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsListMembershipsForAuthenticatedUserState) MarshalText() ([]byte, error) {
 	switch s {
@@ -62944,6 +64101,14 @@ const (
 	OrgsListOutsideCollaboratorsFilter2FADisabled OrgsListOutsideCollaboratorsFilter = "2fa_disabled"
 	OrgsListOutsideCollaboratorsFilterAll         OrgsListOutsideCollaboratorsFilter = "all"
 )
+
+// AllValues returns all OrgsListOutsideCollaboratorsFilter values.
+func (OrgsListOutsideCollaboratorsFilter) AllValues() []OrgsListOutsideCollaboratorsFilter {
+	return []OrgsListOutsideCollaboratorsFilter{
+		OrgsListOutsideCollaboratorsFilter2FADisabled,
+		OrgsListOutsideCollaboratorsFilterAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsListOutsideCollaboratorsFilter) MarshalText() ([]byte, error) {
@@ -63173,6 +64338,14 @@ const (
 	OrgsSetMembershipForUserReqRoleMember OrgsSetMembershipForUserReqRole = "member"
 )
 
+// AllValues returns all OrgsSetMembershipForUserReqRole values.
+func (OrgsSetMembershipForUserReqRole) AllValues() []OrgsSetMembershipForUserReqRole {
+	return []OrgsSetMembershipForUserReqRole{
+		OrgsSetMembershipForUserReqRoleAdmin,
+		OrgsSetMembershipForUserReqRoleMember,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsSetMembershipForUserReqRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -63239,6 +64412,13 @@ type OrgsUpdateMembershipForAuthenticatedUserReqState string
 const (
 	OrgsUpdateMembershipForAuthenticatedUserReqStateActive OrgsUpdateMembershipForAuthenticatedUserReqState = "active"
 )
+
+// AllValues returns all OrgsUpdateMembershipForAuthenticatedUserReqState values.
+func (OrgsUpdateMembershipForAuthenticatedUserReqState) AllValues() []OrgsUpdateMembershipForAuthenticatedUserReqState {
+	return []OrgsUpdateMembershipForAuthenticatedUserReqState{
+		OrgsUpdateMembershipForAuthenticatedUserReqStateActive,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrgsUpdateMembershipForAuthenticatedUserReqState) MarshalText() ([]byte, error) {
@@ -63550,6 +64730,18 @@ const (
 	PackagePackageTypeContainer PackagePackageType = "container"
 )
 
+// AllValues returns all PackagePackageType values.
+func (PackagePackageType) AllValues() []PackagePackageType {
+	return []PackagePackageType{
+		PackagePackageTypeNpm,
+		PackagePackageTypeMaven,
+		PackagePackageTypeRubygems,
+		PackagePackageTypeDocker,
+		PackagePackageTypeNuget,
+		PackagePackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagePackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -63799,6 +64991,18 @@ const (
 	PackageVersionMetadataPackageTypeContainer PackageVersionMetadataPackageType = "container"
 )
 
+// AllValues returns all PackageVersionMetadataPackageType values.
+func (PackageVersionMetadataPackageType) AllValues() []PackageVersionMetadataPackageType {
+	return []PackageVersionMetadataPackageType{
+		PackageVersionMetadataPackageTypeNpm,
+		PackageVersionMetadataPackageTypeMaven,
+		PackageVersionMetadataPackageTypeRubygems,
+		PackageVersionMetadataPackageTypeDocker,
+		PackageVersionMetadataPackageTypeNuget,
+		PackageVersionMetadataPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackageVersionMetadataPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -63851,6 +65055,14 @@ const (
 	PackageVisibilityPrivate PackageVisibility = "private"
 	PackageVisibilityPublic  PackageVisibility = "public"
 )
+
+// AllValues returns all PackageVisibility values.
+func (PackageVisibility) AllValues() []PackageVisibility {
+	return []PackageVisibility{
+		PackageVisibilityPrivate,
+		PackageVisibilityPublic,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackageVisibility) MarshalText() ([]byte, error) {
@@ -63945,6 +65157,18 @@ const (
 	PackagesDeletePackageForAuthenticatedUserPackageTypeContainer PackagesDeletePackageForAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesDeletePackageForAuthenticatedUserPackageType values.
+func (PackagesDeletePackageForAuthenticatedUserPackageType) AllValues() []PackagesDeletePackageForAuthenticatedUserPackageType {
+	return []PackagesDeletePackageForAuthenticatedUserPackageType{
+		PackagesDeletePackageForAuthenticatedUserPackageTypeNpm,
+		PackagesDeletePackageForAuthenticatedUserPackageTypeMaven,
+		PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems,
+		PackagesDeletePackageForAuthenticatedUserPackageTypeDocker,
+		PackagesDeletePackageForAuthenticatedUserPackageTypeNuget,
+		PackagesDeletePackageForAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64020,6 +65244,18 @@ const (
 	PackagesDeletePackageForOrgPackageTypeContainer PackagesDeletePackageForOrgPackageType = "container"
 )
 
+// AllValues returns all PackagesDeletePackageForOrgPackageType values.
+func (PackagesDeletePackageForOrgPackageType) AllValues() []PackagesDeletePackageForOrgPackageType {
+	return []PackagesDeletePackageForOrgPackageType{
+		PackagesDeletePackageForOrgPackageTypeNpm,
+		PackagesDeletePackageForOrgPackageTypeMaven,
+		PackagesDeletePackageForOrgPackageTypeRubygems,
+		PackagesDeletePackageForOrgPackageTypeDocker,
+		PackagesDeletePackageForOrgPackageTypeNuget,
+		PackagesDeletePackageForOrgPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageForOrgPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64093,6 +65329,18 @@ const (
 	PackagesDeletePackageForUserPackageTypeNuget     PackagesDeletePackageForUserPackageType = "nuget"
 	PackagesDeletePackageForUserPackageTypeContainer PackagesDeletePackageForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesDeletePackageForUserPackageType values.
+func (PackagesDeletePackageForUserPackageType) AllValues() []PackagesDeletePackageForUserPackageType {
+	return []PackagesDeletePackageForUserPackageType{
+		PackagesDeletePackageForUserPackageTypeNpm,
+		PackagesDeletePackageForUserPackageTypeMaven,
+		PackagesDeletePackageForUserPackageTypeRubygems,
+		PackagesDeletePackageForUserPackageTypeDocker,
+		PackagesDeletePackageForUserPackageTypeNuget,
+		PackagesDeletePackageForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageForUserPackageType) MarshalText() ([]byte, error) {
@@ -64171,6 +65419,18 @@ const (
 	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer PackagesDeletePackageVersionForAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesDeletePackageVersionForAuthenticatedUserPackageType values.
+func (PackagesDeletePackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesDeletePackageVersionForAuthenticatedUserPackageType {
+	return []PackagesDeletePackageVersionForAuthenticatedUserPackageType{
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm,
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven,
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems,
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker,
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget,
+		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64246,6 +65506,18 @@ const (
 	PackagesDeletePackageVersionForOrgPackageTypeContainer PackagesDeletePackageVersionForOrgPackageType = "container"
 )
 
+// AllValues returns all PackagesDeletePackageVersionForOrgPackageType values.
+func (PackagesDeletePackageVersionForOrgPackageType) AllValues() []PackagesDeletePackageVersionForOrgPackageType {
+	return []PackagesDeletePackageVersionForOrgPackageType{
+		PackagesDeletePackageVersionForOrgPackageTypeNpm,
+		PackagesDeletePackageVersionForOrgPackageTypeMaven,
+		PackagesDeletePackageVersionForOrgPackageTypeRubygems,
+		PackagesDeletePackageVersionForOrgPackageTypeDocker,
+		PackagesDeletePackageVersionForOrgPackageTypeNuget,
+		PackagesDeletePackageVersionForOrgPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64319,6 +65591,18 @@ const (
 	PackagesDeletePackageVersionForUserPackageTypeNuget     PackagesDeletePackageVersionForUserPackageType = "nuget"
 	PackagesDeletePackageVersionForUserPackageTypeContainer PackagesDeletePackageVersionForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesDeletePackageVersionForUserPackageType values.
+func (PackagesDeletePackageVersionForUserPackageType) AllValues() []PackagesDeletePackageVersionForUserPackageType {
+	return []PackagesDeletePackageVersionForUserPackageType{
+		PackagesDeletePackageVersionForUserPackageTypeNpm,
+		PackagesDeletePackageVersionForUserPackageTypeMaven,
+		PackagesDeletePackageVersionForUserPackageTypeRubygems,
+		PackagesDeletePackageVersionForUserPackageTypeDocker,
+		PackagesDeletePackageVersionForUserPackageTypeNuget,
+		PackagesDeletePackageVersionForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesDeletePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
@@ -64396,6 +65680,18 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType values.
+func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType {
+	return []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType{
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64448,6 +65744,14 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "active"
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "deleted"
 )
+
+// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState values.
+func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
+	return []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState{
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive,
+		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) MarshalText() ([]byte, error) {
@@ -64506,6 +65810,18 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "container"
 )
 
+// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType values.
+func (PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType {
+	return []PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType{
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64558,6 +65874,14 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive  PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "active"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "deleted"
 )
+
+// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByOrgState values.
+func (PackagesGetAllPackageVersionsForPackageOwnedByOrgState) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByOrgState {
+	return []PackagesGetAllPackageVersionsForPackageOwnedByOrgState{
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive,
+		PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) MarshalText() ([]byte, error) {
@@ -64615,6 +65939,18 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "nuget"
 	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "container"
 )
+
+// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType values.
+func (PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType {
+	return []PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType{
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm,
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven,
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems,
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker,
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget,
+		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) MarshalText() ([]byte, error) {
@@ -64678,6 +66014,18 @@ const (
 	PackagesGetPackageForAuthenticatedUserPackageTypeContainer PackagesGetPackageForAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesGetPackageForAuthenticatedUserPackageType values.
+func (PackagesGetPackageForAuthenticatedUserPackageType) AllValues() []PackagesGetPackageForAuthenticatedUserPackageType {
+	return []PackagesGetPackageForAuthenticatedUserPackageType{
+		PackagesGetPackageForAuthenticatedUserPackageTypeNpm,
+		PackagesGetPackageForAuthenticatedUserPackageTypeMaven,
+		PackagesGetPackageForAuthenticatedUserPackageTypeRubygems,
+		PackagesGetPackageForAuthenticatedUserPackageTypeDocker,
+		PackagesGetPackageForAuthenticatedUserPackageTypeNuget,
+		PackagesGetPackageForAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64734,6 +66082,18 @@ const (
 	PackagesGetPackageForOrganizationPackageTypeNuget     PackagesGetPackageForOrganizationPackageType = "nuget"
 	PackagesGetPackageForOrganizationPackageTypeContainer PackagesGetPackageForOrganizationPackageType = "container"
 )
+
+// AllValues returns all PackagesGetPackageForOrganizationPackageType values.
+func (PackagesGetPackageForOrganizationPackageType) AllValues() []PackagesGetPackageForOrganizationPackageType {
+	return []PackagesGetPackageForOrganizationPackageType{
+		PackagesGetPackageForOrganizationPackageTypeNpm,
+		PackagesGetPackageForOrganizationPackageTypeMaven,
+		PackagesGetPackageForOrganizationPackageTypeRubygems,
+		PackagesGetPackageForOrganizationPackageTypeDocker,
+		PackagesGetPackageForOrganizationPackageTypeNuget,
+		PackagesGetPackageForOrganizationPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageForOrganizationPackageType) MarshalText() ([]byte, error) {
@@ -64792,6 +66152,18 @@ const (
 	PackagesGetPackageForUserPackageTypeContainer PackagesGetPackageForUserPackageType = "container"
 )
 
+// AllValues returns all PackagesGetPackageForUserPackageType values.
+func (PackagesGetPackageForUserPackageType) AllValues() []PackagesGetPackageForUserPackageType {
+	return []PackagesGetPackageForUserPackageType{
+		PackagesGetPackageForUserPackageTypeNpm,
+		PackagesGetPackageForUserPackageTypeMaven,
+		PackagesGetPackageForUserPackageTypeRubygems,
+		PackagesGetPackageForUserPackageTypeDocker,
+		PackagesGetPackageForUserPackageTypeNuget,
+		PackagesGetPackageForUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageForUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64848,6 +66220,18 @@ const (
 	PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget     PackagesGetPackageVersionForAuthenticatedUserPackageType = "nuget"
 	PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer PackagesGetPackageVersionForAuthenticatedUserPackageType = "container"
 )
+
+// AllValues returns all PackagesGetPackageVersionForAuthenticatedUserPackageType values.
+func (PackagesGetPackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesGetPackageVersionForAuthenticatedUserPackageType {
+	return []PackagesGetPackageVersionForAuthenticatedUserPackageType{
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm,
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven,
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems,
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker,
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget,
+		PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
@@ -64906,6 +66290,18 @@ const (
 	PackagesGetPackageVersionForOrganizationPackageTypeContainer PackagesGetPackageVersionForOrganizationPackageType = "container"
 )
 
+// AllValues returns all PackagesGetPackageVersionForOrganizationPackageType values.
+func (PackagesGetPackageVersionForOrganizationPackageType) AllValues() []PackagesGetPackageVersionForOrganizationPackageType {
+	return []PackagesGetPackageVersionForOrganizationPackageType{
+		PackagesGetPackageVersionForOrganizationPackageTypeNpm,
+		PackagesGetPackageVersionForOrganizationPackageTypeMaven,
+		PackagesGetPackageVersionForOrganizationPackageTypeRubygems,
+		PackagesGetPackageVersionForOrganizationPackageTypeDocker,
+		PackagesGetPackageVersionForOrganizationPackageTypeNuget,
+		PackagesGetPackageVersionForOrganizationPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageVersionForOrganizationPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -64962,6 +66358,18 @@ const (
 	PackagesGetPackageVersionForUserPackageTypeNuget     PackagesGetPackageVersionForUserPackageType = "nuget"
 	PackagesGetPackageVersionForUserPackageTypeContainer PackagesGetPackageVersionForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesGetPackageVersionForUserPackageType values.
+func (PackagesGetPackageVersionForUserPackageType) AllValues() []PackagesGetPackageVersionForUserPackageType {
+	return []PackagesGetPackageVersionForUserPackageType{
+		PackagesGetPackageVersionForUserPackageTypeNpm,
+		PackagesGetPackageVersionForUserPackageTypeMaven,
+		PackagesGetPackageVersionForUserPackageTypeRubygems,
+		PackagesGetPackageVersionForUserPackageTypeDocker,
+		PackagesGetPackageVersionForUserPackageTypeNuget,
+		PackagesGetPackageVersionForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesGetPackageVersionForUserPackageType) MarshalText() ([]byte, error) {
@@ -65020,6 +66428,18 @@ const (
 	PackagesListPackagesForAuthenticatedUserPackageTypeContainer PackagesListPackagesForAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesListPackagesForAuthenticatedUserPackageType values.
+func (PackagesListPackagesForAuthenticatedUserPackageType) AllValues() []PackagesListPackagesForAuthenticatedUserPackageType {
+	return []PackagesListPackagesForAuthenticatedUserPackageType{
+		PackagesListPackagesForAuthenticatedUserPackageTypeNpm,
+		PackagesListPackagesForAuthenticatedUserPackageTypeMaven,
+		PackagesListPackagesForAuthenticatedUserPackageTypeRubygems,
+		PackagesListPackagesForAuthenticatedUserPackageTypeDocker,
+		PackagesListPackagesForAuthenticatedUserPackageTypeNuget,
+		PackagesListPackagesForAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -65074,6 +66494,15 @@ const (
 	PackagesListPackagesForAuthenticatedUserVisibilityInternal PackagesListPackagesForAuthenticatedUserVisibility = "internal"
 )
 
+// AllValues returns all PackagesListPackagesForAuthenticatedUserVisibility values.
+func (PackagesListPackagesForAuthenticatedUserVisibility) AllValues() []PackagesListPackagesForAuthenticatedUserVisibility {
+	return []PackagesListPackagesForAuthenticatedUserVisibility{
+		PackagesListPackagesForAuthenticatedUserVisibilityPublic,
+		PackagesListPackagesForAuthenticatedUserVisibilityPrivate,
+		PackagesListPackagesForAuthenticatedUserVisibilityInternal,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForAuthenticatedUserVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -65124,6 +66553,18 @@ const (
 	PackagesListPackagesForOrganizationPackageTypeNuget     PackagesListPackagesForOrganizationPackageType = "nuget"
 	PackagesListPackagesForOrganizationPackageTypeContainer PackagesListPackagesForOrganizationPackageType = "container"
 )
+
+// AllValues returns all PackagesListPackagesForOrganizationPackageType values.
+func (PackagesListPackagesForOrganizationPackageType) AllValues() []PackagesListPackagesForOrganizationPackageType {
+	return []PackagesListPackagesForOrganizationPackageType{
+		PackagesListPackagesForOrganizationPackageTypeNpm,
+		PackagesListPackagesForOrganizationPackageTypeMaven,
+		PackagesListPackagesForOrganizationPackageTypeRubygems,
+		PackagesListPackagesForOrganizationPackageTypeDocker,
+		PackagesListPackagesForOrganizationPackageTypeNuget,
+		PackagesListPackagesForOrganizationPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForOrganizationPackageType) MarshalText() ([]byte, error) {
@@ -65183,6 +66624,15 @@ const (
 	PackagesListPackagesForOrganizationVisibilityInternal PackagesListPackagesForOrganizationVisibility = "internal"
 )
 
+// AllValues returns all PackagesListPackagesForOrganizationVisibility values.
+func (PackagesListPackagesForOrganizationVisibility) AllValues() []PackagesListPackagesForOrganizationVisibility {
+	return []PackagesListPackagesForOrganizationVisibility{
+		PackagesListPackagesForOrganizationVisibilityPublic,
+		PackagesListPackagesForOrganizationVisibilityPrivate,
+		PackagesListPackagesForOrganizationVisibilityInternal,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForOrganizationVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -65232,6 +66682,18 @@ const (
 	PackagesListPackagesForUserPackageTypeNuget     PackagesListPackagesForUserPackageType = "nuget"
 	PackagesListPackagesForUserPackageTypeContainer PackagesListPackagesForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesListPackagesForUserPackageType values.
+func (PackagesListPackagesForUserPackageType) AllValues() []PackagesListPackagesForUserPackageType {
+	return []PackagesListPackagesForUserPackageType{
+		PackagesListPackagesForUserPackageTypeNpm,
+		PackagesListPackagesForUserPackageTypeMaven,
+		PackagesListPackagesForUserPackageTypeRubygems,
+		PackagesListPackagesForUserPackageTypeDocker,
+		PackagesListPackagesForUserPackageTypeNuget,
+		PackagesListPackagesForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForUserPackageType) MarshalText() ([]byte, error) {
@@ -65291,6 +66753,15 @@ const (
 	PackagesListPackagesForUserVisibilityInternal PackagesListPackagesForUserVisibility = "internal"
 )
 
+// AllValues returns all PackagesListPackagesForUserVisibility values.
+func (PackagesListPackagesForUserVisibility) AllValues() []PackagesListPackagesForUserVisibility {
+	return []PackagesListPackagesForUserVisibility{
+		PackagesListPackagesForUserVisibilityPublic,
+		PackagesListPackagesForUserVisibilityPrivate,
+		PackagesListPackagesForUserVisibilityInternal,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesListPackagesForUserVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -65348,6 +66819,18 @@ const (
 	PackagesRestorePackageForAuthenticatedUserPackageTypeNuget     PackagesRestorePackageForAuthenticatedUserPackageType = "nuget"
 	PackagesRestorePackageForAuthenticatedUserPackageTypeContainer PackagesRestorePackageForAuthenticatedUserPackageType = "container"
 )
+
+// AllValues returns all PackagesRestorePackageForAuthenticatedUserPackageType values.
+func (PackagesRestorePackageForAuthenticatedUserPackageType) AllValues() []PackagesRestorePackageForAuthenticatedUserPackageType {
+	return []PackagesRestorePackageForAuthenticatedUserPackageType{
+		PackagesRestorePackageForAuthenticatedUserPackageTypeNpm,
+		PackagesRestorePackageForAuthenticatedUserPackageTypeMaven,
+		PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems,
+		PackagesRestorePackageForAuthenticatedUserPackageTypeDocker,
+		PackagesRestorePackageForAuthenticatedUserPackageTypeNuget,
+		PackagesRestorePackageForAuthenticatedUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
@@ -65424,6 +66907,18 @@ const (
 	PackagesRestorePackageForOrgPackageTypeContainer PackagesRestorePackageForOrgPackageType = "container"
 )
 
+// AllValues returns all PackagesRestorePackageForOrgPackageType values.
+func (PackagesRestorePackageForOrgPackageType) AllValues() []PackagesRestorePackageForOrgPackageType {
+	return []PackagesRestorePackageForOrgPackageType{
+		PackagesRestorePackageForOrgPackageTypeNpm,
+		PackagesRestorePackageForOrgPackageTypeMaven,
+		PackagesRestorePackageForOrgPackageTypeRubygems,
+		PackagesRestorePackageForOrgPackageTypeDocker,
+		PackagesRestorePackageForOrgPackageTypeNuget,
+		PackagesRestorePackageForOrgPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageForOrgPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -65497,6 +66992,18 @@ const (
 	PackagesRestorePackageForUserPackageTypeNuget     PackagesRestorePackageForUserPackageType = "nuget"
 	PackagesRestorePackageForUserPackageTypeContainer PackagesRestorePackageForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesRestorePackageForUserPackageType values.
+func (PackagesRestorePackageForUserPackageType) AllValues() []PackagesRestorePackageForUserPackageType {
+	return []PackagesRestorePackageForUserPackageType{
+		PackagesRestorePackageForUserPackageTypeNpm,
+		PackagesRestorePackageForUserPackageTypeMaven,
+		PackagesRestorePackageForUserPackageTypeRubygems,
+		PackagesRestorePackageForUserPackageTypeDocker,
+		PackagesRestorePackageForUserPackageTypeNuget,
+		PackagesRestorePackageForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageForUserPackageType) MarshalText() ([]byte, error) {
@@ -65575,6 +67082,18 @@ const (
 	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer PackagesRestorePackageVersionForAuthenticatedUserPackageType = "container"
 )
 
+// AllValues returns all PackagesRestorePackageVersionForAuthenticatedUserPackageType values.
+func (PackagesRestorePackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesRestorePackageVersionForAuthenticatedUserPackageType {
+	return []PackagesRestorePackageVersionForAuthenticatedUserPackageType{
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm,
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven,
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems,
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker,
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget,
+		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -65650,6 +67169,18 @@ const (
 	PackagesRestorePackageVersionForOrgPackageTypeContainer PackagesRestorePackageVersionForOrgPackageType = "container"
 )
 
+// AllValues returns all PackagesRestorePackageVersionForOrgPackageType values.
+func (PackagesRestorePackageVersionForOrgPackageType) AllValues() []PackagesRestorePackageVersionForOrgPackageType {
+	return []PackagesRestorePackageVersionForOrgPackageType{
+		PackagesRestorePackageVersionForOrgPackageTypeNpm,
+		PackagesRestorePackageVersionForOrgPackageTypeMaven,
+		PackagesRestorePackageVersionForOrgPackageTypeRubygems,
+		PackagesRestorePackageVersionForOrgPackageTypeDocker,
+		PackagesRestorePackageVersionForOrgPackageTypeNuget,
+		PackagesRestorePackageVersionForOrgPackageTypeContainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
 	switch s {
@@ -65723,6 +67254,18 @@ const (
 	PackagesRestorePackageVersionForUserPackageTypeNuget     PackagesRestorePackageVersionForUserPackageType = "nuget"
 	PackagesRestorePackageVersionForUserPackageTypeContainer PackagesRestorePackageVersionForUserPackageType = "container"
 )
+
+// AllValues returns all PackagesRestorePackageVersionForUserPackageType values.
+func (PackagesRestorePackageVersionForUserPackageType) AllValues() []PackagesRestorePackageVersionForUserPackageType {
+	return []PackagesRestorePackageVersionForUserPackageType{
+		PackagesRestorePackageVersionForUserPackageTypeNpm,
+		PackagesRestorePackageVersionForUserPackageTypeMaven,
+		PackagesRestorePackageVersionForUserPackageTypeRubygems,
+		PackagesRestorePackageVersionForUserPackageTypeDocker,
+		PackagesRestorePackageVersionForUserPackageTypeNuget,
+		PackagesRestorePackageVersionForUserPackageTypeContainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PackagesRestorePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
@@ -66057,6 +67600,15 @@ const (
 	PageProtectedDomainStateUnverified PageProtectedDomainState = "unverified"
 )
 
+// AllValues returns all PageProtectedDomainState values.
+func (PageProtectedDomainState) AllValues() []PageProtectedDomainState {
+	return []PageProtectedDomainState{
+		PageProtectedDomainStatePending,
+		PageProtectedDomainStateVerified,
+		PageProtectedDomainStateUnverified,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PageProtectedDomainState) MarshalText() ([]byte, error) {
 	switch s {
@@ -66096,6 +67648,15 @@ const (
 	PageStatusBuilding PageStatus = "building"
 	PageStatusErrored  PageStatus = "errored"
 )
+
+// AllValues returns all PageStatus values.
+func (PageStatus) AllValues() []PageStatus {
+	return []PageStatus{
+		PageStatusBuilt,
+		PageStatusBuilding,
+		PageStatusErrored,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PageStatus) MarshalText() ([]byte, error) {
@@ -66193,6 +67754,24 @@ const (
 	PagesHTTPSCertificateStateDestroyPending       PagesHTTPSCertificateState = "destroy_pending"
 	PagesHTTPSCertificateStateDNSChanged           PagesHTTPSCertificateState = "dns_changed"
 )
+
+// AllValues returns all PagesHTTPSCertificateState values.
+func (PagesHTTPSCertificateState) AllValues() []PagesHTTPSCertificateState {
+	return []PagesHTTPSCertificateState{
+		PagesHTTPSCertificateStateNew,
+		PagesHTTPSCertificateStateAuthorizationCreated,
+		PagesHTTPSCertificateStateAuthorizationPending,
+		PagesHTTPSCertificateStateAuthorized,
+		PagesHTTPSCertificateStateAuthorizationRevoked,
+		PagesHTTPSCertificateStateIssued,
+		PagesHTTPSCertificateStateUploaded,
+		PagesHTTPSCertificateStateApproved,
+		PagesHTTPSCertificateStateErrored,
+		PagesHTTPSCertificateStateBadAuthz,
+		PagesHTTPSCertificateStateDestroyPending,
+		PagesHTTPSCertificateStateDNSChanged,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PagesHTTPSCertificateState) MarshalText() ([]byte, error) {
@@ -68121,6 +69700,16 @@ const (
 	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
 )
 
+// AllValues returns all ProjectOrganizationPermission values.
+func (ProjectOrganizationPermission) AllValues() []ProjectOrganizationPermission {
+	return []ProjectOrganizationPermission{
+		ProjectOrganizationPermissionRead,
+		ProjectOrganizationPermissionWrite,
+		ProjectOrganizationPermissionAdmin,
+		ProjectOrganizationPermissionNone,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectOrganizationPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -68193,6 +69782,15 @@ const (
 	ProjectsAddCollaboratorReqPermissionWrite ProjectsAddCollaboratorReqPermission = "write"
 	ProjectsAddCollaboratorReqPermissionAdmin ProjectsAddCollaboratorReqPermission = "admin"
 )
+
+// AllValues returns all ProjectsAddCollaboratorReqPermission values.
+func (ProjectsAddCollaboratorReqPermission) AllValues() []ProjectsAddCollaboratorReqPermission {
+	return []ProjectsAddCollaboratorReqPermission{
+		ProjectsAddCollaboratorReqPermissionRead,
+		ProjectsAddCollaboratorReqPermissionWrite,
+		ProjectsAddCollaboratorReqPermissionAdmin,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsAddCollaboratorReqPermission) MarshalText() ([]byte, error) {
@@ -68544,6 +70142,15 @@ const (
 	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
 )
 
+// AllValues returns all ProjectsListCardsArchivedState values.
+func (ProjectsListCardsArchivedState) AllValues() []ProjectsListCardsArchivedState {
+	return []ProjectsListCardsArchivedState{
+		ProjectsListCardsArchivedStateAll,
+		ProjectsListCardsArchivedStateArchived,
+		ProjectsListCardsArchivedStateNotArchived,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsListCardsArchivedState) MarshalText() ([]byte, error) {
 	switch s {
@@ -68618,6 +70225,15 @@ const (
 	ProjectsListCollaboratorsAffiliationDirect  ProjectsListCollaboratorsAffiliation = "direct"
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
+
+// AllValues returns all ProjectsListCollaboratorsAffiliation values.
+func (ProjectsListCollaboratorsAffiliation) AllValues() []ProjectsListCollaboratorsAffiliation {
+	return []ProjectsListCollaboratorsAffiliation{
+		ProjectsListCollaboratorsAffiliationOutside,
+		ProjectsListCollaboratorsAffiliationDirect,
+		ProjectsListCollaboratorsAffiliationAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsListCollaboratorsAffiliation) MarshalText() ([]byte, error) {
@@ -68762,6 +70378,15 @@ const (
 	ProjectsListForOrgStateAll    ProjectsListForOrgState = "all"
 )
 
+// AllValues returns all ProjectsListForOrgState values.
+func (ProjectsListForOrgState) AllValues() []ProjectsListForOrgState {
+	return []ProjectsListForOrgState{
+		ProjectsListForOrgStateOpen,
+		ProjectsListForOrgStateClosed,
+		ProjectsListForOrgStateAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsListForOrgState) MarshalText() ([]byte, error) {
 	switch s {
@@ -68841,6 +70466,15 @@ const (
 	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
 )
 
+// AllValues returns all ProjectsListForRepoState values.
+func (ProjectsListForRepoState) AllValues() []ProjectsListForRepoState {
+	return []ProjectsListForRepoState{
+		ProjectsListForRepoStateOpen,
+		ProjectsListForRepoStateClosed,
+		ProjectsListForRepoStateAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsListForRepoState) MarshalText() ([]byte, error) {
 	switch s {
@@ -68911,6 +70545,15 @@ const (
 	ProjectsListForUserStateClosed ProjectsListForUserState = "closed"
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
+
+// AllValues returns all ProjectsListForUserState values.
+func (ProjectsListForUserState) AllValues() []ProjectsListForUserState {
+	return []ProjectsListForUserState{
+		ProjectsListForUserStateOpen,
+		ProjectsListForUserStateClosed,
+		ProjectsListForUserStateAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsListForUserState) MarshalText() ([]byte, error) {
@@ -69360,6 +71003,16 @@ const (
 	ProjectsUpdateReqOrganizationPermissionAdmin ProjectsUpdateReqOrganizationPermission = "admin"
 	ProjectsUpdateReqOrganizationPermissionNone  ProjectsUpdateReqOrganizationPermission = "none"
 )
+
+// AllValues returns all ProjectsUpdateReqOrganizationPermission values.
+func (ProjectsUpdateReqOrganizationPermission) AllValues() []ProjectsUpdateReqOrganizationPermission {
+	return []ProjectsUpdateReqOrganizationPermission{
+		ProjectsUpdateReqOrganizationPermissionRead,
+		ProjectsUpdateReqOrganizationPermissionWrite,
+		ProjectsUpdateReqOrganizationPermissionAdmin,
+		ProjectsUpdateReqOrganizationPermissionNone,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ProjectsUpdateReqOrganizationPermission) MarshalText() ([]byte, error) {
@@ -74852,6 +76505,14 @@ const (
 	PullRequestReviewCommentSideRIGHT PullRequestReviewCommentSide = "RIGHT"
 )
 
+// AllValues returns all PullRequestReviewCommentSide values.
+func (PullRequestReviewCommentSide) AllValues() []PullRequestReviewCommentSide {
+	return []PullRequestReviewCommentSide{
+		PullRequestReviewCommentSideLEFT,
+		PullRequestReviewCommentSideRIGHT,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullRequestReviewCommentSide) MarshalText() ([]byte, error) {
 	switch s {
@@ -74885,6 +76546,14 @@ const (
 	PullRequestReviewCommentStartSideLEFT  PullRequestReviewCommentStartSide = "LEFT"
 	PullRequestReviewCommentStartSideRIGHT PullRequestReviewCommentStartSide = "RIGHT"
 )
+
+// AllValues returns all PullRequestReviewCommentStartSide values.
+func (PullRequestReviewCommentStartSide) AllValues() []PullRequestReviewCommentStartSide {
+	return []PullRequestReviewCommentStartSide{
+		PullRequestReviewCommentStartSideLEFT,
+		PullRequestReviewCommentStartSideRIGHT,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullRequestReviewCommentStartSide) MarshalText() ([]byte, error) {
@@ -75717,6 +77386,14 @@ const (
 	PullRequestStateClosed PullRequestState = "closed"
 )
 
+// AllValues returns all PullRequestState values.
+func (PullRequestState) AllValues() []PullRequestState {
+	return []PullRequestState{
+		PullRequestStateOpen,
+		PullRequestStateClosed,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullRequestState) MarshalText() ([]byte, error) {
 	switch s {
@@ -76007,6 +77684,14 @@ const (
 	PullsCreateReviewCommentReqSideRIGHT PullsCreateReviewCommentReqSide = "RIGHT"
 )
 
+// AllValues returns all PullsCreateReviewCommentReqSide values.
+func (PullsCreateReviewCommentReqSide) AllValues() []PullsCreateReviewCommentReqSide {
+	return []PullsCreateReviewCommentReqSide{
+		PullsCreateReviewCommentReqSideLEFT,
+		PullsCreateReviewCommentReqSideRIGHT,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsCreateReviewCommentReqSide) MarshalText() ([]byte, error) {
 	switch s {
@@ -76046,6 +77731,15 @@ const (
 	PullsCreateReviewCommentReqStartSideRIGHT PullsCreateReviewCommentReqStartSide = "RIGHT"
 	PullsCreateReviewCommentReqStartSideSide  PullsCreateReviewCommentReqStartSide = "side"
 )
+
+// AllValues returns all PullsCreateReviewCommentReqStartSide values.
+func (PullsCreateReviewCommentReqStartSide) AllValues() []PullsCreateReviewCommentReqStartSide {
+	return []PullsCreateReviewCommentReqStartSide{
+		PullsCreateReviewCommentReqStartSideLEFT,
+		PullsCreateReviewCommentReqStartSideRIGHT,
+		PullsCreateReviewCommentReqStartSideSide,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsCreateReviewCommentReqStartSide) MarshalText() ([]byte, error) {
@@ -76232,6 +77926,15 @@ const (
 	PullsCreateReviewReqEventCOMMENT        PullsCreateReviewReqEvent = "COMMENT"
 )
 
+// AllValues returns all PullsCreateReviewReqEvent values.
+func (PullsCreateReviewReqEvent) AllValues() []PullsCreateReviewReqEvent {
+	return []PullsCreateReviewReqEvent{
+		PullsCreateReviewReqEventAPPROVE,
+		PullsCreateReviewReqEventREQUESTCHANGES,
+		PullsCreateReviewReqEventCOMMENT,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsCreateReviewReqEvent) MarshalText() ([]byte, error) {
 	switch s {
@@ -76363,6 +78066,14 @@ const (
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
 
+// AllValues returns all PullsListDirection values.
+func (PullsListDirection) AllValues() []PullsListDirection {
+	return []PullsListDirection{
+		PullsListDirectionAsc,
+		PullsListDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -76452,6 +78163,14 @@ const (
 	PullsListReviewCommentsDirectionDesc PullsListReviewCommentsDirection = "desc"
 )
 
+// AllValues returns all PullsListReviewCommentsDirection values.
+func (PullsListReviewCommentsDirection) AllValues() []PullsListReviewCommentsDirection {
+	return []PullsListReviewCommentsDirection{
+		PullsListReviewCommentsDirectionAsc,
+		PullsListReviewCommentsDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListReviewCommentsDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -76484,6 +78203,14 @@ const (
 	PullsListReviewCommentsForRepoDirectionAsc  PullsListReviewCommentsForRepoDirection = "asc"
 	PullsListReviewCommentsForRepoDirectionDesc PullsListReviewCommentsForRepoDirection = "desc"
 )
+
+// AllValues returns all PullsListReviewCommentsForRepoDirection values.
+func (PullsListReviewCommentsForRepoDirection) AllValues() []PullsListReviewCommentsForRepoDirection {
+	return []PullsListReviewCommentsForRepoDirection{
+		PullsListReviewCommentsForRepoDirectionAsc,
+		PullsListReviewCommentsForRepoDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListReviewCommentsForRepoDirection) MarshalText() ([]byte, error) {
@@ -76544,6 +78271,15 @@ const (
 	PullsListReviewCommentsForRepoSortUpdated   PullsListReviewCommentsForRepoSort = "updated"
 	PullsListReviewCommentsForRepoSortCreatedAt PullsListReviewCommentsForRepoSort = "created_at"
 )
+
+// AllValues returns all PullsListReviewCommentsForRepoSort values.
+func (PullsListReviewCommentsForRepoSort) AllValues() []PullsListReviewCommentsForRepoSort {
+	return []PullsListReviewCommentsForRepoSort{
+		PullsListReviewCommentsForRepoSortCreated,
+		PullsListReviewCommentsForRepoSortUpdated,
+		PullsListReviewCommentsForRepoSortCreatedAt,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListReviewCommentsForRepoSort) MarshalText() ([]byte, error) {
@@ -76609,6 +78345,14 @@ const (
 	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
 )
 
+// AllValues returns all PullsListReviewCommentsSort values.
+func (PullsListReviewCommentsSort) AllValues() []PullsListReviewCommentsSort {
+	return []PullsListReviewCommentsSort{
+		PullsListReviewCommentsSortCreated,
+		PullsListReviewCommentsSortUpdated,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListReviewCommentsSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -76670,6 +78414,16 @@ const (
 	PullsListSortLongRunning PullsListSort = "long-running"
 )
 
+// AllValues returns all PullsListSort values.
+func (PullsListSort) AllValues() []PullsListSort {
+	return []PullsListSort{
+		PullsListSortCreated,
+		PullsListSortUpdated,
+		PullsListSortPopularity,
+		PullsListSortLongRunning,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -76713,6 +78467,15 @@ const (
 	PullsListStateClosed PullsListState = "closed"
 	PullsListStateAll    PullsListState = "all"
 )
+
+// AllValues returns all PullsListState values.
+func (PullsListState) AllValues() []PullsListState {
+	return []PullsListState{
+		PullsListStateOpen,
+		PullsListStateClosed,
+		PullsListStateAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsListState) MarshalText() ([]byte, error) {
@@ -76867,6 +78630,15 @@ const (
 	PullsMergeReqMergeMethodRebase PullsMergeReqMergeMethod = "rebase"
 )
 
+// AllValues returns all PullsMergeReqMergeMethod values.
+func (PullsMergeReqMergeMethod) AllValues() []PullsMergeReqMergeMethod {
+	return []PullsMergeReqMergeMethod{
+		PullsMergeReqMergeMethodMerge,
+		PullsMergeReqMergeMethodSquash,
+		PullsMergeReqMergeMethodRebase,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsMergeReqMergeMethod) MarshalText() ([]byte, error) {
 	switch s {
@@ -76974,6 +78746,15 @@ const (
 	PullsSubmitReviewReqEventREQUESTCHANGES PullsSubmitReviewReqEvent = "REQUEST_CHANGES"
 	PullsSubmitReviewReqEventCOMMENT        PullsSubmitReviewReqEvent = "COMMENT"
 )
+
+// AllValues returns all PullsSubmitReviewReqEvent values.
+func (PullsSubmitReviewReqEvent) AllValues() []PullsSubmitReviewReqEvent {
+	return []PullsSubmitReviewReqEvent{
+		PullsSubmitReviewReqEventAPPROVE,
+		PullsSubmitReviewReqEventREQUESTCHANGES,
+		PullsSubmitReviewReqEventCOMMENT,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsSubmitReviewReqEvent) MarshalText() ([]byte, error) {
@@ -77125,6 +78906,14 @@ const (
 	PullsUpdateReqStateOpen   PullsUpdateReqState = "open"
 	PullsUpdateReqStateClosed PullsUpdateReqState = "closed"
 )
+
+// AllValues returns all PullsUpdateReqState values.
+func (PullsUpdateReqState) AllValues() []PullsUpdateReqState {
+	return []PullsUpdateReqState{
+		PullsUpdateReqStateOpen,
+		PullsUpdateReqStateClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PullsUpdateReqState) MarshalText() ([]byte, error) {
@@ -77463,6 +79252,20 @@ const (
 	ReactionContentEyes     ReactionContent = "eyes"
 )
 
+// AllValues returns all ReactionContent values.
+func (ReactionContent) AllValues() []ReactionContent {
+	return []ReactionContent{
+		ReactionContentPlus1,
+		ReactionContentMinus1,
+		ReactionContentLaugh,
+		ReactionContentConfused,
+		ReactionContentHeart,
+		ReactionContentHooray,
+		ReactionContentRocket,
+		ReactionContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -77672,6 +79475,20 @@ const (
 	ReactionsCreateForCommitCommentReqContentEyes     ReactionsCreateForCommitCommentReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForCommitCommentReqContent values.
+func (ReactionsCreateForCommitCommentReqContent) AllValues() []ReactionsCreateForCommitCommentReqContent {
+	return []ReactionsCreateForCommitCommentReqContent{
+		ReactionsCreateForCommitCommentReqContentPlus1,
+		ReactionsCreateForCommitCommentReqContentMinus1,
+		ReactionsCreateForCommitCommentReqContentLaugh,
+		ReactionsCreateForCommitCommentReqContentConfused,
+		ReactionsCreateForCommitCommentReqContentHeart,
+		ReactionsCreateForCommitCommentReqContentHooray,
+		ReactionsCreateForCommitCommentReqContentRocket,
+		ReactionsCreateForCommitCommentReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForCommitCommentReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -77767,6 +79584,20 @@ const (
 	ReactionsCreateForIssueCommentReqContentEyes     ReactionsCreateForIssueCommentReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForIssueCommentReqContent values.
+func (ReactionsCreateForIssueCommentReqContent) AllValues() []ReactionsCreateForIssueCommentReqContent {
+	return []ReactionsCreateForIssueCommentReqContent{
+		ReactionsCreateForIssueCommentReqContentPlus1,
+		ReactionsCreateForIssueCommentReqContentMinus1,
+		ReactionsCreateForIssueCommentReqContentLaugh,
+		ReactionsCreateForIssueCommentReqContentConfused,
+		ReactionsCreateForIssueCommentReqContentHeart,
+		ReactionsCreateForIssueCommentReqContentHooray,
+		ReactionsCreateForIssueCommentReqContentRocket,
+		ReactionsCreateForIssueCommentReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForIssueCommentReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -77861,6 +79692,20 @@ const (
 	ReactionsCreateForIssueReqContentRocket   ReactionsCreateForIssueReqContent = "rocket"
 	ReactionsCreateForIssueReqContentEyes     ReactionsCreateForIssueReqContent = "eyes"
 )
+
+// AllValues returns all ReactionsCreateForIssueReqContent values.
+func (ReactionsCreateForIssueReqContent) AllValues() []ReactionsCreateForIssueReqContent {
+	return []ReactionsCreateForIssueReqContent{
+		ReactionsCreateForIssueReqContentPlus1,
+		ReactionsCreateForIssueReqContentMinus1,
+		ReactionsCreateForIssueReqContentLaugh,
+		ReactionsCreateForIssueReqContentConfused,
+		ReactionsCreateForIssueReqContentHeart,
+		ReactionsCreateForIssueReqContentHooray,
+		ReactionsCreateForIssueReqContentRocket,
+		ReactionsCreateForIssueReqContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForIssueReqContent) MarshalText() ([]byte, error) {
@@ -77959,6 +79804,20 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForPullRequestReviewCommentReqContent values.
+func (ReactionsCreateForPullRequestReviewCommentReqContent) AllValues() []ReactionsCreateForPullRequestReviewCommentReqContent {
+	return []ReactionsCreateForPullRequestReviewCommentReqContent{
+		ReactionsCreateForPullRequestReviewCommentReqContentPlus1,
+		ReactionsCreateForPullRequestReviewCommentReqContentMinus1,
+		ReactionsCreateForPullRequestReviewCommentReqContentLaugh,
+		ReactionsCreateForPullRequestReviewCommentReqContentConfused,
+		ReactionsCreateForPullRequestReviewCommentReqContentHeart,
+		ReactionsCreateForPullRequestReviewCommentReqContentHooray,
+		ReactionsCreateForPullRequestReviewCommentReqContentRocket,
+		ReactionsCreateForPullRequestReviewCommentReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForPullRequestReviewCommentReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78052,6 +79911,18 @@ const (
 	ReactionsCreateForReleaseReqContentEyes   ReactionsCreateForReleaseReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForReleaseReqContent values.
+func (ReactionsCreateForReleaseReqContent) AllValues() []ReactionsCreateForReleaseReqContent {
+	return []ReactionsCreateForReleaseReqContent{
+		ReactionsCreateForReleaseReqContentPlus1,
+		ReactionsCreateForReleaseReqContentLaugh,
+		ReactionsCreateForReleaseReqContentHeart,
+		ReactionsCreateForReleaseReqContentHooray,
+		ReactionsCreateForReleaseReqContentRocket,
+		ReactionsCreateForReleaseReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForReleaseReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78139,6 +80010,20 @@ const (
 	ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes     ReactionsCreateForTeamDiscussionCommentInOrgReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForTeamDiscussionCommentInOrgReqContent values.
+func (ReactionsCreateForTeamDiscussionCommentInOrgReqContent) AllValues() []ReactionsCreateForTeamDiscussionCommentInOrgReqContent {
+	return []ReactionsCreateForTeamDiscussionCommentInOrgReqContent{
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket,
+		ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForTeamDiscussionCommentInOrgReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78225,6 +80110,20 @@ const (
 	ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket   ReactionsCreateForTeamDiscussionCommentLegacyReqContent = "rocket"
 	ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes     ReactionsCreateForTeamDiscussionCommentLegacyReqContent = "eyes"
 )
+
+// AllValues returns all ReactionsCreateForTeamDiscussionCommentLegacyReqContent values.
+func (ReactionsCreateForTeamDiscussionCommentLegacyReqContent) AllValues() []ReactionsCreateForTeamDiscussionCommentLegacyReqContent {
+	return []ReactionsCreateForTeamDiscussionCommentLegacyReqContent{
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket,
+		ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) MarshalText() ([]byte, error) {
@@ -78321,6 +80220,20 @@ const (
 	ReactionsCreateForTeamDiscussionInOrgReqContentEyes     ReactionsCreateForTeamDiscussionInOrgReqContent = "eyes"
 )
 
+// AllValues returns all ReactionsCreateForTeamDiscussionInOrgReqContent values.
+func (ReactionsCreateForTeamDiscussionInOrgReqContent) AllValues() []ReactionsCreateForTeamDiscussionInOrgReqContent {
+	return []ReactionsCreateForTeamDiscussionInOrgReqContent{
+		ReactionsCreateForTeamDiscussionInOrgReqContentPlus1,
+		ReactionsCreateForTeamDiscussionInOrgReqContentMinus1,
+		ReactionsCreateForTeamDiscussionInOrgReqContentLaugh,
+		ReactionsCreateForTeamDiscussionInOrgReqContentConfused,
+		ReactionsCreateForTeamDiscussionInOrgReqContentHeart,
+		ReactionsCreateForTeamDiscussionInOrgReqContentHooray,
+		ReactionsCreateForTeamDiscussionInOrgReqContentRocket,
+		ReactionsCreateForTeamDiscussionInOrgReqContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForTeamDiscussionInOrgReqContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78407,6 +80320,20 @@ const (
 	ReactionsCreateForTeamDiscussionLegacyReqContentRocket   ReactionsCreateForTeamDiscussionLegacyReqContent = "rocket"
 	ReactionsCreateForTeamDiscussionLegacyReqContentEyes     ReactionsCreateForTeamDiscussionLegacyReqContent = "eyes"
 )
+
+// AllValues returns all ReactionsCreateForTeamDiscussionLegacyReqContent values.
+func (ReactionsCreateForTeamDiscussionLegacyReqContent) AllValues() []ReactionsCreateForTeamDiscussionLegacyReqContent {
+	return []ReactionsCreateForTeamDiscussionLegacyReqContent{
+		ReactionsCreateForTeamDiscussionLegacyReqContentPlus1,
+		ReactionsCreateForTeamDiscussionLegacyReqContentMinus1,
+		ReactionsCreateForTeamDiscussionLegacyReqContentLaugh,
+		ReactionsCreateForTeamDiscussionLegacyReqContentConfused,
+		ReactionsCreateForTeamDiscussionLegacyReqContentHeart,
+		ReactionsCreateForTeamDiscussionLegacyReqContentHooray,
+		ReactionsCreateForTeamDiscussionLegacyReqContentRocket,
+		ReactionsCreateForTeamDiscussionLegacyReqContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsCreateForTeamDiscussionLegacyReqContent) MarshalText() ([]byte, error) {
@@ -78512,6 +80439,20 @@ const (
 	ReactionsListForCommitCommentContentEyes     ReactionsListForCommitCommentContent = "eyes"
 )
 
+// AllValues returns all ReactionsListForCommitCommentContent values.
+func (ReactionsListForCommitCommentContent) AllValues() []ReactionsListForCommitCommentContent {
+	return []ReactionsListForCommitCommentContent{
+		ReactionsListForCommitCommentContentPlus1,
+		ReactionsListForCommitCommentContentMinus1,
+		ReactionsListForCommitCommentContentLaugh,
+		ReactionsListForCommitCommentContentConfused,
+		ReactionsListForCommitCommentContentHeart,
+		ReactionsListForCommitCommentContentHooray,
+		ReactionsListForCommitCommentContentRocket,
+		ReactionsListForCommitCommentContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForCommitCommentContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78609,6 +80550,20 @@ const (
 	ReactionsListForIssueCommentContentEyes     ReactionsListForIssueCommentContent = "eyes"
 )
 
+// AllValues returns all ReactionsListForIssueCommentContent values.
+func (ReactionsListForIssueCommentContent) AllValues() []ReactionsListForIssueCommentContent {
+	return []ReactionsListForIssueCommentContent{
+		ReactionsListForIssueCommentContentPlus1,
+		ReactionsListForIssueCommentContentMinus1,
+		ReactionsListForIssueCommentContentLaugh,
+		ReactionsListForIssueCommentContentConfused,
+		ReactionsListForIssueCommentContentHeart,
+		ReactionsListForIssueCommentContentHooray,
+		ReactionsListForIssueCommentContentRocket,
+		ReactionsListForIssueCommentContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForIssueCommentContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78705,6 +80660,20 @@ const (
 	ReactionsListForIssueContentRocket   ReactionsListForIssueContent = "rocket"
 	ReactionsListForIssueContentEyes     ReactionsListForIssueContent = "eyes"
 )
+
+// AllValues returns all ReactionsListForIssueContent values.
+func (ReactionsListForIssueContent) AllValues() []ReactionsListForIssueContent {
+	return []ReactionsListForIssueContent{
+		ReactionsListForIssueContentPlus1,
+		ReactionsListForIssueContentMinus1,
+		ReactionsListForIssueContentLaugh,
+		ReactionsListForIssueContentConfused,
+		ReactionsListForIssueContentHeart,
+		ReactionsListForIssueContentHooray,
+		ReactionsListForIssueContentRocket,
+		ReactionsListForIssueContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForIssueContent) MarshalText() ([]byte, error) {
@@ -78811,6 +80780,20 @@ const (
 	ReactionsListForPullRequestReviewCommentContentEyes     ReactionsListForPullRequestReviewCommentContent = "eyes"
 )
 
+// AllValues returns all ReactionsListForPullRequestReviewCommentContent values.
+func (ReactionsListForPullRequestReviewCommentContent) AllValues() []ReactionsListForPullRequestReviewCommentContent {
+	return []ReactionsListForPullRequestReviewCommentContent{
+		ReactionsListForPullRequestReviewCommentContentPlus1,
+		ReactionsListForPullRequestReviewCommentContentMinus1,
+		ReactionsListForPullRequestReviewCommentContentLaugh,
+		ReactionsListForPullRequestReviewCommentContentConfused,
+		ReactionsListForPullRequestReviewCommentContentHeart,
+		ReactionsListForPullRequestReviewCommentContentHooray,
+		ReactionsListForPullRequestReviewCommentContentRocket,
+		ReactionsListForPullRequestReviewCommentContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForPullRequestReviewCommentContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -78909,6 +80892,20 @@ const (
 	ReactionsListForTeamDiscussionCommentInOrgContentEyes     ReactionsListForTeamDiscussionCommentInOrgContent = "eyes"
 )
 
+// AllValues returns all ReactionsListForTeamDiscussionCommentInOrgContent values.
+func (ReactionsListForTeamDiscussionCommentInOrgContent) AllValues() []ReactionsListForTeamDiscussionCommentInOrgContent {
+	return []ReactionsListForTeamDiscussionCommentInOrgContent{
+		ReactionsListForTeamDiscussionCommentInOrgContentPlus1,
+		ReactionsListForTeamDiscussionCommentInOrgContentMinus1,
+		ReactionsListForTeamDiscussionCommentInOrgContentLaugh,
+		ReactionsListForTeamDiscussionCommentInOrgContentConfused,
+		ReactionsListForTeamDiscussionCommentInOrgContentHeart,
+		ReactionsListForTeamDiscussionCommentInOrgContentHooray,
+		ReactionsListForTeamDiscussionCommentInOrgContentRocket,
+		ReactionsListForTeamDiscussionCommentInOrgContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForTeamDiscussionCommentInOrgContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -79003,6 +81000,20 @@ const (
 	ReactionsListForTeamDiscussionCommentLegacyContentRocket   ReactionsListForTeamDiscussionCommentLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionCommentLegacyContentEyes     ReactionsListForTeamDiscussionCommentLegacyContent = "eyes"
 )
+
+// AllValues returns all ReactionsListForTeamDiscussionCommentLegacyContent values.
+func (ReactionsListForTeamDiscussionCommentLegacyContent) AllValues() []ReactionsListForTeamDiscussionCommentLegacyContent {
+	return []ReactionsListForTeamDiscussionCommentLegacyContent{
+		ReactionsListForTeamDiscussionCommentLegacyContentPlus1,
+		ReactionsListForTeamDiscussionCommentLegacyContentMinus1,
+		ReactionsListForTeamDiscussionCommentLegacyContentLaugh,
+		ReactionsListForTeamDiscussionCommentLegacyContentConfused,
+		ReactionsListForTeamDiscussionCommentLegacyContentHeart,
+		ReactionsListForTeamDiscussionCommentLegacyContentHooray,
+		ReactionsListForTeamDiscussionCommentLegacyContentRocket,
+		ReactionsListForTeamDiscussionCommentLegacyContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForTeamDiscussionCommentLegacyContent) MarshalText() ([]byte, error) {
@@ -79099,6 +81110,20 @@ const (
 	ReactionsListForTeamDiscussionInOrgContentEyes     ReactionsListForTeamDiscussionInOrgContent = "eyes"
 )
 
+// AllValues returns all ReactionsListForTeamDiscussionInOrgContent values.
+func (ReactionsListForTeamDiscussionInOrgContent) AllValues() []ReactionsListForTeamDiscussionInOrgContent {
+	return []ReactionsListForTeamDiscussionInOrgContent{
+		ReactionsListForTeamDiscussionInOrgContentPlus1,
+		ReactionsListForTeamDiscussionInOrgContentMinus1,
+		ReactionsListForTeamDiscussionInOrgContentLaugh,
+		ReactionsListForTeamDiscussionInOrgContentConfused,
+		ReactionsListForTeamDiscussionInOrgContentHeart,
+		ReactionsListForTeamDiscussionInOrgContentHooray,
+		ReactionsListForTeamDiscussionInOrgContentRocket,
+		ReactionsListForTeamDiscussionInOrgContentEyes,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForTeamDiscussionInOrgContent) MarshalText() ([]byte, error) {
 	switch s {
@@ -79193,6 +81218,20 @@ const (
 	ReactionsListForTeamDiscussionLegacyContentRocket   ReactionsListForTeamDiscussionLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionLegacyContentEyes     ReactionsListForTeamDiscussionLegacyContent = "eyes"
 )
+
+// AllValues returns all ReactionsListForTeamDiscussionLegacyContent values.
+func (ReactionsListForTeamDiscussionLegacyContent) AllValues() []ReactionsListForTeamDiscussionLegacyContent {
+	return []ReactionsListForTeamDiscussionLegacyContent{
+		ReactionsListForTeamDiscussionLegacyContentPlus1,
+		ReactionsListForTeamDiscussionLegacyContentMinus1,
+		ReactionsListForTeamDiscussionLegacyContentLaugh,
+		ReactionsListForTeamDiscussionLegacyContentConfused,
+		ReactionsListForTeamDiscussionLegacyContentHeart,
+		ReactionsListForTeamDiscussionLegacyContentHooray,
+		ReactionsListForTeamDiscussionLegacyContentRocket,
+		ReactionsListForTeamDiscussionLegacyContentEyes,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReactionsListForTeamDiscussionLegacyContent) MarshalText() ([]byte, error) {
@@ -79740,6 +81779,14 @@ const (
 	ReleaseAssetStateUploaded ReleaseAssetState = "uploaded"
 	ReleaseAssetStateOpen     ReleaseAssetState = "open"
 )
+
+// AllValues returns all ReleaseAssetState values.
+func (ReleaseAssetState) AllValues() []ReleaseAssetState {
+	return []ReleaseAssetState{
+		ReleaseAssetStateUploaded,
+		ReleaseAssetStateOpen,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReleaseAssetState) MarshalText() ([]byte, error) {
@@ -80960,6 +83007,17 @@ const (
 	ReposAddCollaboratorReqPermissionTriage   ReposAddCollaboratorReqPermission = "triage"
 )
 
+// AllValues returns all ReposAddCollaboratorReqPermission values.
+func (ReposAddCollaboratorReqPermission) AllValues() []ReposAddCollaboratorReqPermission {
+	return []ReposAddCollaboratorReqPermission{
+		ReposAddCollaboratorReqPermissionPull,
+		ReposAddCollaboratorReqPermissionPush,
+		ReposAddCollaboratorReqPermissionAdmin,
+		ReposAddCollaboratorReqPermissionMaintain,
+		ReposAddCollaboratorReqPermissionTriage,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposAddCollaboratorReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -81443,6 +83501,16 @@ const (
 	ReposCreateCommitStatusReqStateSuccess ReposCreateCommitStatusReqState = "success"
 )
 
+// AllValues returns all ReposCreateCommitStatusReqState values.
+func (ReposCreateCommitStatusReqState) AllValues() []ReposCreateCommitStatusReqState {
+	return []ReposCreateCommitStatusReqState{
+		ReposCreateCommitStatusReqStateError,
+		ReposCreateCommitStatusReqStateFailure,
+		ReposCreateCommitStatusReqStatePending,
+		ReposCreateCommitStatusReqStateSuccess,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposCreateCommitStatusReqState) MarshalText() ([]byte, error) {
 	switch s {
@@ -81874,6 +83942,15 @@ const (
 	ReposCreateDeploymentStatusReqEnvironmentQa         ReposCreateDeploymentStatusReqEnvironment = "qa"
 )
 
+// AllValues returns all ReposCreateDeploymentStatusReqEnvironment values.
+func (ReposCreateDeploymentStatusReqEnvironment) AllValues() []ReposCreateDeploymentStatusReqEnvironment {
+	return []ReposCreateDeploymentStatusReqEnvironment{
+		ReposCreateDeploymentStatusReqEnvironmentProduction,
+		ReposCreateDeploymentStatusReqEnvironmentStaging,
+		ReposCreateDeploymentStatusReqEnvironmentQa,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposCreateDeploymentStatusReqEnvironment) MarshalText() ([]byte, error) {
 	switch s {
@@ -81924,6 +84001,19 @@ const (
 	ReposCreateDeploymentStatusReqStatePending    ReposCreateDeploymentStatusReqState = "pending"
 	ReposCreateDeploymentStatusReqStateSuccess    ReposCreateDeploymentStatusReqState = "success"
 )
+
+// AllValues returns all ReposCreateDeploymentStatusReqState values.
+func (ReposCreateDeploymentStatusReqState) AllValues() []ReposCreateDeploymentStatusReqState {
+	return []ReposCreateDeploymentStatusReqState{
+		ReposCreateDeploymentStatusReqStateError,
+		ReposCreateDeploymentStatusReqStateFailure,
+		ReposCreateDeploymentStatusReqStateInactive,
+		ReposCreateDeploymentStatusReqStateInProgress,
+		ReposCreateDeploymentStatusReqStateQueued,
+		ReposCreateDeploymentStatusReqStatePending,
+		ReposCreateDeploymentStatusReqStateSuccess,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposCreateDeploymentStatusReqState) MarshalText() ([]byte, error) {
@@ -82535,6 +84625,16 @@ const (
 	ReposCreateInOrgReqVisibilityInternal   ReposCreateInOrgReqVisibility = "internal"
 )
 
+// AllValues returns all ReposCreateInOrgReqVisibility values.
+func (ReposCreateInOrgReqVisibility) AllValues() []ReposCreateInOrgReqVisibility {
+	return []ReposCreateInOrgReqVisibility{
+		ReposCreateInOrgReqVisibilityPublic,
+		ReposCreateInOrgReqVisibilityPrivate,
+		ReposCreateInOrgReqVisibilityVisibility,
+		ReposCreateInOrgReqVisibilityInternal,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposCreateInOrgReqVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -82797,6 +84897,14 @@ const (
 	ReposCreatePagesSiteReqSourcePathSlash     ReposCreatePagesSiteReqSourcePath = "/"
 	ReposCreatePagesSiteReqSourcePathSlashDocs ReposCreatePagesSiteReqSourcePath = "/docs"
 )
+
+// AllValues returns all ReposCreatePagesSiteReqSourcePath values.
+func (ReposCreatePagesSiteReqSourcePath) AllValues() []ReposCreatePagesSiteReqSourcePath {
+	return []ReposCreatePagesSiteReqSourcePath{
+		ReposCreatePagesSiteReqSourcePathSlash,
+		ReposCreatePagesSiteReqSourcePathSlashDocs,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposCreatePagesSiteReqSourcePath) MarshalText() ([]byte, error) {
@@ -83436,6 +85544,15 @@ const (
 	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
 )
 
+// AllValues returns all ReposGetClonesPer values.
+func (ReposGetClonesPer) AllValues() []ReposGetClonesPer {
+	return []ReposGetClonesPer{
+		ReposGetClonesPerEmpty,
+		ReposGetClonesPerDay,
+		ReposGetClonesPerWeek,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposGetClonesPer) MarshalText() ([]byte, error) {
 	switch s {
@@ -83539,6 +85656,15 @@ const (
 	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
 )
 
+// AllValues returns all ReposGetViewsPer values.
+func (ReposGetViewsPer) AllValues() []ReposGetViewsPer {
+	return []ReposGetViewsPer{
+		ReposGetViewsPerEmpty,
+		ReposGetViewsPerDay,
+		ReposGetViewsPerWeek,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposGetViewsPer) MarshalText() ([]byte, error) {
 	switch s {
@@ -83609,6 +85735,15 @@ const (
 	ReposListCollaboratorsAffiliationDirect  ReposListCollaboratorsAffiliation = "direct"
 	ReposListCollaboratorsAffiliationAll     ReposListCollaboratorsAffiliation = "all"
 )
+
+// AllValues returns all ReposListCollaboratorsAffiliation values.
+func (ReposListCollaboratorsAffiliation) AllValues() []ReposListCollaboratorsAffiliation {
+	return []ReposListCollaboratorsAffiliation{
+		ReposListCollaboratorsAffiliationOutside,
+		ReposListCollaboratorsAffiliationDirect,
+		ReposListCollaboratorsAffiliationAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListCollaboratorsAffiliation) MarshalText() ([]byte, error) {
@@ -83921,6 +86056,14 @@ const (
 	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
 )
 
+// AllValues returns all ReposListForAuthenticatedUserDirection values.
+func (ReposListForAuthenticatedUserDirection) AllValues() []ReposListForAuthenticatedUserDirection {
+	return []ReposListForAuthenticatedUserDirection{
+		ReposListForAuthenticatedUserDirectionAsc,
+		ReposListForAuthenticatedUserDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForAuthenticatedUserDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -83963,6 +86106,16 @@ const (
 	ReposListForAuthenticatedUserSortPushed   ReposListForAuthenticatedUserSort = "pushed"
 	ReposListForAuthenticatedUserSortFullName ReposListForAuthenticatedUserSort = "full_name"
 )
+
+// AllValues returns all ReposListForAuthenticatedUserSort values.
+func (ReposListForAuthenticatedUserSort) AllValues() []ReposListForAuthenticatedUserSort {
+	return []ReposListForAuthenticatedUserSort{
+		ReposListForAuthenticatedUserSortCreated,
+		ReposListForAuthenticatedUserSortUpdated,
+		ReposListForAuthenticatedUserSortPushed,
+		ReposListForAuthenticatedUserSortFullName,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForAuthenticatedUserSort) MarshalText() ([]byte, error) {
@@ -84009,6 +86162,17 @@ const (
 	ReposListForAuthenticatedUserTypePrivate ReposListForAuthenticatedUserType = "private"
 	ReposListForAuthenticatedUserTypeMember  ReposListForAuthenticatedUserType = "member"
 )
+
+// AllValues returns all ReposListForAuthenticatedUserType values.
+func (ReposListForAuthenticatedUserType) AllValues() []ReposListForAuthenticatedUserType {
+	return []ReposListForAuthenticatedUserType{
+		ReposListForAuthenticatedUserTypeAll,
+		ReposListForAuthenticatedUserTypeOwner,
+		ReposListForAuthenticatedUserTypePublic,
+		ReposListForAuthenticatedUserTypePrivate,
+		ReposListForAuthenticatedUserTypeMember,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForAuthenticatedUserType) MarshalText() ([]byte, error) {
@@ -84063,6 +86227,15 @@ const (
 	ReposListForAuthenticatedUserVisibilityPrivate ReposListForAuthenticatedUserVisibility = "private"
 )
 
+// AllValues returns all ReposListForAuthenticatedUserVisibility values.
+func (ReposListForAuthenticatedUserVisibility) AllValues() []ReposListForAuthenticatedUserVisibility {
+	return []ReposListForAuthenticatedUserVisibility{
+		ReposListForAuthenticatedUserVisibilityAll,
+		ReposListForAuthenticatedUserVisibilityPublic,
+		ReposListForAuthenticatedUserVisibilityPrivate,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForAuthenticatedUserVisibility) MarshalText() ([]byte, error) {
 	switch s {
@@ -84100,6 +86273,14 @@ const (
 	ReposListForOrgDirectionAsc  ReposListForOrgDirection = "asc"
 	ReposListForOrgDirectionDesc ReposListForOrgDirection = "desc"
 )
+
+// AllValues returns all ReposListForOrgDirection values.
+func (ReposListForOrgDirection) AllValues() []ReposListForOrgDirection {
+	return []ReposListForOrgDirection{
+		ReposListForOrgDirectionAsc,
+		ReposListForOrgDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForOrgDirection) MarshalText() ([]byte, error) {
@@ -84162,6 +86343,16 @@ const (
 	ReposListForOrgSortFullName ReposListForOrgSort = "full_name"
 )
 
+// AllValues returns all ReposListForOrgSort values.
+func (ReposListForOrgSort) AllValues() []ReposListForOrgSort {
+	return []ReposListForOrgSort{
+		ReposListForOrgSortCreated,
+		ReposListForOrgSortUpdated,
+		ReposListForOrgSortPushed,
+		ReposListForOrgSortFullName,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForOrgSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -84209,6 +86400,19 @@ const (
 	ReposListForOrgTypeMember   ReposListForOrgType = "member"
 	ReposListForOrgTypeInternal ReposListForOrgType = "internal"
 )
+
+// AllValues returns all ReposListForOrgType values.
+func (ReposListForOrgType) AllValues() []ReposListForOrgType {
+	return []ReposListForOrgType{
+		ReposListForOrgTypeAll,
+		ReposListForOrgTypePublic,
+		ReposListForOrgTypePrivate,
+		ReposListForOrgTypeForks,
+		ReposListForOrgTypeSources,
+		ReposListForOrgTypeMember,
+		ReposListForOrgTypeInternal,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForOrgType) MarshalText() ([]byte, error) {
@@ -84267,6 +86471,14 @@ const (
 	ReposListForUserDirectionAsc  ReposListForUserDirection = "asc"
 	ReposListForUserDirectionDesc ReposListForUserDirection = "desc"
 )
+
+// AllValues returns all ReposListForUserDirection values.
+func (ReposListForUserDirection) AllValues() []ReposListForUserDirection {
+	return []ReposListForUserDirection{
+		ReposListForUserDirectionAsc,
+		ReposListForUserDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForUserDirection) MarshalText() ([]byte, error) {
@@ -84329,6 +86541,16 @@ const (
 	ReposListForUserSortFullName ReposListForUserSort = "full_name"
 )
 
+// AllValues returns all ReposListForUserSort values.
+func (ReposListForUserSort) AllValues() []ReposListForUserSort {
+	return []ReposListForUserSort{
+		ReposListForUserSortCreated,
+		ReposListForUserSortUpdated,
+		ReposListForUserSortPushed,
+		ReposListForUserSortFullName,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForUserSort) MarshalText() ([]byte, error) {
 	switch s {
@@ -84372,6 +86594,15 @@ const (
 	ReposListForUserTypeOwner  ReposListForUserType = "owner"
 	ReposListForUserTypeMember ReposListForUserType = "member"
 )
+
+// AllValues returns all ReposListForUserType values.
+func (ReposListForUserType) AllValues() []ReposListForUserType {
+	return []ReposListForUserType{
+		ReposListForUserTypeAll,
+		ReposListForUserTypeOwner,
+		ReposListForUserTypeMember,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForUserType) MarshalText() ([]byte, error) {
@@ -84440,6 +86671,16 @@ const (
 	ReposListForksSortStargazers ReposListForksSort = "stargazers"
 	ReposListForksSortWatchers   ReposListForksSort = "watchers"
 )
+
+// AllValues returns all ReposListForksSort values.
+func (ReposListForksSort) AllValues() []ReposListForksSort {
+	return []ReposListForksSort{
+		ReposListForksSortNewest,
+		ReposListForksSortOldest,
+		ReposListForksSortStargazers,
+		ReposListForksSortWatchers,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposListForksSort) MarshalText() ([]byte, error) {
@@ -85950,6 +88191,17 @@ const (
 	ReposUpdateInvitationReqPermissionsAdmin    ReposUpdateInvitationReqPermissions = "admin"
 )
 
+// AllValues returns all ReposUpdateInvitationReqPermissions values.
+func (ReposUpdateInvitationReqPermissions) AllValues() []ReposUpdateInvitationReqPermissions {
+	return []ReposUpdateInvitationReqPermissions{
+		ReposUpdateInvitationReqPermissionsRead,
+		ReposUpdateInvitationReqPermissionsWrite,
+		ReposUpdateInvitationReqPermissionsMaintain,
+		ReposUpdateInvitationReqPermissionsTriage,
+		ReposUpdateInvitationReqPermissionsAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposUpdateInvitationReqPermissions) MarshalText() ([]byte, error) {
 	switch s {
@@ -86526,6 +88778,16 @@ const (
 	ReposUpdateReqVisibilityVisibility ReposUpdateReqVisibility = "visibility"
 	ReposUpdateReqVisibilityInternal   ReposUpdateReqVisibility = "internal"
 )
+
+// AllValues returns all ReposUpdateReqVisibility values.
+func (ReposUpdateReqVisibility) AllValues() []ReposUpdateReqVisibility {
+	return []ReposUpdateReqVisibility{
+		ReposUpdateReqVisibilityPublic,
+		ReposUpdateReqVisibilityPrivate,
+		ReposUpdateReqVisibilityVisibility,
+		ReposUpdateReqVisibilityInternal,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReposUpdateReqVisibility) MarshalText() ([]byte, error) {
@@ -88022,6 +90284,17 @@ const (
 	RepositoryInvitationPermissionsTriage   RepositoryInvitationPermissions = "triage"
 	RepositoryInvitationPermissionsMaintain RepositoryInvitationPermissions = "maintain"
 )
+
+// AllValues returns all RepositoryInvitationPermissions values.
+func (RepositoryInvitationPermissions) AllValues() []RepositoryInvitationPermissions {
+	return []RepositoryInvitationPermissions{
+		RepositoryInvitationPermissionsRead,
+		RepositoryInvitationPermissionsWrite,
+		RepositoryInvitationPermissionsAdmin,
+		RepositoryInvitationPermissionsTriage,
+		RepositoryInvitationPermissionsMaintain,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s RepositoryInvitationPermissions) MarshalText() ([]byte, error) {
@@ -89715,6 +91988,14 @@ const (
 	ReviewCommentSideRIGHT ReviewCommentSide = "RIGHT"
 )
 
+// AllValues returns all ReviewCommentSide values.
+func (ReviewCommentSide) AllValues() []ReviewCommentSide {
+	return []ReviewCommentSide{
+		ReviewCommentSideLEFT,
+		ReviewCommentSideRIGHT,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ReviewCommentSide) MarshalText() ([]byte, error) {
 	switch s {
@@ -89748,6 +92029,14 @@ const (
 	ReviewCommentStartSideLEFT  ReviewCommentStartSide = "LEFT"
 	ReviewCommentStartSideRIGHT ReviewCommentStartSide = "RIGHT"
 )
+
+// AllValues returns all ReviewCommentStartSide values.
+func (ReviewCommentStartSide) AllValues() []ReviewCommentStartSide {
+	return []ReviewCommentStartSide{
+		ReviewCommentStartSideLEFT,
+		ReviewCommentStartSideRIGHT,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ReviewCommentStartSide) MarshalText() ([]byte, error) {
@@ -90154,6 +92443,14 @@ const (
 	RunnerLabelsItemTypeReadOnly RunnerLabelsItemType = "read-only"
 	RunnerLabelsItemTypeCustom   RunnerLabelsItemType = "custom"
 )
+
+// AllValues returns all RunnerLabelsItemType values.
+func (RunnerLabelsItemType) AllValues() []RunnerLabelsItemType {
+	return []RunnerLabelsItemType{
+		RunnerLabelsItemTypeReadOnly,
+		RunnerLabelsItemTypeCustom,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s RunnerLabelsItemType) MarshalText() ([]byte, error) {
@@ -91182,6 +93479,14 @@ const (
 	SearchCodeOrderAsc  SearchCodeOrder = "asc"
 )
 
+// AllValues returns all SearchCodeOrder values.
+func (SearchCodeOrder) AllValues() []SearchCodeOrder {
+	return []SearchCodeOrder{
+		SearchCodeOrderDesc,
+		SearchCodeOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchCodeOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91213,6 +93518,13 @@ type SearchCodeSort string
 const (
 	SearchCodeSortIndexed SearchCodeSort = "indexed"
 )
+
+// AllValues returns all SearchCodeSort values.
+func (SearchCodeSort) AllValues() []SearchCodeSort {
+	return []SearchCodeSort{
+		SearchCodeSortIndexed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchCodeSort) MarshalText() ([]byte, error) {
@@ -91280,6 +93592,14 @@ const (
 	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
 )
 
+// AllValues returns all SearchCommitsOrder values.
+func (SearchCommitsOrder) AllValues() []SearchCommitsOrder {
+	return []SearchCommitsOrder{
+		SearchCommitsOrderDesc,
+		SearchCommitsOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchCommitsOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91312,6 +93632,14 @@ const (
 	SearchCommitsSortAuthorDate    SearchCommitsSort = "author-date"
 	SearchCommitsSortCommitterDate SearchCommitsSort = "committer-date"
 )
+
+// AllValues returns all SearchCommitsSort values.
+func (SearchCommitsSort) AllValues() []SearchCommitsSort {
+	return []SearchCommitsSort{
+		SearchCommitsSortAuthorDate,
+		SearchCommitsSortCommitterDate,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchCommitsSort) MarshalText() ([]byte, error) {
@@ -91384,6 +93712,14 @@ const (
 	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
 )
 
+// AllValues returns all SearchIssuesAndPullRequestsOrder values.
+func (SearchIssuesAndPullRequestsOrder) AllValues() []SearchIssuesAndPullRequestsOrder {
+	return []SearchIssuesAndPullRequestsOrder{
+		SearchIssuesAndPullRequestsOrderDesc,
+		SearchIssuesAndPullRequestsOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchIssuesAndPullRequestsOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91425,6 +93761,23 @@ const (
 	SearchIssuesAndPullRequestsSortCreated                    SearchIssuesAndPullRequestsSort = "created"
 	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
 )
+
+// AllValues returns all SearchIssuesAndPullRequestsSort values.
+func (SearchIssuesAndPullRequestsSort) AllValues() []SearchIssuesAndPullRequestsSort {
+	return []SearchIssuesAndPullRequestsSort{
+		SearchIssuesAndPullRequestsSortComments,
+		SearchIssuesAndPullRequestsSortReactions,
+		SearchIssuesAndPullRequestsSortReactionsMinusPlus1,
+		SearchIssuesAndPullRequestsSortReactionsMinusMinus1,
+		SearchIssuesAndPullRequestsSortReactionsMinusSmile,
+		SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace,
+		SearchIssuesAndPullRequestsSortReactionsMinusHeart,
+		SearchIssuesAndPullRequestsSortReactionsMinusTada,
+		SearchIssuesAndPullRequestsSortInteractions,
+		SearchIssuesAndPullRequestsSortCreated,
+		SearchIssuesAndPullRequestsSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchIssuesAndPullRequestsSort) MarshalText() ([]byte, error) {
@@ -91550,6 +93903,14 @@ const (
 	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
 )
 
+// AllValues returns all SearchLabelsOrder values.
+func (SearchLabelsOrder) AllValues() []SearchLabelsOrder {
+	return []SearchLabelsOrder{
+		SearchLabelsOrderDesc,
+		SearchLabelsOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchLabelsOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91582,6 +93943,14 @@ const (
 	SearchLabelsSortCreated SearchLabelsSort = "created"
 	SearchLabelsSortUpdated SearchLabelsSort = "updated"
 )
+
+// AllValues returns all SearchLabelsSort values.
+func (SearchLabelsSort) AllValues() []SearchLabelsSort {
+	return []SearchLabelsSort{
+		SearchLabelsSortCreated,
+		SearchLabelsSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchLabelsSort) MarshalText() ([]byte, error) {
@@ -91654,6 +94023,14 @@ const (
 	SearchReposOrderAsc  SearchReposOrder = "asc"
 )
 
+// AllValues returns all SearchReposOrder values.
+func (SearchReposOrder) AllValues() []SearchReposOrder {
+	return []SearchReposOrder{
+		SearchReposOrderDesc,
+		SearchReposOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchReposOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91688,6 +94065,16 @@ const (
 	SearchReposSortHelpWantedIssues SearchReposSort = "help-wanted-issues"
 	SearchReposSortUpdated          SearchReposSort = "updated"
 )
+
+// AllValues returns all SearchReposSort values.
+func (SearchReposSort) AllValues() []SearchReposSort {
+	return []SearchReposSort{
+		SearchReposSortStars,
+		SearchReposSortForks,
+		SearchReposSortHelpWantedIssues,
+		SearchReposSortUpdated,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchReposSort) MarshalText() ([]byte, error) {
@@ -91893,6 +94280,14 @@ const (
 	SearchUsersOrderAsc  SearchUsersOrder = "asc"
 )
 
+// AllValues returns all SearchUsersOrder values.
+func (SearchUsersOrder) AllValues() []SearchUsersOrder {
+	return []SearchUsersOrder{
+		SearchUsersOrderDesc,
+		SearchUsersOrderAsc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchUsersOrder) MarshalText() ([]byte, error) {
 	switch s {
@@ -91926,6 +94321,15 @@ const (
 	SearchUsersSortRepositories SearchUsersSort = "repositories"
 	SearchUsersSortJoined       SearchUsersSort = "joined"
 )
+
+// AllValues returns all SearchUsersSort values.
+func (SearchUsersSort) AllValues() []SearchUsersSort {
+	return []SearchUsersSort{
+		SearchUsersSortFollowers,
+		SearchUsersSortRepositories,
+		SearchUsersSortJoined,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SearchUsersSort) MarshalText() ([]byte, error) {
@@ -92102,6 +94506,16 @@ const (
 	SecretScanningAlertResolutionUsedInTests   SecretScanningAlertResolution = "used_in_tests"
 )
 
+// AllValues returns all SecretScanningAlertResolution values.
+func (SecretScanningAlertResolution) AllValues() []SecretScanningAlertResolution {
+	return []SecretScanningAlertResolution{
+		SecretScanningAlertResolutionFalsePositive,
+		SecretScanningAlertResolutionWontFix,
+		SecretScanningAlertResolutionRevoked,
+		SecretScanningAlertResolutionUsedInTests,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SecretScanningAlertResolution) MarshalText() ([]byte, error) {
 	switch s {
@@ -92147,6 +94561,14 @@ const (
 	SecretScanningAlertStateOpen     SecretScanningAlertState = "open"
 	SecretScanningAlertStateResolved SecretScanningAlertState = "resolved"
 )
+
+// AllValues returns all SecretScanningAlertState values.
+func (SecretScanningAlertState) AllValues() []SecretScanningAlertState {
+	return []SecretScanningAlertState{
+		SecretScanningAlertStateOpen,
+		SecretScanningAlertStateResolved,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SecretScanningAlertState) MarshalText() ([]byte, error) {
@@ -92214,6 +94636,14 @@ const (
 	SecretScanningListAlertsForOrgStateResolved SecretScanningListAlertsForOrgState = "resolved"
 )
 
+// AllValues returns all SecretScanningListAlertsForOrgState values.
+func (SecretScanningListAlertsForOrgState) AllValues() []SecretScanningListAlertsForOrgState {
+	return []SecretScanningListAlertsForOrgState{
+		SecretScanningListAlertsForOrgStateOpen,
+		SecretScanningListAlertsForOrgStateResolved,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SecretScanningListAlertsForOrgState) MarshalText() ([]byte, error) {
 	switch s {
@@ -92255,6 +94685,14 @@ const (
 	SecretScanningListAlertsForRepoStateOpen     SecretScanningListAlertsForRepoState = "open"
 	SecretScanningListAlertsForRepoStateResolved SecretScanningListAlertsForRepoState = "resolved"
 )
+
+// AllValues returns all SecretScanningListAlertsForRepoState values.
+func (SecretScanningListAlertsForRepoState) AllValues() []SecretScanningListAlertsForRepoState {
+	return []SecretScanningListAlertsForRepoState{
+		SecretScanningListAlertsForRepoStateOpen,
+		SecretScanningListAlertsForRepoStateResolved,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SecretScanningListAlertsForRepoState) MarshalText() ([]byte, error) {
@@ -94063,6 +96501,14 @@ const (
 	TeamFullPrivacySecret TeamFullPrivacy = "secret"
 )
 
+// AllValues returns all TeamFullPrivacy values.
+func (TeamFullPrivacy) AllValues() []TeamFullPrivacy {
+	return []TeamFullPrivacy{
+		TeamFullPrivacyClosed,
+		TeamFullPrivacySecret,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamFullPrivacy) MarshalText() ([]byte, error) {
 	switch s {
@@ -94142,6 +96588,14 @@ const (
 	TeamMembershipRoleMaintainer TeamMembershipRole = "maintainer"
 )
 
+// AllValues returns all TeamMembershipRole values.
+func (TeamMembershipRole) AllValues() []TeamMembershipRole {
+	return []TeamMembershipRole{
+		TeamMembershipRoleMember,
+		TeamMembershipRoleMaintainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamMembershipRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -94175,6 +96629,14 @@ const (
 	TeamMembershipStateActive  TeamMembershipState = "active"
 	TeamMembershipStatePending TeamMembershipState = "pending"
 )
+
+// AllValues returns all TeamMembershipState values.
+func (TeamMembershipState) AllValues() []TeamMembershipState {
+	return []TeamMembershipState{
+		TeamMembershipStateActive,
+		TeamMembershipStatePending,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamMembershipState) MarshalText() ([]byte, error) {
@@ -95727,6 +98189,14 @@ const (
 	TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgReqRole = "maintainer"
 )
 
+// AllValues returns all TeamsAddOrUpdateMembershipForUserInOrgReqRole values.
+func (TeamsAddOrUpdateMembershipForUserInOrgReqRole) AllValues() []TeamsAddOrUpdateMembershipForUserInOrgReqRole {
+	return []TeamsAddOrUpdateMembershipForUserInOrgReqRole{
+		TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember,
+		TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -95793,6 +98263,14 @@ const (
 	TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember     TeamsAddOrUpdateMembershipForUserLegacyReqRole = "member"
 	TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyReqRole = "maintainer"
 )
+
+// AllValues returns all TeamsAddOrUpdateMembershipForUserLegacyReqRole values.
+func (TeamsAddOrUpdateMembershipForUserLegacyReqRole) AllValues() []TeamsAddOrUpdateMembershipForUserLegacyReqRole {
+	return []TeamsAddOrUpdateMembershipForUserLegacyReqRole{
+		TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember,
+		TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) MarshalText() ([]byte, error) {
@@ -95898,6 +98376,15 @@ const (
 	TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgReqPermission = "admin"
 )
 
+// AllValues returns all TeamsAddOrUpdateProjectPermissionsInOrgReqPermission values.
+func (TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) AllValues() []TeamsAddOrUpdateProjectPermissionsInOrgReqPermission {
+	return []TeamsAddOrUpdateProjectPermissionsInOrgReqPermission{
+		TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead,
+		TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite,
+		TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -96001,6 +98488,15 @@ const (
 	TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyReqPermission = "admin"
 )
 
+// AllValues returns all TeamsAddOrUpdateProjectPermissionsLegacyReqPermission values.
+func (TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) AllValues() []TeamsAddOrUpdateProjectPermissionsLegacyReqPermission {
+	return []TeamsAddOrUpdateProjectPermissionsLegacyReqPermission{
+		TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead,
+		TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite,
+		TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -96081,6 +98577,17 @@ const (
 	TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgReqPermission = "triage"
 )
 
+// AllValues returns all TeamsAddOrUpdateRepoPermissionsInOrgReqPermission values.
+func (TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) AllValues() []TeamsAddOrUpdateRepoPermissionsInOrgReqPermission {
+	return []TeamsAddOrUpdateRepoPermissionsInOrgReqPermission{
+		TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull,
+		TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush,
+		TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin,
+		TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain,
+		TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -96160,6 +98667,15 @@ const (
 	TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush  TeamsAddOrUpdateRepoPermissionsLegacyReqPermission = "push"
 	TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyReqPermission = "admin"
 )
+
+// AllValues returns all TeamsAddOrUpdateRepoPermissionsLegacyReqPermission values.
+func (TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) AllValues() []TeamsAddOrUpdateRepoPermissionsLegacyReqPermission {
+	return []TeamsAddOrUpdateRepoPermissionsLegacyReqPermission{
+		TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull,
+		TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush,
+		TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) MarshalText() ([]byte, error) {
@@ -96597,6 +99113,15 @@ const (
 	TeamsCreateReqPermissionAdmin TeamsCreateReqPermission = "admin"
 )
 
+// AllValues returns all TeamsCreateReqPermission values.
+func (TeamsCreateReqPermission) AllValues() []TeamsCreateReqPermission {
+	return []TeamsCreateReqPermission{
+		TeamsCreateReqPermissionPull,
+		TeamsCreateReqPermissionPush,
+		TeamsCreateReqPermissionAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsCreateReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -96642,6 +99167,14 @@ const (
 	TeamsCreateReqPrivacySecret TeamsCreateReqPrivacy = "secret"
 	TeamsCreateReqPrivacyClosed TeamsCreateReqPrivacy = "closed"
 )
+
+// AllValues returns all TeamsCreateReqPrivacy values.
+func (TeamsCreateReqPrivacy) AllValues() []TeamsCreateReqPrivacy {
+	return []TeamsCreateReqPrivacy{
+		TeamsCreateReqPrivacySecret,
+		TeamsCreateReqPrivacyClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsCreateReqPrivacy) MarshalText() ([]byte, error) {
@@ -96773,6 +99306,14 @@ const (
 	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
 )
 
+// AllValues returns all TeamsListDiscussionCommentsInOrgDirection values.
+func (TeamsListDiscussionCommentsInOrgDirection) AllValues() []TeamsListDiscussionCommentsInOrgDirection {
+	return []TeamsListDiscussionCommentsInOrgDirection{
+		TeamsListDiscussionCommentsInOrgDirectionAsc,
+		TeamsListDiscussionCommentsInOrgDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListDiscussionCommentsInOrgDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -96831,6 +99372,14 @@ const (
 	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
 	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
 )
+
+// AllValues returns all TeamsListDiscussionCommentsLegacyDirection values.
+func (TeamsListDiscussionCommentsLegacyDirection) AllValues() []TeamsListDiscussionCommentsLegacyDirection {
+	return []TeamsListDiscussionCommentsLegacyDirection{
+		TeamsListDiscussionCommentsLegacyDirectionAsc,
+		TeamsListDiscussionCommentsLegacyDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListDiscussionCommentsLegacyDirection) MarshalText() ([]byte, error) {
@@ -96891,6 +99440,14 @@ const (
 	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
 )
 
+// AllValues returns all TeamsListDiscussionsInOrgDirection values.
+func (TeamsListDiscussionsInOrgDirection) AllValues() []TeamsListDiscussionsInOrgDirection {
+	return []TeamsListDiscussionsInOrgDirection{
+		TeamsListDiscussionsInOrgDirectionAsc,
+		TeamsListDiscussionsInOrgDirectionDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListDiscussionsInOrgDirection) MarshalText() ([]byte, error) {
 	switch s {
@@ -96949,6 +99506,14 @@ const (
 	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
 	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
 )
+
+// AllValues returns all TeamsListDiscussionsLegacyDirection values.
+func (TeamsListDiscussionsLegacyDirection) AllValues() []TeamsListDiscussionsLegacyDirection {
+	return []TeamsListDiscussionsLegacyDirection{
+		TeamsListDiscussionsLegacyDirectionAsc,
+		TeamsListDiscussionsLegacyDirectionDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListDiscussionsLegacyDirection) MarshalText() ([]byte, error) {
@@ -97080,6 +99645,15 @@ const (
 	TeamsListMembersInOrgRoleAll        TeamsListMembersInOrgRole = "all"
 )
 
+// AllValues returns all TeamsListMembersInOrgRole values.
+func (TeamsListMembersInOrgRole) AllValues() []TeamsListMembersInOrgRole {
+	return []TeamsListMembersInOrgRole{
+		TeamsListMembersInOrgRoleMember,
+		TeamsListMembersInOrgRoleMaintainer,
+		TeamsListMembersInOrgRoleAll,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListMembersInOrgRole) MarshalText() ([]byte, error) {
 	switch s {
@@ -97146,6 +99720,15 @@ const (
 	TeamsListMembersLegacyRoleMaintainer TeamsListMembersLegacyRole = "maintainer"
 	TeamsListMembersLegacyRoleAll        TeamsListMembersLegacyRole = "all"
 )
+
+// AllValues returns all TeamsListMembersLegacyRole values.
+func (TeamsListMembersLegacyRole) AllValues() []TeamsListMembersLegacyRole {
+	return []TeamsListMembersLegacyRole{
+		TeamsListMembersLegacyRoleMember,
+		TeamsListMembersLegacyRoleMaintainer,
+		TeamsListMembersLegacyRoleAll,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsListMembersLegacyRole) MarshalText() ([]byte, error) {
@@ -97581,6 +100164,15 @@ const (
 	TeamsUpdateInOrgReqPermissionAdmin TeamsUpdateInOrgReqPermission = "admin"
 )
 
+// AllValues returns all TeamsUpdateInOrgReqPermission values.
+func (TeamsUpdateInOrgReqPermission) AllValues() []TeamsUpdateInOrgReqPermission {
+	return []TeamsUpdateInOrgReqPermission{
+		TeamsUpdateInOrgReqPermissionPull,
+		TeamsUpdateInOrgReqPermissionPush,
+		TeamsUpdateInOrgReqPermissionAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsUpdateInOrgReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -97626,6 +100218,14 @@ const (
 	TeamsUpdateInOrgReqPrivacySecret TeamsUpdateInOrgReqPrivacy = "secret"
 	TeamsUpdateInOrgReqPrivacyClosed TeamsUpdateInOrgReqPrivacy = "closed"
 )
+
+// AllValues returns all TeamsUpdateInOrgReqPrivacy values.
+func (TeamsUpdateInOrgReqPrivacy) AllValues() []TeamsUpdateInOrgReqPrivacy {
+	return []TeamsUpdateInOrgReqPrivacy{
+		TeamsUpdateInOrgReqPrivacySecret,
+		TeamsUpdateInOrgReqPrivacyClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsUpdateInOrgReqPrivacy) MarshalText() ([]byte, error) {
@@ -97755,6 +100355,15 @@ const (
 	TeamsUpdateLegacyReqPermissionAdmin TeamsUpdateLegacyReqPermission = "admin"
 )
 
+// AllValues returns all TeamsUpdateLegacyReqPermission values.
+func (TeamsUpdateLegacyReqPermission) AllValues() []TeamsUpdateLegacyReqPermission {
+	return []TeamsUpdateLegacyReqPermission{
+		TeamsUpdateLegacyReqPermissionPull,
+		TeamsUpdateLegacyReqPermissionPush,
+		TeamsUpdateLegacyReqPermissionAdmin,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsUpdateLegacyReqPermission) MarshalText() ([]byte, error) {
 	switch s {
@@ -97799,6 +100408,14 @@ const (
 	TeamsUpdateLegacyReqPrivacySecret TeamsUpdateLegacyReqPrivacy = "secret"
 	TeamsUpdateLegacyReqPrivacyClosed TeamsUpdateLegacyReqPrivacy = "closed"
 )
+
+// AllValues returns all TeamsUpdateLegacyReqPrivacy values.
+func (TeamsUpdateLegacyReqPrivacy) AllValues() []TeamsUpdateLegacyReqPrivacy {
+	return []TeamsUpdateLegacyReqPrivacy{
+		TeamsUpdateLegacyReqPrivacySecret,
+		TeamsUpdateLegacyReqPrivacyClosed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TeamsUpdateLegacyReqPrivacy) MarshalText() ([]byte, error) {
@@ -99497,6 +102114,16 @@ const (
 	UsersGetContextForUserSubjectTypePullRequest  UsersGetContextForUserSubjectType = "pull_request"
 )
 
+// AllValues returns all UsersGetContextForUserSubjectType values.
+func (UsersGetContextForUserSubjectType) AllValues() []UsersGetContextForUserSubjectType {
+	return []UsersGetContextForUserSubjectType{
+		UsersGetContextForUserSubjectTypeOrganization,
+		UsersGetContextForUserSubjectTypeRepository,
+		UsersGetContextForUserSubjectTypeIssue,
+		UsersGetContextForUserSubjectTypePullRequest,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s UsersGetContextForUserSubjectType) MarshalText() ([]byte, error) {
 	switch s {
@@ -99977,6 +102604,14 @@ const (
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "public"
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "private"
 )
+
+// AllValues returns all UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility values.
+func (UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) AllValues() []UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility {
+	return []UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility{
+		UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic,
+		UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) MarshalText() ([]byte, error) {
@@ -101420,6 +104055,17 @@ const (
 	WorkflowStateDisabledInactivity WorkflowState = "disabled_inactivity"
 	WorkflowStateDisabledManually   WorkflowState = "disabled_manually"
 )
+
+// AllValues returns all WorkflowState values.
+func (WorkflowState) AllValues() []WorkflowState {
+	return []WorkflowState{
+		WorkflowStateActive,
+		WorkflowStateDeleted,
+		WorkflowStateDisabledFork,
+		WorkflowStateDisabledInactivity,
+		WorkflowStateDisabledManually,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s WorkflowState) MarshalText() ([]byte, error) {

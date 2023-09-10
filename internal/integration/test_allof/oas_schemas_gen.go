@@ -378,6 +378,14 @@ const (
 	RobotMultipartStateOff RobotMultipartState = "off"
 )
 
+// AllValues returns all RobotMultipartState values.
+func (RobotMultipartState) AllValues() []RobotMultipartState {
+	return []RobotMultipartState{
+		RobotMultipartStateOn,
+		RobotMultipartStateOff,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s RobotMultipartState) MarshalText() ([]byte, error) {
 	switch s {
@@ -410,6 +418,14 @@ const (
 	RobotStateOn  RobotState = "on"
 	RobotStateOff RobotState = "off"
 )
+
+// AllValues returns all RobotState values.
+func (RobotState) AllValues() []RobotState {
+	return []RobotState{
+		RobotStateOn,
+		RobotStateOff,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s RobotState) MarshalText() ([]byte, error) {
