@@ -9,6 +9,8 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodeAddStickerToSetResponse(response *Result, w http.ResponseWriter, span trace.Span) error {
@@ -21,6 +23,7 @@ func encodeAddStickerToSetResponse(response *Result, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -34,6 +37,7 @@ func encodeAnswerCallbackQueryResponse(response *Result, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -47,6 +51,7 @@ func encodeAnswerInlineQueryResponse(response *Result, w http.ResponseWriter, sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -60,6 +65,7 @@ func encodeAnswerPreCheckoutQueryResponse(response *Result, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -73,6 +79,7 @@ func encodeAnswerShippingQueryResponse(response *Result, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -86,6 +93,7 @@ func encodeApproveChatJoinRequestResponse(response *Result, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -99,6 +107,7 @@ func encodeBanChatMemberResponse(response *Result, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -112,6 +121,7 @@ func encodeBanChatSenderChatResponse(response *Result, w http.ResponseWriter, sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -125,6 +135,7 @@ func encodeCloseResponse(response *Result, w http.ResponseWriter, span trace.Spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -138,6 +149,7 @@ func encodeCopyMessageResponse(response *ResultMessageId, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -151,6 +163,7 @@ func encodeCreateChatInviteLinkResponse(response *ResultChatInviteLink, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -164,6 +177,7 @@ func encodeCreateNewStickerSetResponse(response *Result, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -177,6 +191,7 @@ func encodeDeclineChatJoinRequestResponse(response *Result, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -190,6 +205,7 @@ func encodeDeleteChatPhotoResponse(response *Result, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -203,6 +219,7 @@ func encodeDeleteChatStickerSetResponse(response *Result, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -216,6 +233,7 @@ func encodeDeleteMessageResponse(response *Result, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -229,6 +247,7 @@ func encodeDeleteMyCommandsResponse(response *Result, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -242,6 +261,7 @@ func encodeDeleteStickerFromSetResponse(response *Result, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -255,6 +275,7 @@ func encodeDeleteWebhookResponse(response *Result, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -268,6 +289,7 @@ func encodeEditChatInviteLinkResponse(response *ResultChatInviteLink, w http.Res
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -281,6 +303,7 @@ func encodeEditMessageCaptionResponse(response *Result, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -294,6 +317,7 @@ func encodeEditMessageLiveLocationResponse(response *Result, w http.ResponseWrit
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -307,6 +331,7 @@ func encodeEditMessageMediaResponse(response *Result, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -320,6 +345,7 @@ func encodeEditMessageReplyMarkupResponse(response *Result, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -333,6 +359,7 @@ func encodeEditMessageTextResponse(response *Result, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -346,6 +373,7 @@ func encodeExportChatInviteLinkResponse(response *ResultString, w http.ResponseW
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -359,6 +387,7 @@ func encodeForwardMessageResponse(response *ResultMessage, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -372,6 +401,7 @@ func encodeGetChatResponse(response *ResultChat, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -385,6 +415,7 @@ func encodeGetChatAdministratorsResponse(response *ResultArrayOfChatMember, w ht
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -398,6 +429,7 @@ func encodeGetChatMemberResponse(response *ResultChatMember, w http.ResponseWrit
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -411,6 +443,7 @@ func encodeGetChatMemberCountResponse(response *ResultInt, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -424,6 +457,7 @@ func encodeGetFileResponse(response *Result, w http.ResponseWriter, span trace.S
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -437,6 +471,7 @@ func encodeGetGameHighScoresResponse(response *ResultArrayOfGameHighScore, w htt
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -450,6 +485,7 @@ func encodeGetMeResponse(response *ResultUser, w http.ResponseWriter, span trace
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -463,6 +499,7 @@ func encodeGetMyCommandsResponse(response *ResultArrayOfBotCommand, w http.Respo
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -476,6 +513,7 @@ func encodeGetStickerSetResponse(response *Result, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -489,6 +527,7 @@ func encodeGetUpdatesResponse(response *ResultArrayOfUpdate, w http.ResponseWrit
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -502,6 +541,7 @@ func encodeGetUserProfilePhotosResponse(response *ResultUserProfilePhotos, w htt
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -515,6 +555,7 @@ func encodeGetWebhookInfoResponse(response *ResultWebhookInfo, w http.ResponseWr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -528,6 +569,7 @@ func encodeLeaveChatResponse(response *Result, w http.ResponseWriter, span trace
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -541,6 +583,7 @@ func encodeLogOutResponse(response *Result, w http.ResponseWriter, span trace.Sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -554,6 +597,7 @@ func encodePinChatMessageResponse(response *Result, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -567,6 +611,7 @@ func encodePromoteChatMemberResponse(response *Result, w http.ResponseWriter, sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -580,6 +625,7 @@ func encodeRestrictChatMemberResponse(response *Result, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -593,6 +639,7 @@ func encodeRevokeChatInviteLinkResponse(response *ResultChatInviteLink, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -606,6 +653,7 @@ func encodeSendAnimationResponse(response *ResultMessage, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -619,6 +667,7 @@ func encodeSendAudioResponse(response *ResultMessage, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -632,6 +681,7 @@ func encodeSendChatActionResponse(response *Result, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -645,6 +695,7 @@ func encodeSendContactResponse(response *ResultMessage, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -658,6 +709,7 @@ func encodeSendDiceResponse(response *ResultMessage, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -671,6 +723,7 @@ func encodeSendDocumentResponse(response *ResultMessage, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -684,6 +737,7 @@ func encodeSendGameResponse(response *ResultMessage, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -697,6 +751,7 @@ func encodeSendInvoiceResponse(response *ResultMessage, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -710,6 +765,7 @@ func encodeSendLocationResponse(response *ResultMessage, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -723,6 +779,7 @@ func encodeSendMediaGroupResponse(response *ResultArrayOfMessage, w http.Respons
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -736,6 +793,7 @@ func encodeSendMessageResponse(response *ResultMessage, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -749,6 +807,7 @@ func encodeSendPhotoResponse(response *ResultMessage, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -762,6 +821,7 @@ func encodeSendPollResponse(response *ResultMessage, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -775,6 +835,7 @@ func encodeSendStickerResponse(response *ResultMessage, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -788,6 +849,7 @@ func encodeSendVenueResponse(response *ResultMessage, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -801,6 +863,7 @@ func encodeSendVideoResponse(response *ResultMessage, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -814,6 +877,7 @@ func encodeSendVideoNoteResponse(response *ResultMessage, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -827,6 +891,7 @@ func encodeSendVoiceResponse(response *ResultMessage, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -840,6 +905,7 @@ func encodeSetChatAdministratorCustomTitleResponse(response *Result, w http.Resp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -853,6 +919,7 @@ func encodeSetChatDescriptionResponse(response *Result, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -866,6 +933,7 @@ func encodeSetChatPermissionsResponse(response *Result, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -879,6 +947,7 @@ func encodeSetChatPhotoResponse(response *Result, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -892,6 +961,7 @@ func encodeSetChatStickerSetResponse(response *Result, w http.ResponseWriter, sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -905,6 +975,7 @@ func encodeSetChatTitleResponse(response *Result, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -918,6 +989,7 @@ func encodeSetGameScoreResponse(response *Result, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -931,6 +1003,7 @@ func encodeSetMyCommandsResponse(response *Result, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -944,6 +1017,7 @@ func encodeSetPassportDataErrorsResponse(response *Result, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -957,6 +1031,7 @@ func encodeSetStickerPositionInSetResponse(response *Result, w http.ResponseWrit
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -970,6 +1045,7 @@ func encodeSetStickerSetThumbResponse(response *Result, w http.ResponseWriter, s
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -983,6 +1059,7 @@ func encodeSetWebhookResponse(response *Result, w http.ResponseWriter, span trac
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -996,6 +1073,7 @@ func encodeStopMessageLiveLocationResponse(response *Result, w http.ResponseWrit
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1009,6 +1087,7 @@ func encodeStopPollResponse(response *ResultPoll, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1022,6 +1101,7 @@ func encodeUnbanChatMemberResponse(response *Result, w http.ResponseWriter, span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1035,6 +1115,7 @@ func encodeUnbanChatSenderChatResponse(response *Result, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1048,6 +1129,7 @@ func encodeUnpinAllChatMessagesResponse(response *Result, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1061,6 +1143,7 @@ func encodeUnpinChatMessageResponse(response *Result, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1074,6 +1157,7 @@ func encodeUploadStickerFileResponse(response *ResultFile, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -1096,6 +1180,10 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
+	}
+
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
 	}
 	return nil
 

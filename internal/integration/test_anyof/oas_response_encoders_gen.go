@@ -21,6 +21,7 @@ func encodeIntegerNumberResponse(response *IntegerNumber, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -34,6 +35,7 @@ func encodeJaegerAnyOfResponse(response *JaegerAnyOf, w http.ResponseWriter, spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -47,5 +49,6 @@ func encodeOneUUIDResponse(response *OneUUID, w http.ResponseWriter, span trace.
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

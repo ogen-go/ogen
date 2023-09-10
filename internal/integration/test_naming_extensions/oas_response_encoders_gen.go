@@ -21,5 +21,6 @@ func encodeHealthzGetResponse(response *Person, w http.ResponseWriter, span trac
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

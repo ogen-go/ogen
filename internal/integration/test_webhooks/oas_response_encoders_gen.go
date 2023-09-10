@@ -9,6 +9,8 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodePublishEventResponse(response *Event, w http.ResponseWriter, span trace.Span) error {
@@ -21,6 +23,7 @@ func encodePublishEventResponse(response *Event, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -44,6 +47,10 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+	}
 	return nil
 
 }
@@ -57,6 +64,7 @@ func encodeStatusWebhookResponse(response *StatusWebhookOK, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -88,6 +96,10 @@ func encodeUpdateDeleteResponse(response UpdateDeleteRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+		}
 		return nil
 
 	default:
@@ -107,6 +119,7 @@ func encodeUpdateWebhookResponse(response UpdateWebhookRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *ErrorStatusCode:
@@ -128,6 +141,10 @@ func encodeUpdateWebhookResponse(response UpdateWebhookRes, w http.ResponseWrite
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
+		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
 		}
 		return nil
 

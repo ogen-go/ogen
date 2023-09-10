@@ -7,12 +7,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -132,7 +134,9 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 
 	if err := encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -247,7 +251,9 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 
 	if err := encodeActionsAddSelectedRepoToOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -363,7 +369,9 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 
 	if err := encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -478,7 +486,9 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 
 	if err := encodeActionsApproveWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -591,7 +601,9 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 
 	if err := encodeActionsCancelWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -770,7 +782,9 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 
 	if err := encodeActionsCreateOrUpdateEnvironmentSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -945,7 +959,9 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 
 	if err := encodeActionsCreateOrUpdateOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1124,7 +1140,9 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 
 	if err := encodeActionsCreateOrUpdateRepoSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1234,7 +1252,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 
 	if err := encodeActionsCreateRegistrationTokenForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1349,7 +1369,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 
 	if err := encodeActionsCreateRegistrationTokenForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1461,7 +1483,9 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 
 	if err := encodeActionsCreateRemoveTokenForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1576,7 +1600,9 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 
 	if err := encodeActionsCreateRemoveTokenForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1698,7 +1724,9 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 
 	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1811,7 +1839,9 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 
 	if err := encodeActionsDeleteArtifactResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1924,7 +1954,9 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 
 	if err := encodeActionsDeleteEnvironmentSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2033,7 +2065,9 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 
 	if err := encodeActionsDeleteOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2146,7 +2180,9 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 
 	if err := encodeActionsDeleteRepoSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2255,7 +2291,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 
 	if err := encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2369,7 +2407,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 
 	if err := encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2480,7 +2520,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 
 	if err := encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2595,7 +2637,9 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 
 	if err := encodeActionsDeleteWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2708,7 +2752,9 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 
 	if err := encodeActionsDeleteWorkflowRunLogsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2820,7 +2866,9 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 
 	if err := encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2941,7 +2989,9 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 
 	if err := encodeActionsDownloadArtifactResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3060,7 +3110,9 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 
 	if err := encodeActionsDownloadJobLogsForWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3177,7 +3229,9 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 
 	if err := encodeActionsDownloadWorkflowRunLogsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3289,7 +3343,9 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 
 	if err := encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3397,7 +3453,9 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 
 	if err := encodeActionsGetAllowedActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3509,7 +3567,9 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 
 	if err := encodeActionsGetAllowedActionsRepositoryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3622,7 +3682,9 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 
 	if err := encodeActionsGetArtifactResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3732,7 +3794,9 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 
 	if err := encodeActionsGetEnvironmentPublicKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3845,7 +3909,9 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 
 	if err := encodeActionsGetEnvironmentSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3950,7 +4016,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 
 	if err := encodeActionsGetGithubActionsPermissionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4060,7 +4128,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 
 	if err := encodeActionsGetGithubActionsPermissionsRepositoryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4173,7 +4243,9 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 
 	if err := encodeActionsGetJobForWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4279,7 +4351,9 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 
 	if err := encodeActionsGetOrgPublicKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4388,7 +4462,9 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 
 	if err := encodeActionsGetOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4498,7 +4574,9 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 
 	if err := encodeActionsGetRepoPublicKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4611,7 +4689,9 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 
 	if err := encodeActionsGetRepoSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4724,7 +4804,9 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 
 	if err := encodeActionsGetReviewsForRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4832,7 +4914,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 
 	if err := encodeActionsGetSelfHostedRunnerForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4945,7 +5029,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 
 	if err := encodeActionsGetSelfHostedRunnerForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5056,7 +5142,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 
 	if err := encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5169,7 +5257,9 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 
 	if err := encodeActionsGetWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5289,7 +5379,9 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 
 	if err := encodeActionsGetWorkflowRunUsageResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5406,7 +5498,9 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 
 	if err := encodeActionsListArtifactsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5523,7 +5617,9 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 
 	if err := encodeActionsListEnvironmentSecretsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5650,7 +5746,9 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 
 	if err := encodeActionsListJobsForWorkflowRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5763,7 +5861,9 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 
 	if err := encodeActionsListOrgSecretsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5882,7 +5982,9 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 
 	if err := encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5999,7 +6101,9 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 
 	if err := encodeActionsListRepoSecretsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6116,7 +6220,9 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 
 	if err := encodeActionsListRepoWorkflowsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6220,7 +6326,9 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 
 	if err := encodeActionsListRunnerApplicationsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6328,7 +6436,9 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 
 	if err := encodeActionsListRunnerApplicationsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6446,7 +6556,9 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 
 	if err := encodeActionsListSelectedReposForOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6562,7 +6674,9 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 
 	if err := encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6677,7 +6791,9 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 
 	if err := encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6789,7 +6905,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 
 	if err := encodeActionsListSelfHostedRunnersForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6905,7 +7023,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 
 	if err := encodeActionsListSelfHostedRunnersForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7024,7 +7144,9 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 
 	if err := encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7145,7 +7267,9 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 
 	if err := encodeActionsListWorkflowRunArtifactsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7285,7 +7409,9 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 
 	if err := encodeActionsListWorkflowRunsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7403,7 +7529,9 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 
 	if err := encodeActionsReRunWorkflowResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7521,7 +7649,9 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 
 	if err := encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7636,7 +7766,9 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 
 	if err := encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7752,7 +7884,9 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 
 	if err := encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7865,7 +7999,9 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 
 	if err := encodeActionsRetryWorkflowResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7992,7 +8128,9 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 
 	if err := encodeActionsReviewPendingDeploymentsForRunResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8120,7 +8258,9 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 
 	if err := encodeActionsSetAllowedActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8251,7 +8391,9 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 
 	if err := encodeActionsSetAllowedActionsRepositoryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8374,7 +8516,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 
 	if err := encodeActionsSetGithubActionsPermissionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8502,7 +8646,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 
 	if err := encodeActionsSetGithubActionsPermissionsRepositoryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8629,7 +8775,9 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 
 	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8755,7 +8903,9 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 
 	if err := encodeActionsSetSelectedReposForOrgSecretResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8878,7 +9028,9 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 
 	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9004,7 +9156,9 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 
 	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9130,7 +9284,9 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 
 	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9237,7 +9393,9 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 
 	if err := encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9346,7 +9504,9 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 
 	if err := encodeActivityDeleteRepoSubscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9453,7 +9613,9 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 
 	if err := encodeActivityDeleteThreadSubscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9551,7 +9713,9 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeActivityGetFeedsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9658,7 +9822,9 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 
 	if err := encodeActivityGetRepoSubscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9761,7 +9927,9 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 
 	if err := encodeActivityGetThreadResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9867,7 +10035,9 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 
 	if err := encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9979,7 +10149,9 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 
 	if err := encodeActivityListEventsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10102,7 +10274,9 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 
 	if err := encodeActivityListNotificationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10217,7 +10391,9 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 
 	if err := encodeActivityListOrgEventsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10325,7 +10501,9 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 
 	if err := encodeActivityListPublicEventsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10440,7 +10618,9 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 
 	if err := encodeActivityListPublicEventsForRepoNetworkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10551,7 +10731,9 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 
 	if err := encodeActivityListPublicEventsForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10662,7 +10844,9 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 
 	if err := encodeActivityListPublicOrgEventsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10775,7 +10959,9 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 
 	if err := encodeActivityListReceivedEventsForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10886,7 +11072,9 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 
 	if err := encodeActivityListReceivedPublicEventsForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11001,7 +11189,9 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 
 	if err := encodeActivityListRepoEventsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11132,7 +11322,9 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 
 	if err := encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11249,7 +11441,9 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 
 	if err := encodeActivityListReposStarredByAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11360,7 +11554,9 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 
 	if err := encodeActivityListReposWatchedByUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11467,7 +11663,9 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 
 	if err := encodeActivityListWatchedReposForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11582,7 +11780,9 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 
 	if err := encodeActivityListWatchersForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11691,7 +11891,9 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 
 	if err := encodeActivityMarkNotificationsAsReadResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11819,7 +12021,9 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 
 	if err := encodeActivityMarkRepoNotificationsAsReadResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11922,7 +12126,9 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 
 	if err := encodeActivityMarkThreadAsReadResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12047,7 +12253,9 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 
 	if err := encodeActivitySetRepoSubscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12172,7 +12380,9 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 
 	if err := encodeActivitySetThreadSubscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12281,7 +12491,9 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 
 	if err := encodeActivityStarRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12388,7 +12600,9 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 
 	if err := encodeActivityUnstarRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12500,7 +12714,9 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 
 	if err := encodeAppsAddRepoToInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12623,7 +12839,9 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeAppsCheckTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12758,7 +12976,9 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 
 	if err := encodeAppsCreateContentAttachmentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12879,7 +13099,9 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 
 	if err := encodeAppsCreateFromManifestResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13006,7 +13228,9 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 
 	if err := encodeAppsCreateInstallationAccessTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13133,7 +13357,9 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 
 	if err := encodeAppsDeleteAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13241,7 +13467,9 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 
 	if err := encodeAppsDeleteInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13362,7 +13590,9 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeAppsDeleteTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13453,7 +13683,9 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 
 	if err := encodeAppsGetAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13563,7 +13795,9 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 
 	if err := encodeAppsGetBySlugResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13673,7 +13907,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 
 	if err := encodeAppsGetSubscriptionPlanForAccountResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13783,7 +14019,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 
 	if err := encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13871,7 +14109,9 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 
 	if err := encodeAppsGetWebhookConfigForAppResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13977,7 +14217,9 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 
 	if err := encodeAppsGetWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14104,7 +14346,9 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 
 	if err := encodeAppsListAccountsForPlanResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14231,7 +14475,9 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 
 	if err := encodeAppsListAccountsForPlanStubbedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14348,7 +14594,9 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 
 	if err := encodeAppsListInstallationReposForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14460,7 +14708,9 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeAppsListPlansResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14572,7 +14822,9 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 
 	if err := encodeAppsListPlansStubbedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14682,7 +14934,9 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 
 	if err := encodeAppsListReposAccessibleToInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14791,7 +15045,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 
 	if err := encodeAppsListSubscriptionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14900,7 +15156,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 
 	if err := encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15010,7 +15268,9 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 
 	if err := encodeAppsListWebhookDeliveriesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15116,7 +15376,9 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 
 	if err := encodeAppsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15228,7 +15490,9 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 
 	if err := encodeAppsRemoveRepoFromInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15351,7 +15615,9 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeAppsResetTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15444,7 +15710,9 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 
 	if err := encodeAppsRevokeInstallationAccessTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15567,7 +15835,9 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeAppsScopeTokenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15675,7 +15945,9 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 
 	if err := encodeAppsSuspendInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15781,7 +16053,9 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 
 	if err := encodeAppsUnsuspendInstallationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15888,7 +16162,9 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 
 	if err := encodeAppsUpdateWebhookConfigForAppResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15998,7 +16274,9 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 
 	if err := encodeBillingGetGithubActionsBillingGheResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16108,7 +16386,9 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 
 	if err := encodeBillingGetGithubActionsBillingOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16218,7 +16498,9 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 
 	if err := encodeBillingGetGithubActionsBillingUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16325,7 +16607,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 
 	if err := encodeBillingGetGithubPackagesBillingGheResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16432,7 +16716,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 
 	if err := encodeBillingGetGithubPackagesBillingOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16539,7 +16825,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 
 	if err := encodeBillingGetGithubPackagesBillingUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16646,7 +16934,9 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 
 	if err := encodeBillingGetSharedStorageBillingGheResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16753,7 +17043,9 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 
 	if err := encodeBillingGetSharedStorageBillingOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16860,7 +17152,9 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 
 	if err := encodeBillingGetSharedStorageBillingUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16990,7 +17284,9 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 
 	if err := encodeChecksCreateSuiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17106,7 +17402,9 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 
 	if err := encodeChecksGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17222,7 +17520,9 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodeChecksGetSuiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17344,7 +17644,9 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 
 	if err := encodeChecksListAnnotationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17485,7 +17787,9 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 
 	if err := encodeChecksListForRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17621,7 +17925,9 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 
 	if err := encodeChecksListForSuiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17754,7 +18060,9 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 
 	if err := encodeChecksListSuitesForRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17870,7 +18178,9 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 
 	if err := encodeChecksRerequestSuiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17996,7 +18306,9 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 
 	if err := encodeChecksSetSuitesPreferencesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18169,7 +18481,9 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 
 	if err := encodeCodeScanningDeleteAnalysisResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18286,7 +18600,9 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 
 	if err := encodeCodeScanningGetAlertResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18415,7 +18731,9 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 
 	if err := encodeCodeScanningGetAnalysisResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18531,7 +18849,9 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 
 	if err := encodeCodeScanningGetSarifResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18656,7 +18976,9 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 
 	if err := encodeCodeScanningListAlertInstancesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18794,7 +19116,9 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 
 	if err := encodeCodeScanningListAlertsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18939,7 +19263,9 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 
 	if err := encodeCodeScanningListRecentAnalysesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19067,7 +19393,9 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 
 	if err := encodeCodeScanningUpdateAlertResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19215,7 +19543,9 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 
 	if err := encodeCodeScanningUploadSarifResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19299,7 +19629,9 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 
 	if err := encodeCodesOfConductGetAllCodesOfConductResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19402,7 +19734,9 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 
 	if err := encodeCodesOfConductGetConductCodeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19486,7 +19820,9 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeEmojisGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19601,7 +19937,9 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 
 	if err := encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19714,7 +20052,9 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 
 	if err := encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19824,7 +20164,9 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 
 	if err := encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19936,7 +20278,9 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 
 	if err := encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20055,7 +20399,9 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 
 	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20163,7 +20509,9 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 
 	if err := encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20272,7 +20620,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 
 	if err := encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20380,7 +20730,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 
 	if err := encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20488,7 +20840,9 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 
 	if err := encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20599,7 +20953,9 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 
 	if err := encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20710,7 +21066,9 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 
 	if err := encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20817,7 +21175,9 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 
 	if err := encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20949,7 +21309,9 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 
 	if err := encodeEnterpriseAdminGetAuditLogResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21053,7 +21415,9 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 
 	if err := encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21165,7 +21529,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 
 	if err := encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21273,7 +21639,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 
 	if err := encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21381,7 +21749,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 
 	if err := encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21489,7 +21859,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 
 	if err := encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21605,7 +21977,9 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 
 	if err := encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21725,7 +22099,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 
 	if err := encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21866,7 +22242,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 
 	if err := encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21970,7 +22348,9 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 
 	if err := encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22085,7 +22465,9 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 
 	if err := encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22197,7 +22579,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22309,7 +22693,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22425,7 +22811,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22547,7 +22935,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22671,7 +23061,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22786,7 +23178,9 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 
 	if err := encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22899,7 +23293,9 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 
 	if err := encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23021,7 +23417,9 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 
 	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23140,7 +23538,9 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 
 	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23268,7 +23668,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23399,7 +23801,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23523,7 +23927,9 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 
 	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23645,7 +24051,9 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 
 	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23768,7 +24176,9 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 
 	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23895,7 +24305,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24039,7 +24451,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24162,7 +24576,9 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 
 	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24265,7 +24681,9 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 
 	if err := encodeGistsCheckIsStarredResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24370,7 +24788,9 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 
 	if err := encodeGistsCreateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24488,7 +24908,9 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 
 	if err := encodeGistsCreateCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24591,7 +25013,9 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeGistsDeleteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24698,7 +25122,9 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 
 	if err := encodeGistsDeleteCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24801,7 +25227,9 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 
 	if err := encodeGistsForkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24904,7 +25332,9 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 
 	if err := encodeGistsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25011,7 +25441,9 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 
 	if err := encodeGistsGetCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25118,7 +25550,9 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeGistsGetRevisionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25230,7 +25664,9 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeGistsListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25341,7 +25777,9 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 
 	if err := encodeGistsListCommentsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25452,7 +25890,9 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeGistsListCommitsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25567,7 +26007,9 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeGistsListForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25678,7 +26120,9 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeGistsListForksResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25792,7 +26236,9 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeGistsListPublicResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25903,7 +26349,9 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeGistsListStarredResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26008,7 +26456,9 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 
 	if err := encodeGistsStarResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26111,7 +26561,9 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeGistsUnstarResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26233,7 +26685,9 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 
 	if err := encodeGistsUpdateCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26355,7 +26809,9 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeGitCreateBlobResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26510,7 +26966,9 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 
 	if err := encodeGitCreateCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26634,7 +27092,9 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 
 	if err := encodeGitCreateRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26792,7 +27252,9 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 
 	if err := encodeGitCreateTagResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26920,7 +27382,9 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeGitCreateTreeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27031,7 +27495,9 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 
 	if err := encodeGitDeleteRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27143,7 +27609,9 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 
 	if err := encodeGitGetBlobResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27287,7 +27755,9 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 
 	if err := encodeGitGetCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27405,7 +27875,9 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 
 	if err := encodeGitGetRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27547,7 +28019,9 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 
 	if err := encodeGitGetTagResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27665,7 +28139,9 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 
 	if err := encodeGitGetTreeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27798,7 +28274,9 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 
 	if err := encodeGitListMatchingRefsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27924,7 +28402,9 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 
 	if err := encodeGitUpdateRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28009,7 +28489,9 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 
 	if err := encodeGitignoreGetAllTemplatesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28114,7 +28596,9 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 
 	if err := encodeGitignoreGetTemplateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28198,7 +28682,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 
 	if err := encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28302,7 +28788,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 
 	if err := encodeInteractionsRemoveRestrictionsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28412,7 +28900,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 
 	if err := encodeInteractionsRemoveRestrictionsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28517,7 +29007,9 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 
 	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28638,7 +29130,9 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 
 	if err := encodeInteractionsSetRestrictionsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28763,7 +29257,9 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 
 	if err := encodeInteractionsSetRestrictionsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28889,7 +29385,9 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 
 	if err := encodeIssuesAddAssigneesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29003,7 +29501,9 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 
 	if err := encodeIssuesCheckUserCanBeAssignedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29134,7 +29634,9 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 
 	if err := encodeIssuesCreateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29266,7 +29768,9 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 
 	if err := encodeIssuesCreateCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29388,7 +29892,9 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 
 	if err := encodeIssuesCreateLabelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29510,7 +30016,9 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 
 	if err := encodeIssuesCreateMilestoneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29621,7 +30129,9 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 
 	if err := encodeIssuesDeleteCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29732,7 +30242,9 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 
 	if err := encodeIssuesDeleteLabelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29843,7 +30355,9 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 
 	if err := encodeIssuesDeleteMilestoneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29972,7 +30486,9 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 
 	if err := encodeIssuesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30083,7 +30599,9 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 
 	if err := encodeIssuesGetCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30194,7 +30712,9 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodeIssuesGetEventResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30305,7 +30825,9 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodeIssuesGetLabelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30416,7 +30938,9 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 
 	if err := encodeIssuesGetMilestoneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30575,7 +31099,9 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeIssuesListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30691,7 +31217,9 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 
 	if err := encodeIssuesListAssigneesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30814,7 +31342,9 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 
 	if err := encodeIssuesListCommentsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30941,7 +31471,9 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 
 	if err := encodeIssuesListCommentsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31056,7 +31588,9 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 
 	if err := encodeIssuesListEventsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31195,7 +31729,9 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 
 	if err := encodeIssuesListForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31338,7 +31874,9 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeIssuesListForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31497,7 +32035,9 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 
 	if err := encodeIssuesListForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31616,7 +32156,9 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 
 	if err := encodeIssuesListLabelsForMilestoneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31731,7 +32273,9 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 
 	if err := encodeIssuesListLabelsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31850,7 +32394,9 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 
 	if err := encodeIssuesListLabelsOnIssueResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31977,7 +32523,9 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 
 	if err := encodeIssuesListMilestonesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32106,7 +32654,9 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 
 	if err := encodeIssuesLockResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32217,7 +32767,9 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 
 	if err := encodeIssuesRemoveAllLabelsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32343,7 +32895,9 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 
 	if err := encodeIssuesRemoveAssigneesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32459,7 +33013,9 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 
 	if err := encodeIssuesRemoveLabelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32570,7 +33126,9 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 
 	if err := encodeIssuesUnlockResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32696,7 +33254,9 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 
 	if err := encodeIssuesUpdateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32822,7 +33382,9 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 
 	if err := encodeIssuesUpdateCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32948,7 +33510,9 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 
 	if err := encodeIssuesUpdateLabelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33074,7 +33638,9 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 
 	if err := encodeIssuesUpdateMilestoneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33177,7 +33743,9 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeLicensesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33288,7 +33856,9 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 
 	if err := encodeLicensesGetAllCommonlyUsedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33399,7 +33969,9 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 
 	if err := encodeLicensesGetForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33502,7 +34074,9 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeMarkdownRenderResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33608,7 +34182,9 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 
 	if err := encodeMarkdownRenderRawResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33696,7 +34272,9 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 
 	if err := encodeMetaGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33799,7 +34377,9 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeMetaGetOctocatResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33883,7 +34463,9 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeMetaGetZenResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33967,7 +34549,9 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 
 	if err := encodeMetaRootResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34074,7 +34658,9 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 
 	if err := encodeMigrationsCancelImportResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34181,7 +34767,9 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 
 	if err := encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34289,7 +34877,9 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 
 	if err := encodeMigrationsDeleteArchiveForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34396,7 +34986,9 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 
 	if err := encodeMigrationsDownloadArchiveForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34519,7 +35111,9 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 
 	if err := encodeMigrationsGetArchiveForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34637,7 +35231,9 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 
 	if err := encodeMigrationsGetCommitAuthorsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34796,7 +35392,9 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 
 	if err := encodeMigrationsGetImportStatusResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34903,7 +35501,9 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 
 	if err := encodeMigrationsGetLargeFilesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35017,7 +35617,9 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 
 	if err := encodeMigrationsGetStatusForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35133,7 +35735,9 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 
 	if err := encodeMigrationsGetStatusForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35240,7 +35844,9 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 
 	if err := encodeMigrationsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35355,7 +35961,9 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 
 	if err := encodeMigrationsListForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35470,7 +36078,9 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 
 	if err := encodeMigrationsListReposForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35581,7 +36191,9 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 
 	if err := encodeMigrationsListReposForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35708,7 +36320,9 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 
 	if err := encodeMigrationsMapCommitAuthorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35833,7 +36447,9 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 
 	if err := encodeMigrationsSetLfsPreferenceResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35936,7 +36552,9 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 
 	if err := encodeMigrationsStartForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36054,7 +36672,9 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 
 	if err := encodeMigrationsStartForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36176,7 +36796,9 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 
 	if err := encodeMigrationsStartImportResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36287,7 +36909,9 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 
 	if err := encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36400,7 +37024,9 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 
 	if err := encodeMigrationsUnlockRepoForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36524,7 +37150,9 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 
 	if err := encodeMigrationsUpdateImportResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36656,7 +37284,9 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 
 	if err := encodeOAuthAuthorizationsCreateAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36768,7 +37398,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 
 	if err := encodeOAuthAuthorizationsDeleteAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36883,7 +37515,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 
 	if err := encodeOAuthAuthorizationsDeleteGrantResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36995,7 +37629,9 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 
 	if err := encodeOAuthAuthorizationsGetAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37107,7 +37743,9 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 
 	if err := encodeOAuthAuthorizationsGetGrantResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37253,7 +37891,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37398,7 +38038,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37518,7 +38160,9 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 
 	if err := encodeOAuthAuthorizationsListAuthorizationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37649,7 +38293,9 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 
 	if err := encodeOAuthAuthorizationsListGrantsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37780,7 +38426,9 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 
 	if err := encodeOAuthAuthorizationsUpdateAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37887,7 +38535,9 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeOrgsBlockUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37997,7 +38647,9 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 
 	if err := encodeOrgsCancelInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38104,7 +38756,9 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 
 	if err := encodeOrgsCheckBlockedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38211,7 +38865,9 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 
 	if err := encodeOrgsCheckMembershipForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38318,7 +38974,9 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 
 	if err := encodeOrgsCheckPublicMembershipForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38429,7 +39087,9 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 
 	if err := encodeOrgsConvertMemberToOutsideCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38555,7 +39215,9 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 
 	if err := encodeOrgsCreateInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38673,7 +39335,9 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 
 	if err := encodeOrgsCreateWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38780,7 +39444,9 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 
 	if err := encodeOrgsDeleteWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38891,7 +39557,9 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 
 	if err := encodeOrgsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39027,7 +39695,9 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeOrgsGetAuditLogResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39130,7 +39800,9 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 
 	if err := encodeOrgsGetMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39239,7 +39911,9 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 
 	if err := encodeOrgsGetMembershipForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39348,7 +40022,9 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeOrgsGetWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39459,7 +40135,9 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 
 	if err := encodeOrgsGetWebhookConfigForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39570,7 +40248,9 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 
 	if err := encodeOrgsGetWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39680,7 +40360,9 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 
 	if err := encodeOrgsListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39783,7 +40465,9 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 
 	if err := encodeOrgsListBlockedUsersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39895,7 +40579,9 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 
 	if err := encodeOrgsListFailedInvitationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40007,7 +40693,9 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 
 	if err := encodeOrgsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40123,7 +40811,9 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeOrgsListForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40239,7 +40929,9 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 
 	if err := encodeOrgsListInvitationTeamsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40359,7 +41051,9 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeOrgsListMembersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40470,7 +41164,9 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 
 	if err := encodeOrgsListMembershipsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40585,7 +41281,9 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 
 	if err := encodeOrgsListOutsideCollaboratorsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40699,7 +41397,9 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 
 	if err := encodeOrgsListPendingInvitationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40810,7 +41510,9 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 
 	if err := encodeOrgsListPublicMembersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40920,7 +41622,9 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 
 	if err := encodeOrgsListSamlSSOAuthorizationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41035,7 +41739,9 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 
 	if err := encodeOrgsListWebhookDeliveriesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41146,7 +41852,9 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeOrgsListWebhooksResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41254,7 +41962,9 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 
 	if err := encodeOrgsPingWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41365,7 +42075,9 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 
 	if err := encodeOrgsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41473,7 +42185,9 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeOrgsRemoveMemberResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41584,7 +42298,9 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 
 	if err := encodeOrgsRemoveMembershipForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41691,7 +42407,9 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 
 	if err := encodeOrgsRemoveOutsideCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41798,7 +42516,9 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 
 	if err := encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41911,7 +42631,9 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 
 	if err := encodeOrgsRemoveSamlSSOAuthorizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42046,7 +42768,9 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 
 	if err := encodeOrgsSetMembershipForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42157,7 +42881,9 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 
 	if err := encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42264,7 +42990,9 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 
 	if err := encodeOrgsUnblockUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42382,7 +43110,9 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 
 	if err := encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42508,7 +43238,9 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 
 	if err := encodeOrgsUpdateWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42634,7 +43366,9 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 
 	if err := encodeOrgsUpdateWebhookConfigForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42746,7 +43480,9 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 
 	if err := encodePackagesDeletePackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42864,7 +43600,9 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 
 	if err := encodePackagesDeletePackageForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42982,7 +43720,9 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 
 	if err := encodePackagesDeletePackageForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43098,7 +43838,9 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 
 	if err := encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43220,7 +43962,9 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 
 	if err := encodePackagesDeletePackageVersionForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43342,7 +44086,9 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 
 	if err := encodePackagesDeletePackageVersionForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43463,7 +44209,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43588,7 +44336,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43701,7 +44451,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43810,7 +44562,9 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 
 	if err := encodePackagesGetPackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43923,7 +44677,9 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 
 	if err := encodePackagesGetPackageForOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44036,7 +44792,9 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 
 	if err := encodePackagesGetPackageForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44149,7 +44907,9 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 
 	if err := encodePackagesGetPackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44266,7 +45026,9 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 
 	if err := encodePackagesGetPackageVersionForOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44384,7 +45146,9 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 
 	if err := encodePackagesGetPackageVersionForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44493,7 +45257,9 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 
 	if err := encodePackagesListPackagesForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44606,7 +45372,9 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 
 	if err := encodePackagesListPackagesForOrganizationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44719,7 +45487,9 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 
 	if err := encodePackagesListPackagesForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44839,7 +45609,9 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 
 	if err := encodePackagesRestorePackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44965,7 +45737,9 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 
 	if err := encodePackagesRestorePackageForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45091,7 +45865,9 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 
 	if err := encodePackagesRestorePackageForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45211,7 +45987,9 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 
 	if err := encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45337,7 +46115,9 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 
 	if err := encodePackagesRestorePackageVersionForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45463,7 +46243,9 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 
 	if err := encodePackagesRestorePackageVersionForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45586,7 +46368,9 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 
 	if err := encodeProjectsAddCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45704,7 +46488,9 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 
 	if err := encodeProjectsCreateColumnResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45807,7 +46593,9 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 
 	if err := encodeProjectsCreateForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45927,7 +46715,9 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 
 	if err := encodeProjectsCreateForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46051,7 +46841,9 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 
 	if err := encodeProjectsCreateForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46154,7 +46946,9 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeProjectsDeleteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46257,7 +47051,9 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 
 	if err := encodeProjectsDeleteCardResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46360,7 +47156,9 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 
 	if err := encodeProjectsDeleteColumnResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46465,7 +47263,9 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeProjectsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46568,7 +47368,9 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeProjectsGetCardResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46671,7 +47473,9 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 
 	if err := encodeProjectsGetColumnResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46780,7 +47584,9 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 
 	if err := encodeProjectsGetPermissionForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46895,7 +47701,9 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 
 	if err := encodeProjectsListCardsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47014,7 +47822,9 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 
 	if err := encodeProjectsListCollaboratorsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47125,7 +47935,9 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 
 	if err := encodeProjectsListColumnsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47242,7 +48054,9 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 
 	if err := encodeProjectsListForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47363,7 +48177,9 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 
 	if err := encodeProjectsListForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47478,7 +48294,9 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 
 	if err := encodeProjectsListForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47596,7 +48414,9 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeProjectsMoveCardResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47714,7 +48534,9 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 
 	if err := encodeProjectsMoveColumnResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47822,7 +48644,9 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 
 	if err := encodeProjectsRemoveCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47942,7 +48766,9 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeProjectsUpdateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48060,7 +48886,9 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 
 	if err := encodeProjectsUpdateCardResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48178,7 +49006,9 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 
 	if err := encodeProjectsUpdateColumnResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48289,7 +49119,9 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 
 	if err := encodePullsCheckIfMergedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48426,7 +49258,9 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 
 	if err := encodePullsCreateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48565,7 +49399,9 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 
 	if err := encodePullsCreateReplyForReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48709,7 +49545,9 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 
 	if err := encodePullsCreateReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48854,7 +49692,9 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 
 	if err := encodePullsCreateReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48969,7 +49809,9 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 
 	if err := encodePullsDeletePendingReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49080,7 +49922,9 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 
 	if err := encodePullsDeleteReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49212,7 +50056,9 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 
 	if err := encodePullsDismissReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49356,7 +50202,9 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 
 	if err := encodePullsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49471,7 +50319,9 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 
 	if err := encodePullsGetReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49582,7 +50432,9 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 
 	if err := encodePullsGetReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49721,7 +50573,9 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 
 	if err := encodePullsListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49844,7 +50698,9 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 
 	if err := encodePullsListCommentsForReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49965,7 +50821,9 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 
 	if err := encodePullsListCommitsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50085,7 +50943,9 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodePullsListFilesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50204,7 +51064,9 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 
 	if err := encodePullsListRequestedReviewersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50336,7 +51198,9 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 
 	if err := encodePullsListReviewCommentsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50464,7 +51328,9 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 
 	if err := encodePullsListReviewCommentsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50583,7 +51449,9 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 
 	if err := encodePullsListReviewsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50715,7 +51583,9 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 
 	if err := encodePullsMergeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50841,7 +51711,9 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 
 	if err := encodePullsRemoveRequestedReviewersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50971,7 +51843,9 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 
 	if err := encodePullsSubmitReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51104,7 +51978,9 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 
 	if err := encodePullsUpdateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51231,7 +52107,9 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 
 	if err := encodePullsUpdateBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51361,7 +52239,9 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 
 	if err := encodePullsUpdateReviewResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51487,7 +52367,9 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 
 	if err := encodePullsUpdateReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51574,7 +52456,9 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodeRateLimitGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51702,7 +52586,9 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 
 	if err := encodeReactionsCreateForCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51829,7 +52715,9 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 
 	if err := encodeReactionsCreateForIssueResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51957,7 +52845,9 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 
 	if err := encodeReactionsCreateForIssueCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52085,7 +52975,9 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 
 	if err := encodeReactionsCreateForPullRequestReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52212,7 +53104,9 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 
 	if err := encodeReactionsCreateForReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52348,7 +53242,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 
 	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52484,7 +53380,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 
 	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52617,7 +53515,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 
 	if err := encodeReactionsCreateForTeamDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52750,7 +53650,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 
 	if err := encodeReactionsCreateForTeamDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52867,7 +53769,9 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 
 	if err := encodeReactionsDeleteForCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52984,7 +53888,9 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 
 	if err := encodeReactionsDeleteForIssueResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53101,7 +54007,9 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 
 	if err := encodeReactionsDeleteForIssueCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53219,7 +54127,9 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 
 	if err := encodeReactionsDeleteForPullRequestCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53341,7 +54251,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 
 	if err := encodeReactionsDeleteForTeamDiscussionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53465,7 +54377,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 
 	if err := encodeReactionsDeleteForTeamDiscussionCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53577,7 +54491,9 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 
 	if err := encodeReactionsDeleteLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53700,7 +54616,9 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 
 	if err := encodeReactionsListForCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53823,7 +54741,9 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 
 	if err := encodeReactionsListForIssueResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53946,7 +54866,9 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 
 	if err := encodeReactionsListForIssueCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54070,7 +54992,9 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 
 	if err := encodeReactionsListForPullRequestReviewCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54201,7 +55125,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 
 	if err := encodeReactionsListForTeamDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54332,7 +55258,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 
 	if err := encodeReactionsListForTeamDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54459,7 +55387,9 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 
 	if err := encodeReactionsListForTeamDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54586,7 +55516,9 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 
 	if err := encodeReactionsListForTeamDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54689,7 +55621,9 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 
 	if err := encodeReposAcceptInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54829,7 +55763,9 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 
 	if err := encodeReposAddAppAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54974,7 +55910,9 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 
 	if err := encodeReposAddCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55104,7 +56042,9 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 
 	if err := encodeReposAddStatusCheckContextsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55244,7 +56184,9 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 
 	if err := encodeReposAddTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55383,7 +56325,9 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 
 	if err := encodeReposAddUserAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55498,7 +56442,9 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 
 	if err := encodeReposCheckCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55608,7 +56554,9 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 
 	if err := encodeReposCheckVulnerabilityAlertsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55781,7 +56729,9 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 
 	if err := encodeReposCompareCommitsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55903,7 +56853,9 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 
 	if err := encodeReposCreateAutolinkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56036,7 +56988,9 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 
 	if err := encodeReposCreateCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56153,7 +57107,9 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 
 	if err := encodeReposCreateCommitSignatureProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56281,7 +57237,9 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 
 	if err := encodeReposCreateCommitStatusResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56403,7 +57361,9 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposCreateDeployKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56580,7 +57540,9 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 
 	if err := encodeReposCreateDeploymentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56708,7 +57670,9 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 
 	if err := encodeReposCreateDeploymentStatusResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56849,7 +57813,9 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 
 	if err := encodeReposCreateDispatchEventResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56958,7 +57924,9 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 
 	if err := encodeReposCreateForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57083,7 +58051,9 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 
 	if err := encodeReposCreateForkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57208,7 +58178,9 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeReposCreateInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57334,7 +58306,9 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 
 	if err := encodeReposCreateOrUpdateFileContentsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57457,7 +58431,9 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposCreatePagesSiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57586,7 +58562,9 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 
 	if err := encodeReposCreateReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57719,7 +58697,9 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 
 	if err := encodeReposCreateUsingTemplateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57843,7 +58823,9 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 
 	if err := encodeReposCreateWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57946,7 +58928,9 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 
 	if err := encodeReposDeclineInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58056,7 +59040,9 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 
 	if err := encodeReposDeleteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58172,7 +59158,9 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 
 	if err := encodeReposDeleteAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58289,7 +59277,9 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 
 	if err := encodeReposDeleteAdminBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58400,7 +59390,9 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 
 	if err := encodeReposDeleteAnEnvironmentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58512,7 +59504,9 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 
 	if err := encodeReposDeleteAutolinkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58627,7 +59621,9 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 
 	if err := encodeReposDeleteBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58738,7 +59734,9 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 
 	if err := encodeReposDeleteCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58856,7 +59854,9 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 
 	if err := encodeReposDeleteCommitSignatureProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58968,7 +59968,9 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 
 	if err := encodeReposDeleteDeployKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59087,7 +60089,9 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 
 	if err := encodeReposDeleteDeploymentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59220,7 +60224,9 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 
 	if err := encodeReposDeleteFileResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59331,7 +60337,9 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 
 	if err := encodeReposDeleteInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59438,7 +60446,9 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposDeletePagesSiteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59553,7 +60563,9 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 
 	if err := encodeReposDeletePullRequestReviewProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59664,7 +60676,9 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposDeleteReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59775,7 +60789,9 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 
 	if err := encodeReposDeleteReleaseAssetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59886,7 +60902,9 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposDeleteWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59995,7 +61013,9 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 
 	if err := encodeReposDisableAutomatedSecurityFixesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60102,7 +61122,9 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 
 	if err := encodeReposDisableLfsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60212,7 +61234,9 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 
 	if err := encodeReposDisableVulnerabilityAlertsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60328,7 +61352,9 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 
 	if err := encodeReposDownloadTarballArchiveResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60444,7 +61470,9 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 
 	if err := encodeReposDownloadZipballArchiveResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60553,7 +61581,9 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 
 	if err := encodeReposEnableAutomatedSecurityFixesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60660,7 +61690,9 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 
 	if err := encodeReposEnableLfsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60770,7 +61802,9 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 
 	if err := encodeReposEnableVulnerabilityAlertsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60878,7 +61912,9 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 
 	if err := encodeReposGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60996,7 +62032,9 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 
 	if err := encodeReposGetAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61111,7 +62149,9 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 
 	if err := encodeReposGetAdminBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61226,7 +62266,9 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 
 	if err := encodeReposGetAllStatusCheckContextsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61341,7 +62383,9 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 
 	if err := encodeReposGetAllTopicsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61459,7 +62503,9 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 
 	if err := encodeReposGetAppsWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61571,7 +62617,9 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 
 	if err := encodeReposGetAutolinkResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61682,7 +62730,9 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodeReposGetBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61797,7 +62847,9 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 
 	if err := encodeReposGetBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61909,7 +62961,9 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeReposGetClonesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62016,7 +63070,9 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 
 	if err := encodeReposGetCodeFrequencyStatsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62128,7 +63184,9 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 
 	if err := encodeReposGetCollaboratorPermissionLevelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62255,7 +63313,9 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 
 	if err := encodeReposGetCombinedStatusForRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62420,7 +63480,9 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 
 	if err := encodeReposGetCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62528,7 +63590,9 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 
 	if err := encodeReposGetCommitActivityStatsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62639,7 +63703,9 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 
 	if err := encodeReposGetCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62759,7 +63825,9 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 
 	if err := encodeReposGetCommitSignatureProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62875,7 +63943,9 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 
 	if err := encodeReposGetCommunityProfileMetricsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62987,7 +64057,9 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 
 	if err := encodeReposGetContributorsStatsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63098,7 +64170,9 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 
 	if err := encodeReposGetDeployKeyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63209,7 +64283,9 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposGetDeploymentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63324,7 +64400,9 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 
 	if err := encodeReposGetDeploymentStatusResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63431,7 +64509,9 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 
 	if err := encodeReposGetLatestPagesBuildResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63541,7 +64621,9 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 
 	if err := encodeReposGetLatestReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63648,7 +64730,9 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeReposGetPagesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63759,7 +64843,9 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposGetPagesBuildResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63872,7 +64958,9 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 
 	if err := encodeReposGetPagesHealthCheckResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63982,7 +65070,9 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 
 	if err := encodeReposGetParticipationStatsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64097,7 +65187,9 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 
 	if err := encodeReposGetPullRequestReviewProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64209,7 +65301,9 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 
 	if err := encodeReposGetPunchCardStatsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64322,7 +65416,9 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeReposGetReadmeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64439,7 +65535,9 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 
 	if err := encodeReposGetReadmeInDirectoryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64552,7 +65650,9 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 
 	if err := encodeReposGetReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64666,7 +65766,9 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 
 	if err := encodeReposGetReleaseAssetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64777,7 +65879,9 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 
 	if err := encodeReposGetReleaseByTagResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64892,7 +65996,9 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 
 	if err := encodeReposGetStatusChecksProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65008,7 +66114,9 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 
 	if err := encodeReposGetTeamsWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65115,7 +66223,9 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeReposGetTopPathsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65222,7 +66332,9 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposGetTopReferrersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65338,7 +66450,9 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 
 	if err := encodeReposGetUsersWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65450,7 +66564,9 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeReposGetViewsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65563,7 +66679,9 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 
 	if err := encodeReposGetWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65678,7 +66796,9 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 
 	if err := encodeReposGetWebhookConfigForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65793,7 +66913,9 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 
 	if err := encodeReposGetWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65905,7 +67027,9 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 
 	if err := encodeReposListAutolinksResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66024,7 +67148,9 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 
 	if err := encodeReposListBranchesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66140,7 +67266,9 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 
 	if err := encodeReposListBranchesForHeadCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66263,7 +67391,9 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 
 	if err := encodeReposListCollaboratorsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66382,7 +67512,9 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 
 	if err := encodeReposListCommentsForCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66500,7 +67632,9 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 
 	if err := encodeReposListCommitCommentsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66622,7 +67756,9 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 
 	if err := encodeReposListCommitStatusesForRefResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66788,7 +67924,9 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeReposListCommitsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66913,7 +68051,9 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 
 	if err := encodeReposListContributorsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67028,7 +68168,9 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 
 	if err := encodeReposListDeployKeysResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67147,7 +68289,9 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 
 	if err := encodeReposListDeploymentStatusesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67278,7 +68422,9 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposListDeploymentsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67416,7 +68562,9 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 
 	if err := encodeReposListForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67539,7 +68687,9 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 
 	if err := encodeReposListForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67663,7 +68813,9 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeReposListForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67782,7 +68934,9 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeReposListForksResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67898,7 +69052,9 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposListInvitationsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68006,7 +69162,9 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 
 	if err := encodeReposListInvitationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68114,7 +69272,9 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 
 	if err := encodeReposListLanguagesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68229,7 +69389,9 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 
 	if err := encodeReposListPagesBuildsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68338,7 +69500,9 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeReposListPublicResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68462,7 +69626,9 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 
 	if err := encodeReposListPullRequestsAssociatedWithCommitResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68581,7 +69747,9 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 
 	if err := encodeReposListReleaseAssetsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68700,7 +69868,9 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 
 	if err := encodeReposListReleasesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68815,7 +69985,9 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeReposListTagsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68930,7 +70102,9 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeReposListTeamsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69049,7 +70223,9 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 
 	if err := encodeReposListWebhookDeliveriesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69164,7 +70340,9 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 
 	if err := encodeReposListWebhooksResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69286,7 +70464,9 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 
 	if err := encodeReposMergeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69409,7 +70589,9 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 
 	if err := encodeReposMergeUpstreamResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69521,7 +70703,9 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 
 	if err := encodeReposPingWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69636,7 +70820,9 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 
 	if err := encodeReposRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69776,7 +70962,9 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 
 	if err := encodeReposRemoveAppAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69887,7 +71075,9 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 
 	if err := encodeReposRemoveCollaboratorResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70017,7 +71207,9 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 
 	if err := encodeReposRemoveStatusCheckContextsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70132,7 +71324,9 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 
 	if err := encodeReposRemoveStatusCheckProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70272,7 +71466,9 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 
 	if err := encodeReposRemoveTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70411,7 +71607,9 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 
 	if err := encodeReposRemoveUserAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70549,7 +71747,9 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 
 	if err := encodeReposRenameBranchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70671,7 +71871,9 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 
 	if err := encodeReposReplaceAllTopicsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70783,7 +71985,9 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 
 	if err := encodeReposRequestPagesBuildResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70900,7 +72104,9 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 
 	if err := encodeReposSetAdminBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71042,7 +72248,9 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 
 	if err := encodeReposSetAppAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71172,7 +72380,9 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 
 	if err := encodeReposSetStatusCheckContextsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71313,7 +72523,9 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 
 	if err := encodeReposSetTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71453,7 +72665,9 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 
 	if err := encodeReposSetUserAccessRestrictionsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71567,7 +72781,9 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 
 	if err := encodeReposTestPushWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71693,7 +72909,9 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 
 	if err := encodeReposTransferResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71816,7 +73034,9 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 
 	if err := encodeReposUpdateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71949,7 +73169,9 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 
 	if err := encodeReposUpdateBranchProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72075,7 +73297,9 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 
 	if err := encodeReposUpdateCommitCommentResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72201,7 +73425,9 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 
 	if err := encodeReposUpdateInvitationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72334,7 +73560,9 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 
 	if err := encodeReposUpdatePullRequestReviewProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72460,7 +73688,9 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposUpdateReleaseResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72586,7 +73816,9 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 
 	if err := encodeReposUpdateReleaseAssetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72718,7 +73950,9 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 
 	if err := encodeReposUpdateStatusCheckProtectionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72847,7 +74081,9 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 
 	if err := encodeReposUpdateWebhookResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72977,7 +74213,9 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 
 	if err := encodeReposUpdateWebhookConfigForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73136,7 +74374,9 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 
 	if err := encodeReposUploadReleaseAssetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73243,7 +74483,9 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 
 	if err := encodeScimDeleteUserFromOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73381,7 +74623,9 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeSearchCodeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73510,7 +74754,9 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeSearchCommitsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73651,7 +74897,9 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 
 	if err := encodeSearchIssuesAndPullRequestsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73783,7 +75031,9 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodeSearchLabelsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73917,7 +75167,9 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 
 	if err := encodeSearchReposResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74041,7 +75293,9 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodeSearchTopicsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74171,7 +75425,9 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 
 	if err := encodeSearchUsersResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74285,7 +75541,9 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 
 	if err := encodeSecretScanningGetAlertResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74408,7 +75666,9 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 
 	if err := encodeSecretScanningListAlertsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74534,7 +75794,9 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 
 	if err := encodeSecretScanningListAlertsForRepoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74663,7 +75925,9 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 
 	if err := encodeSecretScanningUpdateAlertResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74791,7 +76055,9 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 
 	if err := encodeTeamsAddMemberLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74938,7 +76204,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 
 	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75086,7 +76354,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 
 	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75216,7 +76486,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 
 	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75346,7 +76618,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 
 	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75487,7 +76761,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 
 	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75626,7 +76902,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 
 	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75740,7 +77018,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 
 	if err := encodeTeamsCheckPermissionsForProjectInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75854,7 +77134,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 
 	if err := encodeTeamsCheckPermissionsForProjectLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75977,7 +77259,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 
 	if err := encodeTeamsCheckPermissionsForRepoInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76097,7 +77381,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 
 	if err := encodeTeamsCheckPermissionsForRepoLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76222,7 +77508,9 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeTeamsCreateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76358,7 +77646,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 
 	if err := encodeTeamsCreateDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76493,7 +77783,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 
 	if err := encodeTeamsCreateDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76625,7 +77917,9 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 
 	if err := encodeTeamsCreateDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76756,7 +78050,9 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 
 	if err := encodeTeamsCreateDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76885,7 +78181,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77014,7 +78312,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77132,7 +78432,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 
 	if err := encodeTeamsDeleteDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77249,7 +78551,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 
 	if err := encodeTeamsDeleteDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77363,7 +78667,9 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 
 	if err := encodeTeamsDeleteDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77476,7 +78782,9 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 
 	if err := encodeTeamsDeleteDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77587,7 +78895,9 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeTeamsDeleteInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77697,7 +79007,9 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 
 	if err := encodeTeamsDeleteLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77806,7 +79118,9 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 
 	if err := encodeTeamsGetByNameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77924,7 +79238,9 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 
 	if err := encodeTeamsGetDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78041,7 +79357,9 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 
 	if err := encodeTeamsGetDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78155,7 +79473,9 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 
 	if err := encodeTeamsGetDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78268,7 +79588,9 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 
 	if err := encodeTeamsGetDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78375,7 +79697,9 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeTeamsGetLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78488,7 +79812,9 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 
 	if err := encodeTeamsGetMemberLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78606,7 +79932,9 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 
 	if err := encodeTeamsGetMembershipForUserInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78723,7 +80051,9 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 
 	if err := encodeTeamsGetMembershipForUserLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78834,7 +80164,9 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 
 	if err := encodeTeamsListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78951,7 +80283,9 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 
 	if err := encodeTeamsListChildInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79066,7 +80400,9 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 
 	if err := encodeTeamsListChildLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79192,7 +80528,9 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 
 	if err := encodeTeamsListDiscussionCommentsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79317,7 +80655,9 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 
 	if err := encodeTeamsListDiscussionCommentsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79443,7 +80783,9 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 
 	if err := encodeTeamsListDiscussionsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79564,7 +80906,9 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 
 	if err := encodeTeamsListDiscussionsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79674,7 +81018,9 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 
 	if err := encodeTeamsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79785,7 +81131,9 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 
 	if err := encodeTeamsListIdpGroupsForLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79902,7 +81250,9 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 
 	if err := encodeTeamsListIdpGroupsForOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80014,7 +81364,9 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 
 	if err := encodeTeamsListIdpGroupsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80134,7 +81486,9 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 
 	if err := encodeTeamsListMembersInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80254,7 +81608,9 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 
 	if err := encodeTeamsListMembersLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80374,7 +81730,9 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 
 	if err := encodeTeamsListPendingInvitationsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80493,7 +81851,9 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 
 	if err := encodeTeamsListPendingInvitationsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80610,7 +81970,9 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 
 	if err := encodeTeamsListProjectsInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80726,7 +82088,9 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 
 	if err := encodeTeamsListProjectsLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80843,7 +82207,9 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 
 	if err := encodeTeamsListReposInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80958,7 +82324,9 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 
 	if err := encodeTeamsListReposLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81085,7 +82453,9 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 
 	if err := encodeTeamsRemoveMemberLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81210,7 +82580,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 
 	if err := encodeTeamsRemoveMembershipForUserInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81334,7 +82706,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 
 	if err := encodeTeamsRemoveMembershipForUserLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81450,7 +82824,9 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 
 	if err := encodeTeamsRemoveProjectInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81565,7 +82941,9 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 
 	if err := encodeTeamsRemoveProjectLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81685,7 +83063,9 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 
 	if err := encodeTeamsRemoveRepoInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81804,7 +83184,9 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 
 	if err := encodeTeamsRemoveRepoLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81937,7 +83319,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 
 	if err := encodeTeamsUpdateDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82069,7 +83453,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 
 	if err := encodeTeamsUpdateDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82199,7 +83585,9 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 
 	if err := encodeTeamsUpdateDiscussionInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82328,7 +83716,9 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 
 	if err := encodeTeamsUpdateDiscussionLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82452,7 +83842,9 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 
 	if err := encodeTeamsUpdateInOrgResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82576,7 +83968,9 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 
 	if err := encodeTeamsUpdateLegacyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82679,7 +84073,9 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 
 	if err := encodeUsersAddEmailForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82782,7 +84178,9 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 
 	if err := encodeUsersBlockResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82885,7 +84283,9 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 
 	if err := encodeUsersCheckBlockedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82992,7 +84392,9 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 
 	if err := encodeUsersCheckFollowingForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83095,7 +84497,9 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 
 	if err := encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83200,7 +84604,9 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 
 	if err := encodeUsersCreateGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83305,7 +84711,9 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 
 	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83408,7 +84816,9 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 
 	if err := encodeUsersDeleteEmailForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83513,7 +84923,9 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 
 	if err := encodeUsersDeleteGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83618,7 +85030,9 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 
 	if err := encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83725,7 +85139,9 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeUsersFollowResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83812,7 +85228,9 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 
 	if err := encodeUsersGetAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83929,7 +85347,9 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 
 	if err := encodeUsersGetByUsernameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84049,7 +85469,9 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 
 	if err := encodeUsersGetContextForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84154,7 +85576,9 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 
 	if err := encodeUsersGetGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84259,7 +85683,9 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 
 	if err := encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84370,7 +85796,9 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeUsersListResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84454,7 +85882,9 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 
 	if err := encodeUsersListBlockedByAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84562,7 +85992,9 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 
 	if err := encodeUsersListEmailsForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84669,7 +86101,9 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 
 	if err := encodeUsersListFollowedByAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84776,7 +86210,9 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 
 	if err := encodeUsersListFollowersForAuthenticatedUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84887,7 +86323,9 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 
 	if err := encodeUsersListFollowersForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84998,7 +86436,9 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 
 	if err := encodeUsersListFollowingForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85107,7 +86547,9 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 
 	if err := encodeUsersListGpgKeysForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85218,7 +86660,9 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 
 	if err := encodeUsersListGpgKeysForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85328,7 +86772,9 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 
 	if err := encodeUsersListPublicEmailsForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85439,7 +86885,9 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 
 	if err := encodeUsersListPublicKeysForUserResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85548,7 +86996,9 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 
 	if err := encodeUsersListPublicSSHKeysForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85651,7 +87101,9 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 
 	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85754,7 +87206,9 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 
 	if err := encodeUsersUnblockResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85858,7 +87312,9 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 
 	if err := encodeUsersUnfollowResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85963,7 +87419,9 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 
 	if err := encodeUsersUpdateAuthenticatedResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }

@@ -23,6 +23,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -35,6 +36,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -54,6 +56,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -66,6 +69,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -85,6 +89,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -97,6 +102,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -116,6 +122,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -128,6 +135,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -147,6 +155,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -159,6 +168,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -178,6 +188,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -190,6 +201,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -209,6 +221,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -221,6 +234,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -240,6 +254,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -252,6 +267,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -271,6 +287,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -283,6 +300,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -302,6 +320,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -314,6 +333,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -333,6 +353,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -345,6 +366,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -364,6 +386,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -376,6 +399,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -395,6 +419,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -407,6 +432,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -426,6 +452,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -438,6 +465,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -457,6 +485,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -469,6 +498,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -488,6 +518,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -500,6 +531,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -519,6 +551,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -531,6 +564,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -550,6 +584,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -562,6 +597,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -581,6 +617,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -593,6 +630,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -612,6 +650,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -624,6 +663,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -643,6 +683,7 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Error:
@@ -655,6 +696,7 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:

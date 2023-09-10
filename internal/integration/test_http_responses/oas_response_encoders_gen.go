@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -23,6 +24,7 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -44,6 +46,10 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentT
 	if _, err := io.Copy(writer, response.Response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+	}
 	return nil
 }
 
@@ -59,6 +65,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *Combined2XXStatusCode:
@@ -81,6 +88,10 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+		}
 		return nil
 
 	case *Combined5XXStatusCode:
@@ -102,6 +113,10 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		e.Bool(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
+		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
 		}
 		return nil
 
@@ -128,6 +143,10 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
+		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
 		}
 		return nil
 
@@ -213,6 +232,9 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			span.SetStatus(codes.Ok, st)
 		}
 
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+		}
 		return nil
 
 	case *HeadersCombinedDef:
@@ -245,6 +267,9 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			span.SetStatus(codes.Ok, st)
 		}
 
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+		}
 		return nil
 
 	default:
@@ -282,6 +307,9 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 		span.SetStatus(codes.Ok, st)
 	}
 
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+	}
 	return nil
 }
 
@@ -362,6 +390,9 @@ func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWr
 		span.SetStatus(codes.Ok, st)
 	}
 
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+	}
 	return nil
 }
 
@@ -377,6 +408,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *IntersectPatternCode2XXStatusCode:
@@ -399,6 +431,10 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
+		if code >= http.StatusInternalServerError {
+			return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
+		}
 		return nil
 
 	default:
@@ -418,6 +454,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *NilString:
@@ -430,6 +467,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -446,6 +484,7 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -458,6 +497,7 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -511,6 +551,7 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 		if err := e.Close(); err != nil {
 			return errors.Wrap(err, "flush streaming")
 		}
+
 		return nil
 
 	case *Error:
@@ -523,6 +564,7 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -539,5 +581,6 @@ func encodeTextPlainBinaryStringSchemaResponse(response TextPlainBinaryStringSch
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
