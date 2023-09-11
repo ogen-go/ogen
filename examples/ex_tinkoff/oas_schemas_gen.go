@@ -16,6 +16,14 @@ const (
 	BrokerAccountTypeTinkoffIis BrokerAccountType = "TinkoffIis"
 )
 
+// AllValues returns all BrokerAccountType values.
+func (BrokerAccountType) AllValues() []BrokerAccountType {
+	return []BrokerAccountType{
+		BrokerAccountTypeTinkoff,
+		BrokerAccountTypeTinkoffIis,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s BrokerAccountType) MarshalText() ([]byte, error) {
 	switch s {
@@ -163,6 +171,23 @@ const (
 	CandleResolutionWeek  CandleResolution = "week"
 	CandleResolutionMonth CandleResolution = "month"
 )
+
+// AllValues returns all CandleResolution values.
+func (CandleResolution) AllValues() []CandleResolution {
+	return []CandleResolution{
+		CandleResolution1min,
+		CandleResolution2min,
+		CandleResolution3min,
+		CandleResolution5min,
+		CandleResolution10min,
+		CandleResolution15min,
+		CandleResolution30min,
+		CandleResolutionHour,
+		CandleResolutionDay,
+		CandleResolutionWeek,
+		CandleResolutionMonth,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s CandleResolution) MarshalText() ([]byte, error) {
@@ -340,6 +365,21 @@ const (
 	CurrencyCNY Currency = "CNY"
 	CurrencyTRY Currency = "TRY"
 )
+
+// AllValues returns all Currency values.
+func (Currency) AllValues() []Currency {
+	return []Currency{
+		CurrencyRUB,
+		CurrencyUSD,
+		CurrencyEUR,
+		CurrencyGBP,
+		CurrencyHKD,
+		CurrencyCHF,
+		CurrencyJPY,
+		CurrencyCNY,
+		CurrencyTRY,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s Currency) MarshalText() ([]byte, error) {
@@ -577,6 +617,16 @@ const (
 	InstrumentTypeBond     InstrumentType = "Bond"
 	InstrumentTypeEtf      InstrumentType = "Etf"
 )
+
+// AllValues returns all InstrumentType values.
+func (InstrumentType) AllValues() []InstrumentType {
+	return []InstrumentType{
+		InstrumentTypeStock,
+		InstrumentTypeCurrency,
+		InstrumentTypeBond,
+		InstrumentTypeEtf,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s InstrumentType) MarshalText() ([]byte, error) {
@@ -1127,6 +1177,15 @@ const (
 	OperationStatusProgress OperationStatus = "Progress"
 )
 
+// AllValues returns all OperationStatus values.
+func (OperationStatus) AllValues() []OperationStatus {
+	return []OperationStatus{
+		OperationStatusDone,
+		OperationStatusDecline,
+		OperationStatusProgress,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OperationStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -1215,6 +1274,14 @@ const (
 	OperationTypeSell OperationType = "Sell"
 )
 
+// AllValues returns all OperationType values.
+func (OperationType) AllValues() []OperationType {
+	return []OperationType{
+		OperationTypeBuy,
+		OperationTypeSell,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OperationType) MarshalText() ([]byte, error) {
 	switch s {
@@ -1267,6 +1334,33 @@ const (
 	OperationTypeWithCommissionSecurityIn         OperationTypeWithCommission = "SecurityIn"
 	OperationTypeWithCommissionSecurityOut        OperationTypeWithCommission = "SecurityOut"
 )
+
+// AllValues returns all OperationTypeWithCommission values.
+func (OperationTypeWithCommission) AllValues() []OperationTypeWithCommission {
+	return []OperationTypeWithCommission{
+		OperationTypeWithCommissionBuy,
+		OperationTypeWithCommissionBuyCard,
+		OperationTypeWithCommissionSell,
+		OperationTypeWithCommissionBrokerCommission,
+		OperationTypeWithCommissionExchangeCommission,
+		OperationTypeWithCommissionServiceCommission,
+		OperationTypeWithCommissionMarginCommission,
+		OperationTypeWithCommissionOtherCommission,
+		OperationTypeWithCommissionPayIn,
+		OperationTypeWithCommissionPayOut,
+		OperationTypeWithCommissionTax,
+		OperationTypeWithCommissionTaxLucre,
+		OperationTypeWithCommissionTaxDividend,
+		OperationTypeWithCommissionTaxCoupon,
+		OperationTypeWithCommissionTaxBack,
+		OperationTypeWithCommissionRepayment,
+		OperationTypeWithCommissionPartRepayment,
+		OperationTypeWithCommissionCoupon,
+		OperationTypeWithCommissionDividend,
+		OperationTypeWithCommissionSecurityIn,
+		OperationTypeWithCommissionSecurityOut,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OperationTypeWithCommission) MarshalText() ([]byte, error) {
@@ -1991,6 +2085,21 @@ const (
 	OrderStatusPendingNew     OrderStatus = "PendingNew"
 )
 
+// AllValues returns all OrderStatus values.
+func (OrderStatus) AllValues() []OrderStatus {
+	return []OrderStatus{
+		OrderStatusNew,
+		OrderStatusPartiallyFill,
+		OrderStatusFill,
+		OrderStatusCancelled,
+		OrderStatusReplaced,
+		OrderStatusPendingCancel,
+		OrderStatusRejected,
+		OrderStatusPendingReplace,
+		OrderStatusPendingNew,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s OrderStatus) MarshalText() ([]byte, error) {
 	switch s {
@@ -2060,6 +2169,14 @@ const (
 	OrderTypeLimit  OrderType = "Limit"
 	OrderTypeMarket OrderType = "Market"
 )
+
+// AllValues returns all OrderType values.
+func (OrderType) AllValues() []OrderType {
+	return []OrderType{
+		OrderTypeLimit,
+		OrderTypeMarket,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s OrderType) MarshalText() ([]byte, error) {
@@ -2753,6 +2870,21 @@ const (
 	SandboxCurrencyTRY SandboxCurrency = "TRY"
 )
 
+// AllValues returns all SandboxCurrency values.
+func (SandboxCurrency) AllValues() []SandboxCurrency {
+	return []SandboxCurrency{
+		SandboxCurrencyRUB,
+		SandboxCurrencyUSD,
+		SandboxCurrencyEUR,
+		SandboxCurrencyGBP,
+		SandboxCurrencyHKD,
+		SandboxCurrencyCHF,
+		SandboxCurrencyJPY,
+		SandboxCurrencyCNY,
+		SandboxCurrencyTRY,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SandboxCurrency) MarshalText() ([]byte, error) {
 	switch s {
@@ -3059,6 +3191,14 @@ const (
 	TradeStatusNormalTrading          TradeStatus = "NormalTrading"
 	TradeStatusNotAvailableForTrading TradeStatus = "NotAvailableForTrading"
 )
+
+// AllValues returns all TradeStatus values.
+func (TradeStatus) AllValues() []TradeStatus {
+	return []TradeStatus{
+		TradeStatusNormalTrading,
+		TradeStatusNotAvailableForTrading,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s TradeStatus) MarshalText() ([]byte, error) {

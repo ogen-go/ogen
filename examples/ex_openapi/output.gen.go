@@ -3782,6 +3782,16 @@ const (
 	ParameterInHeader ParameterIn = "header"
 )
 
+// AllValues returns all ParameterIn values.
+func (ParameterIn) AllValues() []ParameterIn {
+	return []ParameterIn{
+		ParameterInPath,
+		ParameterInQuery,
+		ParameterInCookie,
+		ParameterInHeader,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ParameterIn) MarshalText() ([]byte, error) {
 	switch s {
@@ -3905,6 +3915,19 @@ const (
 	ParameterStylePipeDelimited  ParameterStyle = "pipeDelimited"
 	ParameterStyleDeepObject     ParameterStyle = "deepObject"
 )
+
+// AllValues returns all ParameterStyle values.
+func (ParameterStyle) AllValues() []ParameterStyle {
+	return []ParameterStyle{
+		ParameterStyleMatrix,
+		ParameterStyleLabel,
+		ParameterStyleForm,
+		ParameterStyleSimple,
+		ParameterStyleSpaceDelimited,
+		ParameterStylePipeDelimited,
+		ParameterStyleDeepObject,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s ParameterStyle) MarshalText() ([]byte, error) {
@@ -5150,6 +5173,19 @@ const (
 	SchemaTypeObject  SchemaType = "object"
 	SchemaTypeString  SchemaType = "string"
 )
+
+// AllValues returns all SchemaType values.
+func (SchemaType) AllValues() []SchemaType {
+	return []SchemaType{
+		SchemaTypeArray,
+		SchemaTypeBoolean,
+		SchemaTypeInteger,
+		SchemaTypeNull,
+		SchemaTypeNumber,
+		SchemaTypeObject,
+		SchemaTypeString,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s SchemaType) MarshalText() ([]byte, error) {

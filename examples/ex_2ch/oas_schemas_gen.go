@@ -468,6 +468,19 @@ const (
 	CaptchaTypeNocaptcha          CaptchaType = "nocaptcha"
 )
 
+// AllValues returns all CaptchaType values.
+func (CaptchaType) AllValues() []CaptchaType {
+	return []CaptchaType{
+		CaptchaTypeRecaptcha,
+		CaptchaTypeInvisibleRecaptcha,
+		CaptchaTypeRecaptcha3,
+		CaptchaType2chcaptcha,
+		CaptchaTypeAppid,
+		CaptchaTypePasscode,
+		CaptchaTypeNocaptcha,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CaptchaType) MarshalText() ([]byte, error) {
 	switch s {
@@ -636,6 +649,46 @@ const (
 	ErrorCodeMinus24  ErrorCode = -24
 	ErrorCodeMinus25  ErrorCode = -25
 )
+
+// AllValues returns all ErrorCode values.
+func (ErrorCode) AllValues() []ErrorCode {
+	return []ErrorCode{
+		ErrorCode0,
+		ErrorCode403,
+		ErrorCode666,
+		ErrorCode667,
+		ErrorCodeMinus2,
+		ErrorCodeMinus3,
+		ErrorCodeMinus31,
+		ErrorCodeMinus4,
+		ErrorCodeMinus41,
+		ErrorCodeMinus42,
+		ErrorCodeMinus5,
+		ErrorCodeMinus6,
+		ErrorCodeMinus7,
+		ErrorCodeMinus8,
+		ErrorCodeMinus9,
+		ErrorCodeMinus10,
+		ErrorCodeMinus11,
+		ErrorCodeMinus12,
+		ErrorCodeMinus13,
+		ErrorCodeMinus14,
+		ErrorCodeMinus15,
+		ErrorCodeMinus16,
+		ErrorCodeMinus19,
+		ErrorCodeMinus20,
+		ErrorCodeMinus21,
+		ErrorCodeMinus22,
+		ErrorCodeMinus23,
+		ErrorCodeMinus300,
+		ErrorCodeMinus301,
+		ErrorCodeMinus302,
+		ErrorCodeMinus303,
+		ErrorCodeMinus304,
+		ErrorCodeMinus24,
+		ErrorCodeMinus25,
+	}
+}
 
 // Модель файла.
 // Ref: #/components/schemas/File
@@ -877,6 +930,23 @@ const (
 	FileType10  FileType = 10
 	FileType100 FileType = 100
 )
+
+// AllValues returns all FileType values.
+func (FileType) AllValues() []FileType {
+	return []FileType{
+		FileType0,
+		FileType1,
+		FileType2,
+		FileType3,
+		FileType4,
+		FileType5,
+		FileType6,
+		FileType7,
+		FileType8,
+		FileType10,
+		FileType100,
+	}
+}
 
 // Ref: #/components/schemas/Like
 type Like struct {

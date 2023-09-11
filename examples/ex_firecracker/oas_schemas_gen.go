@@ -319,6 +319,14 @@ const (
 	CpuTemplateT2 CpuTemplate = "T2"
 )
 
+// AllValues returns all CpuTemplate values.
+func (CpuTemplate) AllValues() []CpuTemplate {
+	return []CpuTemplate{
+		CpuTemplateC3,
+		CpuTemplateT2,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s CpuTemplate) MarshalText() ([]byte, error) {
 	switch s {
@@ -637,6 +645,15 @@ const (
 	InstanceActionInfoActionTypeSendCtrlAltDel InstanceActionInfoActionType = "SendCtrlAltDel"
 )
 
+// AllValues returns all InstanceActionInfoActionType values.
+func (InstanceActionInfoActionType) AllValues() []InstanceActionInfoActionType {
+	return []InstanceActionInfoActionType{
+		InstanceActionInfoActionTypeFlushMetrics,
+		InstanceActionInfoActionTypeInstanceStart,
+		InstanceActionInfoActionTypeSendCtrlAltDel,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s InstanceActionInfoActionType) MarshalText() ([]byte, error) {
 	switch s {
@@ -731,6 +748,15 @@ const (
 	InstanceInfoStateRunning    InstanceInfoState = "Running"
 	InstanceInfoStatePaused     InstanceInfoState = "Paused"
 )
+
+// AllValues returns all InstanceInfoState values.
+func (InstanceInfoState) AllValues() []InstanceInfoState {
+	return []InstanceInfoState{
+		InstanceInfoStateNotStarted,
+		InstanceInfoStateRunning,
+		InstanceInfoStatePaused,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s InstanceInfoState) MarshalText() ([]byte, error) {
@@ -830,6 +856,16 @@ const (
 	LoggerLevelInfo    LoggerLevel = "Info"
 	LoggerLevelDebug   LoggerLevel = "Debug"
 )
+
+// AllValues returns all LoggerLevel values.
+func (LoggerLevel) AllValues() []LoggerLevel {
+	return []LoggerLevel{
+		LoggerLevelError,
+		LoggerLevelWarning,
+		LoggerLevelInfo,
+		LoggerLevelDebug,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s LoggerLevel) MarshalText() ([]byte, error) {
@@ -2040,6 +2076,14 @@ const (
 	SnapshotCreateParamsSnapshotTypeDiff SnapshotCreateParamsSnapshotType = "Diff"
 )
 
+// AllValues returns all SnapshotCreateParamsSnapshotType values.
+func (SnapshotCreateParamsSnapshotType) AllValues() []SnapshotCreateParamsSnapshotType {
+	return []SnapshotCreateParamsSnapshotType{
+		SnapshotCreateParamsSnapshotTypeFull,
+		SnapshotCreateParamsSnapshotTypeDiff,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s SnapshotCreateParamsSnapshotType) MarshalText() ([]byte, error) {
 	switch s {
@@ -2186,6 +2230,14 @@ const (
 	VMStatePaused  VMState = "Paused"
 	VMStateResumed VMState = "Resumed"
 )
+
+// AllValues returns all VMState values.
+func (VMState) AllValues() []VMState {
+	return []VMState{
+		VMStatePaused,
+		VMStateResumed,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s VMState) MarshalText() ([]byte, error) {
